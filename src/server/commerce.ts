@@ -36,7 +36,7 @@ export function quote(lines: Cart["lines"], products: Product[]) {
       color: v.color,
       price: v.price,
       quantity: line.quantity,
-      image: product.image,
+      image: v.image || product.image,
       slug: product.slug,
     };
   });

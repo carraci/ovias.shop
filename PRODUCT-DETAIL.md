@@ -28,4 +28,4 @@ The browser tests select products from the running catalog and mock account/cart
 
 The reference-composition test renders the actual component in an isolated browser fixture with explicit test-only media roles, verifying the complete layout without inserting a sample product into MongoDB. Its screenshots are `artifacts/product-reference-1536.png` and `artifacts/product-reference-390.png`; these are layout fixtures, not live product records.
 
-The broader existing suite has six failures unrelated to these components: four commerce tests assume an older catalog (83 products and four pages) or fixed inventory fixtures, and two storefront tests depend on an injected loader that the existing catalog function ignores.
+The targeted checks above cover this product-page change. Broader catalog, account, and checkout code may be changing independently; these tests do not replace those modules' full regression suites.

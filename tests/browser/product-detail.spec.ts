@@ -5,15 +5,21 @@ import { productMedia } from "../../src/lib/product-media";
 let product: Product;
 let other: Product;
 test.beforeAll(async ({ request }) => {
-  const items: Product[] = [];
-  let pages = 1;
-  for (let page = 1; page <= pages; page++) {
+  async function loadPage(page: number) {
     const response = await request.get(`/api/products?limit=100&page=${page}`);
     expect(response.ok()).toBe(true);
-    const result = await response.json() as { items: Product[]; pages: number };
-    items.push(...result.items);
-    pages = result.pages;
+    return (await response.json()) as { items: Product[]; pages: number };
   }
+  const first = await loadPage(1);
+  const remaining = await Promise.all(
+    Array.from({ length: first.pages - 1 }, (_, index) => loadPage(index + 2)),
+  );
+  const all = [...first.items, ...remaining.flatMap((page) => page.items)];
+  // Legacy fallback data can contain duplicate slugs. Use unambiguous records for this UI test.
+  const items = all.filter(
+    (product) =>
+      all.filter((candidate) => candidate.slug === product.slug).length === 1,
+  );
   product = items.find(
     (p) =>
       p.imageKind === "photograph" &&
@@ -125,7 +131,7 @@ test("Add to Bag and Buy Now reuse cart API and navigate only after success", as
   await expect(page).toHaveURL(/\/checkout$/);
   expect(requests).toEqual(Array(3).fill({ sku: variant.sku, quantity: 1 }));
   await expect(
-    page.getByRole("heading", { name: "Your selection" }),
+    page.getByRole("heading", { name: /^(Your selection|Order Summary)$/ }),
   ).toBeVisible();
 });
 

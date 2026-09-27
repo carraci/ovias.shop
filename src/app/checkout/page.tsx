@@ -2,9 +2,9 @@
 
 import { usePreferences } from "@/components/preferences";
 import Link from "next/link";
-import Image from "next/image";
+import { ProductPhoto as Image } from "@/components/product-photo";
 import { useRouter } from "next/navigation";
-import { useRef, useState, useMemo } from "react";
+import { useRef, useState, useEffect } from "react";
 import {
   Lock,
   ArrowRight,
@@ -22,7 +22,6 @@ import {
   Info,
   Minus,
   Plus,
-  Check,
 } from "lucide-react";
 import { money } from "@/lib/catalog";
 import { request, useStore } from "@/components/store-provider";
@@ -84,15 +83,22 @@ export default function Checkout() {
   const router = useRouter();
 
   // Delivery options: 'standard' | 'express' | 'pickup'
-  const [deliveryOption, setDeliveryOption] = useState<"standard" | "express" | "pickup">("standard");
+  const [deliveryOption, setDeliveryOption] = useState<
+    "standard" | "express" | "pickup"
+  >("standard");
 
   // Payment method: 'upi' | 'card' | 'netbanking' | 'wallets' | 'emi'
-  const [paymentMethod, setPaymentMethod] = useState<"upi" | "card" | "netbanking" | "wallets" | "emi">("upi");
+  const [paymentMethod, setPaymentMethod] = useState<
+    "upi" | "card" | "netbanking" | "wallets" | "emi"
+  >("upi");
 
   // Promo code toggle & state
   const [promoOpen, setPromoOpen] = useState(false);
   const [promoCode, setPromoCode] = useState("");
-  const [appliedPromo, setAppliedPromo] = useState<string | null>(null);
+  const [promoMessage, setPromoMessage] = useState("");
+  const saving = useRef(false);
+  const savedAddress = useRef("");
+  const [updatingQuantity, setUpdatingQuantity] = useState(false);
 
   // Form values state for shipping
   const [fullName, setFullName] = useState(user?.name || "");
@@ -102,69 +108,69 @@ export default function Checkout() {
   const [city, setCity] = useState("");
   const [stateVal, setStateVal] = useState("Maharashtra");
   const [pinCode, setPinCode] = useState("");
-  const [saveAddress, setSaveAddress] = useState(true);
+  const [saveAddress, setSaveAddress] = useState(false);
 
-  // UPI ID state
-  const [upiId, setUpiId] = useState("");
-
-  // Determine line items: if cart has items, use cart lines; otherwise default to a showcase luxury bag item
+  // Only server-priced cart lines can become an order.
   const hasCartItems = cart.lines.length > 0;
+  const displayItems = cart.lines;
+  const subtotal = cart.total;
+  const deliveryCost = 0; // The existing API supports standard delivery only.
+  const total = subtotal;
+  const itemCount = displayItems.reduce((sum, item) => sum + item.quantity, 0);
 
-  const displayItems = useMemo(() => {
-    if (hasCartItems) {
-      return cart.lines;
+  useEffect(() => {
+    if (user) {
+      setFullName((value) => value || user.name);
+      setEmail((value) => value || user.email);
     }
-    // Default luxury crossbody bag matching the screenshot if navigated directly or via single buy
-    return [
-      {
-        sku: "crossbody-ivory-std",
-        name: "Signature Crossbody",
-        color: "Ivory",
-        price: 189000,
-        quantity: 1,
-        image: "/media/checkout-crossbody-thumb.svg",
-        slug: "signature-crossbody",
-      },
-    ];
-  }, [hasCartItems, cart.lines]);
+  }, [user]);
 
-  const subtotal = useMemo(() => {
-    return displayItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-  }, [displayItems]);
-
-  const deliveryCost = deliveryOption === "express" ? 300 : 0;
-  const estimatedTax = 0; // Inclusive of taxes
-  const total = subtotal + deliveryCost;
-
-  async function handleQtyChange(sku: string, currentQty: number, delta: number) {
+  async function handleQtyChange(
+    sku: string,
+    currentQty: number,
+    delta: number,
+  ) {
     const next = currentQty + delta;
-    if (next < 1) return;
+    if (next < 1 || next > 10 || updatingQuantity || busy) return;
     if (hasCartItems) {
+      setUpdatingQuantity(true);
       try {
         await setQuantity(sku, next);
       } catch (e) {
         setError((e as Error).message);
+      } finally {
+        setUpdatingQuantity(false);
       }
     }
   }
 
   async function submit(e?: React.FormEvent) {
     if (e) e.preventDefault();
+    if (saving.current || updatingQuantity || !hasCartItems) return;
+    saving.current = true;
     setError("");
     setBusy(true);
     key.current ??= crypto.randomUUID();
 
     try {
       const payloadAddress = {
-        name: fullName || "Valued Client",
-        email: email || "client@ovia.com",
-        line1: address || "Oberoi Grand Promenade 10",
-        city: city || "Mumbai",
-        region: stateVal || "Maharashtra",
-        postalCode: pinCode || "400001",
+        name: fullName.trim(),
+        email: email.trim(),
+        line1: address.trim(),
+        city: city.trim(),
+        region: stateVal,
+        postalCode: pinCode.trim(),
         country: "IN" as const,
       };
 
+      if (
+        saveAddress &&
+        user &&
+        savedAddress.current !== JSON.stringify(payloadAddress)
+      ) {
+        await request("account/addresses", "POST", payloadAddress);
+        savedAddress.current = JSON.stringify(payloadAddress);
+      }
       const result = await request<PaymentResponse>("checkout", "POST", {
         address: payloadAddress,
         idempotencyKey: key.current,
@@ -188,7 +194,11 @@ export default function Checkout() {
           currency: "INR",
           name: "OVIA · Luxury Atelier",
           order_id: result.orderId,
-          prefill: { name: payloadAddress.name, email: payloadAddress.email },
+          prefill: {
+            name: payloadAddress.name,
+            email: payloadAddress.email,
+            contact: phone,
+          },
           handler: () =>
             router.push(`/orders/${result.localOrderId}/confirmation`),
           modal: { ondismiss: () => setBusy(false) },
@@ -208,6 +218,7 @@ export default function Checkout() {
     } catch (e) {
       setError((e as Error).message);
     } finally {
+      saving.current = false;
       setBusy(false);
     }
   }
@@ -246,17 +257,37 @@ export default function Checkout() {
       </header>
 
       {/* 2. 3-Column Luxury Layout */}
-      <main className={styles.mainLayout}>
+      <div className={styles.mainLayout}>
         {/* Left Column: Architectural Editorial Banner */}
-        <aside className={styles.leftEditorialCol} aria-label="Editorial Brand Banner">
+        <aside
+          className={styles.leftEditorialCol}
+          aria-label="Editorial Brand Banner"
+        >
           <div className={styles.editorialImageWrap}>
             <Image
-              src="/media/checkout-editorial-banner.svg"
-              alt="OVIA Architectural Editorial Crossbody"
+              src={displayItems[0]?.image || ""}
+              alt={displayItems[0]?.name || "Your journey with OVIA"}
+              sizes="25vw"
+              quality={90}
               fill
               priority
               style={{ objectFit: "cover" }}
             />
+          </div>
+          <div className={styles.editorialCopy}>
+            <p>
+              A MORE
+              <br />
+              INTENTIONAL
+              <br />
+              JOURNEY
+            </p>
+            <h2>
+              Luxury in
+              <br />
+              every detail
+            </h2>
+            <span>OVIA</span>
           </div>
         </aside>
 
@@ -268,9 +299,12 @@ export default function Checkout() {
             </div>
           )}
 
-          <form onSubmit={submit}>
+          <form id="checkout-form" onSubmit={submit} aria-busy={busy}>
             {/* Step 1: Shipping Information */}
-            <section className={styles.sectionBlock} aria-labelledby="shipping-heading">
+            <section
+              className={styles.sectionBlock}
+              aria-labelledby="shipping-heading"
+            >
               <div className={styles.sectionHeaderRow}>
                 <h1 id="shipping-heading" className={styles.sectionHeading}>
                   1. Shipping Information
@@ -279,7 +313,9 @@ export default function Checkout() {
                   Already have an account? <Link href="/login">Login</Link>
                 </span>
               </div>
-              <p className={styles.sectionSubtitle}>Where should we deliver your order?</p>
+              <p className={styles.sectionSubtitle}>
+                Where should we deliver your order?
+              </p>
 
               <div className={styles.inputGrid2}>
                 <div className={styles.formField}>
@@ -306,7 +342,13 @@ export default function Checkout() {
                   </label>
                   <div className={styles.phoneInputWrap}>
                     <div className={styles.phonePrefix}>
-                      <span className={styles.flagIcon} style={{ background: "linear-gradient(to bottom, #FF9933 33%, #FFFFFF 33%, #FFFFFF 66%, #138808 66%)" }} />
+                      <span
+                        className={styles.flagIcon}
+                        style={{
+                          background:
+                            "linear-gradient(to bottom, #FF9933 33%, #FFFFFF 33%, #FFFFFF 66%, #138808 66%)",
+                        }}
+                      />
                       <span>+91</span>
                       <ChevronDown size={11} />
                     </div>
@@ -349,6 +391,7 @@ export default function Checkout() {
                 <input
                   id="streetAddress"
                   name="line1"
+                  minLength={5}
                   type="text"
                   required
                   placeholder="House no., building, street name"
@@ -367,6 +410,7 @@ export default function Checkout() {
                   <input
                     id="city"
                     name="city"
+                    minLength={2}
                     type="text"
                     required
                     placeholder="Enter city"
@@ -406,6 +450,8 @@ export default function Checkout() {
                     type="text"
                     required
                     maxLength={6}
+                    pattern="[1-9][0-9]{5}"
+                    inputMode="numeric"
                     placeholder="Enter PIN code"
                     value={pinCode}
                     onChange={(e) => setPinCode(e.target.value)}
@@ -418,20 +464,30 @@ export default function Checkout() {
               <label className={styles.checkboxLabel}>
                 <input
                   type="checkbox"
+                  disabled={!user}
                   checked={saveAddress}
                   onChange={(e) => setSaveAddress(e.target.checked)}
                   className={styles.checkboxInput}
                 />
-                <span>Save this address for future orders</span>
+                <span>
+                  {user
+                    ? "Save this address for future orders"
+                    : "Sign in to save your address for future orders"}
+                </span>
               </label>
             </section>
 
             {/* Step 2: Delivery Options */}
-            <section className={styles.sectionBlock} aria-labelledby="delivery-heading">
+            <section
+              className={styles.sectionBlock}
+              aria-labelledby="delivery-heading"
+            >
               <h2 id="delivery-heading" className={styles.sectionHeading}>
                 2. Delivery Options
               </h2>
-              <p className={styles.sectionSubtitle}>Choose a delivery option for your order</p>
+              <p className={styles.sectionSubtitle}>
+                Choose a delivery option for your order
+              </p>
 
               <div className={styles.deliveryOptionsGrid}>
                 {/* Standard Delivery */}
@@ -441,10 +497,20 @@ export default function Checkout() {
                   role="radio"
                   aria-checked={deliveryOption === "standard"}
                   tabIndex={0}
+                  onKeyDown={(event) => {
+                    if (event.key === " " || event.key === "Enter") {
+                      event.preventDefault();
+                      setDeliveryOption("standard");
+                    }
+                  }}
                 >
                   <div className={styles.deliveryCardTop}>
-                    <div className={`${styles.radioCircle} ${deliveryOption === "standard" ? styles.radioCircleActive : ""}`}>
-                      {deliveryOption === "standard" && <div className={styles.radioDot} />}
+                    <div
+                      className={`${styles.radioCircle} ${deliveryOption === "standard" ? styles.radioCircleActive : ""}`}
+                    >
+                      {deliveryOption === "standard" && (
+                        <div className={styles.radioDot} />
+                      )}
                     </div>
                     <div className={styles.deliveryIconWrap}>
                       <Truck size={18} strokeWidth={1.5} />
@@ -460,19 +526,23 @@ export default function Checkout() {
                 {/* Express Delivery */}
                 <div
                   className={`${styles.deliveryCard} ${deliveryOption === "express" ? styles.deliveryCardActive : ""}`}
-                  onClick={() => setDeliveryOption("express")}
+                  aria-disabled="true"
                   role="radio"
-                  aria-checked={deliveryOption === "express"}
-                  tabIndex={0}
+                  aria-checked={false}
+                  tabIndex={-1}
                 >
                   <div className={styles.deliveryCardTop}>
-                    <div className={`${styles.radioCircle} ${deliveryOption === "express" ? styles.radioCircleActive : ""}`}>
-                      {deliveryOption === "express" && <div className={styles.radioDot} />}
+                    <div
+                      className={`${styles.radioCircle} ${deliveryOption === "express" ? styles.radioCircleActive : ""}`}
+                    >
+                      {deliveryOption === "express" && (
+                        <div className={styles.radioDot} />
+                      )}
                     </div>
                     <div className={styles.deliveryIconWrap}>
                       <Package size={18} strokeWidth={1.5} />
                     </div>
-                    <span className={styles.deliveryPrice}>₹ 300</span>
+                    <span className={styles.deliveryPrice}>Unavailable</span>
                   </div>
                   <div>
                     <h3 className={styles.deliveryTitle}>Express Delivery</h3>
@@ -483,14 +553,18 @@ export default function Checkout() {
                 {/* Store Pickup */}
                 <div
                   className={`${styles.deliveryCard} ${deliveryOption === "pickup" ? styles.deliveryCardActive : ""}`}
-                  onClick={() => setDeliveryOption("pickup")}
+                  aria-disabled="true"
                   role="radio"
-                  aria-checked={deliveryOption === "pickup"}
-                  tabIndex={0}
+                  aria-checked={false}
+                  tabIndex={-1}
                 >
                   <div className={styles.deliveryCardTop}>
-                    <div className={`${styles.radioCircle} ${deliveryOption === "pickup" ? styles.radioCircleActive : ""}`}>
-                      {deliveryOption === "pickup" && <div className={styles.radioDot} />}
+                    <div
+                      className={`${styles.radioCircle} ${deliveryOption === "pickup" ? styles.radioCircleActive : ""}`}
+                    >
+                      {deliveryOption === "pickup" && (
+                        <div className={styles.radioDot} />
+                      )}
                     </div>
                     <div className={styles.deliveryIconWrap}>
                       <Store size={18} strokeWidth={1.5} />
@@ -499,18 +573,23 @@ export default function Checkout() {
                   </div>
                   <div>
                     <h3 className={styles.deliveryTitle}>Store Pickup</h3>
-                    <p className={styles.deliverySub}>Pick up from an OVIA store</p>
+                    <p className={styles.deliverySub}>Currently unavailable</p>
                   </div>
                 </div>
               </div>
             </section>
 
             {/* Step 3: Payment Method */}
-            <section className={styles.sectionBlock} aria-labelledby="payment-heading">
+            <section
+              className={styles.sectionBlock}
+              aria-labelledby="payment-heading"
+            >
               <h2 id="payment-heading" className={styles.sectionHeading}>
                 3. Payment Method
               </h2>
-              <p className={styles.sectionSubtitle}>Choose your preferred payment method</p>
+              <p className={styles.sectionSubtitle}>
+                Choose your preferred payment method
+              </p>
 
               <div className={styles.paymentContainer}>
                 {/* Method Tabs */}
@@ -522,12 +601,18 @@ export default function Checkout() {
                     className={`${styles.paymentTabBtn} ${paymentMethod === "upi" ? styles.paymentTabBtnActive : ""}`}
                     onClick={() => setPaymentMethod("upi")}
                   >
-                    <div className={`${styles.radioCircle} ${paymentMethod === "upi" ? styles.radioCircleActive : ""}`}>
-                      {paymentMethod === "upi" && <div className={styles.radioDot} />}
+                    <div
+                      className={`${styles.radioCircle} ${paymentMethod === "upi" ? styles.radioCircleActive : ""}`}
+                    >
+                      {paymentMethod === "upi" && (
+                        <div className={styles.radioDot} />
+                      )}
                     </div>
                     <div>
                       <span>UPI</span>
-                      <span className={styles.paymentTabSub}>Pay using any UPI app</span>
+                      <span className={styles.paymentTabSub}>
+                        Pay using any UPI app
+                      </span>
                     </div>
                   </button>
 
@@ -538,13 +623,19 @@ export default function Checkout() {
                     className={`${styles.paymentTabBtn} ${paymentMethod === "card" ? styles.paymentTabBtnActive : ""}`}
                     onClick={() => setPaymentMethod("card")}
                   >
-                    <div className={`${styles.radioCircle} ${paymentMethod === "card" ? styles.radioCircleActive : ""}`}>
-                      {paymentMethod === "card" && <div className={styles.radioDot} />}
+                    <div
+                      className={`${styles.radioCircle} ${paymentMethod === "card" ? styles.radioCircleActive : ""}`}
+                    >
+                      {paymentMethod === "card" && (
+                        <div className={styles.radioDot} />
+                      )}
                     </div>
                     <CreditCard size={16} className={styles.paymentTabIcon} />
                     <div>
                       <span>Credit / Debit Card</span>
-                      <span className={styles.paymentTabSub}>Visa, Mastercard, Rupay</span>
+                      <span className={styles.paymentTabSub}>
+                        Visa, Mastercard, Rupay
+                      </span>
                     </div>
                   </button>
 
@@ -555,13 +646,19 @@ export default function Checkout() {
                     className={`${styles.paymentTabBtn} ${paymentMethod === "netbanking" ? styles.paymentTabBtnActive : ""}`}
                     onClick={() => setPaymentMethod("netbanking")}
                   >
-                    <div className={`${styles.radioCircle} ${paymentMethod === "netbanking" ? styles.radioCircleActive : ""}`}>
-                      {paymentMethod === "netbanking" && <div className={styles.radioDot} />}
+                    <div
+                      className={`${styles.radioCircle} ${paymentMethod === "netbanking" ? styles.radioCircleActive : ""}`}
+                    >
+                      {paymentMethod === "netbanking" && (
+                        <div className={styles.radioDot} />
+                      )}
                     </div>
                     <Building size={16} className={styles.paymentTabIcon} />
                     <div>
                       <span>Net Banking</span>
-                      <span className={styles.paymentTabSub}>All major banks</span>
+                      <span className={styles.paymentTabSub}>
+                        All major banks
+                      </span>
                     </div>
                   </button>
 
@@ -572,13 +669,19 @@ export default function Checkout() {
                     className={`${styles.paymentTabBtn} ${paymentMethod === "wallets" ? styles.paymentTabBtnActive : ""}`}
                     onClick={() => setPaymentMethod("wallets")}
                   >
-                    <div className={`${styles.radioCircle} ${paymentMethod === "wallets" ? styles.radioCircleActive : ""}`}>
-                      {paymentMethod === "wallets" && <div className={styles.radioDot} />}
+                    <div
+                      className={`${styles.radioCircle} ${paymentMethod === "wallets" ? styles.radioCircleActive : ""}`}
+                    >
+                      {paymentMethod === "wallets" && (
+                        <div className={styles.radioDot} />
+                      )}
                     </div>
                     <Wallet size={16} className={styles.paymentTabIcon} />
                     <div>
                       <span>Wallets</span>
-                      <span className={styles.paymentTabSub}>Paytm, PhonePe, Amazon Pay</span>
+                      <span className={styles.paymentTabSub}>
+                        Paytm, PhonePe, Amazon Pay
+                      </span>
                     </div>
                   </button>
 
@@ -589,13 +692,19 @@ export default function Checkout() {
                     className={`${styles.paymentTabBtn} ${paymentMethod === "emi" ? styles.paymentTabBtnActive : ""}`}
                     onClick={() => setPaymentMethod("emi")}
                   >
-                    <div className={`${styles.radioCircle} ${paymentMethod === "emi" ? styles.radioCircleActive : ""}`}>
-                      {paymentMethod === "emi" && <div className={styles.radioDot} />}
+                    <div
+                      className={`${styles.radioCircle} ${paymentMethod === "emi" ? styles.radioCircleActive : ""}`}
+                    >
+                      {paymentMethod === "emi" && (
+                        <div className={styles.radioDot} />
+                      )}
                     </div>
                     <CalendarDays size={16} className={styles.paymentTabIcon} />
                     <div>
                       <span>EMI</span>
-                      <span className={styles.paymentTabSub}>Easy monthly payments</span>
+                      <span className={styles.paymentTabSub}>
+                        Easy monthly payments
+                      </span>
                     </div>
                   </button>
                 </div>
@@ -605,64 +714,67 @@ export default function Checkout() {
                   {paymentMethod === "upi" ? (
                     <div>
                       <h3 className={styles.panelTitle}>UPI Payment</h3>
-                      <p className={styles.panelSub}>Pay securely using your UPI app</p>
+                      <p className={styles.panelSub}>
+                        Pay securely using your UPI app
+                      </p>
 
                       {/* UPI App Icons Row */}
                       <div className={styles.upiAppsRow}>
                         <div className={styles.upiAppItem}>
-                          <div className={styles.upiAppBadge} style={{ color: "#4285F4" }}>
+                          <div
+                            className={styles.upiAppBadge}
+                            style={{ color: "#4285F4" }}
+                          >
                             GPay
                           </div>
                           <span className={styles.upiAppName}>GPay</span>
                         </div>
                         <div className={styles.upiAppItem}>
-                          <div className={styles.upiAppBadge} style={{ color: "#5f259f" }}>
+                          <div
+                            className={styles.upiAppBadge}
+                            style={{ color: "#5f259f" }}
+                          >
                             पे
                           </div>
                           <span className={styles.upiAppName}>PhonePe</span>
                         </div>
                         <div className={styles.upiAppItem}>
-                          <div className={styles.upiAppBadge} style={{ color: "#00b9f5" }}>
+                          <div
+                            className={styles.upiAppBadge}
+                            style={{ color: "#00b9f5" }}
+                          >
                             paytm
                           </div>
                           <span className={styles.upiAppName}>Paytm</span>
                         </div>
                         <div className={styles.upiAppItem}>
-                          <div className={styles.upiAppBadge} style={{ color: "#097937" }}>
+                          <div
+                            className={styles.upiAppBadge}
+                            style={{ color: "#097937" }}
+                          >
                             BHIM
                           </div>
                           <span className={styles.upiAppName}>BHIM</span>
                         </div>
                         <div className={styles.upiAppItem}>
-                          <div className={styles.upiAppBadge} style={{ color: "#777" }}>
+                          <div
+                            className={styles.upiAppBadge}
+                            style={{ color: "#777" }}
+                          >
                             •••
                           </div>
                           <span className={styles.upiAppName}>More</span>
                         </div>
                       </div>
 
-                      {/* UPI ID input */}
-                      <div className={styles.formField}>
-                        <label htmlFor="upiId" className={styles.formLabel}>
-                          UPI ID <span className={styles.requiredStar}>*</span>
-                        </label>
-                        <div className={styles.upiInputWrap}>
-                          <input
-                            id="upiId"
-                            type="text"
-                            placeholder="example@upi"
-                            value={upiId}
-                            onChange={(e) => setUpiId(e.target.value)}
-                            className={styles.textInput}
-                          />
-                          <span className={styles.upiLogoBadge}>UPI</span>
-                        </div>
-                      </div>
+                      <p className={styles.panelSub}>
+                        Choose and authorise your payment in the secure gateway.
+                        Available methods depend on the payment provider.
+                      </p>
 
                       <button
-                        type="button"
-                        onClick={() => submit()}
-                        disabled={busy}
+                        type="submit"
+                        disabled={busy || updatingQuantity || !hasCartItems}
                         className={styles.inlinePayButton}
                       >
                         {busy ? "PROCESSING…" : `PAY ${money(total)}`}
@@ -673,12 +785,12 @@ export default function Checkout() {
                     <div>
                       <h3 className={styles.panelTitle}>Secure Gateway</h3>
                       <p className={styles.panelSub}>
-                        You will be routed to our high-security sandbox payment terminal.
+                        Choose your payment method in the secure gateway.
+                        Availability depends on your payment provider.
                       </p>
                       <button
-                        type="button"
-                        onClick={() => submit()}
-                        disabled={busy}
+                        type="submit"
+                        disabled={busy || updatingQuantity || !hasCartItems}
                         className={styles.inlinePayButton}
                       >
                         {busy ? "PROCESSING…" : `PAY ${money(total)}`}
@@ -697,16 +809,23 @@ export default function Checkout() {
           <div className={styles.summaryHeader}>
             <h2 className={styles.summaryTitle}>Order Summary</h2>
             <span className={styles.summaryItemCount}>
-              {displayItems.reduce((acc, i) => acc + i.quantity, 0)} item{displayItems.length > 1 ? "s" : ""}
+              {itemCount} item{itemCount !== 1 ? "s" : ""}
             </span>
           </div>
 
+          {!hasCartItems && (
+            <p className={styles.emptyBag}>
+              Your bag is empty or could not be loaded.{" "}
+              <Link href="/luggage">Continue shopping</Link>
+            </p>
+          )}
           {/* Item Card(s) */}
           {displayItems.map((item) => (
             <div key={item.sku} className={styles.orderItemCard}>
               <div className={styles.itemThumb}>
                 <Image
-                  src={item.image || "/media/checkout-crossbody-thumb.svg"}
+                  src={item.image}
+                  sizes="120px"
                   alt={item.name}
                   fill
                   style={{ objectFit: "cover" }}
@@ -714,16 +833,13 @@ export default function Checkout() {
               </div>
               <div className={styles.itemInfo}>
                 <h3 className={styles.itemName}>{item.name}</h3>
-                <p className={styles.itemColorSize}>
-                  {item.color}
-                  <br />
-                  One Size
-                </p>
+                <p className={styles.itemColorSize}>{item.color}</p>
                 <div className={styles.itemQtyRow}>
                   <button
                     type="button"
                     className={styles.qtyBtn}
                     onClick={() => handleQtyChange(item.sku, item.quantity, -1)}
+                    disabled={busy || updatingQuantity || item.quantity <= 1}
                     aria-label="Decrease quantity"
                   >
                     <Minus size={11} />
@@ -733,13 +849,16 @@ export default function Checkout() {
                     type="button"
                     className={styles.qtyBtn}
                     onClick={() => handleQtyChange(item.sku, item.quantity, 1)}
+                    disabled={busy || updatingQuantity || item.quantity >= 10}
                     aria-label="Increase quantity"
                   >
                     <Plus size={11} />
                   </button>
                 </div>
               </div>
-              <div className={styles.itemPrice}>{money(item.price * item.quantity)}</div>
+              <div className={styles.itemPrice}>
+                {money(item.price * item.quantity)}
+              </div>
             </div>
           ))}
 
@@ -768,7 +887,9 @@ export default function Checkout() {
             <span className={styles.totalLabel}>Total</span>
             <div className={styles.totalAmountWrap}>
               <span className={styles.totalAmount}>{money(total)}</span>
-              <span className={styles.inclusiveTaxText}>Inclusive of all taxes</span>
+              <span className={styles.inclusiveTaxText}>
+                Inclusive of all taxes
+              </span>
             </div>
           </div>
 
@@ -778,6 +899,7 @@ export default function Checkout() {
               type="button"
               className={styles.promoToggle}
               onClick={() => setPromoOpen(!promoOpen)}
+              aria-expanded={promoOpen}
             >
               <span>Have a promo code?</span>
               <ChevronDown
@@ -793,6 +915,7 @@ export default function Checkout() {
                 <input
                   type="text"
                   placeholder="Enter promo code"
+                  aria-label="Promo code"
                   value={promoCode}
                   onChange={(e) => setPromoCode(e.target.value)}
                   className={styles.textInput}
@@ -802,20 +925,27 @@ export default function Checkout() {
                   type="button"
                   className={styles.promoApplyBtn}
                   onClick={() => {
-                    if (promoCode.trim()) setAppliedPromo(promoCode.trim().toUpperCase());
+                    setPromoMessage(
+                      "Promo codes are not supported by the current checkout. No discount has been applied.",
+                    );
                   }}
                 >
-                  {appliedPromo ? <Check size={14} /> : "APPLY"}
+                  APPLY
                 </button>
               </div>
             )}
           </div>
 
+          {promoMessage && (
+            <p role="status" className={styles.panelSub}>
+              {promoMessage}
+            </p>
+          )}
           {/* Pay Primary Button */}
           <button
-            type="button"
-            onClick={() => submit()}
-            disabled={busy}
+            type="submit"
+            form="checkout-form"
+            disabled={busy || updatingQuantity || !hasCartItems}
             className={styles.primaryPayBtn}
           >
             {busy ? "PREPARING ORDER…" : `PAY ${money(total)}`}
@@ -838,21 +968,33 @@ export default function Checkout() {
               </div>
             </div>
             <div className={styles.trustItem}>
-              <RotateCcw size={20} strokeWidth={1.5} className={styles.trustIcon} />
+              <RotateCcw
+                size={20}
+                strokeWidth={1.5}
+                className={styles.trustIcon}
+              />
               <div>
                 <h4 className={styles.trustTitle}>Easy Returns</h4>
                 <p className={styles.trustSub}>Within 14 days</p>
               </div>
             </div>
             <div className={styles.trustItem}>
-              <ShieldCheck size={20} strokeWidth={1.5} className={styles.trustIcon} />
+              <ShieldCheck
+                size={20}
+                strokeWidth={1.5}
+                className={styles.trustIcon}
+              />
               <div>
                 <h4 className={styles.trustTitle}>Official Guarantee</h4>
                 <p className={styles.trustSub}>A lifetime of travel</p>
               </div>
             </div>
             <div className={styles.trustItem}>
-              <Headphones size={20} strokeWidth={1.5} className={styles.trustIcon} />
+              <Headphones
+                size={20}
+                strokeWidth={1.5}
+                className={styles.trustIcon}
+              />
               <div>
                 <h4 className={styles.trustTitle}>Client Service</h4>
                 <p className={styles.trustSub}>Speak to our team</p>
@@ -871,9 +1013,12 @@ export default function Checkout() {
               />
             </div>
             <div className={styles.packagingContent}>
-              <h3 className={styles.packagingTitle}>OVIA Signature Packaging</h3>
+              <h3 className={styles.packagingTitle}>
+                OVIA Signature Packaging
+              </h3>
               <p className={styles.packagingDesc}>
-                Your order will arrive in our signature packaging, crafted for a more intentional journey.
+                Your order will arrive in our signature packaging, crafted for a
+                more intentional journey.
               </p>
               <Link href="/services" className={styles.discoverLink}>
                 DISCOVER MORE <ArrowRight size={12} />
@@ -881,7 +1026,7 @@ export default function Checkout() {
             </div>
           </div>
         </aside>
-      </main>
+      </div>
     </div>
   );
 }
