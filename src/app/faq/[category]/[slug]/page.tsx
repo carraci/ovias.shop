@@ -7,6 +7,7 @@ import {
   getRelatedFaqs,
 } from "@/lib/faq-data";
 import { FaqFeedback } from "@/components/faq-feedback";
+import { FaqContentRenderer } from "@/components/faq-content-renderer";
 import { ContactDrawerButton } from "@/components/contact-drawer-button";
 import { ArrowRight, ChevronRight } from "lucide-react";
 
@@ -15,10 +16,16 @@ interface FaqDetailPageProps {
 }
 
 export async function generateStaticParams() {
-  return FAQ_ITEMS.map((item) => ({
-    category: item.category,
-    slug: item.slug,
-  }));
+  const params: { category: string; slug: string }[] = [];
+  for (const item of FAQ_ITEMS) {
+    params.push({ category: item.category, slug: item.slug });
+    if (item.aliases) {
+      for (const alias of item.aliases) {
+        params.push({ category: item.category, slug: alias });
+      }
+    }
+  }
+  return params;
 }
 
 export async function generateMetadata({ params }: FaqDetailPageProps) {
@@ -73,7 +80,7 @@ export default async function FaqDetailPage({ params }: FaqDetailPageProps) {
         <div className="faq-divider" />
 
         <div className="faq-article-body">
-          <p className="faq-article-answer">{item.answer}</p>
+          <FaqContentRenderer content={item.answer} />
           {item.subtext && (
             <p className="faq-article-subtext">{item.subtext}</p>
           )}

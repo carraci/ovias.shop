@@ -3,6 +3,7 @@ import Link from "next/link";
 import { clientServicesConfig } from "@/lib/client-services-config";
 import { FAQ_ITEMS } from "@/lib/faq-data";
 import { FaqSearchBar } from "@/components/faq-search-bar";
+import { PopularInquiriesAccordion } from "@/components/popular-inquiries-accordion";
 import { ContactDrawerButton } from "@/components/contact-drawer-button";
 import {
   Phone,
@@ -211,17 +212,8 @@ export default function ContactUsPage() {
           <div className="faq-divider" />
         </div>
 
-        <div className="faq-questions-list">
-          {popularFaqs.map((faq) => (
-            <Link
-              key={faq.id}
-              href={`/faq/${faq.category}/${faq.slug}`}
-              className="faq-question-row"
-            >
-              <span className="faq-question-text">{faq.question}</span>
-              <ArrowRight size={18} strokeWidth={1.5} className="faq-arrow-icon" />
-            </Link>
-          ))}
+        <div className="contact-faq-accordion-wrap">
+          <PopularInquiriesAccordion />
         </div>
 
         <div className="contact-faq-all-btn">

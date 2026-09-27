@@ -20,6 +20,8 @@ export interface CareCategory {
   title: string;
   subtitle: string;
   description: string;
+  cardDescription?: string;
+  ctaLabel?: string;
   heroImage: string;
   detailImage: string;
   sections: CareSection[];
@@ -29,6 +31,45 @@ export interface CareCategory {
   relatedFaqSlugs: string[];
 }
 
+export interface CarePrinciple {
+  number: string;
+  title: string;
+  description: string;
+}
+
+export const CARE_PRINCIPLES: CarePrinciple[] = [
+  {
+    number: "01",
+    title: "Handle with consideration",
+    description:
+      "Avoid unnecessary friction, impact, excessive weight, and contact with substances that may damage the material.",
+  },
+  {
+    number: "02",
+    title: "Protect from moisture",
+    description:
+      "Water and prolonged humidity can affect leather, textiles, finishes, hardware, and internal components.",
+  },
+  {
+    number: "03",
+    title: "Store correctly",
+    description:
+      "Keep your OVIA piece in a cool, dry environment and use the original dust bag where provided.",
+  },
+  {
+    number: "04",
+    title: "Avoid unapproved treatments",
+    description:
+      "Household cleaners, solvents, adhesives, dyes, and unsuitable conditioners can permanently alter a product.",
+  },
+  {
+    number: "05",
+    title: "When in doubt, ask first",
+    description:
+      "If you are unsure how to clean, store, or repair your piece, contact OVIA Customer Care before taking action.",
+  },
+];
+
 export const CARE_CATEGORIES: CareCategory[] = [
   // 01 - LEATHER BAGS
   {
@@ -36,8 +77,11 @@ export const CARE_CATEGORIES: CareCategory[] = [
     number: "01",
     title: "LEATHER BAGS",
     subtitle: "CARE FOR THE JOURNEY AHEAD",
-    description:
+    cardDescription:
       "Leather naturally develops character through use. Thoughtful handling and appropriate storage will preserve the suppleness, rich patina, and architectural silhouette of your OVIA leather piece across countless journeys.",
+    ctaLabel: "DISCOVER LEATHER CARE",
+    description:
+      "Leather is a natural material that develops its own character through use. Over time, subtle changes in colour, texture, and patina can become part of the individuality of your OVIA piece. Regular, considered care helps maintain the leather's suppleness, surface finish, structure, and distinctive appearance. Protect your bag from excessive moisture, prolonged direct sunlight, heat, oils, and abrasive surfaces, and avoid overloading it in ways that may affect its original silhouette. When not in use, store your leather bag in its OVIA dust bag in a cool, dry, well-ventilated space. Allow the leather to breathe and retain its natural shape rather than compressing or stacking the piece. Our leather care guide provides further guidance on everyday handling, storage, cleaning, marks, moisture exposure, and when professional attention may be appropriate.",
     heroImage: "/media/creations/handbag.jpg",
     detailImage: "/media/journey.jpg",
     materialsCovered: ["Full-Grain Bovine", "Vegetable-Tanned Leather", "Calfskin Trim"],
@@ -107,8 +151,8 @@ export const CARE_CATEGORIES: CareCategory[] = [
     ],
     relatedFaqSlugs: [
       "how-should-i-care-for-my-ovia-bag",
-      "how-should-i-store-my-bag",
-      "how-do-i-clean-my-product",
+      "how-should-i-store-my-ovia-bag",
+      "can-i-clean-my-ovia-bag-at-home",
       "how-can-i-request-a-repair",
     ],
   },
@@ -119,8 +163,11 @@ export const CARE_CATEGORIES: CareCategory[] = [
     number: "02",
     title: "CANVAS BAGS",
     subtitle: "ENGINEERED RESILIENCE & TEXTILE CARE",
-    description:
+    cardDescription:
       "OVIA technical canvas blends high-density coated weaves with refined leather accents. Designed for durable travel, regular mindful care preserves its crisp visual texture and hydrophobic coating.",
+    ctaLabel: "DISCOVER CANVAS CARE",
+    description:
+      "Canvas is valued for its durability, versatility, and distinctive textile character. With regular use, the surface may naturally develop subtle variations that reflect how the bag is carried and handled. To preserve the appearance and structure of your OVIA canvas piece, protect it from excessive moisture, prolonged exposure to sunlight, oils, ink, cosmetics, and abrasive surfaces. Particular attention should also be given to areas of frequent contact, including handles, corners, straps, and closures. For everyday marks, follow the care instructions specific to your product and material. Avoid aggressive cleaning products or unnecessary soaking, as these may affect the fabric, finish, colour, or associated leather details. When storing your canvas bag, keep it in a clean, dry environment and use its original dust bag where provided. Our canvas care guide explains recommended handling, cleaning considerations, storage, stain prevention, and long-term maintenance.",
     heroImage: "/media/creations/backpack.jpg",
     detailImage: "/media/creative.jpg",
     materialsCovered: ["Technical Coated Canvas", "Cotton-Linen Jacquard", "Water-Repellent Weaves"],
@@ -168,7 +215,7 @@ export const CARE_CATEGORIES: CareCategory[] = [
     ],
     relatedFaqSlugs: [
       "what-materials-does-ovia-use",
-      "how-do-i-clean-my-product",
+      "can-i-clean-my-ovia-bag-at-home",
       "how-can-i-request-a-repair",
     ],
   },
@@ -179,8 +226,11 @@ export const CARE_CATEGORIES: CareCategory[] = [
     number: "03",
     title: "TRAVEL BAGS & DUFFELS",
     subtitle: "BUILT FOR THE DEMANDS OF TRANSIT",
-    description:
+    cardDescription:
       "From weekend getaways to transatlantic itineraries, our duffels and weekender holdalls are built to endure rigorous transit while maintaining understated luxury.",
+    ctaLabel: "DISCOVER TRAVEL BAG CARE",
+    description:
+      "Designed for movement, OVIA travel bags and duffels accompany you through weekends away, business trips, airport transfers, and longer journeys. Frequent travel can place additional demands on handles, straps, zippers, corners, hardware, and exterior surfaces. Thoughtful packing and regular inspection can help preserve the bag's structure and functionality throughout its use. Avoid exceeding the intended capacity of your travel bag, as excessive weight can place unnecessary stress on handles, seams, closures, and attachment points. During transit, keep the bag away from unnecessary moisture and rough surfaces whenever possible. After travelling, remove the contents and allow the interior to air before storing the bag. Check pockets and compartments for items that may stain or damage the lining, and allow any moisture to dry naturally before placing the bag in storage. For extended periods between journeys, store your travel bag in a cool, dry location and maintain its original shape where appropriate. Our travel-care guide covers packing, handling, cleaning, storage, hardware care, and recommendations for maintaining your OVIA travel piece over repeated journeys.",
     heroImage: "/media/spaces.jpg",
     detailImage: "/media/architecture.jpg",
     materialsCovered: ["Waterproof Ballistic Nylon", "Full-Grain Saddle Leather", "Reinforced Webbing"],
@@ -221,7 +271,7 @@ export const CARE_CATEGORIES: CareCategory[] = [
     ],
     relatedFaqSlugs: [
       "where-are-ovia-products-designed",
-      "how-should-i-store-my-bag",
+      "how-should-i-store-my-ovia-bag",
       "how-can-i-request-a-repair",
     ],
   },
@@ -232,9 +282,12 @@ export const CARE_CATEGORIES: CareCategory[] = [
     number: "04",
     title: "ROLLING LUGGAGE",
     subtitle: "PRECISION ENGINEERING & LIFETIME MOBILITY",
-    description:
+    cardDescription:
       "Engineered from grooved anodized aluminium and lightweight virgin polycarbonate, OVIA rolling luggage combines silent multi-wheel glide with impact-absorbing security.",
-    heroImage: "/media/rimowa-hero.jpg",
+    ctaLabel: "DISCOVER LUGGAGE CARE",
+    description:
+      "OVIA rolling luggage is designed for the practical demands of modern travel, where smooth movement, reliable construction, and careful organisation matter from departure to arrival. Luggage can encounter significant handling during transit. Regular inspection of wheels, handles, closures, exterior surfaces, and other moving components can help identify issues before they become more difficult to address. Avoid forcing telescopic handles, dragging luggage over unsuitable surfaces, or placing unnecessary weight beyond the intended capacity. When moving through uneven terrain, use appropriate care to reduce unnecessary impact on wheels and structural components. After each journey, wipe away surface dust and allow the luggage to dry naturally if it has been exposed to moisture. Do not use abrasive cleaners or harsh chemicals unless specifically recommended for the relevant material. When storing your luggage, keep it closed and in a dry environment away from prolonged heat or direct sunlight. Our rolling luggage care guide provides recommendations for exterior care, wheel and handle maintenance, cleaning, storage, and long-term use.",
+    heroImage: "/media/editorial/monochrome.jpg",
     detailImage: "/media/spaces.jpg",
     materialsCovered: ["Anodized Aluminium Alloy", "Virgin Polycarbonate", "Aluminium Frame Clasp"],
     checklist: [
@@ -282,7 +335,7 @@ export const CARE_CATEGORIES: CareCategory[] = [
     ],
     relatedFaqSlugs: [
       "how-do-i-choose-the-correct-size",
-      "how-do-i-clean-my-product",
+      "can-i-clean-my-ovia-bag-at-home",
       "how-can-i-request-a-repair",
     ],
   },
@@ -293,8 +346,11 @@ export const CARE_CATEGORIES: CareCategory[] = [
     number: "05",
     title: "SMALL LEATHER GOODS",
     subtitle: "DAILY COMPANIONS & REFINED TOUCHPOINTS",
-    description:
+    cardDescription:
       "Wallets, card cases, passport covers, and pouches encounter constant tactile contact. Careful handling preserves leather elasticity and edge-paint integrity.",
+    ctaLabel: "DISCOVER SMALL LEATHER GOODS CARE",
+    description:
+      "Wallets, card holders, passport covers, pouches, and other small leather pieces experience frequent handling and close contact throughout the day. Because these pieces are used regularly, natural changes in the leather may appear sooner than on larger accessories. Gentle handling and appropriate storage can help preserve the material, edges, stitching, surface finish, and overall structure. Avoid placing small leather goods in direct contact with pens, cosmetics, oils, sharp objects, or other materials that may stain or scratch the surface. Do not overload card holders or wallets beyond their intended capacity, as this can stretch the leather and affect the original shape. When not in use, store your small leather goods in a clean, dry location and protect them from unnecessary moisture and heat. Our care guide provides practical recommendations for daily handling, cleaning, storage, leather conditioning where appropriate, and maintaining frequently used leather accessories.",
     heroImage: "/media/creations/wallet.jpg",
     detailImage: "/media/creations/passport.jpg",
     materialsCovered: ["Calfskin", "Grained Leather", "Smooth Saddle Leather"],
@@ -329,8 +385,8 @@ export const CARE_CATEGORIES: CareCategory[] = [
     ],
     relatedFaqSlugs: [
       "how-should-i-care-for-my-ovia-bag",
-      "how-do-i-clean-my-product",
-      "can-personalised-products-be-gifted",
+      "can-i-clean-my-ovia-bag-at-home",
+      "are-personalised-ovia-products-eligible-for-return",
     ],
   },
 
@@ -340,8 +396,11 @@ export const CARE_CATEGORIES: CareCategory[] = [
     number: "06",
     title: "ACCESSORIES",
     subtitle: "FINISHING TOUCHES & TRAVEL COMPANIONS",
-    description:
+    cardDescription:
       "Luggage tags, key fobs, bespoke straps, and tech sleeves require distinct care tailored to their tactile hardware and fine leather elements.",
+    ctaLabel: "DISCOVER ACCESSORIES CARE",
+    description:
+      "OVIA accessories are created to complement your everyday carry and travel essentials. Luggage tags, key fobs, straps, tech sleeves, and other accessories may combine leather, textiles, metal hardware, and other finishes that require different approaches to care. Regular handling can naturally affect surfaces, edges, hardware, and attachment points. Avoid unnecessary exposure to water, excessive friction, heat, chemicals, and substances that may transfer colour or leave permanent marks. For accessories with metal hardware, keep surfaces clean and dry and avoid abrasive materials that may scratch or alter the finish. Leather components should be cared for according to their specific material requirements. Where an accessory attaches to another OVIA piece, periodically check the connection points for signs of excessive wear. Our accessories care guide explains how to handle, clean, store, and maintain the different materials and components used across the collection.",
     heroImage: "/media/creations/jewelry.jpg",
     detailImage: "/media/creations/sunglasses.jpg",
     materialsCovered: ["Polished Metal", "Embossed Leather Tags", "Palladium Buckles"],
@@ -380,8 +439,11 @@ export const CARE_CATEGORIES: CareCategory[] = [
     number: "07",
     title: "SPECIAL & PERSONALISED PIECES",
     subtitle: "BESPOKE MONOGRAMS & ARCHIVAL EMBOSSING",
-    description:
+    cardDescription:
       "Personalised OVIA pieces embody your distinct journey. Whether detailed with gold foil stamping, blind heat-debossing, or hand-painted initials, custom treatments require thoughtful attention.",
+    ctaLabel: "DISCOVER PERSONALISED CARE",
+    description:
+      "Personalisation gives an OVIA piece an additional sense of individuality. Whether finished with initials, lettering, embossed details, or another available personal treatment, these elements should be handled with particular care. Personalised finishes may naturally change with regular use, depending on the technique, material, frequency of handling, and environment. Avoid rubbing personalised areas against rough surfaces and take particular care around moisture, heat, oils, cosmetics, and cleaning products. Do not attempt to remove, recolour, polish, or treat personalised details using household products. An unsuitable treatment may permanently affect the finish or surrounding material. When storing a personalised piece, place it carefully in its original dust bag where provided and avoid stacking objects directly against the personalised area. Our dedicated guide explains how to care for personalised OVIA pieces while preserving the character of their custom details and the materials surrounding them.",
     heroImage: "/media/creations/passport.jpg",
     detailImage: "/media/creations/handbag.jpg",
     materialsCovered: ["Metallic Hot-Stamping", "Blind Debossing", "Hand-Painted Details"],
@@ -415,10 +477,10 @@ export const CARE_CATEGORIES: CareCategory[] = [
       "CRITICAL: Do not apply cleaning products, alcohol, or leather balms directly over personalised areas.",
     ],
     relatedFaqSlugs: [
-      "can-personalised-products-be-returned",
-      "how-does-ovia-personalisation-work",
+      "are-personalised-ovia-products-eligible-for-return",
+      "how-long-does-personalisation-take",
       "can-ovia-products-be-personalised",
-      "how-do-i-request-personalisation",
+      "can-i-change-my-personalisation-after-placing-an-order",
     ],
   },
 ];
@@ -435,9 +497,6 @@ export function getCareCategoryBySlug(slug: string): CareCategory | undefined {
   return CARE_CATEGORIES.find((cat) => cat.slug === slug);
 }
 
-/**
- * Resolves product material or department to the matching care guide slug.
- */
 export function getCareSlugForProduct(material?: string, department?: string): CareCategorySlug {
   const m = (material || "").toLowerCase();
   const d = (department || "").toLowerCase();

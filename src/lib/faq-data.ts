@@ -17,6 +17,7 @@ export interface FaqItem {
   id: string;
   category: FaqCategorySlug;
   slug: string;
+  aliases?: string[];
   question: string;
   answer: string;
   subtext?: string;
@@ -27,357 +28,823 @@ export interface FaqItem {
 export const FAQ_CATEGORIES: FaqCategory[] = [
   {
     slug: "delivery",
-    name: "DELIVERY",
-    shortDescription: "Shipping, delivery times, tracking and destinations.",
+    name: "ORDERS & DELIVERY",
+    shortDescription: "Where we deliver, tracking, timelines and address changes.",
     heroDescription:
       "Everything you need to know about receiving your OVIA order with care and security.",
   },
   {
     slug: "exchange-returns",
-    name: "EXCHANGE & RETURNS",
-    shortDescription: "Returns, exchanges, refunds and damaged orders.",
+    name: "RETURNS & REFUNDS",
+    shortDescription: "Return policy, exchanges, refunds and damaged items.",
     heroDescription:
       "Guidelines on complimentary returns, exchanges, and ensuring your satisfaction.",
   },
   {
-    slug: "gifting",
-    name: "GIFTING",
-    shortDescription: "Gift packaging, messages and gift assistance.",
-    heroDescription:
-      "Bespoke packaging, personalized sentiments, and considered gifting services.",
-  },
-  {
-    slug: "orders",
-    name: "ORDERS",
-    shortDescription: "Placing, changing, cancelling and tracking orders.",
-    heroDescription:
-      "Managing your acquisitions, payment options, and order confirmations.",
-  },
-  {
     slug: "products",
-    name: "PRODUCTS",
-    shortDescription: "Materials, care, availability and personalisation.",
+    name: "PRODUCT CARE & PERSONALISATION",
+    shortDescription: "Bag care, storage, home cleaning and custom personalisation.",
     heroDescription:
-      "Craftsmanship, materials provenance, sizing, and bespoke personalisation.",
+      "Preserving craftsmanship, care methods, and bespoke personalisation.",
   },
   {
     slug: "services",
-    name: "SERVICES",
-    shortDescription:
-      "Repairs, Client Advisors, appointments and contact options.",
+    name: "REPAIRS & WARRANTY",
+    shortDescription: "Requesting repairs, aftercare, warranty and support.",
     heroDescription:
-      "Dedicated Client Advisor appointments, repairs, product registration, and atelier care.",
+      "Dedicated client aftercare, atelier repairs, and warranty guidance.",
+  },
+  {
+    slug: "orders",
+    name: "ACCOUNT & PAYMENTS",
+    shortDescription: "OVIA accounts, password recovery, secure checkout and payment methods.",
+    heroDescription:
+      "Managing your account, password security, and verified payment infrastructure.",
+  },
+  {
+    slug: "gifting",
+    name: "GIFTING SERVICES",
+    shortDescription: "Signature gift packaging, personal messages and recipient exchanges.",
+    heroDescription:
+      "Bespoke packaging, personalized sentiments, and considered gifting services.",
   },
 ];
 
 export const FAQ_ITEMS: FaqItem[] = [
   // ==========================================
-  // 1. DELIVERY
+  // 1. ORDERS & DELIVERY
   // ==========================================
   {
     id: "del-01",
     category: "delivery",
     slug: "where-does-ovia-deliver",
     question: "Where does OVIA deliver?",
-    answer:
-      "OVIA offers complimentary white-glove courier delivery across India to all major metropolitan centers and regional pin codes serviced by our dedicated secure logistics partners. We also facilitate international shipments to select destinations upon request through our Client Services concierge.",
-    subtext:
-      "For specific island or remote pin codes, our team will proactively coordinate bespoke transit arrangements at checkout.",
-    keywords: ["delivery", "destination", "shipping", "country", "india", "pin code", "locations"],
+    answer: `OVIA currently delivers across India to eligible serviceable PIN codes.
+
+When placing an order, enter your complete shipping address and PIN code during checkout. Our system will confirm whether delivery is available to your location and provide an estimated delivery timeline where applicable.
+
+We carefully prepare every OVIA order before it leaves our facility. Your piece is inspected, securely packaged, and handed over to our trusted delivery partner.
+
+### Before placing your order
+
+Please make sure your delivery information is accurate, including:
+
+* Full name
+* Complete delivery address
+* City and state
+* PIN code
+* Valid mobile number
+* Email address
+
+An incorrect or incomplete address may result in delivery delays or an unsuccessful delivery attempt.
+
+### How long does delivery take?
+
+Delivery times depend on your location, product availability, order processing time, and courier service.
+
+The estimated delivery timeline will be displayed during checkout or communicated in your order confirmation.
+
+Certain locations, remote areas, or periods of exceptionally high demand may require additional delivery time.
+
+### Does OVIA offer international delivery?
+
+International delivery availability may vary by destination.
+
+If you are interested in purchasing an OVIA product from outside India, please contact our Customer Care team before placing your order. We can confirm current availability and provide information regarding international shipping requirements.`,
+    keywords: [
+      "where does ovia deliver",
+      "delivery",
+      "shipping",
+      "india",
+      "pin codes",
+      "serviceable",
+      "international delivery",
+      "coverage",
+      "timeline",
+      "locations",
+    ],
     relatedSlugs: [
-      "how-long-does-delivery-take",
-      "how-much-does-delivery-cost",
+      "how-can-i-track-my-order",
       "can-i-change-my-delivery-address",
-      "can-someone-else-receive-my-order",
+      "what-happens-if-i-am-not-available-when-my-order-arrives",
     ],
   },
   {
     id: "del-02",
     category: "delivery",
-    slug: "how-long-does-delivery-take",
-    question: "How long does delivery take?",
-    answer:
-      "Standard domestic delivery typically concludes within 3 to 5 business days for metropolitan areas and 5 to 7 business days for regional destinations. Each piece is inspected and hand-packaged prior to dispatch. Personalised or monogrammed items undergo bespoke atelier preparation and require an additional 3 business days.",
-    subtext:
-      "You will receive an encrypted tracking dispatch notice as soon as your shipment departs our atelier facility.",
-    keywords: ["transit", "time", "duration", "days", "dispatch", "delivery time"],
+    slug: "how-can-i-track-my-order",
+    aliases: ["how-can-i-track-my-ovia-order"],
+    question: "How can I track my order?",
+    answer: `Once your order has been dispatched, you will receive a **shipping confirmation email** containing your tracking information.
+
+You can also check your order status through your OVIA account:
+
+**Sign In → My Account → My Orders → Select Your Order → Track Order**
+
+Your order may move through the following stages:
+
+* **Order Confirmed**: Your order has been successfully received.
+* **Processing**: Your OVIA piece is being prepared for dispatch.
+* **Packed**: Your order has been carefully packaged.
+* **Dispatched**: Your package has been handed to the delivery partner.
+* **In Transit**: Your package is travelling to your delivery address.
+* **Out for Delivery**: Your package is with the delivery partner and is expected to arrive soon.
+* **Delivered**: Your order has been successfully delivered.
+
+### My tracking information has not updated. What should I do?
+
+After an order is dispatched, it may take some time for the courier's tracking system to register the first scan.
+
+If your tracking information has not changed for an extended period, or if your shipment appears to be delayed, please contact OVIA Customer Care with your order number.
+
+Our team will review the shipment status and assist you with the next steps.`,
+    keywords: [
+      "how can i track my order",
+      "how can i track my ovia order",
+      "tracking",
+      "order status",
+      "awb",
+      "dispatched",
+      "in transit",
+      "out for delivery",
+      "delivered",
+      "shipping confirmation",
+    ],
     relatedSlugs: [
       "where-does-ovia-deliver",
-      "how-can-i-track-my-order",
-      "does-ovia-offer-express-delivery",
+      "can-i-change-my-delivery-address",
+      "what-happens-if-i-am-not-available-when-my-order-arrives",
     ],
   },
   {
     id: "del-03",
     category: "delivery",
-    slug: "how-much-does-delivery-cost",
-    question: "How much does delivery cost?",
-    answer:
-      "OVIA provides complimentary secured standard delivery for all orders placed through our digital boutique and with our Client Advisors. For bespoke same-day concierge delivery within select tier-one cities, nominal courier rates may apply during peak holiday schedules.",
-    subtext:
-      "All duties, handling, and luxury insurance coverage are fully included with standard delivery.",
-    keywords: ["cost", "free shipping", "price", "fee", "complimentary", "rates"],
+    slug: "can-i-change-my-delivery-address",
+    aliases: ["can-i-change-my-delivery-address-after-placing-an-order"],
+    question: "Can I change my delivery address after placing an order?",
+    answer: `If you need to change your delivery address, please contact OVIA Customer Care as soon as possible.
+
+We will try to accommodate the request if your order has not yet been processed or dispatched. Once an order has entered the shipping process, changes to the delivery address may no longer be possible.
+
+For this reason, we recommend carefully checking your address before completing your purchase.`,
+    keywords: [
+      "change delivery address",
+      "change address",
+      "modify address",
+      "shipping address",
+      "update address",
+      "wrong address",
+      "reroute",
+    ],
     relatedSlugs: [
       "where-does-ovia-deliver",
-      "does-ovia-offer-express-delivery",
-      "how-long-does-delivery-take",
+      "how-can-i-track-my-order",
+      "what-happens-if-i-am-not-available-when-my-order-arrives",
     ],
   },
   {
     id: "del-04",
     category: "delivery",
-    slug: "how-can-i-track-my-order",
-    question: "How can I track my order?",
-    answer:
-      "Once your parcel is handed to our secure logistics courier, you will receive an SMS and email notification containing your private tracking URL and consignment identifier. You may also track real-time transit directly within the 'Track Order' portal on our website by entering your order number and contact email.",
-    keywords: ["tracking", "order status", "consignment", "awb", "where is my order"],
-    relatedSlugs: [
-      "how-long-does-delivery-take",
-      "can-i-change-my-delivery-address",
-      "what-happens-if-i-miss-my-delivery",
+    slug: "what-happens-if-i-am-not-available-when-my-order-arrives",
+    aliases: ["what-happens-if-i-miss-my-delivery"],
+    question: "What happens if I am not available when my order arrives?",
+    answer: `Our delivery partner may attempt delivery according to its standard delivery process.
+
+If you are unavailable, another delivery attempt may be made or the courier may contact you using the phone number provided with your order.
+
+Please ensure that your contact details are correct and that someone is available to receive the package when possible.`,
+    keywords: [
+      "not available",
+      "missed delivery",
+      "delivery attempt",
+      "courier attempt",
+      "reattempt",
+      "receive package",
+      "signature",
     ],
-  },
-  {
-    id: "del-05",
-    category: "delivery",
-    slug: "can-i-change-my-delivery-address",
-    question: "Can I change my delivery address?",
-    answer:
-      "If your order has not yet been processed for dispatch, our Client Advisors can update your delivery destination immediately. For your security, destination changes once a high-value parcel is in transit require identity verification and may cause a 24-hour rerouting delay.",
-    subtext:
-      "Please connect with Client Services promptly via phone or WhatsApp with your order reference.",
-    keywords: ["address", "change destination", "reroute", "modify address", "shipping address"],
-    relatedSlugs: [
-      "can-i-modify-my-order",
-      "how-can-i-track-my-order",
-      "can-someone-else-receive-my-order",
-    ],
-  },
-  {
-    id: "del-06",
-    category: "delivery",
-    slug: "what-happens-if-i-miss-my-delivery",
-    question: "What happens if I miss my delivery?",
-    answer:
-      "Because all OVIA consignments require an adult physical signature upon delivery, our courier partner will attempt contact prior to arrival. If you are unavailable, up to three consecutive delivery attempts will be scheduled before the parcel is securely held at a local hub.",
-    subtext:
-      "You can also instruct our Client Advisor to hold delivery until a convenient date.",
-    keywords: ["missed delivery", "reattempt", "courier attempt", "failed delivery", "signature"],
-    relatedSlugs: [
-      "can-someone-else-receive-my-order",
-      "how-can-i-track-my-order",
-      "can-i-collect-my-order",
-    ],
-  },
-  {
-    id: "del-07",
-    category: "delivery",
-    slug: "does-ovia-offer-express-delivery",
-    question: "Does OVIA offer express delivery?",
-    answer:
-      "Yes. In select metropolitan areas (including Mumbai, Delhi NCR, and Bengaluru), OVIA offers Next-Day White Glove Concierge Delivery for non-personalised pieces when orders are confirmed before 1:00 PM IST.",
-    keywords: ["express", "next day", "urgent", "fast shipping", "concierge delivery", "speed"],
-    relatedSlugs: [
-      "how-long-does-delivery-take",
-      "how-much-does-delivery-cost",
-      "can-i-collect-my-order",
-    ],
-  },
-  {
-    id: "del-08",
-    category: "delivery",
-    slug: "can-i-collect-my-order",
-    question: "Can I collect my order?",
-    answer:
-      "OVIA offers complimentary Click & Collect from our Maison locations in Mumbai, New Delhi, and Bengaluru. You will receive an invitation when your piece is prepared, packaged, and waiting in our private lounge for inspection.",
-    subtext:
-      "Please present a government-issued photo ID along with your collection QR code or order confirmation.",
-    keywords: ["collect", "pickup", "click and collect", "in-store pickup", "store collection"],
     relatedSlugs: [
       "where-does-ovia-deliver",
-      "how-long-does-delivery-take",
-      "can-someone-else-receive-my-order",
-    ],
-  },
-  {
-    id: "del-09",
-    category: "delivery",
-    slug: "can-someone-else-receive-my-order",
-    question: "Can someone else receive my order?",
-    answer:
-      "Yes, an authorized representative at your delivery address may sign for and receive your shipment. To protect high-value pieces, the recipient will be asked to verify the recipient name and provide a valid one-time security PIN sent to your registered phone number.",
-    keywords: ["representative", "someone else", "third party", "sign for order", "proxy"],
-    relatedSlugs: [
+      "how-can-i-track-my-order",
       "can-i-change-my-delivery-address",
-      "what-happens-if-i-miss-my-delivery",
-      "can-i-collect-my-order",
-    ],
-  },
-  {
-    id: "del-10",
-    category: "delivery",
-    slug: "what-should-i-do-if-my-parcel-arrives-damaged",
-    question: "What should I do if my parcel arrives damaged?",
-    answer:
-      "If the external transit box exhibits visible tampering or structural damage upon delivery, please document the carton before opening and notify the courier immediately. Contact OVIA Client Services within 24 hours of receipt with photographic evidence so we may initiate immediate exchange or replacement protocols.",
-    keywords: ["damaged", "broken", "crushed", "transit damage", "tampered", "box"],
-    relatedSlugs: [
-      "what-is-ovias-return-policy",
-      "how-do-i-return-an-online-order",
-      "how-can-i-contact-ovia-client-services",
     ],
   },
 
   // ==========================================
-  // 2. EXCHANGE & RETURNS
+  // 2. RETURNS & REFUNDS
   // ==========================================
   {
     id: "ret-01",
     category: "exchange-returns",
     slug: "what-is-ovias-return-policy",
     question: "What is OVIA's return policy?",
-    answer:
-      "OVIA accepts returns of eligible, uncarried items in pristine, original condition within 14 calendar days of delivery. All original packaging, dust bags, security tags, authenticity cards, and protective films must remain intact and affixed to the product.",
-    subtext:
-      "Personalised or bespoke monogrammed creations are crafted specifically to your commission and are considered final sale.",
-    keywords: ["return policy", "returns", "refunds", "days", "condition", "terms"],
+    answer: `We want every OVIA purchase to feel considered and confident.
+
+Eligible products may be returned within the applicable return period, subject to the conditions outlined in our **Return & Refund Policy**.
+
+To be eligible for a return, the product should generally be:
+
+* Unused and unworn
+* In its original condition
+* Free from marks, stains, scratches, or damage
+* Returned with original tags
+* Returned with its original packaging
+* Accompanied by applicable accessories and documentation
+
+Products that show signs of use or damage may not qualify for a return.
+
+Because return eligibility can differ between products and collections, please review the applicable return terms before initiating your return.`,
+    keywords: [
+      "what is ovias return policy",
+      "return policy",
+      "returns",
+      "refunds",
+      "conditions",
+      "eligibility",
+      "original condition",
+      "tags",
+      "packaging",
+    ],
     relatedSlugs: [
-      "how-long-do-i-have-to-return-an-item",
-      "how-do-i-return-an-online-order",
-      "can-personalised-products-be-returned",
-      "are-returns-complimentary",
+      "how-do-i-request-a-return",
+      "can-i-exchange-my-ovia-bag",
+      "when-will-i-receive-my-refund",
+      "are-personalised-ovia-products-eligible-for-return",
     ],
   },
   {
     id: "ret-02",
     category: "exchange-returns",
-    slug: "how-do-i-return-an-online-order",
-    question: "How do I return an online order?",
-    answer:
-      "Initiate your return either through the 'My Account' portal or by contacting an OVIA Client Advisor. We will generate a prepaid, insured return waybill and schedule a secure white-glove courier pickup at your preferred address and time.",
-    keywords: ["return online", "process return", "schedule pickup", "return label", "courier"],
+    slug: "how-do-i-request-a-return",
+    aliases: ["how-do-i-return-an-online-order"],
+    question: "How do I request a return?",
+    answer: `If your purchase is eligible for return, contact OVIA Customer Care or use the return option available through your account, where applicable.
+
+Please provide your order number and the reason for the return.
+
+Our team may request photographs or additional information to verify the condition of the product before approving the return.
+
+Once your return request has been approved, you will receive instructions regarding the return process.
+
+Please package the product carefully. OVIA cannot be responsible for damage caused by inadequate packaging during a customer-arranged return.`,
+    keywords: [
+      "how do i request a return",
+      "how do i return an online order",
+      "request return",
+      "return instructions",
+      "package product",
+      "order number",
+    ],
     relatedSlugs: [
       "what-is-ovias-return-policy",
-      "are-returns-complimentary",
+      "can-i-exchange-my-ovia-bag",
       "when-will-i-receive-my-refund",
+      "what-if-my-order-arrives-damaged-or-incorrect",
     ],
   },
   {
     id: "ret-03",
     category: "exchange-returns",
-    slug: "how-do-i-exchange-an-item",
-    question: "How do I exchange an item?",
-    answer:
-      "To exchange an item for a different size, shade, or silhouette, contact Client Services. An Advisor will immediately reserve your desired replacement piece while arranging complimentary retrieval of the original creation.",
-    keywords: ["exchange", "swap", "different size", "different colour", "replacement"],
+    slug: "can-i-exchange-my-ovia-bag",
+    aliases: ["how-do-i-exchange-an-item"],
+    question: "Can I exchange my OVIA bag?",
+    answer: `Exchange availability depends on the product, reason for exchange, inventory, and applicable return conditions.
+
+If an exchange is available, our Customer Care team will explain the available options and process.
+
+If the requested replacement is unavailable, an alternative resolution may be offered according to the applicable policy.`,
+    keywords: [
+      "can i exchange my ovia bag",
+      "exchange",
+      "swap",
+      "replacement",
+      "different size",
+      "different colour",
+      "inventory",
+    ],
     relatedSlugs: [
       "what-is-ovias-return-policy",
-      "how-do-i-return-an-online-order",
-      "can-a-gift-recipient-exchange-an-item",
+      "how-do-i-request-a-return",
+      "when-will-i-receive-my-refund",
     ],
   },
   {
     id: "ret-04",
     category: "exchange-returns",
-    slug: "how-long-do-i-have-to-return-an-item",
-    question: "How long do I have to return an item?",
-    answer:
-      "You have 14 days from the documented date of delivery to submit a return request. Returned parcels must be handed over to our collection courier within 5 days of receiving the return authorization label.",
-    keywords: ["timeframe", "window", "14 days", "how long", "deadline", "return period"],
+    slug: "when-will-i-receive-my-refund",
+    question: "When will I receive my refund?",
+    answer: `Once your returned product has been received and inspected, the refund process will begin if the return meets the applicable conditions.
+
+The time required for the refund to appear in your original payment method can vary depending on the payment provider, bank, or financial institution.
+
+You will receive confirmation once the refund has been processed by OVIA.`,
+    keywords: [
+      "when will i receive my refund",
+      "refund timing",
+      "refund process",
+      "payment provider",
+      "bank refund",
+      "confirmation",
+    ],
     relatedSlugs: [
       "what-is-ovias-return-policy",
-      "how-do-i-return-an-online-order",
-      "when-will-i-receive-my-refund",
+      "how-do-i-request-a-return",
+      "what-payment-methods-does-ovia-accept",
     ],
   },
   {
     id: "ret-05",
     category: "exchange-returns",
-    slug: "are-returns-complimentary",
-    question: "Are returns complimentary?",
-    answer:
-      "Yes. OVIA provides complimentary insured return pickup for all domestic online orders complying with our return conditions. There are no restocking fees or logistics charges deducted from your refund.",
-    keywords: ["free returns", "complimentary", "cost", "restocking fee", "shipping return"],
+    slug: "are-personalised-ovia-products-eligible-for-return",
+    aliases: ["can-personalised-products-be-returned"],
+    question: "Are personalised OVIA products eligible for return?",
+    answer: `Personalised products are created specifically for you and may therefore be **non-returnable and non-exchangeable**.
+
+This may include products customised with names, initials, monograms, or other personalisation selected by the customer.
+
+An exception may apply if the product arrives damaged, defective, or has been personalised incorrectly due to an OVIA processing error.
+
+Please carefully review your personalisation details before completing your purchase.`,
+    keywords: [
+      "are personalised ovia products eligible for return",
+      "can personalised products be returned",
+      "monogram return",
+      "custom return",
+      "non-returnable",
+      "non-exchangeable",
+      "final sale",
+    ],
     relatedSlugs: [
+      "can-ovia-products-be-personalised",
       "what-is-ovias-return-policy",
-      "how-do-i-return-an-online-order",
-      "when-will-i-receive-my-refund",
+      "what-if-my-order-arrives-damaged-or-incorrect",
     ],
   },
   {
     id: "ret-06",
     category: "exchange-returns",
-    slug: "when-will-i-receive-my-refund",
-    question: "When will I receive my refund?",
-    answer:
-      "Once your returned piece arrives at our atelier, our quality team completes an authenticity and condition assessment within 2 to 3 business days. Approved refunds are credited directly to your original payment method within 5 to 7 banking days depending on your financial institution.",
-    keywords: ["refund timing", "when refund", "credit back", "bank transfer", "money back"],
-    relatedSlugs: [
-      "what-is-ovias-return-policy",
-      "what-condition-must-returned-products-be-in",
-      "are-returns-complimentary",
-    ],
-  },
-  {
-    id: "ret-07",
-    category: "exchange-returns",
-    slug: "can-personalised-products-be-returned",
-    question: "Can personalised products be returned?",
-    answer:
-      "Because personalised, bespoke monogrammed, or custom-embossed pieces are created uniquely to your specifications, they are ineligible for return or exchange unless a manufacturing defect is verified upon initial inspection.",
-    subtext:
-      "Our Client Advisors review all monogram previews with you before atelier execution to ensure total satisfaction.",
-    keywords: ["personalised", "monogram", "custom", "final sale", "return personalised"],
-    relatedSlugs: [
-      "can-personalised-products-be-gifted",
-      "how-does-ovia-personalisation-work",
-      "what-is-ovias-return-policy",
-    ],
-  },
-  {
-    id: "ret-08",
-    category: "exchange-returns",
-    slug: "can-sale-products-be-returned",
-    question: "Can sale products be returned?",
-    answer:
-      "OVIA preserves a timeless design ethos and does not conduct conventional seasonal markdowns. In the rare event of archive pieces or private preview acquisitions, specific terms will be clearly delineated at the point of confirmation.",
-    keywords: ["sale", "discount", "markdown", "archive", "promotion", "clearance"],
-    relatedSlugs: [
-      "what-is-ovias-return-policy",
-      "can-personalised-products-be-returned",
-    ],
-  },
-  {
-    id: "ret-09",
-    category: "exchange-returns",
-    slug: "what-condition-must-returned-products-be-in",
-    question: "What condition must returned products be in?",
-    answer:
-      "All returns must be unused, uncarried, and in perfect original condition with zero creasing, leather scratches, or hardware scuffs. Products must be enclosed in their signature protective dust bag and presentation box along with all tags, straps, locks, and keys.",
-    keywords: ["condition", "tags", "dust bag", "scratches", "pristine", "used"],
-    relatedSlugs: [
-      "what-is-ovias-return-policy",
-      "how-do-i-return-an-online-order",
-      "when-will-i-receive-my-refund",
-    ],
-  },
-  {
-    id: "ret-10",
-    category: "exchange-returns",
-    slug: "what-should-i-do-if-my-product-arrives-damaged",
-    question: "What should I do if my product arrives damaged?",
-    answer:
-      "In the improbable event that your OVIA piece exhibits a defect or damage upon arrival, please photograph the piece and contact Client Services within 48 hours. We will promptly prioritize an immediate exchange or expedited atelier restoration.",
-    keywords: ["damaged product", "defective", "flaw", "broken piece", "report damage"],
-    relatedSlugs: [
+    slug: "what-if-my-order-arrives-damaged-or-incorrect",
+    aliases: [
+      "what-should-i-do-if-my-product-arrives-damaged",
       "what-should-i-do-if-my-parcel-arrives-damaged",
+    ],
+    question: "What if my order arrives damaged or incorrect?",
+    answer: `If your OVIA order arrives damaged, defective, or different from what you ordered, please contact Customer Care as soon as possible.
+
+To help us resolve the issue efficiently, please provide:
+
+* Your order number
+* A description of the issue
+* Photographs of the product
+* Photographs of the packaging, where relevant
+* Any other information requested by our Customer Care team
+
+Our team will review the information and guide you through the appropriate resolution.`,
+    keywords: [
+      "what if my order arrives damaged or incorrect",
+      "damaged",
+      "defective",
+      "incorrect order",
+      "wrong item",
+      "photographs",
+      "order issue",
+    ],
+    relatedSlugs: [
+      "what-is-ovias-return-policy",
+      "how-do-i-request-a-return",
       "how-can-i-request-a-repair",
-      "how-can-i-contact-ovia-client-services",
     ],
   },
 
   // ==========================================
-  // 3. GIFTING
+  // 3. PRODUCT CARE
+  // ==========================================
+  {
+    id: "prod-01",
+    category: "products",
+    slug: "how-should-i-care-for-my-ovia-bag",
+    question: "How should I care for my OVIA bag?",
+    answer: `Your OVIA bag is designed to accompany you through everyday moments and journeys. Thoughtful care can help preserve its material, shape, hardware, colour, and finish over time.
+
+The correct care method depends on the specific material used in your product, so always refer to the care instructions supplied with your bag.
+
+### Protect your bag from moisture
+
+Avoid prolonged exposure to water, rain, humidity, and other sources of moisture.
+
+If your bag becomes wet, gently remove excess moisture and allow it to dry naturally in a well-ventilated area.
+
+Do not use direct heat, hair dryers, radiators, or other high-temperature sources to speed up drying.
+
+### Keep your bag away from cosmetics and chemicals
+
+Perfume, makeup, oils, alcohol-based products, cleaning chemicals, inks, and other substances can stain or alter certain materials.
+
+We recommend allowing perfumes, lotions, and other products to dry completely before carrying your OVIA bag.
+
+### Avoid overfilling
+
+Every bag has been designed with a particular structure and capacity.
+
+Overfilling can place unnecessary pressure on:
+
+* Handles
+* Shoulder straps
+* Stitching
+* Zippers
+* Closures
+* Internal compartments
+* The overall shape of the bag
+
+Carry only what the bag is designed to accommodate.`,
+    keywords: [
+      "how should i care for my ovia bag",
+      "bag care",
+      "leather care",
+      "maintenance",
+      "protect from moisture",
+      "water damage",
+      "cosmetics",
+      "chemicals",
+      "overfilling",
+      "preserve",
+    ],
+    relatedSlugs: [
+      "how-should-i-store-my-ovia-bag",
+      "can-i-clean-my-ovia-bag-at-home",
+      "how-can-i-request-a-repair",
+    ],
+  },
+  {
+    id: "prod-02",
+    category: "products",
+    slug: "how-should-i-store-my-ovia-bag",
+    aliases: ["how-should-i-store-my-bag"],
+    question: "How should I store my OVIA bag?",
+    answer: `When your bag is not in use, store it carefully in its original **OVIA dust bag**, where provided.
+
+Keep the bag in a cool, dry, well-ventilated location away from prolonged direct sunlight.
+
+To help maintain the shape of structured bags, you may lightly fill the interior with clean, suitable tissue paper.
+
+Avoid storing heavy items inside the bag for long periods and do not place other heavy objects on top of it.`,
+    keywords: [
+      "how should i store my ovia bag",
+      "how should i store my bag",
+      "storage",
+      "dust bag",
+      "maintain shape",
+      "tissue paper",
+      "direct sunlight",
+      "closet",
+    ],
+    relatedSlugs: [
+      "how-should-i-care-for-my-ovia-bag",
+      "can-i-clean-my-ovia-bag-at-home",
+      "how-can-i-request-a-repair",
+    ],
+  },
+  {
+    id: "prod-03",
+    category: "products",
+    slug: "can-i-clean-my-ovia-bag-at-home",
+    aliases: ["how-do-i-clean-my-product"],
+    question: "Can I clean my OVIA bag at home?",
+    answer: `Cleaning instructions vary according to the material and construction of each OVIA product.
+
+For minor surface marks, follow the care instructions provided with your product.
+
+Avoid household detergents, bleach, solvents, abrasive materials, and unapproved cleaning products unless specifically recommended for the material.
+
+If you are unsure how to treat a mark or stain, contact OVIA Customer Care before attempting extensive cleaning.
+
+For delicate materials or significant stains, professional care may be recommended.`,
+    keywords: [
+      "can i clean my ovia bag at home",
+      "how do i clean my product",
+      "clean bag",
+      "cleaning",
+      "stains",
+      "surface marks",
+      "detergents",
+      "professional care",
+    ],
+    relatedSlugs: [
+      "how-should-i-care-for-my-ovia-bag",
+      "how-should-i-store-my-ovia-bag",
+      "how-can-i-request-a-repair",
+    ],
+  },
+
+  // ==========================================
+  // 4. PERSONALISATION
+  // ==========================================
+  {
+    id: "prod-04",
+    category: "products",
+    slug: "can-ovia-products-be-personalised",
+    question: "Can OVIA products be personalised?",
+    answer: `Selected OVIA products may be available for personalisation.
+
+Personalisation is designed to give certain pieces a more individual character and can be particularly meaningful when purchasing a bag as a gift or creating a personal signature piece.
+
+Available personalisation options depend on the product and collection.
+
+Where personalisation is available, the available options will be shown on the relevant product page before checkout.`,
+    keywords: [
+      "can ovia products be personalised",
+      "personalisation",
+      "monogram",
+      "initials",
+      "custom initials",
+      "custom bag",
+      "gift personalisation",
+    ],
+    relatedSlugs: [
+      "how-long-does-personalisation-take",
+      "can-i-change-my-personalisation-after-placing-an-order",
+      "are-personalised-ovia-products-eligible-for-return",
+    ],
+  },
+  {
+    id: "prod-05",
+    category: "products",
+    slug: "how-long-does-personalisation-take",
+    aliases: ["how-does-ovia-personalisation-work"],
+    question: "How long does personalisation take?",
+    answer: `Personalised orders may require additional preparation time because each piece is processed specifically according to your selected personalisation.
+
+The estimated processing or delivery timeline will be communicated during the purchase process where applicable.`,
+    keywords: [
+      "how long does personalisation take",
+      "personalisation timeline",
+      "processing time",
+      "lead time",
+      "custom delivery time",
+    ],
+    relatedSlugs: [
+      "can-ovia-products-be-personalised",
+      "can-i-change-my-personalisation-after-placing-an-order",
+      "where-does-ovia-deliver",
+    ],
+  },
+  {
+    id: "prod-06",
+    category: "products",
+    slug: "can-i-change-my-personalisation-after-placing-an-order",
+    question: "Can I change my personalisation after placing an order?",
+    answer: `If you need to correct or change your personalisation details, contact OVIA Customer Care as quickly as possible.
+
+Changes may only be possible before personalisation has begun.
+
+Once a personalised item has entered production or preparation, changes may no longer be possible.
+
+Please carefully check spelling, initials, characters, and other personalisation details before confirming your order.`,
+    keywords: [
+      "can i change my personalisation after placing an order",
+      "change personalisation",
+      "correct monogram",
+      "spelling error",
+      "modify initials",
+    ],
+    relatedSlugs: [
+      "can-ovia-products-be-personalised",
+      "how-long-does-personalisation-take",
+      "can-i-change-my-delivery-address",
+    ],
+  },
+
+  // ==========================================
+  // 5. REPAIRS & AFTERCARE
+  // ==========================================
+  {
+    id: "srv-01",
+    category: "services",
+    slug: "how-can-i-request-a-repair",
+    question: "How can I request a repair?",
+    answer: `We understand that your favourite OVIA piece may become part of your everyday life.
+
+If your bag requires attention, our Customer Care team can help determine whether a repair or aftercare service is available.
+
+To request a repair, please contact OVIA Customer Care and provide:
+
+* Order number or proof of purchase
+* Product name or product information
+* Description of the issue
+* Clear photographs of the affected area
+* Your contact details
+
+Our team will review the request and explain the next steps.`,
+    keywords: [
+      "how can i request a repair",
+      "request repair",
+      "repair",
+      "aftercare",
+      "fix",
+      "proof of purchase",
+      "photographs",
+      "customer care",
+    ],
+    relatedSlugs: [
+      "what-types-of-repairs-does-ovia-offer",
+      "can-i-repair-my-ovia-bag-myself",
+      "does-ovia-offer-a-warranty",
+    ],
+  },
+  {
+    id: "srv-02",
+    category: "services",
+    slug: "what-types-of-repairs-does-ovia-offer",
+    question: "What types of repairs does OVIA offer?",
+    answer: `Repair availability depends on the product and the nature of the issue.
+
+Depending on the circumstances, repair assessment may cover areas such as hardware, stitching, straps, closures, or other components.
+
+Not every type of damage can be repaired, and the availability of replacement components may vary.
+
+Some repairs may be covered under an applicable warranty, while others may be chargeable.
+
+We will provide the relevant information before proceeding with a chargeable repair.`,
+    keywords: [
+      "what types of repairs does ovia offer",
+      "repairs offered",
+      "hardware",
+      "stitching",
+      "straps",
+      "closures",
+      "replacement components",
+      "warranty repair",
+    ],
+    relatedSlugs: [
+      "how-can-i-request-a-repair",
+      "can-i-repair-my-ovia-bag-myself",
+      "does-ovia-offer-a-warranty",
+    ],
+  },
+  {
+    id: "srv-03",
+    category: "services",
+    slug: "can-i-repair-my-ovia-bag-myself",
+    question: "Can I repair my OVIA bag myself?",
+    answer: `We recommend contacting OVIA Customer Care before attempting a repair yourself.
+
+Using adhesives, dyes, chemicals, household cleaners, or unsuitable replacement parts can permanently affect the material and may make professional repair or restoration more difficult.
+
+For the best result, allow our team to assess the product and recommend the appropriate solution.`,
+    keywords: [
+      "can i repair my ovia bag myself",
+      "diy repair",
+      "self repair",
+      "adhesives",
+      "dyes",
+      "restoration",
+      "professional repair",
+    ],
+    relatedSlugs: [
+      "how-can-i-request-a-repair",
+      "what-types-of-repairs-does-ovia-offer",
+      "how-should-i-care-for-my-ovia-bag",
+    ],
+  },
+
+  // ==========================================
+  // 6. WARRANTY & PRODUCT SUPPORT
+  // ==========================================
+  {
+    id: "srv-04",
+    category: "services",
+    slug: "does-ovia-offer-a-warranty",
+    question: "Does OVIA offer a warranty?",
+    answer: `Warranty coverage, where applicable, depends on the specific product and the terms provided at the time of purchase.
+
+If you believe your product has a manufacturing defect or requires warranty assistance, contact OVIA Customer Care with your order information and photographs of the issue.
+
+Our team will assess the concern and explain the applicable warranty or service options.
+
+Normal wear and tear, accidental damage, misuse, improper care, or damage caused by unauthorised alterations may not be covered.
+
+Please refer to the applicable **Warranty & Product Support Policy** for complete terms.`,
+    keywords: [
+      "does ovia offer a warranty",
+      "warranty",
+      "guarantee",
+      "manufacturing defect",
+      "product support",
+      "terms",
+      "wear and tear",
+    ],
+    relatedSlugs: [
+      "how-can-i-request-a-repair",
+      "what-types-of-repairs-does-ovia-offer",
+      "can-i-repair-my-ovia-bag-myself",
+    ],
+  },
+
+  // ==========================================
+  // 7. ACCOUNT & ORDERS
+  // ==========================================
+  {
+    id: "ord-01",
+    category: "orders",
+    slug: "do-i-need-an-ovia-account-to-place-an-order",
+    question: "Do I need an OVIA account to place an order?",
+    answer: `An OVIA account may provide a more convenient shopping experience, allowing you to access features such as order history, saved information, and order tracking.
+
+If guest checkout is available, you may also be able to place an order without creating an account.
+
+Creating an account is recommended if you would like to keep your OVIA purchases organised in one place.`,
+    keywords: [
+      "do i need an ovia account to place an order",
+      "account",
+      "guest checkout",
+      "create account",
+      "order tracking",
+      "order history",
+    ],
+    relatedSlugs: [
+      "i-forgot-my-ovia-password-what-should-i-do",
+      "how-can-i-track-my-order",
+      "is-shopping-on-ovia-secure",
+    ],
+  },
+  {
+    id: "ord-02",
+    category: "orders",
+    slug: "i-forgot-my-ovia-password-what-should-i-do",
+    question: "I forgot my OVIA password. What should I do?",
+    answer: `Select **Forgot Password** on the OVIA sign-in page and enter the email address associated with your account.
+
+Follow the verification instructions provided to securely create a new password.
+
+For security reasons, never share your password or verification code with another person.
+
+If you are unable to access your account, contact OVIA Customer Care for assistance.`,
+    keywords: [
+      "i forgot my ovia password what should i do",
+      "forgot password",
+      "reset password",
+      "password help",
+      "verification code",
+      "account recovery",
+    ],
+    relatedSlugs: [
+      "do-i-need-an-ovia-account-to-place-an-order",
+      "is-shopping-on-ovia-secure",
+    ],
+  },
+
+  // ==========================================
+  // 8. PAYMENTS & SECURITY
+  // ==========================================
+  {
+    id: "ord-03",
+    category: "orders",
+    slug: "is-shopping-on-ovia-secure",
+    question: "Is shopping on OVIA secure?",
+    answer: `OVIA takes reasonable measures to protect customer account and order information.
+
+Payment transactions are processed through the payment methods and secure payment infrastructure available at checkout.
+
+For your protection, never share your account password, payment details, or one-time verification codes with anyone claiming to represent OVIA.`,
+    keywords: [
+      "is shopping on ovia secure",
+      "security",
+      "safe payment",
+      "data protection",
+      "secure checkout",
+      "encryption",
+    ],
+    relatedSlugs: [
+      "what-payment-methods-does-ovia-accept",
+      "do-i-need-an-ovia-account-to-place-an-order",
+      "i-forgot-my-ovia-password-what-should-i-do",
+    ],
+  },
+  {
+    id: "ord-04",
+    category: "orders",
+    slug: "what-payment-methods-does-ovia-accept",
+    question: "What payment methods does OVIA accept?",
+    answer: `Available payment methods are displayed during checkout and may vary depending on your location, order, and payment provider.
+
+If a particular payment option is unavailable, another supported payment method may be selected at checkout.`,
+    keywords: [
+      "what payment methods does ovia accept",
+      "payment methods",
+      "credit card",
+      "debit card",
+      "upi",
+      "net banking",
+      "checkout options",
+    ],
+    relatedSlugs: [
+      "is-shopping-on-ovia-secure",
+      "when-will-i-receive-my-refund",
+      "what-is-ovias-return-policy",
+    ],
+  },
+
+  // ==========================================
+  // 9. GIFTING
   // ==========================================
   {
     id: "gift-01",
@@ -388,9 +855,9 @@ export const FAQ_ITEMS: FaqItem[] = [
       "Yes. Every OVIA order arrives encased in our signature luxury presentation box, tied with grosgrain ribbon and nestled inside a protective travel dust bag. Complimentary gift presentation can be selected during checkout or requested via Client Services.",
     keywords: ["gift packaging", "gift box", "ribbon", "dust bag", "wrapping", "presentation"],
     relatedSlugs: [
-      "what-does-ovia-gift-packaging-include",
       "can-i-include-a-personal-gift-message",
       "will-prices-appear-inside-the-gift-package",
+      "can-i-send-a-gift-directly-to-someone",
     ],
   },
   {
@@ -444,467 +911,9 @@ export const FAQ_ITEMS: FaqItem[] = [
       "Yes. A gift recipient may contact OVIA Client Services with the gift exchange code or order reference number. Our team will assist with exchanging the piece for another creation or issuing an OVIA Maison credit, without notifying the purchaser unless requested.",
     keywords: ["gift exchange", "exchange gift", "recipient exchange", "store credit"],
     relatedSlugs: [
-      "how-do-i-exchange-an-item",
+      "can-i-exchange-my-ovia-bag",
       "what-is-ovias-return-policy",
       "will-prices-appear-inside-the-gift-package",
-    ],
-  },
-  {
-    id: "gift-06",
-    category: "gifting",
-    slug: "can-personalised-products-be-gifted",
-    question: "Can personalised products be gifted?",
-    answer:
-      "Personalised creations make exceptional heirloom gifts. You may select custom initials, blind debossing, or foil stamping prior to checkout. Please note that personalised pieces require 3 additional atelier preparation days and cannot be returned.",
-    keywords: ["personalised gift", "monogram gift", "initials", "custom gift"],
-    relatedSlugs: [
-      "can-personalised-products-be-returned",
-      "how-does-ovia-personalisation-work",
-      "does-ovia-offer-gift-packaging",
-    ],
-  },
-  {
-    id: "gift-07",
-    category: "gifting",
-    slug: "can-ovia-help-me-choose-a-gift",
-    question: "Can OVIA help me choose a gift?",
-    answer:
-      "Our Client Advisors specialize in tailored recommendations based on travel habits, lifestyle, and aesthetic preferences. We invite you to schedule a digital consultation or connect with us directly via phone, WhatsApp, or in our boutique lounges.",
-    keywords: ["gift advice", "choose gift", "recommendation", "client advisor", "consultation"],
-    relatedSlugs: [
-      "how-do-i-book-an-appointment",
-      "how-can-i-contact-ovia-client-services",
-      "can-a-client-advisor-help-me-choose-a-product",
-    ],
-  },
-  {
-    id: "gift-08",
-    category: "gifting",
-    slug: "what-does-ovia-gift-packaging-include",
-    question: "What does OVIA gift packaging include?",
-    answer:
-      "OVIA gift packaging includes our structural warm-grey and ivory gift box made from FSC-certified sustainable board, a breathable cotton-linen protective dust bag, tone-on-tone grosgrain ribbon, and a customized letterpress sentiment card.",
-    keywords: ["gift packaging include", "box contents", "dust bag", "ribbon", "packaging details"],
-    relatedSlugs: [
-      "does-ovia-offer-gift-packaging",
-      "can-i-include-a-personal-gift-message",
-      "will-prices-appear-inside-the-gift-package",
-    ],
-  },
-
-  // ==========================================
-  // 4. ORDERS
-  // ==========================================
-  {
-    id: "ord-01",
-    category: "orders",
-    slug: "how-do-i-place-an-ovia-order",
-    question: "How do I place an OVIA order?",
-    answer:
-      "Select your chosen piece on our digital boutique, specify any preferred colorway or personalization details, and click 'Add to bag'. Proceed to checkout to specify delivery details and choose your preferred encrypted payment method. Alternatively, you may place your order directly with a Client Advisor via phone or WhatsApp.",
-    keywords: ["place order", "how to buy", "checkout", "purchase", "shopping"],
-    relatedSlugs: [
-      "do-i-need-an-account-to-order",
-      "what-happens-after-i-place-an-order",
-      "can-i-order-by-contacting-client-services",
-    ],
-  },
-  {
-    id: "ord-02",
-    category: "orders",
-    slug: "do-i-need-an-account-to-order",
-    question: "Do I need an account to order?",
-    answer:
-      "No. You may complete your order seamlessly through Guest Checkout. However, creating an OVIA profile allows you to track historical acquisitions, manage registered product guarantees, store delivery preferences, and access priority bespoke services.",
-    keywords: ["account", "guest checkout", "sign in", "register", "profile"],
-    relatedSlugs: [
-      "how-do-i-place-an-ovia-order",
-      "how-can-i-check-my-order-status",
-      "how-do-i-register-an-ovia-product",
-    ],
-  },
-  {
-    id: "ord-03",
-    category: "orders",
-    slug: "how-can-i-check-my-order-status",
-    question: "How can I check my order status?",
-    answer:
-      "If you placed your order while signed in, visit 'My Account' > 'Orders' to view real-time production, fulfillment, and transit milestones. For guest orders, enter your order number and email on our dedicated 'Track Order' page.",
-    keywords: ["order status", "check order", "progress", "fulfillment", "track order"],
-    relatedSlugs: [
-      "how-can-i-track-my-order",
-      "why-havent-i-received-my-confirmation-email",
-      "what-happens-after-i-place-an-order",
-    ],
-  },
-  {
-    id: "ord-04",
-    category: "orders",
-    slug: "can-i-modify-my-order",
-    question: "Can I modify my order?",
-    answer:
-      "Because our atelier begins order allocation promptly, modifications to items or personalization can only be made within 1 hour of placement. Please connect directly with Client Services via phone or live messaging to make immediate adjustments.",
-    keywords: ["modify order", "change order", "update item", "edit order"],
-    relatedSlugs: [
-      "can-i-cancel-my-order",
-      "can-i-change-my-delivery-address",
-      "can-i-order-by-contacting-client-services",
-    ],
-  },
-  {
-    id: "ord-05",
-    category: "orders",
-    slug: "can-i-cancel-my-order",
-    question: "Can I cancel my order?",
-    answer:
-      "Orders for non-personalised pieces may be cancelled prior to dispatch by reaching out to Client Services. Once a creation has been shipped, it cannot be cancelled in transit but may be returned upon delivery in accordance with our return policy.",
-    keywords: ["cancel order", "cancellation", "stop order", "refund"],
-    relatedSlugs: [
-      "can-i-modify-my-order",
-      "why-was-my-order-cancelled",
-      "what-is-ovias-return-policy",
-    ],
-  },
-  {
-    id: "ord-06",
-    category: "orders",
-    slug: "why-was-my-order-cancelled",
-    question: "Why was my order cancelled?",
-    answer:
-      "In rare instances, an order may be cancelled if banking authorization fails, if billing details cannot be verified, or if high demand causes an inventory allocation discrepancy. Our Client Concierge will contact you promptly with explanation and priority assistance.",
-    keywords: ["order cancelled", "cancellation reason", "payment declined", "security check"],
-    relatedSlugs: [
-      "can-i-cancel-my-order",
-      "how-do-i-place-an-ovia-order",
-      "how-can-i-contact-ovia-client-services",
-    ],
-  },
-  {
-    id: "ord-07",
-    category: "orders",
-    slug: "why-havent-i-received-my-confirmation-email",
-    question: "Why haven't I received my confirmation email?",
-    answer:
-      "Order confirmations are dispatched automatically within minutes of successful transaction completion. Please check your junk or promotional folders. If you still do not see it, our Client Advisors can verify your email address and retransmit your confirmation immediately.",
-    keywords: ["confirmation email", "missing email", "no email", "receipt email"],
-    relatedSlugs: [
-      "how-can-i-check-my-order-status",
-      "how-do-i-obtain-an-invoice",
-      "what-happens-after-i-place-an-order",
-    ],
-  },
-  {
-    id: "ord-08",
-    category: "orders",
-    slug: "how-do-i-obtain-an-invoice",
-    question: "How do I obtain an invoice?",
-    answer:
-      "A formal GST tax invoice is attached as a downloadable PDF in your shipping confirmation email and remains permanently accessible within your online OVIA account profile under 'Order History'.",
-    keywords: ["invoice", "tax invoice", "gst", "receipt", "download invoice"],
-    relatedSlugs: [
-      "why-havent-i-received-my-confirmation-email",
-      "how-can-i-check-my-order-status",
-    ],
-  },
-  {
-    id: "ord-09",
-    category: "orders",
-    slug: "can-i-order-by-contacting-client-services",
-    question: "Can I order by contacting Client Services?",
-    answer:
-      "Yes. Our Client Advisors are delighted to process your order via phone or WhatsApp. We will prepare your selection and send a secure, PCI-compliant payment gateway link directly to your SMS or email to complete payment safely.",
-    keywords: ["order by phone", "phone order", "whatsapp order", "advisor order", "concierge order"],
-    relatedSlugs: [
-      "how-do-i-place-an-ovia-order",
-      "how-can-i-contact-ovia-client-services",
-      "what-happens-after-i-place-an-order",
-    ],
-  },
-  {
-    id: "ord-10",
-    category: "orders",
-    slug: "what-happens-after-i-place-an-order",
-    question: "What happens after I place an order?",
-    answer:
-      "Immediately after confirmation, you receive a transaction receipt. Our master craftspeople review and prepare your selected piece, conducting precision inspection before sealing it in presentation packaging and handing it to our dedicated courier with live tracking.",
-    keywords: ["after order", "process", "what next", "fulfillment stages", "timeline"],
-    relatedSlugs: [
-      "how-can-i-check-my-order-status",
-      "how-long-does-delivery-take",
-      "how-can-i-track-my-order",
-    ],
-  },
-
-  // ==========================================
-  // 5. PRODUCTS
-  // ==========================================
-  {
-    id: "prod-01",
-    category: "products",
-    slug: "where-are-ovia-products-designed",
-    question: "Where are OVIA products designed?",
-    answer:
-      "OVIA creations are conceptualized in our European design studio and brought to life in specialized ateliers partnering with generational artisans across Italy, Germany, and India. Every silhouette reflects strict adherence to architectural minimalism, durability, and functional elegance.",
-    keywords: ["designed", "manufactured", "provenance", "atelier", "origin", "where made"],
-    relatedSlugs: [
-      "what-materials-does-ovia-use",
-      "how-should-i-care-for-my-ovia-bag",
-      "how-can-i-verify-my-registered-ovia-product",
-    ],
-  },
-  {
-    id: "prod-02",
-    category: "products",
-    slug: "what-materials-does-ovia-use",
-    question: "What materials does OVIA use?",
-    answer:
-      "OVIA utilizes aerospace-grade anodized aluminium alloy, high-impact virgin polycarbonate shells, full-grain vegetable-tanned bovine leathers, water-resistant coated technical canvas, and palladium-finish custom hardware engineered to endure decades of motion.",
-    keywords: ["materials", "leather", "aluminium", "polycarbonate", "canvas", "hardware"],
-    relatedSlugs: [
-      "how-should-i-care-for-my-ovia-bag",
-      "where-are-ovia-products-designed",
-      "how-do-i-clean-my-product",
-    ],
-  },
-  {
-    id: "prod-03",
-    category: "products",
-    slug: "how-should-i-care-for-my-ovia-bag",
-    question: "How should I care for my OVIA bag?",
-    answer:
-      "Shield leather pieces from prolonged direct sun exposure, excessive moisture, and oily substances. When not travelling, store your bag in its breathable OVIA cotton-linen dust bag filled with acid-free tissue paper to maintain silhouette geometry.",
-    subtext:
-      "For comprehensive care directions customized to your product material, explore our dedicated Care Service section.",
-    keywords: ["care", "leather care", "maintenance", "bag care", "preserve"],
-    relatedSlugs: [
-      "how-should-i-store-my-bag",
-      "how-do-i-clean-my-product",
-      "what-materials-does-ovia-use",
-    ],
-  },
-  {
-    id: "prod-04",
-    category: "products",
-    slug: "how-should-i-store-my-bag",
-    question: "How should I store my bag?",
-    answer:
-      "Always store bags upright in a cool, ventilated space away from artificial heat sources. Do not hang bags by their handles for prolonged durations. Enclose the creation in its original cotton dust bag and avoid stacking heavier objects on top.",
-    keywords: ["store bag", "storage", "closet", "dust bag", "maintain shape"],
-    relatedSlugs: [
-      "how-should-i-care-for-my-ovia-bag",
-      "how-do-i-clean-my-product",
-    ],
-  },
-  {
-    id: "prod-05",
-    category: "products",
-    slug: "how-do-i-clean-my-product",
-    question: "How do I clean my product?",
-    answer:
-      "For leather, gently buff surface dust with a dry, lint-free microfibre cloth. For anodized aluminium or polycarbonate luggage, wipe with a soft cloth lightly dampened with lukewarm water and mild pH-neutral soap. Never use alcohol, chemical solvents, or abrasive pads.",
-    keywords: ["clean", "wash", "soap", "leather clean", "luggage clean", "cloth"],
-    relatedSlugs: [
-      "how-should-i-care-for-my-ovia-bag",
-      "how-should-i-store-my-bag",
-      "how-can-i-request-a-repair",
-    ],
-  },
-  {
-    id: "prod-06",
-    category: "products",
-    slug: "how-can-i-check-product-availability",
-    question: "How can I check product availability?",
-    answer:
-      "Live availability is indicated on each individual product page. If a desired piece is temporarily marked as 'Unavailable in concept collection', contact our Client Advisors to join the priority private allocation registry.",
-    keywords: ["availability", "in stock", "stock level", "inventory", "sold out"],
-    relatedSlugs: [
-      "will-sold-out-products-return",
-      "how-do-i-place-an-ovia-order",
-      "can-a-client-advisor-help-me-choose-a-product",
-    ],
-  },
-  {
-    id: "prod-07",
-    category: "products",
-    slug: "will-sold-out-products-return",
-    question: "Will sold-out products return?",
-    answer:
-      "Core travel silhouettes in our permanent collection are restocked on a rolling basis following atelier crafting cycles. Limited seasonal editions or collaborative collections may not be reissued once their numbered edition run concludes.",
-    keywords: ["sold out", "restock", "waitlist", "edition", "back in stock"],
-    relatedSlugs: [
-      "how-can-i-check-product-availability",
-      "can-a-client-advisor-help-me-choose-a-product",
-    ],
-  },
-  {
-    id: "prod-08",
-    category: "products",
-    slug: "how-do-i-choose-the-correct-size",
-    question: "How do I choose the correct size?",
-    answer:
-      "Consult our interactive Size & Dimension Guide on each product detail page, which compares cabin overhead allowances for major international airlines with exact volumetric liter capacities and tare weights.",
-    keywords: ["size", "dimensions", "cabin size", "carry on", "luggage size", "capacity"],
-    relatedSlugs: [
-      "what-materials-does-ovia-use",
-      "can-a-client-advisor-help-me-choose-a-product",
-    ],
-  },
-  {
-    id: "prod-09",
-    category: "products",
-    slug: "can-ovia-products-be-personalised",
-    question: "Can OVIA products be personalised?",
-    answer:
-      "Yes. Most OVIA luggage pieces, leather bags, and travel accessories accommodate custom initials, blind leather debossing, metallic foil stamping, or bespoke luggage tag engraving.",
-    keywords: ["personalised", "custom initials", "monogram", "emboss", "engraving"],
-    relatedSlugs: [
-      "how-does-ovia-personalisation-work",
-      "can-personalised-products-be-returned",
-      "how-do-i-request-personalisation",
-    ],
-  },
-  {
-    id: "prod-10",
-    category: "products",
-    slug: "how-does-ovia-personalisation-work",
-    question: "How does OVIA personalisation work?",
-    answer:
-      "When personalising online, preview your chosen initials, typeface, and foil tone in real time. Our artisans then hand-stamp the motif using heated brass typography plates in our atelier, ensuring crisp depth and lasting clarity.",
-    keywords: ["personalisation process", "foil stamp", "monogram method", "how personalisation works"],
-    relatedSlugs: [
-      "can-ovia-products-be-personalised",
-      "can-personalised-products-be-returned",
-      "how-do-i-request-personalisation",
-    ],
-  },
-  {
-    id: "prod-11",
-    category: "products",
-    slug: "how-can-i-verify-my-registered-ovia-product",
-    question: "How can I verify my registered OVIA product?",
-    answer:
-      "Every genuine OVIA piece features a unique laser-engraved serial code on its internal frame or leather badge. Enter this code under 'Register Product' in your OVIA account to activate your extended craftsmanship guarantee and verify provenance.",
-    keywords: ["verify", "serial number", "registration", "authenticity", "guarantee", "code"],
-    relatedSlugs: [
-      "how-do-i-register-an-ovia-product",
-      "where-are-ovia-products-designed",
-      "how-can-i-request-a-repair",
-    ],
-  },
-
-  // ==========================================
-  // 6. SERVICES
-  // ==========================================
-  {
-    id: "srv-01",
-    category: "services",
-    slug: "how-can-i-contact-ovia-client-services",
-    question: "How can I contact OVIA Client Services?",
-    answer:
-      "OVIA Client Advisors are available Monday through Saturday from 10:00 AM to 7:00 PM and Sunday from 10:00 AM to 5:00 PM IST via toll-free phone (+91 1800 103 9988), dedicated WhatsApp concierge, Apple Messages, or email at clientcare@ovia.com.",
-    keywords: ["contact", "phone", "hours", "email", "whatsapp", "customer care"],
-    relatedSlugs: [
-      "how-do-i-book-an-appointment",
-      "can-a-client-advisor-help-me-choose-a-product",
-      "how-can-i-request-a-repair",
-    ],
-  },
-  {
-    id: "srv-02",
-    category: "services",
-    slug: "how-can-i-request-a-repair",
-    question: "How can I request a repair?",
-    answer:
-      "To request professional assessment for an OVIA piece, visit our online 'Care & Repair' portal or contact Client Services. You can upload photos of the area requiring attention and an Advisor will evaluate service options, replacement components, and transit instructions.",
-    subtext:
-      "Every piece is evaluated on a case-by-case basis by our master craftsmen.",
-    keywords: ["repair", "fix", "wheels", "handle", "zipper", "service", "restoration"],
-    relatedSlugs: [
-      "does-ovia-provide-product-care-assistance",
-      "how-do-i-register-an-ovia-product",
-      "how-can-i-contact-ovia-client-services",
-    ],
-  },
-  {
-    id: "srv-03",
-    category: "services",
-    slug: "how-do-i-book-an-appointment",
-    question: "How do I book an appointment?",
-    answer:
-      "You can reserve a private 1-on-1 boutique consultation or virtual appointment through our 'Book an Appointment' portal or by calling Client Services. An Advisor will prepare private lounge selections tailored to your itinerary.",
-    keywords: ["appointment", "booking", "consultation", "private viewing", "lounge"],
-    relatedSlugs: [
-      "how-can-i-find-an-ovia-location",
-      "can-a-client-advisor-help-me-choose-a-product",
-      "how-can-i-contact-ovia-client-services",
-    ],
-  },
-  {
-    id: "srv-04",
-    category: "services",
-    slug: "how-can-i-find-an-ovia-location",
-    question: "How can I find an OVIA location?",
-    answer:
-      "Locate official OVIA Maisons and authorized partner lounges via our 'Store Locator'. Current flagships are welcoming guests in Mumbai (Jio World Plaza), New Delhi (DLF Emporio), and Bengaluru (UB City).",
-    keywords: ["location", "stores", "boutiques", "mumbai", "delhi", "bengaluru", "flagship"],
-    relatedSlugs: [
-      "how-do-i-book-an-appointment",
-      "how-can-i-contact-ovia-client-services",
-    ],
-  },
-  {
-    id: "srv-05",
-    category: "services",
-    slug: "does-ovia-provide-product-care-assistance",
-    question: "Does OVIA provide product-care assistance?",
-    answer:
-      "Yes. OVIA offers dedicated care guidance for all our leather silhouettes, travel luggage, and accessories. You can bring pieces to any Maison for routine wheel inspections, hardware tightening, and leather conditioning advice.",
-    keywords: ["care assistance", "cleaning service", "inspection", "conditioning"],
-    relatedSlugs: [
-      "how-can-i-request-a-repair",
-      "how-should-i-care-for-my-ovia-bag",
-      "how-do-i-clean-my-product",
-    ],
-  },
-  {
-    id: "srv-06",
-    category: "services",
-    slug: "can-a-client-advisor-help-me-choose-a-product",
-    question: "Can a Client Advisor help me choose a product?",
-    answer:
-      "Certainly. Whether you require guidance on luggage cabin allowances for international routes, styling a leather tote, or curating gifts for corporate milestones, our Advisors offer personalized curations via chat, call, or private appointment.",
-    keywords: ["choose product", "product advice", "advisor", "styling", "personal shopper"],
-    relatedSlugs: [
-      "can-ovia-help-me-choose-a-gift",
-      "how-do-i-choose-the-correct-size",
-      "how-do-i-book-an-appointment",
-    ],
-  },
-  {
-    id: "srv-07",
-    category: "services",
-    slug: "how-do-i-register-an-ovia-product",
-    question: "How do I register an OVIA product?",
-    answer:
-      "To register your acquisition, log in to your OVIA account and select 'Register My Product'. Enter your piece's serial code and upload your purchase invoice to ensure priority repair service and lifetime craftsmanship documentation.",
-    keywords: ["register product", "warranty registration", "product registration", "serial number"],
-    relatedSlugs: [
-      "how-can-i-verify-my-registered-ovia-product",
-      "how-can-i-request-a-repair",
-    ],
-  },
-  {
-    id: "srv-08",
-    category: "services",
-    slug: "how-do-i-request-personalisation",
-    question: "How do I request personalisation?",
-    answer:
-      "Personalisation can be requested during online order placement or arranged post-purchase by bringing your item to any OVIA Maison. Our Advisors will guide you through typography styles, blind embossing, or hand-painted initials.",
-    keywords: ["request personalisation", "post purchase monogram", "custom initials", "embossing"],
-    relatedSlugs: [
-      "can-ovia-products-be-personalised",
-      "how-does-ovia-personalisation-work",
-      "how-can-i-find-an-ovia-location",
     ],
   },
 ];
@@ -934,18 +943,23 @@ export function getFaqBySlug(
   questionSlug: string
 ): FaqItem | undefined {
   return FAQ_ITEMS.find(
-    (item) => item.category === categorySlug && item.slug === questionSlug
+    (item) =>
+      item.category === categorySlug &&
+      (item.slug === questionSlug || item.aliases?.includes(questionSlug))
   );
 }
 
 export function getRelatedFaqs(item: FaqItem, limit: number = 4): FaqItem[] {
   const explicit = FAQ_ITEMS.filter((x) =>
-    item.relatedSlugs.includes(x.slug)
+    item.relatedSlugs?.includes(x.slug)
   );
   if (explicit.length >= limit) return explicit.slice(0, limit);
 
   const sameCategory = FAQ_ITEMS.filter(
-    (x) => x.category === item.category && x.slug !== item.slug && !item.relatedSlugs.includes(x.slug)
+    (x) =>
+      x.category === item.category &&
+      x.slug !== item.slug &&
+      !item.relatedSlugs?.includes(x.slug)
   );
 
   return [...explicit, ...sameCategory].slice(0, limit);
@@ -965,6 +979,7 @@ export function searchFaqs(query: string): FaqItem[] {
     // Exact question match has highest score
     if (qLower.includes(clean)) score += 50;
     if (item.slug.includes(clean)) score += 30;
+    if (item.aliases?.some((a) => a.includes(clean))) score += 25;
 
     // Check token matches
     for (const token of tokens) {

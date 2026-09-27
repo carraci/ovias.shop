@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { FAQ_CATEGORIES, FAQ_ITEMS } from "@/lib/faq-data";
 import { FaqSearchBar } from "@/components/faq-search-bar";
+import { PopularInquiriesAccordion } from "@/components/popular-inquiries-accordion";
 import { ContactDrawerButton } from "@/components/contact-drawer-button";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 export const metadata = {
-  title: "Client Services & FAQ | OVIA Luxury Travel Goods",
+  title: "Frequently Asked Questions — Customer Care Guide | OVIA",
   description:
-    "How can we assist you? Explore OVIA delivery, complimentary returns, bespoke gifting, product care, and client services.",
+    "Explore the OVIA Customer Care Guide: orders, delivery, complimentary returns, product care, bespoke personalisation, and repairs.",
 };
 
 export default function FaqPage() {
@@ -26,9 +27,12 @@ export default function FaqPage() {
       {/* PAGE HERO */}
       <section className="faq-hero-section">
         <div className="faq-hero-content">
-          <p className="faq-brand-eyebrow">OVIA</p>
-          <h1 className="faq-page-title">CLIENT SERVICES</h1>
-          <p className="faq-hero-subtitle">How can we assist you?</p>
+          <p className="faq-brand-eyebrow">CUSTOMER CARE</p>
+          <h1 className="faq-page-title">FREQUENT QUESTIONS</h1>
+          <h2 className="faq-hero-guide-title">The OVIA Customer Care Guide</h2>
+          <p className="faq-hero-guide-desc">
+            At <strong>OVIA</strong>, every detail matters — from the design of each piece to the experience of receiving it. Whether you are placing your first order, checking a delivery, caring for your favourite OVIA bag, or looking for support after your purchase, our Customer Care Guide is designed to give you clear answers at every step.
+          </p>
 
           <div className="faq-hero-search">
             <FaqSearchBar placeholder="Search for a question..." />
@@ -68,21 +72,13 @@ export default function FaqPage() {
         <div className="faq-section-header">
           <p className="eyebrow">POPULAR INQUIRIES</p>
           <h2>FREQUENT QUESTIONS</h2>
+          <p className="faq-section-subtitle">
+            Information on delivery, orders, returns, product care, personalisation, and after-sales service.
+          </p>
           <div className="faq-divider" />
         </div>
 
-        <div className="faq-questions-list">
-          {frequentQuestions.map((item) => (
-            <Link
-              key={item.id}
-              href={`/faq/${item.category}/${item.slug}`}
-              className="faq-question-row"
-            >
-              <span className="faq-question-text">{item.question}</span>
-              <ArrowRight size={18} strokeWidth={1.5} className="faq-arrow-icon" />
-            </Link>
-          ))}
-        </div>
+        <PopularInquiriesAccordion />
       </section>
 
       {/* NEED MORE HELP / CONTACT US */}

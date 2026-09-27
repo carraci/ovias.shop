@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CARE_CATEGORIES } from "@/lib/care-data";
+import { CARE_CATEGORIES, CARE_PRINCIPLES } from "@/lib/care-data";
 import { FAQ_ITEMS } from "@/lib/faq-data";
 import { ContactDrawerButton } from "@/components/contact-drawer-button";
-import { ArrowRight, ArrowUpRight, Sparkles, Wrench } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Sparkles, Wrench, ShieldCheck } from "lucide-react";
 
 export const metadata = {
-  title: "Care Service & Repair | OVIA Luxury Travel Goods",
+  title: "Care for Your OVIA Piece — Care & Service | OVIA",
   description:
-    "Preserve your OVIA travel pieces for generations. Explore dedicated material care guides and request professional atelier assistance.",
+    "Explore our care guides by material and product category for practical recommendations on cleaning, storage, handling, protection, and long-term maintenance.",
 };
 
 export default function CareServicePage() {
@@ -26,18 +26,21 @@ export default function CareServicePage() {
       {/* PAGE HERO */}
       <section className="care-hero-section">
         <div className="care-hero-content">
-          <p className="faq-brand-eyebrow">OVIA</p>
-          <h1 className="care-hero-title">CARE SERVICE</h1>
+          <p className="faq-brand-eyebrow">CARE &amp; SERVICE</p>
+          <h1 className="care-hero-title">CARE FOR YOUR OVIA PIECE</h1>
           <p className="care-hero-tagline">
-            Designed for the journey. Cared for beyond it.
+            Designed for the journey. Preserved through time.
           </p>
           <p className="care-hero-description">
-            Discover guidance for preserving your OVIA pieces and learn how to request assistance when your product requires professional attention.
+            A well-made piece is designed to accompany you over time. With considered handling, appropriate storage, and the right care, the materials and craftsmanship of your OVIA collection can be preserved through everyday use, travel, and the years ahead.
+          </p>
+          <p className="care-hero-description" style={{ marginTop: "-1.5rem" }}>
+            Explore our care guides by material and product category for practical recommendations on cleaning, storage, handling, protection, and long-term maintenance.
           </p>
 
           <div className="care-hero-ctas">
             <a href="#product-care" className="button dark">
-              EXPLORE PRODUCT CARE
+              EXPLORE CARE GUIDES
             </a>
             <Link href="/care-service/request-assistance" className="button light">
               REQUEST ASSISTANCE <ArrowRight size={16} />
@@ -46,7 +49,7 @@ export default function CareServicePage() {
         </div>
       </section>
 
-      {/* PRODUCT CARE CATEGORIES GRID */}
+      {/* 01–07 PRODUCT CARE CATEGORIES GRID */}
       <section id="product-care" className="care-categories-section">
         <div className="faq-section-header">
           <p className="eyebrow">PRESERVATION BY SILHOUETTE</p>
@@ -76,9 +79,9 @@ export default function CareServicePage() {
               </div>
               <div className="care-card-body">
                 <h3>{cat.title}</h3>
-                <p>{cat.description}</p>
+                <p>{cat.cardDescription || cat.description}</p>
                 <span className="care-card-action">
-                  DISCOVER CARE <ArrowRight size={15} />
+                  {cat.ctaLabel || "DISCOVER CARE"} <ArrowRight size={15} />
                 </span>
               </div>
             </Link>
@@ -86,11 +89,82 @@ export default function CareServicePage() {
         </div>
       </section>
 
+      {/* PROFESSIONAL CARE & REPAIR */}
+      <section className="care-repair-section">
+        <div className="care-repair-banner">
+          <div className="care-repair-inner">
+            <Wrench size={32} strokeWidth={1.5} className="care-repair-icon" />
+            <p className="eyebrow">PROFESSIONAL CARE &amp; REPAIR</p>
+            <h2>WHEN YOUR PIECE NEEDS MORE THAN EVERYDAY CARE</h2>
+            <div className="care-repair-text">
+              <p>
+                Some marks, wear, or damage require more than routine maintenance. If you are uncertain about how to treat your OVIA piece, we recommend contacting Customer Care before attempting a repair or using a cleaning product.
+              </p>
+              <p>
+                Depending on the product and condition, our team can advise on available care, repair, or after-sales options.
+              </p>
+              <p>
+                Professional assessment may be appropriate for issues involving stitching, handles, straps, hardware, closures, structural components, or significant marks and damage.
+              </p>
+            </div>
+            <div className="care-repair-actions">
+              <Link
+                href="/care-service/request-assistance"
+                className="button dark"
+              >
+                EXPLORE REPAIR &amp; AFTERCARE <ArrowRight size={16} />
+              </Link>
+            </div>
+            <p className="care-disclaimer-note">
+              Assessments are conducted individually by our master craftspeople without automatic obligations or automated fees.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* CARE NOTES — A FEW SIMPLE PRINCIPLES */}
+      <section className="care-principles-section">
+        <div className="faq-section-header">
+          <p className="eyebrow">CARE NOTES</p>
+          <h2>A FEW SIMPLE PRINCIPLES</h2>
+          <div className="faq-divider" />
+        </div>
+
+        <div className="care-principles-grid">
+          {CARE_PRINCIPLES.map((principle) => (
+            <div key={principle.number} className="care-principle-card">
+              <span className="care-principle-num">{principle.number}</span>
+              <h3 className="care-principle-title">{principle.title}</h3>
+              <p className="care-principle-desc">{principle.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CARE THAT CONTINUES BEYOND THE PURCHASE */}
+      <section className="care-cta-banner">
+        <div className="care-cta-banner-inner">
+          <ShieldCheck size={32} strokeWidth={1.5} style={{ margin: "0 auto 1.25rem", color: "var(--ink)" }} />
+          <h2>CARE THAT CONTINUES BEYOND THE PURCHASE</h2>
+          <p>
+            An OVIA piece is intended to be used, carried, travelled with, and lived with. Natural signs of use can become part of its character, while thoughtful care helps preserve the materials and craftsmanship that define each piece.
+          </p>
+          <p>
+            Our care and service guides are designed to help you look after your OVIA collection throughout its life.
+          </p>
+          <div className="care-cta-banner-actions">
+            <a href="#product-care" className="button dark">
+              EXPLORE ALL CARE &amp; SERVICE <ArrowRight size={16} />
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* EDITORIAL CARE STORY */}
       <section className="care-editorial-story">
         <div className="care-story-grid">
           <div className="care-story-text">
-            <p className="eyebrow">CRAFTSMANSHIP & PATINA</p>
+            <p className="eyebrow">CRAFTSMANSHIP &amp; PATINA</p>
             <h2>THE LIFE OF A TRAVEL PIECE</h2>
             <p className="story-lead">
               A well-traveled suitcase or bag reflects the horizons it has witnessed.
@@ -110,31 +184,6 @@ export default function CareServicePage() {
               height={600}
               className="story-img"
             />
-          </div>
-        </div>
-      </section>
-
-      {/* CARE & REPAIR ASSESSMENT SECTION */}
-      <section className="care-repair-section">
-        <div className="care-repair-banner">
-          <div className="care-repair-inner">
-            <Wrench size={32} strokeWidth={1.5} className="care-repair-icon" />
-            <p className="eyebrow">ATELIER SERVICE</p>
-            <h2>CARE & REPAIR</h2>
-            <p className="care-repair-text">
-              Sometimes a well-travelled piece needs more than everyday care. If your OVIA product requires assessment, our Client Services team can help determine the appropriate next step.
-            </p>
-            <div className="care-repair-actions">
-              <Link
-                href="/care-service/request-assistance"
-                className="button dark"
-              >
-                REQUEST PRODUCT ASSISTANCE <ArrowRight size={16} />
-              </Link>
-            </div>
-            <p className="care-disclaimer-note">
-              Assessments are conducted individually by our master craftspeople without automatic obligations or automated fees.
-            </p>
           </div>
         </div>
       </section>

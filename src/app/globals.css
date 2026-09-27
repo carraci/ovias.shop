@@ -6122,7 +6122,8 @@ body:has(.recovery-page) > footer {
 .contact-page-container,
 .care-page-container,
 .care-guide-container,
-.assistance-container {
+.assistance-container,
+.lounge-page-container {
   max-width: 1400px;
   margin: 0 auto;
   padding: calc(var(--gutter) * 1.5) var(--gutter) calc(var(--gutter) * 2.5);
@@ -6173,14 +6174,16 @@ body:has(.recovery-page) > footer {
 /* Hero Section */
 .faq-hero-section,
 .contact-hero-section,
-.care-hero-section {
+.care-hero-section,
+.lounge-hero-section {
   text-align: center;
   max-width: 820px;
   margin: 1rem auto 4.5rem;
 }
 .faq-page-title,
 .contact-hero-title,
-.care-hero-title {
+.care-hero-title,
+.lounge-hero-title {
   font-family: var(--serif);
   font-size: clamp(32px, 4.5vw, 56px);
   font-weight: 400;
@@ -6191,7 +6194,8 @@ body:has(.recovery-page) > footer {
 }
 .faq-hero-subtitle,
 .contact-hero-subtitle,
-.care-hero-tagline {
+.care-hero-tagline,
+.lounge-hero-tagline {
   font-size: clamp(16px, 1.8vw, 22px);
   color: var(--muted);
   font-style: italic;
@@ -6462,6 +6466,119 @@ body:has(.recovery-page) > footer {
   color: var(--ink);
 }
 
+/* FAQ Accordion Component */
+.faq-accordion-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.faq-accordion-item {
+  border-bottom: 1px solid var(--line);
+  transition: background-color 0.25s ease;
+}
+.faq-accordion-item:first-child {
+  border-top: 1px solid var(--line);
+}
+.faq-accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.25s ease;
+}
+.faq-accordion-title {
+  font-family: var(--serif);
+  font-size: clamp(17px, 1.8vw, 21px);
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+.faq-accordion-trigger:hover .faq-accordion-title {
+  transform: translateX(4px);
+  color: #000000;
+}
+.faq-accordion-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  transition: color 0.25s ease;
+  margin-left: 1rem;
+  flex-shrink: 0;
+}
+.faq-accordion-chevron {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+}
+.faq-accordion-chevron.rotate {
+  transform: rotate(180deg);
+  color: var(--ink);
+}
+.faq-accordion-panel {
+  padding-bottom: 1.85rem;
+  animation: faqAccordionFadeIn 0.3s ease-out;
+}
+@keyframes faqAccordionFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.faq-accordion-panel-inner {
+  max-width: 900px;
+  padding-left: 0.25rem;
+}
+.faq-accordion-p {
+  font-size: 15px;
+  line-height: 1.85;
+  color: #3b453e;
+  margin-bottom: 1.15rem;
+}
+.faq-accordion-p:last-of-type {
+  margin-bottom: 1.5rem;
+}
+.faq-accordion-cta-wrapper {
+  margin-top: 1.25rem;
+}
+.faq-accordion-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 3px;
+  transition: all 0.25s ease;
+}
+.faq-accordion-cta-link:hover {
+  opacity: 0.75;
+  gap: 0.75rem;
+}
+.cta-arrow {
+  transition: transform 0.25s ease;
+}
+.faq-accordion-cta-link:hover .cta-arrow {
+  transform: translateX(4px);
+}
+.faq-section-subtitle {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0.35rem 0 1.5rem;
+}
+
 /* Need More Help / Assistance Box */
 .faq-assistance-section {
   margin: 5rem 0 2rem;
@@ -6639,6 +6756,60 @@ body:has(.recovery-page) > footer {
   line-height: 1.8;
   color: #2b332d;
   margin-bottom: 1.5rem;
+}
+.faq-content-h3 {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.2vw, 25px);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin: 2.25rem 0 0.85rem;
+}
+.faq-content-p {
+  font-size: 16px;
+  line-height: 1.85;
+  color: #2b332d;
+  margin-bottom: 1.25rem;
+}
+.faq-content-ul {
+  margin: 0.75rem 0 1.5rem 1.5rem;
+  list-style-type: disc;
+  color: #2b332d;
+}
+.faq-content-li {
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+  color: #2b332d;
+}
+.faq-content-strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.faq-content-link {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+.faq-content-link:hover {
+  opacity: 0.7;
+}
+.faq-hero-guide-title {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.4vw, 28px);
+  color: var(--ink);
+  margin: 0 0 1rem;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+.faq-hero-guide-desc {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #4a544b;
+  max-width: 720px;
+  margin: 0 auto 2.25rem;
 }
 .faq-article-subtext {
   font-size: 14px;
@@ -7143,11 +7314,98 @@ body:has(.recovery-page) > footer {
   justify-content: center;
   margin-bottom: 1.5rem;
 }
+.care-repair-text p {
+  margin-bottom: 1rem;
+}
+.care-repair-text p:last-child {
+  margin-bottom: 0;
+}
 .care-disclaimer-note {
   font-size: 12px;
   color: #8c9085;
   font-style: italic;
   margin: 0;
+}
+
+/* Care Principles Section */
+.care-principles-section {
+  margin-bottom: 5.5rem;
+}
+.care-principles-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+}
+.care-principle-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: 2.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s ease;
+  position: relative;
+}
+.care-principle-card:hover {
+  border-color: var(--ink);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+.care-principle-num {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+.care-principle-title {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  margin: 0 0 0.75rem;
+}
+.care-principle-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0;
+  flex: 1;
+}
+
+/* Care CTA Banner (Care that continues beyond the purchase) */
+.care-cta-banner {
+  background: #faf8f5;
+  border: 1px solid var(--line);
+  padding: 4.5rem 2.5rem;
+  text-align: center;
+  margin-bottom: 5.5rem;
+}
+.care-cta-banner-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.care-cta-banner h2 {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3.2vw, 36px);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  margin: 0.5rem 0 1.25rem;
+  color: var(--ink);
+}
+.care-cta-banner p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #4b5249;
+  margin: 0 0 1rem;
+}
+.care-cta-banner p:last-of-type {
+  margin-bottom: 2rem;
+}
+.care-cta-banner-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
 }
 
 .care-contact-section {
@@ -7848,6 +8106,358 @@ body:has(.recovery-page) > footer {
 }
 
 /* ==========================================================================
+   STORE LOUNGES & IN-PERSON EXPERIENCE
+   ========================================================================== */
+
+/* Editorial Section */
+.lounge-editorial-section {
+  margin-bottom: 5.5rem;
+}
+.lounge-editorial-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 4rem;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid var(--line);
+}
+.lounge-editorial-text {
+  padding: clamp(2rem, 5vw, 4.5rem);
+}
+.lounge-editorial-text h2 {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3.2vw, 36px);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin: 0.5rem 0 1.25rem;
+  color: var(--ink);
+}
+.lounge-editorial-lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+.lounge-editorial-p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #4b5249;
+  margin-bottom: 1.5rem;
+}
+.lounge-pillars-wrap {
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line);
+}
+.lounge-pillars-label {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.lounge-pillars-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+.lounge-pillar-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #faf8f5;
+  border: 1px solid var(--line);
+  padding: 0.35rem 0.85rem;
+  font-size: 12px;
+  color: var(--ink);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.lounge-editorial-image {
+  height: 100%;
+  min-height: 480px;
+  overflow: hidden;
+  background: #f0f0ea;
+}
+.lounge-editorial-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lounge-editorial-grid:hover .lounge-editorial-img {
+  transform: scale(1.03);
+}
+
+/* Private Appointments Card */
+.lounge-appointment-section {
+  margin-bottom: 5.5rem;
+}
+.lounge-appointment-card {
+  background: #faf8f5;
+  border: 1px solid var(--line);
+  padding: 4.5rem 2.5rem;
+  text-align: center;
+}
+.lounge-appointment-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.lounge-appointment-icon {
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+}
+.lounge-appointment-card h2 {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3.2vw, 36px);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  margin: 0.5rem 0 1.25rem;
+  color: var(--ink);
+}
+.lounge-appointment-card p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #4b5249;
+  margin: 0 0 1rem;
+}
+.lounge-appointment-card p:last-of-type {
+  margin-bottom: 2rem;
+}
+.lounge-appointment-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* Locations Section */
+.lounge-locations-section {
+  margin-bottom: 5.5rem;
+}
+.lounge-locations-header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 3rem;
+}
+.lounge-locations-header h2 {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  margin: 0.5rem 0 1rem;
+  color: var(--ink);
+}
+.lounge-locations-sub {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0 0 1.5rem;
+}
+.lounge-locations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+.lounge-store-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s ease;
+  overflow: hidden;
+}
+.lounge-store-card:hover {
+  border-color: var(--ink);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04);
+}
+.lounge-store-img-wrap {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  background: #f0f0ea;
+}
+.lounge-store-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lounge-store-card:hover .lounge-store-img {
+  transform: scale(1.04);
+}
+.lounge-store-city-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
+  padding: 0.25rem 0.6rem;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+.lounge-store-body {
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.lounge-store-body h3 {
+  font-family: var(--serif);
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+  color: var(--ink);
+}
+.lounge-store-address {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0 0 1rem;
+  flex: 1;
+}
+.lounge-store-hours {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 12px;
+  color: #555c53;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+.lounge-store-services-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1.5rem;
+}
+.lounge-store-service-pill {
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.5rem;
+  background: #faf8f5;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.lounge-store-link {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  transition: transform 0.25s ease;
+}
+.lounge-store-card:hover .lounge-store-link {
+  transform: translateX(4px);
+}
+.lounge-all-stores-cta {
+  display: flex;
+  justify-content: center;
+}
+
+/* Visit OVIA Closing Banner */
+.lounge-closing-banner {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: 4.5rem 2.5rem;
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.lounge-closing-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.lounge-closing-banner h2 {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3.2vw, 36px);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  margin: 0.5rem 0 1.25rem;
+  color: var(--ink);
+}
+.lounge-closing-banner p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #4b5249;
+  margin: 0 0 1rem;
+}
+.lounge-closing-banner p:last-of-type {
+  margin-bottom: 2rem;
+}
+.lounge-closing-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* Contact Us Page Store Lounges Section */
+.contact-lounges-section {
+  margin: 5rem 0;
+}
+.contact-lounges-banner {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  overflow: hidden;
+}
+.contact-lounges-text {
+  padding: clamp(2.5rem, 5vw, 4.5rem);
+}
+.contact-lounges-text h2 {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin: 0.5rem 0 1rem;
+  color: var(--ink);
+}
+.contact-lounges-lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+.contact-lounges-p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+.contact-lounges-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.contact-lounges-image {
+  height: 100%;
+  min-height: 420px;
+  background: #f0f0ea;
+}
+.contact-lounges-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
    RESPONSIVE DESIGN BREAKPOINTS
    ========================================================================== */
 @media (max-width: 1024px) {
@@ -7855,6 +8465,9 @@ body:has(.recovery-page) > footer {
   .contact-channels-grid,
   .care-grid,
   .contact-capabilities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .care-principles-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .faq-two-column-layout {
@@ -7883,6 +8496,7 @@ body:has(.recovery-page) > footer {
   .faq-categories-grid,
   .contact-channels-grid,
   .care-grid,
+  .care-principles-grid,
   .contact-capabilities-grid {
     grid-template-columns: 1fr;
   }
