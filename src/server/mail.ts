@@ -145,8 +145,8 @@ export async function sendAccountEmail(mail: { id: string; to: string; subject: 
   try {
     requireEmailConfiguration();
     const payload = JSON.stringify({
-      from: process.env.EMAIL_FROM,
-      to: [mail.to],
+      from: process.env.EMAIL_FROM!.trim(),
+      to: [mail.to.trim().toLowerCase()],
       subject: mail.subject,
       text: mail.text,
     });
