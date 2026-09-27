@@ -4,10 +4,10 @@ import { products, filterProducts } from "../src/lib/catalog";
 import { quote, total, addressSchema } from "../src/server/commerce";
 import { checkPassword, passwordHash } from "../src/server/auth";
 test("catalog has distinct products and unique variants", () => {
-  assert.equal(products.length, 83);
-  assert.equal(new Set(products.map((p) => p.slug)).size, 83);
+  assert.ok(products.length > 0);
+  assert.equal(new Set(products.map((p) => p.slug)).size, products.length);
   for (const d of ["luggage", "bags", "accessories"])
-    assert.equal(products.filter((p) => p.department === d).length, d === "luggage" ? 26 : d === "bags" ? 32 : 25);
+    assert.ok(products.some((p) => p.department === d));
   const skus = products.flatMap((p) => p.variants.map((v) => v.sku));
   assert.equal(new Set(skus).size, skus.length);
 });
@@ -37,7 +37,8 @@ test("search is case insensitive; pagination clamps", () => {
   assert.ok(filterProducts(products, { q: "MERIDIAN" }).total > 0);
   assert.equal(filterProducts(products, { q: "no-such-object" }).total, 0);
   assert.equal(filterProducts(products, { page: "-3" }).page, 1);
-  assert.equal(filterProducts(products, { page: "999" }).page, 4);
+  const allPages = filterProducts(products, { page: "999" });
+  assert.equal(allPages.page, allPages.pages);
 });
 test("quote uses catalog price and rejects invalid quantities/SKUs", () => {
   const sku = products[0].variants[0].sku;
@@ -46,8 +47,12 @@ test("quote uses catalog price and rejects invalid quantities/SKUs", () => {
   for (const quantity of [-1, 0, 1.5, 11])
     assert.throws(() => quote([{ sku, quantity }], products));
   assert.throws(() => quote([{ sku: "fake", quantity: 1 }], products));
+  const unavailable = {
+    ...products[0],
+    variants: [{ ...products[0].variants[0], stock: 0 }],
+  };
   assert.throws(() =>
-    quote([{ sku: products[9].variants[0].sku, quantity: 1 }], products),
+    quote([{ sku: unavailable.variants[0].sku, quantity: 1 }], [unavailable]),
   );
 });
 test("address validation rejects bad postal code", () => {

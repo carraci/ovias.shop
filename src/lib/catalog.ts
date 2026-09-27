@@ -106,7 +106,7 @@ export const slugify = (s: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 const collections = ["Meridian", "Passage", "Forma", "Interval"];
-export const products: Product[] = [
+const rawProducts: Product[] = [
   ...Object.entries(groups).flatMap(([department, categories]) => {
     if (department === "bags") {
       return bagsProducts;
@@ -198,6 +198,25 @@ export const products: Product[] = [
   }),
   ...newProducts,
 ];
+
+// Imported source feeds overlap in a few places. Keep the first canonical
+// record for a repeated product URL, then give every remaining purchasable
+// variant a stable, unambiguous checkout SKU.
+const canonicalProducts = rawProducts.filter(
+  (product, index, all) =>
+    all.findIndex((candidate) => candidate.slug === product.slug) === index,
+);
+const usedSkus = new Set<string>();
+export const products: Product[] = canonicalProducts.map((product) => ({
+  ...product,
+  variants: product.variants.map((variant, index) => {
+    const sku = usedSkus.has(variant.sku)
+      ? `${variant.sku}-${product.slug}-${index + 1}`
+      : variant.sku;
+    usedSkus.add(sku);
+    return { ...variant, sku };
+  }),
+}));
 export const money = (minor: number) =>
   new Intl.NumberFormat("en-IN", {
     style: "currency",
@@ -283,7 +302,7 @@ export function filterProducts(catalog: Product[], f: Filters) {
       if (f.material) {
         const mat = f.material.toLowerCase();
         const pMat = p.material.toLowerCase();
-        if (pMat !== mat && !pMat.includes(mat) && !p.tags.includes(mat) && !(p.materials && p.materials.some(m => m.toLowerCase().includes(mat)))) {
+        if (pMat !== mat && !pMat.includes(mat) && !(p.materials && p.materials.some(m => m.toLowerCase().includes(mat)))) {
           return false;
         }
       }

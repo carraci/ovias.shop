@@ -12,7 +12,8 @@ export type AuthMode =
   | "password-step1"
   | "password-step2"
   | "password-step3"
-  | "verify-account";
+  | "verify-account"
+  | "password-updated";
 
 interface AuthExperienceProps {
   initialMode?:
@@ -46,7 +47,7 @@ export function AuthExperience({
   };
 
   const [mode, setMode] = useState<AuthMode>(getInitialStep());
-  const [email, setEmail] = useState(verificationEmail || "adsh@gmail.com");
+  const [email, setEmail] = useState(verificationEmail);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -69,6 +70,11 @@ export function AuthExperience({
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [attemptsLeft, setAttemptsLeft] = useState<number | null>(null);
+  const [otpPurpose, setOtpPurpose] = useState<"reset" | "verify">(
+    initialMode === "verify-email" || initialMode === "verify-account"
+      ? "verify"
+      : "reset",
+  );
 
   // Sync mode with pathname changes
   useEffect(() => {
@@ -106,6 +112,7 @@ export function AuthExperience({
     } else if (newMode === "register") {
       window.history.pushState({}, "", "/account/register");
     } else if (newMode === "password-step1") {
+      setOtpPurpose("reset");
       window.history.pushState({}, "", "/account/forgot-password");
     } else if (newMode === "password-step3") {
       window.history.pushState({}, "", "/account/reset-password");
@@ -175,7 +182,7 @@ export function AuthExperience({
     }
   };
 
-  // Send recovery code (Step 1 -> Step 2)
+  // Send either a password-recovery or account-verification code.
   const handleSendCode = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (!email) {
@@ -185,7 +192,13 @@ export function AuthExperience({
     setBusy(true);
     setError("");
     try {
-      await request<{ message: string }>("auth/forgot-password", "POST", { email });
+      await request<{ message: string }>(
+        otpPurpose === "verify"
+          ? "auth/resend-verification"
+          : "auth/forgot-password",
+        "POST",
+        { email },
+      );
       setResendAt(Date.now() + 42_000);
       setSeconds(42);
       setOtpDigits(["", "", "", "", "", ""]);
@@ -209,7 +222,7 @@ export function AuthExperience({
     setBusy(true);
     setError("");
     try {
-      if (initialMode === "verify-account" || initialMode === "verify-email") {
+      if (otpPurpose === "verify") {
         const result = await request<{ message: string }>(
           "auth/verify-email",
           "POST",
@@ -218,7 +231,7 @@ export function AuthExperience({
         notify(result.message);
         await refresh();
         onComplete?.();
-        router.push("/account");
+        setMode("password-updated");
         return;
       }
 
@@ -278,7 +291,7 @@ export function AuthExperience({
       setSuccessMsg("Your password has been reset. Please sign in.");
       setPassword("");
       setConfirmPassword("");
-      navigateTo("sign-in");
+      setMode("password-updated");
     } catch (err) {
       setError((err as Error).message);
     } finally {
@@ -299,6 +312,9 @@ export function AuthExperience({
 
       if (result.verificationRequired && result.email) {
         setEmail(result.email);
+        setOtpPurpose("verify");
+        setResendAt(Date.now() + 42_000);
+        setSeconds(42);
         setMode("password-step2");
         return;
       }
@@ -343,6 +359,7 @@ export function AuthExperience({
 
       if (result.verificationRequired && result.email) {
         setEmail(result.email);
+        setOtpPurpose("verify");
         setResendAt(Date.now() + 42_000);
         setSeconds(42);
         setMode("password-step2");
@@ -358,7 +375,7 @@ export function AuthExperience({
   };
 
   // Password criteria for Step 3 and Register
-  const hasMinLength = password.length >= 8;
+  const hasMinLength = password.length >= 10;
   const hasNumber = /\d/.test(password);
   const hasUppercase = /[A-Z]/.test(password);
 
@@ -387,7 +404,10 @@ export function AuthExperience({
                 className="ovia-auth-back-btn"
                 aria-label="Back"
                 onClick={() => {
-                  if (mode === "password-step2") navigateTo("password-step1");
+                  if (mode === "password-step2")
+                    otpPurpose === "verify"
+                      ? navigateTo("sign-in")
+                      : navigateTo("password-step1");
                   else if (mode === "password-step3") navigateTo("password-step2");
                   else navigateTo("sign-in");
                 }}
@@ -414,6 +434,27 @@ export function AuthExperience({
           )}
           {mode === "password-step3" && (
             <p className="ovia-auth-step-indicator">STEP 3 OF 3</p>
+          )}
+
+          {mode === "password-updated" && (
+            <div className="ovia-auth-view ovia-auth-complete">
+              <div className="ovia-auth-complete-icon" aria-hidden="true">
+                <Check size={30} />
+              </div>
+              <h1 className="ovia-auth-heading">
+                {otpPurpose === "verify" ? "Email verified" : "Password updated"}
+              </h1>
+              <p className="ovia-auth-subtext">
+                {successMsg || "Your email has been verified. You can now sign in to OVIA."}
+              </p>
+              <button
+                type="button"
+                className="ovia-auth-primary-btn"
+                onClick={() => navigateTo("sign-in")}
+              >
+                SIGN IN →
+              </button>
+            </div>
           )}
 
           {/* ══════════════════════════════════════════════
@@ -449,7 +490,7 @@ export function AuthExperience({
                     required
                     maxLength={200}
                     autoComplete="email"
-                    placeholder="adsh@gmail.com"
+                    placeholder="you@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="ovia-auth-input"
@@ -566,7 +607,7 @@ export function AuthExperience({
                       maxLength={200}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="adsh@gmail.com"
+                      placeholder="you@example.com"
                       className="ovia-auth-input"
                     />
                     <span className="ovia-auth-input-icon" aria-hidden="true">
@@ -744,7 +785,7 @@ export function AuthExperience({
                 <ul className="ovia-auth-checklist ovia-auth-req-list">
                   <li className={hasMinLength ? "is-valid" : ""}>
                     <Check size={14} className="ovia-auth-check-icon" />
-                    <span>At least 8 characters</span>
+                    <span>At least 10 characters</span>
                   </li>
                   <li className={hasNumber ? "is-valid" : ""}>
                     <Check size={14} className="ovia-auth-check-icon" />
@@ -885,7 +926,7 @@ export function AuthExperience({
                 <ul className="ovia-auth-checklist ovia-auth-req-list">
                   <li className={hasMinLength ? "is-valid" : ""}>
                     <Check size={14} className="ovia-auth-check-icon" />
-                    <span>At least 8 characters</span>
+                    <span>At least 10 characters</span>
                   </li>
                   <li className={hasNumber ? "is-valid" : ""}>
                     <Check size={14} className="ovia-auth-check-icon" />

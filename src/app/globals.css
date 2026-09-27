@@ -4939,9 +4939,9 @@ body:has(.recovery-page) > footer {
 
 .ovia-auth-split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(430px, 520px);
   min-height: 100svh;
-  background: #ffffff;
+  background: #1d1611 url("/media/ovia-auth-hero-luxury.png") center / cover no-repeat;
   color: #111111;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
@@ -4952,11 +4952,7 @@ body:has(.recovery-page) > footer {
   top: 0;
   height: 100svh;
   width: 100%;
-  background-color: #2b3030;
-  background-image: url("/media/ovia-auth-hero.webp");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  background: linear-gradient(90deg, rgba(11, 7, 4, 0.35), rgba(11, 7, 4, 0.06));
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -5019,17 +5015,23 @@ body:has(.recovery-page) > footer {
   align-items: center;
   min-height: 100svh;
   padding: clamp(36px, 5vw, 64px) clamp(24px, 4vw, 56px);
-  background: #ffffff;
+  background: transparent;
   overflow-y: auto;
   box-sizing: border-box;
 }
 
 .ovia-auth-card {
   width: 100%;
-  max-width: 410px;
+  max-width: 500px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  background: rgba(255, 254, 252, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 24px 70px rgba(14, 9, 5, 0.28);
+  border-radius: 4px;
+  padding: clamp(30px, 4vw, 52px);
+  box-sizing: border-box;
 }
 
 /* Top Header Bar */
@@ -5092,9 +5094,9 @@ body:has(.recovery-page) > footer {
 
 /* Headings & Subtitles */
 .ovia-auth-heading {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 25px;
-  font-weight: 600;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(28px, 2.4vw, 36px);
+  font-weight: 400;
   color: #111111;
   letter-spacing: -0.015em;
   line-height: 1.25;
@@ -5498,10 +5500,31 @@ body:has(.recovery-page) > footer {
   margin-bottom: 16px;
 }
 
+.ovia-auth-complete {
+  text-align: center;
+}
+
+.ovia-auth-complete .ovia-auth-heading,
+.ovia-auth-complete .ovia-auth-subtext {
+  text-align: center;
+}
+
+.ovia-auth-complete-icon {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 24px;
+  border: 1px solid #1a1a1a;
+  border-radius: 50%;
+  color: #111;
+}
+
 /* Responsive Breakpoints */
 @media (max-width: 900px) {
   .ovia-auth-split {
     grid-template-columns: 1fr;
+    background-position: 56% center;
   }
   .ovia-auth-visual {
     position: relative;
@@ -5512,7 +5535,9 @@ body:has(.recovery-page) > footer {
   .ovia-auth-panel {
     padding: 32px 24px 48px;
     min-height: auto;
+    background: rgba(255, 255, 255, 0.88);
   }
+  .ovia-auth-card { box-shadow: none; }
   .ovia-auth-otp-row {
     gap: 6px;
   }
