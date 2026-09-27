@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="100%" height="100%">
+  <defs>
+    <!-- Seamless Warm Background -->
+    <linearGradient id="bgStudio" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5f2ec" />
+      <stop offset="100%" stop-color="#ebe5da" />
+    </linearGradient>
+
+    <!-- Warm Floor Shadow -->
+    <linearGradient id="groundShadow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3c3327" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#3c3327" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Ivory Leather Front & Side -->
+    <linearGradient id="leatherFace" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fdfcf9" />
+      <stop offset="50%" stop-color="#f4f0e6" />
+      <stop offset="100%" stop-color="#e7e0d2" />
+    </linearGradient>
+
+    <linearGradient id="leatherTop" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ede7db" />
+      <stop offset="50%" stop-color="#fbfaf6" />
+      <stop offset="100%" stop-color="#dfd7c7" />
+    </linearGradient>
+
+    <linearGradient id="goldZip" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe8ba" />
+      <stop offset="50%" stop-color="#d4af66" />
+      <stop offset="100%" stop-color="#8a6e35" />
+    </linearGradient>
+
+    <filter id="shadowBag" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#4a3e2e" flood-opacity="0.25" />
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#4a3e2e" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <!-- Studio Background -->
+  <rect width="400" height="320" fill="url(#bgStudio)" />
+
+  <!-- Ambient Floor Shadow -->
+  <ellipse cx="200" cy="265" rx="145" ry="18" fill="url(#groundShadow)" />
+  <ellipse cx="200" cy="262" rx="115" ry="8" fill="#3a3024" opacity="0.3" />
+
+  <!-- Crossbody Bag Model (Centred Ivory Camera Bag Silhouette) -->
+  <g transform="translate(65, 75)" filter="url(#shadowBag)">
+    <!-- Back Gusset -->
+    <rect x="18" y="10" width="234" height="152" rx="34" fill="url(#leatherTop)" stroke="#c2b4a0" stroke-width="1" />
+    
+    <!-- Top Zipper Track -->
+    <path d="M40 10 Q135 7 230 10" fill="none" stroke="#635441" stroke-width="4.5" stroke-linecap="round" />
+    <path d="M40 10 Q135 7 230 10" fill="none" stroke="url(#goldZip)" stroke-width="2" stroke-dasharray="2.5,2" />
+
+    <!-- Gold Dual Pulls -->
+    <rect x="52" y="5" width="12" height="6" rx="1.5" fill="url(#goldZip)" />
+    <polygon points="55,11 61,11 63,26 53,26" fill="url(#goldZip)" />
+
+    <!-- Front Structured Leather Panel -->
+    <rect x="22" y="16" width="226" height="146" rx="30" fill="url(#leatherFace)" stroke="#d3c7b5" stroke-width="1.2" />
+
+    <!-- Precision Saddle Perimeter Stitching -->
+    <rect x="26" y="20" width="218" height="138" rx="26" fill="none" stroke="#fff" stroke-width="1.2" opacity="0.8" />
+    <rect x="30" y="24" width="210" height="130" rx="22" fill="none" stroke="#b2a28b" stroke-width="0.7" stroke-dasharray="3.5,2.5" opacity="0.6" />
+
+    <!-- Embossed Gold OVIA Signature Wordmark -->
+    <text x="135" y="112" font-family="Georgia, serif" font-size="11" letter-spacing="4.5" fill="#887452" font-weight="bold" text-anchor="middle">OVIA</text>
+
+    <!-- Side Strap Loops & Gold Rings -->
+    <!-- Left Loop -->
+    <path d="M22 65 C12 65 6 72 6 86 C6 100 12 107 22 107" fill="url(#leatherFace)" stroke="#baa890" stroke-width="1.2" />
+    <circle cx="8" cy="86" r="6" fill="none" stroke="url(#goldZip)" stroke-width="3" />
+
+    <!-- Right Loop & Clochette Tag (As seen in GUI) -->
+    <path d="M248 65 C258 65 264 72 264 86 C264 100 258 107 248 107" fill="url(#leatherFace)" stroke="#baa890" stroke-width="1.2" />
+    <circle cx="262" cy="86" r="6" fill="none" stroke="url(#goldZip)" stroke-width="3" />
+    
+    <!-- Hanging Clochette Tag -->
+    <g transform="translate(262, 88) rotate(22)">
+      <rect x="-3" y="0" width="6" height="16" fill="url(#leatherFace)" stroke="#b8a78e" stroke-width="0.8" />
+      <path d="M-8 14 L-14 65 C-14 70 -8 74 0 74 C8 74 14 70 14 65 L8 14 Z" fill="url(#leatherFace)" stroke="#b8a78e" stroke-width="1.2" />
+      <g transform="translate(0, 48) rotate(90)">
+        <text x="0" y="0" font-family="Georgia, serif" font-size="7" letter-spacing="2" fill="#806d4e" font-weight="bold" text-anchor="middle">OVIA</text>
+      </g>
+    </g>
+  </g>
+</svg>

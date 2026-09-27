@@ -1,0 +1,45 @@
+{
+  "name": "ovia",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0",
+    "build": "next build",
+    "start": "next start --hostname 0.0.0.0",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "seed": "node --env-file-if-exists=.env.local --import tsx scripts/seed.ts",
+    "assets:import": "tsx scripts/import-assets.ts",
+    "test:e2e": "playwright test",
+    "db:check": "node --env-file-if-exists=.env.local scripts/check-db.mjs",
+    "import-products": "node --env-file-if-exists=.env.local --import tsx scripts/import-products.ts",
+    "import-products:dry": "node --env-file-if-exists=.env.local --import tsx scripts/import-products.ts -- --dry-run",
+    "import:luggage": "node --env-file-if-exists=.env.local --import tsx scripts/import-luggage.ts",
+    "import:luggage:dry": "node --env-file-if-exists=.env.local --import tsx scripts/import-luggage.ts -- --dry-run"
+  },
+  "dependencies": {
+    "framer-motion": "^12.23.0",
+    "gsap": "^3.13.0",
+    "jose": "^6.1.0",
+    "leaflet": "1.9.4",
+    "lenis": "^1.3.26",
+    "lucide-react": "^0.468.0",
+    "mongodb": "^6.20.0",
+    "next": "16.3.5",
+    "razorpay": "^2.9.6",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "stripe": "^18.5.0",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "@types/leaflet": "1.9.22",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "prettier": "3.9.8",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  }
+}

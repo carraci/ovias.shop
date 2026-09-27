@@ -1,0 +1,255 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="100%" height="100%">
+  <defs>
+    <!-- Metallic Shell Gradients -->
+    <linearGradient id="caseBodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f2f4f2" />
+      <stop offset="15%" stop-color="#e3e6e3" />
+      <stop offset="50%" stop-color="#d4d8d4" />
+      <stop offset="85%" stop-color="#bcc1bc" />
+      <stop offset="100%" stop-color="#9da39d" />
+    </linearGradient>
+
+    <linearGradient id="grooveDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7a827a" />
+      <stop offset="50%" stop-color="#8c948c" />
+      <stop offset="100%" stop-color="#a4aca4" />
+    </linearGradient>
+
+    <linearGradient id="grooveLight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.3" />
+    </linearGradient>
+
+    <linearGradient id="cornerCap" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="40%" stop-color="#dce0db" />
+      <stop offset="70%" stop-color="#b0b7af" />
+      <stop offset="100%" stop-color="#8a9289" />
+    </linearGradient>
+
+    <!-- Heritage Dark Forest Green Leather Handle -->
+    <linearGradient id="leatherGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#24382c" />
+      <stop offset="35%" stop-color="#18291f" />
+      <stop offset="75%" stop-color="#132018" />
+      <stop offset="100%" stop-color="#0c1711" />
+    </linearGradient>
+
+    <linearGradient id="lockMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="50%" stop-color="#c2c7c0" />
+      <stop offset="100%" stop-color="#7e867c" />
+    </linearGradient>
+
+    <filter id="caseShadow" x="-10%" y="-10%" width="120%" height="135%">
+      <feDropShadow dx="0" dy="28" stdDeviation="24" flood-color="#1a241b" flood-opacity="0.22" />
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#1a241b" flood-opacity="0.12" />
+    </filter>
+
+    <filter id="handleShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="12" stdDeviation="8" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- Ambient Floor Shadow -->
+  <ellipse cx="450" cy="540" rx="360" ry="24" fill="#000000" opacity="0.18" />
+  <ellipse cx="450" cy="535" rx="310" ry="14" fill="#141a15" opacity="0.14" />
+
+  <!-- Outer Main Aluminum Case Body (67cm wide x 35cm high aspect ~ 680 x 360) -->
+  <g filter="url(#caseShadow)">
+    <!-- Base Aluminium Shell -->
+    <rect x="110" y="150" width="680" height="364" rx="28" fill="url(#caseBodyGrad)" stroke="#8e968e" stroke-width="2" />
+
+    <!-- Perimeter Bevel Frame -->
+    <rect x="118" y="158" width="664" height="348" rx="22" fill="none" stroke="#ffffff" stroke-width="2" stroke-opacity="0.7" />
+    <rect x="120" y="160" width="660" height="344" rx="20" fill="none" stroke="#7d857d" stroke-width="1.5" stroke-opacity="0.5" />
+
+    <!-- Center Tongue-and-Groove Frame Split Line -->
+    <line x1="110" y1="332" x2="790" y2="332" stroke="#4a524a" stroke-width="5" />
+    <line x1="110" y1="330" x2="790" y2="330" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.9" />
+    <line x1="110" y1="335" x2="790" y2="335" stroke="#2c332c" stroke-width="1.5" stroke-opacity="0.8" />
+
+    <!-- Iconic Vertical Aluminum Grooves (Classic OVIA & Rimowa Signature) -->
+    <!-- Grooves from x=210 to x=690 across both shells -->
+    <g opacity="0.95">
+      <!-- Top Shell Grooves -->
+      <g>
+        <!-- Repeating groove patterns -->
+        <path d="
+          M230 162 v166 M233 162 v166
+          M270 162 v166 M273 162 v166
+          M310 162 v166 M313 162 v166
+          M350 162 v166 M353 162 v166
+          M390 162 v166 M393 162 v166
+          M430 162 v166 M433 162 v166
+          M470 162 v166 M473 162 v166
+          M510 162 v166 M513 162 v166
+          M550 162 v166 M553 162 v166
+          M590 162 v166 M593 162 v166
+          M630 162 v166 M633 162 v166
+          M670 162 v166 M673 162 v166
+        " stroke="url(#grooveDark)" stroke-width="3.5" stroke-linecap="round" />
+        
+        <path d="
+          M231 162 v166
+          M271 162 v166
+          M311 162 v166
+          M351 162 v166
+          M391 162 v166
+          M431 162 v166
+          M471 162 v166
+          M511 162 v166
+          M551 162 v166
+          M591 162 v166
+          M631 162 v166
+          M671 162 v166
+        " stroke="url(#grooveLight)" stroke-width="1.8" stroke-linecap="round" />
+      </g>
+
+      <!-- Bottom Shell Grooves -->
+      <g>
+        <path d="
+          M230 338 v166 M233 338 v166
+          M270 338 v166 M273 338 v166
+          M310 338 v166 M313 338 v166
+          M350 338 v166 M353 338 v166
+          M390 338 v166 M393 338 v166
+          M430 338 v166 M433 338 v166
+          M470 338 v166 M473 338 v166
+          M510 338 v166 M513 338 v166
+          M550 338 v166 M553 338 v166
+          M590 338 v166 M593 338 v166
+          M630 338 v166 M633 338 v166
+          M670 338 v166 M673 338 v166
+        " stroke="url(#grooveDark)" stroke-width="3.5" stroke-linecap="round" />
+
+        <path d="
+          M231 338 v166
+          M271 338 v166
+          M311 338 v166
+          M351 338 v166
+          M391 338 v166
+          M431 338 v166
+          M471 338 v166
+          M511 338 v166
+          M551 338 v166
+          M591 338 v166
+          M631 338 v166
+          M671 338 v166
+        " stroke="url(#grooveLight)" stroke-width="1.8" stroke-linecap="round" />
+      </g>
+    </g>
+
+    <!-- 4 High-Gloss Reinforced Aluminum Corner Caps with Rivets -->
+    <!-- Top-Left Corner -->
+    <g>
+      <path d="M110 215 V178 A28 28 0 0 1 138 150 H185 C185 180 180 215 110 215 Z" fill="url(#cornerCap)" stroke="#747b74" stroke-width="1" />
+      <!-- Rivets -->
+      <circle cx="132" cy="172" r="3.5" fill="#444b44" />
+      <circle cx="131" cy="171" r="1.5" fill="#ffffff" />
+      <circle cx="168" cy="165" r="3.5" fill="#444b44" />
+      <circle cx="167" cy="164" r="1.5" fill="#ffffff" />
+      <circle cx="125" cy="202" r="3.5" fill="#444b44" />
+      <circle cx="124" cy="201" r="1.5" fill="#ffffff" />
+    </g>
+
+    <!-- Top-Right Corner -->
+    <g>
+      <path d="M790 215 V178 A28 28 0 0 0 762 150 H715 C715 180 720 215 790 215 Z" fill="url(#cornerCap)" stroke="#747b74" stroke-width="1" />
+      <!-- Rivets -->
+      <circle cx="768" cy="172" r="3.5" fill="#444b44" />
+      <circle cx="767" cy="171" r="1.5" fill="#ffffff" />
+      <circle cx="732" cy="165" r="3.5" fill="#444b44" />
+      <circle cx="731" cy="164" r="1.5" fill="#ffffff" />
+      <circle cx="775" cy="202" r="3.5" fill="#444b44" />
+      <circle cx="774" cy="201" r="1.5" fill="#ffffff" />
+    </g>
+
+    <!-- Bottom-Left Corner -->
+    <g>
+      <path d="M110 449 V486 A28 28 0 0 0 138 514 H185 C185 484 180 449 110 449 Z" fill="url(#cornerCap)" stroke="#747b74" stroke-width="1" />
+      <!-- Rivets -->
+      <circle cx="132" cy="492" r="3.5" fill="#444b44" />
+      <circle cx="131" cy="491" r="1.5" fill="#ffffff" />
+      <circle cx="168" cy="499" r="3.5" fill="#444b44" />
+      <circle cx="167" cy="498" r="1.5" fill="#ffffff" />
+      <circle cx="125" cy="462" r="3.5" fill="#444b44" />
+      <circle cx="124" cy="461" r="1.5" fill="#ffffff" />
+    </g>
+
+    <!-- Bottom-Right Corner -->
+    <g>
+      <path d="M790 449 V486 A28 28 0 0 1 762 514 H715 C715 484 720 449 790 449 Z" fill="url(#cornerCap)" stroke="#747b74" stroke-width="1" />
+      <!-- Rivets -->
+      <circle cx="768" cy="492" r="3.5" fill="#444b44" />
+      <circle cx="767" cy="491" r="1.5" fill="#ffffff" />
+      <circle cx="732" cy="499" r="3.5" fill="#444b44" />
+      <circle cx="731" cy="498" r="1.5" fill="#ffffff" />
+      <circle cx="775" cy="462" r="3.5" fill="#444b44" />
+      <circle cx="774" cy="461" r="1.5" fill="#ffffff" />
+    </g>
+
+    <!-- Dual Heavy-Duty TSA Approved Combination Locks -->
+    <!-- Left TSA Lock -->
+    <g>
+      <rect x="250" y="306" width="56" height="52" rx="6" fill="url(#lockMetal)" stroke="#505750" stroke-width="1.5" />
+      <rect x="255" y="312" width="46" height="24" rx="3" fill="#202421" />
+      <!-- Combination Wheel Dials -->
+      <rect x="260" y="316" width="9" height="16" rx="2" fill="#757d74" stroke="#111" stroke-width="0.5" />
+      <rect x="273" y="316" width="9" height="16" rx="2" fill="#757d74" stroke="#111" stroke-width="0.5" />
+      <rect x="286" y="316" width="9" height="16" rx="2" fill="#757d74" stroke="#111" stroke-width="0.5" />
+      <!-- Keyhole & Release Trigger -->
+      <circle cx="278" cy="346" r="3.5" fill="#2b302c" />
+      <line x1="278" y1="346" x2="278" y2="352" stroke="#2b302c" stroke-width="1.5" />
+      <path d="M260 342 h36" stroke="#ffffff" stroke-width="1" stroke-opacity="0.8" />
+    </g>
+
+    <!-- Right TSA Lock -->
+    <g>
+      <rect x="594" y="306" width="56" height="52" rx="6" fill="url(#lockMetal)" stroke="#505750" stroke-width="1.5" />
+      <rect x="599" y="312" width="46" height="24" rx="3" fill="#202421" />
+      <!-- Combination Wheel Dials -->
+      <rect x="604" y="316" width="9" height="16" rx="2" fill="#757d74" stroke="#111" stroke-width="0.5" />
+      <rect x="617" y="316" width="9" height="16" rx="2" fill="#757d74" stroke="#111" stroke-width="0.5" />
+      <rect x="630" y="316" width="9" height="16" rx="2" fill="#757d74" stroke="#111" stroke-width="0.5" />
+      <!-- Keyhole & Release Trigger -->
+      <circle cx="622" cy="346" r="3.5" fill="#2b302c" />
+      <line x1="622" y1="346" x2="622" y2="352" stroke="#2b302c" stroke-width="1.5" />
+      <path d="M604 342 h36" stroke="#ffffff" stroke-width="1" stroke-opacity="0.8" />
+    </g>
+
+    <!-- Center Engraved Metal Badge -->
+    <rect x="405" y="318" width="90" height="28" rx="4" fill="url(#lockMetal)" stroke="#5e665d" stroke-width="1" />
+    <text x="450" y="337" fill="#1e241f" font-family="Georgia, serif" font-size="14" font-weight="bold" text-anchor="middle" letter-spacing="4">OVIA</text>
+  </g>
+
+  <!-- Handcrafted Forest Green Leather Handle Assembly (Top Mount) -->
+  <g filter="url(#handleShadow)">
+    <!-- Handle Metal Mounting Brackets (Aluminium Anchor Points) -->
+    <rect x="368" y="132" width="28" height="28" rx="4" fill="url(#lockMetal)" stroke="#454c44" stroke-width="1.5" />
+    <circle cx="382" cy="146" r="4" fill="#252b24" />
+    <circle cx="381" cy="145" r="1.5" fill="#ffffff" />
+
+    <rect x="504" y="132" width="28" height="28" rx="4" fill="url(#lockMetal)" stroke="#454c44" stroke-width="1.5" />
+    <circle cx="518" cy="146" r="4" fill="#252b24" />
+    <circle cx="517" cy="145" r="1.5" fill="#ffffff" />
+
+    <!-- Leather Strap Uprights -->
+    <path d="M374 136 V96 C374 86 384 80 398 80 H502 C516 80 526 86 526 96 V136" fill="none" stroke="#122017" stroke-width="26" stroke-linecap="round" />
+    <path d="M374 136 V96 C374 86 384 80 398 80 H502 C516 80 526 86 526 96 V136" fill="none" stroke="url(#leatherGrad)" stroke-width="22" stroke-linecap="round" />
+
+    <!-- Authentic Handcrafted Contrast Saddle Stitching (Faber-Castell / Heritage Green Accent) -->
+    <path d="M376 132 V98 C376 89 385 84 398 84 H502 C515 84 524 89 524 98 V132" fill="none" stroke="#71947b" stroke-width="1.8" stroke-dasharray="4,4" stroke-linecap="round" opacity="0.85" />
+    <path d="M372 132 V98 C372 87 383 81 398 81 H502 C517 81 528 87 528 98 V132" fill="none" stroke="#71947b" stroke-width="1.8" stroke-dasharray="4,4" stroke-linecap="round" opacity="0.85" />
+
+    <!-- Central Leather Grip Wrap -->
+    <rect x="412" y="68" width="76" height="24" rx="8" fill="url(#leatherGrad)" stroke="#0c1711" stroke-width="1.5" />
+    <line x1="422" y1="70" x2="422" y2="90" stroke="#71947b" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.9" />
+    <line x1="478" y1="70" x2="478" y2="90" stroke="#71947b" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.9" />
+  </g>
+
+  <!-- Refined Typography Annotation -->
+  <text x="450" y="578" fill="#586156" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="600" text-anchor="middle" letter-spacing="4">
+    STUDIO ARTIST CASE · ANODIZED ALUMINIUM · 67 × 35 × 8 CM · EDITION 97390043
+  </text>
+</svg>

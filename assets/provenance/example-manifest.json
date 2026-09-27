@@ -1,0 +1,14 @@
+[
+  {
+    "id": "approved-product-photo",
+    "url": "https://res.cloudinary.com/your-cloud/image/upload/product.jpg",
+    "sourcePage": "https://example.com/your-owned-product",
+    "author": "Replace with photographer",
+    "license": "Replace with actual license",
+    "licenseUrl": "https://example.com/license",
+    "permissionEvidence": "Replace with permission record",
+    "approved": false,
+    "productMatches": false,
+    "attribution": "Replace with required attribution"
+  }
+]

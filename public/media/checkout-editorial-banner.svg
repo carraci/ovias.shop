@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="100%" height="100%">
+  <defs>
+    <!-- Wall / Architecture Gradient -->
+    <linearGradient id="wallGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5a524a" />
+      <stop offset="40%" stop-color="#463f38" />
+      <stop offset="100%" stop-color="#322c26" />
+    </linearGradient>
+
+    <!-- Sunlit Stone Pillar -->
+    <linearGradient id="pillarGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c9beaf" />
+      <stop offset="40%" stop-color="#eee6da" />
+      <stop offset="80%" stop-color="#dad0c2" />
+      <stop offset="100%" stop-color="#b6ab9c" />
+    </linearGradient>
+
+    <!-- Warm Sunlight Floor -->
+    <linearGradient id="floorGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ddd4c5" />
+      <stop offset="100%" stop-color="#c5baa9" />
+    </linearGradient>
+
+    <!-- Ivory Leather Bag Gradients -->
+    <linearGradient id="bagBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="35%" stop-color="#f5f2eb" />
+      <stop offset="70%" stop-color="#eae5db" />
+      <stop offset="100%" stop-color="#d6cebf" />
+    </linearGradient>
+
+    <linearGradient id="bagFrontFace" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#faf8f3" />
+      <stop offset="60%" stop-color="#eee9df" />
+      <stop offset="100%" stop-color="#dfd7ca" />
+    </linearGradient>
+
+    <!-- Champagne Gold Hardware -->
+    <linearGradient id="goldHdw" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff8ea" />
+      <stop offset="40%" stop-color="#d8ba82" />
+      <stop offset="70%" stop-color="#b99958" />
+      <stop offset="100%" stop-color="#8a6c31" />
+    </linearGradient>
+
+    <!-- Soft Ambient Drop Shadows -->
+    <filter id="bagShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="8" dy="24" stdDeviation="16" flood-color="#2a221b" flood-opacity="0.32" />
+      <feDropShadow dx="2" dy="6" stdDeviation="6" flood-color="#2a221b" flood-opacity="0.2" />
+    </filter>
+
+    <filter id="tagShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="4" dy="10" stdDeviation="6" flood-color="#2a221b" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Background Architecture Scene -->
+  <rect width="600" height="900" fill="url(#wallGrad)" />
+
+  <!-- Sunlit Stone Pillar on the Right -->
+  <polygon points="340,0 600,0 600,620 340,620" fill="url(#pillarGrad)" />
+  <rect x="340" y="0" width="12" height="620" fill="#2d2620" opacity="0.25" />
+
+  <!-- Travertine Marble Floor -->
+  <polygon points="0,580 600,580 600,900 0,900" fill="url(#floorGrad)" />
+  <line x1="0" y1="580" x2="600" y2="580" stroke="#b0a595" stroke-width="2" />
+
+  <!-- Ambient Light Streak across Floor -->
+  <polygon points="120,580 480,580 600,900 40,900" fill="#fff9ef" opacity="0.35" />
+
+  <!-- Natural Stone Pedestal Edge -->
+  <rect x="0" y="610" width="600" height="290" fill="#cfc5b4" opacity="0.8" />
+  <line x1="0" y1="610" x2="600" y2="610" stroke="#f6f2ea" stroke-width="1.5" />
+
+  <!-- Contact Shadow Under Handbag -->
+  <ellipse cx="280" cy="624" rx="230" ry="24" fill="#2d241c" opacity="0.45" />
+  <ellipse cx="280" cy="620" rx="190" ry="12" fill="#1b140e" opacity="0.5" />
+
+  <!-- THE IVORY LUXURY CROSSBODY BAG (Accurate to reference photo) -->
+  <g transform="translate(60, 410)" filter="url(#bagShadow)">
+    <!-- Back Gusset Depth -->
+    <rect x="38" y="24" width="364" height="176" rx="36" fill="url(#bagBody)" stroke="#baa992" stroke-width="1" />
+    
+    <!-- Top Zipper Track & Gold Teeth -->
+    <path d="M70 24 Q220 20 370 24" fill="none" stroke="#6b5e4c" stroke-width="6" stroke-linecap="round" />
+    <path d="M70 24 Q220 20 370 24" fill="none" stroke="url(#goldHdw)" stroke-width="3" stroke-dasharray="3,2" />
+
+    <!-- Dual Zipper Pulls -->
+    <rect x="85" y="16" width="18" height="8" rx="2" fill="url(#goldHdw)" />
+    <polygon points="90,24 98,24 100,42 88,42" fill="url(#goldHdw)" />
+
+    <!-- Main Front Structured Leather Face -->
+    <rect x="44" y="32" width="352" height="168" rx="32" fill="url(#bagFrontFace)" stroke="#cfc3b0" stroke-width="1.5" />
+
+    <!-- Tailored Edge Piping / Saddle Inset Stitching -->
+    <rect x="49" y="37" width="342" height="158" rx="28" fill="none" stroke="#dfd6c6" stroke-width="1.5" />
+    <rect x="54" y="42" width="332" height="148" rx="24" fill="none" stroke="#b0a38e" stroke-width="0.75" stroke-dasharray="4,3" opacity="0.7" />
+
+    <!-- Embossed Gold OVIA Wordmark on Bag Center -->
+    <text x="220" y="148" font-family="Georgia, serif" font-size="14" letter-spacing="5" fill="#8f7b58" font-weight="bold" text-anchor="middle">OVIA</text>
+
+    <!-- Right Side Leather Attachment Loop & Gold Hardware Link -->
+    <g transform="translate(388, 56)">
+      <!-- Leather loop -->
+      <path d="M0 12 C14 12 18 20 18 36 C18 52 14 60 0 60" fill="url(#bagBody)" stroke="#b8a791" stroke-width="1.5" />
+      <!-- D-Ring Bracket -->
+      <rect x="14" y="24" width="8" height="24" rx="2" fill="url(#goldHdw)" />
+      <!-- Carabiner Swivel Ring -->
+      <circle cx="28" cy="36" r="10" fill="none" stroke="url(#goldHdw)" stroke-width="4.5" />
+      <rect x="34" y="28" width="6" height="16" rx="2" fill="url(#goldHdw)" />
+
+      <!-- Hanging Luxury Leather Clochette / Tag (Angled like in reference) -->
+      <g transform="translate(24, 46) rotate(32)" filter="url(#tagShadow)">
+        <!-- Tag leather strap -->
+        <rect x="0" y="-8" width="10" height="26" fill="url(#bagBody)" stroke="#baa892" stroke-width="1" />
+        <!-- Keyhole bell / Tag shape -->
+        <path d="M-6 16 L-16 110 C-16 118 -8 124 5 124 C18 124 26 118 26 110 L16 16 Z" fill="url(#bagBody)" stroke="#baa892" stroke-width="1.5" />
+        <rect x="-8" y="20" width="26" height="96" fill="none" stroke="#baa892" stroke-width="0.8" stroke-dasharray="3,2" />
+        <!-- Embossed OVIA on Tag vertically -->
+        <g transform="translate(5, 78) rotate(90)">
+          <text x="0" y="0" font-family="Georgia, serif" font-size="10.5" letter-spacing="3.5" fill="#8c7755" font-weight="bold" text-anchor="middle">OVIA</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Left Side Strap Tail Anchor -->
+    <path d="M44 80 C24 80 10 90 0 110 C-10 130 -16 170 -18 210" fill="none" stroke="url(#bagBody)" stroke-width="16" stroke-linecap="round" />
+    <path d="M44 80 C24 80 10 90 0 110 C-10 130 -16 170 -18 210" fill="none" stroke="#baa992" stroke-width="1" stroke-linecap="round" stroke-dasharray="4,3" />
+  </g>
+
+  <!-- Editorial Typography Inscriptions in Upper Left (Exact to mockup) -->
+  <g transform="translate(50, 140)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="11.5" letter-spacing="4" fill="#dfd6c8" font-weight="600">A MORE</text>
+    <text x="0" y="24" font-family="Arial, sans-serif" font-size="11.5" letter-spacing="4" fill="#dfd6c8" font-weight="600">INTENTIONAL</text>
+    <text x="0" y="48" font-family="Arial, sans-serif" font-size="11.5" letter-spacing="4" fill="#dfd6c8" font-weight="600">JOURNEY</text>
+
+    <text x="0" y="112" font-family="Georgia, serif" font-size="29" letter-spacing="0.5" fill="#fcf9f2" font-weight="400">Luxury in</text>
+    <text x="0" y="148" font-family="Georgia, serif" font-size="29" letter-spacing="0.5" fill="#fcf9f2" font-weight="400">every detail</text>
+  </g>
+
+  <!-- Bottom Brand Mark on Banner -->
+  <g transform="translate(50, 830)">
+    <text x="0" y="0" font-family="Georgia, serif" font-size="28" letter-spacing="8" fill="#f5f0e4">OVIA</text>
+    <text x="0" y="22" font-family="Arial, sans-serif" font-size="9" letter-spacing="3" fill="#cfc4b2" font-weight="600">CRAFTED FOR</text>
+    <text x="0" y="36" font-family="Arial, sans-serif" font-size="9" letter-spacing="3" fill="#cfc4b2" font-weight="600">A BRIGHTER TOMORROW</text>
+  </g>
+</svg>

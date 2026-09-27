@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ece7dd" />
+      <stop offset="50%" stop-color="#e2dbcd" />
+      <stop offset="100%" stop-color="#d6cebc" />
+    </linearGradient>
+    <linearGradient id="boxGrad1" x1="0%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#f5f2ec" />
+      <stop offset="60%" stop-color="#e9e3d5" />
+      <stop offset="100%" stop-color="#ded5c2" />
+    </linearGradient>
+    <linearGradient id="boxLidGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf8f5" />
+      <stop offset="70%" stop-color="#efe9dd" />
+      <stop offset="100%" stop-color="#e3dac8" />
+    </linearGradient>
+    <linearGradient id="envelopeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ede7db" />
+      <stop offset="100%" stop-color="#dfd6c4" />
+    </linearGradient>
+    <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#cfb997" />
+      <stop offset="50%" stop-color="#b89e75" />
+      <stop offset="100%" stop-color="#9a7f56" />
+    </linearGradient>
+    <filter id="shadowBox" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="-10" dy="16" stdDeviation="14" flood-color="#4a3e2e" flood-opacity="0.22" />
+    </filter>
+    <filter id="shadowSmall" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="4" dy="8" stdDeviation="8" flood-color="#4a3e2e" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <!-- Background Warm Canvas -->
+  <rect width="600" height="360" fill="url(#bgGrad)" />
+
+  <!-- Diagonal ambient lighting shadow -->
+  <polygon points="0,0 260,0 120,360 0,360" fill="#fdfbf7" opacity="0.4" />
+
+  <!-- Main Luxury Presentation Box (Angled Isometric) -->
+  <g transform="translate(140, 40) rotate(-8 180 140)" filter="url(#shadowBox)">
+    <!-- Box Base -->
+    <rect x="20" y="30" width="310" height="230" rx="4" fill="url(#boxGrad1)" stroke="#ccbfa8" stroke-width="1" />
+    <!-- Box Lid Rim Inset -->
+    <rect x="16" y="24" width="318" height="24" rx="3" fill="url(#boxLidGrad)" stroke="#c2b49b" stroke-width="0.75" />
+    
+    <!-- Satin Golden Ribbon crossing box -->
+    <rect x="155" y="24" width="38" height="236" fill="url(#ribbonGrad)" opacity="0.9" />
+    <line x1="155" y1="24" x2="155" y2="260" stroke="#f0e2cc" stroke-width="1" opacity="0.6" />
+    <line x1="193" y1="24" x2="193" y2="260" stroke="#7a623e" stroke-width="1" opacity="0.4" />
+
+    <!-- Embossed Brand Logo on Box Center -->
+    <text x="85" y="150" font-family="Georgia, serif" font-size="28" letter-spacing="9" fill="#99876f" font-weight="400">OVIA</text>
+    <text x="86" y="168" font-family="Arial, sans-serif" font-size="7.5" letter-spacing="4" fill="#a89a84" font-weight="600">TRAVEL GOODS</text>
+  </g>
+
+  <!-- Luxury Greeting Envelope / Card on the side -->
+  <g transform="translate(320, 160) rotate(6 120 70)" filter="url(#shadowSmall)">
+    <rect x="10" y="10" width="220" height="135" rx="3" fill="url(#envelopeGrad)" stroke="#cebfab" stroke-width="0.8" />
+    <!-- Envelope flap lines -->
+    <polygon points="10,10 120,78 230,10" fill="#f6f2ea" stroke="#d5c8b5" stroke-width="0.8" />
+    <!-- Embossed small brand mark -->
+    <text x="120" y="108" font-family="Georgia, serif" font-size="14" letter-spacing="5" fill="#8c785d" text-anchor="middle">OVIA</text>
+  </g>
+
+  <!-- Small card in foreground -->
+  <g transform="translate(50, 210) rotate(-3 80 40)" filter="url(#shadowSmall)">
+    <rect x="0" y="0" width="160" height="95" rx="3" fill="#faf8f4" stroke="#dcd2c1" stroke-width="0.8" />
+    <line x1="20" y1="30" x2="140" y2="30" stroke="#e8e0d2" stroke-width="1.5" />
+    <line x1="20" y1="46" x2="110" y2="46" stroke="#e8e0d2" stroke-width="1.5" />
+    <line x1="20" y1="62" x2="80" y2="62" stroke="#e8e0d2" stroke-width="1.5" />
+    <circle cx="132" cy="62" r="10" fill="#cbb38e" opacity="0.6" />
+    <text x="132" y="65.5" font-family="Georgia, serif" font-size="8" fill="#fff" text-anchor="middle" font-weight="bold">O</text>
+  </g>
+</svg>

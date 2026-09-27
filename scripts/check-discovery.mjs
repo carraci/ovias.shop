@@ -1,0 +1,16 @@
+import { chromium } from '@playwright/test';
+const browser=await chromium.launch();
+const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
+const errors=[]; page.on('pageerror',e=>errors.push(e.message));
+await page.goto('http://localhost:3000/');
+await page.locator('.stories-section').scrollIntoViewIfNeeded();
+await page.locator('.stories-section').screenshot({path:'artifacts/stories-new.png'});
+await page.locator('.store-banner').screenshot({path:'artifacts/store-banner.png'});
+await page.evaluate(()=>scrollTo(0,0));
+await page.getByRole('button',{name:'New',exact:true}).click();
+await page.screenshot({path:'artifacts/new-menu.png'});
+await page.goto('http://localhost:3000/storelocator');
+await page.screenshot({path:'artifacts/store-locator.png',fullPage:true});
+await page.setViewportSize({width:390,height:844});
+await page.screenshot({path:'artifacts/store-locator-mobile.png',fullPage:true});
+console.log(JSON.stringify({errors})); await browser.close();

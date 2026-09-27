@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="macroMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="30%" stop-color="#e0e4df" />
+      <stop offset="60%" stop-color="#b6bdb4" />
+      <stop offset="100%" stop-color="#80887f" />
+    </linearGradient>
+
+    <linearGradient id="macroLeather" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d4234" />
+      <stop offset="40%" stop-color="#1b2b21" />
+      <stop offset="100%" stop-color="#0e1712" />
+    </linearGradient>
+
+    <linearGradient id="brassLock" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="40%" stop-color="#d9ded7" />
+      <stop offset="70%" stop-color="#9aa398" />
+      <stop offset="100%" stop-color="#677066" />
+    </linearGradient>
+
+    <filter id="macroShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#000" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="900" height="600" fill="#e9ece8" />
+
+  <!-- Left Half: Anodized Aluminium Corner Cap & Rivet Macro -->
+  <g transform="translate(60, 40)">
+    <rect x="0" y="0" width="360" height="480" rx="16" fill="#d0d6ce" stroke="#9ba499" stroke-width="2" />
+    <!-- Vertical Grooves -->
+    <line x1="80" y1="0" x2="80" y2="480" stroke="#798277" stroke-width="6" />
+    <line x1="82" y1="0" x2="82" y2="480" stroke="#ffffff" stroke-width="2" opacity="0.8" />
+    <line x1="160" y1="0" x2="160" y2="480" stroke="#798277" stroke-width="6" />
+    <line x1="162" y1="0" x2="162" y2="480" stroke="#ffffff" stroke-width="2" opacity="0.8" />
+    <line x1="240" y1="0" x2="240" y2="480" stroke="#798277" stroke-width="6" />
+    <line x1="242" y1="0" x2="242" y2="480" stroke="#ffffff" stroke-width="2" opacity="0.8" />
+    <line x1="320" y1="0" x2="320" y2="480" stroke="#798277" stroke-width="6" />
+    <line x1="322" y1="0" x2="322" y2="480" stroke="#ffffff" stroke-width="2" opacity="0.8" />
+
+    <!-- Huge Corner Cap Overlay -->
+    <path d="M0 0 H260 C260 120 220 240 0 240 Z" fill="url(#macroMetal)" stroke="#677065" stroke-width="2" filter="url(#macroShadow)" />
+    
+    <!-- Macro Rivet 1 -->
+    <circle cx="80" cy="70" r="16" fill="#3c443b" />
+    <circle cx="80" cy="70" r="14" fill="url(#macroMetal)" />
+    <circle cx="76" cy="66" r="5" fill="#ffffff" opacity="0.9" />
+
+    <!-- Macro Rivet 2 -->
+    <circle cx="190" cy="50" r="16" fill="#3c443b" />
+    <circle cx="190" cy="50" r="14" fill="url(#macroMetal)" />
+    <circle cx="186" cy="46" r="5" fill="#ffffff" opacity="0.9" />
+
+    <!-- Macro Rivet 3 -->
+    <circle cx="50" cy="170" r="16" fill="#3c443b" />
+    <circle cx="50" cy="170" r="14" fill="url(#macroMetal)" />
+    <circle cx="46" cy="166" r="5" fill="#ffffff" opacity="0.9" />
+
+    <!-- Label -->
+    <rect x="20" y="420" width="320" height="40" rx="6" fill="#1e241f" />
+    <text x="180" y="445" fill="#e2eae0" font-family="Georgia, serif" font-size="12" font-weight="bold" text-anchor="middle" letter-spacing="2">
+      RIVETED HIGH-GLOSS ALUMINIUM
+    </text>
+  </g>
+
+  <!-- Right Half: Hand-Stitched Leather Handle & TSA Lock Macro -->
+  <g transform="translate(480, 40)">
+    <rect x="0" y="0" width="360" height="480" rx="16" fill="#c3c9c1" stroke="#90998f" stroke-width="2" />
+    
+    <!-- Top Aluminium Frame Edge -->
+    <rect x="0" y="0" width="360" height="120" fill="url(#macroMetal)" stroke="#747d72" stroke-width="1.5" />
+    
+    <!-- Heavy Duty Metal Hasp & TSA Dial -->
+    <rect x="100" y="40" width="160" height="160" rx="14" fill="url(#brassLock)" stroke="#454c44" stroke-width="2" filter="url(#macroShadow)" />
+    
+    <!-- Tumbler Cutout -->
+    <rect x="120" y="65" width="120" height="50" rx="6" fill="#181d19" />
+    <!-- Tumbler Wheels -->
+    <rect x="130" y="73" width="26" height="34" rx="4" fill="#667065" stroke="#111" stroke-width="1" />
+    <text x="143" y="96" fill="#ffffff" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">0</text>
+    <rect x="167" y="73" width="26" height="34" rx="4" fill="#667065" stroke="#111" stroke-width="1" />
+    <text x="180" y="96" fill="#ffffff" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">0</text>
+    <rect x="204" y="73" width="26" height="34" rx="4" fill="#667065" stroke="#111" stroke-width="1" />
+    <text x="217" y="96" fill="#ffffff" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">0</text>
+
+    <!-- Keyhole -->
+    <circle cx="180" cy="155" r="9" fill="#1a1e1b" />
+    <rect x="177" y="155" width="6" height="16" fill="#1a1e1b" />
+
+    <!-- Hand-Stitched Leather Strap Close Up -->
+    <g filter="url(#macroShadow)">
+      <path d="M40 260 C40 230 80 230 180 230 C280 230 320 230 320 260 V370 C320 390 290 390 180 390 C70 390 40 390 40 370 Z" fill="url(#macroLeather)" stroke="#09110c" stroke-width="2" />
+      
+      <!-- Visible Saddle Stitching -->
+      <line x1="55" y1="245" x2="305" y2="245" stroke="#689474" stroke-width="3" stroke-dasharray="8,6" stroke-linecap="round" />
+      <line x1="55" y1="375" x2="305" y2="375" stroke="#689474" stroke-width="3" stroke-dasharray="8,6" stroke-linecap="round" />
+      <text x="180" y="320" fill="#a8c4b0" font-family="Georgia, serif" font-size="15" font-weight="bold" text-anchor="middle" letter-spacing="4">
+        HERITAGE LEATHER
+      </text>
+      <text x="180" y="342" fill="#75967d" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" letter-spacing="2">
+        HAND-STITCHED DARK GREEN
+      </text>
+    </g>
+
+    <!-- Label -->
+    <rect x="20" y="420" width="320" height="40" rx="6" fill="#1e241f" />
+    <text x="180" y="445" fill="#e2eae0" font-family="Georgia, serif" font-size="12" font-weight="bold" text-anchor="middle" letter-spacing="2">
+      TSA COMBINATION LOCK &amp; LEATHER
+    </text>
+  </g>
+
+  <!-- Bottom Global Caption -->
+  <text x="450" y="565" fill="#495247" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" letter-spacing="3">
+    OVIA CRAFTSMANSHIP · GERMAN ENGINEERING · HERITAGE DETAILS
+  </text>
+</svg>
