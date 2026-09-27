@@ -8,3 +8,41 @@ test-results/
 playwright-report/
 .vercel/
 *.log
+
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# API credentials
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account*.json
+
+# Database exports
+*.bson
+*.dump
+*.sqlite
+*.sqlite3
+*.db
+backups/
+
+# Build files
+dist/
+build/
+.next/
+coverage/
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
