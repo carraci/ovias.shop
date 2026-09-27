@@ -46,3 +46,61 @@ coverage/
 .DS_Store
 Thumbs.db
 
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.secret
+*credentials*.json
+*service-account*.json
+
+# Dependencies and builds
+node_modules/
+dist/
+build/
+.next/
+.nuxt/
+.angular/
+.cache/
+coverage/
+*.log
+
+# Backend and database
+/backend/
+/server/
+/database/
+/db/
+/api/
+/config/secrets/
+/uploads/
+/backups/
+/dumps/
+
+# Database exports
+*.bson
+*.dump
+*.sqlite
+*.sqlite3
+*.db
+*.archive
+mongodump/
+
+# Local files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+*.bak
+*.backup
