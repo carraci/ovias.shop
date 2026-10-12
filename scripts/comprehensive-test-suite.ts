@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 import { MongoClient } from "mongodb";
 import { catalog } from "../src/server/db";
 import { getAdminProducts } from "../src/server/admin-service";
@@ -427,5 +427,3 @@ async function runAll() {
 }
 
 runAll().catch(console.error);
-
-
