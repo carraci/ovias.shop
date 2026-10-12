@@ -84,7 +84,7 @@ async function runAll() {
       const a = adminMap.get(p.id);
       if (!a) {
         adminMismatch++;
-      } else if (Math.round(a.price * 100) !== Math.round(p.price)) {
+      } else if ((typeof p.price !== "number" || !Number.isFinite(p.price) || Math.round(a.price * 100) !== Math.round(p.price))) {
         adminMismatch++;
       }
     }
