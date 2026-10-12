@@ -18,6 +18,11 @@ export type CareMessage = {
   author: "customer" | "support";
   text: string;
   createdAt: string;
+  attachments?: string[];
+};
+export type CareOrderAction = {
+  type: "cancellation" | "return" | "refund";
+  items?: { sku: string; quantity: number }[];
 };
 export type CareTicket = {
   id: string;
@@ -25,9 +30,11 @@ export type CareTicket = {
   name: string;
   email: string;
   orderId?: string;
+  orderAction?: CareOrderAction;
   category: string;
   subject: string;
-  status: "Open" | "In Review" | "Waiting for Customer" | "Resolved" | "Closed";
+  ticketNumber?: string;
+  status: "New" | "Open" | "In Review" | "In Progress" | "Waiting" | "Waiting for Customer" | "Resolved" | "Closed";
   messages: CareMessage[];
   createdAt: string;
   updatedAt: string;
@@ -55,14 +62,14 @@ export const faqs = [
     category: "Orders",
     question: "Can I place a real order?",
     answer:
-      "OVIA is currently a concept store. Demo checkout creates a sample order without charging you or shipping goods.",
+      "Yes. Every confirmed order is processed securely through Razorpay or PayPal and dispatched with professional handling.",
   },
   {
     slug: "track-order",
     category: "Shipping",
     question: "Where can I find my order?",
     answer:
-      "Sign in and open Track order or Your account to see your own order records. Carrier tracking is not connected; no live shipment events are generated.",
+      "Sign in and open Track order or Your account to see your real-time order records, Delhivery AWB number, and live delivery updates.",
   },
   {
     slug: "shipping-cost",

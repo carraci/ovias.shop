@@ -1,0 +1,852 @@
+/* Product Reviews Section (Images 1-5) */
+.section {
+  padding: 56px clamp(20px, 4vw, 64px);
+  border-top: 1px solid #e5e5e5;
+  background: #ffffff;
+  font-family: var(--sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  color: #111111;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+/* Header matching Image 1 */
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.titleArea {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sectionTitle {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.scoreRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: #374151;
+}
+
+.scoreStar {
+  color: #f59e0b;
+  fill: #f59e0b;
+}
+
+.scoreNumber {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.scoreCount {
+  color: #4b5563;
+  font-weight: 400;
+}
+
+.writeReviewBtn {
+  background: #0d3b43;
+  color: #ffffff;
+  border: none;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(13, 59, 67, 0.15);
+}
+
+.writeReviewBtn:hover {
+  background: #092a30;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(13, 59, 67, 0.22);
+}
+
+/* Customer Photos Strip */
+.photosStripContainer {
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.photosStrip {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.photosStrip::-webkit-scrollbar {
+  height: 5px;
+}
+
+.photosStrip::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+.stripPhotoItem {
+  flex: 0 0 84px;
+  width: 84px;
+  height: 84px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stripPhotoItem:hover {
+  transform: scale(1.04);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.stripPhotoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Review Cards Carousel (3 cards per desktop view) */
+.cardsTrackWrapper {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  transition: transform 0.35s ease-in-out;
+}
+
+@media (max-width: 960px) {
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.reviewCard {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 22px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 260px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.cardTop {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardStarsRow {
+  display: flex;
+  gap: 3px;
+  color: #f59e0b;
+}
+
+.authorRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.verifiedBadge {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid #1f2937;
+  border-radius: 9999px;
+  padding: 1px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #1f2937;
+  letter-spacing: 0.2px;
+}
+
+.cardDate {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.cardTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 2px 0 0;
+  line-height: 1.35;
+}
+
+.cardComment {
+  font-size: 13.5px;
+  color: #4b5563;
+  line-height: 1.55;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card Attached Photos */
+.cardPhotosRow {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.cardPhotoThumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+}
+
+.cardPhotoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Bottom product pill container matching Image 1 */
+.productRefPill {
+  background: #edf6f3;
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.productRefImg {
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #ffffff;
+}
+
+.productRefDetails {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.productRefLabel {
+  font-size: 11px;
+  color: #64748b;
+  margin: 0;
+}
+
+.productRefTitle {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #0d3b43;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Slider Bar & Track */
+.sliderControlsRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 900px;
+  margin: 14px auto 20px;
+}
+
+.sliderArrowBtn {
+  background: transparent;
+  border: none;
+  color: #4b5563;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: color 0.15s ease;
+}
+
+.sliderArrowBtn:hover:not(:disabled) {
+  color: #111111;
+}
+
+.sliderArrowBtn:disabled {
+  color: #d1d5db;
+  cursor: not-allowed;
+}
+
+.sliderTrack {
+  flex: 1;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 9999px;
+  position: relative;
+  cursor: pointer;
+}
+
+.sliderThumb {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: #888888;
+  border-radius: 9999px;
+  transition: left 0.2s ease, width 0.2s ease;
+}
+
+/* Pagination Row */
+.paginationRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-size: 13.5px;
+  color: #374151;
+  margin-top: 10px;
+}
+
+.pageNumberBtn {
+  background: transparent;
+  border: none;
+  color: #4b5563;
+  cursor: pointer;
+  font-size: 13.5px;
+  font-weight: 500;
+  padding: 4px 6px;
+  min-width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.15s ease;
+}
+
+.pageNumberBtn:hover {
+  color: #111111;
+  background: #f1f5f9;
+}
+
+.pageNumberActive {
+  background: #0b6b5d !important;
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+/* ==========================================================
+   MULTI-STEP "WRITE A REVIEW" MODAL (Images 2, 3, 4, 5)
+   ========================================================== */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modalCard {
+  background: #ffffff;
+  border-radius: 8px;
+  max-width: 520px;
+  width: 100%;
+  padding: 36px 32px 32px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.25s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.closeModalBtn {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #4b5563;
+  cursor: pointer;
+  line-height: 1;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+.closeModalBtn:hover {
+  color: #111111;
+  background: #f3f4f6;
+}
+
+.modalTitle {
+  font-size: 21px;
+  font-weight: 600;
+  color: #1f2937;
+  text-align: center;
+  margin: 0 0 6px;
+}
+
+.modalSubtitle {
+  font-size: 13.5px;
+  color: #6b7280;
+  text-align: center;
+  margin: 0 0 24px;
+  line-height: 1.4;
+}
+
+/* Step 1 Specific */
+.productHeroWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.productHeroImg {
+  width: 140px;
+  height: 140px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.productModalName {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  text-align: center;
+  margin: 0 0 22px;
+}
+
+.starsInteractiveRow {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.tealStarBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+.tealStarBtn:hover {
+  transform: scale(1.15);
+}
+
+.starRatingLabelsRow {
+  display: flex;
+  justify-content: space-between;
+  max-width: 260px;
+  margin: 0 auto 28px;
+  font-size: 12px;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+/* Step 2 Specific */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.formLabel {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.textareaField {
+  width: 100%;
+  min-height: 110px;
+  border: 1px solid #0b6b5d;
+  border-radius: 4px;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #1f2937;
+  outline: none;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.textareaField:focus {
+  border-color: #0b6b5d;
+  box-shadow: 0 0 0 2px rgba(11, 107, 93, 0.15);
+}
+
+.inputField {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 11px 14px;
+  font-size: 14px;
+  color: #1f2937;
+  outline: none;
+  font-family: inherit;
+}
+
+.inputField:focus {
+  border-color: #0b6b5d;
+  box-shadow: 0 0 0 2px rgba(11, 107, 93, 0.15);
+}
+
+.legalNotice {
+  font-size: 11.5px;
+  color: #6b7280;
+  line-height: 1.45;
+  margin: 18px 0 24px;
+}
+
+.legalNotice a {
+  color: #0b6b5d;
+  text-decoration: underline;
+}
+
+/* Step 3 Specific */
+.helperText {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 4px 0 0;
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  font-size: 13.5px;
+  color: #374151;
+  cursor: pointer;
+}
+
+.checkboxInput {
+  width: 16px;
+  height: 16px;
+  accent-color: #0b6b5d;
+  cursor: pointer;
+}
+
+/* Step 4 Specific: Dropzone */
+.dropzone {
+  border: 2px dashed #93a8a2;
+  border-radius: 8px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  background: #fafdfd;
+  transition: all 0.2s ease;
+  margin-bottom: 24px;
+}
+
+.dropzone:hover {
+  border-color: #0b6b5d;
+  background: #f2f9f8;
+}
+
+.uploadIcon {
+  color: #4b5563;
+  margin-bottom: 8px;
+}
+
+.dropzoneText {
+  font-size: 14px;
+  color: #374151;
+  margin: 4px 0;
+}
+
+.dropzoneBold {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.dropzoneHint {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.previewGrid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.previewThumbWrap {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+}
+
+.previewThumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.removeThumbBtn {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Modal Bottom Navigation */
+.modalNavRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.backBtn {
+  background: transparent;
+  border: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background 0.15s ease;
+}
+
+.backBtn:hover {
+  background: #f1f5f9;
+  color: #111111;
+}
+
+.nextBtn {
+  background: #0b6b5d;
+  color: #ffffff;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 32px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin-left: auto;
+}
+
+.nextBtn:hover:not(:disabled) {
+  background: #085247;
+}
+
+.nextBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Step Success Modal */
+.successWrap {
+  text-align: center;
+  padding: 16px 8px 8px;
+}
+
+.successCheckIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #ecfdf5;
+  color: #0b6b5d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+/* Lightbox Photo Preview */
+.lightboxBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.lightboxImgWrap {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+}
+
+.lightboxImg {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.lightboxCloseBtn {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* Empty State */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 24px;
+  border: 1px dashed #d1d5db;
+  border-radius: 16px;
+  background: #fafafa;
+  margin: 16px 0 24px;
+}
+
+.emptyIconWrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  margin-bottom: 14px;
+}
+
+.emptyTitle {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 6px 0;
+}
+
+.emptySubtitle {
+  font-size: 14px;
+  color: #6b7280;
+  max-width: 420px;
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+}
+
+/* Skeleton Loading */
+.loadingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.loadingCard {
+  height: 240px;
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+

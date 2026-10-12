@@ -1,6 +1,6 @@
 "use client";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import { useState, useTransition, useEffect, useRef } from "react";
+import { useState, useTransition, useEffect, useRef, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -12,15 +12,13 @@ import {
   ArrowRight,
   Search,
 } from "lucide-react";
-import {
-  filterProducts,
-  groups,
-  slugify,
-  type Filters,
-  type Product,
-  type Department,
-} from "@/lib/catalog";
+import { filterProducts, type Filters } from "@/lib/catalog-filter";
+import { groups, slugify, canonicalCategory } from "@/lib/catalog-helpers";
+import type { Product, Department } from "@/lib/catalog";
+import type { PreparedListing } from "@/lib/catalog-listing";
+import { catalogFacets } from "@/lib/catalog-facets";
 import { ProductCard } from "./product-card";
+import searchStyles from "./catalog-search.module.css";
 
 const categoryBanners: Record<
   string,
@@ -33,6 +31,10 @@ const categoryBanners: Record<
     hasTitle?: boolean;
   }
 > = {
+  "cabin-bags": {
+    image: "/media/case-flowers.jpg", alt: "OVIA Cabin Bags", title: "Cabin Bags",
+    subtitle: "Explore cabin bags and compact travel companions.",
+  },
   luggage: {
     image: "/media/category-luggage.jpg",
     alt: "OVIA All Luggage",
@@ -60,7 +62,7 @@ const categoryBanners: Record<
   "check-in": {
     image: "/media/banner-checkin-16k.jpg",
     alt: "OVIA Check-In Luggage",
-    title: "Check-In Luggage",
+    title: "Check-in Luggage",
     subtitle: "Engineered volume and refined resilience for extended stays and long-haul travel.",
   },
   trunk: {
@@ -77,9 +79,21 @@ const categoryBanners: Record<
   },
   "large-luggage": {
     image: "/media/banner-trunk-16k.jpg",
-    alt: "Large Trunk Luggage",
-    title: "Large Trunk Luggage",
+    alt: "Large Luggage",
+    title: "Large Luggage",
     subtitle: "Expansive travel capacity engineered for life's longest horizons.",
+  },
+  "medium-luggage": {
+    image: "/media/banner-checkin-16k.jpg",
+    alt: "Medium Luggage",
+    title: "Medium Luggage",
+    subtitle: "Medium suitcases for your next journey.",
+  },
+  "small-luggage": {
+    image: "/media/case-flowers.jpg",
+    alt: "Small Luggage",
+    title: "Small Luggage",
+    subtitle: "Compact suitcases for shorter trips.",
   },
   "short-trips": {
     image: "/media/journey.jpg",
@@ -109,7 +123,7 @@ const categoryBanners: Record<
     image: "/media/launch-models.jpg",
     alt: "OVIA Best Sellers",
     title: "Best Sellers",
-    subtitle: "The most sought-after OVIA luggage icons, celebrated by travellers worldwide.",
+    subtitle: "Explore the selected Best Sellers collection.",
   },
   "new-arrivals": {
     image: "/media/new-hero.jpg",
@@ -122,6 +136,10 @@ const categoryBanners: Record<
     alt: "OVIA Aluminium Luggage",
     title: "Aluminium Luggage",
     subtitle: "High-grade anodised aluminium with grooved contours and reinforced corners.",
+  },
+  polypropylene: {
+    image: "/media/category-luggage.jpg", alt: "OVIA Polypropylene Luggage", title: "Polypropylene Luggage",
+    subtitle: "Explore lightweight polypropylene cases for your next journey.",
   },
   polycarbonate: {
     image: "/media/material-nylon.jpg",
@@ -141,10 +159,16 @@ const categoryBanners: Record<
     title: "Backpacks",
     subtitle: "A considered daily carry uniting refined utility and balanced proportions.",
   },
+  "weekend-bags": {
+    image: "/media/editorial-bags.jpg",
+    alt: "Weekend Bags",
+    title: "Weekend Bags",
+    subtitle: "Bags for weekend getaways and overnight stays.",
+  },
   "duffle-bags": {
     image: "/media/editorial-bags.jpg",
-    alt: "Duffle Bags",
-    title: "Duffle Bags",
+    alt: "Duffel Bags",
+    title: "Duffel Bags",
     subtitle: "Generously proportioned for weekend escapes and spontaneous getaways.",
   },
   "shoulder-bags": {
@@ -159,6 +183,20 @@ const categoryBanners: Record<
     title: "Hand Carry",
     subtitle: "Precision-engineered cases, briefcases, and carriers for seamless daily mobility.",
   },
+  'travel-bags': {image:'/media/editorial-bags.jpg',alt:'Travel Bags',title:'Travel Bags',subtitle:'Bags for travel, weekends and overnight stays.'},
+  briefcases: {
+    image: "/media/cat-handcarry.jpg", alt: "OVIA Briefcases", title: "Briefcases",
+    subtitle: "Explore briefcases and bags for your working day.",
+  },
+  crossbodies: {
+    image: "/media/cat-crossbody.jpg", alt: "OVIA Crossbody Bags", title: "Crossbody Bags",
+    subtitle: "Compact bags to keep your everyday essentials close.",
+  },
+  totes: {
+    image: "/media/editorial-bags.jpg", alt: "OVIA Tote Bags", title: "Tote Bags",
+    subtitle: "Explore everyday tote bags and roomy carryalls.",
+  },
+  'everyday-mobility': {image:'/media/editorial-bags.jpg',alt:'Everyday Bags',title:'Everyday Bags',subtitle:'Bags for everyday routines and daily essentials.'},
   bags: {
     image: "/media/banner-backpacks.jpg",
     alt: "Bags",
@@ -268,101 +306,19 @@ const categoryBanners: Record<
     subtitle: "Make your luggage unmistakably yours with address tags, city stickers, bag straps, and wheel sets.",
   },
   accessories: {
-    image: "/media/accessories-hero-full.jpg",
+    image: "/media/category-accessories.jpg",
     alt: "OVIA Accessories",
     title: "All Accessories",
     subtitle: "Thoughtfully designed accessories to make every journey smoother, more organised and more personal.",
   },
   "all-accessories": {
-    image: "/media/accessories-hero-full.jpg",
+    image: "/media/category-accessories.jpg",
     alt: "OVIA Accessories",
     title: "All Accessories",
     subtitle: "Thoughtfully designed accessories to make every journey smoother, more organised and more personal.",
   },
 };
 
-
-const filterOptions = {
-  categories: {
-    luggage: [
-      { label: "All Luggage", value: "" },
-      { label: "Cabin", value: "cabin" },
-      { label: "Check-In", value: "check-in" },
-      { label: "Trunk", value: "trunk" },
-      { label: "Short Trips", value: "short-trips" },
-      { label: "Long Journeys", value: "long-journeys" },
-      { label: "Business Selection", value: "business-selection" },
-      { label: "Best Sellers", value: "best-sellers" },
-      { label: "New Arrivals", value: "new-arrivals" },
-      { label: "Emblematic pieces", value: "emblematic-pieces" },
-    ],
-    bags: [
-      { label: "All Bags", value: "" },
-      { label: "Backpack", value: "backpacks" },
-      { label: "Duffle Bag", value: "duffle-bags" },
-      { label: "Briefcase", value: "briefcases" },
-      { label: "Crossbody", value: "crossbodies" },
-      { label: "Tote", value: "totes" },
-      { label: "Shoulder Bag", value: "shoulder-bags" },
-      { label: "Hand Carry", value: "hand-carry" },
-    ],
-    accessories: [
-      { label: "All Accessories", value: "" },
-      { label: "Customisation", value: "customisation" },
-      { label: "iPhone Cases", value: "iphone-cases" },
-      { label: "Hats", value: "hats" },
-      { label: "Sunglasses", value: "sunglasses" },
-      { label: "Belts", value: "belts" },
-      { label: "Card Holders", value: "card-holders" },
-      { label: "Address Tags", value: "address-tags" },
-      { label: "Wheels", value: "wheels" },
-      { label: "Stickers", value: "stickers" },
-      { label: "Bag Straps", value: "bag-straps" },
-      { label: "Organisers", value: "organisers" },
-    ],
-  },
-  subCategories: [
-    { label: "Organisers", value: "organisers" },
-    { label: "Flap Backpack", value: "flap" },
-    { label: "Zipped Backpack", value: "zipped" },
-    { label: "Harness Backpack", value: "harness" },
-  ],
-  colors: [
-    { label: "Black", value: "Black", hex: "#1a1a1a" },
-    { label: "Silver", value: "Silver", hex: "#bec1bd" },
-    { label: "Titanium", value: "Titanium", hex: "#a69f93" },
-    { label: "White", value: "Gloss White", hex: "#f0f0f0" },
-    { label: "Green", value: "Emerald Green", hex: "#1e3d34" },
-    { label: "Grey", value: "Slate Grey", hex: "#5a6368" },
-    { label: "Orange", value: "Papaya Orange", hex: "#e86130" },
-    { label: "Blue", value: "Matte Blue", hex: "#263f59" },
-    { label: "Red", value: "Gloss Red", hex: "#aa1923" },
-    { label: "Brown", value: "Brown", hex: "#5a4231" },
-  ],
-  materials: [
-    { label: "Aluminium", value: "Aluminium" },
-    { label: "Canvas", value: "Canvas" },
-    { label: "Leather", value: "Leather" },
-    { label: "Nylon", value: "Nylon" },
-    { label: "Polycarbonate", value: "Polycarbonate" },
-  ],
-  collections: [
-    { label: "Classic", value: "Classic" },
-    { label: "Essential", value: "Essential" },
-    { label: "Hybrid", value: "Hybrid" },
-    { label: "Original", value: "Original" },
-    { label: "Never Still", value: "Never Still" },
-    { label: "Personal", value: "Personal" },
-    { label: "Groove", value: "Groove" },
-    { label: "Attaché", value: "Attaché" },
-  ],
-  sorts: [
-    { label: "Featured", value: "" },
-    { label: "Price: low to high", value: "price-asc" },
-    { label: "Price: high to low", value: "price-desc" },
-    { label: "Name", value: "name" },
-  ],
-};
 
 export function CatalogView({
   products,
@@ -370,12 +326,16 @@ export function CatalogView({
   description,
   base = {},
   search = false,
+  heroImage,
+  prepared,
 }: {
   products: Product[];
   title: string;
   description: string;
   base?: Filters;
   search?: boolean;
+  heroImage?: string;
+  prepared?: PreparedListing;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -394,17 +354,28 @@ export function CatalogView({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const filters = {
+  const filters = useMemo<Filters & { colour?: string }>(() => ({
     ...Object.fromEntries(params),
     ...Object.fromEntries(
       Object.entries(base).filter(([, value]) => value !== undefined),
     ),
-  };
-  const { items, total, page, pages } = filterProducts(products, filters);
+    limit: base.limit || params.get("limit") || "12",
+  }), [params, base]);
+
+  const filterOptions = useMemo(() => prepared?.facets || catalogFacets(products, base, filters), [prepared, products, base, filters]);
+  const { items, total, page, pages } = useMemo(() => prepared ? { items: products, ...prepared.pagination } : filterProducts(products, filters), [prepared, products, filters]);
   const active = ["category", "subCategory", "material", "color", "collection"].filter((k) =>
     params.has(k),
   );
   function change(key: string, value: string) {
+    if ((key === "category" || key === "subCategory") && (base.department === "luggage" || base.department === "bags") && pathname.startsWith(`/${base.department}`)) {
+      const next = new URLSearchParams(params);
+      ["category", "subCategory", "subcategory", "page", "material", "color", "collection"].forEach(key => next.delete(key));
+      const route = value ? `/${base.department}/${value}` : `/${base.department}`;
+      if (!value) next.set("view", "catalog");
+      startTransition(() => router.push(`${route}?${next.toString()}`, {scroll:false}));
+      return;
+    }
     const next = new URLSearchParams(params);
     if (value) next.set(key, value);
     else next.delete(key);
@@ -424,6 +395,7 @@ export function CatalogView({
     base.subcategory ||
     base.subCategory ||
     base.category ||
+    base.tag ||
     (base.department && !filters.category && !filters.subcategory ? base.department : "") ||
     slugify(title)
   ).toLowerCase();
@@ -431,6 +403,8 @@ export function CatalogView({
   const isBagsOverview =
     (base.department === "bags" || currentCategoryKey === "bags") &&
     !base.category &&
+    !base.tag &&
+    !filters.tag &&
     !filters.category;
 
   const isBagsView =
@@ -468,80 +442,65 @@ export function CatalogView({
       ].includes(currentCategoryKey)) &&
     !isBagsView;
 
-  const banner = !isBagsOverview
-    ? categoryBanners[currentCategoryKey] ||
-      (currentCategoryKey.includes("trunk") ? categoryBanners["trunk"] : null) ||
-      (currentCategoryKey.includes("cabin") ? categoryBanners["cabin"] : null) ||
-      (currentCategoryKey.includes("check") ? categoryBanners["check-in"] : null) ||
-      (currentCategoryKey.includes("backpack") ? categoryBanners["backpacks"] : null) ||
-      (isLuggageView ? categoryBanners["luggage"] : null) ||
-      (isBagsView ? categoryBanners["bags"] : null)
-    : null;
+  const isValidCustomHero = Boolean(
+    heroImage &&
+    heroImage.trim() !== "" &&
+    heroImage !== "/media/luggage.svg"
+  );
 
-  // Dynamic API Fetching
-  const [apiItems, setApiItems] = useState<Product[] | null>(null);
-  const [apiTotal, setApiTotal] = useState<number | null>(null);
+  const staticBanner =
+    categoryBanners[currentCategoryKey] ||
+    (currentCategoryKey.includes("trunk") ? categoryBanners["trunk"] : null) ||
+    (currentCategoryKey.includes("cabin") ? categoryBanners["cabin"] : null) ||
+    (currentCategoryKey.includes("check") ? categoryBanners["check-in"] : null) ||
+    (currentCategoryKey.includes("backpack") ? categoryBanners["backpacks"] : null) ||
+    (isLuggageView ? categoryBanners["luggage"] : null) ||
+    (isBagsView ? categoryBanners["bags"] : null);
 
-  useEffect(() => {
-    let activeFetch = true;
-    const q = new URLSearchParams(params);
-    if (base.department) q.set("department", base.department);
-    if (base.category && !q.has("category")) q.set("category", base.category);
-    if (base.subcategory && !q.has("subcategory")) q.set("subcategory", base.subcategory);
-    if (base.tag && !q.has("tag")) q.set("tag", base.tag);
-    if (base.material && !q.has("material")) q.set("material", base.material);
-    if (base.color && !q.has("color")) q.set("color", base.color);
+  const banner = isValidCustomHero
+    ? {
+        image: heroImage!,
+        alt: title,
+        title: title,
+        subtitle: description || staticBanner?.subtitle,
+        hasTitle: false,
+      }
+    : staticBanner;
 
-    fetch(`/api/products?${q.toString()}`)
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (activeFetch && data && Array.isArray(data.items)) {
-          setApiItems(data.items);
-          if (typeof data.total === "number") setApiTotal(data.total);
-        }
-      })
-      .catch(() => {});
-
-    return () => {
-      activeFetch = false;
-    };
-  }, [pathname, params, base.department, base.category, base.subcategory, base.tag, base.material, base.color]);
-
-  const displayedItems = apiItems || items;
-  const displayedTotal = apiTotal !== null ? apiTotal : total;
+  const displayedItems = items;
+  const displayedTotal = total;
 
   return (
     <div className="catalog-page section">
       <div className="breadcrumb">
-        Home / {isBagsOverview ? "Bags" : currentCategoryKey.includes("trunk") ? "Trunk" : title}
+        Home / {isBagsOverview && !banner ? "Bags" : currentCategoryKey.includes("trunk") ? "Trunk" : title}
       </div>
-      {isBagsOverview ? (
-        <div className="bags-overview-catalog-header">
-          <h2 className="bags-overview-catalog-title">All Bags</h2>
-          <span className="bags-overview-catalog-count">{displayedTotal} pieces</span>
-        </div>
-      ) : banner ? (
+      {banner ? (
         <div className="category-hero-banner">
           <Image
             src={banner.image}
-            alt={banner.alt}
+            alt={banner.alt || title}
             fill
-            priority
-            quality={95}
+            preload
             sizes="100vw"
             className="category-hero-img"
           />
           <div className="category-hero-overlay" />
           <div className="category-hero-content">
             {banner.hasTitle ? (
-              <h1 className="sr-only">{banner.title || title}</h1>
+              <h1 className="sr-only">{pathname === "/luggage/luggage" ? "Luggage" : banner.title || title}</h1>
             ) : (
-              <h1 className="category-hero-title">{banner.title || title}</h1>
+              <h1 className="category-hero-title">{pathname === "/luggage/luggage" ? "Luggage" : banner.title || title}</h1>
             )}
             {banner.subtitle && (
               <p className="category-hero-subtitle">{banner.subtitle}</p>
             )}
           </div>
+        </div>
+      ) : isBagsOverview ? (
+        <div className="bags-overview-catalog-header">
+          <h2 className="bags-overview-catalog-title">All Bags</h2>
+          <span className="bags-overview-catalog-count">{displayedTotal} pieces</span>
         </div>
       ) : (
         <div className="catalog-heading">
@@ -549,6 +508,31 @@ export function CatalogView({
           <h1>{title}</h1>
           <p>{description}</p>
         </div>
+      )}
+
+      {search && (
+        <form
+          className={searchStyles.form}
+          role="search"
+          aria-label="Product search"
+          onSubmit={(event) => {
+            event.preventDefault();
+            const query = String(new FormData(event.currentTarget).get("q") || "").trim();
+            change("q", query);
+          }}
+        >
+          <button type="submit" aria-label="Submit search" disabled={pending}>
+            <Search size={18} strokeWidth={1.4} aria-hidden="true" />
+          </button>
+          <input
+            key={params.get("q") || ""}
+            type="search"
+            name="q"
+            aria-label="Search products"
+            placeholder="Search"
+            defaultValue={params.get("q") || ""}
+          />
+        </form>
       )}
 
       {/* RIMOWA-STYLE DROPDOWN FILTER BAR */}
@@ -571,7 +555,7 @@ export function CatalogView({
                   <div className="dropdown-section">
                     {!base.department && <p className="dropdown-group-title">Luggage</p>}
                     {filterOptions.categories.luggage.map((opt) => {
-                      const checked = filters.category === opt.value;
+                      const checked = canonicalCategory(filters.category || "") === canonicalCategory(opt.value);
                       return (
                         <label key={opt.value} className="dropdown-checkbox-label">
                           <input
@@ -596,7 +580,7 @@ export function CatalogView({
                   <div className="dropdown-section">
                     {!base.department && <p className="dropdown-group-title">Bags</p>}
                     {filterOptions.categories.bags.map((opt) => {
-                      const checked = filters.category === opt.value;
+                      const checked = canonicalCategory(filters.category || "") === canonicalCategory(opt.value);
                       return (
                         <label key={opt.value} className="dropdown-checkbox-label">
                           <input
@@ -644,7 +628,7 @@ export function CatalogView({
           </div>
 
           {/* SUB-CATEGORY */}
-          <div className="rimowa-filter-item">
+          {!base.category && filterOptions.subCategories.length > 1 && <div className="rimowa-filter-item">
             <button
               type="button"
               className={`rimowa-filter-btn ${activeDropdown === "sub-category" ? "open" : ""} ${filters.subCategory ? "has-val" : ""}`}
@@ -657,7 +641,7 @@ export function CatalogView({
             {activeDropdown === "sub-category" && (
               <div className="rimowa-dropdown">
                 {filterOptions.subCategories.map((opt) => {
-                  const checked = filters.subCategory === opt.value;
+                  const checked = canonicalCategory(filters.subCategory || filters.subcategory || "") === canonicalCategory(opt.value);
                   return (
                     <label key={opt.value} className="dropdown-checkbox-label">
                       <input
@@ -676,6 +660,8 @@ export function CatalogView({
               </div>
             )}
           </div>
+
+          }
 
           {/* COLOUR */}
           <div className="rimowa-filter-item">

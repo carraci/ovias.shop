@@ -1,0 +1,64 @@
+{
+  "rows": 262,
+  "newProducts": 189,
+  "duplicates": 73,
+  "files": [
+    {
+      "file": "amazon-in-2026-10-03-3 (10).csv",
+      "category": "Bags",
+      "rows": 60,
+      "newProducts": 54,
+      "existingProducts": 6
+    },
+    {
+      "file": "amazon-in-2026-10-03-3 (11).csv",
+      "category": "Bags",
+      "rows": 60,
+      "newProducts": 51,
+      "existingProducts": 9
+    },
+    {
+      "file": "amazon-in-2026-10-03-3 (12).csv",
+      "category": "Bags",
+      "rows": 22,
+      "newProducts": 20,
+      "existingProducts": 2
+    },
+    {
+      "file": "amazon-in-2026-10-03-3 (13).csv",
+      "category": "Bags",
+      "rows": 60,
+      "newProducts": 26,
+      "existingProducts": 34
+    },
+    {
+      "file": "amazon-in-2026-10-03-3 (14).csv",
+      "category": "Bags",
+      "rows": 60,
+      "newProducts": 38,
+      "existingProducts": 22
+    }
+  ],
+  "imageFailures": [],
+  "priceDifferences": [],
+  "materialConflicts": [],
+  "missingPrices": [
+    {
+      "name": "PALAY Shoulder Bag for Woman Vintage Handbags Small Sling Bags for Women Stylish Underarm Hobo Bags",
+      "file": "amazon-in-2026-10-03-3 (10).csv"
+    }
+  ],
+  "totalProducts": 764,
+  "categoryCounts": {
+    "Shoulder Bags": 141,
+    "Hand Carry": 117,
+    "Bags": 384,
+    "Totes": 101,
+    "Travel Bags": 212,
+    "Cabin Bags": 34
+  },
+  "materialCounts": {
+    "Polycarbonate": 125,
+    "Polypropylene": 90
+  }
+}

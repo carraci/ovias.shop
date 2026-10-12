@@ -1,0 +1,59 @@
+{
+  "rows": 300,
+  "newProducts": 167,
+  "duplicates": 133,
+  "files": [
+    {
+      "file": "amazon-in-2026-10-03-2 (4).csv",
+      "travelType": "long-haul",
+      "rows": 60,
+      "newProducts": 46,
+      "existingProducts": 14
+    },
+    {
+      "file": "amazon-in-2026-10-03-3.csv",
+      "travelType": "short-trips",
+      "rows": 60,
+      "newProducts": 45,
+      "existingProducts": 15
+    },
+    {
+      "file": "amazon-in-2026-10-03-3 (1).csv",
+      "travelType": "business-selection",
+      "rows": 60,
+      "newProducts": 41,
+      "existingProducts": 19
+    },
+    {
+      "file": "amazon-in-2026-10-03-3 (2).csv",
+      "rows": 60,
+      "newProducts": 35,
+      "existingProducts": 25
+    },
+    {
+      "file": "amazon-in-2026-10-03-3 (3).csv",
+      "rows": 60,
+      "newProducts": 0,
+      "existingProducts": 60
+    }
+  ],
+  "imageFailures": [],
+  "priceDifferences": [],
+  "materialConflicts": [],
+  "missingPrices": [
+    {
+      "name": "VLITE Brampton 6-Piece Family Set – 3 Duffle Bags + 3 Trolley Suitcases, Unbreakable Polycarbonate Luggage, 8 Spinner Wheels, Built-in Number Lock, 3-Year Warranty (Set of 6 with Duffels, Black)",
+      "file": "amazon-in-2026-10-03-3 (1).csv"
+    }
+  ],
+  "totalProducts": 380,
+  "travelCounts": {
+    "long-haul": 60,
+    "short-trips": 60,
+    "business-selection": 60
+  },
+  "materialCounts": {
+    "Polycarbonate": 116,
+    "Polypropylene": 80
+  }
+}

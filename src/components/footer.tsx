@@ -1,36 +1,6 @@
-"use client";
-
-import { useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { ChevronDown, Check, ArrowRight } from "lucide-react";
-import { usePreferences } from "./preferences";
-import { CountryRegionModal } from "./country-region-modal";
+import { FooterNewsletter, FooterRegion } from "./footer-controls";
 
 export function Footer() {
-  const pathname = usePathname();
-  const { preferences } = usePreferences();
-  const [showInput, setShowInput] = useState(false);
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-  const [isCountryModalOpen, setIsCountryModalOpen] = useState(false);
-
-  if (pathname?.startsWith("/checkout")) {
-    return null;
-  }
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email && email.includes("@")) {
-      setSubscribed(true);
-      setTimeout(() => {
-        setEmail("");
-        setShowInput(false);
-        setSubscribed(false);
-      }, 4000);
-    }
-  };
-
   return (
     <footer className="ovia-luxury-footer">
       <div className="ovia-footer-inner">
@@ -38,47 +8,18 @@ export function Footer() {
         <div className="ovia-footer-top-grid">
           {/* Brand & Newsletter Column */}
           <div className="ovia-footer-brand-col">
-            <Link href="/" className="ovia-footer-brand-logo" aria-label="OVIA Home">
+            <a data-store-navigation href="/" className="ovia-footer-brand-logo" aria-label="OVIA Home">
               <span className="ovia-footer-brand-text">OVIA</span>
               <span className="ovia-footer-brand-tagline">TRAVEL GOODS</span>
-            </Link>
+            </a>
 
-            <div className="ovia-footer-newsletter-wrap">
+            <div className="ovia-footer-newsletter-wrap" id="ovia-newsletter">
               <p className="ovia-newsletter-eyebrow">SIGN UP FOR OUR NEWSLETTER</p>
               <p className="ovia-newsletter-desc">
                 Be the first to know about new collections, exclusive events and the world of OVIA.
               </p>
 
-              {!showInput && !subscribed ? (
-                <button
-                  type="button"
-                  onClick={() => setShowInput(true)}
-                  className="ovia-newsletter-btn"
-                  aria-label="Sign up for newsletter"
-                >
-                  SIGN UP
-                </button>
-              ) : subscribed ? (
-                <div className="ovia-newsletter-success">
-                  <Check size={14} className="ovia-success-icon" />
-                  <span>Thank you for subscribing to OVIA.</span>
-                </div>
-              ) : (
-                <form onSubmit={handleSubscribe} className="ovia-newsletter-form">
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    className="ovia-newsletter-input"
-                    autoFocus
-                  />
-                  <button type="submit" className="ovia-newsletter-submit-btn" aria-label="Submit email">
-                    <ArrowRight size={14} />
-                  </button>
-                </form>
-              )}
+              <FooterNewsletter />
             </div>
           </div>
 
@@ -88,12 +29,12 @@ export function Footer() {
             <div className="ovia-footer-nav-col">
               <h4 className="ovia-footer-col-title">SHOP</h4>
               <ul className="ovia-footer-links-list">
-                <li><Link href="/new">New Arrivals</Link></li>
-                <li><Link href="/bags">Bags</Link></li>
-                <li><Link href="/luggage">Luggage</Link></li>
-                <li><Link href="/accessories">Accessories</Link></li>
-                <li><Link href="/new">Collections</Link></li>
-                <li><Link href="/personalise">Personalisation</Link></li>
+                <li><a data-store-navigation href="/new">New Arrivals</a></li>
+                <li><a data-store-navigation href="/bags">Bags</a></li>
+                <li><a data-store-navigation href="/luggage">Luggage</a></li>
+                <li><a data-store-navigation href="/accessories">Accessories</a></li>
+                <li><a data-store-navigation href="/new">Collections</a></li>
+
               </ul>
             </div>
 
@@ -101,9 +42,9 @@ export function Footer() {
             <div className="ovia-footer-nav-col">
               <h4 className="ovia-footer-col-title">THE WORLD OF OVIA</h4>
               <ul className="ovia-footer-links-list">
-                <li><Link href="/about">About OVIA</Link></li>
-                <li><Link href="/events">Events</Link></li>
-                <li><Link href="/journal">Latest News</Link></li>
+                <li><a data-store-navigation href="/about">About OVIA</a></li>
+                <li><a data-store-navigation href="/events">Events</a></li>
+                <li><a data-store-navigation href="/journal">Latest News</a></li>
               </ul>
             </div>
 
@@ -111,10 +52,11 @@ export function Footer() {
             <div className="ovia-footer-nav-col">
               <h4 className="ovia-footer-col-title">CLIENT SERVICES</h4>
               <ul className="ovia-footer-links-list">
-                <li><Link href="/services/faq">Client Service</Link></li>
-                <li><Link href="/faq">FAQ</Link></li>
-                <li><Link href="/care-service">Care Service</Link></li>
-                <li><Link href="/stores">Store Locator</Link></li>
+                <li><a data-store-navigation href="/services/faq">Client Service</a></li>
+                <li><a data-store-navigation href="/faq">FAQ</a></li>
+
+                <li><a data-store-navigation href="/stores">Store Locator</a></li>
+                <li><a data-store-navigation href="/pages/bulk-orders">Corporate &amp; Bulk Gifting</a></li>
               </ul>
             </div>
 
@@ -122,8 +64,8 @@ export function Footer() {
             <div className="ovia-footer-nav-col">
               <h4 className="ovia-footer-col-title">SUPPORT</h4>
               <ul className="ovia-footer-links-list">
-                <li><Link href="/contact-us">Contact Us</Link></li>
-                <li><Link href="/account">My Account</Link></li>
+                <li><a data-store-navigation href="/contact-us">Contact Us</a></li>
+                <li><a data-store-navigation href="/account">My Account</a></li>
               </ul>
             </div>
 
@@ -131,9 +73,9 @@ export function Footer() {
             <div className="ovia-footer-nav-col">
               <h4 className="ovia-footer-col-title">LEGAL</h4>
               <ul className="ovia-footer-links-list">
-                <li><Link href="/privacy">Privacy Policy</Link></li>
-                <li><Link href="/terms">Terms &amp; Conditions</Link></li>
-                <li><Link href="/legal">Imprint</Link></li>
+                <li><a data-store-navigation href="/privacy">Privacy Policy</a></li>
+                <li><a data-store-navigation href="/terms">Terms &amp; Conditions</a></li>
+                <li><a data-store-navigation href="/security">Data Protection &amp; Security</a></li>
               </ul>
             </div>
           </div>
@@ -142,27 +84,7 @@ export function Footer() {
         {/* Bottom Sub-bar */}
         <div className="ovia-footer-bottom-bar">
           {/* Left: Country | Language - Opens Country/Region Modal */}
-          <div className="ovia-footer-region-picker">
-            <button
-              type="button"
-              onClick={() => setIsCountryModalOpen(true)}
-              className="ovia-region-link-btn"
-              aria-label="Select Country or Region"
-            >
-              <span className="ovia-region-label">{preferences.country.toUpperCase()}</span>
-              <ChevronDown size={12} className="ovia-region-chevron" />
-            </button>
-            <span className="ovia-region-divider">|</span>
-            <button
-              type="button"
-              onClick={() => setIsCountryModalOpen(true)}
-              className="ovia-region-link-btn"
-              aria-label="Select Language"
-            >
-              <span className="ovia-region-label">ENGLISH</span>
-              <ChevronDown size={12} className="ovia-region-chevron" />
-            </button>
-          </div>
+          <FooterRegion />
 
           {/* Center: Social Icons */}
           <div className="ovia-footer-social-wrap">
@@ -263,11 +185,6 @@ export function Footer() {
         </p>
       </div>
 
-      {/* Country and Region Selector Modal */}
-      <CountryRegionModal
-        isOpen={isCountryModalOpen}
-        onClose={() => setIsCountryModalOpen(false)}
-      />
     </footer>
   );
 }

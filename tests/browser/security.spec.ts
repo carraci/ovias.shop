@@ -47,7 +47,7 @@ test("address ownership and logout revoke a captured JWT", async ({
     data: {
       name: "Address Tester",
       email: `address-${Date.now()}@example.com`,
-      password: "A-secure-test-password", confirmPassword: "A-secure-test-password", terms: "on",
+      password: "A-secure-test-password-123", confirmPassword: "A-secure-test-password-123", terms: "on",
     },
   });
   expect(registration.status()).toBe(200);
@@ -78,7 +78,7 @@ test("address ownership and logout revoke a captured JWT", async ({
     data: {
       name: "Other Tester",
       email: `other-${Date.now()}@example.com`,
-      password: "Another-test-password", confirmPassword: "Another-test-password", terms: "on",
+      password: "Another-test-password-123", confirmPassword: "Another-test-password-123", terms: "on",
     },
   });
   expect(
@@ -112,7 +112,7 @@ test("email verification links are single-use", async ({
         data: {
           name: "Recovery Tester",
           email,
-          password: "Original-test-password", confirmPassword: "Original-test-password", terms: "on",
+          password: "Original-test-password-123", confirmPassword: "Original-test-password-123", terms: "on",
         },
       })
     ).status(),

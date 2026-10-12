@@ -1,3 +1,4 @@
+
 export interface MegaNavColumn {
   title: string;
   links: { label: string; href: string }[];
@@ -49,84 +50,13 @@ export const luggageMegaData = {
     {
       title: "CATEGORIES",
       links: [
-        { label: "Trunk", href: "/luggage/trunk" },
-        { label: "Check-In", href: "/luggage/check-in" },
-        { label: "Cabin", href: "/luggage/cabin" },
-        { label: "Emblematic pieces", href: "/luggage/emblematic-pieces" },
-        { label: "See all luggage", href: "/luggage" },
+        { label: "Cabin Luggage", href: "/luggage/cabin-luggage" },
+        { label: "Check-in Luggage", href: "/luggage/check-in-luggage" },
+        { label: "Large Luggage", href: "/luggage/large-luggage" },
+        { label: "Medium Luggage", href: "/luggage/medium-luggage" },
+        { label: "Small Luggage", href: "/luggage/small-luggage" },
+        { label: "See All Luggage", href: "/luggage" },
       ],
-    },
-    {
-      title: "TRAVEL TYPE",
-      links: [
-        { label: "Long haul", href: "/collections/long-haul" },
-        { label: "Short trips", href: "/collections/short-trips" },
-        { label: "Business selection", href: "/collections/business-selection" },
-      ],
-    },
-    {
-      title: "FAVOURITES",
-      links: [
-        { label: "Polycarbonate", href: "/luggage?material=Polycarbonate" },
-        { label: "Aluminium", href: "/luggage?material=Aluminium" },
-        { label: "Leather", href: "/luggage?material=Leather" },
-        { label: "Silver luggage", href: "/luggage?color=Silver" },
-        { label: "Black luggage", href: "/luggage?color=Black" },
-        { label: "Blue luggage", href: "/luggage?color=Midnight+Blue" },
-      ],
-    },
-    {
-      title: "HIGHLIGHTS",
-      links: [
-        { label: "For a Lifetime of Lives", href: "/heritage" },
-        { label: "Customise", href: "/personalise" },
-        { label: "All gifts", href: "/collections/gifts" },
-        { label: "Size range by collection", href: "/size-guide" },
-      ],
-    },
-  ],
-  products: [
-    {
-      name: "Original",
-      subtitle: "The aluminium icon",
-      image: "/media/megamenu/mega-luggage-original.webp",
-      href: "/products/original-cabin",
-    },
-    {
-      name: "Essential",
-      subtitle: "Practical and lightweight polycarbonate",
-      image: "/media/megamenu/mega-luggage-essential.webp",
-      href: "/products/essential-cabin",
-    },
-    {
-      name: "Classic",
-      subtitle: "Timeless aluminium design",
-      image: "/media/megamenu/mega-luggage-classic.webp",
-      href: "/products/classic-cabin",
-    },
-    {
-      name: "Essential Sleeve",
-      subtitle: "The versatile cabin companion",
-      image: "/media/megamenu/mega-luggage-essential-sleeve.webp",
-      href: "/products/essential-sleeve-cabin",
-    },
-    {
-      name: "Distinct",
-      subtitle: "An elegant leather cabin",
-      image: "/media/megamenu/mega-luggage-distinct.webp",
-      href: "/products/distinct-cabin",
-    },
-    {
-      name: "Hybrid",
-      subtitle: "An aluminium and polycarbonate union",
-      image: "/media/megamenu/mega-luggage-hybrid.webp",
-      href: "/products/hybrid-cabin",
-    },
-    {
-      name: "Essential Lite",
-      subtitle: "Exceptionally lightweight polycarbonate",
-      image: "/media/megamenu/mega-luggage-essential-lite.webp",
-      href: "/products/essential-lite-cabin",
     },
   ],
   allCollectionsHref: "/luggage",
@@ -138,66 +68,15 @@ export const bagsMegaData = {
       title: "CATEGORIES",
       links: [
         { label: "Backpacks", href: "/bags/backpacks" },
-        { label: "Duffle Bags", href: "/bags/duffle-bags" },
-        { label: "Briefcases", href: "/bags/briefcases" },
-        { label: "Crossbodies", href: "/bags/crossbodies" },
-        { label: "Totes", href: "/bags/totes" },
+        { label: "Tote Bags", href: "/bags/tote-bags" },
+        { label: "Crossbody Bags", href: "/bags/crossbody-bags" },
         { label: "Shoulder Bags", href: "/bags/shoulder-bags" },
-        { label: "Hand Carry", href: "/bags/hand-carry" },
-        { label: "See all shapes", href: "/bags?view=catalog" },
+        { label: "Duffel Bags", href: "/bags/duffel-bags" },
+        { label: "Briefcases", href: "/bags/briefcases" },
+        { label: "Weekend Bags", href: "/bags/weekend-bags" },
+        { label: "Travel Bags", href: "/bags/travel-bags" },
+        { label: "See All Bags", href: "/bags" },
       ],
-    },
-    {
-      title: "FAVOURITES",
-      links: [
-        { label: "Business Bags", href: "/bags?use=business" },
-        { label: "Aluminium", href: "/bags?material=Aluminium" },
-        { label: "Travel Bags", href: "/bags?use=travel" },
-        { label: "Leather", href: "/bags?material=Leather" },
-        { label: "Nylon", href: "/bags?material=Nylon" },
-      ],
-    },
-    {
-      title: "HIGHLIGHTS",
-      links: [
-        { label: "A Life of Mobility", href: "/discover" },
-        { label: "Everyday mobility", href: "/collections/everyday-mobility" },
-        { label: "Bag Straps", href: "/accessories/bag-straps" },
-        { label: "All gifts", href: "/collections/gifts" },
-        { label: "Emblematic pieces", href: "/bags?collection=emblematic" },
-      ],
-    },
-  ],
-  products: [
-    {
-      name: "Never Still",
-      subtitle: "Functional designs for daily life",
-      image: "/media/bags/never-still-canvas-flap-backpack-large.png",
-      href: "/product/never-still-backpack",
-    },
-    {
-      name: "Original",
-      subtitle: "An aluminium companion for any occasion",
-      image: "/media/showcase/iconic-2-original-bag.png",
-      href: "/product/original-compact",
-    },
-    {
-      name: "Groove",
-      subtitle: "Elegant bags with purpose",
-      image: "/media/bags/groove-leather-shopping-bag.png",
-      href: "/product/groove-crossbody",
-    },
-    {
-      name: "Personal",
-      subtitle: "Portable pieces in iconic materials",
-      image: "/media/bags/personal-polycarbonate-cross-body-bag.png",
-      href: "/product/personal-crossbody",
-    },
-    {
-      name: "Attaché",
-      subtitle: "The aluminium minimalist briefcase",
-      image: "/media/bags/never-still-leather-briefcase.png",
-      href: "/product/attache-case",
     },
   ],
   allCollectionsHref: "/bags",

@@ -1,1189 +1,1595 @@
-/* Luxury Checkout GUI Styles */
+.checkoutContainer {
+  min-height: 100vh;
+  color: #171717;
+  background: #ffffff;
+  font: 14px/1.5 var(--sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif);
+}
 
 .checkoutContainer * {
   box-sizing: border-box;
 }
 
-.checkoutContainer {
-  min-height: 100vh;
-  background-color: #f7f6f2;
-  color: #11120f;
-  font-family: var(
-    --font-sans,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    sans-serif
-  );
-  display: flex;
-  flex-direction: column;
+.checkoutContainer button,
+.checkoutContainer input,
+.checkoutContainer select {
+  font: inherit;
 }
 
-/* 1. Header Bar */
+.checkoutContainer button,
+.checkoutContainer a {
+  color: inherit;
+}
+
+.checkoutContainer button {
+  cursor: pointer;
+}
+
+.checkoutContainer button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.checkoutContainer button:focus-visible,
+.checkoutContainer a:focus-visible,
+.checkoutContainer input:focus-visible,
+.checkoutContainer select:focus-visible {
+  outline: 2px solid #0052cc;
+  outline-offset: 2px;
+}
+
+/* Luxury Header matching Screenshot 1 */
 .topHeader {
+  padding: 18px max(24px, calc((100vw - 1180px) / 2));
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 10px 4.4%;
-  background-color: #f7f6f2;
-  border-bottom: 1px solid #e7e2d7;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-}
-
-.brandLogo {
-  text-decoration: none;
-  color: #11120f;
-  display: flex;
-  flex-direction: column;
-  letter-spacing: 0.22em;
-}
-
-.brandTitle {
-  font-family: var(--font-serif, "Playfair Display", Georgia, serif);
-  font-size: 38px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  line-height: 1;
-}
-
-/* Steps Indicator */
-.stepsNav {
-  display: flex;
   align-items: center;
-  gap: 0;
-}
-
-.stepItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #8c857b;
-  font-weight: 500;
+  border-bottom: 1px solid #ebebeb;
+  background: #ffffff;
   position: relative;
 }
 
-.stepCircle {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 600;
-  border: 1px solid #cfc7ba;
-  color: #8c857b;
-  background: transparent;
-}
-
-.stepItemActive {
-  color: #11120f;
-  font-weight: 600;
-}
-
-.stepItemActive .stepCircle {
-  background: #11120f;
-  color: #ffffff;
-  border-color: #11120f;
-}
-
-.stepConnector {
-  width: clamp(32px, 6vw, 100px);
-  align-self: flex-start;
-  margin-top: 11px;
-  height: 1px;
-  background-color: #d8d0c2;
-}
-
-/* Secure Checkout Badge */
-.secureBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #1a1a18;
-  font-weight: 600;
-}
-
-/* 2. Main 3-Column Layout */
-.mainLayout {
-  display: grid;
-  grid-template-columns: minmax(200px, 24.4fr) minmax(480px, 46.6fr) minmax(
-      340px,
-      29fr
-    );
-  min-height: calc(100vh - 65px);
-  width: 100%;
-}
-
-@media (max-width: 1280px) {
-  .mainLayout {
-    grid-template-columns: minmax(0, 1fr) 360px;
-  }
-  .leftEditorialCol {
-    display: none !important;
-  }
-}
-
-@media (max-width: 1024px) {
-  .mainLayout {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Left Column: Architectural Editorial */
-.leftEditorialCol {
-  position: relative;
-  background-color: #433c35;
-  overflow: hidden;
+.headerLeft {
   display: flex;
-  flex-direction: column;
-  border-right: 1px solid #e5dfd2;
-}
-
-.editorialImageWrap {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 720px;
-}
-
-@media (max-width: 1024px) {
-  .leftEditorialCol {
-    display: none; /* Hide editorial on tablet/mobile to keep checkout clean */
-  }
-}
-
-/* Center Column: Interactive Checkout Form */
-.centerFormCol {
-  padding: 28px clamp(24px, 3.1vw, 48px) 32px;
-  background-color: #faf9f7;
-  overflow-y: auto;
-  min-width: 0;
-}
-
-@media (max-width: 768px) {
-  .centerFormCol {
-    padding: 24px 20px 60px;
-  }
-}
-
-.sectionBlock {
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e8e5df;
-}
-
-.sectionHeaderRow {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 6px;
-}
-
-.sectionHeading {
-  font-family: var(--font-serif, "Playfair Display", Georgia, serif);
-  font-size: 24px;
-  font-weight: 400;
-  color: #11120f;
-  margin: 0;
-}
-
-.sectionSubtitle {
-  font-size: 13px;
-  color: #767067;
-  margin: 0 0 20px;
-  font-weight: 400;
-}
-
-.loginPrompt {
-  font-size: 12px;
-  color: #767067;
-}
-
-.loginPrompt a {
-  color: #11120f;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  font-weight: 500;
-}
-
-/* Form Input Elements */
-.inputGrid2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  align-items: center;
   gap: 16px;
-  margin-bottom: 16px;
-}
-
-.inputGrid3 {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
-@media (max-width: 640px) {
-  .inputGrid2,
-  .inputGrid3 {
-    grid-template-columns: 1fr;
-  }
-}
-
-.formField {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-bottom: 8px;
-  padding: 9px 11px;
-  border: 1px solid #eeece7;
-  border-radius: 4px;
-  min-width: 0;
-}
-
-.formLabel {
-  font-size: 12px;
-  font-weight: 500;
-  color: #33322d;
-  display: flex;
-  align-items: center;
-  gap: 3px;
-}
-
-.requiredStar {
-  color: #c0392b;
-  font-size: 13px;
-}
-
-.textInput,
-.selectInput {
-  height: 34px;
-  padding: 0 14px;
-  background-color: #ffffff;
-  border: 1px solid #d5cfc4;
-  border-radius: 4px;
-  font-size: 13px;
-  color: #1a1a18;
-  outline: none;
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
-  font-family: inherit;
-  width: 100%;
-}
-
-.textInput:focus,
-.selectInput:focus {
-  border-color: #1a1a18;
-  box-shadow: 0 0 0 1px #1a1a18;
-}
-
-.textInput::placeholder {
-  color: #a8a298;
-  font-size: 13px;
-}
-
-/* Phone input with Indian Flag prefix */
-.phoneInputWrap {
-  display: flex;
-  align-items: center;
-  background-color: #ffffff;
-  border: 1px solid #d5cfc4;
-  border-radius: 4px;
-  height: 44px;
-  overflow: hidden;
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
-}
-
-.phoneInputWrap:focus-within {
-  border-color: #1a1a18;
-  box-shadow: 0 0 0 1px #1a1a18;
-}
-
-.phonePrefix {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0 10px;
-  background-color: #faf8f5;
-  border-right: 1px solid #e2ddd3;
-  font-size: 12px;
-  color: #3a3832;
-  font-weight: 500;
-  height: 100%;
-  user-select: none;
-}
-
-.flagIcon {
-  width: 18px;
-  height: 12px;
-  border-radius: 1px;
-  display: inline-block;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
-}
-
-.phoneTextInput {
-  border: none !important;
-  box-shadow: none !important;
-  height: 100%;
-  padding: 0 12px;
   flex: 1;
 }
 
-/* Checkbox */
-.checkboxLabel {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  color: #423f39;
-  cursor: pointer;
-  margin-top: 4px;
-  user-select: none;
-}
-
-.checkboxInput {
-  accent-color: #11120f;
-  width: 16px;
-  height: 16px;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-/* 2. Delivery Options Radio Cards */
-.deliveryOptionsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-}
-
-@media (max-width: 680px) {
-  .deliveryOptionsGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.deliveryCard {
-  border: 1px solid #d5cfc4;
-  background-color: #ffffff;
-  border-radius: 6px;
-  padding: 16px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  transition: all 0.15s ease;
-  position: relative;
-  text-align: left;
-}
-
-.deliveryCard:hover {
-  border-color: #9c9588;
-}
-
-.deliveryCardActive {
-  border: 2px solid #11120f;
-  background-color: #ffffff;
-  padding: 15px; /* Offset border width */
-}
-
-.deliveryCardTop {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.radioCircle {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 1.5px solid #a8a092;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.radioCircleActive {
-  border-color: #11120f;
-}
-
-.radioDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #11120f;
-}
-
-.deliveryIconWrap {
-  color: #45423b;
-  display: flex;
-  align-items: center;
-}
-
-.deliveryPrice {
-  font-size: 12px;
+.brandLogo {
+  font-family: var(--font-cinzel), Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
   font-weight: 600;
-  color: #11120f;
-  margin-left: auto;
-}
-
-.deliveryTitle {
-  font-size: 13px;
-  font-weight: 600;
-  color: #11120f;
-  margin: 0;
-}
-
-.deliverySub {
-  font-size: 11px;
-  color: #767067;
-  margin: 0;
-}
-
-/* 3. Payment Methods: Two-Column Tabs + Sub-Panel */
-.paymentContainer {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 16px;
-  align-items: start;
-}
-
-@media (max-width: 640px) {
-  .paymentContainer {
-    grid-template-columns: 1fr;
-  }
-}
-
-.paymentTabsList {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.paymentTabBtn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 14px;
-  background-color: #ffffff;
-  border: 1px solid #dcd7cd;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 500;
-  color: #423f39;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  text-align: left;
-  width: 100%;
-}
-
-.paymentTabBtnActive {
-  border-color: #11120f;
-  background-color: #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  font-weight: 600;
-  color: #11120f;
-}
-
-.paymentTabIcon {
-  color: #555048;
-  flex-shrink: 0;
-}
-
-.paymentTabSub {
-  display: block;
-  font-size: 10px;
-  color: #8c857b;
-  font-weight: 400;
-}
-
-.paymentPanel {
-  background-color: #ffffff;
-  border: 1px solid #dcd7cd;
-  border-radius: 8px;
-  padding: 24px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
-}
-
-.panelTitle {
-  font-size: 14px;
-  font-weight: 600;
-  color: #11120f;
-  margin: 0 0 4px;
-}
-
-.panelSub {
-  font-size: 12px;
-  color: #767067;
-  margin: 0 0 20px;
-}
-
-/* UPI Apps Row */
-.upiAppsRow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-}
-
-.upiAppItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 4px;
-}
-
-.upiAppBadge {
-  width: 42px;
-  height: 42px;
-  border-radius: 8px;
-  border: 1px solid #e7e2d7;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #ffffff;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-  font-size: 11px;
-  font-weight: bold;
-}
-
-.upiAppName {
-  font-size: 10px;
-  color: #635d54;
-  font-weight: 500;
-}
-
-.upiInputWrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.upiInputWrap .textInput {
-  padding-right: 60px;
-}
-
-.upiLogoBadge {
-  position: absolute;
-  right: 14px;
-  font-style: italic;
-  font-weight: 900;
-  font-size: 13px;
-  color: #097937;
-  letter-spacing: -0.05em;
-  user-select: none;
-}
-
-.inlinePayButton {
-  width: 100%;
-  height: 46px;
-  background-color: #11120f;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    opacity 0.2s ease;
-}
-
-.inlinePayButton:hover:not(:disabled) {
-  background-color: #2b2a26;
-}
-
-.inlinePayButton:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-/* 3. Right Column: Order Summary */
-.rightSummaryCol {
-  background-color: #f0ede8;
-  border-left: 1px solid #e5dfd2;
-  padding: 30px 28px;
-  overflow-y: auto;
-}
-
-@media (max-width: 768px) {
-  .rightSummaryCol {
-    padding: 24px 20px 60px;
-  }
-}
-
-.summaryHeader {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 24px;
-  border-bottom: 1px solid #dfd8cb;
-  padding-bottom: 14px;
-}
-
-.summaryTitle {
-  font-family: var(--font-serif, "Playfair Display", Georgia, serif);
-  font-size: 24px;
-  font-weight: 400;
-  color: #11120f;
-  margin: 0;
-}
-
-.summaryItemCount {
-  font-size: 12px;
-  color: #767067;
-  font-weight: 500;
-}
-
-/* Item Card */
-.orderItemCard {
-  display: grid;
-  grid-template-columns: 108px minmax(0, 1fr) auto;
-  gap: 14px;
-  align-items: start;
-  padding: 12px;
-  background: #faf9f7;
-  margin-bottom: 20px;
-}
-
-.itemThumb {
-  width: 108px;
-  height: 108px;
-  border-radius: 4px;
-  overflow: hidden;
-  background-color: #ebe5da;
-  position: relative;
-  border: 1px solid #dfd8cb;
-}
-
-.itemInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.itemName {
-  font-size: 13px;
-  font-weight: 600;
-  color: #11120f;
-  margin: 0;
-}
-
-.itemColorSize {
-  font-size: 11px;
-  color: #767067;
-  margin: 0;
-}
-
-.itemQtyRow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-  background-color: #ffffff;
-  border: 1px solid #d5cfc4;
-  border-radius: 3px;
-  padding: 2px 6px;
-  width: fit-content;
-}
-
-.qtyBtn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 2px 4px;
-  color: #423f39;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.qtyValue {
-  font-size: 11px;
-  font-weight: 600;
-  min-width: 14px;
+  color: #000000;
   text-align: center;
 }
 
-.itemPrice {
-  font-size: 13px;
-  font-weight: 600;
-  color: #11120f;
+.headerRight {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  flex: 1;
 }
 
-/* Price Lines */
-.priceBreakdown {
+.searchBar {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid #dfd8cb;
+  align-items: center;
+  gap: 8px;
+  background: #f7f7f7;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-size: 13px;
+  color: #666666;
+  cursor: pointer;
+}
+
+.searchIcon {
+  color: #888888;
+}
+
+.headerIconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111111;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.headerIconBtn:hover {
+  opacity: 0.7;
+}
+
+.returnToBagLink {
+  font-size: 12px;
+  color: #555555;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Screen reader heading for test compatibility */
+.srHeading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Two Column Layout */
+.mainLayout {
+  max-width: 1180px;
+  padding: 36px 24px 60px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: 56px;
+}
+
+.formCol {
+  min-width: 0;
+}
+
+/* Accordion Step Styling */
+.stepAccordion {
+  border-bottom: 1px solid #ebebeb;
+  padding: 24px 0;
+}
+
+.stepAccordion:first-of-type {
+  padding-top: 0;
+}
+
+.stepTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   margin-bottom: 18px;
 }
 
-.priceLine {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.stepNumCircle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #e5e5e5;
+  color: #333333;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.stepNumActive {
+  background: #000000;
+  color: #ffffff;
+}
+
+.stepHeading {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111111;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.stepSubtitle {
   font-size: 13px;
-  color: #555048;
+  color: #666666;
+  line-height: 1.5;
+  margin: 0 0 18px;
 }
 
-.priceLine span:first-child {
-  display: flex;
-  align-items: center;
-  gap: 5px;
+/* Completed Step Summary (Screenshots 3 & 5) */
+.stepCompletedBox {
+  margin-bottom: 6px;
 }
 
-.priceLineVal {
-  color: #11120f;
-  font-weight: 500;
-}
-
-.totalLine {
+.completedRow {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 24px;
+  margin-bottom: 4px;
 }
 
-.totalLabel {
-  font-size: 16px;
+.completedTitle {
+  font-size: 13px;
   font-weight: 600;
-  color: #11120f;
+  color: #111111;
 }
 
-.totalAmountWrap {
-  text-align: right;
-}
-
-.totalAmount {
-  font-size: 22px;
-  font-weight: 700;
-  color: #11120f;
-  display: block;
-}
-
-.inclusiveTaxText {
-  font-size: 10px;
-  color: #767067;
-}
-
-/* Promo Code Accordion */
-.promoAccordion {
-  margin-bottom: 20px;
-  background-color: #ffffff;
-  border: 1px solid #d5cfc4;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.promoToggle {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 12px 14px;
+.editBtn {
   background: none;
   border: none;
   font-size: 12px;
-  color: #423f39;
+  color: #111111;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 0;
   cursor: pointer;
+}
+
+.editBtn:hover {
+  color: #0052cc;
+}
+
+.completedText {
+  font-size: 13px;
+  color: #555555;
+  line-height: 1.5;
+  margin: 0 0 14px;
+}
+
+/* Field styling */
+.field {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 16px;
+  min-width: 0;
+}
+
+.field > span {
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #333333;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  min-width: 0;
+  height: 48px;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+  background: #ffffff;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #171717;
+  transition: border-color 0.15s ease;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: #0052cc;
+  outline: none;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.passwordWrap {
+  position: relative;
+  width: 100%;
+}
+
+.passwordInput {
+  padding-right: 42px !important;
+}
+
+.eyeToggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #777777;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.eyeToggle:hover {
+  color: #111111;
+}
+
+.forgotLink {
+  font-size: 12px;
+  color: #111111;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-bottom: 18px;
+  display: inline-block;
+}
+
+/* Blue Action Button (Screenshots 1, 2, 3, 5) */
+.primaryBlueBtn {
+  width: 100%;
+  height: 48px;
+  background: #0052cc;
+  color: #ffffff !important;
+  border: none;
+  border-radius: 2px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  transition: background 0.15s ease;
+}
+
+.primaryBlueBtn:hover:not(:disabled) {
+  background: #0043a8;
+}
+
+.secondaryWhiteBtn {
+  width: 100%;
+  height: 48px;
+  background: #ffffff;
+  color: #111111 !important;
+  border: 1px solid #111111;
+  border-radius: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  transition: background 0.15s ease;
+}
+
+.secondaryWhiteBtn:hover {
+  background: #f7f7f7;
+}
+
+/* Delivery options header text */
+.deliveryCountryNote {
+  font-size: 13px;
+  color: #444444;
+  margin: 0 0 14px;
+}
+
+.changeBtn {
+  background: none;
+  border: none;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  color: #111111;
+  margin-left: 6px;
   font-weight: 500;
 }
 
-.promoInputRow {
-  display: flex;
-  gap: 8px;
-  padding: 0 14px 14px;
-}
-
-.promoApplyBtn {
-  background-color: #11120f;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  padding: 0 14px;
-  font-size: 11px;
-  font-weight: 600;
-  cursor: pointer;
-  letter-spacing: 0.05em;
-}
-
-/* Pay CTA */
-.primaryPayBtn {
-  width: 100%;
-  height: 48px;
-  background-color: #11120f;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
+.subheading {
   font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  color: #111111;
+  margin: 16px 0 14px;
+}
+
+.searchAddressWrap {
+  position: relative;
+  width: 100%;
+}
+
+.searchAddressIcon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888888;
+  pointer-events: none;
+}
+
+.searchAddressInput {
+  padding-left: 40px !important;
+}
+
+.manualAddressLink {
+  background: none;
+  border: none;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: #111111;
+  cursor: pointer;
+  padding: 0;
+  margin: 6px 0 14px;
+  display: inline-block;
+}
+
+.checkboxLabel {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 10px;
+  margin: 16px 0;
+  font-size: 13px;
+  color: #333333;
+  cursor: pointer;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #0052cc;
+  cursor: pointer;
+}
+
+/* Delivery Method Radio Cards (Screenshot 5) */
+.deliveryMethodsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.deliveryMethodCard {
+  border: 1px solid #111111;
+  border-radius: 3px;
+  padding: 16px 18px;
+  background: #ffffff;
+  display: flex;
+  align-items: flex-start;
   gap: 12px;
   cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    opacity 0.2s ease;
-  margin-bottom: 14px;
 }
 
-.primaryPayBtn:hover:not(:disabled) {
-  background-color: #2b2a26;
+.deliveryMethodCard input[type="radio"] {
+  margin-top: 3px;
+  accent-color: #0052cc;
+  cursor: pointer;
 }
 
-.primaryPayBtn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+.methodDetails {
+  flex: 1;
 }
 
-.securityNote {
+.methodHeader {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  font-size: 11px;
-  color: #767067;
-  text-align: center;
-  margin-bottom: 30px;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111111;
 }
 
-/* Trust Badges Grid */
-.trustBadgesGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px 14px;
-  padding: 28px 18px;
-  background: #faf9f7;
-  border-top: 1px solid #dfd8cb;
-  border-bottom: 1px solid #dfd8cb;
-  margin-bottom: 24px;
+.methodCost {
+  font-weight: 600;
+}
+
+.methodEstimate {
+  font-size: 12px;
+  color: #666666;
+  margin: 4px 0 0;
+  line-height: 1.4;
+}
+
+/* Right Column Order Summary Sidebar */
+.summaryAside {
+  min-width: 0;
+  align-self: start;
+}
+
+.summaryTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111111;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+
+.orderCardBox {
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.summaryItemsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.orderItemRow {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.itemThumb {
+  width: 80px;
+  height: 80px;
+  background: #f8f8f8;
+  border-radius: 2px;
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.itemMeta {
+  flex: 1;
+  min-width: 0;
+}
+
+.itemEyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #777777;
+  margin: 0 0 2px;
+}
+
+.itemName {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111111;
+  margin: 0 0 2px;
+}
+
+.itemColor {
+  font-size: 12px;
+  color: #666666;
+  margin: 0 0 2px;
+}
+
+.itemStockBadge {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #333333;
+  margin: 0 0 2px;
+}
+
+.itemQty {
+  font-size: 12px;
+  color: #666666;
+  margin: 0;
+}
+
+.itemPriceCol {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111111;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.breakdownSection {
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.breakdownRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #444444;
+}
+
+.breakdownTotalRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111111;
+  padding-top: 10px;
+  border-top: 1px solid #f0f0f0;
+  margin-top: 4px;
+}
+
+.salesTaxNote {
+  font-size: 11px;
+  color: #888888;
+  text-align: right;
+  margin-top: -4px;
+}
+
+/* Trust list below summary */
+.trustList {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .trustItem {
   display: flex;
-  align-items: flex-start;
   gap: 10px;
+  align-items: flex-start;
 }
 
 .trustIcon {
-  color: #423f39;
+  color: #333333;
   flex-shrink: 0;
   margin-top: 2px;
 }
 
-.trustTitle {
+.trustText {
+  font-size: 11px;
+  color: #555555;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.acceptedSection {
+  margin-top: 20px;
+}
+
+.acceptedTitle {
+  font-size: 12px;
+  font-weight: 500;
+  color: #333333;
+  margin: 0 0 8px;
+}
+
+.badgesRow {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.paymentBadge {
   font-size: 11px;
   font-weight: 600;
-  color: #11120f;
-  margin: 0;
+  padding: 4px 10px;
+  background: #f4f4f4;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+  color: #333333;
 }
 
-.trustSub {
-  font-size: 10px;
-  color: #767067;
-  margin: 0;
+/* Luxury 3-Column Footer (Screenshots 1 & 2) */
+.checkoutFooter {
+  border-top: 1px solid #e8e8e8;
+  margin-top: 60px;
+  padding: 48px 24px 60px;
+  background: #ffffff;
 }
 
-/* OVIA Signature Packaging Card */
-.packagingCard {
-  background-color: #ffffff;
-  border: 1px solid #dfd8cb;
-  border-radius: 6px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+.footerInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
 }
 
-.packagingImageWrap {
-  position: relative;
-  width: 100%;
-  height: 140px;
-  background-color: #ede7db;
-}
-
-.packagingContent {
-  padding: 16px;
-}
-
-.packagingTitle {
-  font-family: var(--font-serif, "Playfair Display", Georgia, serif);
-  font-size: 16px;
-  font-weight: 400;
-  color: #11120f;
-  margin: 0 0 6px;
-}
-
-.packagingDesc {
+.footerCol h4 {
   font-size: 11px;
-  color: #767067;
-  line-height: 1.5;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #111111;
+  margin: 0 0 10px;
+}
+
+.footerCol p {
+  font-size: 12px;
+  color: #666666;
+  line-height: 1.6;
   margin: 0 0 12px;
 }
 
-.discoverLink {
+.footerCol a {
+  color: #111111;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footerPayBadges {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* Alert/Errors */
+.error {
+  background: #fdf2f2;
+  border: 1px solid #f8b4b4;
+  color: #9b1c1c;
+  padding: 12px 16px;
+  border-radius: 2px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.notice {
+  background: #f4f8fb;
+  border: 1px solid #b8daff;
+  color: #004085;
+  padding: 12px 16px;
+  border-radius: 2px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+/* Mobile responsive */
+@media (max-width: 900px) {
+  .mainLayout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 20px;
+  }
+
+  .headerRight .searchBar {
+    display: none;
+  }
+
+  .footerInner {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+/* GUI FLOW ADDITIONS (User Diagram: CHECKOUT with 4 Steps & Order Summary) */
+.checkoutPageHeading {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 24px 8px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #111111;
+  font-family: var(--font-cinzel), Georgia, "Times New Roman", serif;
+  border-bottom: 2px solid #111111;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkoutPageSubtitle {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #666666;
+  text-transform: uppercase;
+  font-family: var(--sans, sans-serif);
+}
+
+.paymentOptionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.paymentOptionCard {
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  background: #ffffff;
+  transition: all 0.18s ease;
+  overflow: hidden;
+}
+
+.paymentOptionCardSelected {
+  border-color: #0052cc;
+  box-shadow: 0 0 0 1px #0052cc;
+}
+
+.paymentOptionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  cursor: pointer;
+  user-select: none;
+  background: #ffffff;
+}
+
+.paymentOptionCardSelected .paymentOptionHeader {
+  background: #fbfdff;
+}
+
+.paymentOptionLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.paymentRadioCustom {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #888888;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s ease;
+  background: #ffffff;
+}
+
+.paymentRadioCustomSelected {
+  border-color: #0052cc;
+}
+
+.paymentRadioDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0052cc;
+}
+
+.paymentOptionTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111111;
+  letter-spacing: -0.01em;
+}
+
+.paymentOptionSub {
+  font-size: 12px;
+  color: #666666;
+  margin-top: 2px;
+}
+
+.paymentIconsRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.payPillIcon {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 3px;
+  background: #f0f0f0;
+  color: #333333;
+  letter-spacing: 0.02em;
+}
+
+.paymentOptionBody {
+  padding: 18px 20px;
+  background: #fafafa;
+  border-top: 1px solid #eeeeee;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.quickPillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.quickPillItem {
+  padding: 8px 14px;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #222222;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quickPillItem:hover {
+  border-color: #0052cc;
+  color: #0052cc;
+}
+
+.quickPillItemSelected {
+  border-color: #0052cc;
+  background: #eef4ff;
+  color: #0052cc;
+}
+
+.upiInputRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.upiInput {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  font-size: 13px;
+  background: #ffffff;
+  color: #111111;
+}
+
+.upiInput:focus {
+  border-color: #0052cc;
+  outline: none;
+}
+
+.upiVerifyBtn {
+  padding: 10px 18px;
+  background: #111111;
+  color: #ffffff !important;
+  border: 1px solid #111111;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.upiVerifyBtn:hover:not(:disabled) {
+  background: #2b2b2b;
+}
+
+.upiVerifyBtnVerified {
+  background: #e6f4ea !important;
+  color: #137333 !important;
+  border-color: #34a853 !important;
+}
+
+.upiVerifiedSuccessRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #137333;
+  font-weight: 500;
+}
+
+.cardFieldsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.cardFieldFull {
+  grid-column: 1 / -1;
+}
+
+.bankSelect {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  font-size: 13px;
+  background: #ffffff;
+  color: #111111;
+}
+
+.paypalBtn {
+  background: #0070ba !important;
+}
+
+.paypalBtn:hover:not(:disabled) {
+  background: #005ea6 !important;
+}
+
+.realtimeBadge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: #0070ba;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 3px;
+  margin-left: 8px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.paypalInfoBox {
+  background: #f0f7fc;
+  border: 1px solid #d0e4f5;
+  border-radius: 4px;
+  padding: 14px 16px;
+}
+
+.paypalInfoText {
+  font-size: 13px;
+  color: #1a4369;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.paypalConversionRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #c0daf0;
+  font-size: 13px;
+  color: #0b345b;
+}
+
+.paypalRateNote {
+  font-size: 11px;
+  color: #5d7e9e;
+}
+
+.paySecurelyBtn {
+  width: 100%;
+  background: #0052cc;
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  padding: 16px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: background 0.15s ease, transform 0.05s ease;
+  box-shadow: 0 2px 6px rgba(0, 82, 204, 0.2);
+}
+
+.paySecurelyBtn:hover:not(:disabled) {
+  background: #0041a8;
+}
+
+.paySecurelyBtn:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.paySecurelyBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.securityGuaranteeRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 12px;
+  font-size: 11px;
+  color: #666666;
+}
+
+.summaryDashedLine {
+  height: 1px;
+  background: repeating-linear-gradient(to right, #cccccc, #cccccc 4px, transparent 4px, transparent 8px);
+  margin: 12px 0 10px;
+}
+
+.orderSuccessCard {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 40px 32px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  margin: 20px 0;
+}
+
+.orderSuccessIconWrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #e6f4ea;
+  color: #137333;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.orderSuccessTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111111;
+  margin: 0 0 10px;
+  font-family: var(--font-cinzel), Georgia, serif;
+}
+
+.orderSuccessNumber {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0052cc;
+  background: #eef4ff;
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.orderSuccessMessage {
+  font-size: 14px;
+  color: #555555;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0 auto 24px;
+}
+
+.orderSuccessActions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* UPI Sub-tabs and QR Code */
+.upiSubTabsContainer {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  background: #f1f3f5;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.upiSubTabBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+  color: #555555;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.upiSubTabBtnActive {
+  background: #ffffff;
+  color: #111111;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.upiQrCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background: #fdfdfd;
+  border: 1px dashed #d5d5d5;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.upiQrFrame {
+  position: relative;
+  padding: 12px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e0e0e0;
+  margin: 12px 0;
+  display: inline-block;
+}
+
+.upiQrImg {
+  display: block;
+  width: 200px;
+  height: 200px;
+  border-radius: 4px;
+}
+
+.upiQrAmountBadge {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111111;
+  margin-top: 4px;
+}
+
+.upiQrTimerBadge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #11120f;
-  text-decoration: none;
+  color: #b06000;
+  background: #ffffff;
+  border: 1px solid #ffe299;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-top: 8px;
 }
 
-.discoverLink:hover {
+.upiQrLiveStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #137333;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.liveRadarDot {
+  width: 8px;
+  height: 8px;
+  background-color: #34a853;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(52, 168, 83, 0.7);
+  animation: radarPulse 1.8s infinite;
+}
+
+@keyframes radarPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 168, 83, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(52, 168, 83, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 168, 83, 0);
+  }
+}
+
+.upiQrAppsRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.upiQrQuickConfirmBtn {
+  margin-top: 14px;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #ffffff;
+  border: 1px solid #111111;
+  border-radius: 4px;
+  color: #111111;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.upiQrQuickConfirmBtn:hover {
+  background: #111111;
+  color: #ffffff;
+}
+
+/* Modal System for Real-time Banking Flow */
+.bankingModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 16px;
+  animation: fadeInModal 0.2s ease-out;
+}
+
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.bankingModalCard {
+  background: #ffffff;
+  border-radius: 8px;
+  max-width: 460px;
+  width: 100%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+}
+
+.bankingModalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #f7f9fa;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.bankingModalTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bankingModalTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111111;
+}
+
+.bankingModalClose {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666666;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bankingModalClose:hover {
+  background: #e8e8e8;
+  color: #111111;
+}
+
+.bankingModalBody {
+  padding: 22px 24px;
+}
+
+.bankingSummaryBox {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+
+.bankingSummaryLine {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  color: #475569;
+}
+
+.bankingSummaryLine:last-child {
+  margin-bottom: 0;
+}
+
+.bankingSummaryLine strong {
+  color: #0f172a;
+}
+
+.otpInputWrap {
+  margin: 18px 0;
+  text-align: center;
+}
+
+.otpInputLarge {
+  width: 100%;
+  max-width: 280px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  text-align: center;
+  padding: 10px 14px;
+  border: 2px solid #0052cc;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #111111;
+  outline: none;
+  font-family: monospace;
+}
+
+.demoPillAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  font-size: 11px;
+  color: #0052cc;
+  background: #eef4ff;
+  border: 1px dashed #b8d4fe;
+  padding: 4px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.demoPillAction:hover {
+  background: #dbeafe;
+}
+
+.modalActionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modalSubmitBtn {
+  width: 100%;
+  padding: 14px 20px;
+  background: #0052cc;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.15s ease;
+}
+
+.modalSubmitBtn:hover:not(:disabled) {
+  background: #0041a8;
+}
+
+.modalSubmitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.modalCancelBtn {
+  width: 100%;
+  padding: 10px 16px;
+  background: transparent;
+  color: #666666;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+}
+
+.modalCancelBtn:hover {
+  color: #111111;
   text-decoration: underline;
 }
 
-/* Error message banner */
-.errorBanner {
-  background-color: #fde8e8;
-  color: #9b1c1c;
-  padding: 12px 16px;
-  border-radius: 4px;
-  font-size: 12px;
-  margin-bottom: 20px;
-  border: 1px solid #f8b4b4;
+.bankingSecurityBadgeFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: #f8f9fa;
+  border-top: 1px solid #edf2f7;
+  font-size: 11px;
+  color: #718096;
 }
 
-/* Reference proportions, with practical touch targets at smaller sizes. */
-.editorialCopy {
-  position: absolute;
-  inset: 9% 10% 4%;
-  color: white;
-  text-shadow: 0 1px 14px #0008;
-  pointer-events: none;
+/* Real-Time Promotional Coupon Widget */
+.couponBox {
+  margin: 16px 0;
+  padding: 12px 14px;
+  background-color: #ffffff;
+  border: 1px solid #e7e5e4;
+  border-radius: 4px;
+}
+
+.couponHeading {
   display: flex;
-  flex-direction: column;
-}
-.editorialCopy p {
+  align-items: center;
+  gap: 6px;
   font-size: 11px;
-  line-height: 2;
-  letter-spacing: 0.3em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #444444;
+  margin-bottom: 8px;
 }
-.editorialCopy h2 {
-  font:
-    400 30px/1.15 Georgia,
-    serif;
-  margin-top: 30px;
-}
-.editorialCopy span {
-  margin-top: auto;
-  font:
-    38px Georgia,
-    serif;
-  letter-spacing: 0.2em;
-}
-.editorialImageWrap::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, #0005, transparent 45%, #0005);
-}
-.inputGrid2,
-.inputGrid3 {
+
+.couponForm {
+  display: flex;
   gap: 8px;
-  margin-bottom: 0;
 }
-.phoneInputWrap {
-  height: 34px;
-}
-.sectionSubtitle {
-  margin-bottom: 14px;
+
+.couponInput {
+  flex: 1;
+  padding: 8px 12px;
   font-size: 12px;
-}
-.summaryHeader {
-  border: 0;
-  padding: 0;
-  margin-bottom: 20px;
-}
-.summaryTitle {
-  font-size: 28px;
-}
-.itemName {
-  font:
-    400 16px/1.25 Georgia,
-    serif;
-}
-.itemPrice {
-  font-size: 12px;
-  white-space: nowrap;
-}
-.deliveryOptionsGrid {
-  gap: 10px;
-}
-.deliveryCard {
-  padding: 14px;
+  font-family: monospace;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #111111;
+  background: #ffffff;
+  border: 1px solid #d6d3d1;
   border-radius: 3px;
+  outline: none;
+  transition: border-color 0.15s ease;
 }
-.deliveryCardActive {
-  padding: 13px;
+
+.couponInput:focus {
+  border-color: #8e693e;
 }
-.deliveryCard[aria-disabled="true"] {
+
+.couponApplyBtn {
+  padding: 8px 14px;
+  background-color: #111111;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.couponApplyBtn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.couponApplyBtn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-.paymentContainer {
-  grid-template-columns: minmax(170px, 0.85fr) minmax(0, 1.3fr);
-}
-.paymentPanel {
-  padding: 16px;
+
+.couponActiveTag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
   border-radius: 3px;
-  box-shadow: none;
 }
-.paymentTabsList {
-  gap: 0;
+
+.couponActiveInfo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #166534;
 }
-.paymentTabBtn {
-  border-radius: 3px;
-  padding: 10px;
+
+.couponActiveCode {
+  font-family: monospace;
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
-.upiAppsRow {
-  gap: 5px;
-  margin-bottom: 16px;
-}
-.upiAppBadge {
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-}
-.emptyBag {
-  padding: 20px 0;
-  font-size: 14px;
-  line-height: 1.7;
-}
-.emptyBag a {
+
+.couponRemoveBtn {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 4px;
   text-decoration: underline;
 }
-.qtyBtn {
-  min-width: 28px;
-  min-height: 28px;
+
+.couponErrorMsg {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #dc2626;
+  line-height: 1.4;
 }
-.qtyBtn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
+
+.couponSuccessMsg {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #16a34a;
+  line-height: 1.4;
 }
-.packagingCard {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-radius: 0;
-  background: #e9e1d4;
-}
-.packagingImageWrap {
-  grid-column: 2;
-  grid-row: 1;
-  height: 220px;
-}
-.packagingContent {
-  grid-column: 1;
-  grid-row: 1;
-  align-self: center;
-}
-.checkoutContainer button:focus-visible,
-.checkoutContainer a:focus-visible,
-.deliveryCard:focus-visible {
-  outline: 2px solid #76674e;
-  outline-offset: 4px;
-}
-@media (max-width: 1024px) {
-  .centerFormCol {
-    overflow: visible;
-  }
-  .rightSummaryCol {
-    overflow: visible;
-  }
-  .mainLayout {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .rightSummaryCol {
-    grid-row: 1;
-  }
-  .rightSummaryCol .packagingCard,
-  .rightSummaryCol .trustBadgesGrid {
-    display: none;
-  }
-}
-@media (max-width: 640px) {
-  .topHeader {
-    padding: 14px 20px;
-    flex-wrap: wrap;
-    gap: 18px;
-  }
-  .brandTitle {
-    font-size: 28px;
-  }
-  .secureBadge {
-    font-size: 9px;
-  }
-  .stepsNav {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-  }
-  .stepConnector {
-    width: 18vw;
-  }
-  .sectionHeaderRow {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .centerFormCol,
-  .rightSummaryCol {
-    padding: 24px 20px;
-  }
-  .inputGrid2,
-  .inputGrid3,
-  .paymentContainer {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .textInput,
-  .selectInput,
-  .phoneInputWrap {
-    min-height: 44px;
-    font-size: 16px;
-  }
-  .orderItemCard {
-    grid-template-columns: 80px minmax(0, 1fr);
-    gap: 12px;
-  }
-  .itemThumb {
-    width: 80px;
-    height: 90px;
-    grid-row: span 2;
-  }
-  .itemPrice {
-    grid-column: 2;
-  }
-  .primaryPayBtn {
-    min-height: 48px;
-  }
-}
+
+
+

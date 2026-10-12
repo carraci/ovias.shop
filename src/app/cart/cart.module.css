@@ -1,0 +1,617 @@
+.pageWrap {
+  background: #ffffff;
+  min-height: calc(100vh - var(--header-height, 90px));
+  padding: calc(var(--header-height, 90px) + 24px) clamp(20px, 4vw, 48px) 80px;
+  font-family: var(--sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+}
+
+@media (max-width: 760px) {
+  .pageWrap {
+    padding-top: calc(var(--header-height, 80px) + 16px);
+  }
+}
+
+.pageInner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Top bar with subtotal & proceed */
+.topActionBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #ebebeb;
+  margin-bottom: 32px;
+}
+
+.topTotalLabel {
+  font-size: 15px;
+  font-weight: 500;
+  color: #111111;
+}
+
+.topProceedBtn {
+  background: #0052cc;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  display: inline-block;
+}
+
+.topProceedBtn:hover {
+  background: #0043a8;
+}
+
+/* Page Header */
+.pageHeader {
+  margin-bottom: 32px;
+}
+
+.pageTitle {
+  font-size: 32px;
+  font-weight: 400;
+  color: #111111;
+  margin: 0 0 10px;
+  letter-spacing: -0.01em;
+}
+
+.deliveryAddressNote {
+  font-size: 13px;
+  color: #111111;
+  margin: 0;
+}
+
+.changeLink {
+  color: #111111;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 4px;
+}
+
+.errorBanner {
+  background: #fdf2f2;
+  border: 1px solid #f8d7da;
+  color: #721c24;
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+
+/* Two-column layout */
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 56px;
+  align-items: flex-start;
+}
+
+@media (max-width: 960px) {
+  .layoutGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* Left Column: Items List */
+.itemsList {
+  display: flex;
+  flex-direction: column;
+}
+
+.productCard {
+  display: grid;
+  grid-template-columns: 130px 1fr auto;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 24px 0;
+  border-bottom: 1px solid #ebebeb;
+}
+
+@media (max-width: 640px) {
+  .productCard {
+    grid-template-columns: 90px 1fr;
+  }
+}
+
+.imageWrap {
+  width: 130px;
+  height: 130px;
+  background: #f6f6f6;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+@media (max-width: 640px) {
+  .imageWrap {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+.productImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.detailsCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #767676;
+  margin: 0 0 4px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.productName {
+  font-size: 16px;
+  font-weight: 500;
+  color: #111111;
+  text-decoration: none;
+}
+
+.productName:hover {
+  text-decoration: underline;
+}
+
+.heartBtn {
+  background: none;
+  border: none;
+  color: #111111;
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s ease;
+}
+
+.heartBtn:hover {
+  opacity: 0.6;
+}
+
+.colorLabel {
+  font-size: 13px;
+  color: #555555;
+  margin: 0 0 6px;
+}
+
+.limitedStockBadge {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #767676;
+  margin: 0 0 16px;
+}
+
+.controlsRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: auto;
+}
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 13px;
+  color: #111111;
+}
+
+.stepperBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111111;
+}
+
+.stepperBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.stepperVal {
+  min-width: 16px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.removeLink {
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: #555555;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+
+.removeLink:hover {
+  color: #111111;
+}
+
+.priceCol {
+  text-align: right;
+  font-size: 15px;
+  font-weight: 500;
+  color: #111111;
+}
+
+@media (max-width: 640px) {
+  .priceCol {
+    grid-column: 2;
+    text-align: left;
+    margin-top: 8px;
+  }
+}
+
+/* Right Column: Order Summary */
+.summaryAside {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0;
+  font-size: 14px;
+  color: #111111;
+}
+
+.summaryTotalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 16px;
+  margin-top: 8px;
+  border-top: 1px solid #ebebeb;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111111;
+}
+
+.salesTaxNote {
+  font-size: 11px;
+  color: #767676;
+  text-align: right;
+  margin-top: 2px;
+  margin-bottom: 24px;
+}
+
+/* Trust / Info Notes */
+.trustList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid #ebebeb;
+  margin-bottom: 24px;
+}
+
+.trustItem {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.trustIcon {
+  flex-shrink: 0;
+  color: #111111;
+  margin-top: 2px;
+}
+
+.trustText {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #555555;
+  margin: 0;
+}
+
+/* Payment Methods */
+.paymentSection {
+  padding-top: 16px;
+  border-top: 1px solid #ebebeb;
+}
+
+.paymentTitle {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: #767676;
+  margin: 0 0 10px;
+}
+
+.paymentBadges {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.paymentBadge {
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #444444;
+}
+
+/* Middle / Bottom Repeated Action Bar (Image 3) */
+.middleActionBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+  margin-top: 56px;
+  margin-bottom: 40px;
+}
+
+/* Recommendations Carousel (Image 3) */
+.recGridWrapper {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.recGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+@media (max-width: 960px) {
+  .recGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .recGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.recGrid::-webkit-scrollbar {
+  display: none;
+}
+
+.recCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.recImageWrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #f6f6f6;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.recImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.recCard:hover .recImg {
+  transform: scale(1.03);
+}
+
+.recName {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111111;
+  margin: 14px 0 4px;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recName:hover {
+  text-decoration: underline;
+}
+
+.recPrice {
+  font-size: 13px;
+  color: #666666;
+  margin: 0 0 14px;
+}
+
+.recAddBtn {
+  background: #0052cc;
+  color: #ffffff;
+  border: none;
+  border-radius: 2px;
+  padding: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  width: 100%;
+  text-align: center;
+}
+
+.recAddBtn:hover {
+  background: #0043a8;
+}
+
+.recAddBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.navArrow {
+  position: absolute;
+  top: 35%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.navArrow:hover {
+  transform: translateY(-50%) scale(1.08);
+  background: #f9f9f9;
+}
+
+.navArrow.left {
+  left: -18px;
+}
+
+.navArrow.right {
+  right: -18px;
+}
+
+/* Back To Shop button (Image 3) */
+.backToShopBtn {
+  display: block;
+  width: fit-content;
+  margin: 32px auto 48px;
+  border: 1px solid #111111;
+  background: #ffffff;
+  color: #111111;
+  padding: 12px 48px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.backToShopBtn:hover {
+  background: #111111;
+  color: #ffffff;
+}
+
+/* Bottom Guarantees / Badges (bottom of Image 3) */
+.guaranteesBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  padding: 32px 0 16px;
+  border-top: 1px solid #ebebeb;
+}
+
+.guaranteeItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.guaranteeIcon {
+  color: #111111;
+}
+
+.guaranteeTitle {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: 64px 0 80px;
+}
+
+.emptyTitle {
+  font-size: 26px;
+  font-weight: 400;
+  color: #111111;
+  margin-bottom: 12px;
+}
+
+.emptySubtitle {
+  font-size: 15px;
+  color: #666666;
+  margin-bottom: 28px;
+}
+
+.emptyActions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.emptyBtn {
+  background: #0052cc;
+  color: #ffffff;
+  padding: 12px 28px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 2px;
+  text-decoration: none;
+}
+
+.emptyBtn:hover {
+  background: #0043a8;
+}

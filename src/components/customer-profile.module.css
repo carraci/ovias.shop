@@ -1,0 +1,213 @@
+.newsletter {
+  background: #f6f7f9;
+  padding: 22px 16px;
+  margin: 16px 0;
+  border-radius: 16px;
+}
+.blockLabel {
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  color: #8b96a5;
+  margin: 0 0 24px;
+}
+.blockLabel span {
+  color: #d74405;
+  margin-right: 8px;
+}
+.newsletterRow {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.newsletterRow h2 {
+  margin: 0;
+  white-space: nowrap;
+  font-size: 22px;
+  font-weight: 400;
+}
+.emailForm {
+  display: flex;
+  align-items: center;
+  border: 1px solid #171717;
+  border-radius: 30px;
+  padding: 3px;
+  flex: 1;
+  min-width: 0;
+}
+.emailForm input {
+  background: transparent;
+  border: 0;
+  outline: none;
+  padding: 10px 20px;
+  min-width: 0;
+  width: 100%;
+  font: inherit;
+  font-size: 14px;
+}
+.emailForm input::placeholder {
+  color: #8b96a5;
+}
+.emailForm button {
+  border: 0;
+  background: #171717;
+  color: white;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.emailForm button:disabled {
+  opacity: 0.5;
+}
+.socialIcons {
+  display: flex;
+  gap: 10px;
+}
+.socialIcons a,
+.socialIcons button {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #171717;
+  border-radius: 50%;
+  color: #171717;
+  background: transparent;
+}
+.socialIcons button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+@media (max-width: 650px) {
+  .newsletterRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .emailForm {
+    flex: auto;
+  }
+}
+.showroomAddress {
+  font-style: normal;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+.page {
+  max-width: 1000px;
+  margin: auto;
+  padding: 24px;
+  color: #171717;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: #637083;
+}
+.page h1 {
+  font-size: 28px;
+}
+.page h2 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 18px;
+}
+.panel {
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  border-radius: 20px;
+  padding: 24px;
+  margin: 16px 0;
+}
+.panel label {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 18px;
+  font-size: 13px;
+}
+.panel input,
+.panel select {
+  border: 1px solid #d4d4d4;
+  border-radius: 14px;
+  min-height: 52px;
+  padding: 12px;
+  font: inherit;
+  width: 100%;
+  background: white;
+  color: #171717;
+}
+.panel input[readonly] {
+  background: #f6f7f8;
+  color: #637083;
+}
+.panel small {
+  color: #637083;
+}
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.primary {
+  background: #171717;
+  color: white;
+  border: 0;
+  border-radius: 24px;
+  padding: 12px 24px;
+  margin-right: 18px;
+  cursor: pointer;
+}
+.primary:disabled {
+  opacity: 0.6;
+}
+.panel .preference {
+  flex-direction: row;
+  align-items: center;
+}
+.preference input {
+  width: 18px;
+  min-height: 18px;
+}
+.visit {
+  background: #d74405;
+  color: white;
+  border-radius: 20px;
+  padding: 24px;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+.visit a {
+  color: inherit;
+}
+.page a {
+  font-size: 13px;
+}
+.page :focus-visible {
+  outline: 2px solid #171717;
+  outline-offset: 3px;
+}
+.page [role="alert"] {
+  color: #a42b20;
+}
+@media (max-width: 650px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+  .page {
+    padding: 14px;
+  }
+  .panel {
+    padding: 18px;
+  }
+  .panel .section {
+    padding: 0;
+  }
+}

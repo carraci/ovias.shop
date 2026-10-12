@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import { usePreferences } from "./preferences";
-import type { Currency } from "@/lib/markets";
+import { markets, countryLocale, type Currency } from "@/lib/markets";
 
 export interface RegionCountry {
   name: string;
@@ -100,6 +100,8 @@ interface CountryRegionModalProps {
 
 export function CountryRegionModal({ isOpen, onClose }: CountryRegionModalProps) {
   const { preferences, setPreferences } = usePreferences();
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState("");
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -122,13 +124,15 @@ export function CountryRegionModal({ isOpen, onClose }: CountryRegionModalProps)
 
   if (!isOpen) return null;
 
-  const handleSelectCountry = (country: RegionCountry) => {
-    setPreferences({
-      ...preferences,
-      country: country.code,
-      currency: country.currency || preferences.currency,
-    });
-    onClose();
+  const handleSelectCountry = async (country: RegionCountry) => {
+    if(saving) return;
+    setSaving(true);setSaveError("");
+    const next = {...preferences, country:country.code, locale:countryLocale(country.code), currency:markets.find(m => m.code === country.code)?.currency || country.currency || "INR"};
+    try {
+      const response = await fetch("/api/v1/preferences",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({...next,remember:true})});
+      if(!response.ok) throw new Error("Unable to save country selection. Please try again.");
+      setPreferences(next);onClose();
+    } catch(error) {setSaveError((error as Error).message);} finally {setSaving(false);}
   };
 
   return (
@@ -150,9 +154,11 @@ export function CountryRegionModal({ isOpen, onClose }: CountryRegionModalProps)
 
         {/* Modal Header */}
         <div className="crm-header">
+          {saveError && <p role="alert">{saveError}</p>}
+          {saving && <p role="status">Saving country selection…</p>}
           <h2 className="crm-title">Please select your country / region</h2>
           <p className="crm-notice">
-            Be advised that changing your location will remove the contents from your bag.
+            Be advised that your country selection changes display currency. Your shopping bag is preserved.
           </p>
           <p className="crm-legend">
             * Unfortunately, we do not currently offer online shopping in these locations.

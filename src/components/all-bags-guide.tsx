@@ -1,4 +1,6 @@
 "use client";
+import "@/components/page-styles/collection-landings.css";
+
 
 import Link from "next/link";
 import Image from "next/image";
@@ -207,13 +209,7 @@ export function AllBagsGuide() {
             <div key={item.id} className="wider-collection-card">
               <Link href={item.href} className="wider-card-anchor">
                 <div className="wider-card-media-wrap">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 25vw"
-                    className="wider-card-img"
-                  />
+                  <></>
                 </div>
                 <div className="wider-card-info">
                   <h3 className="wider-card-title">{item.title}</h3>

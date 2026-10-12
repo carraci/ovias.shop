@@ -1,4 +1,5 @@
 "use client";
+import { languages } from "@/lib/markets";
 import Link from "next/link";
 import { usePreferences } from "./preferences";
 export function DisplayPrice({ amount }: { amount: number }) {
@@ -9,7 +10,7 @@ export function PreferencesLink() {
   const { preferences } = usePreferences();
   return (
     <Link href="/preferences" aria-label="Country, language and currency preferences">
-      {preferences.country} · English · {preferences.currency} ↗
+      {preferences.country} · {languages.find(([code]) => code === preferences.locale)?.[1] || "English"} · {preferences.currency} ↗
     </Link>
   );
 }

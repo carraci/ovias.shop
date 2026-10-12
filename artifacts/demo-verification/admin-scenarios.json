@@ -1,0 +1,188 @@
+{
+  "origin": "http://localhost:3128",
+  "scope": "Actual disposable Next app APIs, MongoDB records and browser UI; provider events handled by local fixtures.",
+  "scenarios": [
+    {
+      "name": "Anonymous admin login cannot select a default owner",
+      "status": "passed",
+      "evidence": {
+        "httpStatus": 401,
+        "sessionCookieCreated": false
+      },
+      "durationMs": 46676
+    },
+    {
+      "name": "Owner email alone cannot obtain an owner session",
+      "status": "passed",
+      "evidence": {
+        "httpStatus": 401,
+        "sessionCookieCreated": false
+      },
+      "durationMs": 5529
+    },
+    {
+      "name": "directOwner flag cannot bypass an absent password",
+      "status": "passed",
+      "evidence": {
+        "httpStatus": 401,
+        "sessionCookieCreated": false
+      },
+      "durationMs": 132
+    },
+    {
+      "name": "directOwner flag cannot bypass a wrong password",
+      "status": "passed",
+      "evidence": {
+        "httpStatus": 401,
+        "sessionCookieCreated": false
+      },
+      "durationMs": 1960
+    },
+    {
+      "name": "Unauthorized admin product requests cannot read the store catalog",
+      "status": "passed",
+      "evidence": {
+        "httpStatus": 401
+      },
+      "durationMs": 8390
+    },
+    {
+      "name": "Verified owner signs in using the actual password endpoint",
+      "status": "passed",
+      "evidence": {
+        "httpStatus": 200
+      },
+      "durationMs": 3579
+    },
+    {
+      "name": "Admin creates an active product with actual SKU, price and stock",
+      "status": "passed",
+      "evidence": {
+        "productId": "independent-verification-backpack-9960995-2670",
+        "sku": "ADMIN-DEMO-9960995",
+        "storedPricePaise": 249900,
+        "stock": 10
+      },
+      "durationMs": 2012
+    },
+    {
+      "name": "Admin product search returns the created stored product",
+      "status": "passed",
+      "evidence": {
+        "foundProductId": "independent-verification-backpack-9960995-2670"
+      },
+      "durationMs": 501
+    },
+    {
+      "name": "Active product appears in the public catalog with matching price",
+      "status": "failed",
+      "evidence": "[\"data\"]",
+      "durationMs": 911
+    },
+    {
+      "name": "Owner restocks the new product and inventory history records its reason",
+      "status": "passed",
+      "evidence": {
+        "sku": "ADMIN-DEMO-9960995",
+        "available": 15,
+        "historyRecorded": true
+      },
+      "durationMs": 11376
+    },
+    {
+      "name": "Inventory rejects a decrease beyond available stock without changing its balance",
+      "status": "passed",
+      "evidence": {
+        "sku": "ADMIN-DEMO-9960995",
+        "rejectedAdjustment": -100,
+        "unchangedAvailable": 15
+      },
+      "durationMs": 723
+    },
+    {
+      "name": "Inventory rejects fractional adjustments",
+      "status": "passed",
+      "evidence": {
+        "httpStatus": 400
+      },
+      "durationMs": 181
+    },
+    {
+      "name": "Owner creates a stored category with its SEO fields",
+      "status": "passed",
+      "evidence": {
+        "categoryId": "cat-8662b32a",
+        "status": "Draft"
+      },
+      "durationMs": 2708
+    },
+    {
+      "name": "Owner edits category details and reads the stored result",
+      "status": "passed",
+      "evidence": {
+        "categoryId": "cat-8662b32a",
+        "storedDescription": "Updated verification description"
+      },
+      "durationMs": 8265
+    },
+    {
+      "name": "Owner creates a real percentage coupon with uppercase normalized code",
+      "status": "passed",
+      "evidence": {
+        "couponId": "cpn-f6583f2f-15c5-4aa4-bb1a-2823a8edc436",
+        "code": "VERIFYADMIN9960995",
+        "percentage": 10
+      },
+      "durationMs": 5386
+    },
+    {
+      "name": "Duplicate coupon codes are rejected",
+      "status": "passed",
+      "evidence": {
+        "duplicateRejected": true
+      },
+      "durationMs": 293
+    },
+    {
+      "name": "Owner changes the coupon to inactive and reads its persisted status",
+      "status": "passed",
+      "evidence": {
+        "couponId": "cpn-f6583f2f-15c5-4aa4-bb1a-2823a8edc436",
+        "storedStatus": "Inactive"
+      },
+      "durationMs": 3161
+    },
+    {
+      "name": "Owner reads a sales report computed from stored records",
+      "status": "passed",
+      "evidence": {
+        "totalOrders": 0,
+        "metricKeys": [
+          "grossSales",
+          "netSales",
+          "discounts",
+          "returns",
+          "shippingCharges",
+          "taxesCollected",
+          "totalOrders",
+          "averageOrderValue"
+        ]
+      },
+      "durationMs": 2410
+    },
+    {
+      "name": "Owner reads the admin content editor through its authorized API",
+      "status": "passed",
+      "evidence": {
+        "contentSections": 5
+      },
+      "durationMs": 1493
+    },
+    {
+      "name": "Admin product list renders the database product and searches interactively",
+      "status": "failed",
+      "evidence": "locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder('Search products...')\u001b[22m\n",
+      "durationMs": 70916
+    }
+  ]
+}

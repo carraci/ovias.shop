@@ -1,3 +1,4 @@
+import "@/components/page-styles/editorial.css";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -88,7 +89,7 @@ export default async function StoryDetailPage({
     }
   }
 
-  if (!story) notFound();
+  if (!story || story.status !== "published") notFound();
 
   // Load related products from catalog
   const allProducts = await catalog();
@@ -112,14 +113,14 @@ export default async function StoryDetailPage({
       {/* 1. Full-Width Cinematic Hero Image */}
       <header className="story-cinematic-hero">
         <div className="story-hero-media-wrap">
-          <Image
+          {story.heroImage && <Image
             src={story.heroImage}
             alt={story.title}
             fill
             priority
             sizes="100vw"
             className="story-hero-img"
-          />
+          />}
           <div className="story-hero-overlay" aria-hidden="true" />
         </div>
 

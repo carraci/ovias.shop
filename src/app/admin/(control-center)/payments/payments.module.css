@@ -1,0 +1,275 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: #171717;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.header h1 {
+  font-size: 26px;
+  margin: 0 0 6px;
+}
+.header p {
+  font-size: 13px;
+  color: #6b6b6b;
+  margin: 0;
+}
+.page button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid #dedede;
+  background: white;
+  border-radius: 6px;
+  padding: 9px 13px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #222;
+}
+.page button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #e5e5e5;
+  border-radius: 7px;
+  padding: 17px;
+  background: white;
+}
+.search input {
+  border: 0;
+  outline: 0;
+  width: 100%;
+  font-size: 13px;
+  background: transparent;
+}
+.table {
+  overflow: auto;
+  border: 1px solid #e5e5e5;
+  border-radius: 7px;
+  background: white;
+}
+.table table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+.table th,
+.table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #eeeeea;
+}
+.table th {
+  background: #fafaf9;
+  color: #777;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.table td small {
+  display: block;
+  font-size: 11px;
+  color: #888;
+  max-width: 150px;
+}
+.table td:last-child {
+  min-width: 130px;
+}
+.id {
+  font-family: monospace;
+  font-size: 12px;
+}
+.table a {
+  color: #3568c8;
+}
+.badge {
+  display: inline-block;
+  border-radius: 20px;
+  padding: 4px 9px;
+  font-size: 11px;
+  background: #fef3c7;
+  color: #976100;
+  white-space: nowrap;
+}
+.badge[data-status="Paid"],
+.badge[data-status="Refunded"] {
+  background: #e7f7ed;
+  color: #16834a;
+}
+.badge[data-status="Failed"] {
+  background: #fef2f2;
+  color: #be3030;
+}
+.badge[data-status="Expired"] {
+  background: #efefef;
+  color: #666;
+}
+.page .refundButton {
+  background: #b75858;
+  color: white;
+  border-color: #b75858;
+}
+.dialog {
+  border: 1px solid #e4e4e4;
+  border-radius: 12px;
+  padding: 24px;
+  width: min(460px, calc(100vw - 32px));
+  max-height: 90dvh;
+  overflow: auto;
+  box-shadow: 0 20px 90px #0003;
+  color: #222;
+}
+.dialog::backdrop {
+  background: #0006;
+}
+.dialog header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.dialog h2 {
+  font-size: 19px;
+  margin: 0;
+}
+.dialog header button {
+  padding: 6px;
+  border: 0;
+}
+.dialog dl {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 10px;
+  font-size: 12px;
+}
+.dialog dt {
+  color: #777;
+}
+.dialog dd {
+  margin: 0;
+  word-break: break-word;
+  text-align: right;
+}
+.dialog fieldset {
+  display: flex;
+  gap: 18px;
+  border: 0;
+  padding: 0;
+  margin: 20px 0;
+  font-size: 13px;
+}
+.dialog legend {
+  margin-bottom: 10px;
+}
+.dialog fieldset label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  margin-top: 15px;
+}
+.field input,
+.field select {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  min-height: 40px;
+  padding: 9px;
+  font: inherit;
+  width: 100%;
+  box-sizing: border-box;
+}
+.field input:disabled {
+  background: #f6f6f5;
+  color: #555;
+}
+.hint {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #777;
+  background: #f7f5f1;
+  padding: 12px;
+  border-radius: 6px;
+}
+.dialog footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+.summary {
+  text-align: center;
+  padding: 18px 8px;
+}
+.summary svg {
+  color: #ad6555;
+}
+.summary h3 {
+  font-size: 18px;
+}
+.summary p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #666;
+}
+.timeline {
+  font-size: 12px;
+  line-height: 1.8;
+  padding-left: 20px;
+}
+.timeline time {
+  display: block;
+  color: #888;
+}
+.error {
+  background: #fff2f1;
+  border: 1px solid #efcccc;
+  color: #a32d2d;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.notice {
+  background: #fbf6e9;
+  border: 1px solid #e9dcb8;
+  padding: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  border-radius: 6px;
+  margin: 0;
+}
+@media (max-width: 700px) {
+  .header {
+    align-items: flex-start;
+  }
+  .header h1 {
+    font-size: 22px;
+  }
+  .table th,
+  .table td {
+    padding: 12px;
+  }
+  .dialog {
+    padding: 18px;
+  }
+  .header p {
+    max-width: 300px;
+  }
+}

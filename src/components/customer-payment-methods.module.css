@@ -1,0 +1,215 @@
+.page {
+  padding: 24px;
+  max-width: 1200px;
+  min-width: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #121619;
+}
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: #8793a3;
+}
+.page h1 {
+  font-size: 38px;
+  font-weight: 400;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 22px;
+  margin: 14px 0 20px;
+}
+.page h1 span {
+  color: #df4409;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px 14px;
+}
+.visual {
+  background: #111518;
+  color: white;
+  border-radius: 22px;
+  padding: 20px;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid transparent;
+}
+.charcoal {
+  background: #292e35;
+}
+.light {
+  background: white;
+  color: #171717;
+  border: 1px solid #d3d3d3;
+}
+.selected {
+  border-color: #df4409;
+}
+.cardTop {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+.cardTop h2 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+.cardTop span {
+  font-size: 10px;
+  border-radius: 16px;
+  background: #df4409;
+  color: white;
+  padding: 5px 8px;
+}
+.visual p {
+  margin: 12px 0 4px;
+  font-size: 18px;
+}
+.visual small {
+  opacity: 0.65;
+}
+.description {
+  font-size: 11px;
+  line-height: 1.6;
+  color: #7d8998;
+  margin: 8px 5px;
+}
+.pill {
+  border: 1px solid #ccc;
+  border-radius: 24px;
+  background: transparent;
+  padding: 8px 12px;
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.pill:disabled {
+  color: #df4409;
+  background: #ffffff;
+  border-color: transparent;
+  cursor: default;
+}
+
+.security {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #7d8998;
+  margin: 22px 0;
+}
+.history {
+  border-radius: 24px;
+  background: white;
+  padding: 22px;
+  margin-top: 24px;
+}
+.history > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.history h2 {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
+}
+.history nav {
+  display: flex;
+  background: #f6f7f9;
+  border-radius: 22px;
+  padding: 4px;
+}
+.history nav button {
+  background: transparent;
+  border: 0;
+  border-radius: 18px;
+  padding: 8px 12px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.history nav button[aria-pressed="true"] {
+  color: #df4409;
+  background: white;
+}
+.transaction {
+  display: grid;
+  grid-template-columns: 105px minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: start;
+  padding: 18px;
+  background: #f6f7f9;
+  border-radius: 16px;
+  margin: 10px 0;
+  font-size: 12px;
+}
+.transaction time,
+.transaction small {
+  color: #7d8998;
+  font-size: 11px;
+}
+.transaction strong {
+  font-weight: 400;
+}
+.transaction small {
+  display: block;
+  margin-top: 5px;
+  overflow-wrap: anywhere;
+}
+.amount {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 12px;
+}
+.badge {
+  font-size: 10px;
+  background: #e4ebe8;
+  border-radius: 14px;
+  padding: 5px 8px;
+}
+.amount a {
+  border: 1px solid #ccc;
+  border-radius: 18px;
+  padding: 7px 10px;
+  text-decoration: none;
+  color: #171717;
+  font-size: 11px;
+}
+.page :focus-visible {
+  outline: 2px solid #df4409;
+  outline-offset: 3px;
+}
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .page {
+    padding: 14px;
+  }
+  .page h1 {
+    font-size: 30px;
+  }
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .history {
+    padding: 14px;
+  }
+  .transaction {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+  .amount {
+    align-items: flex-start;
+  }
+}

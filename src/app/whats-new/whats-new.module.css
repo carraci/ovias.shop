@@ -1,0 +1,458 @@
+.page {
+  background: #ffffff;
+  color: #121212;
+  min-height: 100vh;
+  padding-top: calc(var(--header-height, 90px) + 28px);
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 var(--gutter, clamp(20px, 4.2vw, 80px));
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #888888;
+  margin-bottom: clamp(28px, 3.5vw, 44px);
+  font-weight: 500;
+  flex-wrap: wrap;
+}
+
+.breadcrumbLink {
+  color: #888888;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.breadcrumbLink:hover {
+  color: #111111;
+}
+
+.breadcrumbSeparator {
+  opacity: 0.5;
+}
+
+.breadcrumbCurrent {
+  color: #111111;
+}
+
+/* Hero Header */
+.heroHeader {
+  margin-bottom: clamp(36px, 4.5vw, 56px);
+}
+
+.heroTitle {
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(34px, 4.6vw, 56px);
+  font-weight: 400;
+  line-height: 1.14;
+  letter-spacing: -0.015em;
+  color: #121212;
+  margin: 0 0 16px;
+}
+
+.heroSubtitle {
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.55;
+  color: #666666;
+  max-width: 620px;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Latest Collection Feature Banner */
+.featuredCollectionSection {
+  margin-bottom: clamp(72px, 8.5vw, 120px);
+}
+
+.featuredMediaWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: 680px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #ffffff;
+  margin-bottom: 28px;
+}
+
+.featuredMedia {
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.featuredMediaWrap:hover .featuredMedia {
+  transform: scale(1.02);
+}
+
+.featuredContent {
+  max-width: 720px;
+}
+
+.featuredEyebrow {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7a7a7a;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.featuredTitle {
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(28px, 3.6vw, 44px);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  color: #121212;
+  margin: 0 0 14px;
+}
+
+.featuredDesc {
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.7;
+  color: #4a4a4a;
+  margin: 0 0 24px;
+}
+
+.featuredLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #121212;
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #121212;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.featuredLink:hover {
+  opacity: 0.7;
+  transform: translateX(2px);
+}
+
+/* Discover What's New Section */
+.discoverSection {
+  margin-bottom: clamp(72px, 8.5vw, 120px);
+}
+
+.discoverHeader {
+  margin-bottom: 28px;
+}
+
+.discoverTitle {
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: 400;
+  color: #121212;
+  margin: 0 0 8px;
+}
+
+.discoverSubtitle {
+  font-size: 16px;
+  color: #666666;
+  margin: 0;
+}
+
+/* Tabs */
+.tabsRow {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.5vw, 32px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 14px;
+  margin-bottom: clamp(32px, 4vw, 48px);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.tabBtn {
+  background: none;
+  border: none;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #888888;
+  padding: 6px 0;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.tabBtn:hover {
+  color: #121212;
+}
+
+.tabBtnActive {
+  color: #121212;
+  font-weight: 600;
+}
+
+.tabBtnActive::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #121212;
+}
+
+/* 2-Column Luxury Grid */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 3.5vw, 48px);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cardMediaWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3.4;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #ffffff;
+  margin-bottom: 20px;
+}
+
+.cardMedia {
+  object-fit: cover;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .cardMedia {
+  transform: scale(1.03);
+}
+
+.cardCategory {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #777777;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.cardTitle {
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 400;
+  line-height: 1.25;
+  color: #121212;
+  margin: 0 0 10px;
+}
+
+.cardDesc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555555;
+  margin: 0 0 16px;
+}
+
+.cardPrice {
+  font-size: 14px;
+  font-weight: 600;
+  color: #121212;
+  margin-bottom: 12px;
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #121212;
+  margin-top: auto;
+  transition: transform 0.2s ease;
+}
+
+.card:hover .cardLink {
+  transform: translateX(3px);
+}
+
+/* From the Journal Section */
+.journalFeatureSection {
+  margin-bottom: clamp(72px, 8.5vw, 120px);
+}
+
+.journalFeatureHeader {
+  margin-bottom: 28px;
+}
+
+.journalFeatureMediaWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #ffffff;
+  margin-bottom: 28px;
+}
+
+.journalFeatureMedia {
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.journalFeatureMediaWrap:hover .journalFeatureMedia {
+  transform: scale(1.02);
+}
+
+.journalFeatureContent {
+  max-width: 720px;
+}
+
+.journalFeatureEyebrow {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7a7a7a;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.journalFeatureTitle {
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(28px, 3.4vw, 42px);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #121212;
+  margin: 0 0 14px;
+}
+
+.journalFeatureDesc {
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.75;
+  color: #4a4a4a;
+  margin: 0 0 24px;
+}
+
+.journalFeatureLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #121212;
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #121212;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.journalFeatureLink:hover {
+  opacity: 0.7;
+  transform: translateX(2px);
+}
+
+/* Bottom Discover OVIA Banner */
+.worldBanner {
+  background: #111311;
+  color: #ffffff;
+  padding: clamp(72px, 8.5vw, 120px) 0;
+  margin-top: clamp(60px, 8vw, 100px);
+  text-align: center;
+}
+
+.worldBannerContent {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 var(--gutter, clamp(20px, 4.2vw, 80px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.worldEyebrow {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #999999;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.worldTitle {
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin: 0 0 16px;
+}
+
+.worldSubtitle {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #aaaaaa;
+  margin: 0 0 36px;
+}
+
+.worldButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: transparent;
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.worldButton:hover {
+  background: #ffffff;
+  color: #111111;
+  border-color: #ffffff;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .featuredMediaWrap {
+    aspect-ratio: 16 / 12;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .journalFeatureMediaWrap {
+    aspect-ratio: 16 / 11;
+  }
+}

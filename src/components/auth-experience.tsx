@@ -1,10 +1,19 @@
 "use client";
+import "@/components/page-styles/auth.css";
+
 
 import Link from "next/link";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { ChevronLeft, Eye, EyeOff, Mail, Check, AlertCircle } from "lucide-react";
 import { request, useStore } from "@/components/store-provider";
+import { SocialSignInButtons } from "./social-sign-in-buttons";
+import {
+  getPasswordChecks,
+  getPasswordValidationError,
+  PASSWORD_MIN_LENGTH,
+  PASSWORD_MAX_LENGTH,
+} from "@/lib/password-policy";
 
 export type AuthMode =
   | "sign-in"
@@ -258,16 +267,9 @@ export function AuthExperience({
   // Reset Password (Step 3 -> Done)
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password.length < 8) {
-      setError("Password must be at least 8 characters long.");
-      return;
-    }
-    if (!/\d/.test(password)) {
-      setError("Password must include at least one number.");
-      return;
-    }
-    if (!/[A-Z]/.test(password)) {
-      setError("Password must include at least one uppercase letter.");
+    const passwordError = getPasswordValidationError(password);
+    if (passwordError) {
+      setError(passwordError);
       return;
     }
     if (password !== confirmPassword) {
@@ -319,7 +321,10 @@ export function AuthExperience({
         return;
       }
       await refresh();
-      router.push("/account");
+      const requested = new URLSearchParams(window.location.search).get("next");
+      const destination = requested?.startsWith("/") && !requested.startsWith("//") && !requested.includes("\\")
+        ? requested : "/account";
+      router.push(destination);
     } catch (err) {
       setError((err as Error).message);
     } finally {
@@ -334,8 +339,9 @@ export function AuthExperience({
       setError("Please accept the terms and privacy policy to continue.");
       return;
     }
-    if (password.length < 8) {
-      setError("Password must be at least 8 characters.");
+    const passwordError = getPasswordValidationError(password);
+    if (passwordError) {
+      setError(passwordError);
       return;
     }
     if (password !== confirmPassword) {
@@ -375,9 +381,7 @@ export function AuthExperience({
   };
 
   // Password criteria for Step 3 and Register
-  const hasMinLength = password.length >= 10;
-  const hasNumber = /\d/.test(password);
-  const hasUppercase = /[A-Z]/.test(password);
+  const passwordChecks = getPasswordChecks(password);
 
   return (
     <section className="ovia-auth-split">
@@ -539,6 +543,8 @@ export function AuthExperience({
                   {busy ? "Signing in…" : "SIGN IN →"}
                 </button>
               </form>
+
+              <SocialSignInButtons />
 
               {/* Benefits Section */}
               <div className="ovia-auth-benefits">
@@ -764,6 +770,9 @@ export function AuthExperience({
                       id="new-password"
                       type={showPassword ? "text" : "password"}
                       required
+                      minLength={PASSWORD_MIN_LENGTH}
+                      maxLength={PASSWORD_MAX_LENGTH}
+                      aria-describedby="reset-password-requirements"
                       autoComplete="new-password"
                       placeholder="••••••••••••"
                       value={password}
@@ -782,19 +791,13 @@ export function AuthExperience({
                 </div>
 
                 {/* Password Criteria Checklist */}
-                <ul className="ovia-auth-checklist ovia-auth-req-list">
-                  <li className={hasMinLength ? "is-valid" : ""}>
-                    <Check size={14} className="ovia-auth-check-icon" />
-                    <span>At least 10 characters</span>
-                  </li>
-                  <li className={hasNumber ? "is-valid" : ""}>
-                    <Check size={14} className="ovia-auth-check-icon" />
-                    <span>Includes a number</span>
-                  </li>
-                  <li className={hasUppercase ? "is-valid" : ""}>
-                    <Check size={14} className="ovia-auth-check-icon" />
-                    <span>Includes an uppercase letter</span>
-                  </li>
+                <ul id="reset-password-requirements" className="ovia-auth-checklist ovia-auth-req-list" aria-label="New password requirements">
+                  {passwordChecks.map(check => (
+                    <li key={check.id} className={check.met ? "is-valid" : ""}>
+                      <Check size={14} className="ovia-auth-check-icon" aria-hidden="true" />
+                      <span><span className="sr-only">{check.met ? "Met: " : "Not met: "}</span>{check.label}</span>
+                    </li>
+                  ))}
                 </ul>
 
                 <div className="ovia-auth-field">
@@ -804,6 +807,8 @@ export function AuthExperience({
                       id="confirm-new-password"
                       type={showConfirmPassword ? "text" : "password"}
                       required
+                      minLength={PASSWORD_MIN_LENGTH}
+                      maxLength={PASSWORD_MAX_LENGTH}
                       autoComplete="new-password"
                       placeholder="••••••••••••"
                       value={confirmPassword}
@@ -906,6 +911,9 @@ export function AuthExperience({
                       id="reg-password"
                       type={showPassword ? "text" : "password"}
                       required
+                      minLength={PASSWORD_MIN_LENGTH}
+                      maxLength={PASSWORD_MAX_LENGTH}
+                      aria-describedby="register-password-requirements"
                       autoComplete="new-password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
@@ -923,19 +931,13 @@ export function AuthExperience({
                 </div>
 
                 {/* Password Criteria Checklist */}
-                <ul className="ovia-auth-checklist ovia-auth-req-list">
-                  <li className={hasMinLength ? "is-valid" : ""}>
-                    <Check size={14} className="ovia-auth-check-icon" />
-                    <span>At least 10 characters</span>
-                  </li>
-                  <li className={hasNumber ? "is-valid" : ""}>
-                    <Check size={14} className="ovia-auth-check-icon" />
-                    <span>Includes a number</span>
-                  </li>
-                  <li className={hasUppercase ? "is-valid" : ""}>
-                    <Check size={14} className="ovia-auth-check-icon" />
-                    <span>Includes an uppercase letter</span>
-                  </li>
+                <ul id="register-password-requirements" className="ovia-auth-checklist ovia-auth-req-list" aria-label="New password requirements">
+                  {passwordChecks.map(check => (
+                    <li key={check.id} className={check.met ? "is-valid" : ""}>
+                      <Check size={14} className="ovia-auth-check-icon" aria-hidden="true" />
+                      <span><span className="sr-only">{check.met ? "Met: " : "Not met: "}</span>{check.label}</span>
+                    </li>
+                  ))}
                 </ul>
 
                 <div className="ovia-auth-field">
@@ -945,6 +947,8 @@ export function AuthExperience({
                       id="reg-confirm-password"
                       type={showConfirmPassword ? "text" : "password"}
                       required
+                      minLength={PASSWORD_MIN_LENGTH}
+                      maxLength={PASSWORD_MAX_LENGTH}
                       autoComplete="new-password"
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}

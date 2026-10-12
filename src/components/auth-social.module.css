@@ -1,0 +1,53 @@
+.section {
+  margin-top: 24px;
+}
+
+.buttons {
+  display: grid;
+  gap: 8px;
+}
+
+.buttons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 16px;
+  border: 1px solid #171717;
+  border-radius: 999px;
+  background: #fff;
+  color: #171717;
+  font: inherit;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.buttons button:disabled {
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+.buttons svg {
+  flex-shrink: 0;
+}
+
+.note {
+  margin: 12px 0 0;
+  color: #666;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.buttons button:not(:disabled) {
+  cursor: pointer;
+}
+.buttons button:focus-visible {
+  outline: 2px solid #171717;
+  outline-offset: 3px;
+}
+.buttons button {
+  min-height: 44px;
+}

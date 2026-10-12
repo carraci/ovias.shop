@@ -1,0 +1,69 @@
+{
+  "rows": 240,
+  "newProducts": 98,
+  "duplicates": 142,
+  "files": [
+    {
+      "file": "amazon-in-2026-10-03-3 (16).csv",
+      "category": "Bags",
+      "rows": 60,
+      "newProducts": 3,
+      "existingProducts": 57
+    },
+    {
+      "file": "amazon-in-2026-10-03-3 (17).csv",
+      "category": "Bags",
+      "rows": 60,
+      "newProducts": 52,
+      "existingProducts": 8
+    },
+    {
+      "file": "amazon-in-2026-10-03-3 (18).csv",
+      "category": "Bags",
+      "rows": 60,
+      "newProducts": 43,
+      "existingProducts": 17
+    },
+    {
+      "file": "amazon-in-2026-10-03-3 (19).csv",
+      "category": "Bags",
+      "rows": 60,
+      "newProducts": 0,
+      "existingProducts": 60
+    }
+  ],
+  "imageFailures": [],
+  "priceDifferences": [
+    {
+      "name": "Aristocrat Enigma 52 Cm Polyester Softsided Cabin Size Duffle Bag - Red",
+      "existing": 41400,
+      "incoming": 0,
+      "file": "amazon-in-2026-10-03-3 (16).csv"
+    }
+  ],
+  "materialConflicts": [],
+  "missingPrices": [
+    {
+      "name": "Aristocrat Enigma 52 Cm Polyester Softsided Cabin Size Duffle Bag - Red",
+      "file": "amazon-in-2026-10-03-3 (16).csv"
+    }
+  ],
+  "totalProducts": 862,
+  "collectionCounts": {
+    "new-arrivals": 60,
+    "best-sellers": 59,
+    "everyday-mobility": 59
+  },
+  "categoryCounts": {
+    "Shoulder Bags": 173,
+    "Hand Carry": 142,
+    "Bags": 482,
+    "Totes": 121,
+    "Travel Bags": 265,
+    "Cabin Bags": 34
+  },
+  "materialCounts": {
+    "Polycarbonate": 128,
+    "Polypropylene": 90
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "rows": 262,
+  "newProducts": 195,
+  "duplicates": 67,
+  "files": [
+    {
+      "file": "amazon-in-2026-10-03-3 (5).csv",
+      "category": "Duffle Bags",
+      "rows": 60,
+      "newProducts": 60,
+      "existingProducts": 0
+    },
+    {
+      "file": "amazon-in-2026-10-03-3 (6).csv",
+      "category": "Briefcases",
+      "rows": 22,
+      "newProducts": 20,
+      "existingProducts": 2
+    },
+    {
+      "file": "amazon-in-2026-10-03-3 (7).csv",
+      "category": "Crossbodies",
+      "rows": 60,
+      "newProducts": 59,
+      "existingProducts": 1
+    },
+    {
+      "file": "amazon-in-2026-10-03-3 (8).csv",
+      "category": "Totes",
+      "rows": 60,
+      "newProducts": 56,
+      "existingProducts": 4
+    },
+    {
+      "file": "amazon-in-2026-10-03-3 (9).csv",
+      "category": "Totes",
+      "rows": 60,
+      "newProducts": 0,
+      "existingProducts": 60
+    }
+  ],
+  "imageFailures": [],
+  "priceDifferences": [],
+  "materialConflicts": [],
+  "missingPrices": [],
+  "totalProducts": 575,
+  "categoryCounts": {
+    "Backpacks": 0,
+    "Duffle Bags": 60,
+    "Briefcases": 20,
+    "Crossbodies": 59,
+    "Totes": 59
+  },
+  "materialCounts": {
+    "Polycarbonate": 116,
+    "Polypropylene": 80
+  }
+}

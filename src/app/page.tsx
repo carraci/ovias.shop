@@ -1,4 +1,8 @@
-import Link from "next/link";
+import "@/components/page-styles/editorial.css";
+import { Suspense } from "react";
+
+import { activeCampaigns } from "@/server/campaigns";
+import { CampaignBanners } from "@/components/campaign-banners";
 import Image from "next/image";
 import {
   ArrowRight,
@@ -10,10 +14,7 @@ import {
 import { storefrontCatalog as catalog } from "@/server/storefront-catalog";
 import { ProductCard } from "@/components/product-card";
 import { Reveal, RevealGroup, HeroMotion } from "@/components/motion";
-import {
-  JourneyMatches,
-  StoreBanner,
-} from "@/components/discovery-sections";
+import { JourneyMatches, StoreBanner } from "@/components/discovery-sections";
 import { StoriesCarousel } from "@/components/stories-carousel";
 import { getStories } from "@/server/stories";
 import { EditorialPromoCarousel } from "@/components/editorial-promo-carousel";
@@ -21,82 +22,103 @@ import { IconicAndRecommendedSections } from "@/components/iconic-products-carou
 import { EditorialTriptychSection } from "@/components/editorial-triptych";
 const creations = [
   {
-    title: "Women's Handbags",
-    image: "/media/creations/handbag.jpg",
-    href: "/bags",
+    title: "Trunk",
+    image: "/media/products/luggage/97375014_1.png",
+    imageAlt: "Classic Trunk suitcase",
+    href: "/luggage/trunk",
   },
   {
-    title: "Women's Wallets and Small Leather Goods",
-    image: "/media/creations/wallet.jpg",
-    href: "/accessories",
+    title: "Cabin",
+    image: "/media/products/luggage/cabin/original-cabin-black-2276e47a58.webp",
+    imageAlt: "Original Cabin suitcase in black",
+    href: "/luggage/cabin-luggage",
   },
   {
-    title: "Women's Accessories",
-    image: "/media/creations/jewelry.jpg",
-    href: "/accessories",
+    title: "Long Haul",
+    image:
+      "/media/products/luggage/check-in/classic-check-in-l-37faec1f53.webp",
+    imageAlt: "Classic Check-In L suitcase for long journeys",
+    href: "/collections/long-haul",
   },
   {
-    title: "Perfume",
-    image: "/media/creations/perfume.jpg",
-    href: "/accessories",
+    title: "Business Selection",
+    image:
+      "/media/products/luggage/emblematic/attach-aluminium-briefcase-e4e4b5e79c.webp",
+    imageAlt: "Attaché Aluminium Briefcase for business travel",
+    href: "/collections/business-selection",
   },
   {
-    title: "Men's Bags",
-    image: "/media/creations/backpack.jpg",
-    href: "/bags",
+    title: "Backpacks",
+    image: "/media/bags/never-still-canvas-flap-backpack-large.png",
+    imageAlt: "Never Still Canvas Flap Backpack Large",
+    href: "/bags/backpacks",
   },
   {
-    title: "Men's Wallets and Small Leather Goods",
-    image: "/media/creations/passport.jpg",
-    href: "/accessories",
+    title: "Duffel Bags",
+    image: "/media/bags/never-still-leather-duffle-bag-large.png",
+    imageAlt: "Never Still Leather Duffle Bag Large",
+    href: "/bags/duffel-bags",
   },
   {
-    title: "Men's Shoes",
-    image: "/media/creations/sneakers.jpg",
-    href: "/accessories",
+    title: "Briefcases",
+    image: "/media/bags/never-still-leather-briefcase.png",
+    imageAlt: "Never Still Leather Briefcase",
+    href: "/bags/briefcases",
   },
   {
-    title: "Men's Accessories",
-    image: "/media/creations/sunglasses.jpg",
-    href: "/accessories",
+    title: "Crossbody Bags",
+    image: "/media/bags/personal-polycarbonate-cross-body-bag.png",
+    imageAlt: "Personal Polycarbonate Cross-Body Bag",
+    href: "/bags/crossbody-bags",
+  },
+  {
+    title: "Shoulder Bags",
+    image: "/media/products/luggage/emblematic/groove-leather-hobo-bag-3087807314.webp",
+    imageAlt: "Groove Leather Hobo Bag with adjustable shoulder strap",
+    href: "/bags/shoulder-bags",
+  },
+  {
+    title: "Small Luggage",
+    image: "/media/products/luggage/cabin/original-cabin-s-a36ebbb785.webp",
+    imageAlt: "Original Cabin S small suitcase",
+    href: "/luggage/small-luggage",
   },
 ];
 
 export const dynamic = "force-dynamic";
-export default async function Home() {
-  const all = await catalog();
+async function HomeHero() {
+  const campaigns = await activeCampaigns("homeHero");
+  return campaigns.length ? <CampaignBanners placement="homeHero" initial={campaigns} /> : null;
+}
+export default function Home() {
+  return <><Suspense fallback={null}><HomeHero /></Suspense><Suspense fallback={null}><HomeContent /></Suspense></>;
+}
+async function HomeContent() {
+  const [all, stories, collectionCampaigns] = await Promise.all([
+    catalog(),
+    getStories({ status: "published" }),
+    activeCampaigns("homeCollection"),
+  ]);
   const picks = [all[1], all[0], all[24], all[27]].filter(Boolean);
-  const stories = await getStories({ status: "published" });
+  const showcaseProducts = all.filter((product) => product.variants.length > 0);
+  const bestsellers = [
+    ...showcaseProducts.filter((product) => product.featured),
+    ...showcaseProducts.filter((product) => !product.featured),
+  ].slice(0, 6);
+  const arrivals = [
+    ...showcaseProducts.filter((product) =>
+      product.tags.includes("new-arrivals"),
+    ),
+    ...showcaseProducts.filter(
+      (product) => !product.tags.includes("new-arrivals"),
+    ),
+  ].slice(0, 6);
   return (
     <>
-      <HeroMotion>
-        <section className="hero hero-luxury">
-          <Image
-            src="/media/rimowa-hero.jpg"
-            alt="Built for everyday journeys"
-            fill
-            priority
-            sizes="100vw"
-            className="hero-background"
-          />
-          <div className="hero-shade hero-shade-luxury" />
-          <div className="hero-center-content">
-            <h1 className="hero-headline">Built for everyday journeys</h1>
-            <Link className="hero-luxury-button" href="/luggage">
-              DISCOVER THE SELECTION
-            </Link>
-          </div>
-        </section>
-      </HeroMotion>
-      <Reveal y={16} duration={0.7}>
-        <div className="intro-strip">
-          <span>Considered design</span>
-          <i />
-          <span>Everyday versatility</span>
-          <i />
-          <span>A personal point of view</span>
-        </div>
-      </Reveal>
+      <CampaignBanners
+        placement="homeCollection"
+        initial={collectionCampaigns}
+      />
       <section className="section creations-section">
         <div className="creations-main-grid">
           <Reveal className="creations-reveal-heading">
@@ -108,21 +130,30 @@ export default async function Home() {
               </h2>
             </div>
           </Reveal>
-          <RevealGroup className="creations-reveal-group" selector=".creation-card" stagger={0.08}>
+          <RevealGroup
+            className="creations-reveal-group"
+            selector=".creation-card"
+            stagger={0.08}
+          >
             <div className="creations-grid">
               {creations.map((item) => (
-                <Link key={item.title} href={item.href} className="creation-card">
+                <a
+                  data-store-navigation
+                  key={item.title}
+                  href={item.href}
+                  className="creation-card"
+                >
                   <div className="creation-image-wrapper">
                     <Image
                       src={item.image}
-                      alt={item.title}
+                      alt={item.imageAlt}
                       fill
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, (max-width: 1600px) 25vw, 420px"
+                      sizes="(max-width: 640px) 45vw, 22vw"
                       className="creation-image"
                     />
                   </div>
                   <h3 className="creation-title">{item.title}</h3>
-                </Link>
+                </a>
               ))}
             </div>
           </RevealGroup>
@@ -132,7 +163,10 @@ export default async function Home() {
         <EditorialPromoCarousel />
       </Reveal>
       <Reveal y={24} duration={0.8}>
-        <IconicAndRecommendedSections />
+        <IconicAndRecommendedSections
+          bestsellers={bestsellers}
+          arrivals={arrivals}
+        />
       </Reveal>
       <Reveal>
         <JourneyMatches />
@@ -146,28 +180,18 @@ export default async function Home() {
         <div className="service-strip">
           <div>
             <Compass />
-            <span>
-              Find your fit
-              <small>
-                <Link href="/size-guide">Explore the size guide</Link>
-              </small>
-            </span>
+            <span>Find your fit</span>
           </div>
           <div>
             <Layers3 />
-            <span>
-              Make it your own
-              <small>
-                <Link href="/personalise">Consider the details</Link>
-              </small>
-            </span>
+            <span>Make it your own</span>
           </div>
           <div>
             <Package />
             <span>
               Here to help
               <small>
-                <Link href="/services/faq">Visit client services</Link>
+                <a data-store-navigation href="/services/faq">Visit client services</a>
               </small>
             </span>
           </div>

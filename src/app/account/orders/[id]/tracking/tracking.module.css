@@ -1,0 +1,479 @@
+.page {
+  min-height: 100vh;
+  background: var(--canvas, #ffffff);
+  color: var(--ink, #1f2923);
+  padding: clamp(24px, 4vw, 56px) clamp(16px, 3vw, 40px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+}
+
+.container {
+  width: 100%;
+  max-width: 860px;
+  background: #ffffff;
+  border: 1px solid var(--line, #dedfd6);
+  border-radius: 2px;
+  padding: clamp(24px, 4vw, 48px);
+  margin-top: 20px;
+}
+
+.header {
+  border-bottom: 1px solid var(--line, #dedfd6);
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+}
+
+.wordmark {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 20px;
+  letter-spacing: 0.28em;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--ink, #1f2923);
+  display: inline-block;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.title {
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin: 0;
+  color: #111111;
+  text-transform: uppercase;
+}
+
+.orderNumber {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  font-family: monospace;
+  color: var(--muted, #686c63);
+  text-transform: uppercase;
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  padding: 20px 24px;
+  background: #ffffff;
+  border: 1px solid var(--line, #dedfd6);
+  border-radius: 2px;
+  margin-bottom: 36px;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metaLabel {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted, #686c63);
+}
+
+.metaValue {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111111;
+  word-break: break-all;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 3px 8px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: 1px solid #111111;
+  border-radius: 2px;
+  background: #111111;
+  color: #ffffff;
+  width: fit-content;
+}
+
+.statusBadgeAlert {
+  background: #6e1a1a;
+  border-color: #6e1a1a;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #111111;
+  border-bottom: 1px solid var(--line, #dedfd6);
+  padding-bottom: 10px;
+  margin-bottom: 24px;
+}
+
+/* Visual Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0 16px 12px;
+}
+
+.timelineStep {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  min-height: 52px;
+}
+
+.timelineIndicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 16px;
+}
+
+.timelineDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #111111;
+  background: #ffffff;
+  z-index: 2;
+  margin-top: 4px;
+  transition: all 0.2s ease;
+}
+
+.timelineDotFilled {
+  background: #111111;
+}
+
+.timelineDotCurrent {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15);
+}
+
+.timelineLine {
+  position: absolute;
+  top: 16px;
+  bottom: -4px;
+  width: 1px;
+  background: var(--line, #dedfd6);
+  z-index: 1;
+}
+
+.timelineLineFilled {
+  background: #111111;
+}
+
+.timelineContent {
+  padding-bottom: 20px;
+  flex: 1;
+}
+
+.stepTitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111111;
+  margin: 0 0 2px;
+}
+
+.stepTitleInactive {
+  color: var(--muted, #8a8d85);
+  font-weight: 400;
+}
+
+.stepDate {
+  font-size: 12px;
+  color: var(--muted, #686c63);
+  margin: 0;
+}
+
+/* Tracking History Table */
+.historyTableWrapper {
+  overflow-x: auto;
+  border: 1px solid var(--line, #dedfd6);
+  border-radius: 2px;
+}
+
+.historyTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: left;
+}
+
+.historyTable th {
+  background: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted, #686c63);
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line, #dedfd6);
+}
+
+.historyTable td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line, #f0f0eb);
+  color: #222222;
+  vertical-align: top;
+}
+
+.historyTable tr:last-child td {
+  border-bottom: none;
+}
+
+.simulatedBadge {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  background: #ffffff;
+  border: 1px solid #d4d4cb;
+  border-radius: 2px;
+  color: #4a4d45;
+  margin-left: 6px;
+}
+
+/* Address & Info Grid */
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  border: 1px solid var(--line, #dedfd6);
+  padding: 20px;
+  border-radius: 2px;
+  background: #ffffff;
+}
+
+.cardTitle {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted, #686c63);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.addressText {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #222222;
+  margin: 0;
+}
+
+/* Order Items */
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.itemRow {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line, #f0f0eb);
+}
+
+.itemRow:last-child {
+  border-bottom: none;
+}
+
+.itemImage {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  background: #ffffff;
+  border: 1px solid var(--line, #dedfd6);
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.itemInfo {
+  flex: 1;
+}
+
+.itemName {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111111;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.itemName:hover {
+  text-decoration: underline;
+}
+
+.itemMeta {
+  font-size: 12px;
+  color: var(--muted, #686c63);
+  margin: 0;
+}
+
+/* State screens (loading / error) */
+.stateBox {
+  padding: 48px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.stateIcon {
+  color: var(--muted, #686c63);
+}
+
+.stateHeading {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 20px;
+  margin: 0;
+  color: #111111;
+}
+
+.stateMessage {
+  font-size: 14px;
+  color: var(--muted, #686c63);
+  max-width: 440px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.backButton {
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border: 1px solid #111111;
+  color: #111111;
+  background: transparent;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.backButton:hover {
+  background: #111111;
+  color: #ffffff;
+}
+
+.refreshButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border: 1px solid #111111;
+  color: #111111;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 2px;
+}
+
+.refreshButton:hover:not(:disabled) {
+  background: #111111;
+  color: #ffffff;
+}
+
+.refreshButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.spinning {
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.navLinks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line, #dedfd6);
+  font-size: 13px;
+}
+
+.navLink {
+  color: #111111;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.navLink:hover {
+  text-decoration: underline;
+}
+
+.verifiedAddressBox {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: #f4f8f4;
+  border: 1px solid #d1e7d3;
+  border-radius: 2px;
+}
+
+.verifiedBadge {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #1a4d23;
+  margin-bottom: 6px;
+}
+
+.verifiedText {
+  font-size: 13px;
+  color: #1a4d23;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.routeDistanceText {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted, #686c63);
+}
+

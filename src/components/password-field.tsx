@@ -1,6 +1,11 @@
 "use client";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import {
+  getPasswordValidationError,
+  PASSWORD_MIN_LENGTH,
+  PASSWORD_MAX_LENGTH,
+} from "@/lib/password-policy";
 export function PasswordField({
   label = "Password",
   name = "password",
@@ -29,11 +34,18 @@ export function PasswordField({
           placeholder={placeholder}
           type={show ? "text" : "password"}
           required
-          minLength={10}
-          maxLength={128}
+          minLength={strength ? PASSWORD_MIN_LENGTH : undefined}
+          maxLength={PASSWORD_MAX_LENGTH}
+          aria-describedby={strength ? name + "-requirements" : undefined}
           autoComplete={strength ? "new-password" : "current-password"}
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => {
+            const nextValue = e.target.value;
+            setValue(nextValue);
+            e.target.setCustomValidity(
+              strength ? getPasswordValidationError(nextValue) || "" : "",
+            );
+          }}
         />
         <button
           type="button"
@@ -55,12 +67,13 @@ export function PasswordField({
         </button>
       </div>
       {strength && (
-        <p className="small-note" aria-live="polite">
-          {value.length < 10
-            ? "Use at least 10 characters."
-            : value.length < 15
-              ? "Good length. A longer unique passphrase is stronger."
-              : "Strong length. Use a unique passphrase."}
+        <p
+          id={name + "-requirements"}
+          className="small-note"
+          aria-live="polite"
+        >
+          {getPasswordValidationError(value) ||
+            "Password meets all requirements."}
         </p>
       )}
     </div>

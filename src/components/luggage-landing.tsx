@@ -1,49 +1,27 @@
 "use client";
+import "@/components/page-styles/collection-landings.css";
+
 
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ChevronLeft, ChevronRight, Heart } from "lucide-react";
 import { useState } from "react";
+import { products, money } from "@/lib/catalog";
+import { useStore } from "./store-provider";
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 
-const sizeCategories = [
-  {
-    id: "cabin",
-    title: "Cabin",
-    sub: "For short trips",
-    image: "/media/showcase/iconic-1-classic-cabin.png",
-    href: "/luggage/cabin",
-  },
-  {
-    id: "check-in",
-    title: "Check-In",
-    sub: "For longer journeys",
-    image: "/media/showcase/like-3-original-black.png",
-    href: "/luggage/check-in",
-  },
-  {
-    id: "trunks",
-    title: "Trunks",
-    sub: "For extended travel",
-    image: "/media/showcase/like-2-essential-green.png",
-    href: "/luggage/trunk",
-  },
-  {
-    id: "all-luggage",
-    title: "View All Luggage",
-    sub: "Explore the full collection",
-    image: "/media/showcase/iconic-4-original-cabin.png",
-    href: "/luggage?view=catalog",
-  },
-];
+const sizeCategories = ["Trunk", "Check-In", "Cabin", "Luggage", "Cabin Bags"].map(category => {
+  const product = products.find(p => p.catalogCategories?.includes(category));
+  return {id:category.toLowerCase().replace(/ /g,"-"), title:category, sub:"Explore the collection", image:product?.image || "/media/category-luggage.jpg", href:`/luggage/${category.toLowerCase().replace(/ /g,"-")}`};
+});
 
 const luggageFavourites = [
-  { label: "Leather", href: "/luggage?material=Leather" },
+  { label: "Polypropylene", href: "/luggage?material=Polypropylene" },
   { label: "Silver luggage", href: "/luggage?color=Silver" },
   { label: "Black luggage", href: "/luggage?color=Black" },
   { label: "Blue luggage", href: "/luggage?color=Midnight+Blue" },
-  { label: "All gifts", href: "/collections/gifts" },
+  { label: "Cabin Bags", href: "/luggage/cabin-bags" },
 ];
 
 const iconicMaterials = [
@@ -62,11 +40,11 @@ const iconicMaterials = [
     href: "/luggage?material=Polycarbonate",
   },
   {
-    id: "leather",
-    title: "Leather",
-    desc: "Refined craftsmanship with timeless appeal.",
-    image: "/media/material-leather.jpg",
-    href: "/luggage?material=Leather",
+    id: "polypropylene",
+    title: "Polypropylene",
+    desc: "Explore lightweight cases with a durable shell.",
+    image: products.find(p => p.material === "Polypropylene")?.image || "/media/category-luggage.jpg",
+    href: "/luggage?material=Polypropylene",
   },
   {
     id: "signature",
@@ -77,54 +55,34 @@ const iconicMaterials = [
   },
 ];
 
-const bestSellers = [
-  {
-    id: "horizon-cabin-silver",
-    name: "Horizon Cabin",
-    price: "₹ 82,000",
-    image: "/media/showcase/iconic-1-classic-cabin.png",
-    href: "/products/horizon-cabin",
-  },
-  {
-    id: "horizon-checkin-black",
-    name: "Horizon Check-In",
-    price: "₹ 95,000",
-    image: "/media/showcase/like-3-original-black.png",
-    href: "/products/horizon-check-in",
-  },
-  {
-    id: "horizon-trunk-green",
-    name: "Horizon Trunk",
-    price: "₹ 1,20,000",
-    image: "/media/showcase/like-2-essential-green.png",
-    href: "/products/horizon-trunk",
-  },
-  {
-    id: "horizon-cabin-champagne",
-    name: "Horizon Cabin",
-    price: "₹ 82,000",
-    image: "/media/showcase/iconic-4-original-cabin.png",
-    href: "/products/horizon-cabin",
-  },
-  {
-    id: "horizon-checkin-grey",
-    name: "Horizon Check-In",
-    price: "₹ 95,000",
-    image: "/media/showcase/iconic-3-classic-checkin.png",
-    href: "/products/horizon-check-in",
-  },
-];
+const bestSellers = products.slice(0,5).map(product => ({
+  id:product.variants[0].sku, name:product.name.split("|")[0], price:money(product.price || 0),
+  image:product.image, href:`/products/${product.slug}`,
+}));
 
 // ─── COMPONENT ────────────────────────────────────────────────────────────────
 
 export function LuggageLanding() {
   const [activeSlide, setActiveSlide] = useState(1);
-  const [wishlist, setWishlist] = useState<Record<string, boolean>>({});
+  const { isWishlisted, toggleWishlist: storeToggleWishlist } = useStore();
 
-  const toggleWishlist = (id: string, e: React.MouseEvent) => {
+  const handleToggleWishlist = (item: any, e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setWishlist((prev) => ({ ...prev, [id]: !prev[id] }));
+    const slug = item.href?.replace(/^\/products\//, "") || item.id;
+    const numPrice =
+      typeof item.price === "string"
+        ? parseInt(item.price.replace(/[^0-9]/g, ""), 10) || 0
+        : item.price;
+    storeToggleWishlist(item.id || slug, {
+      sku: item.id || slug,
+      name: item.name,
+      color: "Classic",
+      slug,
+      image: item.image,
+      price: numPrice,
+      available: true,
+    });
   };
 
   return (
@@ -214,13 +172,7 @@ export function LuggageLanding() {
             <div key={item.id} className="luggage-size-card">
               <Link href={item.href} className="luggage-card-anchor">
                 <div className="luggage-size-media-wrap">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 25vw"
-                    className="luggage-size-img"
-                  />
+                  <Image src={item.image} alt={item.title} fill sizes="(max-width: 600px) 50vw, 20vw" style={{objectFit:"contain"}} />
                 </div>
                 <div className="luggage-size-info">
                   <div className="luggage-size-text">
@@ -347,7 +299,7 @@ export function LuggageLanding() {
       {/* ── 6. BEST SELLERS CAROUSEL ── */}
       <section className="luggage-content-wrap luggage-bestsellers-section">
         <div className="luggage-section-header">
-          <h2 className="luggage-section-title uppercase">BEST SELLERS</h2>
+          <h2 className="luggage-section-title uppercase">EXPLORE THE COLLECTION</h2>
           <Link href="/luggage?view=catalog" className="luggage-header-link">
             VIEW ALL <ArrowRight size={13} />
           </Link>
@@ -355,23 +307,17 @@ export function LuggageLanding() {
 
         <div className="luggage-bestsellers-grid">
           {bestSellers.map((item) => {
-            const isLiked = !!wishlist[item.id];
+            const isLiked = isWishlisted(item.id) || isWishlisted(item.href?.replace(/^\/products\//, ""));
             return (
               <div key={item.id} className="luggage-product-card">
                 <Link href={item.href} className="luggage-product-anchor">
                   <div className="luggage-product-media">
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      fill
-                      sizes="(max-width: 768px) 50vw, 20vw"
-                      className="luggage-product-img"
-                    />
+                    <Image src={item.image} alt={item.name} fill sizes="(max-width: 600px) 50vw, 20vw" style={{objectFit:"contain"}} />
                     <button
                       type="button"
                       className={`luggage-wishlist-btn ${isLiked ? "active" : ""}`}
-                      onClick={(e) => toggleWishlist(item.id, e)}
-                      aria-label="Add to wishlist"
+                      onClick={(e) => handleToggleWishlist(item, e)}
+                      aria-label={isLiked ? "Remove from wishlist" : "Add to wishlist"}
                     >
                       <Heart size={15} fill={isLiked ? "#111" : "none"} strokeWidth={1.6} />
                     </button>

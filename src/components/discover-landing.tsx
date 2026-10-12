@@ -1,4 +1,6 @@
 "use client";
+import "@/components/page-styles/discover-landing.css";
+
 
 import Link from "next/link";
 import Image from "next/image";

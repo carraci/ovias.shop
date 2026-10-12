@@ -1,5 +1,7 @@
 node_modules/
 .next/
+.next-performance/
+.next-performance-90/
 .env*
 !.env.example
 .data/
@@ -104,3 +106,14 @@ tmp/
 temp/
 *.bak
 *.backup
+scratch/
+scratch_tickets.json
+csv-import-*.json
+lighthouse-*.json
+*.trace.json
+*.devtoolslog.json
+/*-live.png
+/*-visible.png
+/*-mobile.png
+performance-audit.md
+

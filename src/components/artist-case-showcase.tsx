@@ -1,8 +1,11 @@
 "use client";
+import "@/components/page-styles/artist-case.css";
+
 
 import { usePreferences } from "@/components/preferences";
 import { useStore } from "@/components/store-provider";
-import { money, type Product } from "@/lib/catalog";
+import { money } from "@/lib/catalog-helpers";
+import type { Product } from "@/lib/catalog";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef } from "react";

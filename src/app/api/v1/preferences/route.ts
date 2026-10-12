@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 import { cookies } from "next/headers";
 import { z } from "zod";
 import { api, body, originCheck } from "@/server/http";
-import { currencies, markets } from "@/lib/markets";
+import { currencies, markets, languages } from "@/lib/markets";
 export async function POST(req: NextRequest) {
   return api(async () => {
     originCheck(req);
@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
       .object({
         country: z.string().refine((v) => markets.some((m) => m.code === v)),
         currency: z.enum(currencies),
-        locale: z.literal("en-IN"),
+        locale: z.string().refine(value => value === "en-IN" || languages.some(([code]) => code === value)),
         remember: z.boolean(),
       })
       .strict()

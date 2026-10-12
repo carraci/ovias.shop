@@ -7,13 +7,14 @@ import {
   type ReactNode,
 } from "react";
 import {
-  currencies,
+  currencies, languages, countryLocale,
   markets,
   defaultPreferences,
   displayMoney,
   type Preferences,
   type Rate,
 } from "@/lib/markets";
+import { PageTranslation } from "./page-translation";
 import { request } from "./store-provider";
 const Context = createContext({
   preferences: defaultPreferences,
@@ -40,11 +41,12 @@ export function PreferencesProvider({
     const rate = rates.find((r) => r.currency === preferences.currency);
     return preferences.currency === "INR" || !rate
       ? displayMoney(value)
-      : `≈ ${displayMoney(value, preferences.currency, rate.rate)}`;
+      : `≈ ${displayMoney(value, preferences.currency, rate.rate, preferences.locale)}`;
   }
   return (
     <Context.Provider value={{ preferences, setPreferences, format, rates }}>
       {children}
+      <PageTranslation locale={preferences.locale} />
     </Context.Provider>
   );
 }
@@ -104,7 +106,7 @@ export function RegionalSettings() {
           Country / region
           <select
             value={draft.country}
-            onChange={(e) => setDraft({ ...draft, country: e.target.value })}
+            onChange={(e) => setDraft({ ...draft, country: e.target.value, locale:countryLocale(e.target.value), currency: markets.find(m => m.code === e.target.value)?.currency || "INR" })}
           >
             {markets.map((m) => (
               <option key={m.code} value={m.code}>
@@ -116,13 +118,12 @@ export function RegionalSettings() {
         </label>
         <label>
           Language
-          <select value={draft.locale} onChange={() => {}}>
-            <option value="en-IN">English</option>
+          <select value={draft.locale === "en-IN" ? "en" : draft.locale} onChange={e => setDraft({...draft,locale:e.target.value})}>
+            {languages.map(([code,name]) => <option key={code} value={code}>{name}</option>)}
           </select>
         </label>
         <p className="small-note">
-          Additional languages will be enabled after complete translations are
-          configured and reviewed.
+          Page translations use the configured translation provider.
         </p>
         <label>
           Display currency

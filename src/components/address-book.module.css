@@ -1,0 +1,116 @@
+.addressBook {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  color: #171717;
+}
+.addressBook h1 {
+  font-size: 26px;
+  margin: 8px 0 18px;
+}
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: #637083;
+}
+.title {
+  font-size: 20px;
+  margin: 24px 0 18px;
+  font-weight: 500;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+.form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  font-size: 13px;
+}
+.form input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  min-height: 50px;
+  padding: 12px 14px;
+  border: 1px solid #d4d4d4;
+  border-radius: 12px;
+  background: #fff;
+  color: #171717;
+  font: inherit;
+}
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  width: 100%;
+}
+.save {
+  align-self: flex-start;
+  background: #171717;
+  color: white;
+  border: 0;
+  border-radius: 24px;
+  min-height: 46px;
+  padding: 12px 26px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.save:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+.addressList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+.addressList:empty {
+  display: none;
+}
+.addressList article {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  overflow-wrap: anywhere;
+}
+.addressList h3 {
+  font-size: 16px;
+  margin: 0 0 8px;
+}
+.addressList p {
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+.addressList button {
+  margin-right: 16px;
+}
+.addressBook :focus-visible {
+  outline: 2px solid #171717;
+  outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .row,
+  .addressList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .form {
+    gap: 16px;
+  }
+  .save {
+    align-self: stretch;
+  }
+}

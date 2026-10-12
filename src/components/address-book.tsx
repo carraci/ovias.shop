@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { request } from "./store-provider";
 import type { Address } from "@/lib/types";
+import styles from "./address-book.module.css";
 type Saved = Address & { id: string };
-export function AddressBook() {
+export function AddressBook({ embedded = false }: { embedded?: boolean }) {
   const [addresses, setAddresses] = useState<Saved[]>([]);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -16,13 +17,17 @@ export function AddressBook() {
     load().catch((e) => setError(e.message));
   }, []);
   return (
-    <section className="section content-page">
-      <p className="eyebrow">YOUR OVIA</p>
-      <h1>Familiar places.</h1>
-      <Link href="/account" className="text-link">
-        Back to your account
-      </Link>
-      <div className="address-list">
+    <section className={styles.addressBook}>
+      {!embedded && (
+        <>
+          <p className={styles.eyebrow}>YOUR OVIA</p>
+          <h1>Familiar places.</h1>
+          <Link href="/account" className="text-link">
+            Back to your account
+          </Link>
+        </>
+      )}
+      <div className={styles.addressList}>
         {addresses.map((a) => (
           <article key={a.id}>
             <h3>{a.name}</h3>
@@ -54,12 +59,12 @@ export function AddressBook() {
           </article>
         ))}
       </div>
-      <h2 className="address-title">
+      <h2 className={styles.title}>
         {editing ? "Edit address" : "Save an address"}
       </h2>
       <form
         key={editing?.id || "new"}
-        className="form"
+        className={styles.form}
         onSubmit={async (e) => {
           e.preventDefault();
           const form = e.currentTarget;
@@ -81,7 +86,7 @@ export function AddressBook() {
           }
         }}
       >
-        <div className="form-row">
+        <div className={styles.row}>
           <label>
             Full name
             <input
@@ -113,7 +118,7 @@ export function AddressBook() {
             autoComplete="street-address"
           />
         </label>
-        <div className="form-row">
+        <div className={styles.row}>
           <label>
             City
             <input
@@ -152,7 +157,7 @@ export function AddressBook() {
             {error}
           </p>
         )}
-        <button className="button dark" disabled={busy}>
+        <button className={styles.save} disabled={busy}>
           {busy ? "Saving…" : "Save address"}
         </button>
         {editing && (

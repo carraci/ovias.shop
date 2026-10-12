@@ -1,0 +1,352 @@
+
+.artist-case-page {
+  padding-bottom: 80px;
+}
+
+.artist-hero-section {
+  padding-top: 15px;
+}
+
+.artist-hero-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: clamp(30px, 4vw, 70px);
+  align-items: start;
+}
+
+.artist-gallery-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.artist-view-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+  overflow-x: auto;
+}
+
+.artist-view-tab {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 4px;
+  color: var(--muted);
+  background: transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.artist-view-tab:hover {
+  color: var(--ink);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.artist-view-tab.active {
+  color: var(--ink);
+  background: #e6e9e4;
+  font-weight: 600;
+}
+
+.artist-main-image-container {
+  background: #e9ece7;
+  border: 1px solid #d5dad2;
+  border-radius: 12px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.artist-edition-pill {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  padding: 5px 10px;
+  border-radius: 20px;
+  z-index: 2;
+}
+
+.artist-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.4 / 1;
+  min-height: 440px;
+}
+
+.artist-hero-image {
+  object-fit: contain;
+  padding: 10px;
+  transition: transform 0.4s ease;
+}
+
+.artist-image-caption {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  margin: 14px 0 0;
+  letter-spacing: 0.05em;
+}
+
+.artist-config-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.artist-header-group .eyebrow {
+  margin-bottom: 10px;
+}
+
+.artist-title {
+  font-size: clamp(36px, 3.8vw, 54px);
+  margin: 0 0 8px;
+  line-height: 1.1;
+}
+
+.artist-model-code {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+
+.artist-price {
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0 0 24px;
+}
+
+.artist-lead-description {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #4b5249;
+  margin-bottom: 28px;
+}
+
+.artist-variant-box {
+  background: #eff1ec;
+  border: 1px solid #d8ded5;
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+
+.artist-variant-label {
+  display: block;
+  font-size: 13px;
+  color: #384036;
+  margin-bottom: 14px;
+}
+
+.artist-variant-label strong {
+  color: var(--ink);
+  margin-left: 6px;
+}
+
+.artist-swatch-list {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.artist-swatch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border: 1.5px solid #c2c9bf;
+  border-radius: 8px;
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.artist-swatch-btn.selected {
+  border-color: var(--ink);
+  background: #fdfefd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.artist-swatch-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.artist-swatch-text {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.artist-stock-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #2e5939;
+  background: #e6f2e8;
+  border: 1px solid #c4dec8;
+  padding: 7px 14px;
+  border-radius: 6px;
+  margin-bottom: 24px;
+  width: fit-content;
+}
+
+.artist-cta-row {
+  margin-bottom: 24px;
+}
+
+.artist-buy-btn {
+  width: 100%;
+  padding: 16px 28px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--ink);
+  color: #ffffff;
+  transition: background 0.2s ease;
+}
+
+.artist-buy-btn:hover:not(:disabled) {
+  background: #18221a;
+}
+
+.artist-added-toast {
+  background: #eef5ee;
+  border: 1px solid #b7dab9;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.artist-assurances {
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.artist-deep-dive {
+  background: #eef1ec;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 80px var(--gutter);
+}
+
+.artist-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.artist-feature-card {
+  background: #f8faf7;
+  border: 1px solid #dbe2d8;
+  border-radius: 12px;
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.artist-feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+}
+
+.artist-feature-card h3 {
+  font: 20px var(--serif);
+  margin: 0;
+  color: var(--ink);
+}
+
+.artist-feature-card p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #555f52;
+  margin: 0;
+}
+.artist-specs-section {
+  padding-top: 70px;
+  padding-bottom: 60px;
+}
+
+.artist-specs-table-wrapper {
+  background: #ffffff;
+  border: 1px solid #dce2d9;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 24px;
+}
+
+.artist-specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.artist-specs-table tr {
+  border-bottom: 1px solid #eef2ec;
+}
+
+.artist-specs-table tr:last-child {
+  border-bottom: none;
+}
+
+.artist-specs-table th {
+  text-align: left;
+  padding: 16px 24px;
+  color: var(--muted);
+  font-weight: 500;
+  width: 32%;
+  background: #f9fbf8;
+}
+
+.artist-specs-table td {
+  padding: 16px 24px;
+  color: var(--ink);
+}
+@media (max-width: 1024px) {
+  .artist-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .artist-hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .artist-image-wrapper {
+    min-height: 320px;
+  }
+  .artist-specs-table th {
+    width: 40%;
+  }
+}
+
+@media (max-width: 600px) {
+  .artist-features-grid {
+    grid-template-columns: 1fr;
+  }
+  .artist-specs-table th,
+  .artist-specs-table td {
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+}

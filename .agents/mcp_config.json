@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "maps": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://gateway-maps-pub-int.delhivery.com/mcp",
+        "--header",
+        "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InNvdXJjZSI6IldFQiIsInVjaWQiOiIyYTFkYjlhMS01YTRkLTI0MzctNzUwMy1hODVkODdhMmI3N2MifSwiZXhwIjoxNzkwOTU2MDUyLCJpYXQiOjE3OTA4Njk2NTIsImp0aSI6ImVmMTA1OWQ4LTBiM2YtNDI5Yi1iZDM5LWVlZjY2MTQwYTc5MiJ9.3KMu37HT5o7i0H7l4e425CED3eUG-jD9TGarQOGPFNw"
+      ]
+    }
+  }
+}

@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
 
     const filters: Filters = {
       department,
-      category: category && category !== "luggage" ? category : undefined,
+      category: category && (searchParams.has("department") || category !== "luggage") ? category : undefined,
       subcategory,
       material,
       color,
@@ -38,14 +38,31 @@ export async function GET(req: NextRequest) {
 
     const allProducts = await catalog();
     const result = filterProducts(allProducts, filters);
-
-    return NextResponse.json(result, {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "public, max-age=60, stale-while-revalidate=300",
-      },
+    const sanitizedItems = result.items.map((item) => {
+      const clone = { ...(item as unknown as Record<string, unknown>) };
+      delete clone.sourceUrl;
+      delete clone.source_url;
+      delete clone.sourceId;
+      delete clone.source_id;
+      delete clone.originalUrl;
+      delete clone.original_url;
+      delete clone.brand_url;
+      delete clone.brandUrl;
+      delete clone.external_product_url;
+      delete clone.externalProductUrl;
+      return clone;
     });
+
+    return NextResponse.json(
+      { ...result, items: sanitizedItems },
+      {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-store",
+        },
+      }
+    );
   } catch (error) {
     return NextResponse.json(
       { error: (error as Error).message || "Internal server error" },

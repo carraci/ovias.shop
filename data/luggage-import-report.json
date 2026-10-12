@@ -1,0 +1,59 @@
+{
+  "files": [
+    {
+      "file": "amazon-in-2026-10-03.csv",
+      "category": "Trunk",
+      "rows": 60,
+      "newProducts": 59,
+      "duplicates": 1
+    },
+    {
+      "file": "amazon-in-2026-10-03-2.csv",
+      "category": "Check-In",
+      "rows": 60,
+      "newProducts": 38,
+      "duplicates": 22
+    },
+    {
+      "file": "amazon-in-2026-10-03-2 (1).csv",
+      "category": "Cabin",
+      "rows": 60,
+      "newProducts": 54,
+      "duplicates": 6
+    },
+    {
+      "file": "amazon-in-2026-10-03-2 (2).csv",
+      "category": "Luggage",
+      "rows": 60,
+      "newProducts": 40,
+      "duplicates": 20
+    },
+    {
+      "file": "amazon-in-2026-10-03-2 (3).csv",
+      "category": "Cabin Bags",
+      "rows": 60,
+      "newProducts": 22,
+      "duplicates": 38
+    }
+  ],
+  "rows": 300,
+  "duplicates": 87,
+  "imageFailures": [],
+  "priceConflicts": [],
+  "missingPrices": [],
+  "mappings": [
+    "Trunk",
+    "Check-In",
+    "Cabin",
+    "Luggage",
+    "Cabin Bags"
+  ],
+  "products": 213,
+  "categoryCounts": {
+    "Trunk": 59,
+    "Check-In": 58,
+    "Cabin": 58,
+    "Luggage": 60,
+    "Cabin Bags": 59
+  }
+}

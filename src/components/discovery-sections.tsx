@@ -1,4 +1,6 @@
 "use client";
+import "@/components/page-styles/editorial.css";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState, useEffect } from "react";

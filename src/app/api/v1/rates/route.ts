@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
 import { currencies, type Rate } from "@/lib/markets";
 const cache = globalThis as typeof globalThis & {
-  oviaRates?: { until: number; rates: Rate[] };
+  oviaRates?: { until: number; rates: Rate[]; key: string };
   oviaRatesPending?: Promise<Rate[]>;
 };
 export async function GET() {
   try {
-    if (!cache.oviaRates || cache.oviaRates.until < Date.now()) {
+    if (!cache.oviaRates || cache.oviaRates.until < Date.now() || cache.oviaRates.key !== currencies.join(",")) {
       cache.oviaRatesPending ??= (async () => {
         const res = await fetch(
-          "https://api.frankfurter.dev/v2/rates?base=INR&quotes=USD,EUR,GBP,JPY,AED,CAD,AUD",
+          `https://api.frankfurter.dev/v2/rates?base=INR&quotes=${currencies.filter(c => c !== "INR").join(",")}`,
           { signal: AbortSignal.timeout(8000), cache: "no-store" },
         );
         if (!res.ok) throw new Error("Provider unavailable");
@@ -31,7 +31,7 @@ export async function GET() {
               Date.parse(r.date) <= Date.now() + 86400000,
           )
           .map((r) => ({ currency: r.quote, rate: r.rate, date: r.date }));
-        cache.oviaRates = { until: Date.now() + 3600000, rates };
+        cache.oviaRates = { until: Date.now() + 3600000, rates, key:currencies.join(",") };
         return rates;
       })();
       try {

@@ -1,0 +1,499 @@
+
+.wishlist-icon {
+  color: inherit;
+}
+.account-page > p {
+  font-size: 14px;
+  color: var(--muted);
+}
+.account-tools {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 25px 0;
+}
+.account-tools > a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .account-tools {
+    align-items: stretch;
+  }
+}
+
+.account-portal-wrap {
+  background-color: var(--paper, #ffffff);
+  min-height: calc(100vh - 85px);
+  padding: 40px 32px 80px;
+}
+
+.account-portal-container {
+  max-width: 1360px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+.account-toast-notification {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: #15130f;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-family: var(--sans);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  animation: toastFade 0.25s ease-out;
+}
+.account-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.account-user-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 4px 6px;
+}
+
+.account-avatar-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #deddd5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #15130f;
+  font-family: var(--serif);
+  flex-shrink: 0;
+}
+
+.account-user-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.account-user-name {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: #15130f;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.account-user-email {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: #73716a;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.account-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.account-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 16px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #33322d;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  width: 100%;
+}
+
+.account-nav-item:hover {
+  background: rgba(0, 0, 0, 0.04);
+  color: #000;
+}
+
+.account-nav-item.is-active {
+  background: #e3e7db;
+  color: #15130f;
+  font-weight: 600;
+}
+
+.account-nav-divider {
+  height: 1px;
+  background: #e8e7e0;
+  margin: 10px 0;
+}
+
+.account-nav-item.sign-out-item {
+  color: #55534e;
+}
+
+.account-nav-item.sign-out-item:hover {
+  color: #c92a2a;
+  background: #f7f7f7;
+}
+.account-main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+}
+.account-hero-row {
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 32px;
+  align-items: center;
+}
+
+.account-greeting-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-brand-title {
+  font-family: var(--serif, "Playfair Display", Georgia, serif);
+  font-size: clamp(38px, 4vw, 48px);
+  font-weight: 400;
+  color: #15130f;
+  margin: 0 0 6px;
+  line-height: 1.1;
+}
+
+.account-welcome-sub {
+  font-family: var(--serif, "Playfair Display", Georgia, serif);
+  font-size: 23px;
+  font-weight: 400;
+  color: #15130f;
+  margin: 0 0 8px;
+}
+
+.account-welcome-desc {
+  font-family: var(--sans);
+  font-size: 13.5px;
+  color: #66645e;
+  margin: 0;
+  line-height: 1.5;
+}
+.account-concierge-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e7e5dc;
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  overflow: hidden;
+  min-height: 155px;
+}
+.account-two-col-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 24px;
+}
+
+.account-section-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e3e2d9;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.account-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.account-card-title {
+  font-family: var(--serif, "Playfair Display", Georgia, serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: #15130f;
+  margin: 0;
+}
+
+.account-card-link {
+  background: none;
+  border: none;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: #15130f;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 500;
+}
+
+.account-card-link:hover {
+  opacity: 0.75;
+}
+.account-order-item {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+.account-wishlist-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.wishlist-items-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  flex: 1;
+}
+
+.wishlist-item-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.wishlist-tile-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 98px;
+  background: #e8e8dd;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wishlist-tile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 4px;
+  transition: transform 0.25s ease;
+}
+
+.wishlist-item-tile:hover .wishlist-tile-img {
+  transform: scale(1.04);
+}
+
+.wishlist-tile-heart {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: transform 0.15s ease;
+}
+
+.wishlist-tile-heart:hover {
+  transform: scale(1.15);
+}
+
+.wishlist-tile-title {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  color: #15130f;
+  margin: 4px 0 0;
+  line-height: 1.25;
+}
+
+.wishlist-tile-price {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  color: #66645e;
+}
+
+.wishlist-carousel-arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #d5d4cb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  color: #333;
+  transition: all 0.15s ease;
+}
+
+.wishlist-carousel-arrow:hover {
+  background: #f7f7f7;
+  transform: scale(1.05);
+}
+.account-three-col-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.account-registration-banner {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.account-registration-banner:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.account-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.account-modal-panel {
+  background: #ffffff;
+  border-radius: 14px;
+  max-width: 460px;
+  width: 100%;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.account-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.account-modal-header h3 {
+  font-family: var(--serif, "Playfair Display", Georgia, serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: #15130f;
+  margin: 0;
+}
+
+.account-modal-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  padding: 4px;
+}
+
+.account-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.account-modal-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  color: #333;
+}
+
+.account-modal-form input {
+  padding: 10px 12px;
+  border: 1px solid #d5d4cb;
+  border-radius: 6px;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.account-modal-form input:focus {
+  border-color: #283b2d;
+}
+@media (max-width: 1180px) {
+  .account-hero-row {
+    grid-template-columns: 1fr;
+  }
+  .account-two-col-grid {
+    grid-template-columns: 1fr;
+  }
+  .account-three-col-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .account-portal-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .account-sidebar {
+    border-bottom: 1px solid #e3e2d9;
+    padding-bottom: 20px;
+  }
+  .account-nav-list {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+  .account-nav-item {
+    white-space: nowrap;
+  }
+  .account-nav-divider {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .account-portal-wrap {
+    padding: 24px 16px 60px;
+  }
+  .account-concierge-card {
+    grid-template-columns: 1fr;
+  }
+  .account-order-item {
+    grid-template-columns: 1fr;
+  }
+}

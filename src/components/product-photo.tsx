@@ -1,45 +1,47 @@
 "use client";
 
-import Image, { type ImageProps } from "next/image";
-import { useState } from "react";
+import type { ImageProps } from "next/image";
+import Image from "next/image";
+import { useState, useEffect } from "react";
 
-type Props = Omit<ImageProps, "src" | "onError"> & {
-  src: string;
-  fallbackSources?: string[];
+type Props = Omit<ImageProps, "src"> & {
+  src?: string | null;
+  fallbackSources?: (string | undefined | null)[];
 };
 
-// A missing asset must never be replaced with a different product's photograph.
-export function ProductPhoto({ src, fallbackSources = [], ...props }: Props) {
-  const [failed, setFailed] = useState<string[]>([]);
-  const source = [src, ...fallbackSources].find(
-    (value) => value && !failed.includes(value),
+export function isProductPhoto(source?: string | null): boolean {
+  if (!source || typeof source !== "string") return false;
+  const s = source.trim();
+  return s.length > 0;
+}
+
+export function ProductPhoto({ src, fallbackSources = [], alt, ...props }: Props) {
+  const candidates = [src, ...fallbackSources].filter(
+    (source): source is string => Boolean(source && typeof source === "string" && isProductPhoto(source))
   );
-  if (!source)
-    return (
-      <span
-        role="img"
-        aria-label={`${props.alt || "Product image"} — image unavailable`}
-        style={{
-          position: props.fill ? "absolute" : "relative",
-          inset: props.fill ? 0 : undefined,
-          display: "grid",
-          placeItems: "center",
-          padding: 16,
-          color: "#77746c",
-          fontSize: 11,
-          textAlign: "center",
-          background: "#eeece5",
-          minHeight: props.fill ? undefined : 200,
-        }}
-      >
-        Image unavailable
-      </span>
-    );
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [src]);
+
+  const current = candidates[currentIndex];
+  if (!current) return null;
+
   return (
     <Image
       {...props}
-      src={source}
-      onError={() => setFailed((values) => [...values, source])}
+      alt={alt || "Product photo"}
+      src={current}
+      onError={() => {
+        if (currentIndex + 1 < candidates.length) {
+          setCurrentIndex((prev) => prev + 1);
+        } else {
+          setCurrentIndex(-1);
+        }
+      }}
     />
   );
 }
+

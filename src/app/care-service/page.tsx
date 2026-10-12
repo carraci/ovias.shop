@@ -1,3 +1,4 @@
+import "@/components/page-styles/editorial.css";
 import Image from "next/image";
 import Link from "next/link";
 import { CARE_CATEGORIES, CARE_PRINCIPLES } from "@/lib/care-data";

@@ -1,0 +1,403 @@
+.shell {
+  --ink: #171717;
+  --muted: #6b6b6b;
+  --line: #e7e3dd;
+  background: #ffffff;
+  color: var(--ink);
+  min-height: 100vh;
+  padding: 128px 32px 64px;
+  font-family: var(--sans, Arial, sans-serif);
+}
+.layout {
+  max-width: 1440px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 248px minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+.sidebar {
+  position: sticky;
+  top: 112px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px 16px;
+}
+.brand {
+  display: block;
+  font-family: var(--serif, Georgia, serif);
+  font-size: 27px;
+  padding: 0 8px 24px;
+  text-decoration: none;
+}
+.brand span {
+  display: block;
+  font-family: var(--sans, Arial, sans-serif);
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+.navigation,
+.expanded {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.navigation a,
+.expanded a,
+.navigation button,
+.expanded button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 0;
+  border-radius: 8px;
+  background: white;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 180ms,
+    color 180ms;
+}
+.navigation a:hover,
+.expanded a:hover {
+  background: #f7f7f7;
+  color: var(--ink);
+}
+.navigation a[aria-current="page"],
+.expanded a[aria-current="page"] {
+  background: #171717;
+  color: white;
+}
+.identity {
+  border-top: 1px solid var(--line);
+  padding: 24px 8px 0;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-wrap: anywhere;
+}
+.identity small {
+  color: var(--muted);
+  font-size: 11px;
+}
+.content {
+  min-width: 0;
+}
+.mobileMenu {
+  display: none;
+}
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.welcome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 8px 0 16px;
+}
+.welcome p {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+.welcome h1 {
+  font: 36px var(--serif, Georgia, serif);
+  margin: 0 0 12px;
+}
+.welcome span {
+  font-size: 14px;
+  color: var(--muted);
+}
+.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #171717;
+  color: white;
+  padding: 13px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 12px;
+  white-space: nowrap;
+  transition: background 180ms;
+}
+.primary:hover {
+  background: #303030;
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.stats a {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  background: white;
+  border: 1px solid var(--line);
+  padding: 24px;
+  border-radius: 12px;
+  text-decoration: none;
+}
+.stats span {
+  color: var(--muted);
+  font-size: 12px;
+  grid-column: 1;
+}
+.stats strong {
+  font-size: 28px;
+  grid-column: 2;
+  grid-row: 1/3;
+  align-self: center;
+}
+.card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px;
+}
+.card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.card h2,
+.modules h2 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+.card header a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  text-decoration: none;
+}
+.card > p {
+  color: var(--muted);
+  font-size: 14px;
+  padding: 24px 0;
+}
+.order {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  text-decoration: none;
+  font-size: 12px;
+}
+.order div {
+  flex: 1;
+  min-width: 0;
+}
+.order small {
+  display: block;
+  color: var(--muted);
+  margin-top: 8px;
+}
+.order strong {
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.status {
+  background: #ffffff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 10px;
+  text-transform: capitalize;
+}
+.modules {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.modules > a {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: border-color 180ms;
+}
+.modules > a:hover {
+  border-color: #aaa49a;
+}
+.modules span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.error {
+  padding: 16px;
+  background: #fff1ef;
+  color: #9a2921;
+  border: 1px solid #f3d5d0;
+  border-radius: 8px;
+}
+.error button {
+  border: 0;
+  background: none;
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.shell a:focus-visible,
+.shell button:focus-visible {
+  outline: 2px solid #171717;
+  outline-offset: 3px;
+}
+.shell a:hover {
+  text-underline-offset: 4px;
+}
+/* Existing account modules retain their behavior inside the shared navigation. */
+.content :global(aside[aria-label="Account Navigation"]) {
+  display: none;
+}
+.content :global([class*="portalWrapper"]) {
+  padding-top: 0;
+  background: transparent;
+  min-height: auto;
+  padding-bottom: 0;
+}
+.content :global([class*="portalContainer"]) {
+  padding: 0;
+  max-width: none;
+  display: block;
+}
+.content :global([class*="account-dashboard"][class*="page"]),
+.content :global([class*="account-security"][class*="page"]) {
+  padding-top: 0;
+  background: transparent;
+  min-height: auto;
+}
+.content :global([class*="account-dashboard"][class*="subnav"]),
+.content :global([class*="account-security"][class*="subnav"]) {
+  display: none;
+}
+.content :global([class*="account-dashboard"][class*="identity"]) {
+  padding: 0 0 24px;
+  text-align: left;
+}
+.content :global([class*="account-dashboard"][class*="content"]) {
+  max-width: none;
+  padding: 0;
+}
+.content :global([class*="account-dashboard"][class*="card"]) {
+  border-color: #e7e3dd;
+  border-radius: 12px;
+}
+.content :global([class*="account-dashboard"][class*="primaryButton"]) {
+  border-radius: 8px;
+}
+.content :global([class*="account-dashboard"][class*="secondaryButton"]) {
+  border-radius: 8px;
+}
+@media (max-width: 1100px) {
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .modules {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .welcome {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+@media (max-width: 760px) {
+  .shell {
+    padding: 110px 16px 32px;
+  }
+  .layout {
+    display: block;
+  }
+  .sidebar {
+    position: static;
+    margin-bottom: 24px;
+    padding: 16px;
+  }
+  .brand {
+    padding: 0 0 16px;
+    font-size: 24px;
+  }
+  .brand span,
+  .identity {
+    display: none;
+  }
+  .mobileMenu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+  }
+  .navigation {
+    display: none;
+  }
+  .expanded {
+    margin-top: 12px;
+  }
+  .welcome h1 {
+    font-size: 30px;
+  }
+  .stats a {
+    padding: 16px;
+  }
+  .card {
+    padding: 16px;
+  }
+  .order {
+    flex-wrap: wrap;
+  }
+  .order div {
+    flex-basis: 100%;
+  }
+  .modules {
+    grid-template-columns: 1fr 1fr;
+  }
+  .modules > a {
+    padding: 16px;
+  }
+  .modules h2 {
+    font-size: 14px;
+  }
+  .card header {
+    flex-wrap: wrap;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shell * {
+    transition: none !important;
+  }
+}
+
+.shell .brand { color: var(--ink); }
+.shell .primary { color: #fff; }
+.shell nav a[aria-current="page"] { color: #fff; }
+.card header a:hover { text-decoration: underline; }

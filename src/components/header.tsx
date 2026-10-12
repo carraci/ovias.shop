@@ -1,13 +1,17 @@
 "use client";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { latestLinks } from "@/lib/new-collection";
+import { stories } from "@/lib/journal";
+import discoverStyles from "./discover-menu.module.css";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import {
   Search,
   UserRound,
   ShoppingBag,
+  Heart,
   Menu,
   X,
   ArrowUpRight,
@@ -15,29 +19,33 @@ import {
   Mail,
   MessageSquare,
   MessageCircle,
-  Heart,
   ChevronDown,
   MapPin,
 } from "lucide-react";
-import { groups, slugify, type Department } from "@/lib/catalog";
+import { slugify } from "@/lib/catalog-helpers";
 import { clientServicesConfig } from "@/lib/client-services-config";
 import { useStore } from "./store-provider";
 import {
   newMegaCards,
   luggageMegaData,
   bagsMegaData,
-  accessoriesMegaData,
+  type MegaProductCard,
 } from "@/lib/mega-menu-data";
+const InstantSearchModal = dynamic(() => import("./instant-search-modal").then(module => module.InstantSearchModal), {ssr:false});
 const departments = [
   "New",
   "Luggage",
   "Bags",
-  "Accessories",
-  "Specialties",
   "Services",
   "Discover",
 ];
-export function Header() {
+interface HeaderProps {
+  initialIsOwner?: boolean;
+  menuProducts?: { luggage: MegaProductCard[]; bags: MegaProductCard[] };
+}
+const emptyMenuProducts = { luggage: [], bags: [] };
+
+export function Header({ initialIsOwner = false, menuProducts = emptyMenuProducts }: HeaderProps) {
   const [open, setOpen] = useState<string | null>(null);
   const [mobile, setMobile] = useState(false);
   const [expandedMobileDept, setExpandedMobileDept] = useState<string | null>(null);
@@ -45,12 +53,15 @@ export function Header() {
   const [ready, setReady] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [contactModalOpen, setContactModalOpen] = useState(false);
+  const [searchModalOpen, setSearchModalOpen] = useState(false);
   const pathname = usePathname();
   const header = useRef<HTMLElement>(null);
   const trigger = useRef<HTMLButtonElement | null>(null);
   const callUsTriggerRef = useRef<HTMLButtonElement | null>(null);
   const contactCloseRef = useRef<HTMLButtonElement | null>(null);
-  const { cart } = useStore();
+  const { cart, openCartDrawer, wishlist, user } = useStore();
+  const isOwner = initialIsOwner || ["OWNER", "ADMIN"].includes(user?.role?.toUpperCase() || "") ||
+    ["no-reply@ovias.shop", "adarshshukla4639@gmail.com"].includes(user?.email?.toLowerCase() || "");
 
   useEffect(() => {
     const handleOpenContactDrawer = () => {
@@ -128,18 +139,12 @@ export function Header() {
       document.removeEventListener("pointerdown", click);
     };
   }, [contactModalOpen, mobile]);
-  const dept = open?.toLowerCase() as Department;
-  if (pathname?.startsWith("/checkout")) {
+  if (pathname?.startsWith("/checkout") || pathname?.startsWith("/admin")) {
     return null;
   }
   const isLightHeader =
-    pathname === "/cart" ||
-    pathname?.startsWith("/products/") ||
-    pathname?.startsWith("/account") ||
-    pathname === "/login" ||
-    pathname === "/signup" ||
-    pathname === "/forgot-password" ||
-    pathname === "/storelocator";
+    pathname !== "/" &&
+    !pathname?.startsWith("/admin");
 
   return (
     <>
@@ -148,7 +153,7 @@ export function Header() {
         className={`header ${scrolled ? "scrolled" : ""} ${open ? "menu-open" : ""} ${mobile ? "mobile-drawer-active" : ""} ${isLightHeader ? "header-light" : ""}`}
         onMouseLeave={() => setOpen(null)}
       >
-        <Link href="/" className="wordmark" aria-label="OVIA home" onClick={() => setMobile(false)}>
+        <Link href="/" prefetch={false} className="wordmark" aria-label="OVIA home" onClick={() => setMobile(false)}>
           OVIA<span>TRAVEL GOODS</span>
         </Link>
         <nav
@@ -161,19 +166,16 @@ export function Header() {
                 ? "/bags"
                 : item === "Luggage"
                   ? "/luggage"
-                  : item === "Accessories"
-                    ? "/accessories"
-                    : item === "Specialties"
-                      ? "/new"
-                      : item === "New"
-                        ? "/new"
-                        : item === "Services"
-                          ? "/services"
-                          : "/discover";
+                  : item === "New"
+                    ? "/new"
+                    : item === "Services"
+                      ? "/services"
+                      : "/discover";
             return (
               <Link
                 key={item}
                 href={href}
+                prefetch={false}
                 aria-expanded={open === item}
                 aria-controls="mega-menu"
                 onMouseEnter={() => {
@@ -201,20 +203,107 @@ export function Header() {
           >
             Call Us
           </button>
-          <Link href="/search" aria-label="Search" className="header-action-icon" onClick={() => setMobile(false)}>
+          <button
+            type="button"
+            aria-label="Search"
+            className="header-action-icon"
+            style={{
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+              color: "inherit",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: 0,
+            }}
+            onClick={() => {
+              setMobile(false);
+              setSearchModalOpen(true);
+            }}
+          >
             <Search size={20} strokeWidth={1.6} />
-          </Link>
-          <Link href="/account" aria-label="Wishlist" className="wishlist-icon header-action-icon desktop-tablet-only">
-            <Heart size={20} strokeWidth={1.6} />
-          </Link>
-          <Link href="/account" aria-label="My account" className="header-action-icon desktop-only">
+          </button>
+          {isOwner && (
+            <Link
+              href="/admin"
+              className="admin-badge-toggle desktop-only"
+              aria-label="Switch to Owner Admin Control Center"
+              title="Shop-Owner Admin Control Center"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                padding: "4px 10px",
+                borderRadius: 16,
+                backgroundColor: "rgba(142, 105, 62, 0.12)",
+                border: "1px solid rgba(142, 105, 62, 0.35)",
+                color: "#8E693E",
+                fontSize: 11,
+                fontWeight: 600,
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
+                textDecoration: "none",
+                lineHeight: 1.2,
+                marginRight: 2,
+              }}
+            >
+              <span
+                style={{
+                  width: 6,
+                  height: 6,
+                  borderRadius: "50%",
+                  backgroundColor: "#10B981",
+                  display: "inline-block",
+                }}
+                className="animate-pulse"
+              />
+              <span>Admin</span>
+            </Link>
+          )}
+          <Link href={user ? "/account" : "/account/sign-in"} prefetch={false} aria-label="My account" className="header-action-icon desktop-only">
             <UserRound size={20} strokeWidth={1.6} />
           </Link>
           <Link
+            href="/account/wishlist"
+            aria-label={wishlist.length ? `Wishlist, ${wishlist.length} saved pieces` : "Wishlist"}
+            prefetch={false}
+            className="header-action-icon desktop-only"
+            style={{ position: "relative" }}
+          >
+            <Heart size={20} strokeWidth={1.6} fill={wishlist.length > 0 ? "currentColor" : "none"} />
+            {wishlist.length > 0 && (
+              <span
+                style={{
+                  position: "absolute",
+                  top: "-4px",
+                  right: "-6px",
+                  fontSize: "10px",
+                  background: "#111111",
+                  color: "#ffffff",
+                  borderRadius: "50%",
+                  width: "16px",
+                  height: "16px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontWeight: 600,
+                }}
+              >
+                {wishlist.length}
+              </span>
+            )}
+          </Link>
+          <Link
             href="/cart"
+            prefetch={false}
             className="bag-icon header-action-icon"
             aria-label={`Shopping bag, ${cart.lines.reduce((a, l) => a + l.quantity, 0)} items`}
-            onClick={() => setMobile(false)}
+            onClick={(e) => {
+              e.preventDefault();
+              setMobile(false);
+              openCartDrawer();
+            }}
           >
             <ShoppingBag size={20} strokeWidth={1.6} />
             <span>{cart.lines.reduce((a, l) => a + l.quantity, 0)}</span>
@@ -234,7 +323,7 @@ export function Header() {
         </div>
 
         {/* Dedicated Mobile Navigation Drawer */}
-        <div
+        {mobile && <div
           className={`mobile-nav-drawer ${mobile ? "is-open" : ""}`}
           aria-hidden={!mobile}
         >
@@ -254,6 +343,10 @@ export function Header() {
                 type="search"
                 placeholder="Search luggage, bags, materials…"
                 value={mobileSearchQuery}
+                onFocus={() => {
+                  setMobile(false);
+                  setSearchModalOpen(true);
+                }}
                 onChange={(e) => setMobileSearchQuery(e.target.value)}
                 aria-label="Search collection on mobile"
               />
@@ -261,9 +354,10 @@ export function Header() {
 
             <div className="mobile-nav-categories">
               {departments.map((item) => {
-                const itemDept = item.toLowerCase() as Department;
+                const categoryLinks = item === "Bags" ? bagsMegaData.columns[0].links
+                  : item === "Luggage" ? luggageMegaData.columns[0].links : [];
                 const isExpanded = expandedMobileDept === item;
-                const hasSub = !!groups[itemDept] || item === "New" || item === "Services" || item === "Discover";
+                const hasSub = categoryLinks.length > 0 || item === "New" || item === "Services" || item === "Discover";
                 return (
                   <div key={item} className="mobile-nav-item">
                     <div className="mobile-nav-row">
@@ -295,15 +389,10 @@ export function Header() {
                               {link.label}
                             </Link>
                           ))
-                        ) : groups[itemDept] ? (
-                          groups[itemDept].map(([category]) => (
-                            <Link
-                              key={category}
-                              href={`/${itemDept}/${slugify(category)}`}
-                              className="mobile-sublink"
-                              onClick={() => setMobile(false)}
-                            >
-                              {category}
+                        ) : categoryLinks.length > 0 ? (
+                          categoryLinks.filter((link) => link.href !== `/${slugify(item)}`).map((link) => (
+                            <Link key={link.href} href={link.href} className="mobile-sublink" onClick={() => setMobile(false)}>
+                              {link.label}
                             </Link>
                           ))
                         ) : item === "Services" ? (
@@ -320,11 +409,14 @@ export function Header() {
                           </>
                         ) : (
                           <>
-                            <Link href="/discover" className="mobile-sublink" onClick={() => setMobile(false)}>
-                              Our Approach
+                            <Link href="/bags" className="mobile-sublink" onClick={() => setMobile(false)}>
+                              Bags
+                            </Link>
+                            <Link href="/luggage" className="mobile-sublink" onClick={() => setMobile(false)}>
+                              Luggage
                             </Link>
                             <Link href="/journal" className="mobile-sublink" onClick={() => setMobile(false)}>
-                              Stories & Journal
+                              OVIA Stories & Blogs
                             </Link>
                           </>
                         )}
@@ -336,6 +428,36 @@ export function Header() {
             </div>
 
             <div className="mobile-nav-utilities">
+              {isOwner && (
+                <Link
+                  href="/admin"
+                  className="mobile-utility-link"
+                  onClick={() => setMobile(false)}
+                  style={{
+                    backgroundColor: "rgba(142, 105, 62, 0.1)",
+                    color: "#8E693E",
+                    border: "1px solid rgba(142, 105, 62, 0.3)",
+                    borderRadius: 8,
+                    padding: "10px 14px",
+                    fontWeight: 600,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                  }}
+                >
+                  <span
+                    style={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: "50%",
+                      backgroundColor: "#10B981",
+                      display: "inline-block",
+                    }}
+                    className="animate-pulse"
+                  />
+                  <span>Admin Control Center</span>
+                </Link>
+              )}
               <Link href="/storelocator" className="mobile-utility-link" onClick={() => setMobile(false)}>
                 <MapPin size={18} />
                 <span>Find an OVIA Store</span>
@@ -351,60 +473,53 @@ export function Header() {
                 <Phone size={18} />
                 <span>Call Client Advisor</span>
               </button>
-              <Link href="/account" className="mobile-utility-link" onClick={() => setMobile(false)}>
+              <Link href={user ? "/account" : "/account/sign-in"} className="mobile-utility-link" onClick={() => setMobile(false)}>
                 <UserRound size={18} />
                 <span>My Account & Orders</span>
               </Link>
-              <Link href="/account" className="mobile-utility-link" onClick={() => setMobile(false)}>
-                <Heart size={18} />
+              <Link href="/account/wishlist" className="mobile-utility-link" onClick={() => setMobile(false)}>
                 <span>Saved Wishlist</span>
               </Link>
             </div>
           </div>
-        </div>
+        </div>}
         {open && (
           <div
             id="mega-menu"
-            className={`mega-menu ${open === "New" ? "new-menu-wrap" : ""} ${["New", "Luggage", "Bags", "Accessories", "Specialties"].includes(open) ? "mega-menu-luxury-wrap" : ""}`}
+            className={`mega-menu ${open === "New" ? "new-menu-wrap" : ""} ${["New", "Luggage", "Bags", "Discover"].includes(open) ? "mega-menu-luxury-wrap" : ""}`}
           >
             {open === "Luggage" ? (
               <div className="mega-menu-luxury">
-                <div className="mega-nav-columns cols-4">
+                <div className="mega-nav-columns">
                   {luggageMegaData.columns.map((col) => (
-                    <div key={col.title} className="mega-nav-col">
-                      <p className="mega-nav-heading">{col.title}</p>
-                      <div className="mega-nav-list">
-                        {col.links.map((link) => (
-                          <Link
-                            key={link.label}
-                            href={link.href}
-                            className="mega-nav-link"
-                            onClick={() => setOpen(null)}
-                          >
-                            {link.label}
-                          </Link>
-                        ))}
+                      <div key={col.title} className="mega-nav-col">
+                        <p className="mega-nav-heading">{col.title}</p>
+                        <div className="mega-nav-list">
+                          {col.links.map((link) => (
+                            <Link
+                              key={link.label}
+                              href={link.href}
+                              className="mega-nav-link"
+                              onClick={() => setOpen(null)}
+                            >
+                              {link.label}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
-                    </div>
                   ))}
                 </div>
                 <div className="mega-showcase-section">
                   <div className="mega-product-grid luggage-grid">
-                    {luggageMegaData.products.map((prod) => (
+                    {menuProducts.luggage.map((prod) => (
                       <Link
-                        key={prod.name}
+                        key={prod.href}
                         href={prod.href}
                         className="mega-product-card"
                         onClick={() => setOpen(null)}
                       >
                         <div className="mega-product-thumb">
-                          <Image
-                            src={prod.image}
-                            alt={prod.name}
-                            fill
-                            sizes="180px"
-                            className="mega-product-img"
-                          />
+                          <Image src={prod.image} alt={prod.name} fill sizes="160px" style={{objectFit:"contain"}} />
                         </div>
                         <div className="mega-product-info">
                           <span className="mega-product-name">{prod.name}</span>
@@ -426,42 +541,36 @@ export function Header() {
               </div>
             ) : open === "Bags" ? (
               <div className="mega-menu-luxury">
-                <div className="mega-nav-columns cols-3">
+                <div className="mega-nav-columns">
                   {bagsMegaData.columns.map((col) => (
-                    <div key={col.title} className="mega-nav-col">
-                      <p className="mega-nav-heading">{col.title}</p>
-                      <div className="mega-nav-list">
-                        {col.links.map((link) => (
-                          <Link
-                            key={link.label}
-                            href={link.href}
-                            className="mega-nav-link"
-                            onClick={() => setOpen(null)}
-                          >
-                            {link.label}
-                          </Link>
-                        ))}
+                      <div key={col.title} className="mega-nav-col">
+                        <p className="mega-nav-heading">{col.title}</p>
+                        <div className="mega-nav-list">
+                          {col.links.map((link) => (
+                            <Link
+                              key={link.label}
+                              href={link.href}
+                              className="mega-nav-link"
+                              onClick={() => setOpen(null)}
+                            >
+                              {link.label}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
-                    </div>
                   ))}
                 </div>
                 <div className="mega-showcase-section">
                   <div className="mega-product-grid bags-grid">
-                    {bagsMegaData.products.map((prod) => (
+                    {menuProducts.bags.map((prod) => (
                       <Link
-                        key={prod.name}
+                        key={prod.href}
                         href={prod.href}
                         className="mega-product-card"
                         onClick={() => setOpen(null)}
                       >
                         <div className="mega-product-thumb">
-                          <Image
-                            src={prod.image}
-                            alt={prod.name}
-                            fill
-                            sizes="180px"
-                            className="mega-product-img"
-                          />
+                          <Image src={prod.image} alt={prod.name} fill sizes="160px" style={{objectFit:"contain"}} />
                         </div>
                         <div className="mega-product-info">
                           <span className="mega-product-name">{prod.name}</span>
@@ -469,81 +578,6 @@ export function Header() {
                         </div>
                       </Link>
                     ))}
-                  </div>
-                </div>
-              </div>
-            ) : open === "Accessories" ? (
-              <div className="mega-menu-luxury">
-                <div className="mega-nav-columns cols-4">
-                  {accessoriesMegaData.columns.map((col) => (
-                    <div key={col.title} className="mega-nav-col">
-                      <p className="mega-nav-heading">{col.title}</p>
-                      <div className="mega-nav-list">
-                        {col.links.map((link) => (
-                          <Link
-                            key={link.label}
-                            href={link.href}
-                            className="mega-nav-link"
-                            onClick={() => setOpen(null)}
-                          >
-                            {link.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="mega-showcase-section">
-                  <div className="mega-accessories-visual-grid">
-                    {accessoriesMegaData.visualCards.map((card) => (
-                      <Link
-                        key={card.name}
-                        href={card.href}
-                        className="mega-visual-card"
-                        onClick={() => setOpen(null)}
-                      >
-                        <div className="mega-visual-thumb">
-                          <Image
-                            src={card.image}
-                            alt={card.name}
-                            fill
-                            sizes="200px"
-                            className="mega-visual-img"
-                          />
-                        </div>
-                        <span className="mega-visual-name">{card.name}</span>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ) : open === "Specialties" ? (
-              <div className="mega-menu-luxury">
-                <div className="mega-nav-columns cols-3">
-                  <div className="mega-nav-col">
-                    <p className="mega-nav-heading">SPECIAL PIECES</p>
-                    <div className="mega-nav-list">
-                      <Link href="/new/artist-case" className="mega-nav-link" onClick={() => setOpen(null)}>Artist Case</Link>
-                      <Link href="/specialty-dartboard-case" className="mega-nav-link" onClick={() => setOpen(null)}>Dartboard Case</Link>
-                      <Link href="/new" className="mega-nav-link" onClick={() => setOpen(null)}>Limited Editions</Link>
-                      <Link href="/discover" className="mega-nav-link" onClick={() => setOpen(null)}>Bespoke Atelier</Link>
-                    </div>
-                  </div>
-                </div>
-                <div className="mega-showcase-section">
-                  <div className="mega-accessories-visual-grid">
-                    <Link href="/new/artist-case" className="mega-visual-card" onClick={() => setOpen(null)}>
-                      <div className="mega-visual-thumb">
-                        <Image src="/media/artist-case.svg" alt="Artist Case" fill sizes="200px" className="mega-visual-img" />
-                      </div>
-                      <span className="mega-visual-name">The Studio Artist Case</span>
-                    </Link>
-                    <Link href="/specialty-dartboard-case" className="mega-visual-card" onClick={() => setOpen(null)}>
-                      <div className="mega-visual-thumb">
-                        <Image src="/media/bags/specialty-dartboard-case.png" alt="Dartboard Case" fill sizes="200px" className="mega-visual-img" />
-                      </div>
-                      <span className="mega-visual-name">Dartboard Case</span>
-                    </Link>
                   </div>
                 </div>
               </div>
@@ -574,14 +608,7 @@ export function Header() {
                         onClick={() => setOpen(null)}
                       >
                         <div className="new-card-thumb">
-                          <Image
-                            src={card.image}
-                            alt={card.title}
-                            fill
-                            sizes="(max-width: 1200px) 28vw, 360px"
-                            priority
-                            className="new-card-img"
-                          />
+                          <></>
                         </div>
                         <div className="new-card-info">
                           <span className="new-card-title">{card.title}</span>
@@ -601,28 +628,30 @@ export function Header() {
                       <Link href="/help" className="mega-nav-link" onClick={() => setOpen(null)}>Help Center</Link>
                       <Link href="/storelocator" className="mega-nav-link" onClick={() => setOpen(null)}>Find a store</Link>
                       <Link href="/services/faq" className="mega-nav-link" onClick={() => setOpen(null)}>FAQ</Link>
-                      <Link href="/services/shipping" className="mega-nav-link" onClick={() => setOpen(null)}>Shipping</Link>
-                      <Link href="/services/returns" className="mega-nav-link" onClick={() => setOpen(null)}>Returns & Repairs</Link>
-                      <Link href="/services/locks" className="mega-nav-link" onClick={() => setOpen(null)}>Lock instructions</Link>
                       <Link href="/services/contact" className="mega-nav-link" onClick={() => setOpen(null)}>Contact Us</Link>
                     </div>
                   </div>
                 </div>
               </div>
             ) : (
-              <div className="mega-menu-luxury">
-                <div className="mega-nav-columns cols-3">
-                  <div className="mega-nav-col">
-                    <p className="mega-nav-heading">STORIES & CRAFT</p>
-                    <div className="mega-nav-list">
-                      <Link href="/discover" className="mega-nav-link" onClick={() => setOpen(null)}>Our approach</Link>
-                      <Link href="/heritage" className="mega-nav-link" onClick={() => setOpen(null)}>The OVIA story</Link>
-                      <Link href="/journal" className="mega-nav-link" onClick={() => setOpen(null)}>All stories</Link>
-                      <Link href="/journal" className="mega-nav-link" onClick={() => setOpen(null)}>In motion</Link>
-                      <Link href="/our-approach" className="mega-nav-link" onClick={() => setOpen(null)}>A considered carry</Link>
-                    </div>
-                  </div>
+              <div className={discoverStyles.menu}>
+                <div className={discoverStyles.collections}>
+                  {[
+                    { title: "Bags", description: "Discover bags for every journey", href: "/bags", image: "/media/megamenu/mega-new-never-still.webp" },
+                    { title: "Luggage", description: "Explore the OVIA luggage collection", href: "/luggage", image: "/media/megamenu/mega-new-distinct.webp" },
+                  ].map((item) => <Link key={item.href} href={item.href} className={discoverStyles.collection} onClick={() => setOpen(null)}>
+                    <div className={discoverStyles.collectionImage}><></></div>
+                    <strong>{item.title}</strong><span>{item.description}</span>
+                  </Link>)}
                 </div>
+                <section className={discoverStyles.stories} aria-labelledby="discover-stories-title">
+                  <h2 id="discover-stories-title">OVIA STORIES & BLOGS</h2>
+                  <div className={discoverStyles.storyGrid}>{stories.slice(0, 3).map((story) => <Link key={story.slug} href={`/journal/${story.slug}`} onClick={() => setOpen(null)}>
+                    <div className={discoverStyles.storyImage}><Image src={story.image} alt="" fill sizes="(max-width: 760px) 28vw, 13vw" /></div>
+                    <span>{story.title}</span>
+                  </Link>)}</div>
+                  <Link className={discoverStyles.all} href="/journal" onClick={() => setOpen(null)}>All stories & blogs</Link>
+                </section>
               </div>
             )}
             <button
@@ -638,7 +667,7 @@ export function Header() {
           </div>
         )}
       </header>
-      <div
+      {contactModalOpen && <div
         className={`contact-drawer-backdrop ${contactModalOpen ? "is-open" : ""}`}
         aria-hidden={!contactModalOpen}
         onClick={(e) => {
@@ -721,7 +750,12 @@ export function Header() {
             </div>
           </div>
         </aside>
-      </div>
+      </div>}
+
+      {searchModalOpen && <InstantSearchModal
+        isOpen={searchModalOpen}
+        onClose={() => setSearchModalOpen(false)}
+      />}
     </>
   );
 }

@@ -1,0 +1,10 @@
+.trigger { display:flex;align-items:center;gap:8px;padding:9px 12px;background:white;border:1px solid #ddd;border-radius:5px;font-size:12px; }
+.backdrop {position:fixed;inset:0;background:#0005;z-index:200;display:grid;place-items:center;padding:20px;}
+.dialog {width:min(760px,100%);max-height:90vh;overflow:auto;background:#151515;color:#eee;border-radius:12px;box-shadow:0 20px 80px #0005;font-size:12px;}
+.dialog button {cursor:pointer;border:0;color:inherit;background:transparent;font:inherit;padding:8px;}
+.dialog header {padding:18px;background:#292929;display:flex;justify-content:space-between;align-items:center;text-transform:uppercase;}
+.body {display:grid;grid-template-columns:180px 1fr;}.body aside {background:#292929;padding:12px;display:flex;flex-direction:column;gap:4px;}.body aside button{text-align:left;padding:12px;border-radius:5px;}.body aside button[aria-pressed=true]{background:#eee;color:#111;}
+.inputs {display:flex;gap:24px;background:#242424;padding:16px;}.inputs label{flex:1;display:grid;gap:8px;}.inputs input{width:100%;background:#151515;color:white;color-scheme:dark;border:0;padding:10px;border-radius:4px;}
+.monthNav{display:flex;justify-content:space-between;padding:8px 14px 0;}.calendars{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:0 20px 20px;}.calendars h3{text-align:center;font-size:13px;margin:6px 0 22px;}.days{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;gap:4px 0;}.days span{padding:8px 0;}.days button[aria-pressed=true]{background:#444;}.days button:focus-visible{outline:2px solid white;}
+.dialog footer{display:flex;gap:10px;align-items:center;padding:14px;background:#292929;}.dialog footer span{margin-right:auto;}.dialog footer button{border:1px solid #444;border-radius:22px;padding:8px 20px;}.dialog footer button:last-child{background:#eee;color:#111;}.dialog footer button:disabled{opacity:.4;}
+@media(max-width:600px){.body{grid-template-columns:1fr}.body aside{flex-direction:row;overflow:auto}.body aside button{white-space:nowrap}.calendars{gap:10px;padding:10px}.inputs{gap:10px}.days button{padding:8px 1px}}

@@ -10,9 +10,9 @@ test("storefront preserves database results, including an empty catalog", async 
   assert.deepEqual(await storefrontCatalog(async () => []), []);
 });
 
-test("storefront remains browsable during database connectivity failures", async () => {
+test("storefront reports database connectivity failures without substituting demo products", async () => {
   for (const error of [new MongoNetworkError("offline"), new MongoServerSelectionError("unavailable", {} as never)]) {
-    assert.equal(await storefrontCatalog(async () => { throw error; }), products);
+    await assert.rejects(storefrontCatalog(async () => { throw error; }), (actual) => actual === error);
   }
 });
 

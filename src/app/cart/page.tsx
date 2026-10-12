@@ -1,94 +1,103 @@
 "use client";
+import "@/components/page-styles/cart.css";
 
-import { usePreferences } from "@/components/preferences";
-import Link from "next/link";
-import Image from "next/image";
+
 import { useState, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
-  ArrowRight,
   Minus,
   Plus,
-  X,
   Heart,
   ChevronLeft,
   ChevronRight,
-  Box,
-  RotateCcw,
+  Truck,
+  FileText,
   ShieldCheck,
-  ShoppingBag,
+  RotateCcw,
+  Sparkles,
 } from "lucide-react";
 import { useStore } from "@/components/store-provider";
+import { usePreferences } from "@/components/preferences";
+import styles from "./cart.module.css";
 
-interface Recommendation {
+interface RecProduct {
   id: string;
+  sku: string;
   name: string;
-  price: string;
+  price: number;
   image: string;
   slug: string;
 }
 
-const recommendations: Recommendation[] = [
+const CART_RECOMMENDATIONS: RecProduct[] = [
   {
-    id: "rec-horizon-cabin",
-    name: "Horizon Cabin",
-    price: "₹22,500.00",
-    image: "/media/cart/rec-horizon-cabin.png",
-    slug: "forma-cabin",
+    id: "checkin-m",
+    sku: "OV-ORIG-CHECKIN-M-SILVER",
+    name: "Original Check-In M",
+    price: 100,
+    image: "/media/cart/checkin-m.png",
+    slug: "original-check-in-m",
   },
   {
-    id: "rec-voyage-duffel",
-    name: "Voyage Duffel",
-    price: "₹28,000.00",
-    image: "/media/cart/rec-voyage-duffel.png",
-    slug: "meridian-duffle-bag",
+    id: "trunk-plus",
+    sku: "OV-TRUNK-2-PRIMARY",
+    name: "Original Trunk Plus",
+    price: 100,
+    image: "/media/cart/trunk-plus.png",
+    slug: "trunk-2-original-trunk-plus",
   },
   {
-    id: "rec-packing-case",
-    name: "Packing Case",
-    price: "₹9,500.00",
-    image: "/media/cart/rec-packing-case.png",
-    slug: "passage-organisers",
+    id: "cabin-black",
+    sku: "OV-ORIG-CABIN-BLACK",
+    name: "Original Cabin",
+    price: 100,
+    image: "/media/cart/cabin-black.png",
+    slug: "original-cabin",
   },
   {
-    id: "rec-luggage-tag",
-    name: "Luggage Tag",
-    price: "₹4,500.00",
-    image: "/media/cart/rec-luggage-tag.png",
-    slug: "forma-address-tags",
+    id: "trunk-silver",
+    sku: "OV-TRUNK-27-PRIMARY",
+    name: "Original Trunk",
+    price: 100,
+    image: "/media/cart/trunk-silver.png",
+    slug: "trunk-27-original-trunk",
   },
 ];
 
 export default function CartPage() {
+  const router = useRouter();
+  const { cart, setQuantity, add } = useStore();
   const { format } = usePreferences();
-  const { cart, setQuantity } = useStore();
   const [error, setError] = useState("");
-  const [busy, setBusy] = useState(false);
+  const [busySku, setBusySku] = useState<string | null>(null);
   const [wishlist, setWishlist] = useState<Record<string, boolean>>({});
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const recGridRef = useRef<HTMLDivElement>(null);
 
   const totalItems = cart.lines.reduce((n, l) => n + l.quantity, 0);
 
-  async function update(sku: string, q: number) {
-    setBusy(true);
+  async function handleUpdateQuantity(sku: string, q: number) {
+    setBusySku(sku);
     setError("");
     try {
       await setQuantity(sku, q);
     } catch (e) {
       setError((e as Error).message);
     } finally {
-      setBusy(false);
+      setBusySku(null);
     }
   }
 
-  async function addDemoItem() {
-    setBusy(true);
+  async function handleAddRec(rec: RecProduct) {
+    setBusySku(rec.sku);
     setError("");
     try {
-      await setQuantity("OV-MERIDIAN-CABIN-0", 1);
+      await add(rec.sku, 1);
     } catch (e) {
       setError((e as Error).message);
     } finally {
-      setBusy(false);
+      setBusySku(null);
     }
   }
 
@@ -96,339 +105,280 @@ export default function CartPage() {
     setWishlist((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const scrollCarousel = (direction: "left" | "right") => {
-    if (carouselRef.current) {
-      const offset = direction === "left" ? -280 : 280;
-      carouselRef.current.scrollBy({ left: offset, behavior: "smooth" });
+  const scrollRec = (dir: "left" | "right") => {
+    if (recGridRef.current) {
+      const offset = dir === "left" ? -280 : 280;
+      recGridRef.current.scrollBy({ left: offset, behavior: "smooth" });
     }
   };
 
   return (
-    <section className="cart-page-wrap">
-      <div className="cart-page-inner">
-        {/* Eyebrow & Title */}
-        <div className="cart-page-header">
-          <p className="cart-eyebrow">READY WHEN YOU ARE</p>
-          <h1 className="cart-main-title">
-            Your bag
-            <sup className="cart-superscript-count">{totalItems}</sup>
-          </h1>
-          <p className="cart-currency-note">
-            Converted prices are estimates.{" "}
-            <strong>Checkout is in INR.</strong>
+    <div className={styles.pageWrap}>
+      <div className={styles.pageInner}>
+        {/* Top Action Bar (Image 2) */}
+        {cart.lines.length > 0 && (
+          <div className={styles.topActionBar}>
+            <span className={styles.topTotalLabel}>
+              Total ({totalItems} {totalItems === 1 ? "item" : "items"}){" "}
+              <strong>{format(cart.total)}</strong>
+            </span>
+            <Link href="/checkout" className={styles.topProceedBtn}>
+              Checkout Now
+            </Link>
+          </div>
+        )}
+
+        {/* Page Header */}
+        <div className={styles.pageHeader}>
+          <h1 className={styles.pageTitle}>Your cart</h1>
+          <p className={styles.deliveryAddressNote}>
+            Your delivery address is currently in India.
+            <button
+              type="button"
+              className={styles.changeLink}
+              onClick={() => alert("Deliveries are currently supported throughout India.")}
+            >
+              Change
+            </button>
           </p>
         </div>
 
         {error && (
-          <p className="cart-error-banner" role="alert">
+          <div className={styles.errorBanner} role="alert">
             {error}
-          </p>
+          </div>
         )}
 
         {cart.lines.length > 0 ? (
-          <div className="cart-split-layout">
-            {/* ─── Left Column: Items & Recommendations ─── */}
-            <div className="cart-left-col">
-              {/* Cart Items List */}
-              <div className="cart-items-list">
-                {cart.lines.map((l) => {
-                  const isMeridian =
-                    l.slug.includes("meridian") || l.name.includes("Meridian");
-                  const displayImage = isMeridian
-                    ? "/media/cart/meridian-cabin.png"
-                    : l.image;
-
+          <>
+            {/* Two Column Layout: Cart Items & Order Summary (Image 2) */}
+            <div className={styles.layoutGrid}>
+              {/* Left Column: Line Items */}
+              <div className={styles.itemsList}>
+                {cart.lines.map((item) => {
+                  const isBusy = busySku === item.sku;
                   return (
-                    <article className="cart-product-card" key={l.sku}>
-                      {/* Product Image */}
-                      <Link
-                        href={`/products/${l.slug}`}
-                        className="cart-card-image-wrap"
-                      >
-                        <Image
-                          src={displayImage}
-                          width={140}
-                          height={145}
-                          alt={l.name}
-                          className="cart-card-img"
-                        />
-                      </Link>
+                    <article className={styles.productCard} key={item.sku}>
+                      <div className={styles.imageWrap}>
+                        <></>
+                      </div>
 
-                      {/* Details */}
-                      <div className="cart-card-details">
-                        <Link href={`/products/${l.slug}`}>
-                          <h2 className="cart-card-title">{l.name}</h2>
-                        </Link>
-                        <p className="cart-card-color">{l.color || "Graphite"}</p>
-                        <span className="cart-card-unit-price">
-                          {format(l.price)}
-                        </span>
-
-                        {/* In stock badge */}
-                        <div className="cart-stock-badge">
-                          <span className="cart-stock-dot" />
-                          <span>In stock</span>
-                        </div>
-
-                        {/* Quantity Selector */}
-                        <div className="cart-qty-pill">
+                      <div className={styles.detailsCol}>
+                        <p className={styles.eyebrow}>ORIGINAL</p>
+                        <div className={styles.titleRow}>
+                          <Link
+                            href={`/products/${item.slug}`}
+                            className={styles.productName}
+                          >
+                            {item.name}
+                          </Link>
                           <button
                             type="button"
-                            disabled={busy}
-                            aria-label={`Decrease ${l.name} quantity`}
-                            onClick={() => update(l.sku, l.quantity - 1)}
-                            className="cart-qty-btn"
+                            className={styles.heartBtn}
+                            onClick={() => toggleWishlist(item.sku)}
+                            aria-label={`Save ${item.name} to wishlist`}
                           >
-                            <Minus size={14} />
+                            <Heart
+                              size={17}
+                              strokeWidth={1.5}
+                              fill={wishlist[item.sku] ? "#111111" : "none"}
+                            />
                           </button>
-                          <span className="cart-qty-num">{l.quantity}</span>
+                        </div>
+                        <p className={styles.colorLabel}>
+                          Colour : {item.color || "Silver"}
+                        </p>
+                        <p className={styles.limitedStockBadge}>LIMITED STOCK</p>
+
+                        <div className={styles.controlsRow}>
+                          <div className={styles.stepper}>
+                            <button
+                              type="button"
+                              className={styles.stepperBtn}
+                              disabled={isBusy}
+                              onClick={() =>
+                                handleUpdateQuantity(item.sku, item.quantity - 1)
+                              }
+                              aria-label={`Decrease ${item.name} quantity`}
+                            >
+                              <Minus size={14} />
+                            </button>
+                            <span className={styles.stepperVal}>
+                              {item.quantity}
+                            </span>
+                            <button
+                              type="button"
+                              className={styles.stepperBtn}
+                              disabled={isBusy || item.quantity >= 10}
+                              onClick={() =>
+                                handleUpdateQuantity(item.sku, item.quantity + 1)
+                              }
+                              aria-label={`Increase ${item.name} quantity`}
+                            >
+                              <Plus size={14} />
+                            </button>
+                          </div>
                           <button
                             type="button"
-                            disabled={busy || l.quantity >= 10}
-                            aria-label={`Increase ${l.name} quantity`}
-                            onClick={() => update(l.sku, l.quantity + 1)}
-                            className="cart-qty-btn"
+                            className={styles.removeLink}
+                            disabled={isBusy}
+                            onClick={() => handleUpdateQuantity(item.sku, 0)}
+                            aria-label={`Remove ${item.name}`}
                           >
-                            <Plus size={14} />
+                            Remove
                           </button>
                         </div>
                       </div>
 
-                      {/* Right: Wishlist, Remove & Line Total */}
-                      <div className="cart-card-right">
-                        <div className="cart-card-actions">
-                          <button
-                            type="button"
-                            aria-label="Add to wishlist"
-                            className={`cart-action-icon-btn ${
-                              wishlist[l.sku] ? "is-active" : ""
-                            }`}
-                            onClick={() => toggleWishlist(l.sku)}
-                          >
-                            <Heart
-                              size={18}
-                              strokeWidth={1.5}
-                              fill={wishlist[l.sku] ? "#15130f" : "none"}
-                            />
-                          </button>
-                          <button
-                            type="button"
-                            disabled={busy}
-                            className="cart-action-icon-btn"
-                            aria-label={`Remove ${l.name}`}
-                            onClick={() => update(l.sku, 0)}
-                          >
-                            <X size={18} strokeWidth={1.5} />
-                          </button>
-                        </div>
-
-                        <span className="cart-card-total-price">
-                          {format(l.price * l.quantity)}
-                        </span>
+                      <div className={styles.priceCol}>
+                        <span>{format(item.price * item.quantity)}</span>
                       </div>
                     </article>
                   );
                 })}
               </div>
 
-              {/* ─── You May Also Like Section ─── */}
-              <section className="cart-recommendations-section">
-                <div className="cart-rec-header">
-                  <h3 className="cart-rec-title">You may also like</h3>
-                  <Link href="/luggage" className="cart-rec-view-all">
-                    View all →
-                  </Link>
+              {/* Right Column: Order Summary (Image 2) */}
+              <aside className={styles.summaryAside}>
+                <div className={styles.summaryRow}>
+                  <span>Subtotal</span>
+                  <span>{format(cart.total)}</span>
                 </div>
+                <div className={styles.summaryRow}>
+                  <span>Shipping</span>
+                  <span>₹ 0.00</span>
+                </div>
+                <div className={styles.summaryTotalRow}>
+                  <span>Estimated Total</span>
+                  <span>{format(cart.total)}</span>
+                </div>
+                <div className={styles.salesTaxNote}>₹ 0.00 Sales Tax</div>
 
-                <div className="cart-rec-carousel-wrap">
-                  <button
-                    type="button"
-                    className="cart-rec-arrow-btn left"
-                    aria-label="Previous items"
-                    onClick={() => scrollCarousel("left")}
-                  >
-                    <ChevronLeft size={18} />
-                  </button>
-
-                  <div className="cart-rec-grid" ref={carouselRef}>
-                    {recommendations.map((rec) => (
-                      <article className="cart-rec-card" key={rec.id}>
-                        <div className="cart-rec-img-wrap">
-                          <Link href={`/products/${rec.slug}`}>
-                            <Image
-                              src={rec.image}
-                              width={125}
-                              height={106}
-                              alt={rec.name}
-                              className="cart-rec-img"
-                            />
-                          </Link>
-                          <button
-                            type="button"
-                            className={`cart-rec-heart-btn ${
-                              wishlist[rec.id] ? "is-active" : ""
-                            }`}
-                            aria-label={`Save ${rec.name} to wishlist`}
-                            onClick={() => toggleWishlist(rec.id)}
-                          >
-                            <Heart
-                              size={16}
-                              strokeWidth={1.5}
-                              fill={wishlist[rec.id] ? "#15130f" : "none"}
-                            />
-                          </button>
-                        </div>
-                        <Link href={`/products/${rec.slug}`}>
-                          <h4 className="cart-rec-card-name">{rec.name}</h4>
-                        </Link>
-                        <span className="cart-rec-card-price">{rec.price}</span>
-                      </article>
-                    ))}
+                {/* Trust Information */}
+                <div className={styles.trustList}>
+                  <div className={styles.trustItem}>
+                    <Truck size={18} strokeWidth={1.5} className={styles.trustIcon} />
+                    <p className={styles.trustText}>
+                      Please enjoy express deliveries on all orders
+                    </p>
                   </div>
-
-                  <button
-                    type="button"
-                    className="cart-rec-arrow-btn right"
-                    aria-label="Next items"
-                    onClick={() => scrollCarousel("right")}
-                  >
-                    <ChevronRight size={18} />
-                  </button>
+                  <div className={styles.trustItem}>
+                    <FileText size={18} strokeWidth={1.5} className={styles.trustIcon} />
+                    <p className={styles.trustText}>
+                      All purchases/orders are solely processed and fulfilled by
+                      OVIA authorized partner Ethos, registered in India. OVIA does
+                      not process, fulfill or assume any responsibility or
+                      liability for such transactions.
+                    </p>
+                  </div>
                 </div>
-              </section>
+
+                {/* Accepted Payment Methods */}
+                <div className={styles.paymentSection}>
+                  <p className={styles.paymentTitle}>Accepted payment methods</p>
+                  <div className={styles.paymentBadges}>
+                    <span className={styles.paymentBadge}>UPI</span>
+                    <span className={styles.paymentBadge}>Cards</span>
+                    <span className={styles.paymentBadge}>NetBanking</span>
+                  </div>
+                </div>
+              </aside>
             </div>
 
-            {/* ─── Right Column: Order Summary ─── */}
-            <aside className="cart-summary-card">
-              <p className="cart-summary-eyebrow">YOUR JOURNEY, CONSIDERED</p>
-              <h2 className="cart-summary-title">Order summary</h2>
-
-              {/* Mini Item Preview Rows */}
-              <div className="cart-summary-preview-list">
-                {cart.lines.map((l) => {
-                  const isMeridian =
-                    l.slug.includes("meridian") || l.name.includes("Meridian");
-                  const displayImage = isMeridian
-                    ? "/media/cart/meridian-cabin.png"
-                    : l.image;
-
-                  return (
-                    <div className="cart-summary-preview-row" key={l.sku}>
-                      <Image
-                        src={displayImage}
-                        width={52}
-                        height={56}
-                        alt={l.name}
-                        className="cart-summary-preview-thumb"
-                      />
-                      <div className="cart-summary-preview-info">
-                        <span className="cart-summary-preview-title">
-                          {l.name}
-                        </span>
-                        <span className="cart-summary-preview-variant">
-                          {l.color || "Graphite"}
-                        </span>
-                        <span className="cart-summary-preview-qty">
-                          Qty: {l.quantity}
-                        </span>
-                      </div>
-                      <span className="cart-summary-preview-price">
-                        {format(l.price * l.quantity)}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="cart-summary-divider" />
-
-              {/* Subtotal & Shipping */}
-              <div className="cart-summary-line">
-                <span>Subtotal</span>
-                <span>{format(cart.total)}</span>
-              </div>
-              <div className="cart-summary-line">
-                <span>Demo shipping</span>
-                <span>₹0</span>
-              </div>
-
-              <div className="cart-summary-divider" />
-
-              {/* Total */}
-              <div className="cart-summary-total-row">
-                <span>Total</span>
+            {/* Middle Action Bar (Image 3) */}
+            <div className={styles.middleActionBar}>
+              <span className={styles.topTotalLabel}>
+                Total ({totalItems} {totalItems === 1 ? "item" : "items"}){" "}
                 <strong>{format(cart.total)}</strong>
-              </div>
-
-              <p className="cart-summary-note">
-                Illustrative prices. No real payment or shipment in demo mode.
-              </p>
-
-              {/* Checkout Button */}
-              <Link href="/checkout" className="cart-checkout-btn">
-                <span>Continue to checkout</span>
-                <ArrowRight size={18} />
+              </span>
+              <Link href="/checkout" className={styles.topProceedBtn}>
+                Checkout Now
               </Link>
-
-              {/* Secondary link */}
-              <Link href="/luggage" className="cart-continue-exploring">
-                Continue exploring
-              </Link>
-
-              {/* Trust Badges */}
-              <div className="cart-trust-badges">
-                <div className="cart-trust-item">
-                  <Box size={22} strokeWidth={1.5} className="cart-trust-icon" />
-                  <span className="cart-trust-title">Free delivery</span>
-                  <span className="cart-trust-sub">On all orders</span>
-                </div>
-                <div className="cart-trust-item">
-                  <RotateCcw
-                    size={22}
-                    strokeWidth={1.5}
-                    className="cart-trust-icon"
-                  />
-                  <span className="cart-trust-title">Easy returns</span>
-                  <span className="cart-trust-sub">Within 14 days</span>
-                </div>
-                <div className="cart-trust-item">
-                  <ShieldCheck
-                    size={22}
-                    strokeWidth={1.5}
-                    className="cart-trust-icon"
-                  />
-                  <span className="cart-trust-title">Secure payment</span>
-                  <span className="cart-trust-sub">100% protected</span>
-                </div>
-              </div>
-            </aside>
-          </div>
-        ) : (
-          /* Empty state */
-          <div className="cart-empty-luxury">
-            <div className="cart-empty-icon-wrap">
-              <ShoppingBag size={40} strokeWidth={1.2} />
             </div>
-            <h2 className="cart-empty-title">Your bag is currently empty</h2>
-            <p className="cart-empty-sub">
-              Explore our collection of iconic luggage, bags and travel essentials.
+          </>
+        ) : (
+          /* Empty Cart State */
+          <div className={styles.emptyState}>
+            <h2 className={styles.emptyTitle}>Your cart is currently empty</h2>
+            <p className={styles.emptySubtitle}>
+              Explore our iconic luggage and bag collections to begin your journey.
             </p>
-            <div className="cart-empty-actions">
-              <button
-                type="button"
-                className="cart-empty-demo-btn"
-                onClick={addDemoItem}
-                disabled={busy}
-              >
-                Add Meridian Cabin (Demo)
-              </button>
-              <Link href="/luggage" className="cart-empty-explore-btn">
-                Explore collection →
+            <div className={styles.emptyActions}>
+              <Link href="/luggage" className={styles.emptyBtn}>
+                Explore Luggage
               </Link>
             </div>
           </div>
         )}
+
+        {/* 4 Recommended Products Carousel/Grid (Image 3) */}
+        <section className={styles.recGridWrapper}>
+          <button
+            type="button"
+            className={`${styles.navArrow} ${styles.left}`}
+            onClick={() => scrollRec("left")}
+            aria-label="Previous recommended items"
+          >
+            <ChevronLeft size={18} />
+          </button>
+
+          <div className={styles.recGrid} ref={recGridRef}>
+            {CART_RECOMMENDATIONS.map((rec) => (
+              <div className={styles.recCard} key={rec.id}>
+                <div className={styles.recImageWrap}>
+                  <></>
+                </div>
+                <Link
+                  href={`/products/${rec.slug}`}
+                  className={styles.recName}
+                  title={rec.name}
+                >
+                  {rec.name}
+                </Link>
+                <p className={styles.recPrice}>{format(rec.price)}</p>
+                <button
+                  type="button"
+                  className={styles.recAddBtn}
+                  disabled={busySku === rec.sku}
+                  onClick={() => handleAddRec(rec)}
+                >
+                  {busySku === rec.sku ? "Adding..." : "Add to Cart"}
+                </button>
+              </div>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            className={`${styles.navArrow} ${styles.right}`}
+            onClick={() => scrollRec("right")}
+            aria-label="Next recommended items"
+          >
+            <ChevronRight size={18} />
+          </button>
+        </section>
+
+        {/* BACK TO SHOP Button (Image 3) */}
+        <Link href="/luggage" className={styles.backToShopBtn}>
+          Back to shop
+        </Link>
+
+        {/* Brand Guarantees / Icons at bottom of Image 3 */}
+        <div className={styles.guaranteesBar}>
+          <div className={styles.guaranteeItem}>
+            <Sparkles size={24} strokeWidth={1.3} className={styles.guaranteeIcon} />
+            <span className={styles.guaranteeTitle}>Lifetime Guarantee</span>
+          </div>
+          <div className={styles.guaranteeItem}>
+            <RotateCcw size={24} strokeWidth={1.3} className={styles.guaranteeIcon} />
+            <span className={styles.guaranteeTitle}>Complimentary Returns</span>
+          </div>
+          <div className={styles.guaranteeItem}>
+            <ShieldCheck size={24} strokeWidth={1.3} className={styles.guaranteeIcon} />
+            <span className={styles.guaranteeTitle}>Secure Payments</span>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
   );
 }

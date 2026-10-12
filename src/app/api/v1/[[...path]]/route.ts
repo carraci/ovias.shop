@@ -1,11 +1,16 @@
+import { queueContactNotification, attemptContactNotification } from "@/server/contact-notifications";
+import { authorizeAdminApi } from "@/server/admin-auth";
+import { verifiedShipment } from "@/server/logistics";
+import { completeSignIn } from "@/server/account-sign-in";
 import { TERMS_VERSION } from "@/lib/policies";
+import { getPasswordValidationError, PASSWORD_MAX_LENGTH } from "@/lib/password-policy";
 import { NextRequest } from "next/server";
 import { z } from "zod";
 import { randomUUID } from "node:crypto";
 import Stripe from "stripe";
-import Razorpay from "razorpay";
+import { requireRazorpay } from "@/server/razorpay-checkout";
 import { filterProducts } from "@/lib/catalog";
-import type { User, Order, Cart } from "@/lib/types";
+import type { User, Order, Address } from "@/lib/types";
 import { catalog, transaction } from "@/server/db";
 import { api, ApiError, body, limit, originCheck } from "@/server/http";
 import {
@@ -13,7 +18,6 @@ import {
   currentUser,
   passwordHash,
   checkPassword,
-  signIn,
   signOut,
   readPasswordResetToken,
 } from "@/server/auth";
@@ -27,30 +31,13 @@ import {
 import { consumeAccountToken, requireEmailConfiguration } from "@/server/mail";
 import { requestRecoveryCode, verifyRecoveryCode, requestVerificationCode, verifyEmailCode } from "@/server/recovery";
 export const runtime = "nodejs";
+const newPasswordSchema = z.string().superRefine((password, context) => {
+  const message = getPasswordValidationError(password);
+  if (message) context.addIssue({ code: "custom", message });
+});
 type Context = { params: Promise<{ path?: string[] }> };
 async function owner() {
   return (await currentUser())?.id || (await cartOwner());
-}
-async function completeSignIn(user: User) {
-      const guest = await cartOwner();
-      await transaction(async (repo) => {
-        const old = await repo.get<Cart>("carts", guest);
-        if (!old?.lines.length) return;
-        const account = (await repo.get<Cart>("carts", user.id)) || {
-          id: user.id,
-          lines: [],
-          version: 0,
-        };
-        for (const line of old.lines) {
-          const present = account.lines.find((l) => l.sku === line.sku);
-          if (present)
-            present.quantity = Math.min(10, present.quantity + line.quantity);
-          else account.lines.push(line);
-        }
-        await repo.put("carts", { ...account, version: account.version + 1 });
-        await repo.remove("carts", guest);
-      });
-      await signIn(user);
 }
 export async function GET(req: NextRequest, ctx: Context) {
   return api(async () => {
@@ -71,20 +58,159 @@ export async function GET(req: NextRequest, ctx: Context) {
     if (path === "account/orders") {
       const user = await currentUser();
       if (!user) throw new ApiError(401, "Please sign in.");
-      return transaction(async (repo) =>
-        (await repo.find<Order>("orders", { userId: user.id }))
-          .map(({ owner, idempotencyKey, ...o }) => o)
-          .sort((a, b) => b.createdAt.localeCompare(a.createdAt)),
-      );
+      return transaction(async (repo) => {
+        const byUserId = await repo.find<Order>("orders", { userId: user.id });
+        const byOwner = await repo.find<Order>("orders", { owner: user.id });
+        const allOrders = await repo.find<Order>("orders", {});
+        const byEmail = user.email
+          ? allOrders.filter(
+              (o) => o.address?.email && o.address.email.trim().toLowerCase() === user.email.trim().toLowerCase(),
+            )
+          : [];
+        const map = new Map<string, Order>();
+        for (const o of [...byUserId, ...byOwner, ...byEmail]) {
+          map.set(o.id, o);
+        }
+        return Array.from(map.values())
+          .map(({ owner, idempotencyKey, ...o }) => ({...o,shipping:verifiedShipment(o as Order)?o.shipping:undefined}))
+          .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+      });
     }
     if (route[0] === "orders" && route.length === 2) {
       const id = await owner();
+      const user = await currentUser();
       return transaction(async (repo) => {
-        const order = await repo.get<Order>("orders", route[1]);
-        if (!order || order.owner !== id)
-          throw new ApiError(404, "Order not found.");
+        const target = route[1];
+        let order = await repo.get<Order>("orders", target);
+        if (!order) {
+          const byNumber = await repo.find<Order>("orders", { orderNumber: target });
+          if (byNumber[0]) order = byNumber[0];
+        }
+        if (!order) {
+          const all = await repo.find<Order>("orders", {});
+          const clean = target.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+          order = all.find((o) => {
+            if (o.id === target || o.id?.replace(/[^a-zA-Z0-9]/g, "").toLowerCase() === clean) return true;
+            if (o.orderNumber && (o.orderNumber.toLowerCase() === target.toLowerCase() || o.orderNumber.replace(/[^a-zA-Z0-9]/g, "").toLowerCase() === clean)) return true;
+            if (clean.length >= 6 && ((o.orderNumber && o.orderNumber.toLowerCase().includes(clean)) || o.id.toLowerCase().includes(clean))) return true;
+            return false;
+          }) || undefined;
+        }
+        if (!order) throw new ApiError(404, "Order not found.");
+        const isOwner =
+          order.owner === id ||
+          (user && order.userId === user.id) ||
+          (user && order.address?.email?.toLowerCase() === user.email?.toLowerCase());
+        const isStaff = user?.role === "admin" || user?.role === "support";
+        if (!isOwner && !isStaff)
+          throw new ApiError(403, "Access denied.");
         const { owner: _, idempotencyKey: __, ...safe } = order;
-        return safe;
+        return {...safe,shipping:verifiedShipment(order)?safe.shipping:undefined};
+      });
+    }
+    if (route[0] === "orders" && route.length === 3 && route[2] === "tracking") {
+      const target = route[1];
+      const viewerId = await owner();
+      const user = await currentUser();
+      return transaction(async (repo) => {
+        let order = await repo.get<Order>("orders", target);
+        if (!order) {
+          const byNumber = await repo.find<Order>("orders", { orderNumber: target });
+          if (byNumber[0]) order = byNumber[0];
+        }
+        if (!order) {
+          const all = await repo.find<Order>("orders", {});
+          const clean = target.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+          order = all.find((o) => {
+            if (o.id === target || o.id?.replace(/[^a-zA-Z0-9]/g, "").toLowerCase() === clean) return true;
+            if (o.orderNumber && (o.orderNumber.toLowerCase() === target.toLowerCase() || o.orderNumber.replace(/[^a-zA-Z0-9]/g, "").toLowerCase() === clean)) return true;
+            if (clean.length >= 6 && ((o.orderNumber && o.orderNumber.toLowerCase().includes(clean)) || o.id.toLowerCase().includes(clean))) return true;
+            return false;
+          }) || undefined;
+        }
+        if (!order) throw new ApiError(404, "Order not found.");
+        const isOwner =
+          order.owner === viewerId ||
+          (user && order.userId === user.id) ||
+          (user && order.address?.email?.toLowerCase() === user.email?.toLowerCase());
+        const isStaff = user?.role === "admin" || user?.role === "support";
+        if (!isOwner && !isStaff) {
+          throw new ApiError(403, "Access denied. You can only view tracking for your own orders.");
+        }
+        return {
+          id: order.id,
+          orderNumber: order.orderNumber || `OVIA-${order.id.slice(0, 8).toUpperCase()}`,
+          createdAt: order.createdAt,
+          status: order.status,
+          shipping: verifiedShipment(order) ? order.shipping : undefined,
+          address: {
+            name: order.address.name,
+            city: order.address.city,
+            region: order.address.region,
+            postalCode: order.address.postalCode,
+            country: order.address.country,
+            line1: order.address.line1,
+            line2: order.address.line2,
+          },
+          lines: order.lines.map((l) => ({
+            sku: l.sku,
+            name: l.name,
+            color: l.color,
+            price: l.price,
+            quantity: l.quantity,
+            image: l.image,
+            slug: l.slug,
+          })),
+          total: order.total,
+        };
+      });
+    }
+    if (path === "shipping/serviceability") {
+      await limit(req, "shipping-pincode", 60);
+      const pincode = req.nextUrl.searchParams.get("pincode") || "";
+      if (!/^[1-9][0-9]{5}$/.test(pincode.trim())) {
+        throw new ApiError(400, "Enter a valid 6-digit Indian PIN code.");
+      }
+      const { getShippingProvider } = await import("@/lib/shipping/service");
+      const provider = getShippingProvider("delhivery");
+      return provider.checkServiceability({ pincode: pincode.trim() });
+    }
+    if (path === "shipping/maps/auto-suggest") {
+      const q = req.nextUrl.searchParams.get("query") || "";
+      if (!q.trim()) return { data: [] };
+      const latParam = req.nextUrl.searchParams.get("lat");
+      const lngParam = req.nextUrl.searchParams.get("lng");
+      const lat = latParam ? Number(latParam) : undefined;
+      const lng = lngParam ? Number(lngParam) : undefined;
+      const { searchLocation } = await import("@/lib/shipping/delhivery-maps");
+      return searchLocation(q, lat, lng);
+    }
+    if (path === "admin/orders") {
+      const user = await currentUser();
+      if (!user || !["admin", "support"].includes(user.role || "")) {
+        throw new ApiError(403, "Access denied. Staff privileges required.");
+      }
+      return transaction(async (repo) => {
+        const all = await repo.find<Order>("orders");
+        return all
+          .map(({ idempotencyKey: _, ...o }) => o)
+          .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+      });
+    }
+    if (route[0] === "admin" && route[1] === "orders" && route.length === 4 && route[3] === "tracking") {
+      const user = await currentUser();
+      if (!user || !["admin", "support"].includes(user.role || "")) {
+        throw new ApiError(403, "Access denied. Staff privileges required.");
+      }
+      return transaction(async (repo) => {
+        const order = await repo.get<Order>("orders", route[2]);
+        if (!order) throw new ApiError(404, "Order not found.");
+        return {
+          orderNumber: order.orderNumber || order.id,
+          customer: order.address.name,
+          paymentStatus: order.status,
+          shipping: order.shipping || null,
+        };
       });
     }
     throw new ApiError(404, "Endpoint not found.");
@@ -102,7 +228,9 @@ export async function POST(req: NextRequest, ctx: Context) {
             .string().trim().email()
             .max(200)
             .transform((s) => s.toLowerCase()),
-          password: z.string().min(10, "Use at least 10 characters.").max(128),
+          password: path === "auth/register"
+            ? newPasswordSchema
+            : z.string().min(1, "Enter your password.").max(PASSWORD_MAX_LENGTH),
           name: z.string().trim().min(2).max(100).optional(),
           confirmPassword: z.string().optional(),
           terms: z.enum(["on"]).optional(),
@@ -128,6 +256,7 @@ export async function POST(req: NextRequest, ctx: Context) {
             email: input.email,
             passwordHash: password,
             termsVersion: TERMS_VERSION, termsAcceptedAt: new Date().toISOString(),
+            role: "CUSTOMER",
             createdAt: new Date().toISOString(),
           };
           await repo.put("users", u);
@@ -186,8 +315,8 @@ export async function POST(req: NextRequest, ctx: Context) {
       const input = z.object({
         resetToken: z.string().max(2048).optional(),
         token: z.string().regex(/^[a-f0-9]{64}$/).optional(),
-        newPassword: z.string().min(10).max(128).optional(),
-        password: z.string().min(10).max(128).optional(),
+        newPassword: newPasswordSchema.optional(),
+        password: newPasswordSchema.optional(),
       }).parse(await body(req));
       const password = input.newPassword ?? input.password;
       const token = input.resetToken ? (await readPasswordResetToken(input.resetToken)).tokenId : input.token;
@@ -226,7 +355,13 @@ export async function POST(req: NextRequest, ctx: Context) {
     if (path === "checkout") {
       await limit(req, "checkout", 12);
       const input = z
-        .object({ address: addressSchema, idempotencyKey: z.uuid(), market: z.literal("IN", {error:"Checkout is not configured for this market."}).default("IN") })
+        .object({
+          address: addressSchema,
+          idempotencyKey: z.uuid(),
+          market: z.literal("IN", {error:"Checkout is not configured for this market."}).default("IN"),
+          paymentMethod: z.string().optional(),
+          paymentDetails: z.record(z.string(), z.any()).optional(),
+        })
         .parse(await body(req));
       const provider = z
         .enum(["demo", "stripe", "razorpay"])
@@ -245,14 +380,10 @@ export async function POST(req: NextRequest, ctx: Context) {
           503,
           "Configure Stripe test credentials to use sandbox checkout.",
         );
-      if (
-        provider === "razorpay" &&
-        !process.env.RAZORPAY_KEY_ID?.startsWith("rzp_test_")
-      )
-        throw new ApiError(
-          503,
-          "Configure Razorpay test credentials to use sandbox checkout.",
-        );
+      if (provider === "razorpay") {
+        requireRazorpay();
+        throw new ApiError(409, "Use the secure Razorpay checkout to review and verify your payment.");
+      }
       const user = await currentUser();
       const order = await createOrder(
         await owner(),
@@ -263,7 +394,12 @@ export async function POST(req: NextRequest, ctx: Context) {
       );
       const origin = process.env.APP_ORIGIN || "http://localhost:3000";
       if (provider === "demo" || order.status !== "pending")
-        return { provider: "demo", url: `/orders/${order.id}/confirmation` };
+        return {
+          provider: "demo",
+          url: `/orders/${order.id}/confirmation`,
+          orderId: order.orderNumber || order.id,
+          id: order.id,
+        };
       if (provider === "stripe") {
         const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
         const session = order.providerId
@@ -276,7 +412,7 @@ export async function POST(req: NextRequest, ctx: Context) {
                 metadata: { orderId: order.id },
                 expires_at:
                   Math.floor(Date.parse(order.createdAt) / 1000) + 30 * 60,
-                line_items: order.lines.map((l) => ({
+                line_items: order.lines.map((l: any) => ({
                   price_data: {
                     currency: "inr",
                     unit_amount: l.price,
@@ -292,36 +428,7 @@ export async function POST(req: NextRequest, ctx: Context) {
         await attachProvider(order.id, session.id);
         return { provider, url: session.url };
       }
-      if (!order.providerId)
-        await transaction(async (repo) => {
-          const current = await repo.get<Order>("orders", order.id);
-          if (!current || current.providerCreating || current.providerId)
-            throw new ApiError(
-              409,
-              "Payment setup is already in progress. An uncertain setup requires merchant reconciliation before retry.",
-            );
-          await repo.put("orders", { ...current, providerCreating: true });
-        });
-      const razorpay = new Razorpay({
-        key_id: process.env.RAZORPAY_KEY_ID!,
-        key_secret: process.env.RAZORPAY_KEY_SECRET!,
-      });
-      const remote = order.providerId
-        ? await razorpay.orders.fetch(order.providerId)
-        : await razorpay.orders.create({
-            amount: order.total,
-            currency: "INR",
-            receipt: order.id,
-            notes: { orderId: order.id },
-          });
-      await attachProvider(order.id, remote.id);
-      return {
-        provider,
-        orderId: remote.id,
-        key: process.env.RAZORPAY_KEY_ID,
-        amount: order.total,
-        localOrderId: order.id,
-      };
+      throw new ApiError(503, "Payment provider is unavailable.");
     }
     if (path === "contact") {
       await limit(req, "contact", 5);
@@ -333,15 +440,220 @@ export async function POST(req: NextRequest, ctx: Context) {
         })
         .parse(await body(req));
       const id = randomUUID();
-      await transaction((repo) =>
-        repo.put("contact", {
-          ...input,
-          id,
-          createdAt: new Date().toISOString(),
-          status: "received",
-        }),
+      const notificationId = await transaction(async (repo) => {
+        await repo.put("contact", {
+          ...input, id, createdAt: new Date().toISOString(), status: "received",
+        });
+        return queueContactNotification(repo, { ...input, id });
+      });
+      const emailNotification = await attemptContactNotification(notificationId);
+      return { reference: id, emailNotification };
+    }
+    if (path === "shipping/serviceability") {
+      await limit(req, "shipping-pincode", 30);
+      const input = z
+        .object({
+          pincode: z
+            .string()
+            .trim()
+            .regex(/^[1-9][0-9]{5}$/, "Enter a valid 6-digit Indian PIN code."),
+        })
+        .parse(await body(req));
+      const { getShippingProvider } = await import("@/lib/shipping/service");
+      const provider = getShippingProvider("delhivery");
+      return provider.checkServiceability({ pincode: input.pincode });
+    }
+    if (path === "shipping/create") {
+      const user = await currentUser();
+      if (!user || !["admin", "support"].includes(user.role || "")) {
+        throw new ApiError(403, "Access denied. Staff privileges required.");
+      }
+      const input = z.object({ orderId: z.string().min(1) }).parse(await body(req));
+      const { createOrderShipment } = await import("@/lib/shipping/service");
+      return createOrderShipment(input.orderId);
+    }
+    const route = (await ctx.params).path || [];
+    if (route[0] === "orders" && route.length === 3 && route[2] === "cancel") {
+      const orderId = route[1];
+      const viewerId = await owner();
+      const user = await currentUser();
+      const target=await transaction(async (repo) => {
+        let order = await repo.get<Order>("orders", orderId);
+        if (!order) {
+          const byNumber = await repo.find<Order>("orders", { orderNumber: orderId });
+          if (byNumber[0]) order = byNumber[0];
+        }
+        if (!order) {
+          const all = await repo.find<Order>("orders", {});
+          const clean = orderId.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+          order = all.find((o) => o.id === orderId || (o.orderNumber && o.orderNumber.toLowerCase() === orderId.toLowerCase()) || (clean.length >= 6 && o.orderNumber?.toLowerCase().includes(clean))) || undefined;
+        }
+        if (!order) throw new ApiError(404, "Order not found.");
+        const isOwner =
+          order.owner === viewerId ||
+          (user && order.userId === user.id) ||
+          (user && order.address?.email?.toLowerCase() === user.email?.toLowerCase());
+        if (!isOwner) throw new ApiError(403, "Access denied.");
+        return order;
+      });
+      if(target.cancellationDeadline && !(Date.parse(target.cancellationDeadline)>Date.now())) throw new ApiError(409,"The cancellation deadline has passed. Contact support.");
+      const input=z.object({confirmed:z.literal(true),reason:z.string().max(200).optional()}).strict().parse(await body(req));
+      const {executeLogistics}=await import("@/server/logistics");
+      return executeLogistics({orderId:target.id,action:"cancel",...input},user?.email || "Customer cancellation");
+    }
+    if (route[0] === "orders" && route.length === 3 && route[2] === "address") {
+      const orderId = route[1];
+      const viewerId = await owner();
+      const user = await currentUser();
+      const updateData = (await body(req)) as Partial<Address>;
+      return transaction(async (repo) => {
+        let order = await repo.get<Order>("orders", orderId);
+        if (!order) {
+          const byNumber = await repo.find<Order>("orders", { orderNumber: orderId });
+          if (byNumber[0]) order = byNumber[0];
+        }
+        if (!order) {
+          const all = await repo.find<Order>("orders", {});
+          const clean = orderId.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+          order = all.find((o) => o.id === orderId || (o.orderNumber && o.orderNumber.toLowerCase() === orderId.toLowerCase()) || (clean.length >= 6 && o.orderNumber?.toLowerCase().includes(clean))) || undefined;
+        }
+        if (!order) throw new ApiError(404, "Order not found.");
+        const isOwner =
+          order.owner === viewerId ||
+          (user && order.userId === user.id) ||
+          (user && order.address?.email?.toLowerCase() === user.email?.toLowerCase());
+        if (!isOwner) throw new ApiError(403, "Access denied.");
+        if (["cancelled", "expired"].includes(order.status)) throw new ApiError(400, "Cannot update cancelled or expired order.");
+        if (order.logisticsOperations?.approve || order.logisticsOperations?.cancel || order.shipping?.shippedAt || ["IN_TRANSIT", "OUT_FOR_DELIVERY", "DELIVERED"].includes(order.shipping?.status || "")) {
+          throw new ApiError(400, "Order is already shipped. Address cannot be changed.");
+        }
+        const updated: Order = {
+          ...order,
+          address: {
+            ...order.address,
+            ...updateData,
+          },
+        };
+        await repo.put("orders", updated);
+        return updated;
+      });
+    }
+    if (route[0] === "shipping" && route[1] === "cancel" && route.length === 3) {
+      const user = await currentUser();
+      if (!(await authorizeAdminApi(req)).authorized) {
+        throw new ApiError(403, "Access denied. Staff privileges required.");
+      }
+      const { cancelOrderShipment } = await import("@/lib/shipping/service");
+      z.object({confirmed:z.literal(true)}).passthrough().parse(await body(req));
+      return cancelOrderShipment(route[2]);
+    }
+    if (route[0] === "admin" && route[1] === "orders" && route.length === 4 && route[3] === "shipment") {
+      const user = await currentUser();
+      if (!(await authorizeAdminApi(req)).authorized) {
+        throw new ApiError(403, "Access denied. Staff privileges required.");
+      }
+      const { createOrderShipment } = await import("@/lib/shipping/service");
+      return createOrderShipment(route[2]);
+    }
+    if (route[0] === "admin" && route[1] === "orders" && route.length === 5 && route[3] === "tracking" && route[4] === "refresh") {
+      const user = await currentUser();
+      if (!(await authorizeAdminApi(req)).authorized) {
+        throw new ApiError(403, "Access denied. Staff privileges required.");
+      }
+      const { syncOrderTracking } = await import("@/lib/shipping/service");
+      return syncOrderTracking(route[2]);
+    }
+    if (route[0] === "admin" && route[1] === "orders" && route.length === 5 && route[3] === "shipment" && route[4] === "cancel") {
+      const user = await currentUser();
+      if (!(await authorizeAdminApi(req)).authorized) {
+        throw new ApiError(403, "Access denied. Staff privileges required.");
+      }
+      const { cancelOrderShipment } = await import("@/lib/shipping/service");
+      z.object({confirmed:z.literal(true)}).passthrough().parse(await body(req));
+      return cancelOrderShipment(route[2]);
+    }
+    if (route[0] === "admin" && route[1] === "orders" && route.length === 4 && route[3] === "pickup") {
+      const user = await currentUser();
+      if (!(await authorizeAdminApi(req)).authorized) {
+        throw new ApiError(403, "Access denied. Staff privileges required.");
+      }
+      const input = z
+        .object({
+          pickupDate: z.string().optional(),
+          pickupTime: z.string().optional(),
+          pickupLocation: z.string().optional(),
+          expectedCount: z.number().optional(),
+        })
+        .catchall(z.any())
+        .parse(await body(req));
+      const { requestOrderPickup } = await import("@/lib/shipping/service");
+      return requestOrderPickup(route[2], input);
+    }
+    if (route[0] === "admin" && route[1] === "orders" && route.length === 5 && route[3] === "shipment" && route[4] === "simulate") {
+      const user = await currentUser();
+      if (!(await authorizeAdminApi(req)).authorized) {
+        throw new ApiError(403, "Access denied. Staff privileges required.");
+      }
+      const input = z.object({ targetStatus: z.string().optional() }).catchall(z.any()).parse(await body(req));
+      const { simulateShippingStep } = await import("@/lib/shipping/service");
+      return simulateShippingStep(route[2], input.targetStatus as any);
+    }
+    if (path === "shipping/maps/standardize-address") {
+      await limit(req, "shipping-standardize", 30);
+      const input = z.object({ address: z.string().min(3) }).parse(await body(req));
+      const { standardizeAddress, validateAddress } = await import("@/lib/shipping/delhivery-maps");
+      const [standardized, validation] = await Promise.all([
+        standardizeAddress(input.address).catch((err) => ({ error: (err as Error).message })),
+        validateAddress(input.address).catch((err) => ({ error: (err as Error).message })),
+      ]);
+      return { standardized, validation };
+    }
+    if (path === "shipping/maps/auto-suggest") {
+      await limit(req, "shipping-suggest", 60);
+      const input = z
+        .object({
+          query: z.string().min(1),
+          lat: z.number().optional(),
+          lng: z.number().optional(),
+        })
+        .parse(await body(req));
+      const { searchLocation } = await import("@/lib/shipping/delhivery-maps");
+      return searchLocation(input.query, input.lat, input.lng);
+    }
+    if (path === "shipping/maps/route") {
+      await limit(req, "shipping-route", 30);
+      const input = z
+        .object({
+          origin: z.tuple([z.number(), z.number()]),
+          destination: z.tuple([z.number(), z.number()]),
+          travelMode: z.enum(["auto", "motorcycle", "truck", "pedestrian"]).optional(),
+        })
+        .parse(await body(req));
+      const { computeRoute } = await import("@/lib/shipping/delhivery-maps");
+      return computeRoute(input.origin, input.destination, input.travelMode || "truck");
+    }
+    if (path === "shipping/maps/optimize-stops") {
+      await limit(req, "shipping-stops", 20);
+      const input = z
+        .object({
+          startLocation: z.object({ lat: z.number(), lng: z.number() }),
+          stops: z.array(
+            z.object({
+              stop_id: z.string(),
+              stop_lat: z.number(),
+              stop_lng: z.number(),
+              assigned_orders: z.array(z.string()).optional(),
+            }),
+          ),
+          travelMode: z.enum(["motorcycle", "truck", "auto"]).optional(),
+        })
+        .parse(await body(req));
+      const { optimizeDeliveryStops } = await import("@/lib/shipping/delhivery-maps");
+      return optimizeDeliveryStops(
+        input.startLocation,
+        input.stops,
+        input.travelMode || "motorcycle",
       );
-      return { reference: id };
     }
     throw new ApiError(404, "Endpoint not found.");
   }, 200, req.nextUrl.pathname.startsWith("/api/v1/auth/"));
@@ -377,3 +689,6 @@ export async function DELETE(req: NextRequest, ctx: Context) {
     return changeCart(await owner(), route[2], 0, "set");
   });
 }
+
+
+

@@ -1,0 +1,274 @@
+.page {
+  min-width: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 980px;
+  padding: 24px;
+  color: #171717;
+}
+.refundForm { background: #fff; border: 1px solid #dce1ed; border-radius: 8px; margin: 18px 0 28px; overflow: hidden; color: #25334b; }
+.refundForm header { padding: 32px; border-bottom: 1px solid #c5cee0; }
+.refundForm header h2 { font-size: 28px; margin: 0 0 8px; }
+.refundForm header p { margin: 0; line-height: 1.6; }
+.refundForm fieldset { border: 0; padding: 30px 32px; margin: 0; min-width: 0; display: flex; flex-direction: column; gap: 26px; }
+.refundForm legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.refundForm label { display: flex; flex-direction: column; gap: 10px; font-size: 14px; margin: 0; }
+.refundForm input, .refundForm textarea { width: 100%; min-width: 0; box-sizing: border-box; border: 1px solid #bdc8dd; border-radius: 5px; padding: 12px; background: white; font: inherit; color: #25334b; }
+.refundForm input { min-height: 42px; }
+.refundForm textarea { resize: vertical; }
+.nameFields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.proof { border: 1px dashed #bdc8dd; border-radius: 5px; padding: 16px; background: #fafbff; }
+.proof p { margin: 0; font-size: 14px; }
+.refundForm footer { padding: 22px 32px; border-top: 1px solid #c5cee0; text-align: center; }
+.refundForm footer p { font-size: 12px; color: #637083; }
+.page .refundForm button[type="submit"], .page .refundForm footer button { background: #12b95a; color: #fff; border: 0; border-radius: 5px; padding: 14px 28px; cursor: pointer; }
+.refundForm footer button:disabled { opacity: .6; cursor: default; }
+.refundForm > p { padding: 0 32px; overflow-wrap: anywhere; }
+.materialForm { border: 2px solid #303747; border-radius: 0; }
+.materialForm header { text-align: center; border-bottom: 2px solid #303747; padding: 36px 24px; }
+.materialForm h3 { font: 700 24px Arial, Helvetica, sans-serif; margin: 8px 0; padding-bottom: 20px; border-bottom: 2px solid #303747; }
+.reasonChoices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.materialForm .reasonChoices label { display: flex; flex-direction: row; align-items: center; gap: 10px; }
+.materialForm .reasonChoices input { width: 18px; min-height: 18px; height: 18px; accent-color: #303747; }
+.materialForm footer { background: #f0f6ff; }
+.resolutionChoices { display: flex; flex-direction: column; gap: 12px; }
+.refundForm .resolutionChoices label, .refundForm label.consentChoice { display: flex; flex-direction: row; align-items: center; gap: 10px; line-height: 1.6; }
+.refundForm .resolutionChoices input, .refundForm .consentChoice input { width: 18px; height: 18px; min-height: 18px; flex-shrink: 0; accent-color: #25334b; }
+@media (max-width: 600px) { .refundForm header, .refundForm fieldset, .refundForm footer { padding: 20px; } .nameFields { grid-template-columns: minmax(0, 1fr); gap: 26px; } }
+.productSummary { display: flex; align-items: center; gap: 14px; padding: 16px 0; border-block: 1px solid #eee; text-decoration: none; }
+.productSummary > svg { flex-shrink: 0; padding: 14px; width: 60px; height: 60px; box-sizing: border-box; background: #ffffff; border-radius: 6px; color: #666; }
+.productSummary small, .update small { display: block; font-size: 12px; color: #637083; margin-top: 7px; line-height: 1.6; }
+.update { background: #ffffff; padding: 14px; border-radius: 6px; font-size: 14px; }
+.timeline { list-style: none; margin: 6px 0 16px; padding: 0; counter-reset: step; }
+.timeline li { position: relative; padding: 0 0 24px 36px; margin-left: 12px; border-left: 1px solid #ddd; counter-increment: step; color: #657080; font-size: 14px; }
+.timeline li:last-child { border-left-color: transparent; padding-bottom: 0; }
+.timeline li::before { content: counter(step); position: absolute; left: -12px; top: -2px; display: grid; place-items: center; width: 24px; height: 24px; background: #ffffff; border-radius: 50%; font-size: 11px; }
+.timeline li[data-confirmed="true"] { color: #171717; }
+.timeline li[data-confirmed="true"]::before { content: "✓"; background: #171717; color: #fff; }
+.timeline small { display: block; font-size: 11px; line-height: 1.6; margin-top: 6px; }
+.card details { border-top: 1px solid #eee; padding-top: 14px; }
+.card summary { cursor: pointer; font-size: 14px; margin-bottom: 10px; }
+.page a.returnAction { background: #171717; color: #fff; border-radius: 24px; padding: 12px 16px; text-align: center; font-size: 13px; text-decoration: none; }
+.page h1 {
+  font-size: 30px;
+  margin: 6px 0 22px;
+}
+.eyebrow {
+  font-size: 11px;
+  color: #637083;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: white;
+  padding: 20px;
+  margin: 14px 0;
+}
+.grid .card {
+  margin: 0;
+  text-decoration: none;
+  color: inherit;
+}
+.card strong {
+  font-size: 25px;
+}
+.card p,
+.card h2 {
+  margin: 0;
+}
+.card h2 {
+  font-size: 18px;
+}
+.card small {
+  color: #637083;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 24px 0;
+}
+.page button {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: white;
+}
+.page a {
+  color: inherit;
+}
+.page a:focus-visible,
+.page button:focus-visible {
+  outline: 2px solid #171717;
+  outline-offset: 4px;
+}
+.overview {
+  max-width: 768px;
+  margin: 24px auto;
+  border: 1px solid #dedede;
+  border-radius: 8px;
+  padding: 0;
+  overflow: hidden;
+  background: #fcfcfc;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+}
+.overview .body {
+  padding: 18px 12px 0;
+}
+.overview h1 {
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 8px 0 14px;
+}
+.overview .eyebrow {
+  font-size: 9px;
+  margin: 0;
+  color: #526179;
+}
+.brand {
+  background: #171717;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 12px;
+}
+.brand > a {
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.brand > div {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+.navigation {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 8px;
+}
+.navigation a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 8px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #666;
+  white-space: nowrap;
+}
+.navigation a[aria-current="page"] {
+  color: white;
+  background: #111;
+  border-radius: 20px;
+}
+.overview .grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.overview .card {
+  position: relative;
+  padding: 14px 12px 32px;
+  border-radius: 6px;
+  gap: 12px;
+  min-height: 115px;
+  background: transparent;
+}
+.overview .card > span:first-child {
+  font-size: 12px;
+  color: #526179;
+}
+.overview .card strong {
+  font-size: 24px;
+  font-weight: 500;
+}
+.arrow {
+  position: absolute;
+  right: 14px;
+  bottom: 18px;
+  color: #777;
+}
+.recentTitle {
+  font-family: inherit;
+  font-size: 16px;
+  margin: 18px 0 14px;
+  font-weight: 600;
+}
+.recent {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 12px;
+  background: transparent;
+}
+.recentHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.recentHeader strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+.status {
+  background: #e8edf2;
+  border-radius: 20px;
+  padding: 4px 8px;
+  font-size: 11px;
+  text-transform: capitalize;
+}
+.recent p {
+  margin: 14px 0 10px;
+}
+.primary {
+  display: block;
+  background: #111;
+  color: #fff !important;
+  border-radius: 24px;
+  padding: 11px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 30px 12px 12px;
+  color: #526179;
+  font-size: 11px;
+}
+.footer a {
+  text-decoration: none;
+}
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .page {
+    padding: 16px;
+  }
+  .card {
+    overflow-wrap: anywhere;
+  }
+  .overview {
+    padding: 0;
+    margin: 16px 12px;
+  }
+  .overview .navigation {
+    gap: 2px;
+  }
+}

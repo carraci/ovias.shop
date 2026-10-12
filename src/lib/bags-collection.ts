@@ -27,7 +27,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-52500073",
         "color": "Desert Sand",
         "hex": "#b5a58b",
-        "price": 21000000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/52500073_1.png"
       }
@@ -44,7 +44,7 @@ export const bagsProducts: Product[] = [
         "/media/bags/52500073_1.png"
       ]
     },
-    "price": 21000000,
+    "price": 100,
     "currency": "INR",
     "sizes": [
       "Large"
@@ -80,7 +80,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-52523009",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 21000000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/52523009_1.png"
       }
@@ -97,7 +97,7 @@ export const bagsProducts: Product[] = [
         "/media/bags/52523009_1.png"
       ]
     },
-    "price": 21000000,
+    "price": 100,
     "currency": "INR",
     "sizes": [
       "Small"
@@ -133,7 +133,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-52525006",
         "color": "Olive Green",
         "hex": "#435043",
-        "price": 25750000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/52525006_1.png"
       }
@@ -150,7 +150,7 @@ export const bagsProducts: Product[] = [
         "/media/bags/52525006_1.png"
       ]
     },
-    "price": 25750000,
+    "price": 100,
     "currency": "INR",
     "sizes": [
       "Large"
@@ -187,7 +187,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-93090009",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 26500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/93090009_1.png"
       }
@@ -204,7 +204,7 @@ export const bagsProducts: Product[] = [
         "/media/bags/93090009_1.png"
       ]
     },
-    "price": 26500000,
+    "price": 100,
     "currency": "INR",
     "sizes": [
       "Standard"
@@ -239,7 +239,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-52500076",
         "color": "Graphite Grey",
         "hex": "#4b4d4f",
-        "price": 15500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/52500076_1.png"
       }
@@ -256,7 +256,7 @@ export const bagsProducts: Product[] = [
         "/media/bags/52500076_1.png"
       ]
     },
-    "price": 15500000,
+    "price": 100,
     "currency": "INR",
     "sizes": [
       "Medium"
@@ -291,7 +291,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-52500086",
         "color": "Dune",
         "hex": "#c2b49d",
-        "price": 21000000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/52500086_1.png"
       }
@@ -308,7 +308,7 @@ export const bagsProducts: Product[] = [
         "/media/bags/52500086_1.png"
       ]
     },
-    "price": 21000000,
+    "price": 100,
     "currency": "INR",
     "sizes": [
       "Large"
@@ -343,7 +343,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-52500071",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 25750000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/52500071_1.png"
       }
@@ -360,7 +360,7 @@ export const bagsProducts: Product[] = [
         "/media/bags/52500071_1.png"
       ]
     },
-    "price": 25750000,
+    "price": 100,
     "currency": "INR",
     "sizes": [
       "Large"
@@ -395,7 +395,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-52500075",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 18300000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/52500075_1.png"
       }
@@ -412,7 +412,7 @@ export const bagsProducts: Product[] = [
         "/media/bags/52500075_1.png"
       ]
     },
-    "price": 18300000,
+    "price": 100,
     "currency": "INR",
     "sizes": [
       "Large"
@@ -447,7 +447,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-53100011",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 6900000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/53100011_1.png"
       }
@@ -464,7 +464,7 @@ export const bagsProducts: Product[] = [
         "/media/bags/53100011_1.png"
       ]
     },
-    "price": 6900000,
+    "price": 100,
     "currency": "INR",
     "sizes": [
       "Standard"
@@ -499,7 +499,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-52500087",
         "color": "Midnight Blue",
         "hex": "#2b3a4a",
-        "price": 25750000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/52500087_1.png"
       }
@@ -516,7 +516,7 @@ export const bagsProducts: Product[] = [
         "/media/bags/52500087_1.png"
       ]
     },
-    "price": 25750000,
+    "price": 100,
     "currency": "INR",
     "sizes": [
       "Large"
@@ -552,7 +552,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-93090003",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 26500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/93090003_1.png"
       }
@@ -569,7 +569,7 @@ export const bagsProducts: Product[] = [
         "/media/bags/93090003_1.png"
       ]
     },
-    "price": 26500000,
+    "price": 100,
     "currency": "INR",
     "sizes": [
       "Standard"
@@ -604,7 +604,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-NEVER-STILL-LEATHER-DUFFLE-BAG-LARGE-0",
         "color": "Desert Sand",
         "hex": "#b5a58b",
-        "price": 24500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/never-still-leather-duffle-bag-large-0.png"
       },
@@ -612,7 +612,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-NEVER-STILL-LEATHER-DUFFLE-BAG-LARGE-1",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 24500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/never-still-leather-duffle-bag-large-1.png"
       }
@@ -654,7 +654,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-NEVER-STILL-LEATHER-DUFFLE-BAG-MEDIUM-0",
         "color": "Desert Sand",
         "hex": "#b5a58b",
-        "price": 21500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/never-still-leather-duffle-bag-medium-0.png"
       }
@@ -698,7 +698,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-NEVER-STILL-NYLON-DUFFLE-BAG-LARGE-0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 18800000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/never-still-nylon-duffle-bag-large-0.png"
       }
@@ -740,7 +740,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-NEVER-STILL-NYLON-DUFFLE-BAG-MEDIUM-0",
         "color": "Graphite Grey",
         "hex": "#4b4d4f",
-        "price": 18800000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/never-still-nylon-duffle-bag-medium-0.png"
       }
@@ -785,7 +785,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-ATTACH-ALUMINIUM-BRIEFCASE-0",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 23600000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/attach-aluminium-briefcase-0.png"
       },
@@ -793,7 +793,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-ATTACH-ALUMINIUM-BRIEFCASE-1",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 23600000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/attach-aluminium-briefcase-1.png"
       }
@@ -837,7 +837,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-NEVER-STILL-LEATHER-BRIEFCASE-0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 21000000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/never-still-leather-briefcase-0.png"
       }
@@ -882,7 +882,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-BODY-BAG-LARGE-0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 19500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/groove-leather-cross-body-bag-large-0.png"
       },
@@ -890,7 +890,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-BODY-BAG-LARGE-1",
         "color": "Olive Green",
         "hex": "#435043",
-        "price": 19500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/groove-leather-cross-body-bag-large-1.png"
       },
@@ -898,7 +898,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-BODY-BAG-LARGE-2",
         "color": "Desert Sand",
         "hex": "#b5a58b",
-        "price": 19500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/groove-leather-cross-body-bag-large-2.png"
       }
@@ -943,7 +943,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-BODY-BAG-SMALL-0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 13300000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/groove-leather-cross-body-bag-small-0.png"
       },
@@ -951,7 +951,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-BODY-BAG-SMALL-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/groove-leather-cross-body-bag-small-1.png"
       },
@@ -959,7 +959,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-BODY-BAG-SMALL-2",
         "color": "Desert Sand",
         "hex": "#b5a58b",
-        "price": 13300000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/groove-leather-cross-body-bag-small-2.png"
       },
@@ -967,7 +967,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-BODY-BAG-SMALL-3",
         "color": "Midnight Blue",
         "hex": "#2b3a4a",
-        "price": 13300000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/groove-leather-cross-body-bag-small-3.png"
       },
@@ -975,7 +975,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-BODY-BAG-SMALL-4",
         "color": "Forest Green",
         "hex": "#435043",
-        "price": 13300000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/groove-leather-cross-body-bag-small-4.png"
       },
@@ -983,7 +983,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-BODY-BAG-SMALL-5",
         "color": "Graphite Grey",
         "hex": "#4b4d4f",
-        "price": 13300000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/groove-leather-cross-body-bag-small-5.png"
       }
@@ -1026,7 +1026,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-HOBO-BAG-0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 22250000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/groove-leather-hobo-bag-0.png"
       }
@@ -1070,7 +1070,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-NEVER-STILL-LEATHER-CROSS-BODY-BAG-SMALL-0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 12500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/never-still-leather-cross-body-bag-small-0.png"
       },
@@ -1078,7 +1078,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-NEVER-STILL-LEATHER-CROSS-BODY-BAG-SMALL-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 12500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/never-still-leather-cross-body-bag-small-1.png"
       }
@@ -1123,7 +1123,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-ORIGINAL-BAG-ALUMINIUM-CROSS-BODY-BAG-16-0",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 23600000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/original-bag-aluminium-cross-body-bag-16-0.png"
       },
@@ -1131,7 +1131,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-ORIGINAL-BAG-ALUMINIUM-CROSS-BODY-BAG-16-2",
         "color": "Desert Sand",
         "hex": "#b5a58b",
-        "price": 23600000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/original-bag-aluminium-cross-body-bag-16-2.png"
       }
@@ -1176,7 +1176,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-ORIGINAL-BAG-ALUMINIUM-CROSS-BODY-BAG-19-0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 25000000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/original-bag-aluminium-cross-body-bag-19-0.png"
       },
@@ -1184,7 +1184,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-ORIGINAL-BAG-ALUMINIUM-CROSS-BODY-BAG-19-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 25000000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/original-bag-aluminium-cross-body-bag-19-1.png"
       }
@@ -1228,7 +1228,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-PERSONAL-ALUMINIUM-CROSS-BODY-BAG-0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 18800000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/personal-aluminium-cross-body-bag-0.png"
       },
@@ -1236,7 +1236,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-PERSONAL-ALUMINIUM-CROSS-BODY-BAG-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 18800000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/personal-aluminium-cross-body-bag-1.png"
       },
@@ -1244,7 +1244,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-PERSONAL-ALUMINIUM-CROSS-BODY-BAG-3",
         "color": "Midnight Blue",
         "hex": "#2b3a4a",
-        "price": 18800000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/personal-aluminium-cross-body-bag-3.png"
       },
@@ -1252,7 +1252,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-PERSONAL-ALUMINIUM-CROSS-BODY-BAG-4",
         "color": "Forest Green",
         "hex": "#435043",
-        "price": 18800000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/personal-aluminium-cross-body-bag-4.png"
       }
@@ -1296,7 +1296,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-PERSONAL-POLYCARBONATE-CROSS-BODY-BAG-0",
         "color": "Ivory White",
         "hex": "#eceae4",
-        "price": 11500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/personal-polycarbonate-cross-body-bag-0.png"
       }
@@ -1340,7 +1340,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-SHOPPING-BAG-0",
         "color": "Midnight Blue",
         "hex": "#2b3a4a",
-        "price": 23600000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/groove-leather-shopping-bag-0.png"
       }
@@ -1386,7 +1386,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-NEVER-STILL-LEATHER-ZIPPED-TOTE-0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 21000000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/never-still-leather-zipped-tote-0.png"
       }
@@ -1428,7 +1428,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-ATTACH-ALUMINIUM-CHESS-0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 65900000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/attach-aluminium-chess-0.png"
       }
@@ -1469,7 +1469,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-ATTACH-ALUMINIUM-MAHJONG-0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 49500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/attach-aluminium-mahjong-0.png"
       }
@@ -1510,7 +1510,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-ATTACH-ALUMINIUM-POKER-0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 42500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/attach-aluminium-poker-0.png"
       }
@@ -1554,7 +1554,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-CLASSIC-ALUMINIUM-GRID-HAND-CARRY-CASE-0",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 19500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/classic-aluminium-grid-hand-carry-case-0.png"
       }
@@ -1598,7 +1598,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-ZIPPED-POUCH-0",
         "color": "Olive Green",
         "hex": "#435043",
-        "price": 6500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/groove-leather-zipped-pouch-0.png"
       },
@@ -1606,7 +1606,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-ZIPPED-POUCH-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 6500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/groove-leather-zipped-pouch-1.png"
       },
@@ -1614,7 +1614,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-ZIPPED-POUCH-2",
         "color": "Midnight Blue",
         "hex": "#2b3a4a",
-        "price": 6500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/groove-leather-zipped-pouch-2.png"
       }
@@ -1657,7 +1657,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-NEVER-STILL-LEATHER-TOILETRY-BAG-0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 8250000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/never-still-leather-toiletry-bag-0.png"
       },
@@ -1665,7 +1665,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-NEVER-STILL-LEATHER-TOILETRY-BAG-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 8250000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/never-still-leather-toiletry-bag-1.png"
       },
@@ -1673,7 +1673,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-NEVER-STILL-LEATHER-TOILETRY-BAG-2",
         "color": "Desert Sand",
         "hex": "#b5a58b",
-        "price": 8250000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/never-still-leather-toiletry-bag-2.png"
       }
@@ -1714,7 +1714,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-SPECIALTY-DARTBOARD-CASE-0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 28500000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/specialty-dartboard-case-0.png"
       }
@@ -1756,7 +1756,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-TRAVEL-ACCESSORIES-PET-CARRIER-BAG-0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 9400000,
+        "price": 100,
         "stock": 12,
         "image": "/media/bags/travel-accessories-pet-carrier-bag-0.png"
       }
@@ -1803,7 +1803,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-SIG-XBODY-IVR",
         "color": "Ivory",
         "hex": "#e8e4dc",
-        "price": 18900000,
+        "price": 100,
         "stock": 12,
         "image": "/media/cat-crossbody.jpg"
       },
@@ -1811,7 +1811,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-SIG-XBODY-BLK",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 18900000,
+        "price": 100,
         "stock": 8,
         "image": "/media/cat-crossbody.jpg"
       },
@@ -1819,7 +1819,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-SIG-XBODY-TAN",
         "color": "Cognac Tan",
         "hex": "#8c5836",
-        "price": 18900000,
+        "price": 100,
         "stock": 10,
         "image": "/media/cat-crossbody.jpg"
       },
@@ -1827,7 +1827,7 @@ export const bagsProducts: Product[] = [
         "sku": "OV-SIG-XBODY-GRN",
         "color": "Olive Green",
         "hex": "#435043",
-        "price": 18900000,
+        "price": 100,
         "stock": 6,
         "image": "/media/cat-crossbody.jpg"
       }
@@ -1864,7 +1864,7 @@ export const bagsProducts: Product[] = [
       "Signature OVIA details",
       "Exceptional craftsmanship in every stitch"
     ],
-    "price": 18900000,
+    "price": 100,
     "currency": "INR",
     "sizes": [
       "One Size"

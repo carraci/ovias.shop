@@ -1,30 +1,150 @@
+import React from "react";
 import Link from "next/link";
 import { policies, policyUpdated } from "@/lib/policies";
+
+function renderInlineFormatting(str: string): React.ReactNode {
+  const parts: React.ReactNode[] = [];
+  const regex = /(\*\*.*?\*\*|\[.*?\]\(.*?\))/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(str)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(str.substring(lastIndex, match.index));
+    }
+    const token = match[0];
+    if (token.startsWith("**") && token.endsWith("**")) {
+      parts.push(<strong key={match.index}>{token.slice(2, -2)}</strong>);
+    } else if (token.startsWith("[") && token.includes("](")) {
+      const linkMatch = token.match(/\[(.*?)\]\((.*?)\)/);
+      if (linkMatch) {
+        parts.push(
+          <a
+            key={match.index}
+            href={linkMatch[2]}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="policy-inline-link"
+          >
+            {linkMatch[1]}
+          </a>
+        );
+      }
+    }
+    lastIndex = regex.lastIndex;
+  }
+  if (lastIndex < str.length) {
+    parts.push(str.substring(lastIndex));
+  }
+  return parts.length > 0 ? parts : str;
+}
+
+function renderPolicyContent(text: string) {
+  const lines = text.split(/\r?\n/);
+  const elements: React.ReactNode[] = [];
+  let currentList: string[] = [];
+  let currentParagraph: string[] = [];
+  let keyIndex = 0;
+
+  const flushParagraph = () => {
+    if (currentParagraph.length > 0) {
+      elements.push(
+        <p key={`p-${keyIndex++}`} className="policy-paragraph">
+          {renderInlineFormatting(currentParagraph.join(" "))}
+        </p>
+      );
+      currentParagraph = [];
+    }
+  };
+
+  const flushList = () => {
+    if (currentList.length > 0) {
+      elements.push(
+        <ul key={`ul-${keyIndex++}`} className="policy-bullet-list">
+          {currentList.map((item, idx) => (
+            <li key={idx}>{renderInlineFormatting(item)}</li>
+          ))}
+        </ul>
+      );
+      currentList = [];
+    }
+  };
+
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+
+    if (!line) {
+      flushParagraph();
+      flushList();
+      continue;
+    }
+
+    if (line.startsWith("### ")) {
+      flushParagraph();
+      flushList();
+      elements.push(
+        <h3 key={`h3-${keyIndex++}`} className="policy-subheading">
+          {line.replace(/^###\s+/, "")}
+        </h3>
+      );
+      continue;
+    }
+
+    if (line.startsWith("#### ")) {
+      flushParagraph();
+      flushList();
+      elements.push(
+        <h4 key={`h4-${keyIndex++}`} className="policy-subheading-small">
+          {line.replace(/^####\s+/, "")}
+        </h4>
+      );
+      continue;
+    }
+
+    if (line.startsWith("• ") || line.startsWith("- ")) {
+      flushParagraph();
+      currentList.push(line.replace(/^[•\-]\s*/, ""));
+      continue;
+    }
+
+    // Normal text line
+    flushList();
+    currentParagraph.push(line);
+  }
+
+  flushParagraph();
+  flushList();
+
+  return elements;
+}
+
 export function PolicyPage({ name }: { name: string }) {
   const policy = policies[name];
   return (
     <section className="section policy-page">
       <p className="eyebrow">LEGAL & PRIVACY</p>
       <h1>{policy.title}</h1>
-      <p>{policy.intro}</p>
+      <p className="policy-intro">{policy.intro}</p>
       <p className="small-note">
-        Last updated: {policyUpdated} · Preview document; commercial effective
-        date pending.
+        {policy.smallNote ||
+          `Last updated: ${policyUpdated} · Preview document; commercial effective date pending.`}
       </p>
       <div className="policy-layout">
         <nav aria-label="On this page">
-          {policy.sections.map(([title], i) => (
-            <a key={title} href={`#section-${i}`}>
-              {String(i + 1).padStart(2, "0")} / {title}
-            </a>
-          ))}
-          <Link href="/legal">Privacy Center ↗</Link>
+          {policy.sections.map(([title], i) => {
+            const displayTitle = title.replace(/^\d+\.\s*/, "");
+            return (
+              <a key={title} href={`#section-${i}`}>
+                {String(i + 1).padStart(2, "0")} / {displayTitle}
+              </a>
+            );
+          })}
         </nav>
         <article>
           {policy.sections.map(([title, text], i) => (
             <section id={`section-${i}`} key={title}>
               <h2>{title}</h2>
-              <p>{text}</p>
+              {renderPolicyContent(text)}
             </section>
           ))}
           <div className="account-tools">
@@ -43,35 +163,7 @@ export function PolicyPage({ name }: { name: string }) {
     </section>
   );
 }
-export function LegalCenter() {
-  return (
-    <section className="section content-page">
-      <p className="eyebrow">CLEAR INFORMATION. USEFUL CONTROLS.</p>
-      <h1>
-        Legal <em>& privacy.</em>
-      </h1>
-      <div className="help-links">
-        {[
-          ["Privacy Policy", "/privacy"],
-          ["Terms & Conditions", "/terms"],
-          ["Account security", "/security"],
-          ["Accessibility", "/accessibility"],
-          ["Cookie information", "/cookies"],
-          ["Cookie preferences", "/cookie-preferences"],
-          ["Privacy requests & data export", "/privacy/request"],
-          ["Shipping", "/shipping"],
-          ["Returns", "/returns"],
-          ["Contact support", "/contact"],
-        ].map(([label, href]) => (
-          <Link href={href} key={href}>
-            {label}
-            <span>↗</span>
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
-}
+
 export function ShippingReturns({ returns = false }: { returns?: boolean }) {
   return (
     <section className="section content-page">

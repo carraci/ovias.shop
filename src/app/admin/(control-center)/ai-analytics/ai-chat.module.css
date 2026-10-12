@@ -1,0 +1,208 @@
+.chat {
+  min-height: calc(100dvh - 105px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #090a09;
+  background-image:
+    linear-gradient(#ffffff08 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff08 1px, transparent 1px),
+    radial-gradient(ellipse at center, #121512 0, transparent 65%);
+  background-size:
+    40px 40px,
+    40px 40px,
+    100% 100%;
+  color: #f4f4f4;
+  padding: 40px 24px;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 46px;
+}
+.welcome h1 {
+  font:
+    600 28px Arial,
+    sans-serif;
+  margin: 32px 0 0;
+  line-height: 1.3;
+  text-align: center;
+}
+.orb {
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  background:
+    linear-gradient(#0b1010, #0b1010) padding-box,
+    conic-gradient(
+        from 205deg,
+        #00ebea 0deg,
+        #00dfda 135deg,
+        #f8ffff 220deg,
+        #fff 280deg,
+        #00ebea 360deg
+      )
+      border-box;
+  border: 2px solid transparent;
+  box-shadow:
+    inset 0 0 8px #50ffff80,
+    0 0 5px #60ffff40;
+  position: relative;
+}
+.orb:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: inset -4px -2px 5px #ffffffb0;
+}
+.composer {
+  width: min(850px, 100%);
+  z-index: 1;
+}
+.composer form {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #161716;
+  border: 1px solid #ffffff06;
+  border-radius: 35px;
+  padding: 14px 20px;
+}
+.composer textarea {
+  background: transparent;
+  color: white;
+  border: 0;
+  outline: none;
+  resize: none;
+  min-width: 0;
+  flex: 1;
+  font:
+    14px Arial,
+    sans-serif;
+  line-height: 24px;
+  max-height: 140px;
+}
+.composer textarea::placeholder {
+  color: #a4a7a4;
+}
+.composer button {
+  display: grid;
+  place-items: center;
+  background: none;
+  border: 0;
+  color: #ddd;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+}
+.composer button:disabled {
+  color: #666;
+  cursor: default;
+}
+.composer button:focus-visible,
+.newChat:focus-visible {
+  outline: 2px solid #00dedb;
+  outline-offset: 3px;
+}
+.composer textarea:focus-visible {
+  outline: 1px solid #777;
+  border-radius: 4px;
+}
+.status {
+  font-size: 11px;
+  text-align: center;
+  color: #777;
+  margin: 12px 0 0;
+}
+.error {
+  color: #ffb6b6;
+  font:
+    13px Arial,
+    sans-serif;
+  text-align: center;
+  margin: 15px 0 0;
+}
+.newChat {
+  position: absolute;
+  right: 24px;
+  top: 20px;
+  background: #171a18;
+  color: #ccc;
+  border: 1px solid #333;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  font:
+    12px Arial,
+    sans-serif;
+  cursor: pointer;
+}
+.conversation {
+  width: min(850px, 100%);
+  flex: 1;
+  overflow: auto;
+  max-height: calc(100dvh - 280px);
+  margin: 20px 0 25px;
+}
+.messages {
+  padding: 0 8px;
+}
+.messages article {
+  margin: 18px 0 26px;
+  max-width: 90%;
+}
+.messages span {
+  font-size: 11px;
+  color: #9ba49e;
+}
+.messages p {
+  font:
+    15px Arial,
+    sans-serif;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin: 7px 0 0;
+}
+.user {
+  margin-left: auto !important;
+  background: #202521;
+  border: 1px solid #303731;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.assistant {
+  padding: 10px 0;
+}
+.thinking {
+  color: #a6b4ab;
+  font-size: 13px;
+}
+@media (max-width: 700px) {
+  .chat {
+    padding: 35px 16px;
+    min-height: calc(100dvh - 90px);
+  }
+  .welcome h1 {
+    font-size: 23px;
+  }
+  .orb {
+    width: 110px;
+    height: 110px;
+  }
+  .conversation {
+    max-height: calc(100dvh - 250px);
+  }
+  .messages article {
+    max-width: 100%;
+  }
+}

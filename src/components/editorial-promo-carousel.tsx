@@ -1,6 +1,8 @@
 "use client";
+import "@/components/page-styles/editorial.css";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+
+import { useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -88,45 +90,13 @@ const slides: EditorialSlide[] = [
 
 export function EditorialPromoCarousel() {
   const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState<"next" | "prev">("next");
-  const [isAnimating, setIsAnimating] = useState(false);
   const touchStartX = useRef<number | null>(null);
-  const containerRef = useRef<HTMLElement>(null);
-
   const total = slides.length;
-
-  const goToSlide = useCallback(
-    (index: number, dir: "next" | "prev" = "next") => {
-      if (isAnimating) return;
-      setIsAnimating(true);
-      setDirection(dir);
-      setCurrent((index + total) % total);
-      setTimeout(() => setIsAnimating(false), 450);
-    },
-    [isAnimating, total]
-  );
-
-  const nextSlide = useCallback(() => {
-    goToSlide(current + 1, "next");
-  }, [current, goToSlide]);
-
-  const prevSlide = useCallback(() => {
-    goToSlide(current - 1, "prev");
-  }, [current, goToSlide]);
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") {
-        nextSlide();
-      } else if (e.key === "ArrowLeft") {
-        prevSlide();
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [nextSlide, prevSlide]);
-
+  const goToSlide = useCallback((index: number) => {
+    setCurrent((index + total) % total);
+  }, [total]);
+  const nextSlide = () => goToSlide(current + 1);
+  const prevSlide = () => goToSlide(current - 1);
   // Touch swipe support
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -147,33 +117,42 @@ export function EditorialPromoCarousel() {
   };
 
   const slide = slides[current];
-  const isImageRight = slide.imagePosition === "right";
+
 
   return (
     <section
-      ref={containerRef}
+
       className="editorial-promo-section"
       aria-label="Editorial promotional features"
+      onKeyDown={(event) => {
+        if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+          event.preventDefault();
+          goToSlide(current + (event.key === "ArrowRight" ? 1 : -1));
+        }
+      }}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <div className={`editorial-promo-card ${isImageRight ? "img-right" : "img-left"}`}>
-        {/* IMAGE SIDE */}
-        <div className="editorial-promo-visual">
-          <div className="editorial-promo-img-wrapper" key={`img-${slide.id}`}>
-            <Image
-              src={slide.image}
-              alt={slide.imageAlt}
-              fill
-              priority
-              sizes="(max-width: 900px) 100vw, 50vw"
-              className="editorial-promo-img"
-            />
-          </div>
+      <div className="editorial-promo-card img-left">
+        <div className="editorial-promo-visual editorial-image-accordion" aria-label="Choose an editorial feature">
+          {slides.map((item, index) => (
+            <button
+              key={item.id}
+              type="button"
+              className={`editorial-accordion-panel ${current === index ? "is-active" : ""}`}
+              aria-label={`Show ${item.category.toLowerCase()} feature`}
+              aria-pressed={current === index}
+              onPointerEnter={(event) => { if (event.pointerType === "mouse") goToSlide(index); }}
+              onFocus={() => goToSlide(index)}
+              onClick={() => goToSlide(index)}
+            >
+              <Image src={item.image} alt={item.imageAlt} fill sizes="(max-width: 900px) 80vw, 40vw" className="editorial-accordion-image" />
+              <span className="editorial-accordion-label">{item.category}</span>
+            </button>
+          ))}
         </div>
-
         {/* CONTENT SIDE */}
-        <div className="editorial-promo-content" key={`content-${slide.id}`}>
+        <div className="editorial-promo-content">
           <div className="editorial-promo-inner">
             {/* LARGE EDITORIAL ARROW ABOVE HEADLINE */}
             <div className="editorial-arrow-glyph" aria-hidden="true">
@@ -241,3 +220,5 @@ export function EditorialPromoCarousel() {
     </section>
   );
 }
+
+

@@ -1,0 +1,9 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import {renderOrderDocument,orderPaymentStatus} from "../src/lib/order-document";
+import type {Order} from "../src/lib/types";
+export const fixture = (status:Order["status"]="paid",quantity=1):Order => ({id:"fixture-order",owner:"fixture",idempotencyKey:"fixture",status,provider:"razorpay",total:100,address:{name:"<script>bad</script>",email:"fixture@example.test",line1:"Address",city:"City",region:"Region",postalCode:"000000",country:"IN"},createdAt:"2026-10-01T12:00:00Z",expiresAt:"2026-10-02T12:00:00Z",lines:Array.from({length:quantity},(_,i)=>({sku:`SKU-${i}`,name:"Item",color:"Black",quantity:1,price:100,image:"",slug:"item"}))});
+for(const status of ["paid","cancelled","pending"] as const)test(`print preview: ${status}`,()=>{const html=renderOrderDocument(fixture(status));assert.match(html,/@page\{size:A4/);assert.match(html,/@media print/);assert.match(html,/&lt;script&gt;/);assert.ok(!html.includes("admin-sidebar"));assert.ok(!html.includes("Refunded"));});
+test("cancelled capture remains received without an invented refund",()=>{assert.equal(orderPaymentStatus({...fixture("cancelled"),paidAt:"2026-10-01"}),"Payment received");});
+test("refunded preview uses confirmed stored record",()=>{const order=fixture("cancelled");order.refunds=[{id:"refund",paymentId:"payment",amount:100,reason:"test",actor:"owner",status:"Refunded",requestedAt:order.createdAt,updatedAt:order.createdAt}];assert.match(renderOrderDocument(order),/Refunded: ₹1.00/);});
+test("long multi-item preview repeats table heading and keeps rows together",()=>{const html=renderOrderDocument(fixture("paid",80));assert.equal((html.match(/<tr><td>/g)||[]).length,80);assert.match(html,/thead\{display:table-header-group/);assert.match(html,/page-break-inside:avoid/);assert.ok(!renderOrderDocument(fixture(),true).includes("UNIT PRICE"));});

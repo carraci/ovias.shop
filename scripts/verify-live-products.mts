@@ -1,0 +1,12 @@
+import nextEnv from '@next/env';
+nextEnv.loadEnvConfig(process.cwd());
+const {mongo,catalog}=await import('../src/server/db');
+const records=await catalog();
+const slug='ovia-trunk-check-in-trolley-bag-medium-size-for-travel-431651d641';
+const stored=records.find(p=>p.slug===slug);
+const response=await fetch('http://localhost:3000/api/products/'+slug);
+const served=await response.json();
+if(!stored || !response.ok || stored.id!==served.id || JSON.stringify(stored.variants)!==JSON.stringify(served.variants))throw Error('Database/API mismatch');
+if(response.headers.get('cache-control')!=='no-store')throw Error('Product API is cached');
+console.log(JSON.stringify({databaseProducts:records.length,productMatchesDatabase:true,cacheControl:response.headers.get('cache-control')}));
+await (await mongo()).close();

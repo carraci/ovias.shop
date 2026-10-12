@@ -9,11 +9,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/luggage",
     "/bags",
     "/accessories",
-    "/discover", "/heritage", "/help", "/faq", "/shipping", "/returns", "/legal", "/privacy", "/terms", "/security", "/accessibility", "/cookies",
+    "/discover", "/heritage", "/help", "/faq", "/shipping", "/returns", "/privacy", "/terms", "/security", "/accessibility", "/cookies",
     "/storelocator",
     "/journal",
     ...latestLinks.map((item) => item.href),
     ...stories.map((story) => `/journal/${story.slug}`),
-    ...products.map((p) => `/products/${p.slug}`),
+    ...products
+      .filter((p: any) => p.indexing !== "noindex" && p.inSitemap !== false)
+      .map((p) => `/products/${p.slug}`),
   ].map((path) => ({ url: `${base}${path}` }));
 }

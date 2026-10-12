@@ -1,0 +1,293 @@
+.page {
+  background: #ffffff;
+  color: #1a1a1a;
+  min-height: 100vh;
+  padding-top: calc(var(--header-height, 90px) + 28px);
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 var(--gutter, clamp(20px, 4.2vw, 80px));
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #888888;
+  margin-bottom: clamp(28px, 3.5vw, 44px);
+  font-weight: 500;
+}
+
+.breadcrumbLink {
+  color: #888888;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbLink:hover {
+  color: #111111;
+}
+
+.breadcrumbSeparator {
+  opacity: 0.5;
+}
+
+.breadcrumbCurrent {
+  color: #111111;
+}
+
+/* Hero Header */
+.heroHeader {
+  margin-bottom: clamp(32px, 4vw, 52px);
+}
+
+.heroTitle {
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(34px, 4.6vw, 56px);
+  font-weight: 400;
+  line-height: 1.14;
+  letter-spacing: -0.015em;
+  color: #121212;
+  margin: 0 0 16px;
+}
+
+.heroSubtitle {
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.5;
+  color: #666666;
+  max-width: 580px;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Large Hero Media */
+.heroMediaWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9.5;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #ffffff;
+  margin-bottom: clamp(64px, 8vw, 110px);
+}
+
+.heroMedia {
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.heroMediaWrap:hover .heroMedia {
+  transform: scale(1.02);
+}
+
+/* Story Sections (01, 02, 03) */
+.storySection {
+  margin-bottom: clamp(72px, 8.5vw, 120px);
+}
+
+.sectionHeader {
+  max-width: 720px;
+}
+
+.sectionEyebrow {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7a7a7a;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.sectionTitle {
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(28px, 3.4vw, 42px);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #121212;
+  margin: 0 0 20px;
+}
+
+.sectionBody {
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.8;
+  color: #4a4a4a;
+  margin: 0;
+}
+
+/* Philosophy Macro Image */
+.philosophyMediaWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #ffffff;
+  margin-top: clamp(32px, 4vw, 56px);
+}
+
+.philosophyMedia {
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.philosophyMediaWrap:hover .philosophyMedia {
+  transform: scale(1.02);
+}
+
+/* Collection Grid */
+.collectionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 3vw, 40px);
+  margin-top: clamp(32px, 4vw, 56px);
+}
+
+.collectionCard {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  group: collection-item;
+}
+
+.collectionMediaWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 4.6;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #ffffff;
+  margin-bottom: 16px;
+}
+
+.collectionMedia {
+  object-fit: cover;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.collectionCard:hover .collectionMedia {
+  transform: scale(1.03);
+}
+
+.collectionLinkRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: border-color 0.2s ease;
+}
+
+.collectionCard:hover .collectionLinkRow {
+  border-bottom-color: #111111;
+}
+
+.collectionLabel {
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(18px, 1.6vw, 22px);
+  font-weight: 400;
+  color: #121212;
+}
+
+.collectionIcon {
+  color: #121212;
+  transition: transform 0.25s ease;
+}
+
+.collectionCard:hover .collectionIcon {
+  transform: translate(3px, -3px);
+}
+
+/* OVIA World Banner */
+.worldBanner {
+  background: #111311;
+  color: #ffffff;
+  padding: clamp(72px, 8.5vw, 120px) 0;
+  margin-top: clamp(60px, 8vw, 100px);
+  text-align: center;
+}
+
+.worldBannerContent {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 var(--gutter, clamp(20px, 4.2vw, 80px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.worldEyebrow {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #999999;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.worldTitle {
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin: 0 0 16px;
+}
+
+.worldSubtitle {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #aaaaaa;
+  margin: 0 0 36px;
+}
+
+.worldButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: transparent;
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.worldButton:hover {
+  background: #ffffff;
+  color: #111111;
+  border-color: #ffffff;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .heroMediaWrap {
+    aspect-ratio: 16 / 11;
+  }
+
+  .philosophyMediaWrap {
+    aspect-ratio: 16 / 11;
+  }
+
+  .collectionGrid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .collectionMediaWrap {
+    aspect-ratio: 16 / 11;
+  }
+}

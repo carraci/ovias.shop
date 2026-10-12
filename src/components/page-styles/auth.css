@@ -1,0 +1,678 @@
+
+.auth-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 680px;
+}
+.auth-intro {
+  background: #dce2d2;
+  padding: 100px var(--gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.auth-intro h1 {
+  font-size: 80px;
+  margin: 10px 0 35px;
+}
+.auth-intro > p:last-child {
+  color: var(--muted);
+  font-size: 14px;
+}
+.auth-panel {
+  padding: 80px clamp(30px, 7vw, 110px);
+}
+.auth-panel h2 {
+  font-size: 37px;
+  margin-bottom: 35px;
+}
+.auth-switch {
+  font-size: 12px;
+  margin-top: 25px;
+}
+.auth-switch a {
+  text-decoration: underline;
+  margin-left: 5px;
+}
+@media (max-width: 1100px) {
+  .auth-panel {
+    padding: 70px 40px;
+  }
+  .auth-intro h1 {
+    font-size: 64px;
+  }
+}
+@media (max-width: 760px) {
+  .auth-page {
+    grid-template-columns: 1fr;
+  }
+  .auth-intro {
+    padding: 45px 25px;
+  }
+  .auth-intro h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+  }
+  .auth-intro h1 br {
+    display: none;
+  }
+  .auth-intro > p:last-child {
+    font-size: 13px;
+  }
+  .auth-panel {
+    padding: 45px 25px 65px;
+  }
+  .auth-panel h2 {
+    font-size: 34px;
+  }
+}
+.recovery-link {
+  margin-top: 22px;
+}
+body:has(.ovia-auth-split),
+body:has(.account-split),
+body:has(.recovery-page) {
+  background: #ffffff !important;
+  color: #111111 !important;
+}
+
+body:has(.ovia-auth-split) .announcement,
+body:has(.ovia-auth-split) .header,
+body:has(.ovia-auth-split) > footer,
+body:has(.account-split) .announcement,
+body:has(.account-split) .header,
+body:has(.account-split) > footer,
+body:has(.recovery-page) .announcement,
+body:has(.recovery-page) .header,
+body:has(.recovery-page) > footer {
+  display: none !important;
+}
+
+.ovia-auth-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(430px, 520px);
+  min-height: 100svh;
+  background: #1d1611 url("/media/ovia-auth-hero-luxury.png") center / cover no-repeat;
+  color: #111111;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.ovia-auth-visual {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(11, 7, 4, 0.35), rgba(11, 7, 4, 0.06));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(36px, 4.5vw, 64px);
+  color: #ffffff;
+  box-sizing: border-box;
+  overflow: hidden;
+  user-select: none;
+}
+
+.ovia-auth-visual-top {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ovia-auth-visual-brand {
+  font-family: Georgia, "Times New Roman", "Didot", serif;
+  font-size: clamp(28px, 2.6vw, 36px);
+  letter-spacing: 0.08em;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.ovia-auth-visual-tagline {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.ovia-auth-visual-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ovia-auth-visual-hero-heading,
+.ovia-auth-visual-hero-sub {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.5;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+.ovia-auth-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100svh;
+  padding: clamp(36px, 5vw, 64px) clamp(24px, 4vw, 56px);
+  background: transparent;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.ovia-auth-card {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 24px 70px rgba(14, 9, 5, 0.28);
+  border-radius: 4px;
+  padding: clamp(30px, 4vw, 52px);
+  box-sizing: border-box;
+}
+.ovia-auth-header {
+  display: grid;
+  grid-template-columns: 36px 1fr 36px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.ovia-auth-logo {
+  font-family: Georgia, "Times New Roman", "Didot", serif;
+  font-size: 32px;
+  letter-spacing: -0.5px;
+  text-align: center;
+  color: #111111;
+  line-height: 1;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.ovia-auth-logo:hover {
+  opacity: 0.85;
+}
+
+.ovia-auth-back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: #111111;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+  margin-left: -8px;
+  padding: 0;
+}
+
+.ovia-auth-back-btn:hover {
+  background: #f2f2f2;
+}
+
+.ovia-auth-header-spacer {
+  width: 36px;
+}
+.ovia-auth-step-indicator {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8e8e8e;
+  text-align: center;
+  margin: 0 0 20px;
+}
+.ovia-auth-heading {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(28px, 2.4vw, 36px);
+  font-weight: 400;
+  color: #111111;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin: 0 0 8px;
+  text-align: left;
+}
+
+.ovia-auth-subtext {
+  font-size: 13.5px;
+  color: #666666;
+  line-height: 1.5;
+  margin: 0 0 26px;
+  text-align: left;
+}
+
+.ovia-auth-bold-email {
+  color: #111111;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 4px;
+}
+.ovia-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.ovia-auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ovia-auth-field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #222222;
+  margin: 0;
+}
+
+.ovia-auth-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.ovia-auth-input {
+  width: 100%;
+  height: 46px;
+  border: 1px solid #d5d7da;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 0 14px;
+  font-size: 14px;
+  color: #111111;
+  font-family: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.ovia-auth-input:focus {
+  border-color: #111111;
+  box-shadow: 0 0 0 1px #111111;
+}
+
+.ovia-auth-input::placeholder {
+  color: #a0a4ab;
+}
+
+.ovia-auth-input-icon {
+  position: absolute;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  color: #666666;
+  pointer-events: none;
+}
+
+.ovia-auth-eye-btn {
+  position: absolute;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  color: #555555;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 0;
+}
+
+.ovia-auth-eye-btn:hover {
+  color: #111111;
+}
+
+.ovia-auth-forgot-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -6px;
+  margin-bottom: 2px;
+}
+
+.ovia-auth-forgot-link {
+  font-size: 12.5px;
+  color: #222222;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+
+.ovia-auth-forgot-link:hover {
+  color: #000000;
+}
+.ovia-auth-primary-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.1s;
+  margin-top: 6px;
+  box-sizing: border-box;
+}
+
+.ovia-auth-primary-btn:hover:not(:disabled) {
+  background: #242424;
+}
+
+.ovia-auth-primary-btn:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.ovia-auth-primary-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.ovia-auth-secondary-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 46px;
+  border-radius: 8px;
+  background: transparent;
+  color: #111111;
+  border: 1.5px solid #222222;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.ovia-auth-secondary-btn:hover:not(:disabled) {
+  background: #111111;
+  color: #ffffff;
+}
+.ovia-auth-divider {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 14px;
+  margin: 20px 0;
+  color: #888888;
+  font-size: 12px;
+}
+
+.ovia-auth-divider::before,
+.ovia-auth-divider::after {
+  content: "";
+  height: 1px;
+  background: #e5e5e5;
+}
+.ovia-auth-otp-row {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  margin: 6px 0 12px;
+}
+
+.ovia-auth-otp-box {
+  width: 48px;
+  height: 52px;
+  border: 1.5px solid #d5d7da;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: #111111;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  box-sizing: border-box;
+  caret-color: transparent;
+  padding: 0;
+}
+
+.ovia-auth-otp-box:focus {
+  border-color: #111111;
+  box-shadow: 0 0 0 1px #111111;
+}
+
+.ovia-auth-resend-prompt {
+  font-size: 13px;
+  color: #666666;
+  margin: 2px 0 10px;
+  text-align: left;
+}
+
+.ovia-auth-timer {
+  color: #666666;
+  font-weight: 500;
+}
+
+.ovia-auth-resend-btn {
+  color: #111111;
+  font-weight: 600;
+  text-decoration: underline;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.ovia-auth-attempts {
+  font-size: 12px;
+  color: #b91c1c;
+  text-align: center;
+  margin: -4px 0 8px;
+}
+
+.ovia-auth-attempts--locked {
+  font-weight: 600;
+}
+.ovia-auth-benefits {
+  margin-top: 34px;
+  padding-top: 24px;
+  border-top: 1px solid #ebebeb;
+  display: flex;
+  flex-direction: column;
+}
+
+.ovia-auth-benefits-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #111111;
+  margin: 0 0 4px;
+  font-family: inherit;
+}
+
+.ovia-auth-benefits-sub {
+  font-size: 13px;
+  color: #666666;
+  margin: 0 0 16px;
+}
+
+.ovia-auth-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ovia-auth-checklist li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #333333;
+}
+
+.ovia-auth-check-icon {
+  color: #111111;
+  flex-shrink: 0;
+}
+.ovia-auth-req-list {
+  list-style: none;
+  padding: 0;
+  margin: 2px 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.ovia-auth-req-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #888888;
+  transition: color 0.15s;
+}
+
+.ovia-auth-req-list li .ovia-auth-check-icon {
+  color: #b5b5b5;
+  transition: color 0.15s;
+}
+
+.ovia-auth-req-list li.is-valid {
+  color: #111111;
+}
+
+.ovia-auth-req-list li.is-valid .ovia-auth-check-icon {
+  color: #16a34a;
+}
+.ovia-auth-name-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.ovia-auth-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px;
+  color: #333333;
+  line-height: 1.5;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.ovia-auth-checkbox-label input {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  margin-top: 2px;
+  accent-color: #000000;
+}
+
+.ovia-auth-checkbox-label a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  color: #111111;
+}
+.ovia-auth-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  color: #b91c1c;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.ovia-auth-success {
+  padding: 10px 14px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 6px;
+  color: #15803d;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.ovia-auth-complete {
+  text-align: center;
+}
+
+.ovia-auth-complete .ovia-auth-heading,
+.ovia-auth-complete .ovia-auth-subtext {
+  text-align: center;
+}
+
+.ovia-auth-complete-icon {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 24px;
+  border: 1px solid #1a1a1a;
+  border-radius: 50%;
+  color: #111;
+}
+@media (max-width: 900px) {
+  .ovia-auth-split {
+    grid-template-columns: 1fr;
+    background-position: 56% center;
+  }
+  .ovia-auth-visual {
+    position: relative;
+    height: 250px;
+    min-height: 250px;
+    padding: 24px 28px;
+  }
+  .ovia-auth-panel {
+    padding: 32px 24px 48px;
+    min-height: auto;
+    background: rgba(255, 255, 255, 0.88);
+  }
+  .ovia-auth-card { box-shadow: none; }
+  .ovia-auth-otp-row {
+    gap: 6px;
+  }
+  .ovia-auth-otp-box {
+    width: 44px;
+    height: 48px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 440px) {
+  .ovia-auth-otp-box {
+    width: 38px;
+    height: 44px;
+    font-size: 18px;
+  }
+}

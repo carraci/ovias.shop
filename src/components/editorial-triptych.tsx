@@ -1,4 +1,6 @@
 "use client";
+import "@/components/page-styles/editorial.css";
+
 
 import Image from "next/image";
 import Link from "next/link";
@@ -64,7 +66,7 @@ export function EditorialTriptychSection({ customCards }: EditorialTriptychProps
           ? "Explore our newest products, collections, materials and updates from OVIA."
           : "Explore our newest products, collections, materials and updates from OVIA.",
       ctaText: "DISCOVER WHAT'S NEW",
-      href: "/new",
+      href: "/whats-new",
       image: "/media/editorial-bags.jpg",
       alt: "OVIA new travel pieces and latest campaign collection",
     },
@@ -107,11 +109,8 @@ export function EditorialTriptychSection({ customCards }: EditorialTriptychProps
                       src={card.image}
                       alt={card.alt}
                       fill
-                      quality={100}
-                      unoptimized
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="editorial-card-img"
-                      priority={index === 0}
                     />
                     <div className="editorial-card-gradient-overlay" aria-hidden="true" />
                   </div>

@@ -1,0 +1,12 @@
+"use client";
+import {useState} from "react";
+import type {OrderShipping} from "@/lib/shipping/types";
+import styles from "./order-progress.module.css";
+type Props={payment:string;stage:string;shipment?:OrderShipping;operation?:{status:string;message?:string};refunds:{status:string;amount:number}[]};
+export function OrderProgress({payment,stage,shipment,operation,refunds}:Props){
+ const [tab,setTab]=useState<"activity"|"payment">("activity");
+ const events=(shipment?.events||[]).filter(event=>!event.isSimulated);
+ const observed=(statuses:string[])=>!!shipment&&(statuses.includes(shipment.status)||events.some(event=>statuses.includes(event.status)));
+ const steps=[{label:"Order Confirmed",done:payment==="Payment received"},{label:"Packed",done:!!operation&&operation.status==="Confirmed"&&!!shipment?.awb},{label:"Courier Booked",done:!!shipment?.awb},{label:"Picked Up",done:observed(["PICKED_UP"])},{label:"In Transit",done:observed(["IN_TRANSIT"])},{label:"Out for Delivery",done:observed(["OUT_FOR_DELIVERY"])},{label:"Delivered",done:observed(["DELIVERED"])}];
+ return <section className={styles.progress}><header><h2>Delivery Progress</h2><span>{stage}</span></header><ol className={styles.steps}>{steps.map(step=><li key={step.label} className={step.done?styles.complete:styles.pending}><span aria-label={step.done?"Confirmed":"Not confirmed"}>{step.done?"✓":"●"}</span>{step.label}</li>)}</ol><div className={styles.tabs} role="tablist" aria-label="Order information"><button role="tab" aria-selected={tab==="activity"} className={tab==="activity"?styles.selected:""} onClick={()=>setTab("activity")}>Activity</button><button role="tab" aria-selected={tab==="payment"} className={tab==="payment"?styles.selected:""} onClick={()=>setTab("payment")}>Payment</button></div><div role="tabpanel">{tab==="activity"?<ul className={styles.activity}>{operation?.message&&<li>{operation.status}: {operation.message}</li>}{[...events].reverse().map((event,index)=><li key={index}>{event.description}<small>{event.timestamp} {event.location}</small></li>)}{!events.length&&!operation?.message&&<li>No courier activity recorded.</li>}</ul>:<><p className={styles.row}><span>Payment</span><span>{payment}</span></p><p className={styles.row}><span>Refund</span><span>{refunds.length?refunds.map(refund=>`${refund.status} · ₹${(refund.amount/100).toFixed(2)}`).join("; "):"No refund recorded"}</span></p></>}</div></section>;
+}

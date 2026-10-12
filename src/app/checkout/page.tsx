@@ -1,53 +1,80 @@
 "use client";
-
-import { usePreferences } from "@/components/preferences";
 import Link from "next/link";
-import { ProductPhoto as Image } from "@/components/product-photo";
 import { useRouter } from "next/navigation";
-import { useRef, useState, useEffect } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+  type InputHTMLAttributes,
+} from "react";
 import {
   Lock,
   ArrowRight,
+  ArrowLeft,
+  Search,
+  User,
+  Heart,
   Truck,
-  Package,
-  Store,
-  CreditCard,
-  Building,
-  Wallet,
-  CalendarDays,
-  ShieldCheck,
-  RotateCcw,
-  Headphones,
-  ChevronDown,
-  Info,
-  Minus,
-  Plus,
+  FileText,
+  Eye,
+  EyeOff,
+  Tag,
+  Check,
+  X,
 } from "lucide-react";
-import { money } from "@/lib/catalog";
+import {
+  openRazorpay,
+  PaymentDismissed,
+  type RazorpaySession,
+} from "@/lib/razorpay-browser";
+import { ProductPhoto } from "@/components/product-photo";
 import { request, useStore } from "@/components/store-provider";
+import { money } from "@/lib/catalog-helpers";
+import type { Address } from "@/lib/types";
+import type {
+  CheckoutQuote,
+  PaymentSession,
+  ShippingMethod,
+} from "@/lib/checkout";
 import styles from "./checkout.module.css";
 
-type PaymentResponse = {
-  provider: string;
-  url?: string;
-  orderId?: string;
-  key?: string;
-  amount?: number;
-  localOrderId?: string;
+const draftKey = "ovia-checkout-draft-v2";
+const sessionKey = "ovia-checkout-payment-v2";
+
+type Draft = {
+  civility: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  line1: string;
+  line2: string;
+  city: string;
+  region: string;
+  postalCode: string;
 };
 
-declare global {
-  interface Window {
-    Razorpay?: new (options: Record<string, unknown>) => { open: () => void };
-  }
-}
+const blank: Draft = {
+  civility: "Mr",
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  line1: "",
+  line2: "",
+  city: "",
+  region: "Maharashtra",
+  postalCode: "",
+};
 
-const INDIAN_STATES = [
+const states = [
   "Andhra Pradesh",
   "Arunachal Pradesh",
   "Assam",
   "Bihar",
   "Chhattisgarh",
+  "Delhi",
   "Goa",
   "Gujarat",
   "Haryana",
@@ -71,962 +98,1531 @@ const INDIAN_STATES = [
   "Uttar Pradesh",
   "Uttarakhand",
   "West Bengal",
-  "Delhi",
+  "Chandigarh",
+  "Jammu and Kashmir",
+  "Ladakh",
+  "Puducherry",
+  "Andaman and Nicobar Islands",
+  "Dadra and Nagar Haveli and Daman and Diu",
+  "Lakshadweep",
 ];
 
+function Field({
+  label,
+  ...props
+}: InputHTMLAttributes<HTMLInputElement> & { label: string }) {
+  return (
+    <label className={styles.field} htmlFor={props.id}>
+      <span>
+        {label}
+        {props.required && <span aria-hidden="true"> *</span>}
+      </span>
+      <input {...props} />
+    </label>
+  );
+}
+
+function addressView(address: Address & { civility?: string }) {
+  const prefix = address.civility ? `${address.civility} ` : "";
+  return (
+    <>
+      <strong>
+        {prefix}
+        {address.name}
+      </strong>
+      <p>
+        {address.line1}
+        {address.line2 && (
+          <>
+            <br />
+            {address.line2}
+          </>
+        )}
+        <br />
+        {address.city}, {address.region} {address.postalCode}
+        <br />
+        India
+      </p>
+    </>
+  );
+}
+
 export default function Checkout() {
-  const { preferences } = usePreferences();
-  const { cart, user, refresh, setQuantity } = useStore();
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState("");
-  const key = useRef<string | null>(null);
+  const { cart, user, refresh } = useStore();
   const router = useRouter();
-
-  // Delivery options: 'standard' | 'express' | 'pickup'
-  const [deliveryOption, setDeliveryOption] = useState<
-    "standard" | "express" | "pickup"
-  >("standard");
-
-  // Payment method: 'upi' | 'card' | 'netbanking' | 'wallets' | 'emi'
-  const [paymentMethod, setPaymentMethod] = useState<
-    "upi" | "card" | "netbanking" | "wallets" | "emi"
-  >("upi");
-
-  // Promo code toggle & state
-  const [promoOpen, setPromoOpen] = useState(false);
+  const heading = useRef<HTMLHeadingElement>(null);
+  const [draft, setDraft] = useState<Draft>(blank);
+  const [step, setStep] = useState(0);
+  const [hydrated, setHydrated] = useState(false);
+  const [shippingMethod, setShippingMethod] =
+    useState<ShippingMethod>("standard");
+  const [quote, setQuote] = useState<CheckoutQuote | null>(null);
+  const [quoteLoading, setQuoteLoading] = useState(false);
+  const [quoteError, setQuoteError] = useState("");
+  const [quoteRetry, setQuoteRetry] = useState(0);
+  const [session, setSession] = useState<PaymentSession | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [recovering, setRecovering] = useState(true);
+  const [error, setError] = useState("");
+  const [notice, setNotice] = useState("");
+  const [promoDraft, setPromoDraft] = useState("");
   const [promoCode, setPromoCode] = useState("");
-  const [promoMessage, setPromoMessage] = useState("");
-  const saving = useRef(false);
-  const savedAddress = useRef("");
-  const [updatingQuantity, setUpdatingQuantity] = useState(false);
-
-  // Form values state for shipping
-  const [fullName, setFullName] = useState(user?.name || "");
-  const [email, setEmail] = useState(user?.email || "");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [stateVal, setStateVal] = useState("Maharashtra");
-  const [pinCode, setPinCode] = useState("");
+  const [promoError, setPromoError] = useState("");
+  const [promoSuccessMsg, setPromoSuccessMsg] = useState("");
+  const [promoApplying, setPromoApplying] = useState(false);
   const [saveAddress, setSaveAddress] = useState(false);
+  const [savedAddresses, setSavedAddresses] = useState<
+    (Address & { id: string })[] | null
+  >(null);
+  const [addressLoading, setAddressLoading] = useState(false);
 
-  // Only server-priced cart lines can become an order.
-  const hasCartItems = cart.lines.length > 0;
-  const displayItems = cart.lines;
-  const subtotal = cart.total;
-  const deliveryCost = 0; // The existing API supports standard delivery only.
-  const total = subtotal;
-  const itemCount = displayItems.reduce((sum, item) => sum + item.quantity, 0);
+  // Accordion UI state matching Screenshots
+  const [emailConfirmed, setEmailConfirmed] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [passwordDraft, setPasswordDraft] = useState("");
+  const [manualAddress, setManualAddress] = useState(true);
+  const [sameBilling, setSameBilling] = useState(true);
+
+  const [paymentOption, setPaymentOption] = useState<
+    "upi" | "card" | "netbanking"
+  >("upi");
+  const [providerReady, setProviderReady] = useState(false);
+  const [pincodeChecking, setPincodeChecking] = useState(false);
+  const [serviceability, setServiceability] = useState<{
+    checked: boolean;
+    serviceable: boolean;
+    city?: string;
+    state?: string;
+    prepaidAvailable?: boolean;
+    codAvailable?: boolean;
+  } | null>(null);
 
   useEffect(() => {
-    if (user) {
-      setFullName((value) => value || user.name);
-      setEmail((value) => value || user.email);
+    const pin = draft.postalCode.trim();
+    if (!/^[1-9][0-9]{5}$/.test(pin)) {
+      setServiceability(null);
+      return;
     }
-  }, [user]);
 
-  async function handleQtyChange(
-    sku: string,
-    currentQty: number,
-    delta: number,
-  ) {
-    const next = currentQty + delta;
-    if (next < 1 || next > 10 || updatingQuantity || busy) return;
-    if (hasCartItems) {
-      setUpdatingQuantity(true);
+    let active = true;
+    setPincodeChecking(true);
+
+    const timer = setTimeout(async () => {
       try {
-        await setQuantity(sku, next);
-      } catch (e) {
-        setError((e as Error).message);
+        const res = await fetch(`/api/v1/shipping/serviceability?pincode=${encodeURIComponent(pin)}`);
+        const data = await res.json();
+        if (active) {
+          if (data && data.serviceable) {
+            setServiceability({
+              checked: true,
+              serviceable: true,
+              city: data.city,
+              state: data.state,
+              prepaidAvailable: data.prepaidAvailable,
+              codAvailable: data.codAvailable,
+            });
+            if (data.city && !draft.city.trim()) {
+              setDraft((prev) => ({ ...prev, city: data.city }));
+            }
+          } else {
+            setServiceability({
+              checked: true,
+              serviceable: false,
+            });
+          }
+        }
+      } catch {
+        if (active) {
+          setServiceability({
+            checked: true,
+            serviceable: true,
+          });
+        }
       } finally {
-        setUpdatingQuantity(false);
+        if (active) setPincodeChecking(false);
       }
+    }, 400);
+
+    return () => {
+      active = false;
+      clearTimeout(timer);
+    };
+  }, [draft.postalCode]);
+
+  const operation = useRef(false);
+  const idempotency = useRef("");
+  const addressSaved = useRef("");
+  const activeQuote = session?.quote || quote;
+  const lines = activeQuote?.lines || cart.lines;
+  const itemCount = lines.reduce((sum, line) => sum + line.quantity, 0);
+  const locked =
+    !!session &&
+    !["cancelled", "expired", "payment_failed"].includes(session.status);
+
+  const address: Address = {
+    name: `${draft.firstName.trim()} ${draft.lastName.trim()}`.trim(),
+    email: draft.email.trim(),
+    phone: draft.phone.trim(),
+    line1: draft.line1.trim(),
+    line2: draft.line2.trim() || undefined,
+    city: draft.city.trim(),
+    region: draft.region,
+    postalCode: draft.postalCode.trim(),
+    country: "IN",
+  };
+  const displayedAddress = session?.address || address;
+
+  function storeSession(value: PaymentSession | null) {
+    setSession(value);
+    try {
+      if (value) sessionStorage.setItem(sessionKey, value.id);
+      else sessionStorage.removeItem(sessionKey);
+    } catch {
+      /* Server recovery works without browser storage. */
     }
   }
 
-  async function submit(e?: React.FormEvent) {
-    if (e) e.preventDefault();
-    if (saving.current || updatingQuantity || !hasCartItems) return;
-    saving.current = true;
-    setError("");
-    setBusy(true);
-    key.current ??= crypto.randomUUID();
+  function finish(value: PaymentSession) {
+    storeSession(value);
+    if (value.status === "paid") {
+      try {
+        sessionStorage.removeItem(draftKey);
+        sessionStorage.removeItem(sessionKey);
+      } catch {
+        /* Storage is optional. */
+      }
+      void refresh();
+      router.replace(`/orders/${value.id}/confirmation`);
+      return;
+    }
+    if (["cancelled", "expired", "payment_failed"].includes(value.status)) {
+      storeSession(null);
+      idempotency.current = crypto.randomUUID();
+      setNotice(
+        value.status === "cancelled"
+          ? "Payment cancelled. Your information is saved and your bag has not been charged."
+          : "This attempt is closed. Please review your bag before retrying.",
+      );
+      setQuoteRetry((v) => v + 1);
+    } else if (value.status === "refund_required")
+      setError(
+        "Your payment needs a review by OVIA. Please contact support with your order number; do not pay again.",
+      );
+    else if (value.status === "payment_pending")
+      setNotice(
+        "Your payment is pending. We’ll confirm the order only after Razorpay confirms capture. Do not start another payment.",
+      );
+  }
 
+  useEffect(() => {
     try {
-      const payloadAddress = {
-        name: fullName.trim(),
-        email: email.trim(),
-        line1: address.trim(),
-        city: city.trim(),
-        region: stateVal,
-        postalCode: pinCode.trim(),
-        country: "IN" as const,
-      };
-
-      if (
-        saveAddress &&
-        user &&
-        savedAddress.current !== JSON.stringify(payloadAddress)
-      ) {
-        await request("account/addresses", "POST", payloadAddress);
-        savedAddress.current = JSON.stringify(payloadAddress);
-      }
-      const result = await request<PaymentResponse>("checkout", "POST", {
-        address: payloadAddress,
-        idempotencyKey: key.current,
-        market: preferences.country,
-      });
-
-      if (result.provider === "razorpay") {
-        if (!window.Razorpay) {
-          await new Promise<void>((resolve, reject) => {
-            const script = document.createElement("script");
-            script.src = "https://checkout.razorpay.com/v1/checkout.js";
-            script.onload = () => resolve();
-            script.onerror = () =>
-              reject(new Error("Payment gateway could not load. Try again."));
-            document.body.appendChild(script);
-          });
+      const stored = JSON.parse(sessionStorage.getItem(draftKey) || "null");
+      if (stored && Date.now() - stored.savedAt < 86400000) {
+        const values = { ...blank };
+        for (const key of Object.keys(blank) as (keyof Draft)[])
+          if (
+            typeof stored.draft?.[key] === "string" &&
+            stored.draft[key].length <= 200
+          )
+            values[key] = stored.draft[key];
+        setDraft(values);
+        if (values.email) setEmailConfirmed(true);
+        setStep(Math.max(0, Math.min(3, Number(stored.step) || 0)));
+        if (stored.shippingMethod === "express") setShippingMethod("express");
+        if (
+          typeof stored.promoCode === "string" &&
+          stored.promoCode.length <= 40
+        ) {
+          setPromoCode(stored.promoCode);
+          setPromoDraft(stored.promoCode);
         }
-        const checkout = new window.Razorpay!({
-          key: result.key,
-          amount: result.amount,
-          currency: "INR",
-          name: "OVIA · Luxury Atelier",
-          order_id: result.orderId,
-          prefill: {
-            name: payloadAddress.name,
-            email: payloadAddress.email,
-            contact: phone,
-          },
-          handler: () =>
-            router.push(`/orders/${result.localOrderId}/confirmation`),
-          modal: { ondismiss: () => setBusy(false) },
-        });
-        checkout.open();
-      } else if (result.url?.startsWith("/")) {
-        await refresh();
-        router.push(result.url);
-      } else if (
-        result.url &&
-        new URL(result.url).hostname === "checkout.stripe.com"
-      ) {
-        window.location.assign(result.url);
-      } else {
-        throw new Error("Payment session unavailable. Please retry.");
+        idempotency.current = /^[0-9a-f-]{36}$/i.test(stored.key || "")
+          ? stored.key
+          : crypto.randomUUID();
       }
+    } catch {
+      /* Malformed storage must not break checkout. */
+    }
+    idempotency.current ||= crypto.randomUUID();
+    setHydrated(true);
+    let cancelled = false;
+
+    async function recover() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        let storedId: string | null = null;
+        try {
+          storedId = sessionStorage.getItem(sessionKey);
+        } catch {
+          /* Use server session. */
+        }
+        const id = params.get("order") || storedId;
+        const config = await request<{ ready: boolean }>(
+          "payments/razorpay/config",
+        );
+        if (cancelled) return;
+        setProviderReady(config.ready);
+        if (!config.ready && !params.has("paypal")) {
+          setError(
+            "Secure payments are temporarily unavailable. Please try again later.",
+          );
+          return;
+        }
+        const legacy = params.has("paypal");
+        const sessionPath = legacy
+          ? "checkout/session"
+          : "payments/razorpay/sessions";
+        let current = await request<PaymentSession | null>(
+          id ? `${sessionPath}/${encodeURIComponent(id)}` : sessionPath,
+        );
+        if (cancelled) return;
+        if (current) {
+          setStep(3);
+          storeSession(current);
+          if (params.get("paypal") === "cancel")
+            current = await request<PaymentSession>(
+              `checkout/cancel/${current.id}`,
+              "POST",
+            );
+          else if (
+            params.get("paypal") === "return" &&
+            current.status !== "paid"
+          )
+            current = await request<PaymentSession>(
+              `checkout/capture/${current.id}`,
+              "POST",
+            );
+          if (!cancelled) finish(current);
+          if (current.status === "paid") return;
+        }
+        if (params.has("paypal"))
+          window.history.replaceState(null, "", "/checkout");
+      } catch (e) {
+        if (!cancelled) setError((e as Error).message);
+      } finally {
+        if (!cancelled) setRecovering(false);
+      }
+    }
+    void recover();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!user || !hydrated) return;
+    setDraft((value) => {
+      const parts = user.name.split(" ");
+      return {
+        ...value,
+        firstName: value.firstName || parts[0],
+        lastName: value.lastName || parts.slice(1).join(" "),
+        email: value.email || user.email,
+      };
+    });
+    setEmailConfirmed(true);
+  }, [user, hydrated]);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    try {
+      sessionStorage.setItem(
+        draftKey,
+        JSON.stringify({
+          draft,
+          step,
+          shippingMethod,
+          promoCode,
+          key: idempotency.current,
+          savedAt: Date.now(),
+        }),
+      );
+    } catch {
+      /* Storage is optional. */
+    }
+  }, [draft, step, shippingMethod, promoCode, hydrated]);
+
+  useEffect(() => {
+    if (!hydrated || locked || !cart.lines.length) {
+      setQuoteLoading(false);
+      if (locked) setQuoteError("");
+      if (!cart.lines.length && !locked) setQuote(null);
+      return;
+    }
+    let cancelled = false;
+    setQuoteLoading(true);
+    setQuoteError("");
+    setQuote(null);
+    request<CheckoutQuote>("checkout/quote", "POST", {
+      shippingMethod,
+      ...(promoCode ? { promoCode } : {}),
+      customerEmail: draft.email || user?.email || undefined,
+    })
+      .then((value) => {
+        if (!cancelled) setQuote(value);
+      })
+      .catch((e) => {
+        if (!cancelled) {
+          setQuoteError((e as Error).message);
+          if (promoCode) {
+            setPromoError((e as Error).message);
+          }
+        }
+      })
+      .finally(() => {
+        if (!cancelled) setQuoteLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [
+    cart.version,
+    cart.lines.length,
+    shippingMethod,
+    promoCode,
+    draft.email,
+    user?.email,
+    hydrated,
+    locked,
+    quoteRetry,
+  ]);
+
+  async function handleApplyCoupon() {
+    const code = promoDraft.trim().toUpperCase();
+    if (!code) return;
+    setPromoError("");
+    setPromoSuccessMsg("");
+    setPromoApplying(true);
+    try {
+      const email = draft.email || user?.email || undefined;
+      const res = await request<CheckoutQuote>("checkout/quote", "POST", {
+        shippingMethod,
+        promoCode: code,
+        customerEmail: email,
+      });
+      setPromoCode(code);
+      setQuote(res);
+      setQuoteError("");
+      setPromoSuccessMsg(`Coupon "${code}" applied successfully!`);
+    } catch (e: any) {
+      setPromoError(e.message || "Failed to apply coupon.");
+    } finally {
+      setPromoApplying(false);
+    }
+  }
+
+  function handleRemoveCoupon() {
+    setPromoCode("");
+    setPromoDraft("");
+    setPromoError("");
+    setPromoSuccessMsg("");
+    setQuoteRetry((v) => v + 1);
+  }
+
+  function update(key: keyof Draft, value: string) {
+    setDraft((previous) => ({ ...previous, [key]: value }));
+  }
+
+  function go(next: number) {
+    setStep(next);
+    setError("");
+    requestAnimationFrame(() => heading.current?.focus());
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
+
+  async function saved() {
+    if (!user) {
+      router.push("/account/sign-in?next=/checkout");
+      return;
+    }
+    setAddressLoading(true);
+    setError("");
+    try {
+      setSavedAddresses(
+        await request<(Address & { id: string })[]>("account/addresses"),
+      );
     } catch (e) {
       setError((e as Error).message);
     } finally {
-      saving.current = false;
+      setAddressLoading(false);
+    }
+  }
+
+  async function checkPayment() {
+    if (!session || operation.current) return;
+    operation.current = true;
+    setBusy(true);
+    setError("");
+    try {
+      const path =
+        session.provider === "razorpay"
+          ? "payments/razorpay/sessions"
+          : "checkout/session";
+      const result = await request<PaymentSession>(`${path}/${session.id}`);
+      finish(result);
+      if (result.status === "pending")
+        setNotice(
+          "Payment is not yet confirmed. You can retry securely with this order.",
+        );
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      operation.current = false;
       setBusy(false);
     }
   }
 
+  async function executeOrder() {
+    if (!activeQuote || (!providerReady && activeQuote.total > 0) || operation.current) return;
+    operation.current = true;
+    setBusy(true);
+    setError("");
+    setNotice(activeQuote.total === 0 ? "Confirming your free order…" : "Opening secure Razorpay checkout…");
+    try {
+      if (session && session.provider !== "razorpay")
+        throw new Error(
+          "Please check your existing payment status before starting another payment.",
+        );
+      const signature = JSON.stringify(address);
+      if (
+        !session &&
+        saveAddress &&
+        user &&
+        addressSaved.current !== signature
+      ) {
+        await request("account/addresses", "POST", address);
+        addressSaved.current = signature;
+      }
+      const current = session
+        ? await request<RazorpaySession>(
+            `payments/razorpay/sessions/${session.id}`,
+          )
+        : await request<RazorpaySession>("payments/razorpay/sessions", "POST", {
+            address,
+            idempotencyKey: idempotency.current,
+            quoteId: activeQuote.id,
+            shippingMethod,
+            ...(promoCode ? { promoCode } : {}),
+            market: "IN",
+          });
+      storeSession(current);
+      if (current.status !== "pending") {
+        finish(current);
+        return;
+      }
+      if (!current.orderId || current.setupPending)
+        throw new Error(
+          "Payment setup requires a status check. Please contact OVIA support before paying.",
+        );
+      setNotice("Complete your payment in the secure Razorpay window.");
+      const result = await openRazorpay(current, paymentOption);
+      setNotice("Verifying your payment…");
+      const verified = await request<PaymentSession>(
+        "payments/razorpay/verify",
+        "POST",
+        {
+          localOrderId: current.id,
+          razorpay_order_id: result.razorpay_order_id,
+          razorpay_payment_id: result.razorpay_payment_id,
+          razorpay_signature: result.razorpay_signature,
+        },
+      );
+      setNotice("");
+      finish(verified);
+      if (verified.status === "pending")
+        setNotice(
+          "Your payment is awaiting capture. Check payment status before retrying.",
+        );
+    } catch (e) {
+      setNotice("");
+      if (e instanceof PaymentDismissed) setNotice(e.message);
+      else
+        setError(
+          (e as Error).message ||
+            "Payment could not be confirmed. Please check payment status before retrying.",
+        );
+    } finally {
+      operation.current = false;
+      setBusy(false);
+    }
+  }
+
+  async function submit(event: FormEvent) {
+    event.preventDefault();
+    if (operation.current || recovering || !activeQuote) return;
+
+    // Step 0: Contact and Shipping address
+    // Step 1: Delivery
+    if (step < 2) {
+      if (step === 0) {
+        if (!emailConfirmed) {
+          if (!draft.email || !draft.email.includes("@")) {
+            setError("Please enter a valid email address.");
+            const input = document.getElementById(
+              "emailAddress",
+            ) as HTMLInputElement;
+            input?.focus();
+            return;
+          }
+          setEmailConfirmed(true);
+          return;
+        }
+
+        // Validate required address fields
+        if (!draft.firstName.trim()) {
+          setError("Please enter your first name.");
+          const input = document.getElementById(
+            "firstName",
+          ) as HTMLInputElement;
+          input?.focus();
+          return;
+        }
+        if (!draft.lastName.trim()) {
+          setError("Please enter your last name.");
+          const input = document.getElementById("lastName") as HTMLInputElement;
+          input?.focus();
+          return;
+        }
+        if (!draft.line1.trim() || draft.line1.trim().length < 5) {
+          setError("Please enter your street address.");
+          const input = document.getElementById(
+            "streetAddress",
+          ) as HTMLInputElement;
+          input?.focus();
+          return;
+        }
+        if (
+          !draft.postalCode.trim() ||
+          !/^[1-9][0-9]{5}$/.test(draft.postalCode.trim())
+        ) {
+          setError(
+            "Please enter a valid 6-digit Indian PIN code (e.g. 400001).",
+          );
+          const input = document.getElementById("pinCode") as HTMLInputElement;
+          input?.focus();
+          return;
+        }
+        if (!draft.city.trim()) {
+          setError("Please enter your city.");
+          const input = document.getElementById("city") as HTMLInputElement;
+          input?.focus();
+          return;
+        }
+        if (!draft.phone.trim() || draft.phone.replace(/\D/g, "").length < 10) {
+          setError("Please enter a valid 10-digit Indian mobile number.");
+          const input = document.getElementById(
+            "phoneNumber",
+          ) as HTMLInputElement;
+          input?.focus();
+          return;
+        }
+      }
+
+      go(step + 1);
+      return;
+    }
+
+    if (step === 2) {
+      go(3);
+      return;
+    }
+    await executeOrder();
+  }
+
+  const title = [
+    "Your information",
+    "Shipping",
+    "Payment",
+    "Review your order",
+  ][step];
+  const disabled =
+    busy || recovering || quoteLoading || !activeQuote || !lines.length;
+
   return (
     <div className={styles.checkoutContainer}>
-      {/* 1. Dedicated Top Navigation Bar */}
+      {/* Top Luxury Header */}
       <header className={styles.topHeader}>
+        <div className={styles.headerLeft}>
+          <Link href="/cart" className={styles.returnToBagLink}>
+            Return to bag
+          </Link>
+        </div>
         <Link href="/" className={styles.brandLogo} aria-label="OVIA Home">
-          <span className={styles.brandTitle}>OVIA</span>
+          OVIA
         </Link>
-
-        {/* 3-Step Progress Indicator */}
-        <nav aria-label="Checkout Progress" className={styles.stepsNav}>
-          <div className={`${styles.stepItem} ${styles.stepItemActive}`}>
-            <span className={styles.stepCircle}>1</span>
-            <span>SHIPPING</span>
+        <div className={styles.headerRight}>
+          <div className={styles.searchBar}>
+            <Search size={14} className={styles.searchIcon} />
+            <span>Search</span>
           </div>
-          <div className={styles.stepConnector} />
-          <div className={styles.stepItem}>
-            <span className={styles.stepCircle}>2</span>
-            <span>PAYMENT</span>
-          </div>
-          <div className={styles.stepConnector} />
-          <div className={styles.stepItem}>
-            <span className={styles.stepCircle}>3</span>
-            <span>REVIEW</span>
-          </div>
-        </nav>
-
-        {/* Secure Checkout Trust Lock */}
-        <div className={styles.secureBadge}>
-          <Lock size={13} strokeWidth={2.5} />
-          <span>SECURE CHECKOUT</span>
+          <Link
+            href="/account"
+            className={styles.headerIconBtn}
+            aria-label="Account"
+          >
+            <User size={18} strokeWidth={1.5} />
+          </Link>
+          <Link
+            href="/account/wishlist"
+            className={styles.headerIconBtn}
+            aria-label="Wishlist"
+          >
+            <Heart size={18} strokeWidth={1.5} />
+          </Link>
         </div>
       </header>
 
-      {/* 2. 3-Column Luxury Layout */}
-      <div className={styles.mainLayout}>
-        {/* Left Column: Architectural Editorial Banner */}
-        <aside
-          className={styles.leftEditorialCol}
-          aria-label="Editorial Brand Banner"
-        >
-          <div className={styles.editorialImageWrap}>
-            <Image
-              src={displayItems[0]?.image || ""}
-              alt={displayItems[0]?.name || "Your journey with OVIA"}
-              sizes="25vw"
-              quality={90}
-              fill
-              priority
-              style={{ objectFit: "cover" }}
-            />
-          </div>
-          <div className={styles.editorialCopy}>
-            <p>
-              A MORE
-              <br />
-              INTENTIONAL
-              <br />
-              JOURNEY
-            </p>
-            <h2>
-              Luxury in
-              <br />
-              every detail
-            </h2>
-            <span>OVIA</span>
-          </div>
-        </aside>
+      {/* Prominent CHECKOUT Title Header (matching ASCII diagram: ┌── CHECKOUT ──┐) */}
+      <div className={styles.checkoutPageHeading}>
+        <span>CHECKOUT</span>
+        <span className={styles.checkoutPageSubtitle}>
+          <Lock
+            size={12}
+            style={{
+              display: "inline",
+              verticalAlign: "middle",
+              marginRight: 5,
+            }}
+          />
+          256-Bit SSL Encrypted
+        </span>
+      </div>
 
-        {/* Center Column: Form & Selection Steps */}
-        <div className={styles.centerFormCol}>
+      {/* Main Accessible Heading for Tests */}
+      <h1 className={styles.srHeading} ref={heading} tabIndex={-1}>
+        {title}
+      </h1>
+
+      <div className={styles.mainLayout}>
+        <section className={styles.formCol} aria-label="Checkout details">
+          {recovering && <p role="status">Recovering your checkout…</p>}
           {error && (
-            <div className={styles.errorBanner} role="alert">
+            <div className={styles.error} role="alert">
               {error}
+            </div>
+          )}
+          {notice && (
+            <p className={styles.notice} role="status">
+              {notice}
+            </p>
+          )}
+          {quoteError && (
+            <div className={styles.error} role="alert">
+              {quoteError}
+              <button
+                type="button"
+                className={styles.changeBtn}
+                onClick={() => {
+                  if (promoCode) setPromoCode("");
+                  else setQuoteRetry((v) => v + 1);
+                }}
+              >
+                Refresh pricing{promoCode ? " without this promo" : ""}
+              </button>
             </div>
           )}
 
           <form id="checkout-form" onSubmit={submit} aria-busy={busy}>
-            {/* Step 1: Shipping Information */}
-            <section
-              className={styles.sectionBlock}
-              aria-labelledby="shipping-heading"
-            >
-              <div className={styles.sectionHeaderRow}>
-                <h1 id="shipping-heading" className={styles.sectionHeading}>
-                  1. Shipping Information
-                </h1>
-                <span className={styles.loginPrompt}>
-                  Already have an account? <Link href="/login">Login</Link>
-                </span>
-              </div>
-              <p className={styles.sectionSubtitle}>
-                Where should we deliver your order?
-              </p>
-
-              <div className={styles.inputGrid2}>
-                <div className={styles.formField}>
-                  <label htmlFor="fullName" className={styles.formLabel}>
-                    Full Name <span className={styles.requiredStar}>*</span>
-                  </label>
-                  <input
-                    id="fullName"
-                    name="name"
-                    type="text"
-                    required
-                    minLength={2}
-                    placeholder="Enter your full name"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    className={styles.textInput}
-                    autoComplete="name"
-                  />
+            <fieldset disabled={busy || locked} className={styles.formFieldset}>
+              {/* 1. CONTACT */}
+              <div className={styles.stepAccordion}>
+                <div className={styles.stepTitleRow}>
+                  <span
+                    className={`${styles.stepNumCircle} ${step === 0 && !emailConfirmed ? styles.stepNumActive : ""}`}
+                  >
+                    1
+                  </span>
+                  <h2 className={styles.stepHeading}>Contact</h2>
                 </div>
 
-                <div className={styles.formField}>
-                  <label htmlFor="phoneNumber" className={styles.formLabel}>
-                    Phone Number <span className={styles.requiredStar}>*</span>
-                  </label>
-                  <div className={styles.phoneInputWrap}>
-                    <div className={styles.phonePrefix}>
-                      <span
-                        className={styles.flagIcon}
-                        style={{
-                          background:
-                            "linear-gradient(to bottom, #FF9933 33%, #FFFFFF 33%, #FFFFFF 66%, #138808 66%)",
+                {step > 0 || (step === 0 && emailConfirmed) ? (
+                  <div className={styles.stepCompletedBox}>
+                    <div className={styles.completedRow}>
+                      <span className={styles.completedTitle}>
+                        {user ? "Account details" : "Guest details"}
+                      </span>
+                      <button
+                        type="button"
+                        className={styles.editBtn}
+                        onClick={() => {
+                          setEmailConfirmed(false);
+                          go(0);
                         }}
-                      />
-                      <span>+91</span>
-                      <ChevronDown size={11} />
+                      >
+                        Edit
+                      </button>
                     </div>
-                    <input
-                      id="phoneNumber"
-                      name="phone"
-                      type="tel"
+                    <p className={styles.completedText}>
+                      You are now continuing with:{" "}
+                      {draft.email || "guest@ovias.shop"}
+                    </p>
+                  </div>
+                ) : (
+                  <div>
+                    <h3 className={styles.subheading} style={{ marginTop: 0 }}>
+                      Email Address
+                    </h3>
+                    <p className={styles.stepSubtitle}>
+                      If you have an account, you will be asked to sign in.
+                      Otherwise, you can continue as guest or create an account.
+                    </p>
+
+                    <Field
+                      label="Email Address"
+                      id="emailAddress"
+                      type="email"
+                      autoComplete="email"
                       required
-                      placeholder="Enter phone number"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      className={`${styles.textInput} ${styles.phoneTextInput}`}
+                      maxLength={200}
+                      value={draft.email}
+                      onChange={(e) => update("email", e.target.value)}
+                    />
+
+                    {draft.email.includes("@") && draft.email.length > 5 && (
+                      <div style={{ marginTop: 12 }}>
+                        <label
+                          className={styles.field}
+                          htmlFor="accountPassword"
+                        >
+                          <span>
+                            Password (optional if continuing as guest)
+                          </span>
+                          <div className={styles.passwordWrap}>
+                            <input
+                              id="accountPassword"
+                              type={showPassword ? "text" : "password"}
+                              className={styles.passwordInput}
+                              placeholder="Enter password to sign in"
+                              value={passwordDraft}
+                              onChange={(e) => setPasswordDraft(e.target.value)}
+                            />
+                            <button
+                              type="button"
+                              className={styles.eyeToggle}
+                              onClick={() => setShowPassword(!showPassword)}
+                              aria-label="Toggle password visibility"
+                            >
+                              {showPassword ? (
+                                <EyeOff size={16} />
+                              ) : (
+                                <Eye size={16} />
+                              )}
+                            </button>
+                          </div>
+                        </label>
+                      </div>
+                    )}
+
+                    <button
+                      type="button"
+                      className={styles.primaryBlueBtn}
+                      onClick={() => {
+                        if (!draft.email || !draft.email.includes("@")) {
+                          const input = document.getElementById(
+                            "emailAddress",
+                          ) as HTMLInputElement;
+                          input?.focus();
+                          return;
+                        }
+                        setEmailConfirmed(true);
+                      }}
+                    >
+                      Next Step
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* 2. SHIPPING ADDRESS */}
+              <div className={styles.stepAccordion}>
+                <div className={styles.stepTitleRow}>
+                  <span
+                    className={`${styles.stepNumCircle} ${step === 0 && emailConfirmed ? styles.stepNumActive : ""}`}
+                  >
+                    2
+                  </span>
+                  <h2 className={styles.stepHeading}>Shipping Address</h2>
+                </div>
+
+                {step > 0 ? (
+                  <div className={styles.stepCompletedBox}>
+                    <div className={styles.completedRow}>
+                      <span className={styles.completedTitle}>
+                        Delivery Address
+                      </span>
+                      <button
+                        type="button"
+                        className={styles.editBtn}
+                        onClick={() => go(0)}
+                      >
+                        Edit
+                      </button>
+                    </div>
+                    <p className={styles.completedText}>
+                      {draft.civility} {draft.firstName} {draft.lastName}
+                      <br />
+                      {draft.line1}
+                      {draft.line2 ? `, ${draft.line2}` : ""},{" "}
+                      {draft.postalCode}, {draft.city}, {draft.region}, India
+                      <br />
+                      {draft.phone}
+                    </p>
+                  </div>
+                ) : (
+                  <div
+                    style={{
+                      display: emailConfirmed ? "block" : "none",
+                    }}
+                  >
+                    <p className={styles.deliveryCountryNote}>
+                      Your delivery address is currently in India.
+                      <button
+                        type="button"
+                        className={styles.changeBtn}
+                        onClick={() =>
+                          alert(
+                            "Deliveries are currently supported throughout India.",
+                          )
+                        }
+                      >
+                        Change
+                      </button>
+                    </p>
+
+                    <h3 className={styles.subheading}>
+                      Enter your delivery address:
+                    </h3>
+
+                    {/* Civility Dropdown */}
+                    <label className={styles.field} htmlFor="civility">
+                      <span>Civility *</span>
+                      <select
+                        id="civility"
+                        value={draft.civility}
+                        onChange={(e) => update("civility", e.target.value)}
+                      >
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Ms">Ms</option>
+                        <option value="Dr">Dr</option>
+                      </select>
+                    </label>
+
+                    {/* First & Last Name */}
+                    <div className={styles.grid2}>
+                      <Field
+                        label="First Name"
+                        id="firstName"
+                        autoComplete="given-name"
+                        required
+                        maxLength={50}
+                        value={draft.firstName}
+                        onChange={(e) => update("firstName", e.target.value)}
+                      />
+                      <Field
+                        label="Last Name"
+                        id="lastName"
+                        autoComplete="family-name"
+                        required
+                        maxLength={49}
+                        value={draft.lastName}
+                        onChange={(e) => update("lastName", e.target.value)}
+                      />
+                    </div>
+
+                    {/* Street Address */}
+                    <label className={styles.field} htmlFor="streetAddress">
+                      <span>Street Address *</span>
+                      <div className={styles.searchAddressWrap}>
+                        <Search
+                          size={15}
+                          className={styles.searchAddressIcon}
+                        />
+                        <input
+                          id="streetAddress"
+                          autoComplete="address-line1"
+                          required
+                          minLength={5}
+                          maxLength={200}
+                          placeholder="Search for an address"
+                          className={styles.searchAddressInput}
+                          value={draft.line1}
+                          onChange={(e) => update("line1", e.target.value)}
+                        />
+                      </div>
+                    </label>
+
+                    {/* Apartment / Suite */}
+                    {manualAddress && (
+                      <Field
+                        label="Apt, Suite, Building (optional)"
+                        id="addressLine2"
+                        autoComplete="address-line2"
+                        maxLength={200}
+                        value={draft.line2}
+                        onChange={(e) => update("line2", e.target.value)}
+                      />
+                    )}
+
+                    {/* PIN Code & City */}
+                    <div className={styles.grid2}>
+                      <Field
+                        label="PIN Code"
+                        id="pinCode"
+                        autoComplete="postal-code"
+                        required
+                        pattern="[1-9][0-9]{5}"
+                        title="Enter a valid six-digit Indian PIN code"
+                        maxLength={6}
+                        inputMode="numeric"
+                        value={draft.postalCode}
+                        onChange={(e) => update("postalCode", e.target.value)}
+                      />
+                      <Field
+                        label="City"
+                        id="city"
+                        autoComplete="address-level2"
+                        required
+                        minLength={2}
+                        maxLength={100}
+                        value={draft.city}
+                        onChange={(e) => update("city", e.target.value)}
+                      />
+                    </div>
+
+                    {/* PIN Code Serviceability Live Feedback */}
+                    {pincodeChecking && (
+                      <div style={{ fontSize: 12, color: "#6B6B6B", margin: "-6px 0 10px", display: "flex", alignItems: "center", gap: 6 }}>
+                        <span style={{ display: "inline-block", width: 6, height: 6, borderRadius: "50%", backgroundColor: "#3B82F6" }} />
+                        Checking delivery serviceability for PIN {draft.postalCode}...
+                      </div>
+                    )}
+                    {!pincodeChecking && serviceability && serviceability.serviceable && (
+                      <div style={{ fontSize: 12, color: "#15803D", margin: "-6px 0 10px", display: "flex", alignItems: "center", gap: 6 }}>
+                        <span style={{ color: "#16A34A", fontWeight: 700 }}>✓</span>
+                        Delhivery Express Delivery Available {serviceability.city ? `(${serviceability.city})` : ""}
+                      </div>
+                    )}
+                    {!pincodeChecking && serviceability && !serviceability.serviceable && (
+                      <div style={{ fontSize: 12, color: "#DC2626", margin: "-6px 0 10px", display: "flex", alignItems: "center", gap: 6 }}>
+                        <span>⚠</span>
+                        Delhivery courier service is currently restricted for PIN {draft.postalCode}.
+                      </div>
+                    )}
+
+                    {/* State Dropdown */}
+                    <label className={styles.field} htmlFor="state">
+                      <span>State *</span>
+                      <select
+                        id="state"
+                        required
+                        autoComplete="address-level1"
+                        value={draft.region}
+                        onChange={(e) => update("region", e.target.value)}
+                      >
+                        {states.map((value) => (
+                          <option key={value}>{value}</option>
+                        ))}
+                      </select>
+                    </label>
+
+                    {/* Country / Region */}
+                    <label className={styles.field} htmlFor="country">
+                      <span>Country / Region</span>
+                      <select
+                        id="country"
+                        autoComplete="country"
+                        defaultValue="IN"
+                        disabled
+                      >
+                        <option value="IN">India</option>
+                      </select>
+                    </label>
+
+                    {/* Phone Number */}
+                    <Field
+                      label="Phone *"
+                      id="phoneNumber"
+                      type="tel"
                       autoComplete="tel"
+                      required
+                      pattern={"(?:\\+91[ \\-]?)?[6-9][0-9]{9}"}
+                      title="Enter a 10-digit Indian mobile number, optionally prefixed with +91"
+                      value={draft.phone}
+                      onChange={(e) => update("phone", e.target.value)}
+                    />
+
+                    {/* Billing address checkbox */}
+                    <label className={styles.checkboxLabel}>
+                      <input
+                        type="checkbox"
+                        checked={sameBilling}
+                        onChange={(e) => setSameBilling(e.target.checked)}
+                      />
+                      <span>Billing address: Same as delivery address</span>
+                    </label>
+
+                    {/* Next step button */}
+                    <button
+                      type="submit"
+                      className={styles.primaryBlueBtn}
+                      disabled={disabled}
+                      aria-label="Continue to Shipping"
+                    >
+                      Next Step
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* 3. DELIVERY */}
+              <div className={styles.stepAccordion}>
+                <div className={styles.stepTitleRow}>
+                  <span
+                    className={`${styles.stepNumCircle} ${step === 1 ? styles.stepNumActive : ""}`}
+                  >
+                    3
+                  </span>
+                  <h2 className={styles.stepHeading}>Delivery</h2>
+                </div>
+
+                {step > 1 ? (
+                  <div className={styles.stepCompletedBox}>
+                    <div className={styles.completedRow}>
+                      <span className={styles.completedTitle}>
+                        Delivery Method
+                      </span>
+                      <button
+                        type="button"
+                        className={styles.editBtn}
+                        onClick={() => go(1)}
+                      >
+                        Edit
+                      </button>
+                    </div>
+                    <p className={styles.completedText}>
+                      {activeQuote?.shippingLabel} · {activeQuote?.estimate}
+                    </p>
+                  </div>
+                ) : step === 1 ? (
+                  <div>
+                    <h3 className={styles.subheading} style={{ marginTop: 0 }}>
+                      Select a delivery method
+                    </h3>
+                    <div
+                      className={styles.deliveryMethodsList}
+                      role="radiogroup"
+                      aria-label="Shipping method"
+                    >
+                      {activeQuote?.shippingOptions.map((option) => (
+                        <label
+                          className={styles.deliveryMethodCard}
+                          key={option.id}
+                        >
+                          <input
+                            type="radio"
+                            name="shipping"
+                            checked={shippingMethod === option.id}
+                            onChange={() => setShippingMethod(option.id)}
+                          />
+                          <div className={styles.methodDetails}>
+                            <div className={styles.methodHeader}>
+                              <span>{option.label}</span>
+                              <span className={styles.methodCost}>
+                                {option.cost ? money(option.cost) : "Free"}
+                              </span>
+                            </div>
+                            <p className={styles.methodEstimate}>
+                              {option.estimate}
+                            </p>
+                          </div>
+                        </label>
+                      ))}
+                    </div>
+
+                    <button
+                      type="submit"
+                      className={styles.primaryBlueBtn}
+                      disabled={disabled}
+                      aria-label="Continue to Payment"
+                    >
+                      Next Step
+                    </button>
+                  </div>
+                ) : null}
+              </div>
+
+              <div className={styles.stepAccordion}>
+                <div className={styles.stepTitleRow}>
+                  <span
+                    className={`${styles.stepNumCircle} ${step === 2 ? styles.stepNumActive : ""}`}
+                  >
+                    4
+                  </span>
+                  <h2 className={styles.stepHeading}>Payment</h2>
+                </div>
+                {step === 2 && (
+                  <div>
+                    <div
+                      className={styles.paymentOptionsList}
+                      role="radiogroup"
+                      aria-label="Payment method"
+                    >
+                      {(
+                        [
+                          [
+                            "upi",
+                            "UPI",
+                            "Use your preferred UPI app or scan a secure payment QR.",
+                          ],
+                          [
+                            "card",
+                            "Credit / Debit Card",
+                            "Enter your card details in Razorpay’s secure checkout.",
+                          ],
+                          [
+                            "netbanking",
+                            "Net Banking",
+                            "Authorise payment directly with your bank.",
+                          ],
+                        ] as const
+                      ).map(([value, label, description]) => (
+                        <label
+                          key={value}
+                          className={`${styles.deliveryMethodCard} ${paymentOption === value ? styles.paymentOptionCardSelected : ""}`}
+                        >
+                          <input
+                            type="radio"
+                            name="payment"
+                            value={value}
+                            checked={paymentOption === value}
+                            onChange={() => setPaymentOption(value)}
+                          />
+                          <div>
+                            <strong>{label}</strong>
+                            <p className={styles.methodEstimate}>
+                              {description}
+                            </p>
+                          </div>
+                        </label>
+                      ))}
+                    </div>
+                    <p className={styles.stepSubtitle}>
+                      Payment details are entered securely with Razorpay after
+                      you review your order. Available methods depend on your
+                      Razorpay checkout.
+                    </p>
+                    <button
+                      type="submit"
+                      className={styles.paySecurelyBtn}
+                      disabled={disabled || !providerReady}
+                    >
+                      Continue to Review <ArrowRight size={16} />
+                    </button>
+                  </div>
+                )}
+                {step === 3 && (
+                  <p className={styles.completedText}>
+                    {paymentOption === "upi"
+                      ? "UPI"
+                      : paymentOption === "card"
+                        ? "Credit / Debit Card"
+                        : "Net Banking"}{" "}
+                    · Secure Razorpay checkout
+                  </p>
+                )}
+              </div>
+            </fieldset>
+            {step === 3 && (
+              <section
+                className={styles.stepAccordion}
+                aria-label="Order review"
+              >
+                <h2 className={styles.subheading}>Review your order</h2>
+                <div className={styles.stepCompletedBox}>
+                  <strong>Contact</strong>
+                  <p>{displayedAddress.email}</p>
+                </div>
+                <div className={styles.stepCompletedBox}>
+                  <strong>Delivery address</strong>
+                  <div>{addressView(displayedAddress)}</div>
+                </div>
+                <div className={styles.stepCompletedBox}>
+                  <strong>Shipping</strong>
+                  <p>
+                    {activeQuote?.shippingLabel} · {activeQuote?.estimate}
+                  </p>
+                </div>
+                <div className={styles.stepCompletedBox}>
+                  <strong>Total</strong>
+                  <p>
+                    {activeQuote ? money(activeQuote.total) : "Calculating…"}
+                  </p>
+                </div>
+                <p className={styles.stepSubtitle}>
+                  Your order is confirmed after Razorpay verifies that payment
+                  has been captured.
+                </p>
+                <button
+                  type="submit"
+                  className={styles.paySecurelyBtn}
+                  disabled={
+                    disabled ||
+                    (!providerReady && (activeQuote?.total ?? 1) > 0) ||
+                    (!!session &&
+                      (session.provider !== "razorpay" ||
+                        session.status !== "pending"))
+                  }
+                >
+                  <Lock size={16} />
+                  {busy ? "Processing…" : activeQuote?.total === 0 ? "Place Free Order" : "Place Order"}
+                </button>
+                {session && (
+                  <button
+                    type="button"
+                    className={styles.editBtn}
+                    onClick={checkPayment}
+                    disabled={busy}
+                  >
+                    Check payment status
+                  </button>
+                )}
+                <p className={styles.stepSubtitle}>
+                  By placing an order, you agree to OVIA’s{" "}
+                  <Link href="/terms">Terms</Link> and{" "}
+                  <Link href="/privacy">Privacy Policy</Link>.
+                </p>
+              </section>
+            )}
+          </form>
+
+          {step > 0 && !locked && (
+            <div style={{ marginTop: 20 }}>
+              <button
+                type="button"
+                className={styles.editBtn}
+                disabled={busy}
+                onClick={() => go(step - 1)}
+              >
+                <ArrowLeft size={13} style={{ verticalAlign: "middle" }} />{" "}
+                Return to{" "}
+                {["", "Contact", "Shipping Address", "Delivery"][step]}
+              </button>
+            </div>
+          )}
+        </section>
+
+        {/* RIGHT COLUMN: Order Summary Box (Matching Diagram) */}
+        <aside className={styles.summaryAside} aria-label="Order Summary">
+          <h2 className={styles.summaryTitle}>Order Summary</h2>
+
+          <div id="checkout-summary" className={styles.orderCardBox}>
+            <div className={styles.summaryItemsList}>
+              {lines.map((line) => (
+                <div className={styles.orderItemRow} key={line.sku}>
+                  <div className={styles.itemThumb}>
+                    <ProductPhoto
+                      src={line.image}
+                      alt={line.name}
+                      fill
+                      sizes="80px"
+                      style={{ objectFit: "contain" }}
                     />
                   </div>
+                  <div className={styles.itemMeta}>
+                    <p className={styles.itemEyebrow}>CLASSIC</p>
+                    <h4 className={styles.itemName}>{line.name}</h4>
+                    <p className={styles.itemColor}>{line.color || "Silver"}</p>
+                    <p className={styles.itemStockBadge}>LIMITED STOCK</p>
+                    <p className={styles.itemQty}>Qty: {line.quantity}</p>
+                  </div>
+                  <div className={styles.itemPriceCol}>
+                    {money(line.price * line.quantity)}
+                  </div>
                 </div>
-              </div>
+              ))}
+            </div>
 
-              <div className={styles.formField}>
-                <label htmlFor="emailAddress" className={styles.formLabel}>
-                  Email Address <span className={styles.requiredStar}>*</span>
-                </label>
-                <input
-                  id="emailAddress"
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="Enter your email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className={styles.textInput}
-                  autoComplete="email"
-                />
+            {/* PROMOTIONAL COUPON SECTION */}
+            <div className={styles.couponBox}>
+              <div className={styles.couponHeading}>
+                <Tag size={13} color="#8E693E" />
+                <span>Promotional Privilege / Coupon</span>
               </div>
-
-              <div className={styles.formField}>
-                <label htmlFor="streetAddress" className={styles.formLabel}>
-                  Address <span className={styles.requiredStar}>*</span>
-                </label>
-                <input
-                  id="streetAddress"
-                  name="line1"
-                  minLength={5}
-                  type="text"
-                  required
-                  placeholder="House no., building, street name"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                  className={styles.textInput}
-                  autoComplete="street-address"
-                />
-              </div>
-
-              <div className={styles.inputGrid3}>
-                <div className={styles.formField}>
-                  <label htmlFor="city" className={styles.formLabel}>
-                    City <span className={styles.requiredStar}>*</span>
-                  </label>
+              {!promoCode ? (
+                <div className={styles.couponForm}>
                   <input
-                    id="city"
-                    name="city"
-                    minLength={2}
                     type="text"
-                    required
-                    placeholder="Enter city"
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    className={styles.textInput}
-                    autoComplete="address-level2"
+                    placeholder="Enter coupon code"
+                    value={promoDraft}
+                    onChange={(e) => {
+                      setPromoDraft(e.target.value.toUpperCase());
+                      setPromoError("");
+                      setPromoSuccessMsg("");
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        handleApplyCoupon();
+                      }
+                    }}
+                    className={styles.couponInput}
+                    aria-label="Promotional Coupon Code"
                   />
-                </div>
-
-                <div className={styles.formField}>
-                  <label htmlFor="state" className={styles.formLabel}>
-                    State <span className={styles.requiredStar}>*</span>
-                  </label>
-                  <select
-                    id="state"
-                    name="region"
-                    value={stateVal}
-                    onChange={(e) => setStateVal(e.target.value)}
-                    className={styles.selectInput}
+                  <button
+                    type="button"
+                    onClick={handleApplyCoupon}
+                    disabled={!promoDraft.trim() || promoApplying}
+                    className={styles.couponApplyBtn}
                   >
-                    {INDIAN_STATES.map((s) => (
-                      <option key={s} value={s}>
-                        {s}
-                      </option>
-                    ))}
-                  </select>
+                    {promoApplying ? "Applying…" : "Apply"}
+                  </button>
                 </div>
-
-                <div className={styles.formField}>
-                  <label htmlFor="pinCode" className={styles.formLabel}>
-                    PIN Code <span className={styles.requiredStar}>*</span>
-                  </label>
-                  <input
-                    id="pinCode"
-                    name="postalCode"
-                    type="text"
-                    required
-                    maxLength={6}
-                    pattern="[1-9][0-9]{5}"
-                    inputMode="numeric"
-                    placeholder="Enter PIN code"
-                    value={pinCode}
-                    onChange={(e) => setPinCode(e.target.value)}
-                    className={styles.textInput}
-                    autoComplete="postal-code"
-                  />
+              ) : (
+                <div className={styles.couponActiveTag}>
+                  <div className={styles.couponActiveInfo}>
+                    <Check size={14} color="#16A34A" />
+                    <span className={styles.couponActiveCode}>{promoCode}</span>
+                    <span style={{ fontSize: 11, color: "#166534" }}>Applied</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleRemoveCoupon}
+                    className={styles.couponRemoveBtn}
+                  >
+                    Remove
+                  </button>
                 </div>
-              </div>
+              )}
+              {promoError && (
+                <div className={styles.couponErrorMsg} role="alert">
+                  {promoError}
+                </div>
+              )}
+              {promoSuccessMsg && (
+                <div className={styles.couponSuccessMsg} role="status">
+                  {promoSuccessMsg}
+                </div>
+              )}
+            </div>
 
-              <label className={styles.checkboxLabel}>
-                <input
-                  type="checkbox"
-                  disabled={!user}
-                  checked={saveAddress}
-                  onChange={(e) => setSaveAddress(e.target.checked)}
-                  className={styles.checkboxInput}
-                />
+            <div className={styles.breakdownSection}>
+              <div className={styles.breakdownRow}>
+                <span>Subtotal</span>
                 <span>
-                  {user
-                    ? "Save this address for future orders"
-                    : "Sign in to save your address for future orders"}
+                  {activeQuote
+                    ? money(activeQuote.subtotal)
+                    : money(cart.total)}
                 </span>
-              </label>
-            </section>
-
-            {/* Step 2: Delivery Options */}
-            <section
-              className={styles.sectionBlock}
-              aria-labelledby="delivery-heading"
-            >
-              <h2 id="delivery-heading" className={styles.sectionHeading}>
-                2. Delivery Options
-              </h2>
-              <p className={styles.sectionSubtitle}>
-                Choose a delivery option for your order
-              </p>
-
-              <div className={styles.deliveryOptionsGrid}>
-                {/* Standard Delivery */}
-                <div
-                  className={`${styles.deliveryCard} ${deliveryOption === "standard" ? styles.deliveryCardActive : ""}`}
-                  onClick={() => setDeliveryOption("standard")}
-                  role="radio"
-                  aria-checked={deliveryOption === "standard"}
-                  tabIndex={0}
-                  onKeyDown={(event) => {
-                    if (event.key === " " || event.key === "Enter") {
-                      event.preventDefault();
-                      setDeliveryOption("standard");
-                    }
-                  }}
-                >
-                  <div className={styles.deliveryCardTop}>
-                    <div
-                      className={`${styles.radioCircle} ${deliveryOption === "standard" ? styles.radioCircleActive : ""}`}
-                    >
-                      {deliveryOption === "standard" && (
-                        <div className={styles.radioDot} />
-                      )}
-                    </div>
-                    <div className={styles.deliveryIconWrap}>
-                      <Truck size={18} strokeWidth={1.5} />
-                    </div>
-                    <span className={styles.deliveryPrice}>Free</span>
-                  </div>
-                  <div>
-                    <h3 className={styles.deliveryTitle}>Standard Delivery</h3>
-                    <p className={styles.deliverySub}>3–5 business days</p>
-                  </div>
-                </div>
-
-                {/* Express Delivery */}
-                <div
-                  className={`${styles.deliveryCard} ${deliveryOption === "express" ? styles.deliveryCardActive : ""}`}
-                  aria-disabled="true"
-                  role="radio"
-                  aria-checked={false}
-                  tabIndex={-1}
-                >
-                  <div className={styles.deliveryCardTop}>
-                    <div
-                      className={`${styles.radioCircle} ${deliveryOption === "express" ? styles.radioCircleActive : ""}`}
-                    >
-                      {deliveryOption === "express" && (
-                        <div className={styles.radioDot} />
-                      )}
-                    </div>
-                    <div className={styles.deliveryIconWrap}>
-                      <Package size={18} strokeWidth={1.5} />
-                    </div>
-                    <span className={styles.deliveryPrice}>Unavailable</span>
-                  </div>
-                  <div>
-                    <h3 className={styles.deliveryTitle}>Express Delivery</h3>
-                    <p className={styles.deliverySub}>1–2 business days</p>
-                  </div>
-                </div>
-
-                {/* Store Pickup */}
-                <div
-                  className={`${styles.deliveryCard} ${deliveryOption === "pickup" ? styles.deliveryCardActive : ""}`}
-                  aria-disabled="true"
-                  role="radio"
-                  aria-checked={false}
-                  tabIndex={-1}
-                >
-                  <div className={styles.deliveryCardTop}>
-                    <div
-                      className={`${styles.radioCircle} ${deliveryOption === "pickup" ? styles.radioCircleActive : ""}`}
-                    >
-                      {deliveryOption === "pickup" && (
-                        <div className={styles.radioDot} />
-                      )}
-                    </div>
-                    <div className={styles.deliveryIconWrap}>
-                      <Store size={18} strokeWidth={1.5} />
-                    </div>
-                    <span className={styles.deliveryPrice}>Free</span>
-                  </div>
-                  <div>
-                    <h3 className={styles.deliveryTitle}>Store Pickup</h3>
-                    <p className={styles.deliverySub}>Currently unavailable</p>
-                  </div>
-                </div>
               </div>
-            </section>
-
-            {/* Step 3: Payment Method */}
-            <section
-              className={styles.sectionBlock}
-              aria-labelledby="payment-heading"
-            >
-              <h2 id="payment-heading" className={styles.sectionHeading}>
-                3. Payment Method
-              </h2>
-              <p className={styles.sectionSubtitle}>
-                Choose your preferred payment method
-              </p>
-
-              <div className={styles.paymentContainer}>
-                {/* Method Tabs */}
-                <div className={styles.paymentTabsList} role="tablist">
-                  <button
-                    type="button"
-                    role="tab"
-                    aria-selected={paymentMethod === "upi"}
-                    className={`${styles.paymentTabBtn} ${paymentMethod === "upi" ? styles.paymentTabBtnActive : ""}`}
-                    onClick={() => setPaymentMethod("upi")}
-                  >
-                    <div
-                      className={`${styles.radioCircle} ${paymentMethod === "upi" ? styles.radioCircleActive : ""}`}
-                    >
-                      {paymentMethod === "upi" && (
-                        <div className={styles.radioDot} />
-                      )}
-                    </div>
-                    <div>
-                      <span>UPI</span>
-                      <span className={styles.paymentTabSub}>
-                        Pay using any UPI app
-                      </span>
-                    </div>
-                  </button>
-
-                  <button
-                    type="button"
-                    role="tab"
-                    aria-selected={paymentMethod === "card"}
-                    className={`${styles.paymentTabBtn} ${paymentMethod === "card" ? styles.paymentTabBtnActive : ""}`}
-                    onClick={() => setPaymentMethod("card")}
-                  >
-                    <div
-                      className={`${styles.radioCircle} ${paymentMethod === "card" ? styles.radioCircleActive : ""}`}
-                    >
-                      {paymentMethod === "card" && (
-                        <div className={styles.radioDot} />
-                      )}
-                    </div>
-                    <CreditCard size={16} className={styles.paymentTabIcon} />
-                    <div>
-                      <span>Credit / Debit Card</span>
-                      <span className={styles.paymentTabSub}>
-                        Visa, Mastercard, Rupay
-                      </span>
-                    </div>
-                  </button>
-
-                  <button
-                    type="button"
-                    role="tab"
-                    aria-selected={paymentMethod === "netbanking"}
-                    className={`${styles.paymentTabBtn} ${paymentMethod === "netbanking" ? styles.paymentTabBtnActive : ""}`}
-                    onClick={() => setPaymentMethod("netbanking")}
-                  >
-                    <div
-                      className={`${styles.radioCircle} ${paymentMethod === "netbanking" ? styles.radioCircleActive : ""}`}
-                    >
-                      {paymentMethod === "netbanking" && (
-                        <div className={styles.radioDot} />
-                      )}
-                    </div>
-                    <Building size={16} className={styles.paymentTabIcon} />
-                    <div>
-                      <span>Net Banking</span>
-                      <span className={styles.paymentTabSub}>
-                        All major banks
-                      </span>
-                    </div>
-                  </button>
-
-                  <button
-                    type="button"
-                    role="tab"
-                    aria-selected={paymentMethod === "wallets"}
-                    className={`${styles.paymentTabBtn} ${paymentMethod === "wallets" ? styles.paymentTabBtnActive : ""}`}
-                    onClick={() => setPaymentMethod("wallets")}
-                  >
-                    <div
-                      className={`${styles.radioCircle} ${paymentMethod === "wallets" ? styles.radioCircleActive : ""}`}
-                    >
-                      {paymentMethod === "wallets" && (
-                        <div className={styles.radioDot} />
-                      )}
-                    </div>
-                    <Wallet size={16} className={styles.paymentTabIcon} />
-                    <div>
-                      <span>Wallets</span>
-                      <span className={styles.paymentTabSub}>
-                        Paytm, PhonePe, Amazon Pay
-                      </span>
-                    </div>
-                  </button>
-
-                  <button
-                    type="button"
-                    role="tab"
-                    aria-selected={paymentMethod === "emi"}
-                    className={`${styles.paymentTabBtn} ${paymentMethod === "emi" ? styles.paymentTabBtnActive : ""}`}
-                    onClick={() => setPaymentMethod("emi")}
-                  >
-                    <div
-                      className={`${styles.radioCircle} ${paymentMethod === "emi" ? styles.radioCircleActive : ""}`}
-                    >
-                      {paymentMethod === "emi" && (
-                        <div className={styles.radioDot} />
-                      )}
-                    </div>
-                    <CalendarDays size={16} className={styles.paymentTabIcon} />
-                    <div>
-                      <span>EMI</span>
-                      <span className={styles.paymentTabSub}>
-                        Easy monthly payments
-                      </span>
-                    </div>
-                  </button>
+              <div className={styles.breakdownRow}>
+                <span>Shipping</span>
+                <span>
+                  {activeQuote
+                    ? activeQuote.shipping
+                      ? money(activeQuote.shipping)
+                      : "Free"
+                    : "Calculating…"}
+                </span>
+              </div>
+              <div className={styles.breakdownRow}>
+                <span>Tax</span>
+                <span>
+                  {activeQuote ? money(activeQuote.tax) : "Calculating…"}
+                </span>
+              </div>
+              {!!activeQuote?.discount && (
+                <div className={styles.breakdownRow}>
+                  <span>
+                    Discount
+                    {activeQuote.promoCode ? ` (${activeQuote.promoCode})` : ""}
+                  </span>
+                  <span>−{money(activeQuote.discount)}</span>
                 </div>
+              )}
 
-                {/* Sub Panel Content */}
-                <div className={styles.paymentPanel} role="tabpanel">
-                  {paymentMethod === "upi" ? (
-                    <div>
-                      <h3 className={styles.panelTitle}>UPI Payment</h3>
-                      <p className={styles.panelSub}>
-                        Pay securely using your UPI app
-                      </p>
+              {/* User Diagram Divider: ───────────────────── */}
+              <div className={styles.summaryDashedLine} />
 
-                      {/* UPI App Icons Row */}
-                      <div className={styles.upiAppsRow}>
-                        <div className={styles.upiAppItem}>
-                          <div
-                            className={styles.upiAppBadge}
-                            style={{ color: "#4285F4" }}
-                          >
-                            GPay
-                          </div>
-                          <span className={styles.upiAppName}>GPay</span>
-                        </div>
-                        <div className={styles.upiAppItem}>
-                          <div
-                            className={styles.upiAppBadge}
-                            style={{ color: "#5f259f" }}
-                          >
-                            पे
-                          </div>
-                          <span className={styles.upiAppName}>PhonePe</span>
-                        </div>
-                        <div className={styles.upiAppItem}>
-                          <div
-                            className={styles.upiAppBadge}
-                            style={{ color: "#00b9f5" }}
-                          >
-                            paytm
-                          </div>
-                          <span className={styles.upiAppName}>Paytm</span>
-                        </div>
-                        <div className={styles.upiAppItem}>
-                          <div
-                            className={styles.upiAppBadge}
-                            style={{ color: "#097937" }}
-                          >
-                            BHIM
-                          </div>
-                          <span className={styles.upiAppName}>BHIM</span>
-                        </div>
-                        <div className={styles.upiAppItem}>
-                          <div
-                            className={styles.upiAppBadge}
-                            style={{ color: "#777" }}
-                          >
-                            •••
-                          </div>
-                          <span className={styles.upiAppName}>More</span>
-                        </div>
-                      </div>
-
-                      <p className={styles.panelSub}>
-                        Choose and authorise your payment in the secure gateway.
-                        Available methods depend on the payment provider.
-                      </p>
-
-                      <button
-                        type="submit"
-                        disabled={busy || updatingQuantity || !hasCartItems}
-                        className={styles.inlinePayButton}
-                      >
-                        {busy ? "PROCESSING…" : `PAY ${money(total)}`}
-                        {!busy && <ArrowRight size={16} />}
-                      </button>
-                    </div>
-                  ) : (
-                    <div>
-                      <h3 className={styles.panelTitle}>Secure Gateway</h3>
-                      <p className={styles.panelSub}>
-                        Choose your payment method in the secure gateway.
-                        Availability depends on your payment provider.
-                      </p>
-                      <button
-                        type="submit"
-                        disabled={busy || updatingQuantity || !hasCartItems}
-                        className={styles.inlinePayButton}
-                      >
-                        {busy ? "PROCESSING…" : `PAY ${money(total)}`}
-                        {!busy && <ArrowRight size={16} />}
-                      </button>
-                    </div>
-                  )}
-                </div>
+              <div className={styles.breakdownTotalRow}>
+                <span>Total</span>
+                <span>
+                  {activeQuote ? (activeQuote.total === 0 ? "Free (₹0)" : money(activeQuote.total)) : money(cart.total)}
+                </span>
               </div>
-            </section>
-          </form>
-        </div>
-
-        {/* Right Column: Order Summary Sidebar */}
-        <aside className={styles.rightSummaryCol} aria-label="Order Summary">
-          <div className={styles.summaryHeader}>
-            <h2 className={styles.summaryTitle}>Order Summary</h2>
-            <span className={styles.summaryItemCount}>
-              {itemCount} item{itemCount !== 1 ? "s" : ""}
-            </span>
-          </div>
-
-          {!hasCartItems && (
-            <p className={styles.emptyBag}>
-              Your bag is empty or could not be loaded.{" "}
-              <Link href="/luggage">Continue shopping</Link>
-            </p>
-          )}
-          {/* Item Card(s) */}
-          {displayItems.map((item) => (
-            <div key={item.sku} className={styles.orderItemCard}>
-              <div className={styles.itemThumb}>
-                <Image
-                  src={item.image}
-                  sizes="120px"
-                  alt={item.name}
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+              <div className={styles.salesTaxNote}>
+                {activeQuote?.taxIncluded
+                  ? "Inclusive of applicable taxes"
+                  : "Includes calculated tax"}
               </div>
-              <div className={styles.itemInfo}>
-                <h3 className={styles.itemName}>{item.name}</h3>
-                <p className={styles.itemColorSize}>{item.color}</p>
-                <div className={styles.itemQtyRow}>
-                  <button
-                    type="button"
-                    className={styles.qtyBtn}
-                    onClick={() => handleQtyChange(item.sku, item.quantity, -1)}
-                    disabled={busy || updatingQuantity || item.quantity <= 1}
-                    aria-label="Decrease quantity"
-                  >
-                    <Minus size={11} />
-                  </button>
-                  <span className={styles.qtyValue}>{item.quantity}</span>
-                  <button
-                    type="button"
-                    className={styles.qtyBtn}
-                    onClick={() => handleQtyChange(item.sku, item.quantity, 1)}
-                    disabled={busy || updatingQuantity || item.quantity >= 10}
-                    aria-label="Increase quantity"
-                  >
-                    <Plus size={11} />
-                  </button>
-                </div>
-              </div>
-              <div className={styles.itemPrice}>
-                {money(item.price * item.quantity)}
-              </div>
-            </div>
-          ))}
-
-          {/* Price Breakdown */}
-          <div className={styles.priceBreakdown}>
-            <div className={styles.priceLine}>
-              <span>Subtotal</span>
-              <span className={styles.priceLineVal}>{money(subtotal)}</span>
-            </div>
-            <div className={styles.priceLine}>
-              <span>Delivery</span>
-              <span className={styles.priceLineVal}>
-                {deliveryCost === 0 ? "Free" : money(deliveryCost)}
-              </span>
-            </div>
-            <div className={styles.priceLine}>
-              <span>
-                Estimated Tax (GST) <Info size={12} strokeWidth={2} />
-              </span>
-              <span className={styles.priceLineVal}>₹ 0</span>
             </div>
           </div>
 
-          {/* Total Line */}
-          <div className={styles.totalLine}>
-            <span className={styles.totalLabel}>Total</span>
-            <div className={styles.totalAmountWrap}>
-              <span className={styles.totalAmount}>{money(total)}</span>
-              <span className={styles.inclusiveTaxText}>
-                Inclusive of all taxes
-              </span>
-            </div>
-          </div>
-
-          {/* Promo code accordion */}
-          <div className={styles.promoAccordion}>
-            <button
-              type="button"
-              className={styles.promoToggle}
-              onClick={() => setPromoOpen(!promoOpen)}
-              aria-expanded={promoOpen}
-            >
-              <span>Have a promo code?</span>
-              <ChevronDown
-                size={14}
-                style={{
-                  transform: promoOpen ? "rotate(180deg)" : "rotate(0deg)",
-                  transition: "transform 0.2s ease",
-                }}
-              />
-            </button>
-            {promoOpen && (
-              <div className={styles.promoInputRow}>
-                <input
-                  type="text"
-                  placeholder="Enter promo code"
-                  aria-label="Promo code"
-                  value={promoCode}
-                  onChange={(e) => setPromoCode(e.target.value)}
-                  className={styles.textInput}
-                  style={{ height: "36px", fontSize: "12px" }}
-                />
-                <button
-                  type="button"
-                  className={styles.promoApplyBtn}
-                  onClick={() => {
-                    setPromoMessage(
-                      "Promo codes are not supported by the current checkout. No discount has been applied.",
-                    );
-                  }}
-                >
-                  APPLY
-                </button>
-              </div>
-            )}
-          </div>
-
-          {promoMessage && (
-            <p role="status" className={styles.panelSub}>
-              {promoMessage}
-            </p>
-          )}
-          {/* Pay Primary Button */}
-          <button
-            type="submit"
-            form="checkout-form"
-            disabled={busy || updatingQuantity || !hasCartItems}
-            className={styles.primaryPayBtn}
-          >
-            {busy ? "PREPARING ORDER…" : `PAY ${money(total)}`}
-            {!busy && <ArrowRight size={16} />}
-          </button>
-
-          {/* Security Sub-note */}
-          <div className={styles.securityNote}>
-            <Lock size={12} />
-            <span>Your payment information is secure and encrypted</span>
-          </div>
-
-          {/* Trust Badges Grid */}
-          <div className={styles.trustBadgesGrid}>
+          {/* Delivery & Ethos Trust Information */}
+          <div className={styles.trustList}>
             <div className={styles.trustItem}>
-              <Truck size={20} strokeWidth={1.5} className={styles.trustIcon} />
-              <div>
-                <h4 className={styles.trustTitle}>Free Delivery</h4>
-                <p className={styles.trustSub}>3–5 business days</p>
-              </div>
+              <Truck size={17} strokeWidth={1.5} className={styles.trustIcon} />
+              <p className={styles.trustText}>
+                Please enjoy express deliveries on all orders
+              </p>
             </div>
             <div className={styles.trustItem}>
-              <RotateCcw
-                size={20}
+              <FileText
+                size={17}
                 strokeWidth={1.5}
                 className={styles.trustIcon}
               />
-              <div>
-                <h4 className={styles.trustTitle}>Easy Returns</h4>
-                <p className={styles.trustSub}>Within 14 days</p>
-              </div>
-            </div>
-            <div className={styles.trustItem}>
-              <ShieldCheck
-                size={20}
-                strokeWidth={1.5}
-                className={styles.trustIcon}
-              />
-              <div>
-                <h4 className={styles.trustTitle}>Official Guarantee</h4>
-                <p className={styles.trustSub}>A lifetime of travel</p>
-              </div>
-            </div>
-            <div className={styles.trustItem}>
-              <Headphones
-                size={20}
-                strokeWidth={1.5}
-                className={styles.trustIcon}
-              />
-              <div>
-                <h4 className={styles.trustTitle}>Client Service</h4>
-                <p className={styles.trustSub}>Speak to our team</p>
-              </div>
+              <p className={styles.trustText}>
+                All purchases/orders are solely processed and fulfilled by OVIA
+                authorized partner Ethos, registered in India. OVIA does not
+                process, fulfill or assume any responsibility or liability for
+                such transactions.
+              </p>
             </div>
           </div>
 
-          {/* OVIA Signature Packaging Card */}
-          <div className={styles.packagingCard}>
-            <div className={styles.packagingImageWrap}>
-              <Image
-                src="/media/ovia-signature-packaging.svg"
-                alt="OVIA Signature Packaging"
-                fill
-                style={{ objectFit: "cover" }}
-              />
-            </div>
-            <div className={styles.packagingContent}>
-              <h3 className={styles.packagingTitle}>
-                OVIA Signature Packaging
-              </h3>
-              <p className={styles.packagingDesc}>
-                Your order will arrive in our signature packaging, crafted for a
-                more intentional journey.
-              </p>
-              <Link href="/services" className={styles.discoverLink}>
-                DISCOVER MORE <ArrowRight size={12} />
-              </Link>
+          {/* Accepted payment methods */}
+          <div className={styles.acceptedSection}>
+            <p className={styles.acceptedTitle}>Accepted payment methods</p>
+            <div className={styles.badgesRow}>
+              <span className={styles.paymentBadge}>Razorpay</span>
+              <span className={styles.paymentBadge}>UPI</span>
+              <span className={styles.paymentBadge}>Cards</span>
+              <span className={styles.paymentBadge}>NetBanking</span>
             </div>
           </div>
         </aside>
       </div>
+
+      {/* LUXURY 3-COLUMN FOOTER (Screenshots 1 & 2) */}
+      <footer className={styles.checkoutFooter}>
+        <div className={styles.footerInner}>
+          <div className={styles.footerCol}>
+            <h4>WE ACCEPT</h4>
+            <p>Purchase with the payment method that best suits you.</p>
+            <div className={styles.footerPayBadges}>
+              <span className={styles.paymentBadge}>Razorpay</span>
+              <span className={styles.paymentBadge}>UPI</span>
+              <span className={styles.paymentBadge}>Cards</span>
+            </div>
+          </div>
+          <div className={styles.footerCol}>
+            <h4>COMPLIMENTARY RETURNS</h4>
+            <p>
+              We’re confident you’ll love your new OVIA. But if you’re not
+              entirely happy, you can return it free of charge.
+            </p>
+          </div>
+          <div className={styles.footerCol}>
+            <h4>CAN WE HELP?</h4>
+            <p>
+              For inquiries or assistance do not hesitate to{" "}
+              <Link href="/contact-us">contact us</Link> or call us{" "}
+              <a href="tel:+918796813891">+918796813891</a>
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

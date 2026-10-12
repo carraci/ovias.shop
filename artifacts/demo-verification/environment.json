@@ -1,0 +1,10 @@
+{
+  "directory": "C:\\Users\\Adarsh\\AppData\\Local\\Temp\\ovia-verification-SNpQXh",
+  "database": "ovia_verification_1791829542049_e65381",
+  "origin": "http://localhost:3128",
+  "providers": "http://127.0.0.1:59947",
+  "customerEmail": "customer@example.test",
+  "customerId": "370894fa-0516-4f78-8d65-3379de52e98a",
+  "ownerEmail": "owner@example.test",
+  "ownerId": "03f4ff6b-18cb-41fb-9811-36780387ef06"
+}

@@ -14,12 +14,15 @@ import {
 import {
   requestRecoveryCode,
   verifyRecoveryCode,
+  requestVerificationCode,
+  verifyEmailCode,
   type RecoveryCode,
 } from "../src/server/recovery";
 import { consumeAccountToken } from "../src/server/mail";
 import { api, hash } from "../src/server/http";
 import { POST } from "../src/app/api/v1/[[...path]]/route";
 import type { User } from "../src/lib/types";
+import { installMongoFixture } from "./helpers/mongo-fixture";
 
 test("OTP recovery uses owned storage, limits attempts, and revokes sessions", async (t) => {
   const originalDirectory = process.cwd();
@@ -36,7 +39,7 @@ test("OTP recovery uses owned storage, limits attempts, and revokes sessions", a
   );
   const directory = await mkdtemp(path.join(tmpdir(), "ovia-recovery-test-"));
   process.chdir(directory);
-  delete process.env.MONGODB_URI;
+  const database = installMongoFixture();
   process.env.EMAIL_API_KEY = "test-only-provider-key";
   process.env.EMAIL_FROM = "OVIA <test@example.test>";
   process.env.JWT_SECRET =
@@ -95,7 +98,7 @@ test("OTP recovery uses owned storage, limits attempts, and revokes sessions", a
         const known = await requestRecoveryCode(u.email);
         assert.deepEqual(known, unknown);
         assert.equal(messages.length, before + 1);
-        assert.equal(messages.at(-1)!.subject, "Your OVIA verification code");
+        assert.equal(messages.at(-1)!.subject, "Your OVIA Security Verification Code");
         const stored = (await record(u.email))!;
         assert.ok(stored.otpHash.startsWith("scrypt-v2:"));
         assert.ok(!JSON.stringify(stored).includes(otp()));
@@ -224,6 +227,33 @@ test("OTP recovery uses owned storage, limits attempts, and revokes sessions", a
       },
     );
     await t.test(
+      "resending a code invalidates the previously emailed code",
+      async () => {
+        const u = await user();
+        await requestRecoveryCode(u.email);
+        const oldCode = otp();
+        await transaction((repo) => repo.remove("limits", hash(`reset-cooldown:${u.email}`)));
+        await requestRecoveryCode(u.email);
+        const currentCode = otp();
+        if (oldCode !== currentCode) await assert.rejects(verifyRecoveryCode(u.email, oldCode), /Invalid or expired/);
+        assert.ok((await verifyRecoveryCode(u.email, currentCode)).resetToken);
+      },
+    );
+    await t.test(
+      "email verification and password recovery codes cannot authorize another purpose",
+      async () => {
+        const u = await user();
+        await requestVerificationCode(u.email);
+        const verification = otp();
+        await assert.rejects(verifyRecoveryCode(u.email, verification), /Invalid or expired/);
+        assert.equal((await verifyEmailCode(u.email, verification)).id, u.id);
+        await requestRecoveryCode(u.email);
+        const recovery = otp();
+        await assert.rejects(verifyEmailCode(u.email, recovery), /Invalid or expired/);
+        assert.ok((await verifyRecoveryCode(u.email, recovery)).resetToken);
+      },
+    );
+    await t.test(
       "tampered, expired and wrong-purpose JWTs are rejected",
       async () => {
         const u = await user();
@@ -334,6 +364,7 @@ test("OTP recovery uses owned storage, limits attempts, and revokes sessions", a
       },
     );
   } finally {
+    database.restore();
     process.chdir(originalDirectory);
     globalThis.fetch = originalFetch;
     for (const key of keys) {

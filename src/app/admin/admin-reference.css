@@ -1,0 +1,2392 @@
+/* Shared admin skin: scoped to the authenticated control center. */
+.ovia-admin {
+  --admin-font-sans:
+    var(--font-inter, Arial), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --sans: var(--admin-font-sans);
+  --admin-font-serif: var(--font-cormorant), var(--font-playfair), Georgia, serif;
+  --admin-color-muted: #71717a;
+  background: #ffffff !important;
+  color: #18181b !important;
+  font: 14px/1.5 var(--admin-font-sans);
+}
+.ovia-admin *,
+.ovia-admin *::before,
+.ovia-admin *::after {
+  box-sizing: border-box;
+}
+.ovia-admin .admin-sidebar {
+  width: 240px !important;
+  min-width: 240px !important;
+  background: #ffffff !important;
+  border-right: 1px solid #f1f1f4 !important;
+  transition: margin-left 0.2s;
+}
+.ovia-admin.admin-sidebar-collapsed .admin-sidebar {
+  margin-left: -240px;
+}
+.admin-sidebar > div:first-child {
+  height: 68px;
+  min-height: 68px;
+  background: #ffffff !important;
+  border-bottom: 1px solid #f1f1f4 !important;
+  padding: 18px 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+.admin-sidebar > div:first-child a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  text-decoration: none;
+}
+.admin-sidebar > div:first-child a > div:first-child {
+  color: #18181b !important;
+  font-family: var(--font-cormorant), var(--font-playfair), "Playfair Display", Georgia, serif !important;
+  font-size: 26px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.06em !important;
+}
+.admin-sidebar > div:first-child a > div:last-child {
+  display: none !important;
+}
+.admin-navigation-caption {
+  display: none !important;
+}
+.admin-sidebar .admin-nav-item {
+  font-size: 14px !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  gap: 12px !important;
+  padding: 10px 14px !important;
+  margin: 1px 0 !important;
+  color: #52525b !important;
+  transition: all 0.15s ease !important;
+}
+.admin-sidebar .admin-nav-item:hover {
+  background: #f4f4f5 !important;
+  color: #18181b !important;
+}
+.admin-sidebar .admin-nav-item[aria-current="page"] {
+  background: #ece9e2 !important;
+  color: #18181b !important;
+  font-weight: 600 !important;
+}
+.admin-sidebar .admin-nav-item[aria-current="page"] svg {
+  color: #18181b !important;
+  stroke: #18181b !important;
+}
+.admin-sidebar .admin-nav-item > span:last-child:not(:first-of-type) {
+  color: #71717a !important;
+}
+.admin-sidebar .admin-sub-item {
+  display: block !important;
+  padding: 6px 12px !important;
+  border-radius: 6px !important;
+  text-decoration: none !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  color: #52525b !important;
+  background: transparent !important;
+  font-weight: 500 !important;
+  transition: all 0.15s ease !important;
+}
+.admin-sidebar .admin-sub-item:hover {
+  background: #f4f4f5 !important;
+  color: #18181b !important;
+}
+.admin-sidebar .admin-sub-item[aria-current="page"],
+.admin-sidebar .admin-sub-item.active {
+  background: #ece9e2 !important;
+  color: #18181b !important;
+  font-weight: 600 !important;
+}
+.ovia-admin .admin-toolbar {
+  height: 60px !important;
+  min-height: 60px;
+  gap: 16px;
+  background: #ffffff !important;
+  border-bottom: 1px solid #f1f1f4 !important;
+  box-shadow: none !important;
+  padding: 0 32px !important;
+}
+.admin-toolbar > div:last-child {
+  margin-left: auto;
+  gap: 14px !important;
+}
+.admin-toolbar > div:nth-child(2) > div:first-child {
+  background: #f4f4f5 !important;
+  border: 1px solid #e4e4e7 !important;
+  border-radius: 8px !important;
+}
+.ovia-admin .admin-menu-toggle {
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: #71717a;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.ovia-admin .admin-menu-toggle:hover {
+  background: #f4f4f5;
+  color: #18181b;
+}
+.ovia-admin .admin-workspace {
+  background: #ffffff !important;
+  max-width: 1600px !important;
+  padding: 28px 32px 48px !important;
+}
+.ovia-admin main h1,
+.ovia-admin main .admin-page-title,
+.ovia-admin main .admin-hero-title {
+  font-family: var(--admin-font-sans) !important;
+  font-size: 28px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.25 !important;
+  color: #2e3338 !important;
+}
+.ovia-admin main h2,
+.ovia-admin main h3,
+.ovia-admin .admin-section-title {
+  font-family: var(--admin-font-sans) !important;
+  font-weight: 600;
+  letter-spacing: 0 !important;
+}
+.ovia-admin .admin-body {
+  font-size: 14px;
+}
+.ovia-admin main [style*="border-radius: 6px"],
+.ovia-admin main [style*="border-radius: 8px"],
+.ovia-admin main [style*="border-radius: 12px"] {
+  border-radius: 3px !important;
+}
+.ovia-admin main [class*="panel"],
+.ovia-admin main [class*="card"],
+.ovia-admin main [class*="table"],
+.ovia-admin main [class*="overview"],
+.ovia-admin main [class*="sidebar"] {
+  border-radius: 3px !important;
+  border-color: #e1e5e9;
+}
+.ovia-admin main [class*="page"] {
+  font-family: var(--admin-font-sans) !important;
+}
+.ovia-admin main [class*="products"][class*="page"],
+.ovia-admin main [class*="orders"][class*="page"] {
+  background: transparent;
+  padding: 0;
+}
+.ovia-admin main table {
+  background: white;
+  border-collapse: collapse;
+  font: 14px/1.5 var(--admin-font-sans);
+  width: 100%;
+}
+.ovia-admin main th {
+  background: white !important;
+  color: #768391 !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+.ovia-admin main td {
+  font-size: 14px !important;
+}
+.ovia-admin main th,
+.ovia-admin main td {
+  padding: 14px 20px !important;
+  border-bottom: 1px solid #e5e8ec;
+  text-align: left;
+}
+.ovia-admin main tbody tr:hover {
+  background: #fafbfc;
+}
+.ovia-admin
+  main
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+.ovia-admin main select,
+.ovia-admin main textarea {
+  border-radius: 2px !important;
+  font-family: var(--admin-font-sans) !important;
+  border-color: #cdd6df !important;
+}
+.ovia-admin input[type="checkbox"],
+.ovia-admin input[type="radio"] {
+  accent-color: #ffd333;
+}
+.ovia-admin main .admin-button,
+.ovia-admin main button,
+.ovia-admin main [class*="actions"] a {
+  letter-spacing: 0 !important;
+  border-radius: 2px !important;
+  font-size: 14px;
+}
+.ovia-admin main [class*="primary"],
+.ovia-admin main [class*="compose"],
+.ovia-admin main [class*="actions"] a,
+.ovia-admin main button[type="submit"],
+.ovia-admin main .admin-button[style*="background-color: rgb(17, 17, 17)"],
+.ovia-admin main button[style*="background: rgb(17, 17, 17)"],
+.ovia-admin main button[style*="background-color: rgb(17, 17, 17)"] {
+  background: #ffd333 !important;
+  border-color: #ffd333 !important;
+  color: #28313a !important;
+}
+.ovia-admin main [class*="primary"]:hover,
+.ovia-admin main button[type="submit"]:hover {
+  background: #f2c51e !important;
+}
+.ovia-admin main button[style*="background-color: rgb(142, 105, 62)"],
+.ovia-admin main a[style*="background-color: rgb(142, 105, 62)"],
+.ovia-admin main [class*="stepFooter"] button:last-child,
+.ovia-admin main [class*="actions"] button:not([class*="danger"]) {
+  background: #ffd333 !important;
+  color: #28313a !important;
+  border-color: #ffd333 !important;
+}
+.ovia-admin main svg[color="#8E693E"] {
+  color: #6b7b88;
+}
+.ovia-admin main [class*="support"][class*="heading"] {
+  margin: 0 0 24px;
+}
+.ovia-admin main [class*="support"][class*="layout"] {
+  gap: 0;
+  grid-template-columns: 225px minmax(0, 1fr);
+}
+.ovia-admin main [class*="support"][class*="sidebar"] {
+  border-right: 0;
+  padding: 16px;
+}
+.ovia-admin main [class*="support"][class*="compose"] {
+  padding: 10px;
+}
+.ovia-admin main [class*="support"][class*="threadCustomer"],
+.ovia-admin main [class*="support"][class*="threadAdmin"] {
+  border-radius: 3px !important;
+}
+.ovia-admin [class*="date-range-picker"][class*="dialog"] {
+  background: white;
+  color: #343d44;
+  border-radius: 3px;
+}
+.ovia-admin [class*="date-range-picker"][class*="dialog"] header,
+.ovia-admin [class*="date-range-picker"][class*="dialog"] footer,
+.ovia-admin [class*="date-range-picker"][class*="body"] aside {
+  background: #f1f3f5;
+}
+.ovia-admin [class*="date-range-picker"][class*="inputs"] {
+  background: #fafbfc;
+}
+.ovia-admin [class*="date-range-picker"][class*="inputs"] input {
+  background: white;
+  color: #343d44;
+  color-scheme: light;
+  border: 1px solid #cdd6df;
+}
+.ovia-admin [class*="date-range-picker"] button[aria-pressed="true"],
+.ovia-admin
+  [class*="date-range-picker"][class*="dialog"]
+  footer
+  button:last-child {
+  background: #ffd333;
+  color: #28313a;
+}
+.ovia-admin main [class*="danger"],
+.ovia-admin main [class*="destructive"] {
+  color: #c62828 !important;
+  background: #fff3f3 !important;
+  border-color: #efb5b5 !important;
+}
+.ovia-admin :focus-visible {
+  outline: 2px solid #687b8b;
+  outline-offset: 3px;
+}
+.admin-dashboard {
+  display: grid;
+  gap: 24px;
+}
+.admin-dashboard-heading,
+.admin-panel-heading,
+.admin-dashboard-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.admin-dashboard-heading h1 {
+  margin: 0 0 6px;
+}
+.admin-dashboard-heading p {
+  margin: 0;
+  color: #7e8b99;
+}
+.admin-dashboard-actions button,
+.admin-panel-heading select {
+  background: white;
+  border: 1px solid #cdd6df;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.admin-live-label {
+  color: #27723f;
+  font-size: 11px;
+}
+.admin-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.admin-metric-panel {
+  background: white;
+  border: 1px solid #e1e5e9;
+  border-radius: 3px;
+  padding: 20px;
+  box-shadow: 0 1px 2px #25324310;
+  min-width: 0;
+}
+.admin-metric-panel h2 {
+  font-size: 16px;
+  margin: 0 0 16px;
+}
+.admin-metric-label {
+  color: #7e8b99;
+}
+.admin-metric-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 24px;
+}
+.admin-metric-bottom > strong {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.admin-metric-bottom > small {
+  color: #7e8b99;
+  font-size: 11px;
+  text-align: right;
+}
+.admin-overview-grid {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 24px;
+}
+.admin-customer-panel > strong {
+  display: block;
+  padding: 16px;
+  background: #d9ecff;
+  color: #0055a6;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 600;
+}
+.admin-customer-panel p {
+  color: #7e8b99;
+  font-size: 12px;
+}
+.admin-customer-panel a,
+.admin-metric-panel a {
+  color: #1764c0;
+  text-decoration: none;
+}
+.admin-metric-panel a:hover {
+  text-decoration: underline;
+}
+.admin-customer-panel hr {
+  border: 0;
+  border-top: 1px solid #e5e8ec;
+  margin: 24px 0;
+}
+.admin-dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  gap: 24px;
+}
+.admin-table-panel {
+  padding: 0;
+  overflow: auto;
+}
+.admin-table-panel > .admin-panel-heading {
+  padding: 20px;
+  border-bottom: 1px solid #e5e8ec;
+}
+.admin-panel-heading h2 {
+  margin: 0;
+}
+.admin-status-badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 7px;
+  background: #e3efff;
+  color: #1764c0;
+  border-radius: 2px;
+}
+.admin-activity-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 20px;
+  border-left: 1px solid #e5e8ec;
+}
+.admin-activity-list li {
+  position: relative;
+  padding-bottom: 24px;
+  overflow-wrap: anywhere;
+}
+.admin-activity-list li::before {
+  content: "";
+  position: absolute;
+  left: -25px;
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  background: #ffd333;
+  border-radius: 50%;
+}
+.admin-activity-list small {
+  display: block;
+  color: #7e8b99;
+  margin-bottom: 6px;
+}
+.admin-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e8ec;
+}
+.admin-summary-row small {
+  color: #7e8b99;
+  display: block;
+}
+.admin-summary-row img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+.admin-category-track {
+  height: 6px;
+  background: #edf0f3;
+  margin: 8px 0 16px;
+}
+.admin-category-track span {
+  display: block;
+  height: 100%;
+  background: #ffd333;
+}
+.admin-footer {
+  color: #7e8b99;
+  font-size: 12px;
+  border-top: 1px solid #dfe4e9;
+  padding: 20px 0;
+}
+@media (max-width: 1200px) {
+  .admin-toolbar > div:last-child > a {
+    display: none !important;
+  }
+  .admin-toolbar > div:nth-child(2) {
+    width: 260px !important;
+  }
+  .ovia-admin .admin-workspace {
+    padding: 24px !important;
+  }
+  .admin-metric-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+@media (max-width: 1000px) {
+  .admin-overview-grid,
+  .admin-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .admin-toolbar > div:last-child > div:last-child > div:last-child {
+    display: none !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ovia-admin * {
+    transition: none !important;
+  }
+}
+
+.ovia-admin .admin-recent-reviews{padding:0;max-width:100%}
+.ovia-admin .admin-recent-reviews .admin-panel-heading{padding:20px;margin:0}
+.ovia-admin .admin-recent-reviews .admin-summary-row{padding:16px 20px;margin:0;gap:16px;border-top:1px solid #e5e8eb;border-bottom:0}
+.ovia-admin .admin-review-stars{display:flex;white-space:nowrap;font-size:18px;letter-spacing:1px}
+.ovia-admin .admin-review-image-placeholder{width:40px;text-align:center;color:#9aa4ad}
+.ovia-admin .admin-review-empty{padding:20px;border-top:1px solid #e5e8eb;margin:0}
+
+.ovia-admin .admin-catalog-toggle{display:flex;align-items:center;gap:12px;padding:10px 14px;border:0;background:transparent;color:#52525b;font:inherit;cursor:pointer;width:100%;border-radius:8px;transition:all 0.15s ease}
+.ovia-admin .admin-catalog-toggle:hover{background:#f4f4f5;color:#18181b}
+.ovia-admin .admin-catalog-links{display:flex;flex-direction:column;padding:2px 0 8px 34px;gap:2px}
+.ovia-admin .admin-catalog-links a{padding:6px 12px;color:#52525b;border-radius:6px;text-decoration:none;font-size:13px;font-weight:500;transition:all 0.15s ease}
+.ovia-admin .admin-catalog-links a:hover{color:#18181b;background:#f4f4f5}
+.ovia-admin .admin-catalog-links a[aria-current="page"]{color:#18181b;background:#ece9e2;font-weight:600}
+.ovia-admin .admin-catalog-workspace{display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px;align-items:start}
+.ovia-admin .admin-catalog-filters{background:white;border:1px solid #e5e8eb;border-radius:3px}
+.ovia-admin .admin-catalog-filters h2{padding:20px;margin:0;border-bottom:1px solid #e5e8eb;font-size:16px}
+.ovia-admin .admin-catalog-filters label{display:flex;flex-direction:column;gap:12px;padding:20px;border-bottom:1px solid #e5e8eb;font-size:14px}
+.ovia-admin .admin-catalog-filters input,.ovia-admin .admin-catalog-filters select{width:100%;padding:9px;border:1px solid #cdd5df;background:white;border-radius:2px}
+.ovia-admin .admin-catalog-filters button{margin:20px;padding:8px 12px;border:1px solid #ddd;background:#f1f3f5;cursor:pointer}
+.ovia-admin .admin-catalog-results{min-width:0}
+.ovia-admin .admin-catalog-results table img{width:40px;height:40px;object-fit:contain}
+.ovia-admin .admin-catalog-product{display:flex;gap:16px;align-items:center;min-width:240px}
+.ovia-admin .admin-catalog-product small{display:block;margin-top:5px;font-size:12px;color:#798792}
+.ovia-admin .admin-stock-label{background:#def3cf;color:#346515;padding:3px 6px;white-space:nowrap;font-size:11px}
+.ovia-admin .admin-stock-label[data-empty="true"]{background:#ffd9dc;color:#a31b25}
+.ovia-admin .admin-category-editor{max-width:1200px;margin:auto}
+.ovia-admin .admin-catalog-page-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;gap:20px}
+.ovia-admin .admin-catalog-page-heading small{color:#798792;font-size:13px}
+.ovia-admin .admin-catalog-page-heading h1{margin-top:10px}
+.ovia-admin .admin-catalog-page-heading>div:last-child{display:flex;gap:14px;align-items:center}
+.ovia-admin .admin-catalog-page-heading button{background:#ffd333;color:#20262b;border:0;padding:10px 22px;cursor:pointer}
+.ovia-admin .admin-category-editor-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(260px,1fr);gap:24px;align-items:start}
+.ovia-admin .admin-category-editor-grid section{padding:24px;border:1px solid #e5e8eb;background:white;margin-bottom:24px;border-radius:3px}
+.ovia-admin .admin-category-editor-grid h2{font-size:18px;margin:0 0 24px}
+.ovia-admin .admin-category-editor-grid label{display:flex;flex-direction:column;gap:10px;margin-top:20px;font-size:14px}
+.ovia-admin .admin-category-editor-grid input:not([type="radio"]),.ovia-admin .admin-category-editor-grid textarea,.ovia-admin .admin-category-editor-grid select{width:100%;padding:10px 12px;background:white;border:1px solid #cdd5df;border-radius:2px;font:inherit}
+.ovia-admin .admin-category-editor-grid .admin-radio-label{flex-direction:row;align-items:center;gap:8px;margin-top:12px}
+.ovia-admin input[type="radio"]{accent-color:#ffd333}
+.ovia-admin .admin-category-image{width:100%;height:220px;object-fit:contain;border:1px solid #e5e8eb}
+.ovia-admin .admin-reference-product-editor [class*="layout"]{grid-template-columns:minmax(0,1fr) 300px!important;gap:24px!important}
+.ovia-admin .admin-reference-product-editor [class*="stepNav"]{grid-column:1/-1;position:static;flex-direction:row;flex-wrap:wrap;gap:8px;padding:10px}
+.ovia-admin .admin-reference-product-editor [class*="sections"]>[data-editor-section]{display:block!important;scroll-margin-top:80px;border-radius:3px!important;box-shadow:none!important}
+.ovia-admin .admin-reference-product-editor [class*="stepFooter"]>div{display:none}
+.ovia-admin .admin-reference-product-editor [data-editor-section]>div:first-child>div>span:first-child{display:none}
+@media(max-width:1000px){.ovia-admin .admin-catalog-workspace{grid-template-columns:1fr}.ovia-admin .admin-catalog-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.ovia-admin .admin-catalog-filters h2{grid-column:1/-1}.ovia-admin .admin-reference-product-editor [class*="layout"],.ovia-admin .admin-category-editor-grid{grid-template-columns:1fr!important}}
+
+.ovia-admin .admin-reference-product-editor h2,.ovia-admin .admin-reference-product-editor h3,.ovia-admin .admin-reference-product-editor label{font-family:var(--admin-font-sans)!important}
+
+.ovia-admin .admin-product-reference{max-width:1300px;margin:0 auto;color:#282d31;font-family:var(--admin-font-sans)}
+.ovia-admin .admin-product-reference-heading{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:28px}
+.ovia-admin .admin-product-reference-heading small{font-size:13px;color:#7e8b96}
+.ovia-admin .admin-product-reference-heading small a{color:inherit;text-decoration:none}
+.ovia-admin .admin-product-reference-heading h1{margin:10px 0 0;font-size:28px!important}
+.ovia-admin .admin-product-reference-heading>div:last-child{display:flex;gap:8px}
+.ovia-admin .admin-product-reference-heading button{padding:10px 18px;background:#ffd333;border:0;color:#282d31;border-radius:2px;cursor:pointer;font:inherit}
+.ovia-admin .admin-product-reference-heading button.secondary{background:#e5e8eb}
+.ovia-admin .admin-product-reference-columns{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(280px,1fr);gap:24px;align-items:start}
+.ovia-admin .admin-product-reference-columns main,.ovia-admin .admin-product-reference-columns aside{min-width:0}
+.ovia-admin .admin-product-reference-columns section{background:white;border:1px solid #e6e9ed;border-radius:3px;box-shadow:0 1px 2px #00000008;padding:24px;margin-bottom:24px;scroll-margin-top:80px}
+.ovia-admin .admin-product-reference-columns h2{font-size:18px;font-weight:600;line-height:1.4;margin:0 0 26px}
+.ovia-admin .admin-product-reference-columns label{display:flex;flex-direction:column;gap:9px;margin-top:20px;font-size:14px;font-weight:500}
+.ovia-admin .admin-product-reference-columns input:not([type="radio"]),.ovia-admin .admin-product-reference-columns textarea,.ovia-admin .admin-product-reference-columns select{width:100%;min-width:0;border:1px solid #cbd5df;border-radius:1px;padding:9px 12px;font:400 14px/1.5 var(--admin-font-sans);color:#282d31;background:white}
+.ovia-admin .admin-product-reference-columns textarea{resize:vertical}
+.ovia-admin .admin-product-reference-columns small,.ovia-admin .admin-product-reference-columns p{font-size:13px;color:#74818c;line-height:1.6;font-weight:400}
+.ovia-admin .admin-slug-input{display:flex;align-items:stretch}
+.ovia-admin .admin-slug-input>span{padding:9px 14px;background:#e9ecef;border:1px solid #cbd5df;border-right:0;white-space:nowrap;font-weight:400}
+.ovia-admin .admin-product-field-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ovia-admin .admin-product-field-pair label{margin-top:0}
+.ovia-admin .admin-description-editor{border:1px solid #cbd5df;margin-top:9px}
+.ovia-admin .admin-description-toolbar{display:flex;gap:4px;flex-wrap:wrap;padding:8px 10px;border-bottom:1px solid #cbd5df}
+.ovia-admin .admin-description-toolbar button{border:0;background:white;color:#282d31;min-width:30px;padding:6px;font-size:14px;font-weight:600;cursor:pointer}
+.ovia-admin .admin-description-toolbar button:hover{background:#f0f2f4}
+.ovia-admin .admin-description-editor textarea{border:0;padding:14px;min-height:230px;display:block}
+.ovia-admin .admin-product-reference-columns .admin-product-radio{flex-direction:row;align-items:center;font-weight:400;margin:10px 0;gap:8px}
+.ovia-admin .admin-product-reference-columns .admin-product-radio input{accent-color:#ffd333}
+.ovia-admin .admin-product-reference-columns aside a{display:inline-block;margin-top:18px;font-size:14px;color:#3677f5;text-decoration:none}
+.ovia-admin .admin-text-link{border:0;background:transparent;color:#3677f5;font:400 14px/1.5 var(--admin-font-sans);padding:0;margin-top:18px;cursor:pointer;text-align:left}
+.ovia-admin .admin-product-tags{border:1px solid #cbd5df;padding:8px;display:flex;flex-wrap:wrap;gap:6px}
+.ovia-admin .admin-product-tags button{background:#858d92;color:white;border:0;border-radius:1px;padding:4px 7px;font-size:13px;cursor:pointer}
+.ovia-admin .admin-product-tags input{border:0!important;padding:4px!important;flex:1;min-width:160px!important}
+.ovia-admin .admin-product-reference-columns .admin-product-images{padding:0}
+.ovia-admin .admin-product-images h2{padding:24px;margin:0;border-bottom:1px solid #e6e9ed}
+.ovia-admin .admin-product-images-table{overflow-x:auto}
+.ovia-admin .admin-product-images table{width:100%;border-collapse:collapse}
+.ovia-admin .admin-product-images th{font-size:14px;font-weight:500;text-align:left;padding:14px 20px;border-bottom:1px solid #e6e9ed}
+.ovia-admin .admin-product-images td{padding:14px 20px;border-bottom:1px solid #e6e9ed}
+.ovia-admin .admin-product-images td img{width:36px;height:36px;object-fit:contain}
+.ovia-admin .admin-product-images td:nth-child(2){width:100%}
+.ovia-admin .admin-product-images td:nth-child(3) input{width:64px;padding:4px 8px}
+.ovia-admin .admin-product-images td:last-child button{background:transparent;border:0;color:#78838c;font-size:22px;cursor:pointer}
+.ovia-admin .admin-product-images>.admin-text-link,.ovia-admin .admin-product-images>p{margin:20px 24px}
+.ovia-admin .admin-reference-filter-group{padding:20px;border-bottom:1px solid #e5e8eb}
+.ovia-admin .admin-reference-filter-group h3{font-size:14px;margin:0 0 16px;font-family:var(--admin-font-sans)}
+.ovia-admin .admin-catalog-filters .admin-filter-check{flex-direction:row;align-items:center;gap:8px;padding:0;margin:10px 0;border:0;font-weight:400}
+.ovia-admin .admin-catalog-filters .admin-filter-check input{width:16px;height:16px;margin:0;accent-color:#ffd333}
+.ovia-admin .admin-catalog-filters input[type="range"]{accent-color:#ffd333;padding:0}
+@media(max-width:900px){.ovia-admin .admin-product-reference-columns{grid-template-columns:1fr}.ovia-admin .admin-product-reference-columns aside{grid-row:1}.ovia-admin .admin-product-reference-heading{align-items:flex-start}.ovia-admin .admin-product-field-pair{grid-template-columns:1fr}}
+
+.ovia-admin .admin-catalog-results table input[type="checkbox"]{accent-color:#ffd333;width:16px;height:16px}
+.ovia-admin [class*="orders"][class*="tableWrap"] th{padding-top:18px!important;padding-bottom:18px!important}
+
+.ovia-admin .admin-product-row-menu{position:relative}
+.ovia-admin .admin-product-row-menu summary{list-style:none;cursor:pointer;font-size:23px;color:#77828b;padding:0 8px}
+.ovia-admin .admin-product-row-menu>div{display:flex;gap:12px;position:absolute;right:0;top:30px;z-index:5;padding:12px;background:white;border:1px solid #ddd;box-shadow:0 2px 6px #0002}
+
+.ovia-admin .admin-import-button{background:#e5e8eb!important;color:#282d31!important;border:0!important}
+.ovia-admin .admin-import-backdrop{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:#0005;padding:20px}
+.ovia-admin .admin-import-backdrop section{background:white;padding:24px;width:540px;max-width:100%;border:1px solid #e5e8eb;border-radius:3px}
+.ovia-admin .admin-import-backdrop p{line-height:1.6;margin:16px 0;color:#74818c;font-size:14px}
+.ovia-admin .admin-import-backdrop section>div{display:flex;justify-content:flex-end;gap:10px;margin-top:24px}
+
+/* Real-time Active Users Panel */
+.ovia-admin .admin-active-users-panel {
+  display: flex;
+  flex-direction: column;
+}
+.ovia-admin .admin-active-users-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.ovia-admin .admin-active-users-heading h2 {
+  margin: 0 !important;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2e3338;
+}
+.ovia-admin .admin-active-users-dots {
+  background: transparent;
+  border: 0;
+  padding: 4px;
+  color: #7e8b99;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  border-radius: 3px;
+  transition: color 0.15s, background-color 0.15s;
+}
+.ovia-admin .admin-active-users-dots:hover {
+  color: #2e3338;
+  background-color: #f0f2f5;
+}
+.ovia-admin .admin-active-users-stat {
+  background: #d9ecff;
+  color: #0b57d0;
+  border-radius: 3px;
+  padding: 24px 16px;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+}
+.ovia-admin .admin-active-users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.ovia-admin .admin-active-users-table th {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555f68;
+  padding: 8px 0;
+  border-bottom: 1px solid #e1e5e9;
+}
+.ovia-admin .admin-active-users-table td {
+  padding: 10px 0;
+  font-size: 13px;
+  border-bottom: 1px solid #edf1f5;
+  color: #2e3338;
+}
+.ovia-admin .admin-active-users-table td:first-child a {
+  color: #2e3338;
+  text-decoration: none;
+  word-break: break-all;
+}
+.ovia-admin .admin-active-users-table td:first-child a:hover {
+  color: #0b57d0;
+  text-decoration: underline;
+}
+.ovia-admin .admin-active-users-table td:last-child {
+  font-weight: 600;
+  color: #2e3338;
+}
+.ovia-admin .admin-active-users-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* SEO Section & Google-style Search Preview */
+.ovia-admin .admin-seo-preview-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 18px 0 24px;
+}
+.ovia-admin .admin-seo-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e2e8f0;
+}
+.ovia-admin .admin-seo-preview-title-bar {
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ovia-admin .admin-seo-mode-switch {
+  display: flex;
+  background: #e2e8f0;
+  border-radius: 6px;
+  padding: 2px;
+  gap: 2px;
+}
+.ovia-admin .admin-seo-mode-btn {
+  border: 0;
+  background: transparent;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #64748b;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.ovia-admin .admin-seo-mode-btn.active {
+  background: white;
+  color: #0f172a;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.ovia-admin .admin-google-snippet {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  font-family: Arial, sans-serif;
+  max-width: 650px;
+}
+.ovia-admin .admin-google-snippet.mobile {
+  max-width: 380px;
+  border-radius: 12px;
+}
+.ovia-admin .admin-google-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.ovia-admin .admin-google-favicon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #0f172a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.ovia-admin .admin-google-site-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.ovia-admin .admin-google-site-name {
+  font-size: 14px;
+  color: #202124;
+  font-weight: 500;
+}
+.ovia-admin .admin-google-url {
+  font-size: 12px;
+  color: #4d5156;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ovia-admin .admin-google-title {
+  color: #1a0dab;
+  font-size: 18px;
+  line-height: 1.3;
+  margin: 4px 0 6px;
+  cursor: pointer;
+  word-break: break-word;
+}
+.ovia-admin .admin-google-title:hover {
+  text-decoration: underline;
+}
+.ovia-admin .admin-google-desc {
+  color: #4d5156;
+  font-size: 13px;
+  line-height: 1.5;
+  word-break: break-word;
+}
+.ovia-admin .admin-google-rich-data {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #e2e8f0;
+  font-size: 12px;
+  color: #5f6368;
+}
+.ovia-admin .admin-google-rich-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #f1f3f4;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: #3c4043;
+}
+.ovia-admin .admin-seo-card-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 16px;
+  margin-top: 18px;
+}
+.ovia-admin .admin-seo-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.ovia-admin .admin-seo-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+.ovia-admin .admin-seo-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: #e0f2fe;
+  color: #0369a1;
+}
+.ovia-admin .admin-seo-tag.success {
+  background: #dcfce7;
+  color: #15803d;
+}
+.ovia-admin .admin-seo-tag.neutral {
+  background: #f1f5f9;
+  color: #475569;
+}
+.ovia-admin .admin-seo-radio-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 10px;
+}
+@media (max-width: 640px) {
+  .ovia-admin .admin-seo-radio-group {
+    grid-template-columns: 1fr;
+  }
+}
+.ovia-admin .admin-seo-radio-tile {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: 0 !important;
+  transition: all 0.15s ease;
+}
+.ovia-admin .admin-seo-radio-tile:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+.ovia-admin .admin-seo-radio-tile.selected {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+.ovia-admin .admin-seo-radio-tile input[type="radio"] {
+  width: auto !important;
+  margin-top: 3px;
+  accent-color: #2563eb;
+}
+.ovia-admin .admin-seo-radio-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ovia-admin .admin-seo-radio-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+}
+.ovia-admin .admin-seo-radio-desc {
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.4;
+}
+.ovia-admin .admin-seo-schema-viewer {
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 6px;
+  padding: 14px;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-x: auto;
+  max-height: 240px;
+  margin-top: 10px;
+}
+.ovia-admin .admin-seo-checkbox-row {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-top: 10px !important;
+  cursor: pointer;
+}
+.ovia-admin .admin-seo-checkbox-row input[type="checkbox"] {
+  width: 18px !important;
+  height: 18px !important;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+/* Product Images Management Suite */
+.ovia-admin .admin-image-dropzone {
+  border: 2px dashed #cbd5df;
+  border-radius: 8px;
+  background: #f8fafc;
+  padding: 24px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 16px 24px;
+}
+.ovia-admin .admin-image-dropzone:hover,
+.ovia-admin .admin-image-dropzone.drag-active {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+.ovia-admin .admin-dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.ovia-admin .admin-dropzone-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+}
+.ovia-admin .admin-dropzone-subtitle {
+  font-size: 12px;
+  color: #64748b;
+}
+.ovia-admin .admin-dropzone-badges {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.ovia-admin .admin-dropzone-badge {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #e2e8f0;
+  color: #475569;
+}
+.ovia-admin .admin-dropzone-badge.accent {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+.ovia-admin .admin-image-row-dragging {
+  opacity: 0.4;
+}
+.ovia-admin .admin-image-row-drag-over {
+  border-top: 2px solid #2563eb !important;
+}
+.ovia-admin .admin-thumb-container {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.ovia-admin .admin-thumb-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+.ovia-admin .admin-thumb-badge-primary {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background: #0f172a;
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.ovia-admin .admin-image-meta-info {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 4px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.ovia-admin .admin-image-res-tag {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+.ovia-admin .admin-image-res-tag.high {
+  background: #dcfce7;
+  color: #15803d;
+}
+.ovia-admin .admin-image-res-tag.norm {
+  background: #f1f5f9;
+  color: #475569;
+}
+.ovia-admin .admin-image-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.ovia-admin .admin-btn-action {
+  border: 1px solid #cbd5df;
+  background: white;
+  color: #282d31;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s ease;
+}
+.ovia-admin .admin-btn-action:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+.ovia-admin .admin-btn-action.primary-set {
+  background: #eff6ff;
+  border-color: #93c5fd;
+  color: #1d4ed8;
+}
+.ovia-admin .admin-btn-action.danger {
+  color: #dc2626;
+  border-color: #fca5a5;
+}
+.ovia-admin .admin-btn-action.danger:hover {
+  background: #fef2f2;
+}
+.ovia-admin .admin-drag-handle {
+  cursor: grab;
+  color: #94a3b8;
+  font-size: 16px;
+  padding: 4px;
+  display: inline-flex;
+  align-items: center;
+}
+.ovia-admin .admin-drag-handle:active {
+  cursor: grabbing;
+}
+
+/* Inventory Management Suite */
+.ovia-admin .admin-inventory-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 16px 0 20px;
+}
+@media (max-width: 640px) {
+  .ovia-admin .admin-inventory-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.ovia-admin .admin-inventory-kpi-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ovia-admin .admin-inventory-kpi-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #64748b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ovia-admin .admin-inventory-kpi-val {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+}
+.ovia-admin .admin-inventory-status-pill {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.ovia-admin .admin-inventory-status-pill.instock {
+  background: #dcfce7;
+  color: #15803d;
+}
+.ovia-admin .admin-inventory-status-pill.lowstock {
+  background: #fef3c7;
+  color: #b45309;
+}
+.ovia-admin .admin-inventory-status-pill.outofstock {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+.ovia-admin .admin-inventory-feature-box {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 16px;
+  margin-top: 14px;
+}
+.ovia-admin .admin-inventory-feature-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.ovia-admin .admin-inventory-feature-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ovia-admin .admin-inventory-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #f1f5f9;
+  color: #475569;
+}
+.ovia-admin .admin-inventory-badge.active {
+  background: #dcfce7;
+  color: #15803d;
+}
+.ovia-admin .admin-inventory-history-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 12px;
+}
+.ovia-admin .admin-inventory-history-table th {
+  text-align: left;
+  padding: 8px 10px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  color: #475569;
+  font-weight: 600;
+}
+.ovia-admin .admin-inventory-history-table td {
+  padding: 9px 10px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+}
+.ovia-admin .admin-delta-pos {
+  color: #16a34a;
+  font-weight: 600;
+}
+.ovia-admin .admin-delta-neg {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.ovia-admin .admin-inventory-alert-box {
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ovia-admin .admin-inventory-alert-box.warning {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #92400e;
+}
+.ovia-admin .admin-inventory-alert-box.danger {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+.ovia-admin .admin-inventory-adjust-drawer {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 14px 0;
+}
+.ovia-admin .admin-inventory-switch-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #334155;
+  margin-top: 8px;
+}
+.ovia-admin .admin-inventory-switch-label input[type="checkbox"] {
+  margin-top: 2px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.ovia-admin .admin-inventory-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+.ovia-admin .admin-inventory-radio-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #334155;
+}
+.ovia-admin .admin-inventory-radio-option input[type="radio"] {
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+/* Clean Light Product Images Studio */
+.ovia-admin .admin-dark-images-studio {
+  background: #ffffff;
+  color: #111827;
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: 14px;
+  border: 1px solid #e5e8eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+.ovia-admin .admin-dark-studio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+.ovia-admin .admin-dark-studio-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+.ovia-admin .admin-dark-records-pill {
+  background: #f4f4f5;
+  border: 1px solid #e4e4e7;
+  color: #52525b;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 14px;
+  border-radius: 9999px;
+}
+.ovia-admin .admin-dark-studio-subtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 4px 0 20px;
+}
+.ovia-admin .admin-dark-table-header {
+  display: grid;
+  grid-template-columns: 110px 1fr 110px;
+  gap: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e8eb;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+}
+.ovia-admin .admin-dark-table-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 110px;
+  gap: 20px;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #f3f4f6;
+  transition: background 0.15s ease;
+}
+.ovia-admin .admin-dark-table-row:last-child {
+  border-bottom: none;
+}
+.ovia-admin .admin-dark-thumb-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90px;
+}
+.ovia-admin .admin-dark-thumb-card {
+  width: 84px;
+  height: 84px;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e8eb;
+}
+.ovia-admin .admin-dark-thumb-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.ovia-admin .admin-dark-primary-badge {
+  background: #facc15;
+  color: #000000;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-top: 8px;
+  text-align: center;
+  display: inline-block;
+  letter-spacing: 0.02em;
+}
+.ovia-admin .admin-dark-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ovia-admin .admin-dark-title-input {
+  background: #ffffff;
+  border: 1px solid #d4d4d8;
+  color: #18181b;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 320px;
+  transition: all 0.15s ease;
+}
+.ovia-admin .admin-dark-title-input:hover,
+.ovia-admin .admin-dark-title-input:focus {
+  background: #ffffff;
+  border-color: #3b82f6;
+  outline: none;
+}
+.ovia-admin .admin-dark-desc-input {
+  background: #ffffff;
+  border: 1px solid #d4d4d8;
+  border-radius: 6px;
+  color: #18181b;
+  font-size: 13px;
+  padding: 7px 12px;
+  width: 100%;
+  max-width: 520px;
+  transition: all 0.15s ease;
+}
+.ovia-admin .admin-dark-desc-input:focus {
+  border-color: #3b82f6;
+  background: #ffffff;
+  outline: none;
+}
+.ovia-admin .admin-dark-color-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #374151;
+  margin-top: 2px;
+}
+.ovia-admin .admin-dark-color-dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  display: inline-block;
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.ovia-admin .admin-dark-color-select {
+  background: #ffffff;
+  border: 1px solid #d4d4d8;
+  border-radius: 6px;
+  color: #18181b;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 12px;
+  cursor: pointer;
+  min-width: 220px;
+}
+.ovia-admin .admin-dark-color-select:focus {
+  border-color: #3b82f6;
+  outline: none;
+}
+.ovia-admin .admin-dark-order-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+.ovia-admin .admin-dark-order-input {
+  background: #ffffff;
+  border: 1px solid #d4d4d8;
+  border-radius: 4px;
+  color: #18181b;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 8px;
+  width: 80px;
+  text-align: center;
+}
+.ovia-admin .admin-dark-reorder-arrows {
+  display: inline-flex;
+  gap: 3px;
+  margin-left: 4px;
+}
+.ovia-admin .admin-dark-reorder-arrows button {
+  background: #f4f4f5;
+  border: 1px solid #d4d4d8;
+  border-radius: 3px;
+  color: #374151;
+  cursor: pointer;
+  font-size: 10px;
+  padding: 2px 6px;
+  line-height: 1.2;
+}
+.ovia-admin .admin-dark-reorder-arrows button:hover:not(:disabled) {
+  background: #e4e4e7;
+  color: #111827;
+}
+.ovia-admin .admin-dark-actions-col {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  width: 100px;
+}
+.ovia-admin .admin-dark-pill-btn {
+  background: #ffd333;
+  border: none;
+  color: #111827;
+  border-radius: 6px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+.ovia-admin .admin-dark-pill-btn:hover {
+  background: #facc15;
+}
+.ovia-admin .admin-dark-btn-delete {
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  border-radius: 6px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+.ovia-admin .admin-dark-btn-delete:hover {
+  background: #fecaca;
+  color: #b91c1c;
+}
+.ovia-admin .admin-dark-upload-btn {
+  display: none !important;
+}
+
+/* Clean Light Pricing & Inventory Studios */
+.ovia-admin .admin-dark-pricing-studio,
+.ovia-admin .admin-dark-inventory-studio {
+  background: #ffffff;
+  color: #111827;
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e8eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.ovia-admin .admin-dark-stock-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 18px 24px;
+  margin-top: 16px;
+  margin-bottom: 20px;
+}
+.ovia-admin .admin-dark-stock-card-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+}
+.ovia-admin .admin-dark-stock-card-val {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 6px;
+}
+.ovia-admin .admin-dark-stock-card-num {
+  font-size: 38px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.ovia-admin .admin-dark-stock-card-unit {
+  font-size: 16px;
+  font-weight: 400;
+  color: #64748b;
+}
+
+.ovia-admin .admin-dark-price-preview-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 18px 24px;
+  margin-top: 24px;
+}
+.ovia-admin .admin-dark-price-preview-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+}
+.ovia-admin .admin-dark-price-preview-val {
+  font-size: 36px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 6px 0 4px;
+  letter-spacing: -0.02em;
+}
+.ovia-admin .admin-dark-price-preview-sub {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* Pricing Grid Header & Rows */
+.ovia-admin .admin-dark-pricing-table-header {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 100px;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+}
+.ovia-admin .admin-dark-pricing-table-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 100px;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid #f1f5f9;
+  color: #0f172a;
+}
+.ovia-admin .admin-dark-pricing-table-row:last-child {
+  border-bottom: none;
+}
+
+/* Inventory Grid Header & Rows */
+.ovia-admin .admin-dark-inv-table-header {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 120px;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+}
+.ovia-admin .admin-dark-inv-table-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 120px;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid #f1f5f9;
+  color: #0f172a;
+}
+.ovia-admin .admin-dark-inv-table-row:last-child {
+  border-bottom: none;
+}
+
+.ovia-admin .admin-dark-pill-instock {
+  background: #052e16;
+  color: #22c55e;
+  border: 1px solid #14532d;
+  padding: 4px 14px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ovia-admin .admin-dark-pill-outofstock {
+  background: #450a0a;
+  color: #ef4444;
+  border: 1px solid #7f1d1d;
+  padding: 4px 14px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ovia-admin .admin-dark-form-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 16px 0;
+  padding: 18px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+.ovia-admin .admin-dark-form-inputs label {
+  color: #374151;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+.ovia-admin .admin-dark-form-inputs input {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #111827;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-top: 6px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.ovia-admin .admin-dark-form-inputs input:focus {
+  border-color: #3b82f6;
+  outline: none;
+}
+
+.ovia-admin .admin-dark-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.ovia-admin .admin-dark-section-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+.ovia-admin .admin-dark-badge-pill {
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #cbd5df;
+  border-radius: 9999px;
+  padding: 4px 14px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.ovia-admin .admin-dark-color-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.ovia-admin .admin-dark-color-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ovia-admin .admin-dark-color-sku-cell {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ovia-admin .admin-dark-sku-sub {
+  font-size: 12px;
+  color: #71717a;
+  font-family: inherit;
+  margin-top: 3px;
+}
+
+.ovia-admin .admin-dark-btn-edit {
+  background: #ffffff;
+  border: 1px solid #cbd5df;
+  color: #334155;
+  border-radius: 9999px;
+  padding: 6px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ovia-admin .admin-dark-btn-edit:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.ovia-admin .admin-dark-schedule-link {
+  color: #3b82f6;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  cursor: pointer;
+  margin-top: 8px;
+  display: inline-block;
+}
+.ovia-admin .admin-dark-schedule-link:hover {
+  text-decoration: underline;
+}
+
+.ovia-admin .admin-dark-subcard {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 14px;
+}
+
+/* Clean Light SEO Studio */
+.ovia-admin .admin-dark-seo-studio {
+  background: #ffffff;
+  color: #111827;
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e8eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.ovia-admin .admin-dark-seo-table-header {
+  display: grid;
+  grid-template-columns: 2fr 100px 100px;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e8eb;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.ovia-admin .admin-dark-seo-table-row {
+  display: grid;
+  grid-template-columns: 2fr 100px 100px;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #f3f4f6;
+  color: #111827;
+}
+
+.ovia-admin .admin-dark-seo-table-row:last-child {
+  border-bottom: none;
+}
+
+.ovia-admin .admin-dark-seo-edit-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 22px;
+  margin-top: 24px;
+}
+
+.ovia-admin .admin-dark-seo-preview-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-top: 12px;
+}
+
+.ovia-admin .admin-dark-seo-preview-url {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 6px;
+  word-break: break-all;
+}
+
+.ovia-admin .admin-dark-seo-preview-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1d4ed8;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.ovia-admin .admin-dark-seo-preview-desc {
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.ovia-admin .admin-dark-char-counter {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+/* Clean Streamlined Dark Sections (02 — Pricing, 03 — Inventory, 04 — Product Variants) */
+/* Clean Streamlined Light Sections (01 — Basic Info, 02 — Pricing, 03 — Inventory, 04 — Product Variants) */
+.ovia-admin .admin-dark-section,
+.admin-dark-section {
+  background: #ffffff !important;
+  border: 1px solid #e5e8eb !important;
+  border-radius: 8px !important;
+  padding: 24px !important;
+  margin-bottom: 24px !important;
+  color: #111827 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+.ovia-admin .admin-dark-section-title,
+.admin-dark-section-title {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #111827 !important;
+  margin: 0 0 18px 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  letter-spacing: -0.01em !important;
+}
+
+.ovia-admin .admin-dark-section-icon,
+.admin-dark-section-icon {
+  font-size: 16px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #6b7280 !important;
+}
+
+.ovia-admin .admin-dark-section label,
+.admin-dark-section label {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  margin-top: 14px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #374151 !important;
+}
+
+.ovia-admin .admin-dark-section label:first-child,
+.admin-dark-section label:first-child {
+  margin-top: 0 !important;
+}
+
+.ovia-admin .admin-dark-section input,
+.ovia-admin .admin-dark-section select,
+.ovia-admin .admin-dark-section textarea,
+.admin-dark-section input,
+.admin-dark-section select,
+.admin-dark-section textarea {
+  width: 100% !important;
+  background: #ffffff !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 6px !important;
+  padding: 10px 14px !important;
+  font-size: 14px !important;
+  color: #111827 !important;
+  box-sizing: border-box !important;
+  transition: border-color 0.15s ease !important;
+}
+
+.ovia-admin .admin-dark-section input:focus,
+.ovia-admin .admin-dark-section select:focus,
+.ovia-admin .admin-dark-section textarea:focus,
+.admin-dark-section input:focus,
+.admin-dark-section select:focus,
+.admin-dark-section textarea:focus {
+  border-color: #3b82f6 !important;
+  background: #ffffff !important;
+  outline: none !important;
+}
+
+.ovia-admin .admin-dark-field-note,
+.admin-dark-field-note {
+  font-size: 12px !important;
+  color: #6b7280 !important;
+  margin: 8px 0 0 0 !important;
+  line-height: 1.5 !important;
+}
+
+.ovia-admin .admin-dark-stock-status-row,
+.admin-dark-stock-status-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-top: 16px !important;
+  padding-top: 14px !important;
+  border-top: 1px solid #f3f4f6 !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #374151 !important;
+}
+
+.ovia-admin .admin-dark-stock-pill,
+.admin-dark-stock-pill {
+  padding: 4px 14px !important;
+  border-radius: 9999px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.ovia-admin .admin-dark-stock-pill.in-stock,
+.admin-dark-stock-pill.in-stock {
+  background: #e0f7eb !important;
+  color: #15803d !important;
+  border: 1px solid #bbf7d0 !important;
+}
+
+.ovia-admin .admin-dark-stock-pill.out-of-stock,
+.admin-dark-stock-pill.out-of-stock {
+  background: #fee2e2 !important;
+  color: #dc2626 !important;
+  border: 1px solid #fecaca !important;
+}
+
+/* Custom Color Management */
+.admin-dark-color-chips {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+}
+
+.admin-dark-color-chip {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: #f4f4f5 !important;
+  border: 1px solid #e4e4e7 !important;
+  border-radius: 9999px !important;
+  padding: 6px 14px 6px 8px !important;
+  font-size: 13px !important;
+  color: #111827 !important;
+  transition: all 0.15s ease !important;
+}
+
+.admin-dark-color-chip:hover {
+  border-color: #cbd5e1 !important;
+  background: #e2e8f0 !important;
+}
+
+.admin-dark-color-chip-dot {
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.2) !important;
+  display: inline-block !important;
+  cursor: pointer !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15) !important;
+  flex-shrink: 0 !important;
+}
+
+.admin-dark-color-chip-remove {
+  background: transparent !important;
+  border: none !important;
+  color: #94a3b8 !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  margin-left: 4px !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.admin-dark-color-chip-remove:hover {
+  color: #ef4444 !important;
+}
+
+.admin-dark-custom-color-box {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 10px !important;
+  padding: 14px !important;
+  margin-top: 12px !important;
+}
+
+.admin-palette-btn {
+  width: 22px !important;
+  height: 22px !important;
+  border-radius: 50% !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.2) !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  transition: transform 0.1s ease, border-color 0.1s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.admin-palette-btn:hover {
+  transform: scale(1.15) !important;
+  border-color: #0f172a !important;
+}
+
+/* Active Chip Highlight */
+.admin-dark-color-chip.active-chip {
+  border-color: #3b82f6 !important;
+  background: #eff6ff !important;
+  color: #1d4ed8 !important;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.4) !important;
+}
+
+.admin-dark-btn-icon-delete {
+  background: transparent !important;
+  border: none !important;
+  color: #71717a !important;
+  cursor: pointer !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+  padding: 4px 6px !important;
+  border-radius: 4px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease !important;
+}
+
+.admin-dark-btn-icon-delete:hover {
+  color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+}
+
+/* ==========================================================================
+   Stroyka Customers Management Theme (Reference Design Matching)
+   ========================================================================== */
+.ovia-admin .admin-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #74818c;
+  margin-bottom: 6px;
+}
+.ovia-admin .admin-breadcrumb a {
+  color: #74818c;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.ovia-admin .admin-breadcrumb a:hover {
+  color: #282d31;
+}
+.ovia-admin .admin-breadcrumb span.sep {
+  color: #a0aec0;
+}
+.ovia-admin .admin-breadcrumb span.current {
+  color: #282d31;
+  font-weight: 500;
+}
+
+.ovia-admin .admin-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.ovia-admin .admin-page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #282d31;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.ovia-admin .admin-btn-stroyka-yellow {
+  background: #ffd333;
+  color: #20262b;
+  border: 0;
+  border-radius: 2px;
+  padding: 9px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+  line-height: 1.4;
+}
+.ovia-admin .admin-btn-stroyka-yellow:hover {
+  background: #f2c51e;
+}
+.ovia-admin .admin-btn-stroyka-default {
+  background: #ffffff;
+  color: #282d31;
+  border: 1px solid #d1d5db;
+  border-radius: 2px;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  line-height: 1.4;
+}
+.ovia-admin .admin-btn-stroyka-default:hover {
+  background: #f8fafc;
+  border-color: #9ca3af;
+}
+
+/* Customer Table Card */
+.ovia-admin .admin-customer-table-card {
+  background: #ffffff;
+  border: 1px solid #e5e8eb;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  overflow: visible;
+}
+.ovia-admin .admin-customer-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #ebeef2;
+}
+.ovia-admin .admin-customer-search-bar input {
+  flex: 1;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  font-size: 14px !important;
+  color: #282d31 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+.ovia-admin .admin-customer-search-bar input::placeholder {
+  color: #9ca3af;
+}
+
+.ovia-admin .admin-customer-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.ovia-admin .admin-customer-table th {
+  padding: 14px 20px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 500;
+  color: #74818c;
+  border-bottom: 1px solid #ebeef2;
+  white-space: nowrap;
+  user-select: none;
+}
+.ovia-admin .admin-customer-table th .sort-icon {
+  display: inline-block;
+  margin-left: 6px;
+  color: #a0aec0;
+  font-size: 12px;
+  cursor: pointer;
+}
+.ovia-admin .admin-customer-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #f0f2f5;
+  color: #282d31;
+  font-size: 14px;
+  vertical-align: middle;
+}
+.ovia-admin .admin-customer-table tr:hover td {
+  background: #f7f9fa;
+}
+.ovia-admin .admin-customer-cell {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.ovia-admin .admin-customer-avatar-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #f0f2f5;
+  border: 1px solid #e5e8eb;
+}
+.ovia-admin .admin-customer-avatar-initial {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f0f2f5;
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  flex-shrink: 0;
+  border: 1px solid #e5e8eb;
+}
+.ovia-admin .admin-customer-name-link {
+  color: #282d31;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  display: block;
+}
+.ovia-admin .admin-customer-name-link:hover {
+  color: #3677f5;
+}
+.ovia-admin .admin-customer-email-sub {
+  color: #74818c;
+  font-size: 13px;
+  margin-top: 2px;
+  display: block;
+}
+.ovia-admin .admin-customer-action-btn {
+  background: transparent;
+  border: none;
+  color: #74818c;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+.ovia-admin .admin-customer-action-btn:hover {
+  background: #e2e8f0;
+  color: #282d31;
+}
+
+/* Customer Detail 2-Column Layout */
+.ovia-admin .admin-customer-detail-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .ovia-admin .admin-customer-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ovia-admin .admin-card-base {
+  background: #ffffff;
+  border: 1px solid #e5e8eb;
+  border-radius: 3px;
+  padding: 24px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.ovia-admin .admin-customer-orders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.ovia-admin .admin-customer-orders-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #f0f2f5;
+  color: #282d31;
+  font-size: 14px;
+}
+.ovia-admin .admin-customer-orders-table td:first-child {
+  padding-left: 0;
+}
+.ovia-admin .admin-customer-orders-table td:last-child {
+  padding-right: 0;
+  text-align: right;
+  font-weight: 500;
+}
+.ovia-admin .admin-customer-orders-table tr:last-child td {
+  border-bottom: none;
+}
+
+.ovia-admin .admin-customer-address-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f2f5;
+}
+.ovia-admin .admin-customer-address-item:first-child {
+  padding-top: 0;
+}
+.ovia-admin .admin-customer-address-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+
+
+/* Keep the live dashboard status legible while automatic refresh is running. */
+.admin-dashboard-actions { flex-wrap: wrap; }
+.admin-dashboard-actions .admin-live-label { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 10px 12px; border: 1px solid #a9d5b7; border-radius: 3px; background: #edf8f0; color: #185a30; font-size: 13px; font-weight: 600; line-height: 1.5; }
+.admin-live-label > span:last-child { font-weight: 400; }
+.admin-live-dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+.admin-dashboard-actions .admin-live-refresh { display: flex; align-items: center; justify-content: center; gap: 8px; min-width: 120px; min-height: 42px; background: #ffd333; border-color: #dfb522; color: #24292e; font-size: 14px; font-weight: 600; opacity: 1; }
+.admin-dashboard-actions .admin-live-refresh:disabled { color: #51440c; background: #ffe58b; cursor: progress; opacity: 1; }
+.admin-live-refresh:focus-visible { outline: 3px solid #3774ff; outline-offset: 3px; }
+@media (max-width: 760px) { .admin-dashboard-heading { align-items: flex-start; flex-direction: column; } .admin-dashboard-actions { width: 100%; justify-content: flex-start; } }

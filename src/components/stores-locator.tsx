@@ -8,17 +8,12 @@ import {
   MapPin,
   Clock,
   ArrowUpRight,
-  SlidersHorizontal,
   X,
   Navigation,
-  Check,
-  AlertCircle,
 } from "lucide-react";
 import {
   stores,
   OviaStore,
-  STORE_SERVICES,
-  StoreService,
   calculateDistanceKm,
   getDirectionsUrl,
 } from "@/lib/stores";
@@ -30,13 +25,11 @@ interface StoreWithDistance extends OviaStore {
 
 export function StoresLocator() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedServices, setSelectedServices] = useState<StoreService[]>([]);
   const [selectedStore, setSelectedStore] = useState<OviaStore | null>(null);
   const [userCoords, setUserCoords] = useState<{ lat: number; lng: number } | null>(null);
   const [geoLoading, setGeoLoading] = useState(false);
   const [geoError, setGeoError] = useState<string | null>(null);
   const [mobileView, setMobileView] = useState<"list" | "map">("list");
-  const [filterDrawerOpen, setFilterDrawerOpen] = useState(false);
 
   const listContainerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Map<string, HTMLElement>>(new Map());
@@ -72,18 +65,8 @@ export function StoresLocator() {
     );
   };
 
-  // Toggle service filter
-  const toggleService = (service: StoreService) => {
-    setSelectedServices((prev) =>
-      prev.includes(service)
-        ? prev.filter((s) => s !== service)
-        : [...prev, service]
-    );
-  };
-
   const clearAllFilters = () => {
     setSearchQuery("");
-    setSelectedServices([]);
     setGeoError(null);
   };
 
@@ -113,20 +96,13 @@ export function StoresLocator() {
       });
     }
 
-    // Services filter
-    if (selectedServices.length > 0) {
-      result = result.filter((s) =>
-        selectedServices.every((srv) => s.services.includes(srv))
-      );
-    }
-
     // Sort by distance if user coords are present
     if (userCoords) {
       result.sort((a, b) => (a.distanceKm ?? 99999) - (b.distanceKm ?? 99999));
     }
 
     return result;
-  }, [searchQuery, selectedServices, userCoords]);
+  }, [searchQuery, userCoords]);
 
   // Scroll active card into view when selected from map
   const handleSelectStore = (store: OviaStore) => {
@@ -183,28 +159,8 @@ export function StoresLocator() {
                 <span>{geoLoading ? "LOCATING..." : "USE MY CURRENT LOCATION"}</span>
               </button>
 
-              <button
-                type="button"
-                onClick={() => setFilterDrawerOpen(!filterDrawerOpen)}
-                className={`ovia-filter-toggle-btn ${selectedServices.length > 0 ? "has-filters" : ""}`}
-                aria-label="Filter stores by service"
-              >
-                <SlidersHorizontal size={15} />
-                <span>SERVICES</span>
-                {selectedServices.length > 0 && (
-                  <span className="ovia-filter-badge">{selectedServices.length}</span>
-                )}
-              </button>
             </div>
           </div>
-
-          {/* Geolocation Notice / Error */}
-          {geoError && (
-            <div className="ovia-geo-notice-bar error" role="alert">
-              <AlertCircle size={15} />
-              <span>{geoError}</span>
-            </div>
-          )}
 
           {userCoords && !geoError && (
             <div className="ovia-geo-notice-bar success" role="status">
@@ -212,41 +168,6 @@ export function StoresLocator() {
               <span>Sorted by closest proximity to your location in India.</span>
             </div>
           )}
-
-          {/* Service Filters Drawer / Pills */}
-          <div className={`ovia-services-filter-strip ${filterDrawerOpen ? "is-open" : ""}`}>
-            <div className="ovia-services-filter-header">
-              <span className="ovia-filter-label">FILTER BY SERVICE:</span>
-              {selectedServices.length > 0 && (
-                <button
-                  type="button"
-                  onClick={() => setSelectedServices([])}
-                  className="ovia-filter-clear-all"
-                >
-                  Reset all
-                </button>
-              )}
-            </div>
-
-            <div className="ovia-services-pills">
-              {STORE_SERVICES.map((service) => {
-                const isChecked = selectedServices.includes(service);
-                return (
-                  <button
-                    key={service}
-                    type="button"
-                    onClick={() => toggleService(service)}
-                    className={`ovia-service-pill ${isChecked ? "is-selected" : ""}`}
-                  >
-                    <span className="ovia-service-pill-box">
-                      {isChecked && <Check size={12} strokeWidth={2.5} />}
-                    </span>
-                    <span>{service}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
 
           {/* Mobile Tab Switcher */}
           <div className="ovia-stores-mobile-tabs" role="tablist">

@@ -1,0 +1,14 @@
+.wrapper { background: #fff; padding: 55px 20px 65px; color: #30343b; }
+.wrapper h1 { font-family: Arial,sans-serif; font-size: 22px; font-weight: 600; letter-spacing: 1px; text-align: center; margin: 0 0 12px; }
+.intro { text-align: center; font-size: 12px; letter-spacing: .5px; margin: 0 0 36px; }
+.form { width: 100%; max-width: 450px; margin: 0 auto; display: grid; gap: 22px; }
+.row { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 24px; }
+.field { display: flex; flex-direction: column; gap: 7px; font-family: Arial,sans-serif; font-size: 12px; letter-spacing: .3px; min-width: 0; }
+.field input, .field select, .field textarea { width: 100%; min-width: 0; background: #fff; border: 1px solid #c8c8c8; border-radius: 0; padding: 7px 8px; color: #30343b; font: inherit; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid #164e63; outline-offset: 2px; }
+.error { color: #a82828; font-size: 11px; letter-spacing: 0; }
+.error:empty { display: none; }
+.submit, .success button { background: #124b5c; color: #fff; border: 0; padding: 10px 20px; font-size: 13px; font-weight: 600; margin-top: 12px; cursor: pointer; }
+.submit:disabled { opacity: .6; cursor: wait; }
+.success { max-width: 450px; margin: 30px auto; text-align: center; }
+@media(max-width: 480px) { .row { gap: 12px; } .wrapper { padding-top: 35px; } }

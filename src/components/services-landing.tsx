@@ -1,4 +1,6 @@
 "use client";
+import "@/components/page-styles/services-landing.css";
+
 
 import Link from "next/link";
 import Image from "next/image";
@@ -17,34 +19,6 @@ import { useState } from "react";
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 
 const clientExperienceCards = [
-  {
-    id: "track-order",
-    title: "Track Your Order",
-    desc: "Get real-time updates on your order and delivery status.",
-    image: "/media/material-aluminium.jpg",
-    href: "/track-order",
-  },
-  {
-    id: "delivery-returns",
-    title: "Delivery & Returns",
-    desc: "Information on shipping, delivery times and easy returns.",
-    image: "/media/category-luggage.jpg",
-    href: "/shipping",
-  },
-  {
-    id: "care-repair",
-    title: "Product Care & Repair",
-    desc: "Keep your OVIA pieces in perfect condition for years to come.",
-    image: "/media/cat-handcarry.jpg",
-    href: "/care-service",
-  },
-  {
-    id: "personalisation",
-    title: "Personalisation",
-    desc: "Learn about monogramming and customisation options.",
-    image: "/media/accessories-cat-personalisation.jpg",
-    href: "/accessories/address-tags",
-  },
   {
     id: "payments-security",
     title: "Payments & Security",
@@ -384,47 +358,6 @@ export function ServicesLanding() {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 4. CARE THAT ENDURES (3-PANEL EDITORIAL) ── */}
-      <section className="services-content-wrap services-care-section">
-        <div className="services-care-grid">
-          {/* Left: Aluminium Case Macro */}
-          <div className="services-care-media left-media">
-            <Image
-              src="/media/material-aluminium.jpg"
-              alt="OVIA Grooved Aluminium Case structure"
-              fill
-              sizes="(max-width: 900px) 100vw, 33vw"
-              className="services-care-img"
-            />
-          </div>
-
-          {/* Center: Warm Parchment Card */}
-          <div className="services-care-card">
-            <h3 className="services-care-title uppercase">CARE THAT ENDURES</h3>
-            <div className="services-care-divider" />
-            <p className="services-care-desc">
-              Our luggage and bags are designed to accompany you for a lifetime.
-              Discover expert care tips, repair services and materials that stand
-              the test of time.
-            </p>
-            <Link href="/care-service" className="services-btn-secondary">
-              EXPLORE CARE GUIDE <ArrowRight size={13} className="services-cta-icon" />
-            </Link>
-          </div>
-
-          {/* Right: Leather Craftsmanship Macro */}
-          <div className="services-care-media right-media">
-            <Image
-              src="/media/material-leather.jpg"
-              alt="White-gloved artisan leather repair"
-              fill
-              sizes="(max-width: 900px) 100vw, 33vw"
-              className="services-care-img"
-            />
           </div>
         </div>
       </section>

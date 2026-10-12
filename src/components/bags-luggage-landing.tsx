@@ -1,4 +1,6 @@
 "use client";
+import "@/components/page-styles/collection-landings.css";
+
 
 import Link from "next/link";
 import Image from "next/image";
@@ -169,13 +171,7 @@ function CategoryCard({
       style={{ opacity: 0, transform: "translateY(24px)", transition: "opacity 0.65s ease, transform 0.65s ease" }}
     >
       <div className="blanding-card-media">
-        <Image
-          src={cat.image}
-          alt={cat.name}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="blanding-card-img"
-        />
+        <></>
         <div className="blanding-card-badge">{cat.count} PIECES</div>
       </div>
       <div className="blanding-card-info">
@@ -273,13 +269,7 @@ function CollectionCard({ col, index }: { col: (typeof featuredCollections)[0]; 
     >
       <Link href={col.href} className="blanding-col4-card">
         <div className="blanding-col4-media">
-          <Image
-            src={col.image}
-            alt={col.label}
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            className="blanding-col4-img"
-          />
+          <></>
         </div>
         <div className="blanding-col4-info">
           <span className="blanding-col4-tag">{col.tag}</span>

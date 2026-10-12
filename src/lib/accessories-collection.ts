@@ -27,7 +27,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-SILVER-CASE-FOR-IPHONE-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/95118004_1.png"
       }
@@ -51,7 +51,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_95118014.jpg"
       ]
     },
-    "price": 1950000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446498-1",
     "createdAt": "2026-09-26T18:43:38.492Z",
@@ -83,7 +83,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-TITANIUM-CASE-FOR-IPHONE",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/95118023_1.png"
       }
@@ -107,7 +107,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_95118003.jpg"
       ]
     },
-    "price": 1950000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446498-2",
     "createdAt": "2026-09-26T18:43:38.505Z",
@@ -139,7 +139,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-BLACK-CASE-FOR-IPHONE-18",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/95118014_1.png"
       }
@@ -163,7 +163,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_95118004.jpg"
       ]
     },
-    "price": 1950000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446498-3",
     "createdAt": "2026-09-26T18:43:38.505Z",
@@ -195,7 +195,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-INK-BLUE-CASE-FOR-IPHONE",
         "color": "Ink Blue",
         "hex": "#1e3250",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/95118043_1.png"
       }
@@ -219,7 +219,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_95118003.jpg"
       ]
     },
-    "price": 1950000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446498-4",
     "createdAt": "2026-09-26T18:43:38.506Z",
@@ -251,7 +251,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-SILVER-CASE-FOR-IPHONE-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/95118003_1.png"
       }
@@ -275,7 +275,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_95118013.jpg"
       ]
     },
-    "price": 1950000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446498-5",
     "createdAt": "2026-09-26T18:43:38.506Z",
@@ -307,7 +307,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-TITANIUM-CASE-FOR-IPHONE",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/95118024_1.png"
       }
@@ -331,7 +331,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_95118004.jpg"
       ]
     },
-    "price": 1950000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446498-6",
     "createdAt": "2026-09-26T18:43:38.506Z",
@@ -363,7 +363,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-INK-BLUE-CASE-FOR-IPHONE",
         "color": "Ink Blue",
         "hex": "#1e3250",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/95118044_1.png"
       }
@@ -387,7 +387,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_95118004.jpg"
       ]
     },
-    "price": 1950000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446498-7",
     "createdAt": "2026-09-26T18:43:38.506Z",
@@ -419,7 +419,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-BLACK-CASE-FOR-IPHONE-18",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/95118013_1.png"
       }
@@ -443,7 +443,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_95118003.jpg"
       ]
     },
-    "price": 1950000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446498-8",
     "createdAt": "2026-09-26T18:43:38.506Z",
@@ -475,7 +475,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-BLACK-CASE-FOR-IPHONE-17",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/95190001_1.png"
       }
@@ -499,7 +499,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_95190002.jpg"
       ]
     },
-    "price": 1950000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446498-9",
     "createdAt": "2026-09-26T18:43:38.506Z",
@@ -531,7 +531,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-TITANIUM-CASE-FOR-IPHONE",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/95190003_1.png"
       }
@@ -555,7 +555,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_95190002.jpg"
       ]
     },
-    "price": 1950000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446498-10",
     "createdAt": "2026-09-26T18:43:38.506Z",
@@ -587,7 +587,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-SLATE-GREY-IPHONE-17-PRO",
         "color": "Slate Grey",
         "hex": "#5a5e62",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/52900026_1.png"
       }
@@ -606,7 +606,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/52900026_2.png"
       ]
     },
-    "price": 1950000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446498-11",
     "createdAt": "2026-09-26T18:43:38.508Z",
@@ -638,7 +638,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-SILVER-CASE-FOR-IPHONE-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/95117000_1.png"
       }
@@ -662,7 +662,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_95190004.jpg"
       ]
     },
-    "price": 1950000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446498-12",
     "createdAt": "2026-09-26T18:43:38.508Z",
@@ -694,7 +694,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-LIFESTYLE-ACCESSORIES-RE",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1850000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/53156001_1.png"
       }
@@ -713,7 +713,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/53156001_2.png"
       ]
     },
-    "price": 1850000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446564-1",
     "createdAt": "2026-09-26T18:43:38.510Z",
@@ -745,7 +745,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-LIFESTYLE-ACCESSORIES-RE",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 1850000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/53158001_1.png"
       }
@@ -764,7 +764,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/53158001_2.png"
       ]
     },
-    "price": 1850000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446564-2",
     "createdAt": "2026-09-26T18:43:38.510Z",
@@ -796,7 +796,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-LIFESTYLE-ACCESSORIES-RE",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 1850000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/53160001_1.png"
       }
@@ -815,7 +815,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/53160001_2.png"
       ]
     },
-    "price": 1850000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446564-3",
     "createdAt": "2026-09-26T18:43:38.510Z",
@@ -847,7 +847,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-OVIA-MYKITA-HERITAGE-MR0",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3200000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51900045_1.png"
       }
@@ -871,7 +871,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51900048.jpg"
       ]
     },
-    "price": 3200000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446597-1",
     "createdAt": "2026-09-26T18:43:38.513Z",
@@ -903,7 +903,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-OVIA-MYKITA-HERITAGE-MR0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 3200000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51900049_1.png"
       }
@@ -927,7 +927,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51900046.jpg"
       ]
     },
-    "price": 3200000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446597-2",
     "createdAt": "2026-09-26T18:43:38.513Z",
@@ -959,7 +959,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-OVIA-MYKITA-HERITAGE-MR0",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 3200000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51900036_1.png"
       }
@@ -982,7 +982,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51900047.jpg"
       ]
     },
-    "price": 3200000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446597-3",
     "createdAt": "2026-09-26T18:43:38.513Z",
@@ -1014,7 +1014,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-OVIA-MYKITA-HERITAGE-MR0",
         "color": "Midnight Blue",
         "hex": "#1e3250",
-        "price": 3200000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51900051_1.png"
       }
@@ -1037,7 +1037,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51900052.jpg"
       ]
     },
-    "price": 3200000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446597-4",
     "createdAt": "2026-09-26T18:43:38.513Z",
@@ -1069,7 +1069,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-OVIA-MYKITA-HERITAGE-MR0",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3200000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51900048_2.png"
       }
@@ -1093,7 +1093,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51900045.jpg"
       ]
     },
-    "price": 3200000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446597-5",
     "createdAt": "2026-09-26T18:43:38.513Z",
@@ -1125,7 +1125,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-OVIA-MYKITA-HERITAGE-MR0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 3200000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51900052_2.png"
       }
@@ -1148,7 +1148,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51900051.jpg"
       ]
     },
-    "price": 3200000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446597-6",
     "createdAt": "2026-09-26T18:43:38.513Z",
@@ -1180,7 +1180,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-OVIA-MYKITA-HERITAGE-MR0",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 3200000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51900035_1.png"
       }
@@ -1204,7 +1204,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51900049.jpg"
       ]
     },
-    "price": 3200000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446597-7",
     "createdAt": "2026-09-26T18:43:38.513Z",
@@ -1236,7 +1236,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-OVIA-MYKITA-HERITAGE-MR0",
         "color": "Midnight Blue",
         "hex": "#1e3250",
-        "price": 3200000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51900046_1.png"
       }
@@ -1260,7 +1260,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51900049.jpg"
       ]
     },
-    "price": 3200000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446597-8",
     "createdAt": "2026-09-26T18:43:38.513Z",
@@ -1292,7 +1292,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-OVIA-MYKITA-HERITAGE-MR0",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3200000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51900047_1.png"
       }
@@ -1315,7 +1315,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51900036.jpg"
       ]
     },
-    "price": 3200000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446597-9",
     "createdAt": "2026-09-26T18:43:38.513Z",
@@ -1347,7 +1347,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-OVIA-MYKITA-HERITAGE-MR0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 3200000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51900034_1.png"
       }
@@ -1371,7 +1371,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51900049.jpg"
       ]
     },
-    "price": 3200000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446597-10",
     "createdAt": "2026-09-26T18:43:38.513Z",
@@ -1403,7 +1403,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-OVIA-MYKITA-HERITAGE-MR0",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 3200000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51900032_1.png"
       }
@@ -1427,7 +1427,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51900048.jpg"
       ]
     },
-    "price": 3200000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446597-11",
     "createdAt": "2026-09-26T18:43:38.513Z",
@@ -1459,7 +1459,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-OVIA-MYKITA-HERITAGE-MR0",
         "color": "Midnight Blue",
         "hex": "#1e3250",
-        "price": 3200000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51900033_1.png"
       }
@@ -1483,7 +1483,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51900046.jpg"
       ]
     },
-    "price": 3200000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446597-12",
     "createdAt": "2026-09-26T18:43:38.514Z",
@@ -1515,7 +1515,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-OVIA-MYKITA-HERITAGE-MR0",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3200000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51900030_1.png"
       }
@@ -1539,7 +1539,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51900045.jpg"
       ]
     },
-    "price": 3200000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446597-13",
     "createdAt": "2026-09-26T18:43:38.514Z",
@@ -1571,7 +1571,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-OVIA-MYKITA-HERITAGE-MR0",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 3200000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51900031_1.png"
       }
@@ -1595,7 +1595,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51900048.jpg"
       ]
     },
-    "price": 3200000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446597-14",
     "createdAt": "2026-09-26T18:43:38.514Z",
@@ -1627,7 +1627,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-LIFESTYLE-REVERSIBLE-LEA",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 2600000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51200006_1.png"
       }
@@ -1650,7 +1650,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51200007.jpg"
       ]
     },
-    "price": 2600000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446616-1",
     "createdAt": "2026-09-26T18:43:38.515Z",
@@ -1682,7 +1682,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-LIFESTYLE-REVERSIBLE-LEA",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 2600000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51200007_1.png"
       }
@@ -1705,7 +1705,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51200006.jpg"
       ]
     },
-    "price": 2600000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446616-2",
     "createdAt": "2026-09-26T18:43:38.516Z",
@@ -1737,7 +1737,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-LIFESTYLE-REVERSIBLE-LEA",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 2600000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51200009_1.png"
       }
@@ -1760,7 +1760,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51200008.jpg"
       ]
     },
-    "price": 2600000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446616-3",
     "createdAt": "2026-09-26T18:43:38.516Z",
@@ -1792,7 +1792,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-LIFESTYLE-REVERSIBLE-LEA",
         "color": "Midnight Blue",
         "hex": "#1e3250",
-        "price": 2600000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51200008_1.png"
       }
@@ -1815,7 +1815,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51200009.jpg"
       ]
     },
-    "price": 2600000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446616-4",
     "createdAt": "2026-09-26T18:43:38.516Z",
@@ -1847,7 +1847,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-ORIGINAL-SMALL-GOODS-ALU",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3350000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/52600011_1.png"
       }
@@ -1871,7 +1871,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_52600007.jpg"
       ]
     },
-    "price": 3350000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446636-1",
     "createdAt": "2026-09-26T18:43:38.518Z",
@@ -1903,7 +1903,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-ORIGINAL-SMALL-GOODS-ALU",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 3350000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/52600006_1.png"
       }
@@ -1927,7 +1927,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_52600007.jpg"
       ]
     },
-    "price": 3350000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446636-2",
     "createdAt": "2026-09-26T18:43:38.518Z",
@@ -1959,7 +1959,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-ORIGINAL-SMALL-GOODS-ALU",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 3350000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/52600007_1.png"
       }
@@ -1983,7 +1983,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_52600011.jpg"
       ]
     },
-    "price": 3350000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446636-3",
     "createdAt": "2026-09-26T18:43:38.518Z",
@@ -2015,7 +2015,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-TAG-51400041-MINE",
         "color": "Mineral Blue",
         "hex": "#466987",
-        "price": 1050000,
+        "price": 100,
         "stock": 15,
         "image": "/media/accessories/51400041_1.png"
       }
@@ -2039,7 +2039,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51400046.jpg"
       ]
     },
-    "price": 1050000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446738-1",
     "createdAt": "2026-09-26T18:43:38.523Z",
@@ -2071,7 +2071,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-TAG-51400040-RUBY",
         "color": "Ruby Red",
         "hex": "#9b1b30",
-        "price": 1050000,
+        "price": 100,
         "stock": 15,
         "image": "/media/accessories/51400040_1.png"
       }
@@ -2095,7 +2095,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51400046.jpg"
       ]
     },
-    "price": 1050000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446738-2",
     "createdAt": "2026-09-26T18:43:38.523Z",
@@ -2127,7 +2127,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-TAG-51400039-CLEM",
         "color": "Clementine Orange",
         "hex": "#e05328",
-        "price": 1050000,
+        "price": 100,
         "stock": 15,
         "image": "/media/accessories/51400039_1.png"
       }
@@ -2151,7 +2151,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51400046.jpg"
       ]
     },
-    "price": 1050000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446738-3",
     "createdAt": "2026-09-26T18:43:38.523Z",
@@ -2183,7 +2183,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-TAG-51400042-EMER",
         "color": "Emerald Green",
         "hex": "#1e5945",
-        "price": 1050000,
+        "price": 100,
         "stock": 15,
         "image": "/media/accessories/51400042_1.png"
       }
@@ -2207,7 +2207,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51400046.jpg"
       ]
     },
-    "price": 1050000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446738-4",
     "createdAt": "2026-09-26T18:43:38.523Z",
@@ -2239,7 +2239,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-TAG-51400043-AZUR",
         "color": "Azure Blue",
         "hex": "#1f4a7c",
-        "price": 1050000,
+        "price": 100,
         "stock": 15,
         "image": "/media/accessories/51400043_1.png"
       }
@@ -2263,7 +2263,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51400045.jpg"
       ]
     },
-    "price": 1050000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446738-5",
     "createdAt": "2026-09-26T18:43:38.523Z",
@@ -2295,7 +2295,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-TAG-51400044-HONE",
         "color": "Honey Yellow",
         "hex": "#e6ab32",
-        "price": 1050000,
+        "price": 100,
         "stock": 15,
         "image": "/media/accessories/51400044_1.png"
       }
@@ -2319,7 +2319,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51400046.jpg"
       ]
     },
-    "price": 1050000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446738-6",
     "createdAt": "2026-09-26T18:43:38.524Z",
@@ -2351,7 +2351,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-TAG-51400037-SLAT",
         "color": "Slate Grey",
         "hex": "#7a7f85",
-        "price": 1050000,
+        "price": 100,
         "stock": 15,
         "image": "/media/accessories/51400037_1.png"
       }
@@ -2375,7 +2375,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51400046.jpg"
       ]
     },
-    "price": 1050000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446738-7",
     "createdAt": "2026-09-26T18:43:38.524Z",
@@ -2407,7 +2407,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-TAG-51400035-COGN",
         "color": "Cognac Brown",
         "hex": "#834827",
-        "price": 1050000,
+        "price": 100,
         "stock": 15,
         "image": "/media/accessories/51400035_1.png"
       }
@@ -2431,7 +2431,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51400046.jpg"
       ]
     },
-    "price": 1050000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446738-8",
     "createdAt": "2026-09-26T18:43:38.524Z",
@@ -2463,7 +2463,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-TAG-51400036-MATT",
         "color": "Matte Black",
         "hex": "#1c1c1c",
-        "price": 1050000,
+        "price": 100,
         "stock": 15,
         "image": "/media/accessories/51400036_1.png"
       }
@@ -2487,7 +2487,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51400046.jpg"
       ]
     },
-    "price": 1050000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446738-9",
     "createdAt": "2026-09-26T18:43:38.524Z",
@@ -2519,7 +2519,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-TAG-51400034-FLAM",
         "color": "Flame Red",
         "hex": "#c8252b",
-        "price": 1050000,
+        "price": 100,
         "stock": 15,
         "image": "/media/accessories/51400034_1.png"
       }
@@ -2543,7 +2543,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51400046.jpg"
       ]
     },
-    "price": 1050000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446738-10",
     "createdAt": "2026-09-26T18:43:38.524Z",
@@ -2575,7 +2575,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-TAG-51400038-CACT",
         "color": "Cactus Green",
         "hex": "#4f634f",
-        "price": 1050000,
+        "price": 100,
         "stock": 15,
         "image": "/media/accessories/51400038_1.png"
       }
@@ -2599,7 +2599,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51400046.jpg"
       ]
     },
-    "price": 1050000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446738-11",
     "createdAt": "2026-09-26T18:43:38.524Z",
@@ -2631,7 +2631,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-TAG-51400045-DESE",
         "color": "Desert Sand",
         "hex": "#c2ab90",
-        "price": 1050000,
+        "price": 100,
         "stock": 15,
         "image": "/media/accessories/51400045_1.png"
       }
@@ -2655,7 +2655,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51400046.jpg"
       ]
     },
-    "price": 1050000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446738-12",
     "createdAt": "2026-09-26T18:43:38.524Z",
@@ -2687,7 +2687,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-TAG-51400046-LAVE",
         "color": "Lavender Lilac",
         "hex": "#9d8ba1",
-        "price": 1050000,
+        "price": 100,
         "stock": 15,
         "image": "/media/accessories/51400046_1.png"
       }
@@ -2711,7 +2711,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51400045.jpg"
       ]
     },
-    "price": 1050000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446738-13",
     "createdAt": "2026-09-26T18:43:38.524Z",
@@ -2743,7 +2743,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STRAP-53000017",
         "color": "Matte Black",
         "hex": "#222324",
-        "price": 2200000,
+        "price": 100,
         "stock": 10,
         "image": "/media/accessories/53000017_1.png"
       }
@@ -2766,7 +2766,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_53000018.jpg"
       ]
     },
-    "price": 2200000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446813-1",
     "createdAt": "2026-09-26T18:43:38.526Z",
@@ -2798,7 +2798,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STRAP-53000018",
         "color": "Khaki Olive",
         "hex": "#556b2f",
-        "price": 2200000,
+        "price": 100,
         "stock": 10,
         "image": "/media/accessories/53000018_1.png"
       }
@@ -2821,7 +2821,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_53000017.jpg"
       ]
     },
-    "price": 2200000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446813-2",
     "createdAt": "2026-09-26T18:43:38.526Z",
@@ -2853,7 +2853,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STRAP-53000015",
         "color": "Khaki Green",
         "hex": "#4b5320",
-        "price": 2550000,
+        "price": 100,
         "stock": 10,
         "image": "/media/accessories/53000015_1.png"
       }
@@ -2877,7 +2877,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_GREY_strapWeb.png"
       ]
     },
-    "price": 2550000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446813-3",
     "createdAt": "2026-09-26T18:43:38.526Z",
@@ -2909,7 +2909,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STRAP-53000014",
         "color": "Matte Black",
         "hex": "#1c1c1c",
-        "price": 2550000,
+        "price": 100,
         "stock": 10,
         "image": "/media/accessories/53000014_1.png"
       }
@@ -2933,7 +2933,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_GREY_strapWeb.png"
       ]
     },
-    "price": 2550000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446813-4",
     "createdAt": "2026-09-26T18:43:38.526Z",
@@ -2965,7 +2965,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STRAP-53000016",
         "color": "Slate Grey",
         "hex": "#708090",
-        "price": 2550000,
+        "price": 100,
         "stock": 10,
         "image": "/media/accessories/53000016_1.png"
       }
@@ -2989,7 +2989,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_KHAKI.png"
       ]
     },
-    "price": 2550000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446813-5",
     "createdAt": "2026-09-26T18:43:38.526Z",
@@ -3020,7 +3020,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-WHEEL-51500039",
         "color": "Mineral Blue",
         "hex": "#466987",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51500039_1.png"
       }
@@ -3044,7 +3044,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51500037.jpg"
       ]
     },
-    "price": 1900000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-3",
     "createdAt": "2026-09-26T18:43:38.529Z",
@@ -3075,7 +3075,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-WHEEL-51500023",
         "color": "Clementine Orange",
         "hex": "#e05328",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51500023_1.png"
       }
@@ -3099,7 +3099,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51500039.jpg"
       ]
     },
-    "price": 1900000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-5",
     "createdAt": "2026-09-26T18:43:38.529Z",
@@ -3130,7 +3130,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-WHEEL-51500024",
         "color": "Honey Yellow",
         "hex": "#e6ab32",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51500024_1.png"
       }
@@ -3154,7 +3154,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51500039.jpg"
       ]
     },
-    "price": 1900000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-9",
     "createdAt": "2026-09-26T18:43:38.529Z",
@@ -3185,7 +3185,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-WHEEL-51500037",
         "color": "Emerald Green",
         "hex": "#1e5945",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51500037_1.png"
       }
@@ -3209,7 +3209,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51500039.jpg"
       ]
     },
-    "price": 1900000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-10",
     "createdAt": "2026-09-26T18:43:38.529Z",
@@ -3240,7 +3240,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-WHEEL-51500022",
         "color": "Ruby Red",
         "hex": "#9b1b30",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51500022_1.png"
       }
@@ -3264,7 +3264,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51500039.jpg"
       ]
     },
-    "price": 1900000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-12",
     "createdAt": "2026-09-26T18:43:38.529Z",
@@ -3295,7 +3295,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-WHEEL-51500004",
         "color": "Classic Black",
         "hex": "#1c1c1c",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51500004_1.png"
       }
@@ -3319,7 +3319,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51500039.jpg"
       ]
     },
-    "price": 1900000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-14",
     "createdAt": "2026-09-26T18:43:38.529Z",
@@ -3350,7 +3350,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-WHEEL-51500005",
         "color": "Paprika Red",
         "hex": "#b22222",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51500005_1.png"
       }
@@ -3374,7 +3374,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51500039.jpg"
       ]
     },
-    "price": 1900000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-17",
     "createdAt": "2026-09-26T18:43:38.529Z",
@@ -3405,7 +3405,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-WHEEL-51500015",
         "color": "Ocean Blue",
         "hex": "#1f4a7c",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51500015_1.png"
       }
@@ -3429,7 +3429,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51500039.jpg"
       ]
     },
-    "price": 1900000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-20",
     "createdAt": "2026-09-26T18:43:38.529Z",
@@ -3460,7 +3460,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-WHEEL-51500008",
         "color": "Silver Grey",
         "hex": "#bec1bd",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51500008_1.png"
       }
@@ -3484,7 +3484,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51500037.jpg"
       ]
     },
-    "price": 1900000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-22",
     "createdAt": "2026-09-26T18:43:38.529Z",
@@ -3515,7 +3515,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-WHEEL-51500016",
         "color": "Cactus Green",
         "hex": "#4f634f",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51500016_1.png"
       }
@@ -3539,7 +3539,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51500039.jpg"
       ]
     },
-    "price": 1900000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-24",
     "createdAt": "2026-09-26T18:43:38.529Z",
@@ -3570,7 +3570,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-WHEEL-51500012",
         "color": "Desert Sand",
         "hex": "#c2ab90",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51500012_1.png"
       }
@@ -3594,7 +3594,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51500039.jpg"
       ]
     },
-    "price": 1900000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-30",
     "createdAt": "2026-09-26T18:43:38.529Z",
@@ -3625,7 +3625,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-WHEEL-51500025",
         "color": "Quartz Pink",
         "hex": "#d8a1a8",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
         "image": "/media/accessories/51500025_1.png"
       }
@@ -3649,7 +3649,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/SWATCH_51500039.jpg"
       ]
     },
-    "price": 1900000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-59",
     "createdAt": "2026-09-26T18:43:38.529Z",
@@ -3680,7 +3680,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-1",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900035_1.png"
       }
@@ -3699,7 +3699,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900035_2.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-1",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -3730,7 +3730,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-2",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900044_1.png"
       }
@@ -3749,7 +3749,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900044_2.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-2",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -3780,7 +3780,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-3",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900050.png"
       }
@@ -3799,7 +3799,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900050_1.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-3",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -3830,7 +3830,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-4",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900016_1.png"
       }
@@ -3849,7 +3849,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900016_3.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-4",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -3880,7 +3880,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-5",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900055_1.png"
       }
@@ -3899,7 +3899,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900055_2.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-5",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -3930,7 +3930,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-6",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900018_1.png"
       }
@@ -3949,7 +3949,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900018_2.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-6",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -3980,7 +3980,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-7",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900002_1.png"
       }
@@ -3999,7 +3999,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900002_3.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-7",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -4030,7 +4030,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-8",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900017_1.png"
       }
@@ -4049,7 +4049,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900017_3.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-8",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -4080,7 +4080,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-9",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900022_1.png"
       }
@@ -4099,7 +4099,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900022_2.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-9",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -4130,7 +4130,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-10",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900004_1.png"
       }
@@ -4149,7 +4149,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900004_3.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-10",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -4180,7 +4180,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-11",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900020.png"
       }
@@ -4199,7 +4199,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900020_1.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-11",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -4230,7 +4230,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-12",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900005_1.png"
       }
@@ -4249,7 +4249,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900005_3.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-12",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -4280,7 +4280,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-13",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900021_1.png"
       }
@@ -4299,7 +4299,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900021_2.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-13",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -4330,7 +4330,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-ST-14",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900100.png"
       }
@@ -4349,7 +4349,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900100_1.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-14",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -4380,7 +4380,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-15",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900106_1.png"
       }
@@ -4399,7 +4399,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900106_2.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-15",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -4430,7 +4430,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-ST-16",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900280.png"
       }
@@ -4449,7 +4449,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900280_1.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-16",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -4480,7 +4480,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-17",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900015_1.png"
       }
@@ -4499,7 +4499,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900015_3.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-17",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -4530,7 +4530,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-18",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900127_1.png"
       }
@@ -4549,7 +4549,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900127_2.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-18",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -4580,7 +4580,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-19",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900112_1.png"
       }
@@ -4599,7 +4599,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900112_2.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-19",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -4630,7 +4630,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-20",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900012_1.png"
       }
@@ -4649,7 +4649,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900012_3.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-20",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -4680,7 +4680,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-21",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900031_1.png"
       }
@@ -4699,7 +4699,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900031_3.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-21",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -4730,7 +4730,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-22",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900053_1.png"
       }
@@ -4749,7 +4749,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900053_2.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-22",
     "createdAt": "2026-09-26T18:43:38.535Z",
@@ -4780,7 +4780,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-23",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900010.png"
       }
@@ -4799,7 +4799,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900010_1.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-23",
     "createdAt": "2026-09-26T18:43:38.536Z",
@@ -4830,7 +4830,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-24",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900060.png"
       }
@@ -4849,7 +4849,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900060_1.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446786-24",
     "createdAt": "2026-09-26T18:43:38.536Z",
@@ -4880,7 +4880,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-25",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900135_1.png"
       }
@@ -4897,7 +4897,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900135_1.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-16",
     "createdAt": "2026-09-26T18:43:38.536Z",
@@ -4928,7 +4928,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-26",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900122_1.png"
       }
@@ -4945,7 +4945,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900122_1.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-27",
     "createdAt": "2026-09-26T18:43:38.536Z",
@@ -4976,7 +4976,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-27",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900108_1.png"
       }
@@ -4993,7 +4993,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900108_1.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-32",
     "createdAt": "2026-09-26T18:43:38.536Z",
@@ -5024,7 +5024,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-28",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900107_1.png"
       }
@@ -5041,7 +5041,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900107_1.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-34",
     "createdAt": "2026-09-26T18:43:38.536Z",
@@ -5072,7 +5072,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-29",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900036_1.png"
       }
@@ -5089,7 +5089,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900036_1.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-35",
     "createdAt": "2026-09-26T18:43:38.536Z",
@@ -5120,7 +5120,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-30",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900350.png"
       }
@@ -5137,7 +5137,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900350.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-39",
     "createdAt": "2026-09-26T18:43:38.536Z",
@@ -5168,7 +5168,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-31",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900013_1.png"
       }
@@ -5185,7 +5185,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900013_1.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-41",
     "createdAt": "2026-09-26T18:43:38.536Z",
@@ -5216,7 +5216,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-ST-32",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900150.png"
       }
@@ -5233,7 +5233,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900150.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-44",
     "createdAt": "2026-09-26T18:43:38.536Z",
@@ -5264,7 +5264,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-ST-33",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900160.png"
       }
@@ -5281,7 +5281,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900160.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-46",
     "createdAt": "2026-09-26T18:43:38.536Z",
@@ -5312,7 +5312,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-ST-34",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900070.png"
       }
@@ -5329,7 +5329,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900070.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-47",
     "createdAt": "2026-09-26T18:43:38.536Z",
@@ -5360,7 +5360,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-35",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50900003_1.png"
       }
@@ -5377,7 +5377,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50900003_1.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-48",
     "createdAt": "2026-09-26T18:43:38.536Z",
@@ -5408,7 +5408,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-CI-36",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 100000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/5090001_1.png"
       }
@@ -5425,7 +5425,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/5090001_1.png"
       ]
     },
-    "price": 100000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-54",
     "createdAt": "2026-09-26T18:43:38.536Z",
@@ -5456,7 +5456,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-ST-37",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 350000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50800039_1.png"
       }
@@ -5473,7 +5473,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50800039_1.png"
       ]
     },
-    "price": 350000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-57",
     "createdAt": "2026-09-26T18:43:38.536Z",
@@ -5504,7 +5504,7 @@ export const accessoriesProducts: Product[] = [
         "sku": "OV-STICKER-CUSTOMISATION-ST-38",
         "color": "Multi",
         "hex": "#ffffff",
-        "price": 1200000,
+        "price": 100,
         "stock": 30,
         "image": "/media/accessories/50800007_1.png"
       }
@@ -5521,7 +5521,7 @@ export const accessoriesProducts: Product[] = [
         "/media/accessories/50800007_1.png"
       ]
     },
-    "price": 1200000,
+    "price": 100,
     "currency": "INR",
     "sourceId": "1790446864-58",
     "createdAt": "2026-09-26T18:43:38.537Z",

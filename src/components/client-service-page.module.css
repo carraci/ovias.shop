@@ -1,0 +1,170 @@
+.page {
+  padding-top: 135px;
+  background: #fff;
+  color: #202020;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.intro {
+  text-align: center;
+  margin: 35px 20px 50px;
+}
+.intro h1 {
+  font-family: inherit;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: 0;
+  margin: 0 0 14px;
+}
+.intro p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+.layout {
+  max-width: 1280px;
+  margin: 0 auto 80px;
+  padding: 0 30px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.channels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.channel {
+  padding: 40px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid #e8e8e8;
+}
+.channel:nth-child(odd) {
+  border-right: 1px solid #e8e8e8;
+}
+.channel:nth-child(n + 3) {
+  border-bottom: 0;
+}
+.channel h2,
+.questions h2 {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  line-height: 1.7;
+  margin: 0 0 12px;
+}
+.channel h2 {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+.channel h2 svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.channel p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #595959;
+  margin: 0 0 30px;
+}
+.button {
+  display: inline-block;
+  border: 1px solid #202020;
+  border-radius: 3px;
+  padding: 14px 22px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  margin-top: auto;
+  text-align: center;
+  line-height: 1.6;
+}
+.button:hover {
+  background: #202020;
+  color: white;
+}
+.questions {
+  background: #f6f6f6;
+  padding: 26px 24px 38px;
+}
+.questions ul {
+  list-style: none;
+  margin: 20px 0 50px;
+  padding: 0;
+  display: grid;
+  gap: 22px;
+}
+.questions li a {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #555;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.faq {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.page a:focus-visible {
+  outline: 2px solid #526047;
+  outline-offset: 5px;
+}
+@media (max-width: 1000px) {
+  .layout {
+    gap: 24px;
+    padding: 0 22px;
+  }
+  .channel {
+    padding: 28px 20px;
+  }
+  .channel h2 {
+    font-size: 12px;
+  }
+  .button {
+    padding: 12px 16px;
+  }
+}
+@media (max-width: 700px) {
+  .page {
+    padding-top: 85px;
+  }
+  .intro {
+    margin: 28px 20px 32px;
+  }
+  .intro h1 {
+    font-size: 24px;
+  }
+  .intro p {
+    font-size: 14px;
+  }
+  .layout {
+    grid-template-columns: 1fr;
+    margin-bottom: 40px;
+    padding: 0 20px;
+  }
+  .channels {
+    grid-template-columns: 1fr;
+  }
+  .channel {
+    min-height: 220px;
+    padding: 25px 8px;
+    border-bottom: 1px solid #e8e8e8 !important;
+    border-right: 0 !important;
+  }
+  .channel:last-child {
+    border-bottom: 0 !important;
+  }
+  .channel p {
+    font-size: 14px;
+  }
+  .questions {
+    padding: 24px;
+  }
+  .questions ul {
+    margin-bottom: 35px;
+  }
+}

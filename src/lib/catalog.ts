@@ -1,4 +1,8 @@
+import { groups, slugify } from "./catalog-helpers";
+export { groups, slugify, money } from "./catalog-helpers";
+export { filterProducts, type Filters } from "./catalog-filter";
 import { newProducts } from './new-collection';
+import { importedProducts } from './imported-products';
 import { bagsProducts } from './bags-collection';
 import { luggageProducts } from './luggage-collection';
 import { accessoriesProducts } from './accessories-collection';
@@ -14,6 +18,10 @@ export type Variant = {
 };
 export type Product = {
   id: string;
+  catalogOrder?: number;
+  publishAt?:string|null;
+  shortDescription?:string;
+  oldPrice?:number;
   slug: string;
   name: string;
   collection: string;
@@ -29,6 +37,15 @@ export type Product = {
   image: string;
   imageKind: "illustration" | "photograph";
   featured: boolean;
+  ogImage?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  primarySearchPhrase?: string;
+  searchTags?: string;
+  canonicalUrl?: string;
+  indexing?: string;
   // Extended fields populated by the importer (optional for static catalog)
   gallery?: string[];
   images?: {
@@ -46,8 +63,14 @@ export type Product = {
   sourceId?: string;
   sourceUrl?: string;
   subcategory?: string;
+  catalogCategories?: string[];
+  travelTypes?: string[];
+  priceOnRequest?: boolean;
+  slugAliases?: string[];
+  importSources?: { file: string; row: string; category: string }[];
   collections?: string[];
   price?: number;
+  sale?: import('./product-sale').ProductSale;
   currency?: string;
   materials?: string[];
   colors?: string[];
@@ -55,6 +78,15 @@ export type Product = {
   specifications?: Record<string, string>;
   features?: string[];
   availability?: string;
+  maintenanceCare?: string;
+  sustainability?: string;
+  productAdvisory?: Record<string, string>;
+  returnPolicy?: string;
+  deliveryTime?: string;
+  freeShipping?: boolean;
+  shippingClass?: string;
+  status?: string;
+  storefrontPublished?: boolean;
   stock?: number;
   createdAt?: string;
   updatedAt?: string;
@@ -66,45 +98,6 @@ export const colors = [
   { color: "Silver", hex: "#bec1bd" },
   { color: "Midnight Blue", hex: "#384c5c" },
 ];
-export const groups: Record<Department, [string, number][]> = {
-  luggage: [
-    ["Cabin", 62],
-    ["Check-In", 32],
-    ["Trunk", 29],
-    ["Emblematic pieces", 117],
-  ],
-  bags: [
-    ["Backpacks", 11],
-    ["Duffle Bags", 4],
-    ["Briefcases", 2],
-    ["Crossbodies", 8],
-    ["Totes", 2],
-    ["Shoulder Bags", 6],
-    ["Hand Carry", 8],
-  ],
-  accessories: [
-    ["iPhone Cases", 12],
-    ["Phone Cases", 3],
-    ["Hats", 3],
-    ["Sunglasses", 14],
-    ["Belts", 4],
-    ["Card Holders", 3],
-    ["Address Tags", 13],
-    ["Wheels", 12],
-    ["Stickers", 38],
-    ["Bag Straps", 5],
-    ["Organisers", 2],
-    ["Pet Carrier Bag", 1],
-    ["Foldable Bags", 1],
-    ["Garment Bags", 1],
-    ["Care Products", 1],
-  ],
-};
-export const slugify = (s: string) =>
-  s
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
 const collections = ["Meridian", "Passage", "Forma", "Interval"];
 const rawProducts: Product[] = [
   ...Object.entries(groups).flatMap(([department, categories]) => {
@@ -186,7 +179,7 @@ const rawProducts: Product[] = [
             .map((c, j) => ({
               ...c,
               sku: `OV-${slug.toUpperCase()}-${j}`,
-              price: (base + j * 500) * 100,
+              price: 100,
               stock: i === 9 && j === 0 ? 0 : 12,
             })),
           image: `/media/${department}.svg`,
@@ -207,8 +200,12 @@ const canonicalProducts = rawProducts.filter(
     all.findIndex((candidate) => candidate.slug === product.slug) === index,
 );
 const usedSkus = new Set<string>();
+// The replacement catalog contains only products supplied in the new CSVs.
+// Legacy records remain in source/history but are no longer offered for browsing.
 export const products: Product[] = canonicalProducts.map((product) => ({
   ...product,
+  price: product.variants[0]?.price ?? 100,
+  currency: "INR",
   variants: product.variants.map((variant, index) => {
     const sku = usedSkus.has(variant.sku)
       ? `${variant.sku}-${product.slug}-${index + 1}`
@@ -217,164 +214,3 @@ export const products: Product[] = canonicalProducts.map((product) => ({
     return { ...variant, sku };
   }),
 }));
-export const money = (minor: number) =>
-  new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-    maximumFractionDigits: 0,
-  }).format(minor / 100);
-export type Filters = {
-  department?: string;
-  category?: string;
-  subCategory?: string;
-  subcategory?: string;
-  q?: string;
-  material?: string;
-  color?: string;
-  collection?: string;
-  sort?: string;
-  page?: string;
-  limit?: string;
-  tag?: string;
-  use?: string;
-};
-export function filterProducts(catalog: Product[], f: Filters) {
-  const subcat = (f.subcategory || f.subCategory || "").toLowerCase();
-  let result = catalog.filter(
-    (p) => {
-      // Department filter
-      if (f.department && p.department !== f.department) return false;
-
-      // Category filter
-      if (f.category) {
-        const cat = f.category.toLowerCase();
-        const pCat = p.category.toLowerCase();
-        const isTrunk = (cat === "trunk" || cat === "trunks" || cat === "large-luggage" || cat === "large") && (pCat.includes("trunk") || p.tags.includes("trunk"));
-        const isCabin = cat === "cabin" && (pCat === "cabin" || p.tags.includes("cabin"));
-        const isCheckIn = (cat === "check-in" || cat === "checkin") && (pCat.includes("check") || p.tags.includes("check-in"));
-        const isEmblematic = cat === "emblematic-pieces" && (p.tags.includes("emblematic") || p.tags.includes("best-sellers"));
-        const isPhoneCase = (cat === "iphone-cases" || cat === "phone-cases") && (pCat.includes("phone") || p.subcategory === "iphone-cases" || p.tags.includes("iphone-cases"));
-        const isHat = (cat === "hats" || cat === "hat") && (pCat.includes("hat") || p.tags.includes("hats"));
-        const isGlasses = (cat === "sunglasses" || cat === "eyewear") && (pCat.includes("sunglass") || p.tags.includes("sunglasses"));
-        const isBelt = (cat === "belts" || cat === "belt") && (pCat.includes("belt") || p.tags.includes("belts"));
-        const isCardHolder = (cat === "card-holders" || cat === "card-holder") && (pCat.includes("card") || p.tags.includes("card-holders"));
-        const isAddressTag = (cat === "address-tags" || cat === "address-tag" || cat === "leather-luggage-tags") && (pCat.includes("tag") || p.tags.includes("address-tags"));
-        const isStickers = (cat === "stickers" || cat === "sticker" || cat === "all-stickers" || cat === "city-stickers") && (pCat.includes("sticker") || p.tags.includes("stickers"));
-        const isBagStrap = (cat === "bag-straps" || cat === "bag-strap" || cat === "bags-straps" || cat === "straps") && (pCat.includes("strap") || p.tags.includes("bag-straps"));
-        const isWheels = (cat === "wheels" || cat === "wheel" || cat === "classic-wheels") && (pCat.includes("wheel") || p.tags.includes("wheels"));
-        const isCustomisation = (cat === "customisation" || cat === "customization") && (p.tags.includes("customisation") || p.tags.includes("customization") || isAddressTag || isStickers || isBagStrap || isWheels);
-        const matchesCat = isTrunk || isCabin || isCheckIn || isEmblematic || isPhoneCase || isHat || isGlasses || isBelt || isCardHolder || isAddressTag || isStickers || isBagStrap || isWheels || isCustomisation ||
-          slugify(p.category) === cat ||
-          p.tags.includes(cat) ||
-          p.name.toLowerCase().includes(cat);
-        if (!matchesCat) return false;
-      }
-
-      // Subcategory filter
-      if (subcat) {
-        const isTrunkSub = (subcat === "trunk" || subcat === "trunks" || subcat === "large-luggage" || subcat === "large") && (p.category.toLowerCase().includes("trunk") || p.tags.includes("trunk"));
-        const isCabinSub = subcat === "cabin" && (p.category.toLowerCase() === "cabin" || p.tags.includes("cabin"));
-        const isCheckInSub = (subcat === "check-in" || subcat === "checkin") && (p.category.toLowerCase().includes("check") || p.tags.includes("check-in"));
-        const isBestSellers = subcat === "best-sellers" && (p.tags.includes("best-sellers") || p.tags.includes("emblematic"));
-        const isNewArrivals = subcat === "new-arrivals" && p.tags.includes("new-arrivals");
-        const isShortTrips = (subcat === "short-trips" || subcat === "short-trip") && (p.tags.includes("short-trips") || p.tags.includes("cabin"));
-        const isLongJourneys = (subcat === "long-journeys" || subcat === "long-haul") && (p.tags.includes("long-haul") || p.tags.includes("long-journeys") || p.category.toLowerCase().includes("check") || p.category.toLowerCase().includes("trunk"));
-        const isBusiness = (subcat === "business-selection" || subcat === "business") && (p.tags.includes("business-selection") || p.tags.includes("business-bags"));
-        const isCustomisationSub = (subcat === "customisation" || subcat === "customization") && (p.tags.includes("customisation") || p.tags.includes("customization"));
-        const isAddressTagSub = (subcat === "address-tags" || subcat === "address-tag") && (p.category.toLowerCase().includes("tag") || p.tags.includes("address-tags"));
-        const isStickersSub = (subcat === "stickers" || subcat === "all-stickers") && (p.category.toLowerCase().includes("sticker") || p.tags.includes("stickers"));
-        const isBagStrapSub = (subcat === "bag-straps" || subcat === "bag-strap") && (p.category.toLowerCase().includes("strap") || p.tags.includes("bag-straps"));
-        const isWheelsSub = (subcat === "wheels" || subcat === "wheel") && (p.category.toLowerCase().includes("wheel") || p.tags.includes("wheels"));
-        const matchesSubcat = isTrunkSub || isCabinSub || isCheckInSub || isBestSellers || isNewArrivals || isShortTrips || isLongJourneys || isBusiness ||
-          isCustomisationSub || isAddressTagSub || isStickersSub || isBagStrapSub || isWheelsSub ||
-          p.name.toLowerCase().includes(subcat) ||
-          p.tags.includes(slugify(subcat)) ||
-          (p.subcategory && p.subcategory.toLowerCase() === subcat);
-        if (!matchesSubcat) return false;
-      }
-
-      // Search query
-      if (f.q && !`${p.name} ${p.material} ${p.category} ${p.description}`.toLowerCase().includes(f.q.toLowerCase().slice(0, 100))) {
-        return false;
-      }
-
-      // Material
-      if (f.material) {
-        const mat = f.material.toLowerCase();
-        const pMat = p.material.toLowerCase();
-        if (pMat !== mat && !pMat.includes(mat) && !(p.materials && p.materials.some(m => m.toLowerCase().includes(mat)))) {
-          return false;
-        }
-      }
-
-      // Color
-      if (f.color) {
-        const fc = f.color.toLowerCase();
-        const hasColor = p.variants.some((v) => {
-          const vc = v.color.toLowerCase();
-          if (vc === fc || vc.includes(fc)) return true;
-          if (fc === "black" && (vc.includes("black") || vc.includes("graphite"))) return true;
-          if (fc === "grey" && (vc.includes("grey") || vc.includes("graphite") || vc.includes("titanium"))) return true;
-          if (fc === "silver" && vc.includes("silver")) return true;
-          if ((fc === "blue" || fc === "midnight blue") && (vc.includes("blue") || vc.includes("midnight") || vc.includes("indigo") || vc.includes("navy"))) return true;
-          if (fc === "green" && vc.includes("green")) return true;
-          if (fc === "white" && vc.includes("white")) return true;
-          if (fc === "brown" && (vc.includes("brown") || vc.includes("dune") || vc.includes("clay") || vc.includes("cognac"))) return true;
-          return false;
-        }) || (p.colors && p.colors.some(c => c.toLowerCase().includes(fc))) ||
-          (p.tags && ((fc === "blue" || fc === "midnight blue") ? (p.tags.includes("blue") || p.tags.includes("midnight-blue")) : p.tags.includes(fc)));
-        if (!hasColor) return false;
-      }
-
-      // Collection
-      if (f.collection) {
-        const col = f.collection.toLowerCase();
-        const pCol = p.collection.toLowerCase();
-        const matchesCol = pCol === col || (col === "emblematic" && (p.tags.includes("emblematic") || p.tags.includes("best-sellers"))) || (p.collections && p.collections.some(c => c.toLowerCase() === col));
-        if (!matchesCol) return false;
-      }
-
-      // Tag
-      if (f.tag) {
-        const t = f.tag.toLowerCase();
-        const matchesTag = p.tags.includes(t) ||
-          (t === "emblematic" && (p.tags.includes("emblematic") || p.tags.includes("best-sellers") || p.tags.includes("signature-pieces"))) ||
-          ((t === "long-journeys" || t === "long-haul") && (p.tags.includes("long-haul") || p.tags.includes("long-journeys") || p.category.toLowerCase().includes("check") || p.category.toLowerCase().includes("trunk"))) ||
-          (t === "short-trips" && (p.tags.includes("short-trips") || p.tags.includes("cabin"))) ||
-          ((t === "business-selection" || t === "business") && (p.tags.includes("business-selection") || p.tags.includes("business-bags"))) ||
-          (t === "gifts" && p.tags.includes("gifts"));
-        if (!matchesTag) return false;
-      }
-
-      // Use
-      if (f.use) {
-        if (f.use === "business" && !(p.tags.includes("business-bags") || p.tags.includes("business-selection"))) return false;
-        if (f.use === "travel" && !p.tags.includes("travel-bags")) return false;
-      }
-
-      return true;
-    }
-  );
-
-  if (f.sort === "price-asc")
-    result = result.sort((a, b) => (a.variants[0]?.price || 0) - (b.variants[0]?.price || 0));
-  if (f.sort === "price-desc")
-    result = result.sort((a, b) => (b.variants[0]?.price || 0) - (a.variants[0]?.price || 0));
-  if (f.sort === "name")
-    result = result.sort((a, b) => a.name.localeCompare(b.name));
-
-  const total = result.length;
-  const pageSize = f.limit ? Math.max(1, Number(f.limit) || 24) : 36;
-  const pages = Math.max(1, Math.ceil(total / pageSize));
-  const page = Math.min(
-    pages,
-    Math.max(1, Number.parseInt(f.page || "1") || 1),
-  );
-  return {
-    items: result.slice((page - 1) * pageSize, page * pageSize),
-    total,
-    page,
-    limit: pageSize,
-    pages,
-  };
-}

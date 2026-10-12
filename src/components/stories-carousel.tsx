@@ -1,4 +1,6 @@
 "use client";
+import "@/components/page-styles/editorial.css";
+
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
@@ -12,13 +14,15 @@ interface StoriesCarouselProps {
 
 export function StoriesCarousel({ initialStories }: StoriesCarouselProps) {
   const [stories, setStories] = useState<Story[]>(initialStories || []);
-  const [currentIndex, setCurrentIndex] = useState(0);
+
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const isDraggingRef = useRef(false);
   const startXRef = useRef(0);
   const scrollLeftRef = useRef(0);
+  const draggedRef = useRef(false);
 
   // Fetch updated stories from API if not provided or to ensure fresh data
   useEffect(() => {
@@ -42,9 +46,45 @@ export function StoriesCarousel({ initialStories }: StoriesCarouselProps) {
     };
   }, []);
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section || !stories.length) return;
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (preference.matches) return;
+    section.classList.add("is-reveal-ready");
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        section.classList.add("is-revealed");
+        observer.disconnect();
+      }
+    }, { threshold: 0.12 });
+    observer.observe(section);
+    const show = () => { if (preference.matches) section.classList.add("is-revealed"); };
+    preference.addEventListener("change", show);
+    return () => {
+      observer.disconnect();
+      preference.removeEventListener("change", show);
+      section.classList.remove("is-reveal-ready");
+    };
+  }, [stories.length]);
+
   const updateScrollState = useCallback(() => {
     if (!trackRef.current) return;
     const { scrollLeft, scrollWidth, clientWidth } = trackRef.current;
+    const track = trackRef.current;
+    const center = scrollLeft + clientWidth / 2;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const metrics = Array.from(track.querySelectorAll<HTMLElement>(".stories-card"), card => ({ card, left: card.offsetLeft, width: card.offsetWidth }));
+    metrics.forEach(({ card, left, width }) => {
+      const distance = (left + width / 2 - center) / (clientWidth / 2);
+      const curve = Math.max(-2, Math.min(2, distance));
+      const arc = curve * curve;
+      card.style.setProperty("--curve-angle", `${reduced ? 0 : -curve * 18}deg`);
+      card.style.setProperty("--curve-depth", `${reduced ? 0 : -arc * 35}px`);
+      card.style.setProperty("--curve-drop", `${reduced ? 0 : arc * 60}px`);
+      card.style.setProperty("--curve-skew", `${reduced ? 0 : curve * 3}deg`);
+      card.style.setProperty("--curve-scale", `${reduced ? 1 : 1 - Math.min(Math.abs(curve), 2) * .015}`);
+    });
     setCanScrollLeft(scrollLeft > 6);
     setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 6);
   }, []);
@@ -54,12 +94,25 @@ export function StoriesCarousel({ initialStories }: StoriesCarouselProps) {
     if (!track) return;
 
     updateScrollState();
-    track.addEventListener("scroll", updateScrollState, { passive: true });
-    window.addEventListener("resize", updateScrollState);
+    let frame = 0;
+    const scheduleUpdate = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        updateScrollState();
+      });
+    };
+    track.addEventListener("scroll", scheduleUpdate, { passive: true });
+    const observer = new ResizeObserver(updateScrollState);
+    observer.observe(track);
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    preference.addEventListener("change", updateScrollState);
 
     return () => {
-      track.removeEventListener("scroll", updateScrollState);
-      window.removeEventListener("resize", updateScrollState);
+      track.removeEventListener("scroll", scheduleUpdate);
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      preference.removeEventListener("change", updateScrollState);
     };
   }, [stories, updateScrollState]);
 
@@ -67,12 +120,12 @@ export function StoriesCarousel({ initialStories }: StoriesCarouselProps) {
     if (!trackRef.current) return;
     const track = trackRef.current;
     const card = track.querySelector(".stories-card") as HTMLElement | null;
-    const cardWidth = card ? card.offsetWidth + 28 : track.clientWidth * 0.75;
+    const cardWidth = card ? card.offsetWidth + parseFloat(getComputedStyle(track).columnGap) : track.clientWidth * 0.75;
     const scrollAmount = direction === "next" ? cardWidth : -cardWidth;
 
     track.scrollBy({
       left: scrollAmount,
-      behavior: "smooth",
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
     });
   };
 
@@ -90,6 +143,8 @@ export function StoriesCarousel({ initialStories }: StoriesCarouselProps) {
   // Touch and pointer dragging support
   const handlePointerDown = (e: React.PointerEvent) => {
     if (!trackRef.current) return;
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
+    draggedRef.current = false;
     isDraggingRef.current = true;
     startXRef.current = e.pageX - trackRef.current.offsetLeft;
     scrollLeftRef.current = trackRef.current.scrollLeft;
@@ -100,6 +155,7 @@ export function StoriesCarousel({ initialStories }: StoriesCarouselProps) {
     e.preventDefault();
     const x = e.pageX - trackRef.current.offsetLeft;
     const walk = (x - startXRef.current) * 1.5;
+    if (Math.abs(walk) > 6) draggedRef.current = true;
     trackRef.current.scrollLeft = scrollLeftRef.current - walk;
   };
 
@@ -111,20 +167,19 @@ export function StoriesCarousel({ initialStories }: StoriesCarouselProps) {
 
   return (
     <section
-      className="stories-section"
+      ref={sectionRef}
+      className="stories-section stories-curved stories-editorial"
       aria-labelledby="stories-heading"
       id="stories"
     >
       <div className="stories-container">
-        {/* Left Fixed Editorial Heading */}
+        {/* Editorial heading above the curved gallery */}
         <div className="stories-heading-area">
           <p className="stories-eyebrow">STORIES</p>
           <h2 id="stories-heading" className="stories-title">
-            Our latest news
-            <br />
-            and views
+            Our Latest News <em>and Views</em>
           </h2>
-        </div>
+        <Link href="/journal" className="stories-explore">Explore stories <ArrowRight size={15} /></Link></div>
 
         {/* Right Carousel Wrapper with Overlay Circular Arrows */}
         <div className="stories-carousel-wrapper">
@@ -149,10 +204,13 @@ export function StoriesCarousel({ initialStories }: StoriesCarouselProps) {
             role="region"
             aria-label="Latest stories and news carousel"
             onKeyDown={handleKeyDown}
+            onDragStart={(event) => event.preventDefault()}
+            onClickCapture={(event) => { if (draggedRef.current) { event.preventDefault(); draggedRef.current = false; } }}
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUpOrLeave}
             onPointerLeave={handlePointerUpOrLeave}
+            onPointerCancel={handlePointerUpOrLeave}
           >
             {stories.map((story, idx) => (
               <article key={story.id || story.slug} className="stories-card">
@@ -166,7 +224,7 @@ export function StoriesCarousel({ initialStories }: StoriesCarouselProps) {
                       src={story.thumbnail || story.heroImage}
                       alt={story.title}
                       fill
-                      sizes="(max-width: 640px) 80vw, (max-width: 1024px) 45vw, 360px"
+                      sizes="(max-width: 640px) 62vw, (max-width: 1024px) 30vw, 20vw"
                       className="stories-card-img"
                       priority={idx < 3}
                     />

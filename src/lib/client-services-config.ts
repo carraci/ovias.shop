@@ -23,11 +23,11 @@ export interface ClientServicesConfig {
 
 export const clientServicesConfig: ClientServicesConfig = {
   brandName: "OVIA",
-  supportPhone: "+9118001039988",
-  supportPhoneDisplay: "+91 1800 103 9988",
-  supportEmail: "clientcare@ovia.com",
-  whatsappUrl: "https://wa.me/9118001039988",
-  appleMessagesUrl: "sms:+9118001039988",
+  supportPhone: "+917410724158",
+  supportPhoneDisplay: "+91 74107 24158",
+  supportEmail: "adarshshukla4639@gmail.com",
+  whatsappUrl: "https://wa.me/917410724158",
+  appleMessagesUrl: "sms:+917410724158",
   facebookMessengerUrl: "https://m.me/ovia",
   businessHours: {
     weekday: "Monday – Saturday: 10:00 AM – 7:00 PM",
@@ -39,19 +39,19 @@ export const clientServicesConfig: ClientServicesConfig = {
       name: "OVIA Maison Mumbai",
       address: "Jio World Plaza, Bandra Kurla Complex",
       city: "Mumbai, Maharashtra",
-      phone: "+91 1800 103 9988",
+      phone: "+91 74107 24158",
     },
     {
       name: "OVIA New Delhi",
       address: "DLF Emporio, Vasant Kunj",
       city: "New Delhi, Delhi",
-      phone: "+91 1800 103 9988",
+      phone: "+91 74107 24158",
     },
     {
       name: "OVIA Bengaluru",
       address: "The Collection, UB City",
       city: "Bengaluru, Karnataka",
-      phone: "+91 1800 103 9988",
+      phone: "+91 74107 24158",
     },
   ],
 };

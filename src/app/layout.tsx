@@ -1,4 +1,7 @@
+import { StorefrontChrome } from "@/components/storefront-chrome";
 import { cookies } from "next/headers";
+import { LiveStorefront } from "@/components/live-storefront";
+import { PublicCampaignPlacement } from "@/components/campaign-banners";
 import { PreferencesProvider } from "@/components/preferences";
 import {
   defaultPreferences,
@@ -9,8 +12,13 @@ import {
 import type { Metadata, Viewport } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { menuProducts } from "@/server/navigation";
 import { StoreProvider } from "@/components/store-provider";
+import { ShoppingBagLauncher } from "@/components/shopping-bag-launcher";
+import { HomeHeroShell } from "@/components/home-hero-shell";
+import { StoreNavigation } from "@/components/store-navigation";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { WhatsAppFloatingWidget } from "@/components/whatsapp-widget";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 export const metadata: Metadata = {
@@ -19,7 +27,7 @@ export const metadata: Metadata = {
   description:
     "Considered travel goods for an open world. Discover the OVIA concept collection of luggage, bags and everyday essentials.",
   icons: { icon: "/favicon.svg" },
-  robots: { index: false, follow: false },
+  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
@@ -46,22 +54,25 @@ export default async function RootLayout({
       stored &&
       markets.some((m) => m.code === stored.country) &&
       currencies.includes(stored.currency) &&
-      stored.locale === "en-IN"
+      typeof stored.locale === "string"
     )
       preferences = stored;
   } catch {}
+
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body>
         <PreferencesProvider initial={preferences}>
           <StoreProvider>
+            <LiveStorefront />
+            <StoreNavigation />
             <SmoothScroll />
             <a href="#main" className="skip-link">
               Skip to content
             </a>
-            <Header />
-            <main id="main">{children}</main>
-            <Footer />
+            <StorefrontChrome><Header menuProducts={menuProducts} /><ShoppingBagLauncher /></StorefrontChrome>
+            <main id="main"><StorefrontChrome><HomeHeroShell /><PublicCampaignPlacement /></StorefrontChrome>{children}</main>
+            <StorefrontChrome hideOnCheckout><Footer /><WhatsAppFloatingWidget /></StorefrontChrome>
           </StoreProvider>
         </PreferencesProvider>
       </body>

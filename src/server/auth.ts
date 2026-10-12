@@ -1,4 +1,4 @@
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { SignJWT, jwtVerify } from "jose";
 import {
   randomBytes,
@@ -9,9 +9,10 @@ import {
 import { transaction } from "./db";
 import { ApiError, hash } from "./http";
 import type { Session, User } from "@/lib/types";
+import { parseDeviceFromUserAgent } from "./session-device";
 const globalAuth = globalThis as typeof globalThis & { oviaSecret?: string };
 const cookieName = "ovia_session";
-function secret() {
+export function authSigningKey() {
   if (process.env.JWT_SECRET && process.env.JWT_SECRET.length >= 32)
     return new TextEncoder().encode(process.env.JWT_SECRET);
   if (process.env.NODE_ENV === "production")
@@ -37,7 +38,21 @@ export function checkPassword(password: string, stored: string) {
   const expected = Buffer.from(key, "hex");
   return actual.length === expected.length && timingSafeEqual(actual, expected);
 }
-export async function signIn(user: User) {
+export async function currentSessionId(): Promise<string | null> {
+  const token = (await cookies()).get(cookieName)?.value;
+  if (!token) return null;
+  try {
+    const { payload } = await jwtVerify(token, authSigningKey(), {
+      algorithms: ["HS256"],
+      issuer: "ovia",
+      audience: "ovia-store",
+    });
+    return hash(payload.jti || "");
+  } catch {
+    return null;
+  }
+}
+export async function signIn(user: User, meta?: { userAgent?: string; ip?: string }) {
   await signOut();
   const id = randomUUID();
   const token = await new SignJWT({})
@@ -48,12 +63,34 @@ export async function signIn(user: User) {
     .setAudience("ovia-store")
     .setIssuedAt()
     .setExpirationTime("7d")
-    .sign(secret());
+    .sign(authSigningKey());
+  const now = new Date().toISOString();
+  let userAgent = meta?.userAgent;
+  let ip = meta?.ip;
+  if (!userAgent || !ip) {
+    try {
+      const headerList = await headers();
+      if (!userAgent) userAgent = headerList.get("user-agent") || undefined;
+      if (!ip) ip = headerList.get("x-forwarded-for")?.split(",")[0]?.trim() || headerList.get("x-real-ip") || undefined;
+    } catch {
+      // not in request context
+    }
+  }
+  const parsed = parseDeviceFromUserAgent(userAgent, ip);
   await transaction((repo) =>
     repo.put<Session>("sessions", {
       id: hash(id),
       userId: user.id,
       expiresAt: new Date(Date.now() + 7 * 86400000).toISOString(),
+      createdAt: now,
+      lastActiveAt: now,
+      userAgent,
+      ip: parsed.ip,
+      device: parsed.device,
+      browser: parsed.browser,
+      os: parsed.os,
+      deviceType: parsed.deviceType,
+      location: parsed.location,
     }),
   );
   (await cookies()).set(cookieName, token, {
@@ -68,7 +105,7 @@ export async function currentUser() {
   const token = (await cookies()).get(cookieName)?.value;
   if (!token) return null;
   try {
-    const { payload } = await jwtVerify(token, secret(), {
+    const { payload } = await jwtVerify(token, authSigningKey(), {
       algorithms: ["HS256"],
       issuer: "ovia",
       audience: "ovia-store",
@@ -81,7 +118,8 @@ export async function currentUser() {
       if (
         !session ||
         session.userId !== payload.sub ||
-        Date.parse(session.expiresAt) < Date.now()
+        !Number.isFinite(Date.parse(session.expiresAt)) ||
+        Date.parse(session.expiresAt) <= Date.now()
       )
         return null;
       const user = await repo.get<User>("users", session.userId);
@@ -91,6 +129,7 @@ export async function currentUser() {
             name: user.name,
             email: user.email,
             verifiedAt: user.verifiedAt,
+            role: user.role || "CUSTOMER",
           }
         : null;
     });
@@ -104,7 +143,7 @@ export async function signOut() {
   let sessionId: string | undefined;
   if (token) {
     try {
-      const { payload } = await jwtVerify(token, secret(), {
+      const { payload } = await jwtVerify(token, authSigningKey(), {
         algorithms: ["HS256"],
         issuer: "ovia",
         audience: "ovia-store",
@@ -143,11 +182,11 @@ export async function signPasswordResetToken(userId: string, tokenId: string) {
     .setAudience("ovia-password-reset")
     .setIssuedAt()
     .setExpirationTime("15m")
-    .sign(secret());
+    .sign(authSigningKey());
 }
 export async function readPasswordResetToken(token: string) {
   try {
-    const { payload } = await jwtVerify(token, secret(), {
+    const { payload } = await jwtVerify(token, authSigningKey(), {
       algorithms: ["HS256"], issuer: "ovia", audience: "ovia-password-reset",
     });
     if (payload.purpose !== "password-reset" || !payload.jti || !payload.sub)
@@ -157,3 +196,4 @@ export async function readPasswordResetToken(token: string) {
     throw new ApiError(400, "Invalid or expired reset authorization. Request a new code.");
   }
 }
+

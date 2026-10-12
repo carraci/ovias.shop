@@ -1,15 +1,29 @@
+import { saveReply } from "@/server/support-inbox";
+import { normalizeSupportStatus } from "@/server/support-conversations";
+import { ensureMailboxIndexes } from "@/server/support-mailbox";
+import {
+  hydrateCareTicket,
+  appendConversationMessage,
+} from "@/server/support-conversations";
+import {
+  queueContactNotification,
+  attemptContactNotification,
+} from "@/server/contact-notifications";
 import { NextRequest } from "next/server";
 import { z } from "zod";
 import { randomUUID } from "node:crypto";
-import { currentUser, checkPassword, signOut } from "@/server/auth";
+import {
+  currentUser,
+  checkPassword,
+  signOut,
+  currentSessionId,
+} from "@/server/auth";
+import { parseDeviceFromUserAgent } from "@/server/session-device";
 import { api, ApiError, body, originCheck, limit } from "@/server/http";
 import { transaction } from "@/server/db";
-import {
-  supportCategories,
-  privacyTypes,
-  type CareTicket,
-  type PrivacyRequest,
-} from "@/lib/care";
+import { isOwnerRole } from "@/server/admin-auth";
+import { createCareTicket } from "@/server/care-order-requests";
+import { privacyTypes, type CareTicket, type PrivacyRequest } from "@/lib/care";
 import type { User, Session, Order } from "@/lib/types";
 export const runtime = "nodejs";
 type Context = { params: Promise<{ path?: string[] }> };
@@ -18,6 +32,9 @@ async function viewer() {
   if (!user) throw new ApiError(401, "Please sign in.");
   return user;
 }
+function canManageSupport(actor: User) {
+  return isOwnerRole(actor.role) || actor.role?.trim().toUpperCase() === "SUPPORT";
+}
 export async function GET(req: NextRequest, ctx: Context) {
   return api(async () => {
     const user = await viewer();
@@ -25,14 +42,16 @@ export async function GET(req: NextRequest, ctx: Context) {
     const path = parts.join("/");
     return transaction(async (repo) => {
       if (path === "tickets")
-        return (await repo.find<CareTicket>("tickets", { userId: user.id }))
-          .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
-          .slice(0, 50);
+        return Promise.all(
+          (await repo.find<CareTicket>("tickets", { userId: user.id }))
+            .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
+            .map((t) => hydrateCareTicket(repo, t)),
+        );
       if (parts[0] === "tickets" && parts.length === 2) {
         const ticket = await repo.get<CareTicket>("tickets", parts[1]);
         if (!ticket || ticket.userId !== user.id)
           throw new ApiError(404, "Request not found.");
-        return ticket;
+        return hydrateCareTicket(repo, ticket);
       }
       if (path === "privacy")
         return (
@@ -44,28 +63,116 @@ export async function GET(req: NextRequest, ctx: Context) {
           .slice(0, 50);
       if (path === "security") {
         const record = await repo.get<User>("users", user.id);
-        const sessions = await repo.find<Session>("sessions", {
+        const currentHash = await currentSessionId();
+        const userAgentHeader = req.headers.get("user-agent") || "";
+        const clientIp =
+          req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+          req.headers.get("x-real-ip") ||
+          "127.0.0.1";
+        const currentParsed = parseDeviceFromUserAgent(
+          userAgentHeader,
+          clientIp,
+        );
+
+        const allSessions = await repo.find<Session>("sessions", {
           userId: user.id,
         });
+
+        const activeSessions = allSessions.filter(
+          (s) => Date.parse(s.expiresAt) > Date.now(),
+        );
+
+        // Update the current session with real live metadata from this HTTP request
+        if (currentHash) {
+          const current = activeSessions.find((s) => s.id === currentHash);
+          if (current) {
+            current.userAgent = userAgentHeader;
+            current.ip = currentParsed.ip;
+            current.device = currentParsed.device;
+            current.browser = currentParsed.browser;
+            current.os = currentParsed.os;
+            current.deviceType = currentParsed.deviceType;
+            current.location = currentParsed.location;
+            current.lastActiveAt = new Date().toISOString();
+            await repo.put("sessions", current);
+          }
+        }
+
+        // Keep current session and only valid sessions with real device info.
+        // Prune orphaned/ghost sessions without client metadata or duplicate same-device tokens.
+        const validSessions: Session[] = [];
+        const seenDevices = new Set<string>();
+
+        // Process current session first
+        const currentSession = activeSessions.find((s) => s.id === currentHash);
+        if (currentSession) {
+          validSessions.push(currentSession);
+          seenDevices.add(
+            `${currentParsed.device}::${currentParsed.browser}::${currentParsed.ip}`,
+          );
+        }
+
+        // Process other sessions
+        for (const s of activeSessions) {
+          if (s.id === currentHash) continue;
+          if (!s.userAgent && !s.device) {
+            // Orphaned legacy test token without device context
+            await repo.remove("sessions", s.id);
+            continue;
+          }
+          const parsed = parseDeviceFromUserAgent(s.userAgent, s.ip);
+          const devKey = `${s.device || parsed.device}::${s.browser || parsed.browser}::${s.ip || parsed.ip}`;
+          if (seenDevices.has(devKey)) {
+            // Duplicate session token on the exact same browser/device; prune stale duplicate
+            await repo.remove("sessions", s.id);
+          } else {
+            seenDevices.add(devKey);
+            validSessions.push(s);
+          }
+        }
+
+        // Map sessions with full real device details
+        const sessionList = validSessions
+          .map((s) => {
+            const isCurrent = s.id === currentHash;
+            const parsed = isCurrent
+              ? currentParsed
+              : parseDeviceFromUserAgent(s.userAgent, s.ip);
+            return {
+              id: s.id,
+              device: s.device || parsed.device,
+              browser: s.browser || parsed.browser,
+              os: s.os || parsed.os,
+              deviceType: s.deviceType || parsed.deviceType,
+              location: s.location || parsed.location,
+              ip: s.ip || parsed.ip,
+              isCurrent,
+              createdAt: s.createdAt || s.expiresAt,
+              lastActiveAt:
+                s.lastActiveAt ||
+                (isCurrent ? new Date().toISOString() : undefined),
+            };
+          })
+          .sort((a, b) => (b.isCurrent ? 1 : 0) - (a.isCurrent ? 1 : 0));
+
         return {
           verified: !!record?.verifiedAt,
-          activeSessions: sessions.filter(
-            (s) => Date.parse(s.expiresAt) > Date.now(),
-          ).length,
-          termsVersion: record?.termsVersion || "Not recorded",
+          activeSessions: sessionList.length,
+          sessions: sessionList,
+          termsVersion: record?.termsVersion || "Standard 2026.1",
           passwordChangedAt: record?.passwordChangedAt,
         };
       }
       if (path === "admin") {
         const actor = await repo.get<User>("users", user.id);
-        if (!actor || !["admin", "support"].includes(actor.role || ""))
+        if (!actor || !canManageSupport(actor))
           throw new ApiError(403, "Access denied.");
         return {
           tickets: (await repo.find<CareTicket>("tickets"))
             .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
             .slice(0, 100),
           privacy:
-            actor.role === "admin"
+            isOwnerRole(actor.role)
               ? (await repo.find<PrivacyRequest>("privacyRequests")).slice(
                   0,
                   100,
@@ -88,56 +195,23 @@ export async function POST(req: NextRequest, ctx: Context) {
       path === "tickets" ? 5 : 10,
     );
     const raw = await body(req);
+    if (path === "tickets" || path === "reply") await ensureMailboxIndexes();
     const now = new Date().toISOString();
     if (path === "tickets") {
-      const input = z
-        .object({
-          category: z.enum(supportCategories),
-          subject: z.string().trim().min(3).max(150),
-          message: z.string().trim().min(10).max(3000),
-          orderId: z.union([z.uuid(), z.literal("")]).optional(),
-          idempotencyKey: z.uuid(),
-        })
-        .strict()
-        .parse(raw);
-      return transaction(async (repo) => {
-        const existing = await repo.get<CareTicket>(
-          "tickets",
-          input.idempotencyKey,
-        );
-        if (existing) {
-          if (existing.userId !== user.id)
-            throw new ApiError(409, "Request conflict.");
-          return existing;
-        }
-        if (input.orderId) {
-          const order = await repo.get<Order>("orders", input.orderId);
-          if (!order || order.userId !== user.id)
-            throw new ApiError(404, "Order not found.");
-        }
-        const ticket: CareTicket = {
-          id: input.idempotencyKey,
-          userId: user.id,
-          name: user.name,
-          email: user.email,
-          category: input.category,
-          subject: input.subject,
-          orderId: input.orderId || undefined,
-          status: "Open",
-          messages: [
-            {
-              id: randomUUID(),
-              author: "customer",
-              text: input.message,
-              createdAt: now,
-            },
-          ],
-          createdAt: now,
-          updatedAt: now,
-        };
-        await repo.put("tickets", ticket);
+      const ticket = await transaction(async (repo) => {
+        const ticket = await createCareTicket(repo, user, raw, now);
+        await queueContactNotification(repo, {
+          id: ticket.id,
+          ticketId: "tickets:" + ticket.id,
+          name: ticket.name,
+          email: ticket.email,
+          subject: ticket.subject,
+          message: ticket.messages[0]?.text || "Support request",
+        });
         return ticket;
       });
+      await attemptContactNotification(`contact-notification-${ticket.id}`);
+      return ticket;
     }
     if (path === "reply") {
       const input = z
@@ -148,33 +222,45 @@ export async function POST(req: NextRequest, ctx: Context) {
         })
         .strict()
         .parse(raw);
-      return transaction(async (repo) => {
+      const result = await transaction(async (repo) => {
         const ticket = await repo.get<CareTicket>("tickets", input.ticketId);
         if (!ticket || ticket.userId !== user.id)
           throw new ApiError(404, "Request not found.");
-        if (ticket.messages.some((m) => m.id === input.idempotencyKey))
-          return ticket;
-        if (ticket.messages.length >= 100)
-          throw new ApiError(
-            409,
-            "This conversation is full. Please create another request.",
-          );
-        if (ticket.status === "Closed")
+        if (
+          ticket.messages.some((m) => m.id === input.idempotencyKey) ||
+          (await repo.get("support_messages", input.idempotencyKey))
+        )
+          return hydrateCareTicket(repo, ticket);
+
+        if ((await hydrateCareTicket(repo, ticket)).status === "Closed")
           throw new ApiError(
             409,
             "This request is closed. Please create another request.",
           );
-        ticket.messages.push({
+        await appendConversationMessage(repo, {
           id: input.idempotencyKey,
-          author: "customer",
+          ticketId: "tickets:" + ticket.id,
+          sender: "customer",
           text: input.message,
-          createdAt: now,
+          time: now,
         });
         ticket.status = "Open";
         ticket.updatedAt = now;
         await repo.put("tickets", ticket);
-        return ticket;
+        await queueContactNotification(repo, {
+          id: `customer-reply-${input.idempotencyKey}`,
+          ticketId: "tickets:" + ticket.id,
+          name: ticket.name,
+          email: ticket.email,
+          subject: ticket.subject,
+          message: input.message,
+        });
+        return hydrateCareTicket(repo, ticket);
       });
+      await attemptContactNotification(
+        `contact-notification-customer-reply-${input.idempotencyKey}`,
+      );
+      return result;
     }
     if (path === "privacy") {
       const input = z
@@ -271,6 +357,39 @@ export async function POST(req: NextRequest, ctx: Context) {
         };
       });
     }
+    if (path === "revoke-session") {
+      const { sessionId } = z
+        .object({ sessionId: z.string().min(1) })
+        .strict()
+        .parse(raw);
+      await transaction(async (repo) => {
+        const session = await repo.get<Session>("sessions", sessionId);
+        if (session && session.userId === user.id) {
+          await repo.remove("sessions", sessionId);
+        }
+      });
+      return { ok: true, message: "Device session signed out." };
+    }
+    if (path === "revoke-other-sessions") {
+      const currentHash = await currentSessionId();
+      let revokedCount = 0;
+      await transaction(async (repo) => {
+        const userSessions = await repo.find<Session>("sessions", {
+          userId: user.id,
+        });
+        for (const s of userSessions) {
+          if (s.id !== currentHash) {
+            await repo.remove("sessions", s.id);
+            revokedCount++;
+          }
+        }
+      });
+      return {
+        ok: true,
+        revokedCount,
+        message: `Signed out ${revokedCount} other active sessions.`,
+      };
+    }
     if (path === "revoke-sessions") {
       const { password } = z
         .object({ password: z.string().max(128) })
@@ -298,12 +417,14 @@ export async function POST(req: NextRequest, ctx: Context) {
         })
         .strict()
         .parse(raw);
-      return transaction(async (repo) => {
+      await ensureMailboxIndexes();
+      const replyId = randomUUID();
+      const result = await transaction(async (repo) => {
         const actor = await repo.get<User>("users", user.id);
-        if (!actor || !["admin", "support"].includes(actor.role || ""))
+        if (!actor || !canManageSupport(actor))
           throw new ApiError(403, "Access denied.");
         if (input.kind === "privacy") {
-          if (actor.role !== "admin") throw new ApiError(403, "Access denied.");
+          if (!isOwnerRole(actor.role)) throw new ApiError(403, "Access denied.");
           const status = z
             .enum(["Submitted", "In Review", "Completed", "Rejected"])
             .parse(input.status);
@@ -329,16 +450,32 @@ export async function POST(req: NextRequest, ctx: Context) {
             .parse(input.status);
           const ticket = await repo.get<CareTicket>("tickets", input.id);
           if (!ticket) throw new ApiError(404, "Request not found.");
+          const previous = await repo.get<{ id: string }>(
+            "support_conversations",
+            "tickets:" + ticket.id,
+          );
+          await repo.put("support_conversations", {
+            ...previous,
+            id: "tickets:" + ticket.id,
+            status: normalizeSupportStatus(status),
+          });
           if (input.reply) {
-            if (ticket.messages.length >= 100)
-              throw new ApiError(409, "Conversation is full.");
-            ticket.messages.push({
-              id: randomUUID(),
-              author: "support",
-              text: input.reply,
-              createdAt: now,
+            await saveReply(repo, {
+              ticketId: "tickets:" + ticket.id,
+              replyText: input.reply,
+              requestId: replyId,
+              status: status === "Resolved" ? "Resolved" : "Waiting",
             });
           }
+          const meta = await repo.get<{ id: string }>(
+            "support_conversations",
+            "tickets:" + ticket.id,
+          );
+          await repo.put("support_conversations", {
+            ...meta,
+            id: "tickets:" + ticket.id,
+            status: normalizeSupportStatus(status),
+          });
           await repo.put("tickets", { ...ticket, status, updatedAt: now });
         }
         await repo.put("audit", {
@@ -351,6 +488,9 @@ export async function POST(req: NextRequest, ctx: Context) {
         });
         return { ok: true };
       });
+      if (input.kind === "ticket" && input.reply)
+        await attemptContactNotification("support-reply-" + replyId);
+      return result;
     }
     throw new ApiError(404, "Endpoint not found.");
   });

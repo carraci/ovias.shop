@@ -296,7 +296,7 @@ async function withFallback<T>(
       err.message?.includes("Mongo")
     ) {
       console.warn("MongoDB unavailable for stories; using resilient fallback storage.");
-      return await fallbackAction();
+      throw err;
     }
     throw err;
   }
@@ -311,10 +311,7 @@ async function ensureSeedStories(repo: any): Promise<Story[]> {
     memoryStories = existing as Story[];
     return memoryStories;
   }
-  for (const story of initialStories) {
-    await repo.put("stories", story);
-  }
-  memoryStories = [...initialStories];
+  memoryStories = [];
   return memoryStories;
 }
 
@@ -322,14 +319,27 @@ async function ensureSeedStories(repo: any): Promise<Story[]> {
  * Retrieves all stories matching filter criteria.
  */
 export async function getStories(options: {
-  status?: "published" | "draft" | "all";
+  status?: "published" | "draft" | "scheduled" | "archived" | "all";
   featuredOnly?: boolean;
 } = {}): Promise<Story[]> {
   const { status = "published", featuredOnly = false } = options;
+  const now = Date.now();
   return withFallback(
     async () => {
       return transaction(async (repo) => {
         let list = await ensureSeedStories(repo);
+        // Auto-promote scheduled stories whose publication time has arrived
+        list = list.map((s) => {
+          if (
+            s.status === "scheduled" &&
+            s.publishedAt &&
+            new Date(s.publishedAt).getTime() <= now
+          ) {
+            return { ...s, status: "published" as const };
+          }
+          return s;
+        });
+
         if (status !== "all") {
           list = list.filter((s) => s.status === status);
         }
@@ -343,6 +353,16 @@ export async function getStories(options: {
     },
     () => {
       let list = [...memoryStories];
+      list = list.map((s) => {
+        if (
+          s.status === "scheduled" &&
+          s.publishedAt &&
+          new Date(s.publishedAt).getTime() <= now
+        ) {
+          return { ...s, status: "published" as const };
+        }
+        return s;
+      });
       if (status !== "all") {
         list = list.filter((s) => s.status === status);
       }

@@ -1,0 +1,262 @@
+.floatingButton {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111111;
+  cursor: pointer;
+  z-index: 999;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background-color 0.2s ease, color 0.2s ease;
+  outline: none;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.floatingButton:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.08);
+  color: #25D366;
+}
+
+.floatingButton:active {
+  transform: scale(0.96);
+}
+
+.floatingButton:focus-visible {
+  box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.4), 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Modal Overlay */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(17, 17, 17, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+  opacity: 0;
+  animation: fadeIn 0.22s ease-out forwards;
+}
+
+.modal {
+  position: relative;
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 660px;
+  border-radius: 4px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.22), 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 44px 44px 40px;
+  transform: translateY(14px) scale(0.98);
+  animation: popIn 0.26s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  box-sizing: border-box;
+}
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: transparent;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: #555555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
+}
+
+.closeButton:hover {
+  color: #000000;
+  background-color: rgba(0, 0, 0, 0.04);
+  transform: scale(1.08);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 36px;
+  align-items: center;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  font-family: inherit;
+  font-size: 21px;
+  line-height: 1.38;
+  font-weight: 400;
+  color: #111111;
+  letter-spacing: -0.015em;
+  margin: 0 0 24px 0;
+}
+
+.subheading {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #444444;
+  margin: 0 0 10px 0;
+}
+
+.webLink {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #111111;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+  margin-top: 2px;
+}
+
+.webLink:hover {
+  color: #25D366;
+  text-decoration-color: #25D366;
+}
+
+.mobileDirectButton {
+  display: none;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background-color: #111111;
+  color: #ffffff;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.mobileDirectButton:hover {
+  background-color: #25D366;
+}
+
+.qrContainer {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 2px;
+  padding: 4px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.qrImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.qrBadge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111111;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 680px) {
+  .floatingButton {
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .modal {
+    padding: 32px 24px 28px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .textContent {
+    align-items: center;
+  }
+
+  .heading {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .webLink {
+    align-self: center;
+  }
+
+  .mobileDirectButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    align-self: stretch;
+  }
+
+  .qrContainer {
+    width: 170px;
+    height: 170px;
+  }
+
+  .qrBadge {
+    width: 38px;
+    height: 38px;
+  }
+}

@@ -1,9 +1,8 @@
 import { notFound } from "next/navigation";
 import { storefrontCatalog as catalog } from "@/server/storefront-catalog";
 import { newEdits, newProducts } from "@/lib/new-collection";
-import { CatalogView } from "@/components/catalog-view";
+import { CatalogListing as CatalogView } from "@/components/catalog-listing";
 import { ArtistCaseShowcase } from "@/components/artist-case-showcase";
-import { NewArrivalsLanding } from "@/components/new-arrivals-landing";
 
 export const dynamic = "force-dynamic";
 
@@ -26,7 +25,7 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: edit?.[0]
       ? newEdits[edit[0]]?.title || "New collection"
-      : "OVIA New Arrivals — New Horizons, New Journeys",
+      : "OVIA New Arrivals",
     alternates: { canonical: edit ? `/new/${edit.join("/")}` : "/new" },
   };
 }
@@ -36,24 +35,6 @@ export default async function NewCollection({ params, searchParams }: Props) {
   const sp = searchParams ? await searchParams : {};
   const selected = edit?.[0] ? newEdits[edit[0]] : undefined;
   if (edit && (edit.length !== 1 || !selected)) notFound();
-
-  // If visiting /new without sub-route and no filter params, display the editorial landing page
-  if (!edit || edit.length === 0) {
-    const hasFilter = Boolean(
-      sp.view === "catalog" ||
-      sp.category ||
-      sp.subCategory ||
-      sp.material ||
-      sp.colour ||
-      sp.collection ||
-      sp.q ||
-      sp.sort ||
-      sp.page
-    );
-    if (!hasFilter) {
-      return <NewArrivalsLanding />;
-    }
-  }
 
   const all = await catalog();
 
@@ -73,7 +54,7 @@ export default async function NewCollection({ params, searchParams }: Props) {
   }
 
   return (
-    <CatalogView
+    <CatalogView query={sp}
       products={all.filter((p) =>
         selected
           ? selected.matches(p)
@@ -88,5 +69,4 @@ export default async function NewCollection({ params, searchParams }: Props) {
     />
   );
 }
-
 

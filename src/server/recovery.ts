@@ -2,7 +2,7 @@ import { randomBytes, randomInt } from "node:crypto";
 import { transaction } from "./db";
 import { ApiError, hash } from "./http";
 import { checkPassword, passwordHash, signPasswordResetToken } from "./auth";
-import { sendAccountEmail, requireEmailConfiguration } from "./mail";
+import { requireEmailConfiguration } from "./mail";
 import type { User } from "@/lib/types";
 
 // Reuses the existing tokens collection and MongoDB connection.
@@ -61,16 +61,6 @@ async function requestCode(
     }
     if (!user || (purpose === "verify" && user.verifiedAt)) return undefined;
 
-    // Check if there was an active token to retain previous OTP hash on resend
-    const existing = await repo.get<RecoveryCode>("tokens", codeId(email, purpose));
-    const previousOtpHashes: string[] = [];
-    if (existing && Date.parse(existing.expiresAt) > Date.now()) {
-      if (existing.otpHash) previousOtpHashes.push(existing.otpHash);
-      if (Array.isArray(existing.previousOtpHashes)) {
-        previousOtpHashes.push(...existing.previousOtpHashes.slice(0, 2));
-      }
-    }
-
     for (const previous of await repo.find<{
       id: string;
       userId: string;
@@ -86,7 +76,6 @@ async function requestCode(
       purpose: `${purpose}-otp`,
       credentialHash: hash(user.passwordHash),
       otpHash,
-      previousOtpHashes,
       attempts: 0,
       generation,
       createdAt: new Date().toISOString(),
@@ -97,13 +86,17 @@ async function requestCode(
   });
   if (user) {
     try {
-      // The plaintext code exists only in memory and the recipient's email.
-      await sendAccountEmail({
-        id: generation,
-        to: email,
-        subject: "Your OVIA verification code",
-        text: `Your OVIA verification code is: ${otp}\n\nIt expires in 10 minutes.\n\nIf you didn't request this, ignore this email.`,
+      // Dispatch luxury responsive OTP authorization email via notification service
+      const { dispatchNotification } = await import("./notification-service");
+      const delivery = await dispatchNotification("OTP_AUTHORIZATION", {
+        otp,
+        customerName: user.name || "Valued Voyager",
+        recipientEmail: email,
+      }, {
+        dedupeKey: `notif_OTP_${generation}`,
       });
+      if (!delivery.success)
+        throw new ApiError(502, delivery.error || "The verification email could not be sent. Please try again.");
     } catch (error) {
       await transaction(async (repo) => {
         await repo.remove("tokens", codeId(email, purpose));
@@ -119,23 +112,13 @@ async function verifyCode(rawEmail: string, rawOtp: string, purpose: CodePurpose
   const otp = rawOtp.trim();
   const tokenId = randomBytes(32).toString("hex");
   const outcome = await transaction(async (repo) => {
-    let record = await repo.get<RecoveryCode>(
+    const record = await repo.get<RecoveryCode>(
       "tokens",
       codeId(email, purpose),
     );
-    // If not found under exact purpose, check if an active token exists under alternate purpose
-    if (!record) {
-      const altPurpose = purpose === "reset" ? "verify" : "reset";
-      const altRecord = await repo.get<RecoveryCode>(
-        "tokens",
-        codeId(email, altPurpose),
-      );
-      if (altRecord && Date.parse(altRecord.expiresAt) > Date.now()) {
-        record = altRecord;
-      }
-    }
     if (
       !record ||
+      record.purpose !== `${purpose}-otp` ||
       Date.parse(record.expiresAt) <= Date.now()
     ) {
       if (record) await repo.remove("tokens", record.id);
@@ -146,15 +129,7 @@ async function verifyCode(rawEmail: string, rawOtp: string, purpose: CodePurpose
       await repo.remove("tokens", record.id);
       return { error: "Too many attempts. Request a new code." };
     }
-    let valid = checkPassword(otp, record.otpHash);
-    if (!valid && Array.isArray(record.previousOtpHashes)) {
-      for (const prevHash of record.previousOtpHashes) {
-        if (checkPassword(otp, prevHash)) {
-          valid = true;
-          break;
-        }
-      }
-    }
+    const valid = checkPassword(otp, record.otpHash);
     if (!valid) {
       if (attempts >= 5) await repo.remove("tokens", record.id);
       else await repo.put("tokens", { ...record, attempts });
@@ -170,7 +145,7 @@ async function verifyCode(rawEmail: string, rawOtp: string, purpose: CodePurpose
       await repo.remove("tokens", record.id);
       return { error: "Invalid or expired code." };
     }
-    if (purpose === "verify" || record.purpose === "verify-otp") {
+    if (purpose === "verify") {
       if (record.credentialHash && record.credentialHash !== hash(user.passwordHash)) {
         await repo.remove("tokens", record.id);
         return {

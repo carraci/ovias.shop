@@ -1,7 +1,10 @@
+import {publicationDateReached} from "@/lib/product-publication";
 import { MongoClient, type ClientSession } from "mongodb";
 import { mkdir, readFile, writeFile, rename } from "node:fs/promises";
 import path from "node:path";
 import { products, type Product } from "@/lib/catalog";
+import { activeSalePrice } from "@/lib/product-sale";
+import { recordAccountActivity } from "./account-activity";
 
 type RecordValue = { id: string };
 type State = Record<string, RecordValue[]>;
@@ -40,7 +43,7 @@ export async function mongo() {
 }
 function mongoRepo(client: MongoClient, session?: ClientSession): Repository {
   const db = client.db(process.env.MONGODB_DB || "ovia");
-  return {
+  const repository: Repository = {
     async get<T extends RecordValue>(
       c: string,
       id: string,
@@ -57,14 +60,18 @@ function mongoRepo(client: MongoClient, session?: ClientSession): Repository {
         .toArray()) as unknown as T[];
     },
     async put<T extends RecordValue>(c: string, value: T) {
+      const observed = ["orders", "tickets", "support_messages", "sessions", "users"].includes(c);
+      const previous = observed ? await repository.get(c, value.id) : undefined;
       await db
         .collection(c)
-        .replaceOne({ id: value.id }, value, { upsert: true, session });
+        .replaceOne(c === "account_notifications" ? { _id: value.id as unknown as import("mongodb").ObjectId } : { id: value.id }, value, { upsert: true, session });
+      if (observed) await recordAccountActivity(repository, c, value, previous);
     },
     async remove(c: string, id: string) {
       await db.collection(c).deleteOne({ id }, { session });
     },
   };
+  return repository;
 }
 function localRepo(state: State): Repository {
   return {
@@ -89,20 +96,35 @@ function localRepo(state: State): Repository {
     },
   };
 }
+// Read-only callers do not need transaction start/commit round trips.
+export async function readRepository<T>(fn: (repo: Repository) => Promise<T>): Promise<T> {
+  return fn(mongoRepo(await mongo()));
+}
 export async function transaction<T>(
   fn: (repo: Repository) => Promise<T>,
 ): Promise<T> {
+  if (isDemo()) throw new Error("MongoDB is not configured. Live database services are unavailable.");
   if (!isDemo()) {
-    const client = await mongo();
-    const session = client.startSession();
     try {
-      return (await session.withTransaction(() =>
-        fn(mongoRepo(client, session)),
-      )) as T;
-    } finally {
-      await session.endSession();
+      const client = await mongo();
+      const session = client.startSession();
+      try {
+        return (await session.withTransaction(() =>
+          fn(mongoRepo(client, session)),
+        )) as T;
+      } finally {
+        await session.endSession();
+      }
+    } catch (err) {
+      if (process.env.PAYMENT_PROVIDER === "razorpay" && process.env.RAZORPAY_KEY_ID?.startsWith("rzp_live_")) {
+        if (err instanceof Error && typeof (err as Error & { status?: unknown }).status === "number") throw err;
+        throw new Error("Live checkout database is unavailable. Please retry checking your order status shortly.");
+      }
+      throw err;
     }
   }
+  if (process.env.PAYMENT_PROVIDER === "razorpay" && process.env.RAZORPAY_KEY_ID?.startsWith("rzp_live_"))
+    throw new Error("Configure MongoDB before enabling live Razorpay checkout.");
   if (
     process.env.NODE_ENV === "production" &&
     process.env.ALLOW_DEMO_CHECKOUT !== "true"
@@ -131,10 +153,88 @@ export async function transaction<T>(
   globalDb.oviaQueue = pending.catch(() => undefined);
   return pending;
 }
-export async function catalog(): Promise<Product[]> {
-  if (isDemo()) return products;
-  const client = await mongo();
-  return mongoRepo(client).find<Product>("products");
+export function isDemoProduct(p: any): boolean {
+  if (!p) return false;
+  if (typeof p.id === "string" && p.id.startsWith("ovia-import-")) return true;
+  if (Boolean(p.sourceId) || Boolean(p.importSources)) return true;
+  return false;
+}
+
+export function getProductPrimaryImage(p: any): string {
+  if (!p) return "";
+  if (typeof p.image === "string" && p.image.trim()) return p.image.trim();
+  if (typeof p.images?.main === "string" && p.images.main.trim()) return p.images.main.trim();
+  if (Array.isArray(p.variants)) {
+    const v = p.variants.find((item: any) => typeof item?.image === "string" && item.image.trim());
+    if (v?.image) return v.image.trim();
+  }
+  if (Array.isArray(p.gallery)) {
+    const g = p.gallery.find((item: any) => typeof item === "string" && item.trim());
+    if (g) return g.trim();
+  }
+  if (Array.isArray(p.images?.gallery)) {
+    const g = p.images.gallery.find((item: any) => typeof item === "string" && item.trim());
+    if (g) return g.trim();
+  }
+  return "";
+}
+
+export async function catalog(includeUnpublished = false): Promise<Product[]> {
+ const read=async(repo:Repository)=>{
+  const [stored, balances] = await Promise.all([
+    repo.find<Product>('products'),
+    repo.find<{id:string;available:number}>('inventory'),
+  ]);
+  const bySku=new Map(balances.map(b=>[b.id,b]));
+  const ids=new Set(products.map(p=>p.id));
+  return stored
+   .filter(p => {
+     if (isDemoProduct(p)) return false;
+     const img = getProductPrimaryImage(p);
+     if (!img) return false;
+     return (
+       includeUnpublished ||
+       ((ids.has(p.id) || p.storefrontPublished !== false) &&
+         p.status !== "Draft" &&
+         p.status !== "Archived" &&
+         publicationDateReached(p.publishAt))
+     );
+   })
+   .map(p => {
+     const primaryImage = getProductPrimaryImage(p);
+     const confirmed = (p.variants || []).some(v => bySku.has(v.sku));
+     const variants = (p.variants || []).map(v => ({
+       ...v,
+       image: (typeof v.image === "string" && v.image.trim()) || primaryImage,
+       price: includeUnpublished ? v.price : activeSalePrice(p.sale, v.price),
+       stock: bySku.get(v.sku)?.available ?? v.stock,
+     }));
+     const stock = variants.reduce((sum, v) => sum + v.stock, 0);
+     return {
+       ...p,
+       image: primaryImage,
+       price: includeUnpublished ? p.price : activeSalePrice(p.sale, p.price ?? p.variants?.[0]?.price ?? 0),
+       variants,
+       stock,
+       ...(confirmed ? { availability: stock > 0 ? "In stock" : "Out of stock" } : {}),
+     };
+   });
+ };
+ const client = await mongo();
+ const repo = mongoRepo(client);
+ // Apply the existing demo/import exclusions before transferring catalog records.
+ const catalogRepo: Repository = {
+   ...repo,
+   async find<T extends RecordValue>(collection: string, query: Partial<T> = {}) {
+     if (collection !== 'products') return repo.find<T>(collection, query);
+     return await client.db(process.env.MONGODB_DB || 'ovia').collection(collection)
+       .find({ ...query, id: { $not: /^ovia-import-/ }, $expr: { $and: [
+         { $not: [{ $toBool: { $ifNull: ['$sourceId', false] } }] },
+         { $not: [{ $toBool: { $ifNull: ['$importSources', false] } }] },
+       ] } }, { projection: { _id: 0 } }).toArray() as unknown as T[];
+   },
+ };
+ return read(catalogRepo);
 }
 export async function setupDatabase() {
   const db = (await mongo()).db(process.env.MONGODB_DB || "ovia");
@@ -149,11 +249,19 @@ export async function setupDatabase() {
     "events",
     "tokens",
     "outbox",
+    "checkoutSessions",
+    "checkoutPromos",
     "addresses",
-    "contact", "tickets", "privacyRequests", "audit", "stories",
+    "support_messages", "support_conversations", "support_notes", "support_attachments", "support_connections", "support_email_receipts", "support_forwards",
+    "account_notifications",
+    "support_tickets", "support_mailbox", "support_drafts", "support_sent", "contact", "tickets", "privacyRequests", "audit", "stories", "campaigns", "campaignEvents",
   ])
     await db.collection(name).createIndex({ id: 1 }, { unique: true });
   for (const name of ["tickets", "privacyRequests", "sessions", "addresses"]) await db.collection(name).createIndex({ userId: 1 });
+  await db.collection("account_notifications").createIndex({userId:1,createdAt:-1});
+  await db.collection("checkoutPromos").createIndex({ code: 1 }, { unique: true });
+  await db.collection("orders").createIndex({ provider: 1, providerId: 1 });
+  await db.collection("orders").createIndex({ status: 1, expiresAt: 1 });
   await db.collection("products").createIndex({ slug: 1 });
   await db.collection("products").createIndex({ sourceId: 1 });
   await db.collection("products").createIndex({ department: 1, category: 1 });

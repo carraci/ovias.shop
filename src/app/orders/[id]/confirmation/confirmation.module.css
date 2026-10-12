@@ -1,0 +1,129 @@
+.page {
+  min-height: 70vh;
+  padding: 30px 28px 70px;
+  color: #171717;
+  background: white;
+  font-size: 14px;
+}
+.wordmark {
+  font-family: Georgia, serif;
+  letter-spacing: 0.18em;
+  font-size: 30px;
+  text-decoration: none;
+}
+.content {
+  max-width: 920px;
+  margin: 60px auto 0;
+}
+.content h1 {
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 400;
+  margin: 14px 0;
+}
+.content h2 {
+  font-size: 22px;
+  font-weight: 400;
+  margin: 0 0 20px;
+}
+.content p {
+  color: #6c665e;
+  line-height: 1.7;
+  font-size: 14px;
+}
+.content strong {
+  font-weight: 500;
+}
+.label {
+  letter-spacing: 0.16em;
+  font-size: 11px !important;
+}
+.reference {
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  margin-top: 28px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.columns {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 50px;
+  margin: 36px 0;
+}
+.columns section + section {
+  border-left: 1px solid #e3ded6;
+  padding-left: 36px;
+}
+.line {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px 0;
+  border-bottom: 1px solid #e3ded6;
+}
+.line p {
+  margin: 5px 0 0;
+  font-size: 12px;
+}
+.content dl > div,
+.total {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 8px 0;
+}
+.content dd {
+  margin: 0;
+}
+.total {
+  border-top: 1px solid #e3ded6;
+  padding-top: 18px;
+  font-size: 18px;
+}
+.note {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+.content nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 36px;
+  font-size: 13px;
+}
+.content button {
+  border: 1px solid #171717;
+  background: #171717;
+  color: white;
+  padding: 12px 18px;
+}
+.content :focus-visible,
+.wordmark:focus-visible {
+  outline: 2px solid #171717;
+  outline-offset: 4px;
+}
+@media (max-width: 700px) {
+  .page {
+    padding: 24px 20px 50px;
+  }
+  .content {
+    margin-top: 40px;
+  }
+  .content h1 {
+    font-size: 28px;
+  }
+  .columns {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .columns section + section {
+    padding-left: 0;
+    padding-top: 24px;
+    border-left: 0;
+    border-top: 1px solid #e3ded6;
+  }
+}

@@ -1,4 +1,4 @@
-import type { Product } from "./catalog";
+import type { Product } from './catalog';
 
 export const luggageProducts: Product[] = [
   {
@@ -31,20 +31,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ATTACH-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 23600000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc5ec0310/images/large/90007010_1.png"
+        "image": "/media/products/luggage/emblematic/attach-aluminium-briefcase-e4e4b5e79c.webp"
       },
       {
         "sku": "OV-ATTACH-ALUMINIUM-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 23600000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc5ec0310/images/large/90007010_1.png"
+        "image": "/media/products/luggage/emblematic/attach-aluminium-briefcase-e4e4b5e79c.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc5ec0310/images/large/90007010_1.png",
+    "image": "/media/products/luggage/emblematic/attach-aluminium-briefcase-e4e4b5e79c.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -81,12 +81,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ATTACH-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 23600000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc0b9c0ab/images/large/90007001_1.png"
+        "image": "/media/products/luggage/emblematic/attach-aluminium-briefcase-2-e5700294e0.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc0b9c0ab/images/large/90007001_1.png",
+    "image": "/media/products/luggage/emblematic/attach-aluminium-briefcase-2-e5700294e0.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -122,12 +122,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ATTACH-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 65900000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfbf3d3b8/images/large/90090040_2.png"
+        "image": "/media/products/luggage/emblematic/attach-aluminium-chess-478d026f2b.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfbf3d3b8/images/large/90090040_2.png",
+    "image": "/media/products/luggage/emblematic/attach-aluminium-chess-478d026f2b.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -163,12 +163,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ATTACH-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3d3e0626/images/large/90090042_1.png"
+        "image": "/media/products/luggage/emblematic/attach-aluminium-mahjong-f72891e260.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3d3e0626/images/large/90090042_1.png",
+    "image": "/media/products/luggage/emblematic/attach-aluminium-mahjong-f72891e260.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -199,20 +199,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ATTACH-ALUMINIUM-POK-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 45000000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw47465aff/images/large/90090041_2.png"
+        "image": "/media/products/luggage/cabin/attach-aluminium-poker-87eaee85e3.webp"
       },
       {
         "sku": "OV-ATTACH-ALUMINIUM-POK-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 45000000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw14227d95/images/large/90090041_1.png"
+        "image": "/media/products/luggage/cabin/attach-aluminium-poker-silver--15cf85cb0a.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw47465aff/images/large/90090041_2.png",
+    "image": "/media/products/luggage/cabin/attach-aluminium-poker-87eaee85e3.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -240,20 +240,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-BLACK-CASE-FOR-IPHON-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwd1f82207/images/large/95190001_1.png"
+        "image": "/media/accessories/95190001_1.png"
       },
       {
         "sku": "OV-BLACK-CASE-FOR-IPHON-ALT",
         "color": "Black Detail",
         "hex": "#1a1a1a",
-        "price": 1950000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwaeea55a4/images/large/95190001_2.png"
+        "image": "/media/accessories/95190001_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwd1f82207/images/large/95190001_1.png",
+    "image": "/media/accessories/95190001_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -281,20 +281,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-BLACK-CASE-FOR-IPHON-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6f6aac8e/images/large/95190004_1.png"
+        "image": "/media/products/luggage/cabin/black-case-for-iphone-17-pro-m-c1c1f686fc.webp"
       },
       {
         "sku": "OV-BLACK-CASE-FOR-IPHON-ALT",
         "color": "Black Detail",
         "hex": "#1a1a1a",
-        "price": 1950000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe3437f32/images/large/95190004_2.png"
+        "image": "/media/products/luggage/cabin/black-case-for-iphone-17-pro-m-f46020e6e7.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6f6aac8e/images/large/95190004_1.png",
+    "image": "/media/products/luggage/cabin/black-case-for-iphone-17-pro-m-c1c1f686fc.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -327,12 +327,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SPECIALTIES-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1950000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw03d92601/images/large/95118014_1.png"
+        "image": "/media/accessories/95118014_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw03d92601/images/large/95118014_1.png",
+    "image": "/media/accessories/95118014_1.png",
     "imageKind": "photograph",
     "featured": false
   },
@@ -362,12 +362,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CLASSIC-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdc155619/images/large/97390041_1.png"
+        "image": "/media/products/luggage/cabin/classic-aluminium-grid-cabin-2444c68e1a.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdc155619/images/large/97390041_1.png",
+    "image": "/media/products/luggage/cabin/classic-aluminium-grid-cabin-2444c68e1a.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -400,12 +400,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CLASSIC-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw25f2a04a/images/large/97390037_1.png"
+        "image": "/media/products/luggage/cabin/classic-aluminium-grid-hand-ca-458d4691c2.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw25f2a04a/images/large/97390037_1.png",
+    "image": "/media/products/luggage/cabin/classic-aluminium-grid-hand-ca-458d4691c2.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -439,12 +439,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-19-PRIMARY",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 27500000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6640ccfa/images/large/97390039_1.png"
+        "image": "/media/products/luggage/trunks/trunk-19-classic-aluminium-gri-f82052f0f7.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6640ccfa/images/large/97390039_1.png",
+    "image": "/media/products/luggage/trunks/trunk-19-classic-aluminium-gri-f82052f0f7.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -480,20 +480,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CLASSIC-CABIN-SILVER",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 17850000,
+        "price": 100,
         "stock": 11,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9aac70dd/images/large/97353004_1.png"
+        "image": "/media/products/luggage/cabin/classic-cabin-fdf700cb1c.webp"
       },
       {
         "sku": "OV-CLASSIC-CABIN-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 17850000,
+        "price": 100,
         "stock": 9,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw980d0b29/images/large/97353014_1.png"
+        "image": "/media/products/luggage/cabin/classic-cabin-black-456fc262b5.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9aac70dd/images/large/97353004_1.png",
+    "image": "/media/products/luggage/cabin/classic-cabin-fdf700cb1c.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -526,12 +526,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CLASSIC-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 17850000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw980d0b29/images/large/97353014_1.png"
+        "image": "/media/products/luggage/cabin/classic-cabin-black-456fc262b5.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw980d0b29/images/large/97353014_1.png",
+    "image": "/media/products/luggage/cabin/classic-cabin-black-456fc262b5.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -561,12 +561,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CLASSIC-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwbcde0ac4/images/large/97353044_1.png"
+        "image": "/media/products/luggage/cabin/classic-cabin-3-457319e820.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwbcde0ac4/images/large/97353044_1.png",
+    "image": "/media/products/luggage/cabin/classic-cabin-3-457319e820.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -597,12 +597,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CLASSIC-CABIN-S-SILVER",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw98d49d4e/images/large/97352004_1.png"
+        "image": "/media/products/luggage/cabin/classic-cabin-s-eb86efb2b2.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw98d49d4e/images/large/97352004_1.png",
+    "image": "/media/products/luggage/cabin/classic-cabin-s-eb86efb2b2.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -639,20 +639,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CLASSIC-CHECKIN-L-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 21600000,
+        "price": 100,
         "stock": 9,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwadfd3916/images/large/97373014_1.png"
+        "image": "/media/products/luggage/check-in/classic-check-in-l-37faec1f53.webp"
       },
       {
         "sku": "OV-CLASSIC-CHECKIN-L-SILVER",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 21600000,
+        "price": 100,
         "stock": 11,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7e685ac8/images/large/97373004_1.png"
+        "image": "/media/products/luggage/check-in/classic-check-in-l-silver-8bb88ce6dd.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwadfd3916/images/large/97373014_1.png",
+    "image": "/media/products/luggage/check-in/classic-check-in-l-37faec1f53.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -685,12 +685,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CLASSIC-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 21600000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwd3e49a2c/images/large/97373044_1.png"
+        "image": "/media/products/luggage/check-in/classic-check-in-l-2-35408f4f0c.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwd3e49a2c/images/large/97373044_1.png",
+    "image": "/media/products/luggage/check-in/classic-check-in-l-2-35408f4f0c.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -722,12 +722,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CLASSIC-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 21600000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7e685ac8/images/large/97373004_1.png"
+        "image": "/media/products/luggage/check-in/classic-check-in-l-silver-8bb88ce6dd.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7e685ac8/images/large/97373004_1.png",
+    "image": "/media/products/luggage/check-in/classic-check-in-l-silver-8bb88ce6dd.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -760,12 +760,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CLASSIC-CHECKIN-M-SILVER",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 19900000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9bb1de72/images/large/97363004_1.png"
+        "image": "/media/products/luggage/check-in/classic-check-in-m-e968a67036.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9bb1de72/images/large/97363004_1.png",
+    "image": "/media/products/luggage/check-in/classic-check-in-m-e968a67036.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -794,20 +794,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CLASSIC-ONE-BOTTLE-C-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 21000000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw78f4b08a/images/large/97390002_1.png"
+        "image": "/media/products/luggage/cabin/classic-one-bottle-case-8f7f7dc25c.webp"
       },
       {
         "sku": "OV-CLASSIC-ONE-BOTTLE-C-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 21000000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa364262a/images/large/97390002_2.png"
+        "image": "/media/products/luggage/cabin/classic-one-bottle-case-silver-bd85f82b9c.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw78f4b08a/images/large/97390002_1.png",
+    "image": "/media/products/luggage/cabin/classic-one-bottle-case-8f7f7dc25c.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -843,28 +843,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-1-PRIMARY",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 26500000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfbcecc6b/images/large/97375014_1.png"
+        "image": "/media/products/luggage/97375014_1.png"
       },
       {
         "sku": "OV-TRUNK-1-SWATCH-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 26500000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfbcecc6b/images/large/97375014_1.png"
+        "image": "/media/products/luggage/97375014_1.png"
       },
       {
         "sku": "OV-TRUNK-1-SWATCH-3",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 26500000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfbcecc6b/images/large/97375014_1.png"
+        "image": "/media/products/luggage/97375014_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfbcecc6b/images/large/97375014_1.png",
+    "image": "/media/products/luggage/97375014_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -900,28 +900,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-4-PRIMARY",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 26500000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdee98660/images/large/97375004_1.png"
+        "image": "/media/products/luggage/trunks/trunk-4-classic-trunk-8be8ce91a3.webp"
       },
       {
         "sku": "OV-TRUNK-4-SWATCH-2",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 26500000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdee98660/images/large/97375004_1.png"
+        "image": "/media/products/luggage/trunks/trunk-4-classic-trunk-8be8ce91a3.webp"
       },
       {
         "sku": "OV-TRUNK-4-SWATCH-3",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 26500000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdee98660/images/large/97375004_1.png"
+        "image": "/media/products/luggage/trunks/trunk-4-classic-trunk-8be8ce91a3.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdee98660/images/large/97375004_1.png",
+    "image": "/media/products/luggage/trunks/trunk-4-classic-trunk-8be8ce91a3.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -956,28 +956,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-11-PRIMARY",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 26500000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf9876dd9/images/large/97375044_1.png"
+        "image": "/media/products/luggage/trunks/trunk-11-classic-trunk-80cbc17330.webp"
       },
       {
         "sku": "OV-TRUNK-11-SWATCH-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 26500000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf9876dd9/images/large/97375044_1.png"
+        "image": "/media/products/luggage/trunks/trunk-11-classic-trunk-80cbc17330.webp"
       },
       {
         "sku": "OV-TRUNK-11-SWATCH-3",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 26500000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf9876dd9/images/large/97375044_1.png"
+        "image": "/media/products/luggage/trunks/trunk-11-classic-trunk-80cbc17330.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf9876dd9/images/large/97375044_1.png",
+    "image": "/media/products/luggage/trunks/trunk-11-classic-trunk-80cbc17330.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -1007,12 +1007,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-22-PRIMARY",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 21000000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw50a03394/images/large/97390001_1.png"
+        "image": "/media/products/luggage/trunks/trunk-22-classic-twelve-bottle-0777ca2e7b.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw50a03394/images/large/97390001_1.png",
+    "image": "/media/products/luggage/trunks/trunk-22-classic-twelve-bottle-0777ca2e7b.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -1040,20 +1040,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CITY-S-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw52699fb2/images/large/5090001_1.png"
+        "image": "/media/accessories/5090001_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CITY-S-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw085b1e4b/images/large/5090001_3.png"
+        "image": "/media/accessories/5090001_3.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw52699fb2/images/large/5090001_1.png",
+    "image": "/media/accessories/5090001_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1078,20 +1078,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CITY-S-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdf634e13/images/large/50900108_1.png"
+        "image": "/media/accessories/50900108_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CITY-S-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe85510a3/images/large/50900108_2.png"
+        "image": "/media/accessories/50900108_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdf634e13/images/large/50900108_1.png",
+    "image": "/media/accessories/50900108_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1116,20 +1116,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CITY-S-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb2a1fa39/images/large/50900013_1.png"
+        "image": "/media/accessories/50900013_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CITY-S-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9cc71edc/images/large/50900013_3.png"
+        "image": "/media/accessories/50900013_3.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb2a1fa39/images/large/50900013_1.png",
+    "image": "/media/accessories/50900013_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1154,20 +1154,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CITY-S-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb14b69cf/images/large/50900005_1.png"
+        "image": "/media/accessories/50900005_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CITY-S-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw35012920/images/large/50900005_3.png"
+        "image": "/media/accessories/50900005_3.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb14b69cf/images/large/50900005_1.png",
+    "image": "/media/accessories/50900005_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1192,20 +1192,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CITY-S-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe38ef38d/images/large/50900036_1.png"
+        "image": "/media/accessories/50900036_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CITY-S-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2865daa4/images/large/50900036_2.png"
+        "image": "/media/accessories/50900036_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe38ef38d/images/large/50900036_1.png",
+    "image": "/media/accessories/50900036_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1230,20 +1230,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CITY-S-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfe0e0b6d/images/large/50900300.png"
+        "image": "/media/products/luggage/cabin/customisation-city-stickers-co-d57f801f47.webp"
       },
       {
         "sku": "OV-CUSTOMISATION-CITY-S-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8ee1d5e9/images/large/50900300_1.png"
+        "image": "/media/products/luggage/cabin/customisation-city-stickers-co-d47a377ebd.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfe0e0b6d/images/large/50900300.png",
+    "image": "/media/products/luggage/cabin/customisation-city-stickers-co-d57f801f47.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1268,20 +1268,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CITY-S-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb7a1be59/images/large/50900015_1.png"
+        "image": "/media/accessories/50900015_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CITY-S-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw115c380a/images/large/50900015_3.png"
+        "image": "/media/accessories/50900015_3.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb7a1be59/images/large/50900015_1.png",
+    "image": "/media/accessories/50900015_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1311,12 +1311,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SPECIALTIES-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw106cd73d/images/large/50900112_1.png"
+        "image": "/media/accessories/50900112_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw106cd73d/images/large/50900112_1.png",
+    "image": "/media/accessories/50900112_1.png",
     "imageKind": "photograph",
     "featured": false
   },
@@ -1341,20 +1341,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CITY-S-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfd912b60/images/large/50900107_1.png"
+        "image": "/media/accessories/50900107_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CITY-S-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw35e90e9f/images/large/50900107_2.png"
+        "image": "/media/accessories/50900107_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfd912b60/images/large/50900107_1.png",
+    "image": "/media/accessories/50900107_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1379,20 +1379,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CITY-S-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw83354158/images/large/50900002_1.png"
+        "image": "/media/accessories/50900002_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CITY-S-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb3cbb708/images/large/50900002_3.png"
+        "image": "/media/accessories/50900002_3.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw83354158/images/large/50900002_1.png",
+    "image": "/media/accessories/50900002_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1417,20 +1417,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CITY-S-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw372b679d/images/large/50900122_1.png"
+        "image": "/media/accessories/50900122_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CITY-S-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw5575a6bb/images/large/50900122_2.png"
+        "image": "/media/accessories/50900122_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw372b679d/images/large/50900122_1.png",
+    "image": "/media/accessories/50900122_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1460,12 +1460,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SPECIALTIES-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2635449f/images/large/50900350.png"
+        "image": "/media/accessories/50900350.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2635449f/images/large/50900350.png",
+    "image": "/media/accessories/50900350.png",
     "imageKind": "photograph",
     "featured": false
   },
@@ -1490,20 +1490,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CITY-S-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb1108664/images/large/50900020.png"
+        "image": "/media/accessories/50900020.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CITY-S-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdc6eb00f/images/large/50900020_1.png"
+        "image": "/media/accessories/50900020_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb1108664/images/large/50900020.png",
+    "image": "/media/accessories/50900020.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1528,20 +1528,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CITY-S-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2db9853b/images/large/50900106_1.png"
+        "image": "/media/accessories/50900106_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CITY-S-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw502fb06c/images/large/50900106_2.png"
+        "image": "/media/accessories/50900106_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2db9853b/images/large/50900106_1.png",
+    "image": "/media/accessories/50900106_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1566,20 +1566,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CITY-S-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3c67f877/images/large/50900105_1.png"
+        "image": "/media/products/luggage/cabin/customisation-city-stickers-me-be92118201.webp"
       },
       {
         "sku": "OV-CUSTOMISATION-CITY-S-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw86479fd7/images/large/50900105_2.png"
+        "image": "/media/products/luggage/cabin/customisation-city-stickers-me-fbffa9d293.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3c67f877/images/large/50900105_1.png",
+    "image": "/media/products/luggage/cabin/customisation-city-stickers-me-be92118201.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1604,20 +1604,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CITY-S-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8757f98a/images/large/50900060.png"
+        "image": "/media/accessories/50900060.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CITY-S-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe2843ec1/images/large/50900060_1.png"
+        "image": "/media/accessories/50900060_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8757f98a/images/large/50900060.png",
+    "image": "/media/accessories/50900060.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1642,20 +1642,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CITY-S-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2631e273/images/large/50900018_1.png"
+        "image": "/media/accessories/50900018_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CITY-S-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw323e0717/images/large/50900018_2.png"
+        "image": "/media/accessories/50900018_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2631e273/images/large/50900018_1.png",
+    "image": "/media/accessories/50900018_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1680,20 +1680,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CITY-S-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw4a7aed03/images/large/50900028_1.png"
+        "image": "/media/products/luggage/cabin/customisation-city-stickers-sa-c2c0ddfe90.webp"
       },
       {
         "sku": "OV-CUSTOMISATION-CITY-S-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6ad761cb/images/large/50900028_2.png"
+        "image": "/media/products/luggage/cabin/customisation-city-stickers-sa-b07f9f08c6.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw4a7aed03/images/large/50900028_1.png",
+    "image": "/media/products/luggage/cabin/customisation-city-stickers-sa-c2c0ddfe90.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1718,20 +1718,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CITY-S-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw00f82ca9/images/large/50900044_1.png"
+        "image": "/media/accessories/50900044_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CITY-S-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw907a32ef/images/large/50900044_2.png"
+        "image": "/media/accessories/50900044_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw00f82ca9/images/large/50900044_1.png",
+    "image": "/media/accessories/50900044_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1756,20 +1756,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CITY-S-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe66c2fe5/images/large/50900004_1.png"
+        "image": "/media/accessories/50900004_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CITY-S-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdbb6349b/images/large/50900004_3.png"
+        "image": "/media/accessories/50900004_3.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe66c2fe5/images/large/50900004_1.png",
+    "image": "/media/accessories/50900004_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1799,12 +1799,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CLASSIC-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1900000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw34c6635f/images/large/51500004_1.png"
+        "image": "/media/accessories/51500004_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw34c6635f/images/large/51500004_1.png",
+    "image": "/media/accessories/51500004_1.png",
     "imageKind": "photograph",
     "featured": false
   },
@@ -1831,20 +1831,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CLASSI-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw5064ec09/images/large/51500037_1.png"
+        "image": "/media/accessories/51500037_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CLASSI-ALT",
         "color": "Midnight Blue Detail",
         "hex": "#263f59",
-        "price": 1900000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf87e58da/images/large/51500037_2.png"
+        "image": "/media/accessories/51500037_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw5064ec09/images/large/51500037_1.png",
+    "image": "/media/accessories/51500037_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1871,20 +1871,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CLASSI-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwd031083e/images/large/51500005_1.png"
+        "image": "/media/accessories/51500005_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CLASSI-ALT",
         "color": "Midnight Blue Detail",
         "hex": "#263f59",
-        "price": 1900000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6873b45c/images/large/51500005_2.png"
+        "image": "/media/accessories/51500005_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwd031083e/images/large/51500005_1.png",
+    "image": "/media/accessories/51500005_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1909,20 +1909,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CLASSI-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw500ff85e/images/large/51500039_1.png"
+        "image": "/media/accessories/51500039_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CLASSI-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1900000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw71ee01b0/images/large/51500039_2.png"
+        "image": "/media/accessories/51500039_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw500ff85e/images/large/51500039_1.png",
+    "image": "/media/accessories/51500039_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1947,20 +1947,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CLASSI-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwabb6eeed/images/large/51500012_1.png"
+        "image": "/media/accessories/51500012_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CLASSI-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1900000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwbb419c54/images/large/51500012_2.png"
+        "image": "/media/accessories/51500012_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwabb6eeed/images/large/51500012_1.png",
+    "image": "/media/accessories/51500012_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -1985,20 +1985,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CLASSI-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw4a9d0b80/images/large/51500008_1.png"
+        "image": "/media/accessories/51500008_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CLASSI-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1900000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwbcd01b99/images/large/51500008_2.png"
+        "image": "/media/accessories/51500008_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw4a9d0b80/images/large/51500008_1.png",
+    "image": "/media/accessories/51500008_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -2023,20 +2023,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CLASSI-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdb5cc001/images/large/51500016_1.png"
+        "image": "/media/accessories/51500016_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CLASSI-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1900000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw12657e2c/images/large/51500016_2.png"
+        "image": "/media/accessories/51500016_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdb5cc001/images/large/51500016_1.png",
+    "image": "/media/accessories/51500016_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -2061,20 +2061,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-CLASSI-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1900000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw521f828a/images/large/51500015_1.png"
+        "image": "/media/accessories/51500015_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-CLASSI-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1900000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw34241065/images/large/51500004_2.png"
+        "image": "/media/accessories/51500004_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw521f828a/images/large/51500015_1.png",
+    "image": "/media/accessories/51500015_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -2099,20 +2099,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-STICKE-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1200000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9db78efa/images/large/50800007_1.png"
+        "image": "/media/accessories/50800007_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-STICKE-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1200000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw238b7543/images/large/50800007_2.png"
+        "image": "/media/accessories/50800007_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9db78efa/images/large/50800007_1.png",
+    "image": "/media/accessories/50800007_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -2142,12 +2142,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SPECIALTIES-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwac1b43f0/images/large/50900280.png"
+        "image": "/media/accessories/50900280.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwac1b43f0/images/large/50900280.png",
+    "image": "/media/accessories/50900280.png",
     "imageKind": "photograph",
     "featured": false
   },
@@ -2171,20 +2171,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-SUITCA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb2841542/images/large/51400035_1.png"
+        "image": "/media/accessories/51400035_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-SUITCA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf20124a0/images/large/51400035_2.png"
+        "image": "/media/accessories/51400035_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb2841542/images/large/51400035_1.png",
+    "image": "/media/accessories/51400035_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -2208,20 +2208,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-SUITCA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb9c511a2/images/large/51400039_1.png"
+        "image": "/media/accessories/51400039_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-SUITCA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe257a9f4/images/large/51400039_2.png"
+        "image": "/media/accessories/51400039_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb9c511a2/images/large/51400039_1.png",
+    "image": "/media/accessories/51400039_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -2246,20 +2246,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-SUITCA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb914be4b/images/large/51400036_1.png"
+        "image": "/media/accessories/51400036_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-SUITCA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw805d42dc/images/large/51400036_2.png"
+        "image": "/media/accessories/51400036_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb914be4b/images/large/51400036_1.png",
+    "image": "/media/accessories/51400036_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -2283,20 +2283,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-SUITCA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwceaa3da0/images/large/51400042_1.png"
+        "image": "/media/accessories/51400042_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-SUITCA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw127ffe90/images/large/51400042_2.png"
+        "image": "/media/accessories/51400042_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwceaa3da0/images/large/51400042_1.png",
+    "image": "/media/accessories/51400042_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -2320,20 +2320,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-SUITCA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdc689c76/images/large/51400034_1.png"
+        "image": "/media/accessories/51400034_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-SUITCA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw69b85978/images/large/51400034_2.png"
+        "image": "/media/accessories/51400034_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdc689c76/images/large/51400034_1.png",
+    "image": "/media/accessories/51400034_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -2359,28 +2359,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-SUITCA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwbbe4bd2b/images/large/51400040_1.png"
+        "image": "/media/accessories/51400040_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-SUITCA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw54c2c4c9/images/large/51400040_2.png"
+        "image": "/media/accessories/51400040_2.png"
       },
       {
         "sku": "OV-CUSTOMISATION-SU-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 1050000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwbbe4bd2b/images/large/51400040_1.png"
+        "image": "/media/accessories/51400040_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwbbe4bd2b/images/large/51400040_1.png",
+    "image": "/media/accessories/51400040_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -2408,28 +2408,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-SUITCA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw25d98fe1/images/large/51400038_1.png"
+        "image": "/media/accessories/51400038_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-SUITCA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw4bd55aa9/images/large/51400038_2.png"
+        "image": "/media/accessories/51400038_2.png"
       },
       {
         "sku": "OV-CUSTOMISATION-SU-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 1050000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw25d98fe1/images/large/51400038_1.png"
+        "image": "/media/accessories/51400038_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw25d98fe1/images/large/51400038_1.png",
+    "image": "/media/accessories/51400038_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -2457,20 +2457,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-SUITCA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7f78c379/images/large/51400037_1.png"
+        "image": "/media/accessories/51400037_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-SUITCA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw515ba501/images/large/51400037_2.png"
+        "image": "/media/accessories/51400037_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7f78c379/images/large/51400037_1.png",
+    "image": "/media/accessories/51400037_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -2494,20 +2494,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-SUITCA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa176ce98/images/large/51400043_1.png"
+        "image": "/media/accessories/51400043_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-SUITCA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3844efa7/images/large/51400043_2.png"
+        "image": "/media/accessories/51400043_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa176ce98/images/large/51400043_1.png",
+    "image": "/media/accessories/51400043_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -2531,20 +2531,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-SUITCA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw08e343cb/images/large/51400041_1.png"
+        "image": "/media/accessories/51400041_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-SUITCA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc826a8b3/images/large/51400041_2.png"
+        "image": "/media/accessories/51400041_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw08e343cb/images/large/51400041_1.png",
+    "image": "/media/accessories/51400041_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -2568,20 +2568,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-SUITCA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfb0c21b5/images/large/51400044_1.png"
+        "image": "/media/accessories/51400044_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-SUITCA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9a3e8599/images/large/51400044_2.png"
+        "image": "/media/accessories/51400044_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfb0c21b5/images/large/51400044_1.png",
+    "image": "/media/accessories/51400044_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -2606,20 +2606,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-SUITCA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1e4eedc5/images/large/51400046_1.png"
+        "image": "/media/accessories/51400046_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-SUITCA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw40c57399/images/large/51400046_2.png"
+        "image": "/media/accessories/51400046_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1e4eedc5/images/large/51400046_1.png",
+    "image": "/media/accessories/51400046_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -2646,28 +2646,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-CUSTOMISATION-SUITCA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa9171e8a/images/large/51400045_1.png"
+        "image": "/media/accessories/51400045_1.png"
       },
       {
         "sku": "OV-CUSTOMISATION-SUITCA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1050000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw90c905e8/images/large/51400045_2.png"
+        "image": "/media/accessories/51400045_2.png"
       },
       {
         "sku": "OV-CUSTOMISATION-SU-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 1050000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa9171e8a/images/large/51400045_1.png"
+        "image": "/media/accessories/51400045_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa9171e8a/images/large/51400045_1.png",
+    "image": "/media/accessories/51400045_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -2703,20 +2703,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-DIST-CABIN-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 39800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwde9eb3ce/images/large/80153521_1.png"
+        "image": "/media/products/luggage/cabin/distinct-cabin-057c899c4e.webp"
       },
       {
         "sku": "OV-DIST-CABIN-NAVY",
         "color": "Midnight Blue",
         "hex": "#1d2b3a",
-        "price": 39800000,
+        "price": 100,
         "stock": 5,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcd221a12/images/large/80153501_1.png"
+        "image": "/media/products/luggage/cabin/distinct-cabin-midnight-blue-f17eeb965d.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwde9eb3ce/images/large/80153521_1.png",
+    "image": "/media/products/luggage/cabin/distinct-cabin-057c899c4e.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -2751,12 +2751,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-DISTINCT-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 39800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcd221a12/images/large/80153501_1.png"
+        "image": "/media/products/luggage/cabin/distinct-cabin-midnight-blue-f17eeb965d.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcd221a12/images/large/80153501_1.png",
+    "image": "/media/products/luggage/cabin/distinct-cabin-midnight-blue-f17eeb965d.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -2789,12 +2789,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-DISTINCT-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 39800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dweb01553a/images/large/80153511_1.png"
+        "image": "/media/products/luggage/cabin/distinct-cabin-3-df1cdb5c2a.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dweb01553a/images/large/80153511_1.png",
+    "image": "/media/products/luggage/cabin/distinct-cabin-3-df1cdb5c2a.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -2828,12 +2828,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-DISTINCT-4",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 39800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcb283c98/images/large/80153484_1.png"
+        "image": "/media/products/luggage/cabin/distinct-cabin-4-e499161579.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcb283c98/images/large/80153484_1.png",
+    "image": "/media/products/luggage/cabin/distinct-cabin-4-e499161579.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -2867,44 +2867,44 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESS-CABIN-GREEN",
         "color": "Forest",
         "hex": "#3d523e",
-        "price": 10800000,
+        "price": 100,
         "stock": 15,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwefdf6cfe/images/large/83253681_1.png"
+        "image": "/media/products/luggage/cabin/essential-cabin-58b792733a.webp"
       },
       {
         "sku": "OV-ESS-CABIN-SLATE",
         "color": "Graphite",
         "hex": "#5c6265",
-        "price": 10800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw92e41099/images/large/83253831_1.png"
+        "image": "/media/products/luggage/cabin/essential-cabin-graphite-afa2d75ed8.webp"
       },
       {
         "sku": "OV-ESS-CABIN-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 10800000,
+        "price": 100,
         "stock": 14,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf3bd5ccf/images/large/83253631_1.png"
+        "image": "/media/products/luggage/cabin/essential-cabin-black-a0fa4d20f4.webp"
       },
       {
         "sku": "OV-ESS-CABIN-BLUE",
         "color": "Midnight Blue",
         "hex": "#2b4055",
-        "price": 10800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw25759f69/images/large/83253691_1.png"
+        "image": "/media/products/luggage/cabin/essential-cabin-midnight-blue-472c26cb1e.webp"
       },
       {
         "sku": "OV-ESS-CABIN-WHITE",
         "color": "White",
         "hex": "#ffffff",
-        "price": 10800000,
+        "price": 100,
         "stock": 9,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc26d1537/images/large/83253661_1.png"
+        "image": "/media/products/luggage/cabin/essential-cabin-white-75322512be.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwefdf6cfe/images/large/83253681_1.png",
+    "image": "/media/products/luggage/cabin/essential-cabin-58b792733a.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -2940,12 +2940,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 10800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw92e41099/images/large/83253831_1.png"
+        "image": "/media/products/luggage/cabin/essential-cabin-graphite-afa2d75ed8.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw92e41099/images/large/83253831_1.png",
+    "image": "/media/products/luggage/cabin/essential-cabin-graphite-afa2d75ed8.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -2974,12 +2974,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 10800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw79ced734/images/large/83253171_1.png"
+        "image": "/media/products/luggage/cabin/essential-cabin-3-885420628e.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw79ced734/images/large/83253171_1.png",
+    "image": "/media/products/luggage/cabin/essential-cabin-3-885420628e.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3008,12 +3008,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-4",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 10800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw49ecaf4f/images/large/83253161_1.png"
+        "image": "/media/products/luggage/cabin/essential-cabin-4-78389a90dc.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw49ecaf4f/images/large/83253161_1.png",
+    "image": "/media/products/luggage/cabin/essential-cabin-4-78389a90dc.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3045,12 +3045,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-5",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 10800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf3bd5ccf/images/large/83253631_1.png"
+        "image": "/media/products/luggage/cabin/essential-cabin-black-a0fa4d20f4.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf3bd5ccf/images/large/83253631_1.png",
+    "image": "/media/products/luggage/cabin/essential-cabin-black-a0fa4d20f4.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3079,12 +3079,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-6",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 10200000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3c87162e/images/large/83253791_1.png"
+        "image": "/media/products/luggage/cabin/essential-cabin-6-1a7f92655a.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3c87162e/images/large/83253791_1.png",
+    "image": "/media/products/luggage/cabin/essential-cabin-6-1a7f92655a.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3117,12 +3117,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-7",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 10800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw5ce0cb4b/images/large/83253651_1.png"
+        "image": "/media/products/luggage/cabin/essential-cabin-7-ec22867712.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw5ce0cb4b/images/large/83253651_1.png",
+    "image": "/media/products/luggage/cabin/essential-cabin-7-ec22867712.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3154,12 +3154,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-8",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 10800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc26d1537/images/large/83253661_1.png"
+        "image": "/media/products/luggage/cabin/essential-cabin-white-75322512be.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc26d1537/images/large/83253661_1.png",
+    "image": "/media/products/luggage/cabin/essential-cabin-white-75322512be.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3191,12 +3191,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-9",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 10800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw25759f69/images/large/83253691_1.png"
+        "image": "/media/products/luggage/cabin/essential-cabin-midnight-blue-472c26cb1e.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw25759f69/images/large/83253691_1.png",
+    "image": "/media/products/luggage/cabin/essential-cabin-midnight-blue-472c26cb1e.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3225,12 +3225,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 11800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa86de967/images/large/83256681_1.png"
+        "image": "/media/products/luggage/cabin/essential-cabin-plus-2048b1d693.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa86de967/images/large/83256681_1.png",
+    "image": "/media/products/luggage/cabin/essential-cabin-plus-2048b1d693.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3257,12 +3257,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESS-CABIN-S-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 10200000,
+        "price": 100,
         "stock": 9,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwbd3f7691/images/large/83252631_1.png"
+        "image": "/media/products/luggage/cabin/essential-cabin-s-9f83a3dcbe.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwbd3f7691/images/large/83252631_1.png",
+    "image": "/media/products/luggage/cabin/essential-cabin-s-9f83a3dcbe.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -3300,36 +3300,36 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESS-CHECKIN-L-GREEN",
         "color": "Forest",
         "hex": "#3d523e",
-        "price": 13400000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfe593bd7/images/large/83273681_1.png"
+        "image": "/media/products/luggage/check-in/essential-check-in-l-7586cb3d44.webp"
       },
       {
         "sku": "OV-ESS-CHECKIN-L-BLUE",
         "color": "Midnight Blue",
         "hex": "#2b4055",
-        "price": 13400000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6f498187/images/large/83273691_1.png"
+        "image": "/media/products/luggage/check-in/essential-check-in-l-midnight--6d4b9d4593.webp"
       },
       {
         "sku": "OV-ESS-CHECKIN-L-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 13400000,
+        "price": 100,
         "stock": 14,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwffe8f8b1/images/large/83273631_1.png"
+        "image": "/media/products/luggage/check-in/essential-check-in-l-black-cdb31bee22.webp"
       },
       {
         "sku": "OV-ESS-CHECKIN-L-WHITE",
         "color": "White",
         "hex": "#ffffff",
-        "price": 13400000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc0a22935/images/large/83273661_1.png"
+        "image": "/media/products/luggage/check-in/essential-check-in-l-white-67706a3e66.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfe593bd7/images/large/83273681_1.png",
+    "image": "/media/products/luggage/check-in/essential-check-in-l-7586cb3d44.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -3362,12 +3362,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 13400000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc0a22935/images/large/83273661_1.png"
+        "image": "/media/products/luggage/check-in/essential-check-in-l-white-67706a3e66.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc0a22935/images/large/83273661_1.png",
+    "image": "/media/products/luggage/check-in/essential-check-in-l-white-67706a3e66.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3399,12 +3399,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 13400000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6f498187/images/large/83273691_1.png"
+        "image": "/media/products/luggage/check-in/essential-check-in-l-midnight--6d4b9d4593.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6f498187/images/large/83273691_1.png",
+    "image": "/media/products/luggage/check-in/essential-check-in-l-midnight--6d4b9d4593.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3433,12 +3433,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-4",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 13400000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa284e27b/images/large/83273171_1.png"
+        "image": "/media/products/luggage/check-in/essential-check-in-l-4-fae2a1ba14.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa284e27b/images/large/83273171_1.png",
+    "image": "/media/products/luggage/check-in/essential-check-in-l-4-fae2a1ba14.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3470,12 +3470,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-5",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 13400000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwffe8f8b1/images/large/83273631_1.png"
+        "image": "/media/products/luggage/check-in/essential-check-in-l-black-cdb31bee22.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwffe8f8b1/images/large/83273631_1.png",
+    "image": "/media/products/luggage/check-in/essential-check-in-l-black-cdb31bee22.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3505,12 +3505,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-6",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 10200000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw92146739/images/large/83273651_1.png"
+        "image": "/media/products/luggage/check-in/essential-check-in-l-6-be6ddaba2e.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw92146739/images/large/83273651_1.png",
+    "image": "/media/products/luggage/check-in/essential-check-in-l-6-be6ddaba2e.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3540,12 +3540,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-7",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 13400000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb3ad7169/images/large/83273831_1.png"
+        "image": "/media/products/luggage/check-in/essential-check-in-l-7-875de79730.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb3ad7169/images/large/83273831_1.png",
+    "image": "/media/products/luggage/check-in/essential-check-in-l-7-875de79730.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3574,12 +3574,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-8",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 10200000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw151413f1/images/large/83273791_1.png"
+        "image": "/media/products/luggage/check-in/essential-check-in-l-8-0f1728b0c5.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw151413f1/images/large/83273791_1.png",
+    "image": "/media/products/luggage/check-in/essential-check-in-l-8-0f1728b0c5.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3613,28 +3613,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESS-CHECKIN-M-GREEN",
         "color": "Forest",
         "hex": "#3d523e",
-        "price": 12300000,
+        "price": 100,
         "stock": 14,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3e8d8ece/images/large/83263681_1.png"
+        "image": "/media/products/luggage/check-in/essential-check-in-m-a7cbb46fb8.webp"
       },
       {
         "sku": "OV-ESS-CHECKIN-M-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 12300000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8ec5e522/images/large/83263634_1.png"
+        "image": "/media/products/luggage/check-in/essential-check-in-m-black-09c38d7e91.webp"
       },
       {
         "sku": "OV-ESS-CHECKIN-M-SLATE",
         "color": "Graphite",
         "hex": "#5c6265",
-        "price": 12300000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9c78e88e/images/large/83263831_1.png"
+        "image": "/media/products/luggage/check-in/essential-check-in-m-graphite-bd0df3455d.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3e8d8ece/images/large/83263681_1.png",
+    "image": "/media/products/luggage/check-in/essential-check-in-m-a7cbb46fb8.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -3669,12 +3669,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 12300000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8ec5e522/images/large/83263634_1.png"
+        "image": "/media/products/luggage/check-in/essential-check-in-m-black-09c38d7e91.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8ec5e522/images/large/83263634_1.png",
+    "image": "/media/products/luggage/check-in/essential-check-in-m-black-09c38d7e91.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3704,12 +3704,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 12300000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw21d0ecf1/images/large/83263161_1.png"
+        "image": "/media/products/luggage/check-in/essential-check-in-m-3-4b20925c73.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw21d0ecf1/images/large/83263161_1.png",
+    "image": "/media/products/luggage/check-in/essential-check-in-m-3-4b20925c73.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3741,12 +3741,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-4",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 12300000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9c78e88e/images/large/83263831_1.png"
+        "image": "/media/products/luggage/check-in/essential-check-in-m-graphite-bd0df3455d.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9c78e88e/images/large/83263831_1.png",
+    "image": "/media/products/luggage/check-in/essential-check-in-m-graphite-bd0df3455d.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3776,20 +3776,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESS-LITE-GRAPHITE",
         "color": "Graphite",
         "hex": "#464744",
-        "price": 9000000,
+        "price": 100,
         "stock": 11,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwed6d2149/images/large/82353171_1.png"
+        "image": "/media/products/luggage/cabin/essential-lite-cabin-42e2250ee4.webp"
       },
       {
         "sku": "OV-ESS-LITE-IVORY",
         "color": "White",
         "hex": "#f4f1ea",
-        "price": 8250000,
+        "price": 100,
         "stock": 9,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2c666364/images/large/82353704_1.png"
+        "image": "/media/products/luggage/cabin/essential-lite-cabin-white-6515ac0ec3.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwed6d2149/images/large/82353171_1.png",
+    "image": "/media/products/luggage/cabin/essential-lite-cabin-42e2250ee4.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3821,12 +3821,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-LITE-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 8250000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2c666364/images/large/82353704_1.png"
+        "image": "/media/products/luggage/cabin/essential-lite-cabin-white-6515ac0ec3.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2c666364/images/large/82353704_1.png",
+    "image": "/media/products/luggage/cabin/essential-lite-cabin-white-6515ac0ec3.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3856,12 +3856,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-LITE-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 9000000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw70d95d19/images/large/82353181_1.png"
+        "image": "/media/products/luggage/cabin/essential-lite-cabin-3-3c20ee9678.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw70d95d19/images/large/82353181_1.png",
+    "image": "/media/products/luggage/cabin/essential-lite-cabin-3-3c20ee9678.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3891,12 +3891,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-LITE-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 8250000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2a1baebf/images/large/82350181_1.png"
+        "image": "/media/products/luggage/cabin/essential-lite-cabin-u-8f53a34c7a.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2a1baebf/images/large/82350181_1.png",
+    "image": "/media/products/luggage/cabin/essential-lite-cabin-u-8f53a34c7a.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3926,12 +3926,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-LITE-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 8250000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwffa3ef48/images/large/82350171_1.png"
+        "image": "/media/products/luggage/cabin/essential-lite-cabin-u-2-e2695f34df.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwffa3ef48/images/large/82350171_1.png",
+    "image": "/media/products/luggage/cabin/essential-lite-cabin-u-2-e2695f34df.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3961,12 +3961,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-LITE-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 8250000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe81763a4/images/large/82350704_1.png"
+        "image": "/media/products/luggage/cabin/essential-lite-cabin-u-3-b8d04fefaf.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe81763a4/images/large/82350704_1.png",
+    "image": "/media/products/luggage/cabin/essential-lite-cabin-u-3-b8d04fefaf.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -3992,20 +3992,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESS-LITE-KIDS-RED",
         "color": "Red",
         "hex": "#9e2a2b",
-        "price": 8250000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9d65b9c0/images/large/82350721_1.png"
+        "image": "/media/products/luggage/cabin/essential-lite-cabin-u-kids-45aa4408c6.webp"
       },
       {
         "sku": "OV-ESS-LITE-KIDS-BLUE",
         "color": "Midnight Blue",
         "hex": "#274c77",
-        "price": 8250000,
+        "price": 100,
         "stock": 7,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwbacb5885/images/large/82350731_1.png"
+        "image": "/media/products/luggage/cabin/essential-lite-cabin-u-kids-mi-e3a4b00712.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9d65b9c0/images/large/82350721_1.png",
+    "image": "/media/products/luggage/cabin/essential-lite-cabin-u-kids-45aa4408c6.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -4034,12 +4034,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-LITE-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 8250000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwbacb5885/images/large/82350731_1.png"
+        "image": "/media/products/luggage/cabin/essential-lite-cabin-u-kids-mi-e3a4b00712.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwbacb5885/images/large/82350731_1.png",
+    "image": "/media/products/luggage/cabin/essential-lite-cabin-u-kids-mi-e3a4b00712.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -4070,20 +4070,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESS-LITE-CHECKIN-IVORY",
         "color": "White",
         "hex": "#f4f1ea",
-        "price": 11100000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw94a19912/images/large/82373704_1.png"
+        "image": "/media/products/luggage/check-in/essential-lite-check-in-l-79c611e84f.webp"
       },
       {
         "sku": "OV-ESS-LITE-CHECKIN-GREEN",
         "color": "Forest",
         "hex": "#3d523e",
-        "price": 11100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3d56ce8c/images/large/82373181_1.png"
+        "image": "/media/products/luggage/check-in/essential-lite-check-in-l-fore-7499f4a49a.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw94a19912/images/large/82373704_1.png",
+    "image": "/media/products/luggage/check-in/essential-lite-check-in-l-79c611e84f.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -4115,12 +4115,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-LITE-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 11100000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3d56ce8c/images/large/82373181_1.png"
+        "image": "/media/products/luggage/check-in/essential-lite-check-in-l-fore-7499f4a49a.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3d56ce8c/images/large/82373181_1.png",
+    "image": "/media/products/luggage/check-in/essential-lite-check-in-l-fore-7499f4a49a.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -4150,12 +4150,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-LITE-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 11100000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc6f4ca67/images/large/82373171_1.png"
+        "image": "/media/products/luggage/check-in/essential-lite-check-in-l-3-8914a71608.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc6f4ca67/images/large/82373171_1.png",
+    "image": "/media/products/luggage/check-in/essential-lite-check-in-l-3-8914a71608.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -4187,20 +4187,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESS-SLEEVE-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 12900000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc740824a/images/large/84253631_1.png"
+        "image": "/media/products/luggage/cabin/essential-sleeve-cabin-1d5e627187.webp"
       },
       {
         "sku": "OV-ESS-SLEEVE-GREEN",
         "color": "Forest",
         "hex": "#3d523e",
-        "price": 12900000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw98cb84c7/images/large/84253311_1.png"
+        "image": "/media/products/luggage/cabin/essential-sleeve-cabin-forest-ce1c7cac2d.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc740824a/images/large/84253631_1.png",
+    "image": "/media/products/luggage/cabin/essential-sleeve-cabin-1d5e627187.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -4232,12 +4232,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-SLEEVE-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 12900000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw98cb84c7/images/large/84253311_1.png"
+        "image": "/media/products/luggage/cabin/essential-sleeve-cabin-forest-ce1c7cac2d.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw98cb84c7/images/large/84253311_1.png",
+    "image": "/media/products/luggage/cabin/essential-sleeve-cabin-forest-ce1c7cac2d.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -4271,12 +4271,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-SLEEVE-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 12900000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc1c62989/images/large/84253831_1.png"
+        "image": "/media/products/luggage/cabin/essential-sleeve-cabin-3-94165106fa.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc1c62989/images/large/84253831_1.png",
+    "image": "/media/products/luggage/cabin/essential-sleeve-cabin-3-94165106fa.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -4309,20 +4309,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESS-SLEEVE-PLUS-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 13700000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc6355584/images/large/84256631_1.png"
+        "image": "/media/products/luggage/cabin/essential-sleeve-cabin-plus-c8a013c300.webp"
       },
       {
         "sku": "OV-ESS-SLEEVE-PLUS-GREEN",
         "color": "Forest",
         "hex": "#3d523e",
-        "price": 13700000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw13b00aa7/images/large/84256311_1.png"
+        "image": "/media/products/luggage/cabin/essential-sleeve-cabin-plus-fo-30c053b08f.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc6355584/images/large/84256631_1.png",
+    "image": "/media/products/luggage/cabin/essential-sleeve-cabin-plus-c8a013c300.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -4357,12 +4357,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-SLEEVE-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 13700000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw13b00aa7/images/large/84256311_1.png"
+        "image": "/media/products/luggage/cabin/essential-sleeve-cabin-plus-fo-30c053b08f.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw13b00aa7/images/large/84256311_1.png",
+    "image": "/media/products/luggage/cabin/essential-sleeve-cabin-plus-fo-30c053b08f.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -4392,12 +4392,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-SLEEVE-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 13700000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1e9cdb1a/images/large/84256831_1.png"
+        "image": "/media/products/luggage/cabin/essential-sleeve-cabin-plus-3-3f95683a4d.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1e9cdb1a/images/large/84256831_1.png",
+    "image": "/media/products/luggage/cabin/essential-sleeve-cabin-plus-3-3f95683a4d.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -4427,12 +4427,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SLEEVE-COMPACT-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 13100000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9faf5207/images/large/84240631_1.png"
+        "image": "/media/products/luggage/cabin/essential-sleeve-compact-60229a86f0.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9faf5207/images/large/84240631_1.png",
+    "image": "/media/products/luggage/cabin/essential-sleeve-compact-60229a86f0.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -4465,12 +4465,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ESSENTIAL-SLEEVE-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 12900000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw11f89764/images/large/84240311_1.png"
+        "image": "/media/products/luggage/cabin/essential-sleeve-compact-2-128ea3c9be.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw11f89764/images/large/84240311_1.png",
+    "image": "/media/products/luggage/cabin/essential-sleeve-compact-2-128ea3c9be.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -4500,20 +4500,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-3-PRIMARY",
         "color": "Emerald Green",
         "hex": "#1e3d34",
-        "price": 15900000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa1704484/images/large/83275681_1.png"
+        "image": "/media/products/luggage/83275681_1.png"
       },
       {
         "sku": "OV-TRUNK-3-SWATCH-2",
         "color": "Matte Black",
         "hex": "#1a1a1a",
-        "price": 15900000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa1704484/images/large/83275681_1.png"
+        "image": "/media/products/luggage/83275681_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa1704484/images/large/83275681_1.png",
+    "image": "/media/products/luggage/83275681_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -4546,20 +4546,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-23-PRIMARY",
         "color": "Matte Black",
         "hex": "#1a1a1a",
-        "price": 15900000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw54abe94b/images/large/83275631_1.png"
+        "image": "/media/products/luggage/trunks/trunk-23-essential-trunk-1aadad1266.webp"
       },
       {
         "sku": "OV-TRUNK-23-SWATCH-2",
         "color": "Emerald Green",
         "hex": "#1e3d34",
-        "price": 15900000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw54abe94b/images/large/83275631_1.png"
+        "image": "/media/products/luggage/trunks/trunk-23-essential-trunk-1aadad1266.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw54abe94b/images/large/83275631_1.png",
+    "image": "/media/products/luggage/trunks/trunk-23-essential-trunk-1aadad1266.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -4590,28 +4590,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-5-PRIMARY",
         "color": "Gloss White",
         "hex": "#f0f0f0",
-        "price": 16800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc8f02db6/images/large/83280661_1.png"
+        "image": "/media/products/luggage/trunks/trunk-5-essential-trunk-plus-60fe7469ac.webp"
       },
       {
         "sku": "OV-TRUNK-5-SWATCH-2",
         "color": "Emerald Green",
         "hex": "#1e3d34",
-        "price": 16800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc8f02db6/images/large/83280661_1.png"
+        "image": "/media/products/luggage/trunks/trunk-5-essential-trunk-plus-60fe7469ac.webp"
       },
       {
         "sku": "OV-TRUNK-5-SWATCH-3",
         "color": "Papaya Orange",
         "hex": "#e86130",
-        "price": 16800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc8f02db6/images/large/83280661_1.png"
+        "image": "/media/products/luggage/trunks/trunk-5-essential-trunk-plus-60fe7469ac.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc8f02db6/images/large/83280661_1.png",
+    "image": "/media/products/luggage/trunks/trunk-5-essential-trunk-plus-60fe7469ac.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -4642,28 +4642,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-7-PRIMARY",
         "color": "Matte Black",
         "hex": "#1a1a1a",
-        "price": 16800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw62c0de7c/images/large/83280631_1.png"
+        "image": "/media/products/luggage/trunks/trunk-7-essential-trunk-plus-9cb83aa7c1.webp"
       },
       {
         "sku": "OV-TRUNK-7-SWATCH-2",
         "color": "Emerald Green",
         "hex": "#1e3d34",
-        "price": 16800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw62c0de7c/images/large/83280631_1.png"
+        "image": "/media/products/luggage/trunks/trunk-7-essential-trunk-plus-9cb83aa7c1.webp"
       },
       {
         "sku": "OV-TRUNK-7-SWATCH-3",
         "color": "Papaya Orange",
         "hex": "#e86130",
-        "price": 16800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw62c0de7c/images/large/83280631_1.png"
+        "image": "/media/products/luggage/trunks/trunk-7-essential-trunk-plus-9cb83aa7c1.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw62c0de7c/images/large/83280631_1.png",
+    "image": "/media/products/luggage/trunks/trunk-7-essential-trunk-plus-9cb83aa7c1.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -4696,28 +4696,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-8-PRIMARY",
         "color": "Emerald Green",
         "hex": "#1e3d34",
-        "price": 16800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8dc4f77d/images/large/83280681_1.png"
+        "image": "/media/products/luggage/trunks/trunk-8-essential-trunk-plus-c98e9fe5dc.webp"
       },
       {
         "sku": "OV-TRUNK-8-SWATCH-2",
         "color": "Slate Grey",
         "hex": "#5a6368",
-        "price": 16800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8dc4f77d/images/large/83280681_1.png"
+        "image": "/media/products/luggage/trunks/trunk-8-essential-trunk-plus-c98e9fe5dc.webp"
       },
       {
         "sku": "OV-TRUNK-8-SWATCH-3",
         "color": "Papaya Orange",
         "hex": "#e86130",
-        "price": 16800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8dc4f77d/images/large/83280681_1.png"
+        "image": "/media/products/luggage/trunks/trunk-8-essential-trunk-plus-c98e9fe5dc.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8dc4f77d/images/large/83280681_1.png",
+    "image": "/media/products/luggage/trunks/trunk-8-essential-trunk-plus-c98e9fe5dc.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -4748,28 +4748,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-9-PRIMARY",
         "color": "Slate Grey",
         "hex": "#5a6368",
-        "price": 16800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf95dbb96/images/large/83280831_1.png"
+        "image": "/media/products/luggage/trunks/trunk-9-essential-trunk-plus-1a80cb2583.webp"
       },
       {
         "sku": "OV-TRUNK-9-SWATCH-2",
         "color": "Emerald Green",
         "hex": "#1e3d34",
-        "price": 16800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf95dbb96/images/large/83280831_1.png"
+        "image": "/media/products/luggage/trunks/trunk-9-essential-trunk-plus-1a80cb2583.webp"
       },
       {
         "sku": "OV-TRUNK-9-SWATCH-3",
         "color": "Papaya Orange",
         "hex": "#e86130",
-        "price": 16800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf95dbb96/images/large/83280831_1.png"
+        "image": "/media/products/luggage/trunks/trunk-9-essential-trunk-plus-1a80cb2583.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf95dbb96/images/large/83280831_1.png",
+    "image": "/media/products/luggage/trunks/trunk-9-essential-trunk-plus-1a80cb2583.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -4799,28 +4799,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-15-PRIMARY",
         "color": "Papaya Orange",
         "hex": "#e86130",
-        "price": 16800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcabacd99/images/large/83280161_1.png"
+        "image": "/media/products/luggage/trunks/trunk-15-essential-trunk-plus-33275ee209.webp"
       },
       {
         "sku": "OV-TRUNK-15-SWATCH-2",
         "color": "Slate Grey",
         "hex": "#5a6368",
-        "price": 16800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcabacd99/images/large/83280161_1.png"
+        "image": "/media/products/luggage/trunks/trunk-15-essential-trunk-plus-33275ee209.webp"
       },
       {
         "sku": "OV-TRUNK-15-SWATCH-3",
         "color": "Emerald Green",
         "hex": "#1e3d34",
-        "price": 16800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcabacd99/images/large/83280161_1.png"
+        "image": "/media/products/luggage/trunks/trunk-15-essential-trunk-plus-33275ee209.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcabacd99/images/large/83280161_1.png",
+    "image": "/media/products/luggage/trunks/trunk-15-essential-trunk-plus-33275ee209.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -4849,28 +4849,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-17-PRIMARY",
         "color": "Magenta",
         "hex": "#7a2a5b",
-        "price": 16800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw247970be/images/large/83280171_1.png"
+        "image": "/media/products/luggage/trunks/trunk-17-essential-trunk-plus-17bdaf4be3.webp"
       },
       {
         "sku": "OV-TRUNK-17-SWATCH-2",
         "color": "Emerald Green",
         "hex": "#1e3d34",
-        "price": 16800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw247970be/images/large/83280171_1.png"
+        "image": "/media/products/luggage/trunks/trunk-17-essential-trunk-plus-17bdaf4be3.webp"
       },
       {
         "sku": "OV-TRUNK-17-SWATCH-3",
         "color": "Papaya Orange",
         "hex": "#e86130",
-        "price": 16800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw247970be/images/large/83280171_1.png"
+        "image": "/media/products/luggage/trunks/trunk-17-essential-trunk-plus-17bdaf4be3.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw247970be/images/large/83280171_1.png",
+    "image": "/media/products/luggage/trunks/trunk-17-essential-trunk-plus-17bdaf4be3.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -4902,28 +4902,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-20-PRIMARY",
         "color": "Gloss Red",
         "hex": "#aa1923",
-        "price": 16800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf9dc3c8b/images/large/83280651_1.png"
+        "image": "/media/products/luggage/trunks/trunk-20-essential-trunk-plus-2356744dbc.webp"
       },
       {
         "sku": "OV-TRUNK-20-SWATCH-2",
         "color": "Emerald Green",
         "hex": "#1e3d34",
-        "price": 16800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf9dc3c8b/images/large/83280651_1.png"
+        "image": "/media/products/luggage/trunks/trunk-20-essential-trunk-plus-2356744dbc.webp"
       },
       {
         "sku": "OV-TRUNK-20-SWATCH-3",
         "color": "Papaya Orange",
         "hex": "#e86130",
-        "price": 16800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf9dc3c8b/images/large/83280651_1.png"
+        "image": "/media/products/luggage/trunks/trunk-20-essential-trunk-plus-2356744dbc.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf9dc3c8b/images/large/83280651_1.png",
+    "image": "/media/products/luggage/trunks/trunk-20-essential-trunk-plus-2356744dbc.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -4957,36 +4957,36 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-24-PRIMARY",
         "color": "Matte Blue",
         "hex": "#263f59",
-        "price": 16800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw960e7554/images/large/83280691_1.png"
+        "image": "/media/products/luggage/trunks/trunk-24-essential-trunk-plus-4a4fb55116.webp"
       },
       {
         "sku": "OV-TRUNK-24-SWATCH-2",
         "color": "Emerald Green",
         "hex": "#1e3d34",
-        "price": 16800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw960e7554/images/large/83280691_1.png"
+        "image": "/media/products/luggage/trunks/trunk-24-essential-trunk-plus-4a4fb55116.webp"
       },
       {
         "sku": "OV-TRUNK-24-SWATCH-3",
         "color": "Papaya Orange",
         "hex": "#e86130",
-        "price": 16800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw960e7554/images/large/83280691_1.png"
+        "image": "/media/products/luggage/trunks/trunk-24-essential-trunk-plus-4a4fb55116.webp"
       },
       {
         "sku": "OV-ESSENTIAL-TRUNK--MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw960e7554/images/large/83280691_1.png"
+        "image": "/media/products/luggage/trunks/trunk-24-essential-trunk-plus-4a4fb55116.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw960e7554/images/large/83280691_1.png",
+    "image": "/media/products/luggage/trunks/trunk-24-essential-trunk-plus-4a4fb55116.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -5018,28 +5018,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-26-PRIMARY",
         "color": "Clay Beige",
         "hex": "#b89f82",
-        "price": 10200000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1f22aa1f/images/large/83280791_1.png"
+        "image": "/media/products/luggage/trunks/trunk-26-essential-trunk-plus-0d519a9e69.webp"
       },
       {
         "sku": "OV-TRUNK-26-SWATCH-2",
         "color": "Emerald Green",
         "hex": "#1e3d34",
-        "price": 10200000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1f22aa1f/images/large/83280791_1.png"
+        "image": "/media/products/luggage/trunks/trunk-26-essential-trunk-plus-0d519a9e69.webp"
       },
       {
         "sku": "OV-TRUNK-26-SWATCH-3",
         "color": "Papaya Orange",
         "hex": "#e86130",
-        "price": 10200000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1f22aa1f/images/large/83280791_1.png"
+        "image": "/media/products/luggage/trunks/trunk-26-essential-trunk-plus-0d519a9e69.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1f22aa1f/images/large/83280791_1.png",
+    "image": "/media/products/luggage/trunks/trunk-26-essential-trunk-plus-0d519a9e69.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -5071,20 +5071,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 19500000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2ff3c12b/images/large/52500079_1.png"
+        "image": "/media/products/luggage/emblematic/groove-leather-cross-body-bag--13d3f1c64f.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-C-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 19500000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2ff3c12b/images/large/52500079_1.png"
+        "image": "/media/products/luggage/emblematic/groove-leather-cross-body-bag--13d3f1c64f.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2ff3c12b/images/large/52500079_1.png",
+    "image": "/media/products/luggage/emblematic/groove-leather-cross-body-bag--13d3f1c64f.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -5112,20 +5112,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 19500000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8ae8f247/images/large/52500095_1.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--f31aeca61a.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-CROSS-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 19500000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdfeba400/images/large/52500095_2.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--114ebee651.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8ae8f247/images/large/52500095_1.png",
+    "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--f31aeca61a.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -5152,28 +5152,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 19500000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc8448f6e/images/large/52500097_1.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--72e78f2e5e.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-CROSS-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 19500000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw4cce8f12/images/large/52500097_2.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--7b30b8092f.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-C-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 19500000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc8448f6e/images/large/52500097_1.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--72e78f2e5e.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc8448f6e/images/large/52500097_1.png",
+    "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--72e78f2e5e.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -5202,20 +5202,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 19500000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw782d8c37/images/large/52500081_1.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--6fd3170363.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-CROSS-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 19500000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa684e4be/images/large/52500081_2.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--8eef8752cf.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw782d8c37/images/large/52500081_1.png",
+    "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--6fd3170363.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -5249,12 +5249,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc2d03145/images/large/52500084_1.png"
+        "image": "/media/products/luggage/emblematic/groove-leather-cross-body-bag--31f9c56fe0.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc2d03145/images/large/52500084_1.png",
+    "image": "/media/products/luggage/emblematic/groove-leather-cross-body-bag--31f9c56fe0.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -5284,12 +5284,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6337be2a/images/large/52500083_1.png"
+        "image": "/media/products/luggage/emblematic/groove-leather-cross-body-bag--99f94c5a14.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6337be2a/images/large/52500083_1.png",
+    "image": "/media/products/luggage/emblematic/groove-leather-cross-body-bag--99f94c5a14.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -5314,20 +5314,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa71dd1ec/images/large/52500092_1.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--f3ce6308d8.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-CROSS-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw30e9e398/images/large/52500092_2.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--4a2cf94228.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa71dd1ec/images/large/52500092_1.png",
+    "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--f3ce6308d8.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -5354,28 +5354,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw590b1240/images/large/52500096_1.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--20e7e0cd3d.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-CROSS-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa26a5d9f/images/large/52500096_2.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--055a98de5d.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-C-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 13300000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw590b1240/images/large/52500096_1.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--20e7e0cd3d.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw590b1240/images/large/52500096_1.png",
+    "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--20e7e0cd3d.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -5403,20 +5403,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwead5e9f0/images/large/52500091_1.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--24f82c5654.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-CROSS-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw4dae42a4/images/large/52500091_2.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--cf04c74444.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwead5e9f0/images/large/52500091_1.png",
+    "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--24f82c5654.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -5441,20 +5441,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2d7a13d6/images/large/52500093_1.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--d9e840070a.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-CROSS-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3e1f8dc3/images/large/52500093_2.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--c8a20cbced.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2d7a13d6/images/large/52500093_1.png",
+    "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--d9e840070a.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -5481,28 +5481,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw14467870/images/large/52500080_1.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--02673ec7b1.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-CROSS-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc9ff1de4/images/large/52500080_2.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--6536355a99.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-C-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 13300000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw14467870/images/large/52500080_1.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--02673ec7b1.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw14467870/images/large/52500080_1.png",
+    "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--02673ec7b1.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -5531,20 +5531,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1e93b2ea/images/large/52500082_1.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--760f59c347.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-CROSS-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwbe14e4f9/images/large/52500082_2.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--fa45b7d75e.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1e93b2ea/images/large/52500082_1.png",
+    "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--760f59c347.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -5572,20 +5572,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-CROSS-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwea405f56/images/large/52500085_1.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--9f2930b86a.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-CROSS-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc80e9548/images/large/52500085_2.png"
+        "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--0e1a9f588a.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwea405f56/images/large/52500085_1.png",
+    "image": "/media/products/luggage/cabin/groove-leather-cross-body-bag--9f2930b86a.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -5617,20 +5617,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 22250000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2d9a9018/images/large/52500078_1.png"
+        "image": "/media/products/luggage/emblematic/groove-leather-hobo-bag-3087807314.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-H-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 22250000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2d9a9018/images/large/52500078_1.png"
+        "image": "/media/products/luggage/emblematic/groove-leather-hobo-bag-3087807314.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2d9a9018/images/large/52500078_1.png",
+    "image": "/media/products/luggage/emblematic/groove-leather-hobo-bag-3087807314.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -5664,20 +5664,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 23600000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa3d522a4/images/large/52500077_1.png"
+        "image": "/media/products/luggage/emblematic/groove-leather-shopping-bag-aa3a023733.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-S-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 23600000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa3d522a4/images/large/52500077_1.png"
+        "image": "/media/products/luggage/emblematic/groove-leather-shopping-bag-aa3a023733.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa3d522a4/images/large/52500077_1.png",
+    "image": "/media/products/luggage/emblematic/groove-leather-shopping-bag-aa3a023733.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -5705,20 +5705,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-SHOPP-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 23600000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw60b448c1/images/large/52500094_1.png"
+        "image": "/media/products/luggage/cabin/groove-leather-shopping-bag-1-c218015f3f.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-SHOPP-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 23600000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa1b4479b/images/large/52500094_2.png"
+        "image": "/media/products/luggage/cabin/groove-leather-shopping-bag-1--322dce3411.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw60b448c1/images/large/52500094_1.png",
+    "image": "/media/products/luggage/cabin/groove-leather-shopping-bag-1-c218015f3f.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -5748,28 +5748,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-ZIPPE-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 6500000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6114e257/images/large/52100018_1.png"
+        "image": "/media/products/luggage/cabin/groove-leather-zipped-pouch-891e8b4237.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-ZIPPE-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 6500000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw5bb8ef62/images/large/52100018_2.png"
+        "image": "/media/products/luggage/cabin/groove-leather-zipped-pouch-si-d8676fd921.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-Z-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 6500000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6114e257/images/large/52100018_1.png"
+        "image": "/media/products/luggage/cabin/groove-leather-zipped-pouch-891e8b4237.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6114e257/images/large/52100018_1.png",
+    "image": "/media/products/luggage/cabin/groove-leather-zipped-pouch-891e8b4237.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -5799,20 +5799,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-ZIPPE-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 6500000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw498fc2d3/images/large/52100019_1.png"
+        "image": "/media/products/luggage/cabin/groove-leather-zipped-pouch-1-cade50385b.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-ZIPPE-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 6500000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw910b8b2f/images/large/52100019_2.png"
+        "image": "/media/products/luggage/cabin/groove-leather-zipped-pouch-1--33dc60eeb3.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw498fc2d3/images/large/52100019_1.png",
+    "image": "/media/products/luggage/cabin/groove-leather-zipped-pouch-1-cade50385b.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -5839,20 +5839,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-GROOVE-LEATHER-ZIPPE-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 6500000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dweb6b675d/images/large/52100017_1.png"
+        "image": "/media/products/luggage/cabin/groove-leather-zipped-pouch-2-3f09f79540.webp"
       },
       {
         "sku": "OV-GROOVE-LEATHER-ZIPPE-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 6500000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw303cfaa3/images/large/52100017_2.png"
+        "image": "/media/products/luggage/cabin/groove-leather-zipped-pouch-2--a6864615ac.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dweb6b675d/images/large/52100017_1.png",
+    "image": "/media/products/luggage/cabin/groove-leather-zipped-pouch-2-3f09f79540.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -5885,20 +5885,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-HYBRID-CABIN-WHITE",
         "color": "White",
         "hex": "#ffffff",
-        "price": 12900000,
+        "price": 100,
         "stock": 14,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwbcc1eedb/images/large/88353661_1.png"
+        "image": "/media/products/luggage/cabin/hybrid-cabin-f5c1a9079e.webp"
       },
       {
         "sku": "OV-HYBRID-CABIN-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 12900000,
+        "price": 100,
         "stock": 11,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw4aa57ca0/images/large/88353631_1.png"
+        "image": "/media/products/luggage/cabin/hybrid-cabin-black-1ee069c449.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwbcc1eedb/images/large/88353661_1.png",
+    "image": "/media/products/luggage/cabin/hybrid-cabin-f5c1a9079e.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -5934,12 +5934,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-HYBRID-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw77ccac5f/images/large/88453711_1.png"
+        "image": "/media/products/luggage/cabin/hybrid-cabin-2-386084a1b9.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw77ccac5f/images/large/88453711_1.png",
+    "image": "/media/products/luggage/cabin/hybrid-cabin-2-386084a1b9.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -5971,12 +5971,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-HYBRID-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 12900000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw4aa57ca0/images/large/88353631_1.png"
+        "image": "/media/products/luggage/cabin/hybrid-cabin-black-1ee069c449.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw4aa57ca0/images/large/88353631_1.png",
+    "image": "/media/products/luggage/cabin/hybrid-cabin-black-1ee069c449.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -6007,20 +6007,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-HYBRID-CHECKIN-L-WHITE",
         "color": "White",
         "hex": "#ffffff",
-        "price": 16100000,
+        "price": 100,
         "stock": 9,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1c02a84e/images/large/88373661_1.png"
+        "image": "/media/products/luggage/check-in/hybrid-check-in-l-43e43580dd.webp"
       },
       {
         "sku": "OV-HYBRID-CHECKIN-L-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 16100000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw592e6bc1/images/large/88373631_1.png"
+        "image": "/media/products/luggage/check-in/hybrid-check-in-l-black-65887ed3a3.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1c02a84e/images/large/88373661_1.png",
+    "image": "/media/products/luggage/check-in/hybrid-check-in-l-43e43580dd.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -6053,12 +6053,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-HYBRID-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwca45f68a/images/large/88473711_1.png"
+        "image": "/media/products/luggage/check-in/hybrid-check-in-l-2-5e648e56e2.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwca45f68a/images/large/88473711_1.png",
+    "image": "/media/products/luggage/check-in/hybrid-check-in-l-2-5e648e56e2.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -6090,12 +6090,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-HYBRID-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16100000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw592e6bc1/images/large/88373631_1.png"
+        "image": "/media/products/luggage/check-in/hybrid-check-in-l-black-65887ed3a3.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw592e6bc1/images/large/88373631_1.png",
+    "image": "/media/products/luggage/check-in/hybrid-check-in-l-black-65887ed3a3.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -6129,20 +6129,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-HYBRID-CHECKIN-M-WHITE",
         "color": "White",
         "hex": "#ffffff",
-        "price": 14700000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7ff0dd7f/images/large/88363661_1.png"
+        "image": "/media/products/luggage/check-in/hybrid-check-in-m-1144829eb9.webp"
       },
       {
         "sku": "OV-HYBRID-CHECKIN-M-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 14700000,
+        "price": 100,
         "stock": 9,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwbc66bcb9/images/large/88363631_1.png"
+        "image": "/media/products/luggage/check-in/hybrid-check-in-m-black-021e67c1fb.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7ff0dd7f/images/large/88363661_1.png",
+    "image": "/media/products/luggage/check-in/hybrid-check-in-m-1144829eb9.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -6174,12 +6174,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-HYBRID-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 14700000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwbc66bcb9/images/large/88363631_1.png"
+        "image": "/media/products/luggage/check-in/hybrid-check-in-m-black-021e67c1fb.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwbc66bcb9/images/large/88363631_1.png",
+    "image": "/media/products/luggage/check-in/hybrid-check-in-m-black-021e67c1fb.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -6209,20 +6209,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-12-PRIMARY",
         "color": "All-White",
         "hex": "#f5f5f5",
-        "price": 19900000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwad7c8fd6/images/large/88380661_1.png"
+        "image": "/media/products/luggage/trunks/trunk-12-hybrid-trunk-plus-f412d97e0d.webp"
       },
       {
         "sku": "OV-TRUNK-12-SWATCH-2",
         "color": "All-Black",
         "hex": "#1a1a1a",
-        "price": 19900000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwad7c8fd6/images/large/88380661_1.png"
+        "image": "/media/products/luggage/trunks/trunk-12-hybrid-trunk-plus-f412d97e0d.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwad7c8fd6/images/large/88380661_1.png",
+    "image": "/media/products/luggage/trunks/trunk-12-hybrid-trunk-plus-f412d97e0d.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -6255,12 +6255,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-14-PRIMARY",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 19900000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw278d1900/images/large/88480711_1.png"
+        "image": "/media/products/luggage/trunks/trunk-14-hybrid-trunk-plus-f806697dc3.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw278d1900/images/large/88480711_1.png",
+    "image": "/media/products/luggage/trunks/trunk-14-hybrid-trunk-plus-f806697dc3.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -6291,20 +6291,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-25-PRIMARY",
         "color": "All-Black",
         "hex": "#1a1a1a",
-        "price": 19900000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw0d32057d/images/large/88380631_1.png"
+        "image": "/media/products/luggage/trunks/trunk-25-hybrid-trunk-plus-ddbc757c36.webp"
       },
       {
         "sku": "OV-TRUNK-25-SWATCH-2",
         "color": "All-White",
         "hex": "#f5f5f5",
-        "price": 19900000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw0d32057d/images/large/88380631_1.png"
+        "image": "/media/products/luggage/trunks/trunk-25-hybrid-trunk-plus-ddbc757c36.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw0d32057d/images/large/88380631_1.png",
+    "image": "/media/products/luggage/trunks/trunk-25-hybrid-trunk-plus-ddbc757c36.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -6337,12 +6337,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SPECIALTIES-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1950000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw325014da/images/large/95118044_1.png"
+        "image": "/media/accessories/95118044_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw325014da/images/large/95118044_1.png",
+    "image": "/media/accessories/95118044_1.png",
     "imageKind": "photograph",
     "featured": false
   },
@@ -6368,20 +6368,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-LIFESTYLE-ACCESSORIE-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 16800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6d6d5bcf/images/large/53156001_1.png"
+        "image": "/media/accessories/53156001_1.png"
       },
       {
         "sku": "OV-LIFESTYLE-ACCESSORIE-ALT",
         "color": "Midnight Blue Detail",
         "hex": "#263f59",
-        "price": 16800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3f81beaa/images/large/53156001_2.png"
+        "image": "/media/accessories/53156001_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6d6d5bcf/images/large/53156001_1.png",
+    "image": "/media/accessories/53156001_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -6407,20 +6407,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-LIFESTYLE-ACCESSORIE-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 16800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw202bfae9/images/large/53158001_1.png"
+        "image": "/media/accessories/53158001_1.png"
       },
       {
         "sku": "OV-LIFESTYLE-ACCESSORIE-ALT",
         "color": "Midnight Blue Detail",
         "hex": "#263f59",
-        "price": 16800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2e1a72f4/images/large/53158001_2.png"
+        "image": "/media/accessories/53158001_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw202bfae9/images/large/53158001_1.png",
+    "image": "/media/accessories/53158001_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -6446,20 +6446,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-LIFESTYLE-ACCESSORIE-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 16800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw4a88ce35/images/large/53160001_1.png"
+        "image": "/media/accessories/53160001_1.png"
       },
       {
         "sku": "OV-LIFESTYLE-ACCESSORIE-ALT",
         "color": "Midnight Blue Detail",
         "hex": "#263f59",
-        "price": 16800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwd0a06559/images/large/53160001_2.png"
+        "image": "/media/accessories/53160001_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw4a88ce35/images/large/53160001_1.png",
+    "image": "/media/accessories/53160001_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -6484,28 +6484,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-LIFESTYLE-REVERSIBLE-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3500000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe96478f3/images/large/51200006_1.png"
+        "image": "/media/accessories/51200006_1.png"
       },
       {
         "sku": "OV-LIFESTYLE-REVERSIBLE-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3500000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw4bb50b7f/images/large/51200006_2.png"
+        "image": "/media/accessories/51200006_2.png"
       },
       {
         "sku": "OV-LIFESTYLE-REVERS-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 3500000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe96478f3/images/large/51200006_1.png"
+        "image": "/media/accessories/51200006_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe96478f3/images/large/51200006_1.png",
+    "image": "/media/accessories/51200006_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -6534,28 +6534,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-LIFESTYLE-REVERSIBLE-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3500000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdf551725/images/large/51200007_1.png"
+        "image": "/media/accessories/51200007_1.png"
       },
       {
         "sku": "OV-LIFESTYLE-REVERSIBLE-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3500000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw86c9f8fb/images/large/51200007_2.png"
+        "image": "/media/accessories/51200007_2.png"
       },
       {
         "sku": "OV-LIFESTYLE-REVERS-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 3500000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdf551725/images/large/51200007_1.png"
+        "image": "/media/accessories/51200007_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdf551725/images/large/51200007_1.png",
+    "image": "/media/accessories/51200007_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -6584,28 +6584,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-LIFESTYLE-REVERSIBLE-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3500000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw89a65801/images/large/51200009_1.png"
+        "image": "/media/accessories/51200009_1.png"
       },
       {
         "sku": "OV-LIFESTYLE-REVERSIBLE-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3500000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwd1f70143/images/large/51200009_2.png"
+        "image": "/media/accessories/51200009_2.png"
       },
       {
         "sku": "OV-LIFESTYLE-REVERS-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 3500000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw89a65801/images/large/51200009_1.png"
+        "image": "/media/accessories/51200009_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw89a65801/images/large/51200009_1.png",
+    "image": "/media/accessories/51200009_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -6634,28 +6634,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-LIFESTYLE-REVERSIBLE-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3500000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw517a07de/images/large/51200008_1.png"
+        "image": "/media/accessories/51200008_1.png"
       },
       {
         "sku": "OV-LIFESTYLE-REVERSIBLE-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3500000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw0942c7c5/images/large/51200008_2.png"
+        "image": "/media/accessories/51200008_2.png"
       },
       {
         "sku": "OV-LIFESTYLE-REVERS-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 3500000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw517a07de/images/large/51200008_1.png"
+        "image": "/media/accessories/51200008_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw517a07de/images/large/51200008_1.png",
+    "image": "/media/accessories/51200008_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -6684,20 +6684,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-CANVAS-F-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 21000000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwaa540137/images/large/52500073_1.png"
+        "image": "/media/bags/52500073_1.png"
       },
       {
         "sku": "OV-NEVER-STILL-CANVAS-F-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 21000000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8c6fbbd6/images/large/52500073_2.png"
+        "image": "/media/products/luggage/cabin/never-still-canvas-flap-backpa-c3aa5bcd6d.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwaa540137/images/large/52500073_1.png",
+    "image": "/media/bags/52500073_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -6726,28 +6726,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-CANVAS-F-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 21000000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw0864d302/images/large/52500086_1.png"
+        "image": "/media/bags/52500086_1.png"
       },
       {
         "sku": "OV-NEVER-STILL-CANVAS-F-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 21000000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9d0de93c/images/large/52500086_2.png"
+        "image": "/media/products/luggage/cabin/never-still-canvas-flap-backpa-84877d3997.webp"
       },
       {
         "sku": "OV-NEVER-STILL-CANV-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 21000000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw0864d302/images/large/52500086_1.png"
+        "image": "/media/bags/52500086_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw0864d302/images/large/52500086_1.png",
+    "image": "/media/bags/52500086_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -6778,28 +6778,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-LEATHER--SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 21000000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9e8dadb5/images/large/52500072_1.png"
+        "image": "/media/products/luggage/cabin/never-still-leather-briefcase-e65d61402c.webp"
       },
       {
         "sku": "OV-NEVER-STILL-LEATHER--ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 21000000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw451cbdcf/images/large/52500072_2.png"
+        "image": "/media/products/luggage/cabin/never-still-leather-briefcase--fff6339aca.webp"
       },
       {
         "sku": "OV-NEVER-STILL-LEAT-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 21000000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9e8dadb5/images/large/52500072_1.png"
+        "image": "/media/products/luggage/cabin/never-still-leather-briefcase-e65d61402c.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9e8dadb5/images/large/52500072_1.png",
+    "image": "/media/products/luggage/cabin/never-still-leather-briefcase-e65d61402c.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -6832,12 +6832,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwada21933/images/large/52523008_1.png"
+        "image": "/media/products/luggage/emblematic/never-still-leather-cross-body-8d4d8a52dc.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwada21933/images/large/52523008_1.png",
+    "image": "/media/products/luggage/emblematic/never-still-leather-cross-body-8d4d8a52dc.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -6862,20 +6862,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-LEATHER--SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwd50340d4/images/large/52523007_1.png"
+        "image": "/media/products/luggage/cabin/never-still-leather-cross-body-df13cbcf9b.webp"
       },
       {
         "sku": "OV-NEVER-STILL-LEATHER--ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 13300000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw553729e2/images/large/52523007_2.png"
+        "image": "/media/products/luggage/cabin/never-still-leather-cross-body-0eda2b6d6e.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwd50340d4/images/large/52523007_1.png",
+    "image": "/media/products/luggage/cabin/never-still-leather-cross-body-df13cbcf9b.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -6908,12 +6908,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe37356f7/images/large/52525004_1.png"
+        "image": "/media/products/luggage/emblematic/never-still-leather-duffle-bag-c0a9388684.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe37356f7/images/large/52525004_1.png",
+    "image": "/media/products/luggage/emblematic/never-still-leather-duffle-bag-c0a9388684.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -6946,20 +6946,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1d525824/images/large/52525005_1.png"
+        "image": "/media/products/luggage/emblematic/never-still-leather-duffle-bag-bf4d4d5d99.webp"
       },
       {
         "sku": "OV-NEVER-STILL-LEAT-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 21500000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1d525824/images/large/52525005_1.png"
+        "image": "/media/products/luggage/emblematic/never-still-leather-duffle-bag-bf4d4d5d99.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1d525824/images/large/52525005_1.png",
+    "image": "/media/products/luggage/emblematic/never-still-leather-duffle-bag-bf4d4d5d99.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -6987,20 +6987,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-LEATHER--SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 19500000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3fd29d96/images/large/52400004_1.png"
+        "image": "/media/products/luggage/cabin/never-still-leather-duffle-bag-34c6120ea6.webp"
       },
       {
         "sku": "OV-NEVER-STILL-LEATHER--ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 19500000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwd2f4c53f/images/large/52400004_2.png"
+        "image": "/media/products/luggage/cabin/never-still-leather-duffle-bag-efb5df88e2.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3fd29d96/images/large/52400004_1.png",
+    "image": "/media/products/luggage/cabin/never-still-leather-duffle-bag-34c6120ea6.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -7028,20 +7028,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-LEATHER--SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 25750000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1c9d34f0/images/large/52500071_1.png"
+        "image": "/media/bags/52500071_1.png"
       },
       {
         "sku": "OV-NEVER-STILL-LEATHER--ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 25750000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw891689e3/images/large/52500071_2.png"
+        "image": "/media/products/luggage/cabin/never-still-leather-flap-backp-5db036249b.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1c9d34f0/images/large/52500071_1.png",
+    "image": "/media/bags/52500071_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -7068,20 +7068,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-LEATHER--SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 25750000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7ac37305/images/large/52500087_1.png"
+        "image": "/media/bags/52500087_1.png"
       },
       {
         "sku": "OV-NEVER-STILL-LEATHER--ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 25750000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw0dcfbe8e/images/large/52500087_2.png"
+        "image": "/media/products/luggage/cabin/never-still-leather-flap-backp-196bd23bb0.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7ac37305/images/large/52500087_1.png",
+    "image": "/media/bags/52500087_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -7109,20 +7109,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-LEATHER--SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 25750000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8bec4362/images/large/52525006_1.png"
+        "image": "/media/bags/52525006_1.png"
       },
       {
         "sku": "OV-NEVER-STILL-LEATHER--ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 25750000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwda02b481/images/large/52525006_2.png"
+        "image": "/media/products/luggage/cabin/never-still-leather-flap-backp-469c0c06a1.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8bec4362/images/large/52525006_1.png",
+    "image": "/media/bags/52525006_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -7155,12 +7155,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7d9e872d/images/large/52523009_1.png"
+        "image": "/media/bags/52523009_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7d9e872d/images/large/52523009_1.png",
+    "image": "/media/bags/52523009_1.png",
     "imageKind": "photograph",
     "featured": false
   },
@@ -7192,12 +7192,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 8250000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw16c4ea3c/images/large/52100016_1.png"
+        "image": "/media/products/luggage/emblematic/never-still-leather-toiletry-b-4a8a634357.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw16c4ea3c/images/large/52100016_1.png",
+    "image": "/media/products/luggage/emblematic/never-still-leather-toiletry-b-4a8a634357.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -7230,20 +7230,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 8250000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw535b2b53/images/large/52100013_1.png"
+        "image": "/media/products/luggage/emblematic/never-still-leather-toiletry-b-135ade1b98.webp"
       },
       {
         "sku": "OV-NEVER-STILL-LEAT-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 8250000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw535b2b53/images/large/52100013_1.png"
+        "image": "/media/products/luggage/emblematic/never-still-leather-toiletry-b-135ade1b98.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw535b2b53/images/large/52100013_1.png",
+    "image": "/media/products/luggage/emblematic/never-still-leather-toiletry-b-135ade1b98.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -7275,20 +7275,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-LEATHER--SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 8250000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw70347b65/images/large/52100024_1.png"
+        "image": "/media/products/luggage/cabin/never-still-leather-toiletry-b-f63ff911bd.webp"
       },
       {
         "sku": "OV-NEVER-STILL-LEATHER--ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 8250000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf89a681e/images/large/52100024_2.png"
+        "image": "/media/products/luggage/cabin/never-still-leather-toiletry-b-5db5ddb76c.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw70347b65/images/large/52100024_1.png",
+    "image": "/media/products/luggage/cabin/never-still-leather-toiletry-b-f63ff911bd.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -7315,28 +7315,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-LEATHER--SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 21000000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw35e4575e/images/large/52500104_1.png"
+        "image": "/media/products/luggage/cabin/never-still-leather-zipped-tot-431087d0a5.webp"
       },
       {
         "sku": "OV-NEVER-STILL-LEATHER--ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 21000000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2f1c45f9/images/large/52500104_2.png"
+        "image": "/media/products/luggage/cabin/never-still-leather-zipped-tot-276d8b2bf3.webp"
       },
       {
         "sku": "OV-NEVER-STILL-LEAT-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 21000000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw35e4575e/images/large/52500104_1.png"
+        "image": "/media/products/luggage/cabin/never-still-leather-zipped-tot-431087d0a5.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw35e4575e/images/large/52500104_1.png",
+    "image": "/media/products/luggage/cabin/never-still-leather-zipped-tot-431087d0a5.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -7372,12 +7372,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 18800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8d55e847/images/large/52500074_1.png"
+        "image": "/media/products/luggage/emblematic/never-still-nylon-duffle-bag-l-2791a2e2f6.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8d55e847/images/large/52500074_1.png",
+    "image": "/media/products/luggage/emblematic/never-still-nylon-duffle-bag-l-2791a2e2f6.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -7402,28 +7402,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-NYLON-DU-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 18800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw0b1512f0/images/large/52400003_1.png"
+        "image": "/media/products/luggage/cabin/never-still-nylon-duffle-bag-m-1a479f47b2.webp"
       },
       {
         "sku": "OV-NEVER-STILL-NYLON-DU-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 18800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcac92fa0/images/large/52400003_2.png"
+        "image": "/media/products/luggage/cabin/never-still-nylon-duffle-bag-m-e6739e13bd.webp"
       },
       {
         "sku": "OV-NEVER-STILL-NYLO-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 18800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw0b1512f0/images/large/52400003_1.png"
+        "image": "/media/products/luggage/cabin/never-still-nylon-duffle-bag-m-1a479f47b2.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw0b1512f0/images/large/52400003_1.png",
+    "image": "/media/products/luggage/cabin/never-still-nylon-duffle-bag-m-1a479f47b2.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -7452,20 +7452,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-NYLON-FL-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 18300000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw10854757/images/large/52500075_1.png"
+        "image": "/media/bags/52500075_1.png"
       },
       {
         "sku": "OV-NEVER-STILL-NYLON-FL-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 18300000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw237f60f2/images/large/52500075_2.png"
+        "image": "/media/products/luggage/cabin/never-still-nylon-flap-backpac-d38837d1db.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw10854757/images/large/52500075_1.png",
+    "image": "/media/bags/52500075_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -7492,20 +7492,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-NEVER-STILL-NYLON-ZI-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6ea81b65/images/large/52500076_1.png"
+        "image": "/media/bags/52500076_1.png"
       },
       {
         "sku": "OV-NEVER-STILL-NYLON-ZI-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa97b99db/images/large/52500076_2.png"
+        "image": "/media/products/luggage/cabin/never-still-nylon-zipped-backp-4df765dbaa.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6ea81b65/images/large/52500076_1.png",
+    "image": "/media/bags/52500076_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -7538,12 +7538,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 26500000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw65b65841/images/large/93090003_1.png"
+        "image": "/media/bags/93090003_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw65b65841/images/large/93090003_1.png",
+    "image": "/media/bags/93090003_1.png",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -7574,28 +7574,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-BAG-ALUMINI-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 26500000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7715f76c/images/large/93090009_1.png"
+        "image": "/media/bags/93090009_1.png"
       },
       {
         "sku": "OV-ORIGINAL-BAG-ALUMINI-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 26500000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwee27eeb0/images/large/93090009_2.png"
+        "image": "/media/products/luggage/cabin/original-bag-aluminium-backpac-f1f1685a7f.webp"
       },
       {
         "sku": "OV-ORIGINAL-BAG-ALU-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 26500000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7715f76c/images/large/93090009_1.png"
+        "image": "/media/bags/93090009_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7715f76c/images/large/93090009_1.png",
+    "image": "/media/bags/93090009_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -7627,12 +7627,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 23600000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf256151f/images/large/93090006_1.png"
+        "image": "/media/products/luggage/emblematic/original-bag-aluminium-cross-b-c0f6b7e6ee.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf256151f/images/large/93090006_1.png",
+    "image": "/media/products/luggage/emblematic/original-bag-aluminium-cross-b-c0f6b7e6ee.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -7662,20 +7662,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 23600000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf2e4dded/images/large/93090005_1.png"
+        "image": "/media/products/luggage/emblematic/original-bag-aluminium-cross-b-1a869356b6.webp"
       },
       {
         "sku": "OV-ORIGINAL-BAG-ALU-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 23600000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf2e4dded/images/large/93090005_1.png"
+        "image": "/media/products/luggage/emblematic/original-bag-aluminium-cross-b-1a869356b6.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf2e4dded/images/large/93090005_1.png",
+    "image": "/media/products/luggage/emblematic/original-bag-aluminium-cross-b-1a869356b6.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -7705,20 +7705,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-BAG-ALUMINI-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 23600000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1dedbfc4/images/large/93090004_1.png"
+        "image": "/media/products/luggage/cabin/original-bag-aluminium-cross-b-a42ab72428.webp"
       },
       {
         "sku": "OV-ORIGINAL-BAG-ALUMINI-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 23600000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw331f6e33/images/large/93090004_2.png"
+        "image": "/media/products/luggage/cabin/original-bag-aluminium-cross-b-8f23e13113.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1dedbfc4/images/large/93090004_1.png",
+    "image": "/media/products/luggage/cabin/original-bag-aluminium-cross-b-a42ab72428.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -7752,12 +7752,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 25000000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8a170369/images/large/93090001_1.png"
+        "image": "/media/products/luggage/emblematic/original-bag-aluminium-cross-b-e59dddd2fc.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8a170369/images/large/93090001_1.png",
+    "image": "/media/products/luggage/emblematic/original-bag-aluminium-cross-b-e59dddd2fc.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -7791,20 +7791,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 25000000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw27f0eb66/images/large/93090002_1.png"
+        "image": "/media/products/luggage/emblematic/original-bag-aluminium-cross-b-70a9ceb16f.webp"
       },
       {
         "sku": "OV-ORIGINAL-BAG-ALU-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 25000000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw27f0eb66/images/large/93090002_1.png"
+        "image": "/media/products/luggage/emblematic/original-bag-aluminium-cross-b-70a9ceb16f.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw27f0eb66/images/large/93090002_1.png",
+    "image": "/media/products/luggage/emblematic/original-bag-aluminium-cross-b-70a9ceb16f.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -7819,7 +7819,7 @@ export const luggageProducts: Product[] = [
     "department": "luggage",
     "category": "Cabin",
     "material": "Aluminium",
-    "description": "The icon reimagined for modern travel. Crafted from grooved anodised aluminium with a distinctive ridged surface, multi-wheel system, and TSA-approved locks. Built to last a lifetime.",
+    "description": "Crafted from high-end anodised aluminium, and backed by a lifetime guarantee, the OVIA Original suitcase is one of the most iconic luggage designs of all time, with its instantly recognisable grooves.",
     "dimensions": "55 × 40 × 23 cm",
     "capacity": "35 L",
     "weight": "4.3 kg",
@@ -7840,33 +7840,40 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIG-CABIN-SILVER",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf3976cb9/images/large/92553004_1.png"
+        "image": "/media/pdp/hero_main.png"
       },
       {
         "sku": "OV-ORIG-CABIN-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw686d9b29/images/large/92553014_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-black-2276e47a58.webp"
       },
       {
         "sku": "OV-ORIG-CABIN-TITANIUM",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 16800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9f284cb6/images/large/92553044_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-titanium-404ca0ca73.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf3976cb9/images/large/92553004_1.png",
+    "image": "/media/pdp/hero_main.png",
+    "gallery": [
+      "/media/pdp/thumb_1_handle.png",
+      "/media/pdp/thumb_2_side.png",
+      "/media/pdp/thumb_3_wheel.png",
+      "/media/pdp/thumb_4_open.png"
+    ],
     "imageKind": "photograph",
     "featured": true,
     "colors": [
       "Silver",
-      "Black"
+      "Black",
+      "Titanium"
     ]
   },
   {
@@ -7898,20 +7905,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw721d72ab/images/large/92653054_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-2-d5962d94ba.webp"
       },
       {
         "sku": "OV-ORIGINAL-CABIN-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw721d72ab/images/large/92653054_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-2-d5962d94ba.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw721d72ab/images/large/92653054_1.png",
+    "image": "/media/products/luggage/cabin/original-cabin-2-d5962d94ba.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -7946,12 +7953,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9f284cb6/images/large/92553044_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-titanium-404ca0ca73.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9f284cb6/images/large/92553044_1.png",
+    "image": "/media/products/luggage/cabin/original-cabin-titanium-404ca0ca73.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -7983,12 +7990,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-4",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw686d9b29/images/large/92553014_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-black-2276e47a58.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw686d9b29/images/large/92553014_1.png",
+    "image": "/media/products/luggage/cabin/original-cabin-black-2276e47a58.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -8021,28 +8028,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIG-PLUS-SILVER",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 18200000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6739fa26/images/large/92556004_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-plus-1de454e8b3.webp"
       },
       {
         "sku": "OV-ORIG-PLUS-TITANIUM",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 18200000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw18fff379/images/large/92556044_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-plus-titanium-f381f36091.webp"
       },
       {
         "sku": "OV-ORIG-PLUS-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 18200000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9c05c335/images/large/92556014_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-plus-black-1e6a54f5f1.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6739fa26/images/large/92556004_1.png",
+    "image": "/media/products/luggage/cabin/original-cabin-plus-1de454e8b3.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -8078,12 +8085,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 18200000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw18fff379/images/large/92556044_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-plus-titanium-f381f36091.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw18fff379/images/large/92556044_1.png",
+    "image": "/media/products/luggage/cabin/original-cabin-plus-titanium-f381f36091.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -8115,12 +8122,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 18200000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9c05c335/images/large/92556014_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-plus-black-1e6a54f5f1.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9c05c335/images/large/92556014_1.png",
+    "image": "/media/products/luggage/cabin/original-cabin-plus-black-1e6a54f5f1.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -8151,12 +8158,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16100000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa269ca86/images/large/92552004_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-s-a36ebbb785.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa269ca86/images/large/92552004_1.png",
+    "image": "/media/products/luggage/cabin/original-cabin-s-a36ebbb785.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -8191,36 +8198,36 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIG-TWIST-BROWN",
         "color": "Dune",
         "hex": "#b5a58b",
-        "price": 19600000,
+        "price": 100,
         "stock": 7,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7cdd0adc/images/large/92590003_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-twist-71b65c55f3.webp"
       },
       {
         "sku": "OV-ORIG-TWIST-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 19600000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw269751cf/images/large/92590060_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-twist-black-270c51ddb7.webp"
       },
       {
         "sku": "OV-ORIGINAL-CABIN-T-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 19600000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7cdd0adc/images/large/92590003_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-twist-71b65c55f3.webp"
       },
       {
         "sku": "OV-ORIGINAL-CABIN-T-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 19600000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7cdd0adc/images/large/92590003_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-twist-71b65c55f3.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7cdd0adc/images/large/92590003_1.png",
+    "image": "/media/products/luggage/cabin/original-cabin-twist-71b65c55f3.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -8257,12 +8264,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 19600000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf8dfea0d/images/large/92590042_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-twist-2-9b21136748.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf8dfea0d/images/large/92590042_1.png",
+    "image": "/media/products/luggage/cabin/original-cabin-twist-2-9b21136748.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -8299,12 +8306,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 19600000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf3e80910/images/large/92590040_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-twist-3-3dde026fa6.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf3e80910/images/large/92590040_1.png",
+    "image": "/media/products/luggage/cabin/original-cabin-twist-3-3dde026fa6.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -8339,12 +8346,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-4",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 19600000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw269751cf/images/large/92590060_1.png"
+        "image": "/media/products/luggage/cabin/original-cabin-twist-black-270c51ddb7.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw269751cf/images/large/92590060_1.png",
+    "image": "/media/products/luggage/cabin/original-cabin-twist-black-270c51ddb7.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -8378,28 +8385,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIG-CHECKIN-L-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 21000000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe973d4d5/images/large/92573014_1.png"
+        "image": "/media/products/luggage/check-in/original-check-in-l-418d9afc1a.webp"
       },
       {
         "sku": "OV-ORIG-CHECKIN-L-SILVER",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 21000000,
+        "price": 100,
         "stock": 14,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf69b3877/images/large/92573004_1.png"
+        "image": "/media/products/luggage/check-in/original-check-in-l-silver-303a2d9324.webp"
       },
       {
         "sku": "OV-ORIG-CHECKIN-L-TITANIUM",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 21000000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw92aebf29/images/large/92573044_1.png"
+        "image": "/media/products/luggage/check-in/original-check-in-l-titanium-4e40af5503.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe973d4d5/images/large/92573014_1.png",
+    "image": "/media/products/luggage/check-in/original-check-in-l-418d9afc1a.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -8438,20 +8445,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-13-PRIMARY",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 24500000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8eefa64e/images/large/92673054_1.png"
+        "image": "/media/products/luggage/trunks/trunk-13-original-check-in-l-2ca3fceae8.webp"
       },
       {
         "sku": "OV-ORIGINAL-CHECK-I-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 21000000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8eefa64e/images/large/92673054_1.png"
+        "image": "/media/products/luggage/trunks/trunk-13-original-check-in-l-2ca3fceae8.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8eefa64e/images/large/92673054_1.png",
+    "image": "/media/products/luggage/trunks/trunk-13-original-check-in-l-2ca3fceae8.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -8486,12 +8493,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 21000000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw92aebf29/images/large/92573044_1.png"
+        "image": "/media/products/luggage/check-in/original-check-in-l-titanium-4e40af5503.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw92aebf29/images/large/92573044_1.png",
+    "image": "/media/products/luggage/check-in/original-check-in-l-titanium-4e40af5503.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -8523,12 +8530,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 21000000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf69b3877/images/large/92573004_1.png"
+        "image": "/media/products/luggage/check-in/original-check-in-l-silver-303a2d9324.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf69b3877/images/large/92573004_1.png",
+    "image": "/media/products/luggage/check-in/original-check-in-l-silver-303a2d9324.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -8563,28 +8570,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIG-CHECKIN-M-SILVER",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 19600000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw657c1416/images/large/92563004_1.png"
+        "image": "/media/products/luggage/check-in/original-check-in-m-85903e80b3.webp"
       },
       {
         "sku": "OV-ORIG-CHECKIN-M-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 19600000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw42e50646/images/large/92563014_1.png"
+        "image": "/media/products/luggage/check-in/original-check-in-m-black-ce89812a1f.webp"
       },
       {
         "sku": "OV-ORIG-CHECKIN-M-TITANIUM",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 19600000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw744ef6ac/images/large/92563044_1.png"
+        "image": "/media/products/luggage/check-in/original-check-in-m-titanium-cf823eb0e1.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw657c1416/images/large/92563004_1.png",
+    "image": "/media/products/luggage/check-in/original-check-in-m-85903e80b3.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -8620,12 +8627,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 19600000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw42e50646/images/large/92563014_1.png"
+        "image": "/media/products/luggage/check-in/original-check-in-m-black-ce89812a1f.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw42e50646/images/large/92563014_1.png",
+    "image": "/media/products/luggage/check-in/original-check-in-m-black-ce89812a1f.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -8657,12 +8664,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 19600000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw744ef6ac/images/large/92563044_1.png"
+        "image": "/media/products/luggage/check-in/original-check-in-m-titanium-cf823eb0e1.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw744ef6ac/images/large/92563044_1.png",
+    "image": "/media/products/luggage/check-in/original-check-in-m-titanium-cf823eb0e1.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -8692,12 +8699,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-COMPACT-SILVER",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16100000,
+        "price": 100,
         "stock": 9,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcc8e4a3a/images/large/92540004_1.png"
+        "image": "/media/products/luggage/cabin/original-compact-1e823d9fdc.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcc8e4a3a/images/large/92540004_1.png",
+    "image": "/media/products/luggage/cabin/original-compact-1e823d9fdc.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -8734,20 +8741,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-PILOT-SILVER",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 18200000,
+        "price": 100,
         "stock": 7,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw494f87b7/images/large/92551004_1.png"
+        "image": "/media/products/luggage/cabin/original-pilot-04d1e3d199.webp"
       },
       {
         "sku": "OV-PILOT-BLACK",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 18200000,
+        "price": 100,
         "stock": 5,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdef2aa10/images/large/92551014_1.png"
+        "image": "/media/products/luggage/cabin/original-pilot-black-b9e6ef2979.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw494f87b7/images/large/92551004_1.png",
+    "image": "/media/products/luggage/cabin/original-pilot-04d1e3d199.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -8780,12 +8787,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16100000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdef2aa10/images/large/92551014_1.png"
+        "image": "/media/products/luggage/cabin/original-pilot-black-b9e6ef2979.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdef2aa10/images/large/92551014_1.png",
+    "image": "/media/products/luggage/cabin/original-pilot-black-b9e6ef2979.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -8817,12 +8824,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3350000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1e37e2b9/images/large/52600007_1.png"
+        "image": "/media/accessories/52600007_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1e37e2b9/images/large/52600007_1.png",
+    "image": "/media/accessories/52600007_1.png",
     "imageKind": "photograph",
     "featured": false
   },
@@ -8850,20 +8857,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-SMALL-GOODS-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3350000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfca39647/images/large/52600006_1.png"
+        "image": "/media/accessories/52600006_1.png"
       },
       {
         "sku": "OV-ORIGINAL-SMALL-GOODS-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3350000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw87136c7c/images/large/52600006_2.png"
+        "image": "/media/accessories/52600006_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfca39647/images/large/52600006_1.png",
+    "image": "/media/accessories/52600006_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -8889,20 +8896,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-SMALL-GOODS-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3350000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw5c281a1a/images/large/52600011_1.png"
+        "image": "/media/accessories/52600011_1.png"
       },
       {
         "sku": "OV-ORIGINAL-SMALL-GOODS-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3350000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7e0c7e61/images/large/52600011_2.png"
+        "image": "/media/accessories/52600011_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw5c281a1a/images/large/52600011_1.png",
+    "image": "/media/accessories/52600011_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -8933,12 +8940,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-ORIGINAL-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 22200000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe717c767/images/large/92590094_1.png"
+        "image": "/media/products/luggage/emblematic/original-specialties-aluminium-806e3b35be.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe717c767/images/large/92590094_1.png",
+    "image": "/media/products/luggage/emblematic/original-specialties-aluminium-806e3b35be.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -8972,20 +8979,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-16-PRIMARY",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 25800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf73515ff/images/large/92575014_1.png"
+        "image": "/media/products/luggage/trunks/trunk-16-original-trunk-1ba5a419ac.webp"
       },
       {
         "sku": "OV-TRUNK-16-SWATCH-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 25800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf73515ff/images/large/92575014_1.png"
+        "image": "/media/products/luggage/trunks/trunk-16-original-trunk-1ba5a419ac.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf73515ff/images/large/92575014_1.png",
+    "image": "/media/products/luggage/trunks/trunk-16-original-trunk-1ba5a419ac.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -9021,20 +9028,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-27-PRIMARY",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 25800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw60b55ef7/images/large/92575004_1.png"
+        "image": "/media/products/luggage/trunks/trunk-27-original-trunk-95f02c480a.webp"
       },
       {
         "sku": "OV-TRUNK-27-SWATCH-2",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 25800000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw60b55ef7/images/large/92575004_1.png"
+        "image": "/media/products/luggage/trunks/trunk-27-original-trunk-95f02c480a.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw60b55ef7/images/large/92575004_1.png",
+    "image": "/media/products/luggage/trunks/trunk-27-original-trunk-95f02c480a.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -9067,28 +9074,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-2-PRIMARY",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 27200000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw0a1b0c6e/images/large/92580004_1.png"
+        "image": "/media/products/luggage/92580004_1.png"
       },
       {
         "sku": "OV-TRUNK-2-SWATCH-2",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 27200000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw0a1b0c6e/images/large/92580004_1.png"
+        "image": "/media/products/luggage/92580004_1.png"
       },
       {
         "sku": "OV-TRUNK-2-SWATCH-3",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 27200000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw0a1b0c6e/images/large/92580004_1.png"
+        "image": "/media/products/luggage/92580004_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw0a1b0c6e/images/large/92580004_1.png",
+    "image": "/media/products/luggage/92580004_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -9120,28 +9127,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-18-PRIMARY",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 27200000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3dbf4ce0/images/large/92580014_1.png"
+        "image": "/media/products/luggage/trunks/trunk-18-original-trunk-plus-6f3582bf47.webp"
       },
       {
         "sku": "OV-TRUNK-18-SWATCH-2",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 27200000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3dbf4ce0/images/large/92580014_1.png"
+        "image": "/media/products/luggage/trunks/trunk-18-original-trunk-plus-6f3582bf47.webp"
       },
       {
         "sku": "OV-TRUNK-18-SWATCH-3",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 27200000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3dbf4ce0/images/large/92580014_1.png"
+        "image": "/media/products/luggage/trunks/trunk-18-original-trunk-plus-6f3582bf47.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3dbf4ce0/images/large/92580014_1.png",
+    "image": "/media/products/luggage/trunks/trunk-18-original-trunk-plus-6f3582bf47.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -9174,28 +9181,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-28-PRIMARY",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 27200000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8957c183/images/large/92580044_1.png"
+        "image": "/media/products/luggage/trunks/trunk-28-original-trunk-plus-3cdf8c2b31.webp"
       },
       {
         "sku": "OV-TRUNK-28-SWATCH-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 27200000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8957c183/images/large/92580044_1.png"
+        "image": "/media/products/luggage/trunks/trunk-28-original-trunk-plus-3cdf8c2b31.webp"
       },
       {
         "sku": "OV-TRUNK-28-SWATCH-3",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 27200000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8957c183/images/large/92580044_1.png"
+        "image": "/media/products/luggage/trunks/trunk-28-original-trunk-plus-3cdf8c2b31.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8957c183/images/large/92580044_1.png",
+    "image": "/media/products/luggage/trunks/trunk-28-original-trunk-plus-3cdf8c2b31.webp",
     "imageKind": "photograph",
     "featured": false
   },
@@ -9226,20 +9233,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-29-PRIMARY",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 27200000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw710775de/images/large/92680054_1.png"
+        "image": "/media/products/luggage/trunks/trunk-29-original-trunk-plus-f04176a7e5.webp"
       },
       {
         "sku": "OV-ORIGINAL-TRUNK-P-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 27200000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw710775de/images/large/92680054_1.png"
+        "image": "/media/products/luggage/trunks/trunk-29-original-trunk-plus-f04176a7e5.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw710775de/images/large/92680054_1.png",
+    "image": "/media/products/luggage/trunks/trunk-29-original-trunk-plus-f04176a7e5.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -9272,12 +9279,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-6-PRIMARY",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 23000000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb5a3b704/images/large/92565004_1.png"
+        "image": "/media/products/luggage/trunks/trunk-6-original-trunk-s-20d0a6f729.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb5a3b704/images/large/92565004_1.png",
+    "image": "/media/products/luggage/trunks/trunk-6-original-trunk-s-20d0a6f729.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -9311,20 +9318,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-10-PRIMARY",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 28900000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8e6fe671/images/large/92585014_1.png"
+        "image": "/media/products/luggage/trunks/trunk-10-original-trunk-xl-7431024a0c.webp"
       },
       {
         "sku": "OV-TRUNK-10-SWATCH-2",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 28900000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8e6fe671/images/large/92585014_1.png"
+        "image": "/media/products/luggage/trunks/trunk-10-original-trunk-xl-7431024a0c.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8e6fe671/images/large/92585014_1.png",
+    "image": "/media/products/luggage/trunks/trunk-10-original-trunk-xl-7431024a0c.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -9358,20 +9365,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRUNK-21-PRIMARY",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 28900000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc0c0fa01/images/large/92585004_1.png"
+        "image": "/media/products/luggage/trunks/trunk-21-original-trunk-xl-62efaa9144.webp"
       },
       {
         "sku": "OV-TRUNK-21-SWATCH-2",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 28900000,
+        "price": 100,
         "stock": 6,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc0c0fa01/images/large/92585004_1.png"
+        "image": "/media/products/luggage/trunks/trunk-21-original-trunk-xl-62efaa9144.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc0c0fa01/images/large/92585004_1.png",
+    "image": "/media/products/luggage/trunks/trunk-21-original-trunk-xl-62efaa9144.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -9406,12 +9413,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-PERSONAL-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 18800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc130b5ed/images/large/99011000_1.png"
+        "image": "/media/products/luggage/emblematic/personal-aluminium-cross-body--0c4b282656.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc130b5ed/images/large/99011000_1.png",
+    "image": "/media/products/luggage/emblematic/personal-aluminium-cross-body--0c4b282656.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -9440,20 +9447,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-PERSONAL-ALUMINIUM-C-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 18800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwce04c2c9/images/large/99011070_1.png"
+        "image": "/media/products/luggage/cabin/personal-aluminium-cross-body--48f88dfb1e.webp"
       },
       {
         "sku": "OV-PERSONAL-ALUMINIUM-C-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 18800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwab61d843/images/large/99011070_2.png"
+        "image": "/media/products/luggage/cabin/personal-aluminium-cross-body--8d515954f6.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwce04c2c9/images/large/99011070_1.png",
+    "image": "/media/products/luggage/cabin/personal-aluminium-cross-body--48f88dfb1e.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -9484,28 +9491,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-PERSONAL-ALUMINIUM-C-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 18800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcb32349d/images/large/99011050_1.png"
+        "image": "/media/products/luggage/cabin/personal-aluminium-cross-body--201ef74725.webp"
       },
       {
         "sku": "OV-PERSONAL-ALUMINIUM-C-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 18800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw96313cec/images/large/99011050_2.png"
+        "image": "/media/products/luggage/cabin/personal-aluminium-cross-body--352c2dc23c.webp"
       },
       {
         "sku": "OV-PERSONAL-ALUMINI-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 18800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcb32349d/images/large/99011050_1.png"
+        "image": "/media/products/luggage/cabin/personal-aluminium-cross-body--201ef74725.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcb32349d/images/large/99011050_1.png",
+    "image": "/media/products/luggage/cabin/personal-aluminium-cross-body--201ef74725.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -9535,20 +9542,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-PERSONAL-ALUMINIUM-C-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 18800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdb2f69af/images/large/99011040_1.png"
+        "image": "/media/products/luggage/cabin/personal-aluminium-cross-body--02e940027e.webp"
       },
       {
         "sku": "OV-PERSONAL-ALUMINIUM-C-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 18800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw5028c6dd/images/large/99011040_2.png"
+        "image": "/media/products/luggage/cabin/personal-aluminium-cross-body--39756b6395.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdb2f69af/images/large/99011040_1.png",
+    "image": "/media/products/luggage/cabin/personal-aluminium-cross-body--02e940027e.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -9574,28 +9581,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-PERSONAL-ALUMINIUM-C-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 18800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8a44ef0c/images/large/99011010_1.png"
+        "image": "/media/products/luggage/cabin/personal-aluminium-cross-body--a8c84d94b7.webp"
       },
       {
         "sku": "OV-PERSONAL-ALUMINIUM-C-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 18800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dweb66d451/images/large/99011010_2.png"
+        "image": "/media/products/luggage/cabin/personal-aluminium-cross-body--90a21c9d92.webp"
       },
       {
         "sku": "OV-PERSONAL-ALUMINI-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 18800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8a44ef0c/images/large/99011010_1.png"
+        "image": "/media/products/luggage/cabin/personal-aluminium-cross-body--a8c84d94b7.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8a44ef0c/images/large/99011010_1.png",
+    "image": "/media/products/luggage/cabin/personal-aluminium-cross-body--a8c84d94b7.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -9624,20 +9631,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-PERSONAL-POLYCARBONA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw5800527e/images/large/89011660_1.png"
+        "image": "/media/products/luggage/cabin/personal-polycarbonate-cross-b-431983b6c7.webp"
       },
       {
         "sku": "OV-PERSONAL-POLYCARBONA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw57f6cf72/images/large/89011660_2.png"
+        "image": "/media/products/luggage/cabin/personal-polycarbonate-cross-b-b6b699f3b9.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw5800527e/images/large/89011660_1.png",
+    "image": "/media/products/luggage/cabin/personal-polycarbonate-cross-b-431983b6c7.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -9661,20 +9668,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-RIMOWA-FABER-CASTELL-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 39000000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3c98ed87/images/large/97390043_1.png"
+        "image": "/media/products/luggage/cabin/rimowa-faber-castell-artist-ca-0702d330d6.webp"
       },
       {
         "sku": "OV-RIMOWA-FABER-CASTELL-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 39000000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw0de379fa/images/large/97390043_2.png"
+        "image": "/media/products/luggage/cabin/rimowa-faber-castell-artist-ca-3e6796fafd.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3c98ed87/images/large/97390043_1.png",
+    "image": "/media/products/luggage/cabin/rimowa-faber-castell-artist-ca-0702d330d6.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -9704,12 +9711,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SPECIALTIES-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw0d14c238/images/large/97390026_1.png"
+        "image": "/media/products/luggage/emblematic/rimowa-gewa-trumpet-case-2b0f39e53d.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw0d14c238/images/large/97390026_1.png",
+    "image": "/media/products/luggage/emblematic/rimowa-gewa-trumpet-case-2b0f39e53d.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -9746,12 +9753,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SPECIALTIES-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw164833a9/images/large/97390014_1.png"
+        "image": "/media/products/luggage/cabin/rimowa-gewa-violin-case-a04bf86c3f.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw164833a9/images/large/97390014_1.png",
+    "image": "/media/products/luggage/cabin/rimowa-gewa-violin-case-a04bf86c3f.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -9781,28 +9788,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-RIMOWA-MYKITA-HERITA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw87d59401/images/large/51900045_1.png"
+        "image": "/media/accessories/51900045_1.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HERITA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw942f1190/images/large/51900045_2.png"
+        "image": "/media/accessories/51900045_2.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HE-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 3800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw87d59401/images/large/51900045_1.png"
+        "image": "/media/accessories/51900045_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw87d59401/images/large/51900045_1.png",
+    "image": "/media/accessories/51900045_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -9832,28 +9839,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-RIMOWA-MYKITA-HERITA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe385d0e3/images/large/51900030_1.png"
+        "image": "/media/accessories/51900030_1.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HERITA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw4397e719/images/large/51900030_2.png"
+        "image": "/media/accessories/51900030_2.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HE-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 3800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe385d0e3/images/large/51900030_1.png"
+        "image": "/media/accessories/51900030_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe385d0e3/images/large/51900030_1.png",
+    "image": "/media/accessories/51900030_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -9883,20 +9890,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-RIMOWA-MYKITA-HERITA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcc1c16aa/images/large/51900031_1.png"
+        "image": "/media/accessories/51900031_1.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HERITA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6f2e50b1/images/large/51900031_2.png"
+        "image": "/media/accessories/51900031_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcc1c16aa/images/large/51900031_1.png",
+    "image": "/media/accessories/51900031_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -9925,28 +9932,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-RIMOWA-MYKITA-HERITA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc7fcde88/images/large/51900032_1.png"
+        "image": "/media/accessories/51900032_1.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HERITA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe577631f/images/large/51900032_2.png"
+        "image": "/media/accessories/51900032_2.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HE-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 3800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc7fcde88/images/large/51900032_1.png"
+        "image": "/media/accessories/51900032_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc7fcde88/images/large/51900032_1.png",
+    "image": "/media/accessories/51900032_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -9974,20 +9981,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-RIMOWA-MYKITA-HERITA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw17b8c31b/images/large/51900048_2.png"
+        "image": "/media/accessories/51900048_2.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HERITA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf09203e5/images/large/51900048_1.png"
+        "image": "/media/accessories/51900048_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw17b8c31b/images/large/51900048_2.png",
+    "image": "/media/accessories/51900048_2.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -10013,28 +10020,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-RIMOWA-MYKITA-HERITA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw652c3ea5/images/large/51900046_1.png"
+        "image": "/media/accessories/51900046_1.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HERITA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe85f895e/images/large/51900046_2.png"
+        "image": "/media/accessories/51900046_2.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HE-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 3800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw652c3ea5/images/large/51900046_1.png"
+        "image": "/media/accessories/51900046_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw652c3ea5/images/large/51900046_1.png",
+    "image": "/media/accessories/51900046_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -10069,12 +10076,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SPECIALTIES-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 16800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe9b8f6e3/images/large/51900034_1.png"
+        "image": "/media/accessories/51900034_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe9b8f6e3/images/large/51900034_1.png",
+    "image": "/media/accessories/51900034_1.png",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -10103,28 +10110,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-RIMOWA-MYKITA-HERITA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw09b20cd2/images/large/51900035_1.png"
+        "image": "/media/accessories/51900035_1.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HERITA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfbf30260/images/large/51900035_2.png"
+        "image": "/media/accessories/51900035_2.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HE-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 3800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw09b20cd2/images/large/51900035_1.png"
+        "image": "/media/accessories/51900035_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw09b20cd2/images/large/51900035_1.png",
+    "image": "/media/accessories/51900035_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -10155,28 +10162,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-RIMOWA-MYKITA-HERITA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw191915cb/images/large/51900033_1.png"
+        "image": "/media/accessories/51900033_1.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HERITA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc9a173a0/images/large/51900033_2.png"
+        "image": "/media/accessories/51900033_2.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HE-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 3800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw191915cb/images/large/51900033_1.png"
+        "image": "/media/accessories/51900033_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw191915cb/images/large/51900033_1.png",
+    "image": "/media/accessories/51900033_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -10205,20 +10212,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-RIMOWA-MYKITA-HERITA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw931c78d9/images/large/51900049_1.png"
+        "image": "/media/accessories/51900049_1.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HERITA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8557ee58/images/large/51900049_2.png"
+        "image": "/media/accessories/51900049_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw931c78d9/images/large/51900049_1.png",
+    "image": "/media/accessories/51900049_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -10244,28 +10251,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-RIMOWA-MYKITA-HERITA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfd67699a/images/large/51900047_1.png"
+        "image": "/media/accessories/51900047_1.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HERITA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw922eab2d/images/large/51900047_2.png"
+        "image": "/media/accessories/51900047_2.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HE-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 3800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfd67699a/images/large/51900047_1.png"
+        "image": "/media/accessories/51900047_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwfd67699a/images/large/51900047_1.png",
+    "image": "/media/accessories/51900047_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -10295,28 +10302,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-RIMOWA-MYKITA-HERITA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw434bb0f2/images/large/51900036_1.png"
+        "image": "/media/accessories/51900036_1.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HERITA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb4bc03dd/images/large/51900036_2.png"
+        "image": "/media/accessories/51900036_2.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HE-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 3800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw434bb0f2/images/large/51900036_1.png"
+        "image": "/media/accessories/51900036_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw434bb0f2/images/large/51900036_1.png",
+    "image": "/media/accessories/51900036_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -10347,28 +10354,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-RIMOWA-MYKITA-HERITA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7d0c269a/images/large/51900051_1.png"
+        "image": "/media/accessories/51900051_1.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HERITA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe1ad1ee9/images/large/51900051_2.png"
+        "image": "/media/accessories/51900051_2.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HE-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 3800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7d0c269a/images/large/51900051_1.png"
+        "image": "/media/accessories/51900051_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7d0c269a/images/large/51900051_1.png",
+    "image": "/media/accessories/51900051_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -10399,28 +10406,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-RIMOWA-MYKITA-HERITA-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw47a99970/images/large/51900052_2.png"
+        "image": "/media/accessories/51900052_2.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HERITA-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 3800000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw65ca7a6b/images/large/51900052_1.png"
+        "image": "/media/accessories/51900052_1.png"
       },
       {
         "sku": "OV-RIMOWA-MYKITA-HE-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 3800000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw47a99970/images/large/51900052_2.png"
+        "image": "/media/accessories/51900052_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw47a99970/images/large/51900052_2.png",
+    "image": "/media/accessories/51900052_2.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -10448,20 +10455,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-RIMOWA-ROBBE-BERKING-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 35000000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8c916191/images/large/97390034_1.png"
+        "image": "/media/products/luggage/cabin/rimowa-robbe-berking-cocktail--3802daa849.webp"
       },
       {
         "sku": "OV-RIMOWA-ROBBE-BERKING-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 35000000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw68a13c55/images/large/97390034_2.png"
+        "image": "/media/products/luggage/cabin/rimowa-robbe-berking-cocktail--a8f9a66c12.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8c916191/images/large/97390034_1.png",
+    "image": "/media/products/luggage/cabin/rimowa-robbe-berking-cocktail--3802daa849.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -10486,20 +10493,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SILVER-CASE-FOR-IPHO-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw94ef6243/images/large/95190002_1.png"
+        "image": "/media/products/luggage/cabin/silver-case-for-iphone-17-pro-93f91cca82.webp"
       },
       {
         "sku": "OV-SILVER-CASE-FOR-IPHO-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1950000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw8e47793a/images/large/95190002_2.png"
+        "image": "/media/products/luggage/cabin/silver-case-for-iphone-17-pro--0960bb528d.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw94ef6243/images/large/95190002_1.png",
+    "image": "/media/products/luggage/cabin/silver-case-for-iphone-17-pro-93f91cca82.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -10527,20 +10534,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SILVER-CASE-FOR-IPHO-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa29f4eac/images/large/95117000_1.png"
+        "image": "/media/accessories/95117000_1.png"
       },
       {
         "sku": "OV-SILVER-CASE-FOR-IPHO-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1950000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw208a1344/images/large/95117000_2.png"
+        "image": "/media/accessories/95117000_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa29f4eac/images/large/95117000_1.png",
+    "image": "/media/accessories/95117000_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -10573,12 +10580,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SPECIALTIES-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1950000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw341ab2aa/images/large/95118004_1.png"
+        "image": "/media/accessories/95118004_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw341ab2aa/images/large/95118004_1.png",
+    "image": "/media/accessories/95118004_1.png",
     "imageKind": "photograph",
     "featured": false
   },
@@ -10602,20 +10609,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SLATE-GREY-IPHONE-17-SLAT",
         "color": "Slate Grey",
         "hex": "#5a6368",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwda7f3169/images/large/52900026_1.png"
+        "image": "/media/accessories/52900026_1.png"
       },
       {
         "sku": "OV-SLATE-GREY-IPHONE-17-ALT",
         "color": "Slate Grey Detail",
         "hex": "#5a6368",
-        "price": 1950000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw17a4619c/images/large/52900026_2.png"
+        "image": "/media/accessories/52900026_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwda7f3169/images/large/52900026_1.png",
+    "image": "/media/accessories/52900026_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -10639,20 +10646,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SLATE-GREY-IPHONE-17-SLAT",
         "color": "Slate Grey",
         "hex": "#5a6368",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw623e8d08/images/large/52917001_1.png"
+        "image": "/media/products/luggage/cabin/slate-grey-iphone-17-pro-max-m-79daa16dc5.webp"
       },
       {
         "sku": "OV-SLATE-GREY-IPHONE-17-ALT",
         "color": "Slate Grey Detail",
         "hex": "#5a6368",
-        "price": 1950000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw64a0f290/images/large/52917001_2.png"
+        "image": "/media/products/luggage/cabin/slate-grey-iphone-17-pro-max-m-053bea801d.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw623e8d08/images/large/52917001_1.png",
+    "image": "/media/products/luggage/cabin/slate-grey-iphone-17-pro-max-m-79daa16dc5.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -10677,20 +10684,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SPECIALTY-DARTBOARD--SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 32000000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw86de54f6/images/large/97390036_1.png"
+        "image": "/media/products/luggage/cabin/specialty-dartboard-case-d6e78a10e9.webp"
       },
       {
         "sku": "OV-SPECIALTY-DARTBOARD--ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 32000000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw866b3139/images/large/97390036_2.png"
+        "image": "/media/products/luggage/cabin/specialty-dartboard-case-silve-ce7a966f3c.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw86de54f6/images/large/97390036_1.png",
+    "image": "/media/products/luggage/cabin/specialty-dartboard-case-d6e78a10e9.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -10719,20 +10726,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SPECIALTY-JEWELLERY--SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 19900000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwece2e432/images/large/99000000_1.png"
+        "image": "/media/products/luggage/cabin/specialty-jewellery-case-114b475d97.webp"
       },
       {
         "sku": "OV-SPECIALTY-JEWELLERY--ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 19900000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwa4c80b16/images/large/99000000_2.png"
+        "image": "/media/products/luggage/cabin/specialty-jewellery-case-silve-62ab23f65c.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwece2e432/images/large/99000000_1.png",
+    "image": "/media/products/luggage/cabin/specialty-jewellery-case-114b475d97.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -10766,12 +10773,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SPECIALTIES-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 27250000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1cbac142/images/large/90600001_1.png"
+        "image": "/media/products/luggage/emblematic/specialty-watch-case-91ae604fce.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1cbac142/images/large/90600001_1.png",
+    "image": "/media/products/luggage/emblematic/specialty-watch-case-91ae604fce.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -10800,28 +10807,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SPECIALTY-WATCH-CASE-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 27250000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6c3182d1/images/large/90600011_1.png"
+        "image": "/media/products/luggage/cabin/specialty-watch-case-1-60721636d8.webp"
       },
       {
         "sku": "OV-SPECIALTY-WATCH-CASE-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 27250000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw04fbedc4/images/large/90600011_2.png"
+        "image": "/media/products/luggage/cabin/specialty-watch-case-1-silver--9b5024a2e1.webp"
       },
       {
         "sku": "OV-SPECIALTY-WATCH--BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 27250000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6c3182d1/images/large/90600011_1.png"
+        "image": "/media/products/luggage/cabin/specialty-watch-case-1-60721636d8.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6c3182d1/images/large/90600011_1.png",
+    "image": "/media/products/luggage/cabin/specialty-watch-case-1-60721636d8.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -10849,20 +10856,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SPECIALTY-WATCH-CASE-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 27250000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdfcde441/images/large/90600041_1.png"
+        "image": "/media/products/luggage/cabin/specialty-watch-case-2-0acc9983ee.webp"
       },
       {
         "sku": "OV-SPECIALTY-WATCH-CASE-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 27250000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw725f6922/images/large/90600041_2.png"
+        "image": "/media/products/luggage/cabin/specialty-watch-case-2-silver--265b6dc6dd.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdfcde441/images/large/90600041_1.png",
+    "image": "/media/products/luggage/cabin/specialty-watch-case-2-0acc9983ee.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -10886,20 +10893,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TITANIUM-CASE-FOR-IP-TITA",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwd8d29f7e/images/large/95190003_1.png"
+        "image": "/media/accessories/95190003_1.png"
       },
       {
         "sku": "OV-TITANIUM-CASE-FOR-IP-ALT",
         "color": "Titanium Detail",
         "hex": "#a69f93",
-        "price": 1950000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwba8c447e/images/large/95190003_2.png"
+        "image": "/media/accessories/95190003_2.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwd8d29f7e/images/large/95190003_1.png",
+    "image": "/media/accessories/95190003_1.png",
     "imageKind": "photograph",
     "featured": true
   },
@@ -10923,20 +10930,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TITANIUM-CASE-FOR-IP-TITA",
         "color": "Titanium",
         "hex": "#a69f93",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw03878f59/images/large/95190006_1.png"
+        "image": "/media/products/luggage/cabin/titanium-case-for-iphone-17-pr-6485dfdabc.webp"
       },
       {
         "sku": "OV-TITANIUM-CASE-FOR-IP-ALT",
         "color": "Titanium Detail",
         "hex": "#a69f93",
-        "price": 1950000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw45614c01/images/large/95190006_2.png"
+        "image": "/media/products/luggage/cabin/titanium-case-for-iphone-17-pr-b24617fd2d.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw03878f59/images/large/95190006_1.png",
+    "image": "/media/products/luggage/cabin/titanium-case-for-iphone-17-pr-6485dfdabc.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -10966,12 +10973,12 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SPECIALTIES-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1950000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf6e29fe9/images/large/95118024_1.png"
+        "image": "/media/accessories/95118024_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwf6e29fe9/images/large/95118024_1.png",
+    "image": "/media/accessories/95118024_1.png",
     "imageKind": "photograph",
     "featured": false
   },
@@ -11000,28 +11007,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRAVEL-ACCESSORIES-C-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 6900000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7fc29cf4/images/large/53100011_1.png"
+        "image": "/media/bags/53100011_1.png"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORIES-C-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 6900000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe95ef031/images/large/53100011_2.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-cabin-lugga-ff179417da.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORI-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 6900000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7fc29cf4/images/large/53100011_1.png"
+        "image": "/media/bags/53100011_1.png"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7fc29cf4/images/large/53100011_1.png",
+    "image": "/media/bags/53100011_1.png",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -11053,28 +11060,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRAVEL-ACCESSORIES-F-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 4900000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1f245d2b/images/large/52500054_1.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-foldable-ba-740b5a3cdc.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORIES-F-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 4900000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2afe8e49/images/large/52500054_2.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-foldable-ba-16c347d280.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORI-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 4900000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1f245d2b/images/large/52500054_1.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-foldable-ba-740b5a3cdc.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1f245d2b/images/large/52500054_1.png",
+    "image": "/media/products/luggage/cabin/travel-accessories-foldable-ba-740b5a3cdc.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -11104,28 +11111,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRAVEL-ACCESSORIES-F-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 5250000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw74f44cf0/images/large/52400002_1.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-foldable-gy-a521c871a0.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORIES-F-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 5250000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw88f0b2b9/images/large/52400002_2.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-foldable-gy-5f4e58f88b.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORI-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 5250000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw74f44cf0/images/large/52400002_1.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-foldable-gy-a521c871a0.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw74f44cf0/images/large/52400002_1.png",
+    "image": "/media/products/luggage/cabin/travel-accessories-foldable-gy-a521c871a0.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -11155,20 +11162,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRAVEL-ACCESSORIES-H-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 490000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6baa0464/images/large/53100002_1.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-hanger-50f0c2d4fe.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORIES-H-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 490000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw61f86139/images/large/53100002_2.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-hanger-silv-98b9952d5d.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6baa0464/images/large/53100002_1.png",
+    "image": "/media/products/luggage/cabin/travel-accessories-hanger-50f0c2d4fe.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -11196,28 +11203,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRAVEL-ACCESSORIES-P-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1700000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwd51a4fe0/images/large/52000007_1.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-packing-cub-5c66555c9b.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORIES-P-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 1700000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw20a892e9/images/large/52000007_2.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-packing-cub-e7365c15ed.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORI-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 1700000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwd51a4fe0/images/large/52000007_1.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-packing-cub-5c66555c9b.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwd51a4fe0/images/large/52000007_1.png",
+    "image": "/media/products/luggage/cabin/travel-accessories-packing-cub-5c66555c9b.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -11246,20 +11253,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRAVEL-ACCESSORIES-P-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 1400000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dweefddfde/images/large/52025007_1.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-packing-cub-708863d547.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORIES-P-ALT",
         "color": "Midnight Blue Detail",
         "hex": "#263f59",
-        "price": 1400000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwd3e67748/images/large/52025007_2.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-packing-cub-360da4bcf6.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dweefddfde/images/large/52025007_1.png",
+    "image": "/media/products/luggage/cabin/travel-accessories-packing-cub-708863d547.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -11285,20 +11292,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRAVEL-ACCESSORIES-P-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 1550000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7e1aadec/images/large/52000004_1.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-packing-cub-d6f0b00b9a.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORIES-P-ALT",
         "color": "Black Detail",
         "hex": "#1a1a1a",
-        "price": 1550000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7b5c42b9/images/large/52000004_2.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-packing-cub-7e0ac64ecd.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw7e1aadec/images/large/52000004_1.png",
+    "image": "/media/products/luggage/cabin/travel-accessories-packing-cub-d6f0b00b9a.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -11324,20 +11331,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRAVEL-ACCESSORIES-P-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 1400000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2f1e0298/images/large/52024006_1.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-packing-cub-8763f0bb69.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORIES-P-ALT",
         "color": "Midnight Blue Detail",
         "hex": "#263f59",
-        "price": 1400000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw31419a49/images/large/52024006_2.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-packing-cub-f7012287fc.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw2f1e0298/images/large/52024006_1.png",
+    "image": "/media/products/luggage/cabin/travel-accessories-packing-cub-8763f0bb69.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -11369,20 +11376,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SPECIALTIES-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1400000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc76529f6/images/large/52000001_1.png"
+        "image": "/media/products/luggage/emblematic/travel-accessories-packing-cub-7aa93800f7.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORI-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 1400000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc76529f6/images/large/52000001_1.png"
+        "image": "/media/products/luggage/emblematic/travel-accessories-packing-cub-7aa93800f7.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwc76529f6/images/large/52000001_1.png",
+    "image": "/media/products/luggage/emblematic/travel-accessories-packing-cub-7aa93800f7.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -11411,20 +11418,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRAVEL-ACCESSORIES-P-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 1400000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb0c7f3aa/images/large/52023007_1.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-packing-cub-3bd35b4d7d.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORIES-P-ALT",
         "color": "Midnight Blue Detail",
         "hex": "#263f59",
-        "price": 1400000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw76fece1f/images/large/52023007_2.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-packing-cub-d6a85a8e39.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwb0c7f3aa/images/large/52023007_1.png",
+    "image": "/media/products/luggage/cabin/travel-accessories-packing-cub-3bd35b4d7d.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -11451,28 +11458,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRAVEL-ACCESSORIES-P-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 9400000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw4dd75943/images/large/52500070_1.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-pet-carrier-866d805a35.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORIES-P-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 9400000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw9ce2468a/images/large/52500070_2.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-pet-carrier-3b4c6c87dd.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORI-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 9400000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw4dd75943/images/large/52500070_1.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-pet-carrier-866d805a35.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw4dd75943/images/large/52500070_1.png",
+    "image": "/media/products/luggage/cabin/travel-accessories-pet-carrier-866d805a35.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [
@@ -11509,20 +11516,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-SPECIALTIES-1",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 1950000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6f3a8fa9/images/large/50400001_1.png"
+        "image": "/media/products/luggage/emblematic/travel-accessories-toiletry-po-d8b9efaa6c.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORI-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 1950000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6f3a8fa9/images/large/50400001_1.png"
+        "image": "/media/products/luggage/emblematic/travel-accessories-toiletry-po-d8b9efaa6c.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw6f3a8fa9/images/large/50400001_1.png",
+    "image": "/media/products/luggage/emblematic/travel-accessories-toiletry-po-d8b9efaa6c.webp",
     "imageKind": "photograph",
     "featured": false,
     "colors": [
@@ -11553,20 +11560,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRAVEL-ACCESSORIES-T-MIDN",
         "color": "Midnight Blue",
         "hex": "#263f59",
-        "price": 1950000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdac74d4c/images/large/52100015_1.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-toiletry-po-25fd18b61a.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORIES-T-ALT",
         "color": "Midnight Blue Detail",
         "hex": "#263f59",
-        "price": 1950000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw1798455c/images/large/52100015_2.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-toiletry-po-9fa6eabd23.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwdac74d4c/images/large/52100015_1.png",
+    "image": "/media/products/luggage/cabin/travel-accessories-toiletry-po-25fd18b61a.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -11593,20 +11600,20 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRAVEL-ACCESSORIES-T-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 1700000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3ec0f0b4/images/large/52100002_1.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-travel-pouc-e89d6fc715.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORIES-T-ALT",
         "color": "Black Detail",
         "hex": "#1a1a1a",
-        "price": 1700000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw24163506/images/large/52100002_2.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-travel-pouc-b97f463c1d.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dw3ec0f0b4/images/large/52100002_1.png",
+    "image": "/media/products/luggage/cabin/travel-accessories-travel-pouc-e89d6fc715.webp",
     "imageKind": "photograph",
     "featured": true
   },
@@ -11634,28 +11641,28 @@ export const luggageProducts: Product[] = [
         "sku": "OV-TRAVEL-ACCESSORIES-T-SILV",
         "color": "Silver",
         "hex": "#bec1bd",
-        "price": 7350000,
+        "price": 100,
         "stock": 12,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcf2c9562/images/large/52200002_1.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-trifold-gar-1f8c9860dc.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORIES-T-ALT",
         "color": "Silver Detail",
         "hex": "#bec1bd",
-        "price": 7350000,
+        "price": 100,
         "stock": 8,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwe3d89238/images/large/52200002_2.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-trifold-gar-8a2a1e97c1.webp"
       },
       {
         "sku": "OV-TRAVEL-ACCESSORI-BLAC",
         "color": "Black",
         "hex": "#1a1a1a",
-        "price": 7350000,
+        "price": 100,
         "stock": 10,
-        "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcf2c9562/images/large/52200002_1.png"
+        "image": "/media/products/luggage/cabin/travel-accessories-trifold-gar-1f8c9860dc.webp"
       }
     ],
-    "image": "https://www.rimowa.com/on/demandware.static/-/Sites-rimowa-master-catalog-final/default/dwcf2c9562/images/large/52200002_1.png",
+    "image": "/media/products/luggage/cabin/travel-accessories-trifold-gar-1f8c9860dc.webp",
     "imageKind": "photograph",
     "featured": true,
     "colors": [

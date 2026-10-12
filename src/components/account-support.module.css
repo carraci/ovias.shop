@@ -1,0 +1,1904 @@
+/* Account Support Portal Styles matching Images 2, 3, 4, 5 */
+
+.portalWrapper {
+  min-height: 100vh;
+  background: #fbfbfb;
+  font-family: var(--sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  color: #111111;
+  padding: 0 0 60px 0;
+}
+
+.portalContainer {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 48px;
+}
+
+@media (max-width: 960px) {
+  .portalContainer {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 20px 16px;
+  }
+}
+
+/* Sidebar Navigation */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebarTitle {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 24px 0;
+  color: #111111;
+  letter-spacing: -0.2px;
+}
+
+.navGroup {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  color: #4b5563;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.navItem:hover {
+  background: #f3f4f6;
+  color: #111111;
+}
+
+.navItemActive {
+  background: #111111 !important;
+  color: #ffffff !important;
+  font-weight: 500;
+}
+
+.navIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+}
+
+.navItemActive .navIcon {
+  opacity: 1;
+}
+
+/* Main Content Area */
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Header & Back Button */
+.backNavBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #4b5563;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 8px;
+  transition: color 0.15s ease;
+}
+
+.backNavBtn:hover {
+  color: #111111;
+}
+
+.headerSection {
+  margin-bottom: 4px;
+}
+
+.pageTitle {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 32px;
+  font-weight: 400;
+  color: #111111;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+
+.pageSubtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Search Bar */
+.searchBarWrapper {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.searchBarWrapper:focus-within {
+  border-color: #111111;
+  box-shadow: 0 0 0 1px #111111;
+}
+
+.searchInputWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  flex: 1;
+}
+
+.searchIcon {
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: #111111;
+  width: 100%;
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+}
+
+.searchBtn {
+  background: #111111;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.searchBtn:hover {
+  background: #262626;
+}
+
+/* Category Quick Action Cards (5 across) */
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 1100px) {
+  .categoriesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.categoryCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.categoryCard:hover {
+  border-color: #9ca3af;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.cardIconWrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  background: #f9fafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1f2937;
+}
+
+.categoryCardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.categoryCardTitle {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #111111;
+  margin: 0;
+}
+
+.categoryCardDesc {
+  font-size: 12.5px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.cardArrow {
+  align-self: flex-end;
+  color: #9ca3af;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.categoryCard:hover .cardArrow {
+  color: #111111;
+  transform: translateX(3px);
+}
+
+/* Two-column layout */
+.twoColLayout {
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr;
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .twoColLayout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.colLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.colRight {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Section Title Row with View All */
+.sectionHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.sectionHeading {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 20px;
+  font-weight: 500;
+  color: #111111;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+.viewAllLink {
+  font-size: 13px;
+  font-weight: 500;
+  color: #4b5563;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.15s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.viewAllLink:hover {
+  color: #111111;
+}
+
+/* My Support Requests Table */
+.requestsCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.requestsTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+}
+
+.requestsTable th {
+  background: #f9fafb;
+  padding: 12px 16px;
+  font-weight: 600;
+  color: #4b5563;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.requestsTable td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #1f2937;
+  vertical-align: middle;
+}
+
+.requestsTable tr:last-child td {
+  border-bottom: none;
+}
+
+.ticketIdCell {
+  font-weight: 600;
+  color: #111111;
+}
+
+.subjectCell {
+  font-weight: 500;
+  color: #1f2937;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.categoryCell {
+  color: #4b5563;
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.statusOpen {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.statusWaiting {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.statusResolved {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.viewActionBtn {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  padding: 4px 14px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.viewActionBtn:hover {
+  background: #f3f4f6;
+  color: #111111;
+  border-color: #9ca3af;
+}
+
+/* FAQ Component */
+.faqCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.faqTabs {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+}
+
+.faqTab {
+  background: none;
+  border: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #6b7280;
+  padding: 6px 4px;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.faqTab:hover {
+  color: #111111;
+}
+
+.faqTabActive {
+  color: #111111 !important;
+  font-weight: 600;
+}
+
+.faqTabActive::after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #111111;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+}
+
+.faqItem {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.faqItem:last-child {
+  border-bottom: none;
+}
+
+.faqQuestionBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 0;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #1f2937;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.faqQuestionBtn:hover {
+  color: #111111;
+}
+
+.faqAnswer {
+  padding: 0 0 14px 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+/* Contact OVIA Card */
+.contactCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 24px 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contactCardTitle {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 18px;
+  font-weight: 500;
+  color: #111111;
+  margin: 0;
+}
+
+.contactCardDesc {
+  font-size: 12.5px;
+  color: #6b7280;
+  margin: -10px 0 0 0;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.inputField,
+.selectField {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-size: 13px;
+  color: #111111;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.inputField:focus,
+.selectField:focus,
+.textareaField:focus {
+  border-color: #111111;
+}
+
+.textareaField {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #111111;
+  background: #ffffff;
+  outline: none;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 90px;
+  transition: border-color 0.15s ease;
+}
+
+.fileDropzone {
+  border: 1px dashed #d1d5db;
+  border-radius: 6px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  background: #fafafa;
+  transition: all 0.15s ease;
+}
+
+.fileDropzone:hover {
+  border-color: #9ca3af;
+  background: #f3f4f6;
+}
+
+.dropzoneText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dropzoneTitle {
+  font-size: 12px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.dropzoneHint {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.submitBtn {
+  background: #111111;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: #262626;
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Security Alert Box */
+.securityAlertCard {
+  background: #fffbf5;
+  border: 1px solid #fde68a;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.15s ease;
+}
+
+.securityAlertCard:hover {
+  border-color: #f59e0b;
+  transform: translateY(-1px);
+}
+
+.securityAlertIcon {
+  color: #d97706;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.securityAlertContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.securityAlertTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #92400e;
+  margin: 0;
+}
+
+.securityAlertText {
+  font-size: 12px;
+  color: #b45309;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.securityAlertArrow {
+  color: #d97706;
+  align-self: center;
+}
+
+/* ==========================================================
+   SUB-VIEWS (Images 3, 4, 5)
+   ========================================================== */
+
+.subviewContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.subviewLayout {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .subviewLayout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.subviewMain {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.subviewSidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 1. Select an Order Carousel / Scroll Grid */
+.stepBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.stepTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stepTitle {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 18px;
+  font-weight: 500;
+  color: #111111;
+  margin: 0;
+}
+
+.ordersCarousel {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+@media (max-width: 1100px) {
+  .ordersCarousel {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .ordersCarousel {
+    grid-template-columns: 1fr;
+  }
+}
+
+.orderCard {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 14px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.15s ease;
+}
+
+.orderCard:hover {
+  border-color: #9ca3af;
+}
+
+.orderCardActive {
+  border-color: #111111 !important;
+  box-shadow: 0 0 0 1px #111111;
+}
+
+.orderRadioWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.customRadio {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.orderCardActive .customRadio {
+  border-color: #111111;
+}
+
+.customRadioInner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #111111;
+}
+
+.orderMetaBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.orderId {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111111;
+}
+
+.orderDate {
+  font-size: 11.5px;
+  color: #6b7280;
+}
+
+.orderPrice {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111111;
+  margin-top: 2px;
+}
+
+.orderImgWrap {
+  width: 100%;
+  height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9fafb;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.orderImg {
+  max-width: 80%;
+  max-height: 80px;
+  object-fit: contain;
+}
+
+.orderCardBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.orderItemName {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #374151;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+
+.orderQty {
+  font-size: 11.5px;
+  color: #6b7280;
+}
+
+/* 2. What do you need help with? Tiles */
+.issuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .issuesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.issueTile {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.issueTile:hover {
+  border-color: #9ca3af;
+  background: #fafafa;
+}
+
+.issueTileActive {
+  border-color: #111111 !important;
+  background: #fafafa;
+  box-shadow: 0 0 0 1px #111111;
+}
+
+.issueTileIcon {
+  color: #374151;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.issueTileContent {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.issueTileTitle {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #111111;
+  margin: 0;
+}
+
+.issueTileDesc {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.issueTileArrow {
+  color: #d1d5db;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.issueTile:hover .issueTileArrow {
+  color: #111111;
+}
+
+/* 3. Describe Your Issue Section */
+.describeCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+/* Right Sidebar: Selected Order Details */
+.selectedDetailsCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cardHeadTitle {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 16px;
+  font-weight: 500;
+  color: #111111;
+  margin: 0;
+}
+
+.orderSummaryTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 4px 0;
+}
+
+.detailLabel {
+  color: #6b7280;
+}
+
+.detailVal {
+  color: #111111;
+  font-weight: 500;
+}
+
+/* Stepper Bar */
+.stepperTrack {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 12px 0 6px;
+  position: relative;
+}
+
+.stepItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 1;
+}
+
+.stepDot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  border: 2px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.stepDotDone {
+  background: #111111;
+  border-color: #111111;
+  color: #ffffff;
+}
+
+.stepDotCurrent {
+  background: #ffffff;
+  border-color: #111111;
+  color: #111111;
+}
+
+.stepLabel {
+  font-size: 10px;
+  color: #6b7280;
+  text-align: center;
+}
+
+.stepDate {
+  font-size: 9.5px;
+  color: #9ca3af;
+}
+
+.productMiniRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #f9fafb;
+  border-radius: 6px;
+}
+
+.productMiniImg {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.productMiniInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.productMiniTitle {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #111111;
+}
+
+.productMiniMeta {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.outlineBtn {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #111111;
+  padding: 9px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  width: 100%;
+}
+
+.outlineBtn:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+/* Urgent Help Box */
+.urgentCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.urgentHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.urgentTitle {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #111111;
+  margin: 0;
+}
+
+.urgentText {
+  font-size: 12.5px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.urgentSub {
+  font-size: 11px;
+  color: #9ca3af;
+  text-align: center;
+}
+
+/* Important Information */
+.infoBox {
+  background: #ffffff;
+  border: 1px solid #fde68a;
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.infoTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #92400e;
+  font-weight: 600;
+  font-size: 13.5px;
+}
+
+.infoList {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 12px;
+  color: #92400e;
+  line-height: 1.6;
+}
+
+.infoLink {
+  font-size: 12px;
+  font-weight: 600;
+  color: #b45309;
+  text-decoration: none;
+  margin-top: 4px;
+}
+
+.infoLink:hover {
+  text-decoration: underline;
+}
+
+/* Refund Timeline Stepper */
+.refundTimeline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 8px 0;
+  position: relative;
+  padding-left: 24px;
+}
+
+.refundTimeline::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: #e5e7eb;
+}
+
+.timelineNode {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.timelineDot {
+  position: absolute;
+  left: -24px;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #9ca3af;
+}
+
+.timelineDotDone {
+  background: #111111;
+  border-color: #111111;
+}
+
+.timelineNodeTitle {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #111111;
+}
+
+.timelineNodeMeta {
+  font-size: 11.5px;
+  color: #6b7280;
+}
+
+/* Shipping Live Tracking Preview */
+.liveTrackingBox {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mapPreviewSvg {
+  width: 100%;
+  height: 110px;
+  background: #f3f4f6;
+  border-radius: 6px;
+}
+
+.trackingHubBadge {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.trackingHubTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #111111;
+}
+
+.trackingHubTime {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+/* Success Modal Notification */
+.toastSuccess {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 13.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+/* Error Alert Banner */
+.alertBannerError {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 13.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Validation Error Styles */
+.inputError {
+  border-color: #dc2626 !important;
+  background-color: #fffafb !important;
+}
+
+.inputError:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2) !important;
+}
+
+.errorText {
+  font-size: 12px;
+  color: #dc2626;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 5px;
+}
+
+/* ==========================================================
+   RETURNS & EXCHANGES SUBVIEW STYLES (Image 3)
+   ========================================================== */
+
+/* Step 2: What would you like to do? 2x2 Grid */
+.returnActionsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 640px) {
+  .returnActionsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.returnActionCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  background: #ffffff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+}
+
+.returnActionCard:hover {
+  border-color: #111111;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+
+.returnActionCardActive {
+  border-color: #111111 !important;
+  background: #fbfbfb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.returnActionIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111111;
+  flex-shrink: 0;
+}
+
+.returnActionContent {
+  flex: 1;
+}
+
+.returnActionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111111;
+  margin: 0 0 3px 0;
+}
+
+.returnActionDesc {
+  font-size: 12.5px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.returnActionArrow {
+  color: #9ca3af;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.returnActionCard:hover .returnActionArrow,
+.returnActionCardActive .returnActionArrow {
+  color: #111111;
+  transform: translateX(3px);
+}
+
+/* Step 3: Select Item(s) to Return Card */
+.returnItemCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.returnItemMain {
+  display: grid;
+  grid-template-columns: auto 80px 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .returnItemMain {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.returnCheckboxWrap {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.returnCheckbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #111111;
+  cursor: pointer;
+}
+
+.returnItemThumb {
+  width: 76px;
+  height: 76px;
+  background: #f9fafb;
+  border: 1px solid #f3f4f6;
+  border-radius: 8px;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.returnItemImg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.returnItemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.returnItemName {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #111111;
+}
+
+.returnItemPrice {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #111111;
+}
+
+.returnItemMeta {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.returnItemDropdowns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .returnItemDropdowns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fieldLabelWithRequired {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.requiredAsterisk {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+/* Step 4: Additional Details & Upload Grid */
+.returnDetailsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .returnDetailsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Return & Exchange Process Stepper (Right Sidebar) */
+.processCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.processList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  padding-left: 36px;
+}
+
+.processList::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  bottom: 14px;
+  width: 2px;
+  background: #e5e7eb;
+}
+
+.processItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.processCircle {
+  position: absolute;
+  left: -36px;
+  top: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #111111;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.processTitle {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #111111;
+}
+
+.processDesc {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+/* Return & Exchange Policy Card */
+.policyCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.policyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  text-align: center;
+}
+
+.policyCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 4px;
+}
+
+.policyIcon {
+  color: #111111;
+  margin-bottom: 2px;
+}
+
+.policyColTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #111111;
+}
+
+.policyColDesc {
+  font-size: 11px;
+  color: #6b7280;
+  line-height: 1.35;
+}
+
+/* Need Help Box */
+.needHelpBox {
+  background: #fbfbfb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.needHelpHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.needHelpTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111111;
+  margin: 0;
+}
+
+.needHelpText {
+  font-size: 12.5px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Contact Showcase Section (matching Image 3) */
+.contactShowcaseCard {
+  background: #ffffff;
+  border: 1px solid #EBE5DB;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  align-items: stretch;
+}
+
+@media (max-width: 960px) {
+  .contactShowcaseCard {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contactAmbassadorCol {
+  position: relative;
+  min-height: 480px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+@media (max-width: 960px) {
+  .contactAmbassadorCol {
+    min-height: 340px;
+  }
+}
+
+.contactAmbassadorImg {
+  object-fit: cover;
+  object-position: top center;
+}
+
+.contactDetailsCol {
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: #292524;
+}
+
+@media (max-width: 640px) {
+  .contactDetailsCol {
+    padding: 24px 20px;
+    gap: 16px;
+  }
+}
+
+.contactHeaderBlock {
+  border-bottom: 1px solid #E7E0D3;
+  padding-bottom: 16px;
+}
+
+.contactBrandEyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  font-family: var(--serif, Georgia, serif);
+  letter-spacing: 0.25em;
+  color: #8C2D19;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.contactMainTitle {
+  font-size: 34px;
+  font-family: var(--serif, Georgia, serif);
+  color: #B4533C;
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.contactSubtext {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #57534E;
+  font-weight: 500;
+}
+
+.contactInfoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.contactEmailText {
+  color: #292524;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contactEmailLink {
+  color: #8C2D19;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+.contactEmailLink:hover {
+  color: #5E1E11;
+}
+
+.contactAddressBlock {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #292524;
+}
+
+.contactAddressBlock p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.contactPhoneSection {
+  border-top: 1px solid #E7E0D3;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.contactPhoneIntro {
+  color: #57534E;
+  font-weight: 500;
+  margin: 0;
+}
+
+.contactPhoneRow {
+  color: #1C1917;
+  margin: 0;
+}
+
+.contactPhoneLink {
+  color: #8C2D19;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+
+.contactPhoneLink:hover {
+  color: #5E1E11;
+}
+
+.contactHoursRow {
+  color: #44403C;
+  margin: 0;
+}
+
+.contactPromptNotice {
+  font-size: 12px;
+  color: #78716C;
+  font-style: italic;
+  margin: 2px 0 0 0;
+}
+
+.contactBulkCard {
+  background: #ffffff;
+  border: 1px solid #E5DAC8;
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.contactBulkTitle {
+  font-size: 14px;
+  font-family: var(--serif, Georgia, serif);
+  font-weight: 700;
+  color: #8C2D19;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.contactBulkText {
+  font-size: 13.5px;
+  color: #292524;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.contactBulkLink {
+  font-weight: 700;
+  color: #8C2D19;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+
+.contactBulkLink:hover {
+  color: #5E1E11;
+}
+
+

@@ -1,9 +1,12 @@
 "use client";
+import "@/components/page-styles/collection-landings.css";
+
 
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ChevronLeft, ChevronRight, Heart } from "lucide-react";
 import { useState } from "react";
+import { useStore } from "./store-provider";
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 
@@ -21,13 +24,6 @@ const accessoryCategories = [
     sub: "Stay connected anywhere.",
     image: "/media/accessories-cat-tech.jpg",
     href: "/accessories/phone-cases",
-  },
-  {
-    id: "personalisation",
-    title: "Personalisation",
-    sub: "Make it uniquely yours.",
-    image: "/media/accessories-cat-personalisation.jpg",
-    href: "/accessories/address-tags",
   },
   {
     id: "packing",
@@ -80,35 +76,35 @@ const bestSellers = [
   {
     id: "toiletry-pouch",
     name: "Toiletry Pouch",
-    price: "₹ 12,000",
+    price: "₹1",
     image: "/media/accessories-prod-toiletry.jpg",
     href: "/products/never-still-leather-toiletry-bag-black",
   },
   {
     id: "tech-organiser",
     name: "Tech Organiser",
-    price: "₹ 9,500",
+    price: "₹1",
     image: "/media/accessories-prod-tech.jpg",
     href: "/products/groove-leather-zipped-pouch-black",
   },
   {
     id: "luggage-tag",
     name: "Luggage Tag",
-    price: "₹ 4,500",
+    price: "₹1",
     image: "/media/accessories-prod-tag.jpg",
     href: "/products/address-tag-leather-black",
   },
   {
     id: "water-bottle",
     name: "Water Bottle",
-    price: "₹ 5,500",
+    price: "₹1",
     image: "/media/accessories-prod-bottle.jpg",
     href: "/products/travel-accessories-water-bottle-black",
   },
   {
     id: "packing-cube-set",
     name: "Packing Cube Set",
-    price: "₹ 8,500",
+    price: "₹1",
     image: "/media/accessories-prod-cubes.jpg",
     href: "/products/travel-accessories-packing-cubes-set",
   },
@@ -116,12 +112,25 @@ const bestSellers = [
 
 export function AccessoriesLanding() {
   const [activeSlide, setActiveSlide] = useState(1);
-  const [wishlist, setWishlist] = useState<Record<string, boolean>>({});
+  const { isWishlisted, toggleWishlist: storeToggleWishlist } = useStore();
 
-  const toggleWishlist = (id: string, e: React.MouseEvent) => {
+  const handleToggleWishlist = (item: any, e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setWishlist((prev) => ({ ...prev, [id]: !prev[id] }));
+    const slug = item.href?.replace(/^\/products\//, "") || item.id;
+    const numPrice =
+      typeof item.price === "string"
+        ? parseInt(item.price.replace(/[^0-9]/g, ""), 10) || 0
+        : item.price;
+    storeToggleWishlist(item.id || slug, {
+      sku: item.id || slug,
+      name: item.name,
+      color: "Classic",
+      slug,
+      image: item.image,
+      price: numPrice,
+      available: true,
+    });
   };
 
   return (
@@ -131,7 +140,7 @@ export function AccessoriesLanding() {
       <section className="accessories-hero-section">
         <div className="accessories-hero-media">
           <Image
-            src="/media/accessories-hero-full.jpg"
+            src="/media/category-accessories.jpg"
             alt="OVIA Accessories Collection - The details move with you"
             fill
             priority
@@ -212,13 +221,7 @@ export function AccessoriesLanding() {
           {accessoryCategories.map((item) => (
             <Link key={item.id} href={item.href} className="accessories-card-wrap">
               <div className="accessories-card-media">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 20vw"
-                  className="accessories-card-img"
-                />
+                <></>
               </div>
               <div className="accessories-card-meta">
                 <div>
@@ -334,18 +337,12 @@ export function AccessoriesLanding() {
 
         <div className="accessories-bestsellers-grid">
           {bestSellers.map((item) => {
-            const isSaved = wishlist[item.id];
+            const isSaved = isWishlisted(item.id) || isWishlisted(item.href?.replace(/^\/products\//, ""));
             return (
               <div key={item.id} className="accessories-product-card">
                 <Link href={item.href} className="accessories-product-anchor">
                   <div className="accessories-product-media">
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      fill
-                      sizes="(max-width: 768px) 50vw, 20vw"
-                      className="accessories-product-img"
-                    />
+                    <></>
                   </div>
                   <div className="accessories-product-details">
                     <h3 className="accessories-product-name">{item.name}</h3>
@@ -355,7 +352,7 @@ export function AccessoriesLanding() {
                 <button
                   type="button"
                   className={`accessories-wishlist-btn ${isSaved ? "active" : ""}`}
-                  onClick={(e) => toggleWishlist(item.id, e)}
+                  onClick={(e) => handleToggleWishlist(item, e)}
                   aria-label={isSaved ? "Remove from wishlist" : "Add to wishlist"}
                 >
                   <Heart size={16} fill={isSaved ? "currentColor" : "none"} />

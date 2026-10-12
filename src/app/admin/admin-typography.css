@@ -1,0 +1,89 @@
+/* OVIA Admin Control Center - Luxury Typography Design System */
+
+:root {
+  --admin-font-serif: var(--font-cormorant), var(--font-playfair), "Cormorant Garamond", "Didot", "Bodoni MT", Georgia, serif;
+  --admin-font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --admin-color-muted: #6B6B6B;
+}
+
+/* HERO TITLE: 48–72px | Serif / Medium | Very little text */
+.admin-hero-title {
+  font-family: var(--admin-font-serif);
+  font-size: clamp(48px, 4.5vw, 72px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #111111;
+  margin: 0;
+}
+
+/* PAGE TITLE: 36–48px | Serif / Medium */
+.admin-page-title {
+  font-family: var(--admin-font-serif);
+  font-size: clamp(36px, 3.2vw, 48px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: #111111;
+  margin: 0;
+}
+
+/* SECTION TITLE: 24–32px | Serif / Medium */
+.admin-section-title {
+  font-family: var(--admin-font-serif);
+  font-size: clamp(24px, 2.2vw, 32px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #111111;
+  margin: 0;
+}
+
+/* CARD / PRODUCT TITLE: 14–16px | Sans-serif / Medium */
+.admin-card-title,
+.admin-product-title {
+  font-family: var(--admin-font-sans);
+  font-size: clamp(14px, 1.1vw, 16px);
+  font-weight: 500;
+  line-height: 1.35;
+  color: #111111;
+  margin: 0;
+}
+
+/* BODY: 14–16px | Sans-serif / Regular | Line height: 1.5–1.7 */
+.admin-body {
+  font-family: var(--admin-font-sans);
+  font-size: clamp(14px, 1.1vw, 16px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #333333;
+}
+
+/* NAVIGATION: 12–14px | Sans-serif / Medium */
+.admin-nav-item,
+.admin-nav-link {
+  font-family: var(--admin-font-sans);
+  font-size: clamp(12px, 1vw, 14px);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+/* BUTTON: 12–14px | Sans-serif / Medium | Slight letter spacing */
+.admin-button {
+  font-family: var(--admin-font-sans);
+  font-size: clamp(12px, 1vw, 14px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.035em;
+}
+
+/* CAPTION / META: 11–12px | Sans-serif / Regular | Muted gray */
+.admin-caption,
+.admin-meta {
+  font-family: var(--admin-font-sans);
+  font-size: clamp(11px, 0.9vw, 12px);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--admin-color-muted);
+}

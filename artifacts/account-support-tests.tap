@@ -1,0 +1,819 @@
+TAP version 13
+# Subtest: activity deduplicates provider refunds and preserves read state
+ok 1 - activity deduplicates provider refunds and preserves read state
+  ---
+  duration_ms: 127.7753
+  type: 'test'
+  ...
+# Subtest: support activity excludes customer text and targets exact conversation
+ok 2 - support activity excludes customer text and targets exact conversation
+  ---
+  duration_ms: 3.553
+  type: 'test'
+  ...
+# Subtest: simulated deliveries and demo orders never create notifications
+ok 3 - simulated deliveries and demo orders never create notifications
+  ---
+  duration_ms: 0.9841
+  type: 'test'
+  ...
+# Subtest: new sign-ins create one security notification targeting that device session
+ok 4 - new sign-ins create one security notification targeting that device session
+  ---
+  duration_ms: 0.7963
+  type: 'test'
+  ...
+# Subtest: password and email changes create separate events without leaking credentials
+ok 5 - password and email changes create separate events without leaking credentials
+  ---
+  duration_ms: 30.5866
+  type: 'test'
+  ...
+# Subtest: ordinary profile edits do not produce duplicate security events
+ok 6 - ordinary profile edits do not produce duplicate security events
+  ---
+  duration_ms: 2.007
+  type: 'test'
+  ...
+# Subtest: isolated customer account, support and device security flow
+    # Subtest: anonymous callers cannot read account addresses, wishlist, activity or security
+    ok 1 - anonymous callers cannot read account addresses, wishlist, activity or security
+      ---
+      duration_ms: 16.6636
+      type: 'test'
+      ...
+    # Subtest: verified sign-in creates a revocable session and one security notification
+    ok 2 - verified sign-in creates a revocable session and one security notification
+      ---
+      duration_ms: 25.4693
+      type: 'test'
+      ...
+    # Subtest: saved addresses persist, update and remain assigned to the authenticated customer
+    ok 3 - saved addresses persist, update and remain assigned to the authenticated customer
+      ---
+      duration_ms: 13.1779
+      type: 'test'
+      ...
+    # Subtest: foreign address mutation returns not found and preserves its record
+    ok 4 - foreign address mutation returns not found and preserves its record
+      ---
+      duration_ms: 7.5642
+      type: 'test'
+      ...
+    # Subtest: address validation rejects invalid PIN codes and cross-origin writes
+    ok 5 - address validation rejects invalid PIN codes and cross-origin writes
+      ---
+      duration_ms: 9.2962
+      type: 'test'
+      ...
+    # Subtest: address removal persists without removing another customer's addresses
+    ok 6 - address removal persists without removing another customer's addresses
+      ---
+      duration_ms: 8.0904
+      type: 'test'
+      ...
+    # Subtest: wishlist saves a product slug as its actual SKU and deduplicates retries
+    ok 7 - wishlist saves a product slug as its actual SKU and deduplicates retries
+      ---
+      duration_ms: 17.0934
+      type: 'test'
+      ...
+    # Subtest: wishlist rejects missing products and unexpected identity fields
+    ok 8 - wishlist rejects missing products and unexpected identity fields
+      ---
+      duration_ms: 5.9191
+      type: 'test'
+      ...
+    # Subtest: wishlist removal persists on a fresh read
+    ok 9 - wishlist removal persists on a fresh read
+      ---
+      duration_ms: 8.9518
+      type: 'test'
+      ...
+    # Subtest: support request creation persists one conversation and queues one owner update
+    ok 10 - support request creation persists one conversation and queues one owner update
+      ---
+      duration_ms: 41.3408
+      type: 'test'
+      ...
+    # Subtest: support details enforce customer ownership
+    ok 11 - support details enforce customer ownership
+      ---
+      duration_ms: 7.4541
+      type: 'test'
+      ...
+    # Subtest: agent replies appear in the exact customer conversation and activity feed
+    ok 12 - agent replies appear in the exact customer conversation and activity feed
+      ---
+      duration_ms: 15.6468
+      type: 'test'
+      ...
+    # Subtest: customer replies reopen a waiting conversation and repeated submission is idempotent
+    ok 13 - customer replies reopen a waiting conversation and repeated submission is idempotent
+      ---
+      duration_ms: 16.6001
+      type: 'test'
+      ...
+    # Subtest: customer accounts cannot read or update the support administration endpoint
+    ok 14 - customer accounts cannot read or update the support administration endpoint
+      ---
+      duration_ms: 9.7137
+      type: 'test'
+      ...
+    # Subtest: OWNER accounts can resolve support requests through the administration API
+    ok 15 - OWNER accounts can resolve support requests through the administration API
+      ---
+      duration_ms: 15.1032
+      type: 'test'
+      ...
+    # Subtest: trusted support staff can manage tickets but cannot access or edit privacy requests
+    ok 16 - trusted support staff can manage tickets but cannot access or edit privacy requests
+      ---
+      duration_ms: 11.9644
+      type: 'test'
+      ...
+    # Subtest: closed support conversations reject customer replies
+    ok 17 - closed support conversations reject customer replies
+      ---
+      duration_ms: 10.3748
+      type: 'test'
+      ...
+    # Subtest: read notifications stay read and unauthorized bulk mutation rolls back
+    ok 18 - read notifications stay read and unauthorized bulk mutation rolls back
+      ---
+      duration_ms: 13.1894
+      type: 'test'
+      ...
+    # Subtest: device security returns current device details without exposing session credentials
+    ok 19 - device security returns current device details without exposing session credentials
+      ---
+      duration_ms: 6.3178
+      type: 'test'
+      ...
+    # Subtest: revoking other devices keeps the current and foreign customer's sessions
+    ok 20 - revoking other devices keeps the current and foreign customer's sessions
+      ---
+      duration_ms: 21.345
+      type: 'test'
+      ...
+    # Subtest: signing out all devices requires password confirmation and revokes a captured session token
+    ok 21 - signing out all devices requires password confirmation and revokes a captured session token
+      ---
+      duration_ms: 1238.1939
+      type: 'test'
+      ...
+    1..21
+ok 7 - isolated customer account, support and device security flow
+  ---
+  duration_ms: 1996.2195
+  type: 'test'
+  ...
+# [Resend delivery] Resend configuration missing: EMAIL_API_KEY, EMAIL_FROM.
+# [Resend delivery] Resend (422): validation_error: Recipient rejected
+# [Resend delivery] Fixture provider disconnected
+# Subtest: account email delivery uses the configured sender, recipient and idempotency identity
+ok 8 - account email delivery uses the configured sender, recipient and idempotency identity
+  ---
+  duration_ms: 42.3419
+  type: 'test'
+  ...
+# Subtest: unconfigured email delivery fails before any provider request
+ok 9 - unconfigured email delivery fails before any provider request
+  ---
+  duration_ms: 4.5812
+  type: 'test'
+  ...
+# Subtest: email provider rejection is reported as failure rather than delivery
+ok 10 - email provider rejection is reported as failure rather than delivery
+  ---
+  duration_ms: 10.7812
+  type: 'test'
+  ...
+# Subtest: email transport failures cannot be mistaken for a sent email
+ok 11 - email transport failures cannot be mistaken for a sent email
+  ---
+  duration_ms: 4.1127
+  type: 'test'
+  ...
+# Subtest: display names remain separate from first and last names
+ok 12 - display names remain separate from first and last names
+  ---
+  duration_ms: 26.5044
+  type: 'test'
+  ...
+# Subtest: profile validation accepts Unicode names and protects identity fields
+ok 13 - profile validation accepts Unicode names and protects identity fields
+  ---
+  duration_ms: 12.9225
+  type: 'test'
+  ...
+# Subtest: account profile APIs authorize, persist preferences and preserve credentials
+    # Subtest: anonymous requests cannot read or update profiles
+    ok 1 - anonymous requests cannot read or update profiles
+      ---
+      duration_ms: 20.6072
+      type: 'test'
+      ...
+    # Subtest: initial profile uses authenticated user with no marketing consent
+    ok 2 - initial profile uses authenticated user with no marketing consent
+      ---
+      duration_ms: 40.6864
+      type: 'test'
+      ...
+    # Subtest: cross-origin updates and unexpected fields are rejected
+    ok 3 - cross-origin updates and unexpected fields are rejected
+      ---
+      duration_ms: 114.3296
+      type: 'test'
+      ...
+    # Subtest: profile updates persist, return safe data and keep identity and other users intact
+    ok 4 - profile updates persist, return safe data and keep identity and other users intact
+      ---
+      duration_ms: 87.0575
+      type: 'test'
+      ...
+    # Subtest: personal detail edits retain consent record and withdrawals update it
+    ok 5 - personal detail edits retain consent record and withdrawals update it
+      ---
+      duration_ms: 144.6628
+      type: 'test'
+      ...
+    # Subtest: bounded payloads and excessive update attempts are rejected
+    ok 6 - bounded payloads and excessive update attempts are rejected
+      ---
+      duration_ms: 442.4027
+      type: 'test'
+      ...
+    1..6
+ok 14 - account profile APIs authorize, persist preferences and preserve credentials
+  ---
+  duration_ms: 944.0159
+  type: 'test'
+  ...
+# Subtest: contact notifications target the owner's selected Gmail and deduplicate retries
+ok 15 - contact notifications target the owner's selected Gmail and deduplicate retries
+  ---
+  duration_ms: 37.3722
+  type: 'test'
+  ...
+# Subtest: confirmed provider delivery marks sent and repeated attempts do not send again
+ok 16 - confirmed provider delivery marks sent and repeated attempts do not send again
+  ---
+  duration_ms: 1.3831
+  type: 'test'
+  ...
+# Subtest: provider failure leaves durable queued mail and retry confirms delivery
+ok 17 - provider failure leaves durable queued mail and retry confirms delivery
+  ---
+  duration_ms: 1.3909
+  type: 'test'
+  ...
+# Subtest: new password boundaries and every allowed special character
+ok 18 - new password boundaries and every allowed special character
+  ---
+  duration_ms: 14.6819
+  type: 'test'
+  ...
+# [notification-service] Successfully dispatched OTP_AUTHORIZATION to register-policy@example.test via Resend.
+# [auth backend] [
+#   {
+#     "code": "custom",
+#     "message": "Password must not contain spaces or whitespace.",
+#     "path": [
+#       "password"
+#     ]
+#   }
+# ]
+# [auth backend] [
+#   {
+#     "code": "custom",
+#     "message": "Password must include at least one uppercase letter.",
+#     "path": [
+#       "password"
+#     ]
+#   }
+# ]
+# [auth backend] [
+#   {
+#     "code": "custom",
+#     "message": "Password must include at least one digit.",
+#     "path": [
+#       "password"
+#     ]
+#   }
+# ]
+# [auth backend] [
+#   {
+#     "code": "custom",
+#     "message": "Password must include at least one special character from !@\#$%^&*?+-/,.",
+#     "path": [
+#       "password"
+#     ]
+#   }
+# ]
+# [auth backend] [
+#   {
+#     "code": "custom",
+#     "message": "Password must include at least one special character from !@\#$%^&*?+-/,.",
+#     "path": [
+#       "password"
+#     ]
+#   }
+# ]
+# [auth backend] [
+#   {
+#     "code": "custom",
+#     "message": "Password must not contain spaces or whitespace.",
+#     "path": [
+#       "password"
+#     ]
+#   }
+# ]
+# [auth backend] [
+#   {
+#     "code": "custom",
+#     "message": "Password must include at least one special character from !@\#$%^&*?+-/,.",
+#     "path": [
+#       "newPassword"
+#     ]
+#   }
+# ]
+# [auth backend] [
+#   {
+#     "code": "custom",
+#     "message": "Password must not contain spaces or whitespace.",
+#     "path": [
+#       "newPassword"
+#     ]
+#   }
+# ]
+# [auth backend] This link is invalid or expired. Request a new one.
+# [notification-service] Successfully dispatched OTP_AUTHORIZATION to legacy-policy-0@example.test via Resend.
+# [notification-service] Successfully dispatched OTP_AUTHORIZATION to legacy-policy-1@example.test via Resend.
+# [auth backend] Email or password is incorrect.
+# Subtest: registration and reset enforce the policy while existing logins remain compatible
+    # Subtest: eight-character registration succeeds and invalid values create no accounts
+    ok 1 - eight-character registration succeeds and invalid values create no accounts
+      ---
+      duration_ms: 2310.3484
+      type: 'test'
+      ...
+    # Subtest: both reset password aliases reject invalid values without consuming authorization
+    ok 2 - both reset password aliases reject invalid values without consuming authorization
+      ---
+      duration_ms: 115.4044
+      type: 'test'
+      ...
+    # Subtest: a valid eight-character reset consumes authorization and revokes sessions
+    ok 3 - a valid eight-character reset consumes authorization and revokes sessions
+      ---
+      duration_ms: 1887.7865
+      type: 'test'
+      ...
+    # Subtest: legacy passwords can still sign in without meeting the new creation policy
+    ok 4 - legacy passwords can still sign in without meeting the new creation policy
+      ---
+      duration_ms: 2508.3733
+      type: 'test'
+      ...
+    1..4
+ok 19 - registration and reset enforce the policy while existing logins remain compatible
+  ---
+  duration_ms: 8151.6957
+  type: 'test'
+  ...
+# [notification-service] Successfully dispatched OTP_AUTHORIZATION to test-1@example.test via Resend.
+# [notification-service] Successfully dispatched OTP_AUTHORIZATION to test-2@example.test via Resend.
+# [notification-service] Successfully dispatched OTP_AUTHORIZATION to test-3@example.test via Resend.
+# [notification-service] Successfully dispatched OTP_AUTHORIZATION to test-4@example.test via Resend.
+# Subtest: OTP recovery uses owned storage, limits attempts, and revokes sessions
+    # Subtest: known and unknown email have identical responses and cooldown
+    ok 1 - known and unknown email have identical responses and cooldown
+      ---
+      duration_ms: 3466.9931
+      type: 'test'
+      ...
+    # Subtest: fifth wrong attempt deletes code and committed attempts persist
+    ok 2 - fifth wrong attempt deletes code and committed attempts persist
+      ---
+      duration_ms: 3447.6685
+      type: 'test'
+      ...
+    # Subtest: expired code fails even before TTL cleanup
+    ok 3 - expired code fails even before TTL cleanup
+      ---
+      duration_ms: 1105.5514
+      type: 'test'
+      ...
+# [notification-service] Successfully dispatched OTP_AUTHORIZATION to test-5@example.test via Resend.
+    # Subtest: valid OTP and reset authorization are each single-use; password changes revoke sessions
+    ok 4 - valid OTP and reset authorization are each single-use; password changes revoke sessions
+      ---
+      duration_ms: 3629.0463
+      type: 'test'
+      ...
+# [notification-service] Successfully dispatched OTP_AUTHORIZATION to test-6@example.test via Resend.
+    # Subtest: concurrent verification consumes code only once
+    ok 5 - concurrent verification consumes code only once
+      ---
+      duration_ms: 1355.0886
+      type: 'test'
+      ...
+# [notification-service] Successfully dispatched OTP_AUTHORIZATION to test-6@example.test via Resend.
+# [notification-service] Successfully dispatched OTP_AUTHORIZATION to test-7@example.test via Resend.
+# [notification-service] Successfully dispatched OTP_AUTHORIZATION to test-7@example.test via Resend.
+    # Subtest: resend replaces previous code and invalidates previous reset authorization
+    ok 6 - resend replaces previous code and invalidates previous reset authorization
+      ---
+      duration_ms: 2446.9671
+      type: 'test'
+      ...
+# [notification-service] Successfully dispatched OTP_AUTHORIZATION to test-8@example.test via Resend.
+# [notification-service] Successfully dispatched OTP_AUTHORIZATION to test-8@example.test via Resend.
+    # Subtest: resending a code invalidates the previously emailed code
+    ok 7 - resending a code invalidates the previously emailed code
+      ---
+      duration_ms: 2615.3884
+      type: 'test'
+      ...
+# [notification-service] Successfully dispatched OTP_AUTHORIZATION to test-9@example.test via Resend.
+    # Subtest: email verification and password recovery codes cannot authorize another purpose
+    ok 8 - email verification and password recovery codes cannot authorize another purpose
+      ---
+      duration_ms: 2190.1656
+      type: 'test'
+      ...
+# [auth backend] [
+#   {
+#     "expected": "string",
+#     "code": "invalid_type",
+#     "path": [
+#       "email"
+#     ],
+#     "message": "Invalid input: expected string, received undefined"
+#   }
+# ]
+# [auth backend] [
+#   {
+#     "origin": "string",
+#     "code": "invalid_format",
+#     "format": "email",
+#     "pattern": "/^(?:[A-Za-z0-9_'+\\\\-]+\\\\.)*[A-Za-z0-9_'+\\\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\\\-]*\\\\.)+[A-Za-z]{2,}$/",
+#     "path": [
+#       "email"
+#     ],
+#     "message": "Invalid email address"
+#   }
+# ]
+# [auth backend] [
+#   {
+#     "origin": "string",
+#     "code": "invalid_format",
+#     "format": "regex",
+#     "pattern": "/^\\\\d{6}$/",
+#     "path": [
+#       "otp"
+#     ],
+#     "message": "Enter the 6-digit code."
+#   }
+# ]
+# [auth backend] [
+#   {
+#     "code": "custom",
+#     "message": "Password must contain at least 8 characters.",
+#     "path": [
+#       "password"
+#     ]
+#   }
+# ]
+# [auth backend] This request origin is not permitted.
+# [auth backend] Too many attempts. Please wait a minute.
+# [auth backend] Too many attempts. Please wait a minute.
+    # Subtest: tampered, expired and wrong-purpose JWTs are rejected
+    ok 9 - tampered, expired and wrong-purpose JWTs are rejected
+      ---
+      duration_ms: 1550.5145
+      type: 'test'
+      ...
+    # Subtest: provider failure is displayed and logged, secrets are redacted, and code is removed
+    ok 10 - provider failure is displayed and logged, secrets are redacted, and code is removed
+      ---
+      duration_ms: 611.2446
+      type: 'test'
+      ...
+    # Subtest: missing email configuration fails for all accounts
+    ok 11 - missing email configuration fails for all accounts
+      ---
+      duration_ms: 0.6384
+      type: 'test'
+      ...
+    # Subtest: API validates fields, enforces origin and rate limits
+    ok 12 - API validates fields, enforces origin and rate limits
+      ---
+      duration_ms: 1507.5948
+      type: 'test'
+      ...
+    1..12
+ok 20 - OTP recovery uses owned storage, limits attempts, and revokes sessions
+  ---
+  duration_ms: 23977.3502
+  type: 'test'
+  ...
+# Subtest: social OAuth cryptography, replay protection, account linking, and provider configuration
+    # Subtest: unconfigured providers fail closed
+    ok 1 - unconfigured providers fail closed
+      ---
+      duration_ms: 2.6358
+      type: 'test'
+      ...
+    # Subtest: Apple is unavailable on HTTP localhost; Google permits local testing
+    ok 2 - Apple is unavailable on HTTP localhost; Google permits local testing
+      ---
+      duration_ms: 0.7204
+      type: 'test'
+      ...
+    # Subtest: Google redirect has PKCE, nonce, state, exact callback, and no secret
+    ok 3 - Google redirect has PKCE, nonce, state, exact callback, and no secret
+      ---
+      duration_ms: 4.4264
+      type: 'test'
+      ...
+    # Subtest: missing browser cookie, wrong state, provider mismatch, and tampering rejected
+    ok 4 - missing browser cookie, wrong state, provider mismatch, and tampering rejected
+      ---
+      duration_ms: 35.4796
+      type: 'test'
+      ...
+    # Subtest: one-time callback is consumed atomically under concurrent requests
+    ok 5 - one-time callback is consumed atomically under concurrent requests
+      ---
+      duration_ms: 21.5007
+      type: 'test'
+      ...
+    # Subtest: Google issued-at clock skew is bounded and old tokens remain invalid
+    ok 6 - Google issued-at clock skew is bounded and old tokens remain invalid
+      ---
+      duration_ms: 11.7484
+      type: 'test'
+      ...
+    # Subtest: signed valid identity accepted
+    ok 7 - signed valid identity accepted
+      ---
+      duration_ms: 3.6819
+      type: 'test'
+      ...
+    # Subtest: wrong issuer, audience, nonce, expiry, and unverified email rejected
+    ok 8 - wrong issuer, audience, nonce, expiry, and unverified email rejected
+      ---
+      duration_ms: 8.5905
+      type: 'test'
+      ...
+    # Subtest: new social account verified; returning subject does not require email
+    ok 9 - new social account verified; returning subject does not require email
+      ---
+      duration_ms: 827.7098
+      type: 'test'
+      ...
+    # Subtest: matching email never implicitly links an existing account
+    ok 10 - matching email never implicitly links an existing account
+      ---
+      duration_ms: 9.9477
+      type: 'test'
+      ...
+    # Subtest: only signed verified Gmail claims grant provider email authority
+    ok 11 - only signed verified Gmail claims grant provider email authority
+      ---
+      duration_ms: 8.0056
+      type: 'test'
+      ...
+    # Subtest: Gmail reuse requires verified OVIA user and Google ownership proof
+    ok 12 - Gmail reuse requires verified OVIA user and Google ownership proof
+      ---
+      duration_ms: 79.3839
+      type: 'test'
+      ...
+    # Subtest: concurrent distinct Google subjects cannot bind one Gmail account
+    ok 13 - concurrent distinct Google subjects cannot bind one Gmail account
+      ---
+      duration_ms: 23.0119
+      type: 'test'
+      ...
+    # Subtest: explicit linking requires authenticated live session
+    ok 14 - explicit linking requires authenticated live session
+      ---
+      duration_ms: 11.1912
+      type: 'test'
+      ...
+    # Subtest: an identity already linked to another account cannot be reassigned
+    ok 15 - an identity already linked to another account cannot be reassigned
+      ---
+      duration_ms: 7.5616
+      type: 'test'
+      ...
+    # Subtest: revoked sessions cannot link identities
+    ok 16 - revoked sessions cannot link identities
+      ---
+      duration_ms: 3.5262
+      type: 'test'
+      ...
+    # Subtest: server code exchange sends Google secret and PKCE only to fixed endpoint
+    ok 17 - server code exchange sends Google secret and PKCE only to fixed endpoint
+      ---
+      duration_ms: 11.011
+      type: 'test'
+      ...
+    # Subtest: Apple authorization uses form_post and Secure cross-site state cookie
+    ok 18 - Apple authorization uses form_post and Secure cross-site state cookie
+      ---
+      duration_ms: 14.4803
+      type: 'test'
+      ...
+    # Subtest: Apple client secret is a valid short-lived ES256 JWT
+    ok 19 - Apple client secret is a valid short-lived ES256 JWT
+      ---
+      duration_ms: 16.2613
+      type: 'test'
+      ...
+    # Subtest: Apple Hide My Email and subsequent omitted email supported
+    ok 20 - Apple Hide My Email and subsequent omitted email supported
+      ---
+      duration_ms: 504.6889
+      type: 'test'
+      ...
+    1..20
+ok 21 - social OAuth cryptography, replay protection, account linking, and provider configuration
+  ---
+  duration_ms: 2379.2789
+  type: 'test'
+  ...
+# Subtest: admin inbox includes both contact messages and customer support tickets
+ok 22 - admin inbox includes both contact messages and customer support tickets
+  ---
+  duration_ms: 65.1105
+  type: 'test'
+  ...
+# Subtest: replies persist and enqueue once without claiming delivery
+ok 23 - replies persist and enqueue once without claiming delivery
+  ---
+  duration_ms: 39.2237
+  type: 'test'
+  ...
+# Subtest: unknown conversations and invalid recipient addresses cannot queue replies
+ok 24 - unknown conversations and invalid recipient addresses cannot queue replies
+  ---
+  duration_ms: 2.9642
+  type: 'test'
+  ...
+# Subtest: inbound email authentication fails closed
+ok 25 - inbound email authentication fails closed
+  ---
+  duration_ms: 0.5434
+  type: 'test'
+  ...
+# Subtest: email webhook retries deduplicate and reject a different mailbox
+ok 26 - email webhook retries deduplicate and reject a different mailbox
+  ---
+  duration_ms: 2.602
+  type: 'test'
+  ...
+# Subtest: Gmail MIME parsing reads plain text and ignores executable HTML
+ok 27 - Gmail MIME parsing reads plain text and ignores executable HTML
+  ---
+  duration_ms: 0.9194
+  type: 'test'
+  ...
+# Subtest: Gmail sync fails closed when Google connects a different mailbox
+ok 28 - Gmail sync fails closed when Google connects a different mailbox
+  ---
+  duration_ms: 19.2707
+  type: 'test'
+  ...
+# Subtest: stars, importance, folder changes and read state survive fresh inbox reads
+ok 29 - stars, importance, folder changes and read state survive fresh inbox reads
+  ---
+  duration_ms: 32.2301
+  type: 'test'
+  ...
+# Subtest: invalid bulk IDs do not partially change saved folders
+ok 30 - invalid bulk IDs do not partially change saved folders
+  ---
+  duration_ms: 1.2641
+  type: 'test'
+  ...
+# Subtest: drafts persist without sending and compose queues once with truthful delivery
+ok 31 - drafts persist without sending and compose queues once with truthful delivery
+  ---
+  duration_ms: 6.2448
+  type: 'test'
+  ...
+# Subtest: composition rejects missing subject, invalid recipient and unrecognized fields
+ok 32 - composition rejects missing subject, invalid recipient and unrecognized fields
+  ---
+  duration_ms: 2.7095
+  type: 'test'
+  ...
+# Subtest: care tickets appear in admin inbox and replies preserve the customer conversation schema
+ok 33 - care tickets appear in admin inbox and replies preserve the customer conversation schema
+  ---
+  duration_ms: 58.3797
+  type: 'test'
+  ...
+# Subtest: Sent groups ticket replies and includes both sides of the conversation
+ok 34 - Sent groups ticket replies and includes both sides of the conversation
+  ---
+  duration_ms: 11.6121
+  type: 'test'
+  ...
+# Subtest: new customer messages turn a previously read conversation unread
+ok 35 - new customer messages turn a previously read conversation unread
+  ---
+  duration_ms: 1.0286
+  type: 'test'
+  ...
+# Subtest: anonymous callers cannot read, compose or mutate the owner mailbox
+ok 36 - anonymous callers cannot read, compose or mutate the owner mailbox
+  ---
+  duration_ms: 15.999
+  type: 'test'
+  ...
+# Subtest: Socket.IO rejects absent credentials and revoked sessions
+ok 37 - Socket.IO rejects absent credentials and revoked sessions
+  ---
+  duration_ms: 794.8588
+  type: 'test'
+  ...
+# Subtest: Socket.IO derives rooms from database roles and never trusts a forged owner claim
+ok 38 - Socket.IO derives rooms from database roles and never trusts a forged owner claim
+  ---
+  duration_ms: 83.3648
+  type: 'test'
+  ...
+# Subtest: more than 100 messages stay on one ticket without growing its BSON message array
+ok 39 - more than 100 messages stay on one ticket without growing its BSON message array
+  ---
+  duration_ms: 29.1755
+  type: 'test'
+  ...
+# Subtest: Gmail reference and verified participant append to the same ticket, reopen it, and deduplicate
+ok 40 - Gmail reference and verified participant append to the same ticket, reopen it, and deduplicate
+  ---
+  duration_ms: 3.94
+  type: 'test'
+  ...
+# Subtest: a wrong or unverified email sender cannot join a customer's existing ticket
+ok 41 - a wrong or unverified email sender cannot join a customer's existing ticket
+  ---
+  duration_ms: 0.807
+  type: 'test'
+  ...
+# Subtest: notes stay private and priority/status persist without producing customer email
+ok 42 - notes stay private and priority/status persist without producing customer email
+  ---
+  duration_ms: 6.9378
+  type: 'test'
+  ...
+# Subtest: customers only receive their own conversations and unverified email matching grants no access
+ok 43 - customers only receive their own conversations and unverified email matching grants no access
+  ---
+  duration_ms: 1.3313
+  type: 'test'
+  ...
+# Subtest: private attachment ownership is enforced before linking or downloading
+ok 44 - private attachment ownership is enforced before linking or downloading
+  ---
+  duration_ms: 1.2855
+  type: 'test'
+  ...
+# Subtest: Reply All only uses stored conversation participants and retries cannot change payload
+ok 45 - Reply All only uses stored conversation participants and retries cannot change payload
+  ---
+  duration_ms: 6.5195
+  type: 'test'
+  ...
+# Subtest: closed conversations reject public replies until the owner reopens them
+ok 46 - closed conversations reject public replies until the owner reopens them
+  ---
+  duration_ms: 0.3321
+  type: 'test'
+  ...
+# Subtest: Google credentials are encrypted, tampering fails, and OAuth state comparison is exact
+ok 47 - Google credentials are encrypted, tampering fails, and OAuth state comparison is exact
+  ---
+  duration_ms: 4.2295
+  type: 'test'
+  ...
+# Subtest: encoded Gmail subjects preserve ticket references and sender display names cannot impersonate participants
+ok 48 - encoded Gmail subjects preserve ticket references and sender display names cannot impersonate participants
+  ---
+  duration_ms: 0.5311
+  type: 'test'
+  ...
+1..48
+# tests 111
+# suites 0
+# pass 111
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 49556.6644

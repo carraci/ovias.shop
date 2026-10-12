@@ -1,9 +1,12 @@
 "use client";
+import "@/components/page-styles/collection-landings.css";
+
 
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Heart } from "lucide-react";
 import { useState } from "react";
+import { useStore } from "./store-provider";
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 
@@ -22,7 +25,7 @@ const newProductsList = [
   {
     id: "horizon-cabin",
     name: "HORIZON CABIN",
-    price: "₹ 82,000",
+    price: "₹1",
     category: "CABIN" as CategoryType,
     image: "/media/new-prod-horizon-cabin.jpg",
     href: "/products/horizon-cabin",
@@ -30,7 +33,7 @@ const newProductsList = [
   {
     id: "horizon-checkin",
     name: "HORIZON CHECK-IN",
-    price: "₹ 95,000",
+    price: "₹1",
     category: "CHECK-IN" as CategoryType,
     image: "/media/new-prod-horizon-checkin.jpg",
     href: "/products/horizon-check-in",
@@ -38,7 +41,7 @@ const newProductsList = [
   {
     id: "horizon-trunk",
     name: "HORIZON TRUNK",
-    price: "₹ 1,20,000",
+    price: "₹1",
     category: "TRUNKS" as CategoryType,
     image: "/media/new-prod-horizon-trunk.jpg",
     href: "/products/horizon-trunk",
@@ -46,7 +49,7 @@ const newProductsList = [
   {
     id: "travel-duffle",
     name: "TRAVEL DUFFLE",
-    price: "₹ 68,000",
+    price: "₹1",
     category: "TRAVEL BAGS" as CategoryType,
     image: "/media/new-prod-travel-duffle.jpg",
     href: "/products/never-still-leather-duffle-bag-large",
@@ -54,7 +57,7 @@ const newProductsList = [
   {
     id: "travel-backpack",
     name: "TRAVEL BACKPACK",
-    price: "₹ 42,000",
+    price: "₹1",
     category: "TRAVEL BAGS" as CategoryType,
     image: "/media/new-prod-travel-backpack.jpg",
     href: "/products/never-still-canvas-flap-backpack-large",
@@ -62,7 +65,7 @@ const newProductsList = [
   {
     id: "packing-cube-set",
     name: "PACKING CUBE SET",
-    price: "₹ 8,500",
+    price: "₹1",
     category: "ACCESSORIES" as CategoryType,
     image: "/media/new-prod-packing-cubes.jpg",
     href: "/products/travel-accessories-packing-cubes-set",
@@ -70,7 +73,7 @@ const newProductsList = [
   {
     id: "toiletry-pouch",
     name: "TOILETRY POUCH",
-    price: "₹ 12,000",
+    price: "₹1",
     category: "ACCESSORIES" as CategoryType,
     image: "/media/new-prod-toiletry-pouch.jpg",
     href: "/products/never-still-leather-toiletry-bag-black",
@@ -78,7 +81,7 @@ const newProductsList = [
   {
     id: "luggage-tag",
     name: "LUGGAGE TAG",
-    price: "₹ 4,500",
+    price: "₹1",
     category: "ACCESSORIES" as CategoryType,
     image: "/media/new-prod-luggage-tag.jpg",
     href: "/products/address-tag-leather-black",
@@ -86,7 +89,7 @@ const newProductsList = [
   {
     id: "water-bottle",
     name: "WATER BOTTLE",
-    price: "₹ 5,500",
+    price: "₹1",
     category: "ACCESSORIES" as CategoryType,
     image: "/media/new-prod-water-bottle.jpg",
     href: "/products/travel-accessories-water-bottle-black",
@@ -94,7 +97,7 @@ const newProductsList = [
   {
     id: "tech-organiser",
     name: "TECH ORGANISER",
-    price: "₹ 9,500",
+    price: "₹1",
     category: "ACCESSORIES" as CategoryType,
     image: "/media/new-prod-tech-organiser.jpg",
     href: "/products/groove-leather-zipped-pouch-black",
@@ -102,7 +105,7 @@ const newProductsList = [
   {
     id: "cabin-plus",
     name: "CABIN PLUS",
-    price: "₹ 88,000",
+    price: "₹1",
     category: "CABIN" as CategoryType,
     image: "/media/new-prod-cabin-plus.jpg",
     href: "/products/horizon-cabin",
@@ -110,7 +113,7 @@ const newProductsList = [
   {
     id: "weekend-bag",
     name: "WEEKEND BAG",
-    price: "₹ 62,000",
+    price: "₹1",
     category: "TRAVEL BAGS" as CategoryType,
     image: "/media/new-prod-weekend-bag.jpg",
     href: "/products/never-still-leather-duffle-bag-medium",
@@ -119,12 +122,25 @@ const newProductsList = [
 
 export function NewArrivalsLanding() {
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>("ALL");
-  const [wishlist, setWishlist] = useState<Record<string, boolean>>({});
+  const { isWishlisted, toggleWishlist: storeToggleWishlist } = useStore();
 
-  const toggleWishlist = (id: string, e: React.MouseEvent) => {
+  const handleToggleWishlist = (item: any, e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setWishlist((prev) => ({ ...prev, [id]: !prev[id] }));
+    const slug = item.href?.replace(/^\/products\//, "") || item.id;
+    const numPrice =
+      typeof item.price === "string"
+        ? parseInt(item.price.replace(/[^0-9]/g, ""), 10) || 0
+        : item.price;
+    storeToggleWishlist(item.id || slug, {
+      sku: item.id || slug,
+      name: item.name,
+      color: "Classic",
+      slug,
+      image: item.image,
+      price: numPrice,
+      available: true,
+    });
   };
 
   const filteredProducts =
@@ -135,46 +151,12 @@ export function NewArrivalsLanding() {
   return (
     <div className="new-arrivals-landing-page">
 
-      {/* ── 1. HERO BANNER: NEW HORIZONS, NEW JOURNEYS ── */}
-      <section className="new-hero-section">
-        <div className="new-hero-media">
-          <Image
-            src="/media/new-hero.jpg"
-            alt="OVIA New Arrivals - New Horizons, New Journeys"
-            fill
-            priority
-            sizes="100vw"
-            className="new-hero-img"
-          />
-          <div className="new-hero-overlay" />
-        </div>
-
-        <div className="new-hero-inner">
-          <div className="new-hero-content">
-            <p className="new-hero-eyebrow">LATEST ARRIVALS</p>
-            <h1 className="new-hero-title">
-              New Horizons<br />
-              New Journeys
-            </h1>
-            <p className="new-hero-desc">
-              The latest luggage, crafted for<br />
-              modern explorers.
-            </p>
-            <div className="new-hero-actions">
-              <a href="#latest-products-grid" className="new-btn-primary">
-                EXPLORE LATEST <ArrowRight size={14} className="new-cta-icon" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── 2. LATEST PRODUCTS SECTION WITH FILTER PILLS ── */}
       <section id="latest-products-grid" className="new-content-wrap new-products-section">
         <div className="new-section-header">
           <div>
             <p className="new-section-eyebrow">LATEST</p>
-            <h2 className="new-section-title">Latest Products</h2>
+            <h1 className="new-section-title">Latest Products</h1>
           </div>
           <Link href="/new?view=catalog" className="new-header-link">
             VIEW ALL LATEST <ArrowRight size={13} />
@@ -200,23 +182,17 @@ export function NewArrivalsLanding() {
         {/* 12-Product 4x3 Grid */}
         <div className="new-products-grid">
           {filteredProducts.map((item) => {
-            const isSaved = wishlist[item.id];
+            const isSaved = isWishlisted(item.id) || isWishlisted(item.href?.replace(/^\/products\//, ""));
             return (
               <div key={item.id} className="new-product-card group">
                 <Link href={item.href} className="new-product-anchor">
                   <div className="new-product-media">
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className="new-product-img"
-                    />
+                    <></>
                     <span className="new-product-badge">NEW</span>
                     <button
                       type="button"
                       className={`new-wishlist-btn ${isSaved ? "active" : ""}`}
-                      onClick={(e) => toggleWishlist(item.id, e)}
+                      onClick={(e) => handleToggleWishlist(item, e)}
                       aria-label={isSaved ? "Remove from wishlist" : "Add to wishlist"}
                     >
                       <Heart size={15} fill={isSaved ? "currentColor" : "none"} />

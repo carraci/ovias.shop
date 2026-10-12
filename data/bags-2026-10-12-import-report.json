@@ -1,0 +1,895 @@
+{
+  "files": 18,
+  "rows": 339,
+  "products": 209,
+  "duplicateRows": 120,
+  "excluded": [
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "backpacks",
+      "row": "1791803088-22",
+      "name": "Safari Chase 103 Laptop Backpack - Printed",
+      "reason": "Missing source price"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "travel bags",
+      "row": "1791803948-1",
+      "name": "Wildcraft Chalk Bag Green",
+      "reason": "Non-catalogue clothing or climbing accessory"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "travel bags",
+      "row": "1791803948-2",
+      "name": "Wildcraft Chalk Bag Yellow",
+      "reason": "Non-catalogue clothing or climbing accessory"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "row": "1791804197-16",
+      "name": "Safari Brooklyn Trolley Bag Set of Small and Medium - Printed Blue",
+      "reason": "Missing source price"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "row": "1791804197-20",
+      "name": "Safari Brooklyn Trolley Bag - Blue",
+      "reason": "Missing source price"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "weekends bakgs",
+      "row": "1791804223-6",
+      "name": "Wildcraft Men Classic Bag Pro Rain Cheater Suit - Black",
+      "reason": "Non-catalogue clothing or climbing accessory"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "weekends bakgs",
+      "row": "1791804223-13",
+      "name": "Wildcraft Men Classic Bag Pro Rain Cheater Suit - Navy",
+      "reason": "Non-catalogue clothing or climbing accessory"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "weekends bakgs",
+      "row": "1791804223-20",
+      "name": "Wildcraft Men 2 Tone Bag Pro Rain Cheater Suit - Black Grey",
+      "reason": "Non-catalogue clothing or climbing accessory"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "weekends bakgs",
+      "row": "1791804223-23",
+      "name": "Wildcraft Men Crew Neck T-Shirt - Dark_Blue",
+      "reason": "Non-catalogue clothing or climbing accessory"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "weekends bakgs",
+      "row": "1791804223-24",
+      "name": "Wildcraft Men Crew Neck T-Shirt - Dark_Green",
+      "reason": "Non-catalogue clothing or climbing accessory"
+    }
+  ],
+  "corrections": [
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "crossboody bags",
+      "name": "Safari Phoenix Laptop Trolley Bag - Black",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "crossboody bags",
+      "name": "Safari Form Plus 2 Laptop Backpack - Grey",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "crossboody bags",
+      "name": "Safari Bonus 8 School Backpack - Black",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "crossboody bags",
+      "name": "Safari Triplex 7 School Backpack - Black",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "crossboody bags",
+      "name": "Safari Quadro 7 School Backpack - Blue",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "crossboody bags",
+      "name": "Safari Seek Overnighter - Black",
+      "department": "bags",
+      "category": "Weekend Bags"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "crossboody bags",
+      "name": "Safari Hue Printed Trolley Bag",
+      "department": "luggage",
+      "category": "Small Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "crossboody bags",
+      "name": "Safari Expand 18 Rucksacks - Olive",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "crossboody bags",
+      "name": "Safari Brooklyn Trolley Bag - Teal",
+      "department": "luggage",
+      "category": "Small Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "crossboody bags",
+      "name": "Safari Quest Laptop Backpack - Pearl Blue",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "crossboody bags",
+      "name": "Safari Quadro 5 School Backpack - Olive",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "crossboody bags",
+      "name": "Safari Quadro 6 School Backpack - Olive",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "vipbags-com-2026-10-12.csv",
+      "folder": "crossboody bags",
+      "name": "Skybags Peeps Grey 36L School Bag",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "vipbags-com-2026-10-12.csv",
+      "folder": "crossboody bags",
+      "name": "Skybags Stealth Backpack Black",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "vipbags-com-2026-10-12.csv",
+      "folder": "crossboody bags",
+      "name": "Skybags Sync School Backpack Black",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "vipbags-com-2026-10-12.csv",
+      "folder": "crossboody bags",
+      "name": "Skybags Porto Backpack",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "duffle bags",
+      "name": "Safari Trunk Pro Trolley Bag - Pine Green",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "duffle bags",
+      "name": "Safari Brooklyn Trolley Bag - Teal",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "duffle bags",
+      "name": "Safari Horizon Trolley Bag - Sea Foam",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "duffle bags",
+      "name": "Safari Phoenix Laptop Trolley Bag - Black",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "duffle bags",
+      "name": "Safari Flexa Trolley Bag - Navy Blue",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "duffle bags",
+      "name": "Safari Seek Overnighter - Black",
+      "department": "bags",
+      "category": "Weekend Bags"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "duffle bags",
+      "name": "Safari Hue Printed Trolley Bag",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "duffle bags",
+      "name": "Safari Hue Set of 3 Printed Trolley Bags",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "duffle bags",
+      "name": "Safari Hue Set of 2 Printed Trolley Bags",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "duffle bags",
+      "name": "Safari Connect Sling Bag",
+      "department": "bags",
+      "category": "Crossbody Bags"
+    },
+    {
+      "file": "vipbags-com-2026-10-12-2.csv",
+      "folder": "shoulder bags",
+      "name": "Skybags Peeps Grey 36L School Bag",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "vipbags-com-2026-10-12-2.csv",
+      "folder": "shoulder bags",
+      "name": "Skybags Stealth Backpack Black",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "vipbags-com-2026-10-12-2.csv",
+      "folder": "shoulder bags",
+      "name": "Skybags Sync School Backpack Black",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "vipbags-com-2026-10-12-2.csv",
+      "folder": "shoulder bags",
+      "name": "Skybags Porto Backpack",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Vector Sling Bag",
+      "department": "bags",
+      "category": "Crossbody Bags"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Phoenix Laptop Trolley Bag - Black",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Regal Messenger Bag - Black",
+      "department": "bags",
+      "category": "Crossbody Bags"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Crest Messenger Bag - Black",
+      "department": "bags",
+      "category": "Crossbody Bags"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Crest Messenger Bag - Grey",
+      "department": "bags",
+      "category": "Crossbody Bags"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Form Plus 2 Laptop Backpack - Grey",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Hue Printed Trolley Bag",
+      "department": "luggage",
+      "category": "Small Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Falcon Laptop Trolley Bag - Black",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Noble Messenger Bag - Black",
+      "department": "bags",
+      "category": "Crossbody Bags"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Connect Sling Bag",
+      "department": "bags",
+      "category": "Crossbody Bags"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Hue Set of 3 Printed Trolley Bags",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Brooklyn Trolley Bag - Teal",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Hue Set of 2 Printed Trolley Bags",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Quadro 7 School Backpack - Blue",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Triplex 7 School Backpack - Black",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Brooklyn Trolley Bag - Blue",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Heritage Trolley Bag - Ivory",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Bonus 8 School Backpack - Black",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Spectra Superior Duffle Bag - Blue",
+      "department": "bags",
+      "category": "Duffel Bags"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Seek Overnighter - Black",
+      "department": "bags",
+      "category": "Weekend Bags"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Select Froniq Trolley Bag - Sage Green",
+      "department": "luggage",
+      "category": "Small Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Heritage Trolley Bag - Opal Grey",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Quadro 6 School Backpack - Olive",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "tore bags",
+      "name": "Safari Horizon Trolley Bag - Sea Foam",
+      "department": "luggage",
+      "category": "Small Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "travel bags",
+      "name": "Safari Hue Printed Trolley Bag",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "travel bags",
+      "name": "Safari Select Froniq Trolley Bag - Navy Blue",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "travel bags",
+      "name": "Safari Brooklyn Trolley Bag - Teal",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "travel bags",
+      "name": "Safari Select Froniq Trolley Bag - Frost Grey",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "travel bags",
+      "name": "Safari Heritage Trolley Bag - Ivory",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "travel bags",
+      "name": "Safari Select Froniq Trolley Bag - Sage Green",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "travel bags",
+      "name": "Safari Horizon Trolley Bag - Sea Foam",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "travel bags",
+      "name": "Safari Hue Set of 3 Printed Trolley Bags",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "travel bags",
+      "name": "Safari Flexa Trolley Bag - Red",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "travel bags",
+      "name": "Safari Select Froniq Trolley Bag - Yellow",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "travel bags",
+      "name": "Safari Trackr GPS Enabled Trolley Bag - Black",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "travel bags",
+      "name": "Safari Zolo Trolley Bag - Cherry Red",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "travel bags",
+      "name": "Safari Phoenix Laptop Trolley Bag - Black",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "travel bags",
+      "name": "Safari Trunk Trolley Bag - Grey",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "travel bags",
+      "name": "Safari Trunk Pro Trolley Bag - Winter White",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "travel bags",
+      "name": "Safari Brooklyn Trolley Bag - Blue",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "travel bags",
+      "name": "Safari Hue Set of 2 Printed Trolley Bags",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "travel bags",
+      "name": "Safari Polaris Pro Trolley Bag - Titan Blue",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "vipbags-com-2026-10-12-3.csv",
+      "folder": "travel bags",
+      "name": "Skybags Nomad Small",
+      "department": "luggage",
+      "category": "Small Luggage"
+    },
+    {
+      "file": "vipbags-com-2026-10-12-3.csv",
+      "folder": "travel bags",
+      "name": "Skybags Stroke Cabin",
+      "department": "luggage",
+      "category": "Small Luggage"
+    },
+    {
+      "file": "vipbags-com-2026-10-12-3.csv",
+      "folder": "travel bags",
+      "name": "Skybags Delight Cabin",
+      "department": "luggage",
+      "category": "Small Luggage"
+    },
+    {
+      "file": "vipbags-com-2026-10-12-3.csv",
+      "folder": "travel bags",
+      "name": "Skybags Charm Medium",
+      "department": "luggage",
+      "category": "Medium Luggage"
+    },
+    {
+      "file": "vipbags-com-2026-10-12-3.csv",
+      "folder": "travel bags",
+      "name": "Skybags Lush Cabin",
+      "department": "luggage",
+      "category": "Small Luggage"
+    },
+    {
+      "file": "vipbags-com-2026-10-12-3.csv",
+      "folder": "travel bags",
+      "name": "Skybags Rubik Cabin",
+      "department": "luggage",
+      "category": "Small Luggage"
+    },
+    {
+      "file": "vipbags-com-2026-10-12-3.csv",
+      "folder": "travel bags",
+      "name": "Skybags Nomad Medium",
+      "department": "luggage",
+      "category": "Medium Luggage"
+    },
+    {
+      "file": "vipbags-com-2026-10-12-3.csv",
+      "folder": "travel bags",
+      "name": "Skybags Rhumba Cabin",
+      "department": "luggage",
+      "category": "Small Luggage"
+    },
+    {
+      "file": "vipbags-com-2026-10-12-3.csv",
+      "folder": "travel bags",
+      "name": "Skybags Nomad Large",
+      "department": "luggage",
+      "category": "Large Luggage"
+    },
+    {
+      "file": "vipbags-com-2026-10-12-3.csv",
+      "folder": "travel bags",
+      "name": "Skybags Lush Large",
+      "department": "luggage",
+      "category": "Large Luggage"
+    },
+    {
+      "file": "vipbags-com-2026-10-12-3.csv",
+      "folder": "travel bags",
+      "name": "Skybags Trance Medium",
+      "department": "luggage",
+      "category": "Medium Luggage"
+    },
+    {
+      "file": "vipbags-com-2026-10-12-3.csv",
+      "folder": "travel bags",
+      "name": "Skybags Nomad Large",
+      "department": "luggage",
+      "category": "Large Luggage"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "travel bags",
+      "name": "Wildcraft Juno Hard-Trolley Bag-Medium",
+      "department": "luggage",
+      "category": "Medium Luggage"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "travel bags",
+      "name": "Wildcraft Juno Hard-Trolley Bag-Medium",
+      "department": "luggage",
+      "category": "Medium Luggage"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "travel bags",
+      "name": "Wildcraft Juno Hard-Trolley Bag-Medium",
+      "department": "luggage",
+      "category": "Medium Luggage"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "travel bags",
+      "name": "Wildcraft Juno Hard-Trolley Bag-Large",
+      "department": "luggage",
+      "category": "Large Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "name": "Safari Brooklyn Trolley Bag - Teal",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "name": "Safari Regal Messenger Bag - Black",
+      "department": "bags",
+      "category": "Crossbody Bags"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "name": "Safari Triplex 7 School Backpack - Black",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "name": "Safari Form Plus 2 Laptop Backpack - Grey",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "name": "Safari Quest Laptop Backpack - Pearl Blue",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "name": "Safari Quadro 7 School Backpack - Blue",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "name": "Safari Bonus 8 School Backpack - Black",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "name": "Safari Hue Printed Trolley Bag",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "name": "Safari Brooklyn Trolley Bag - Blue",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "name": "Safari Phoenix Laptop Trolley Bag - Black",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "name": "Safari Quadro 6 School Backpack - Olive",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "name": "Safari Sage Formal Backpack - Black",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "name": "Safari Quadro 5 School Backpack - Olive",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "name": "Safari Hue Set of 3 Printed Trolley Bags",
+      "department": "luggage",
+      "category": "Luggage"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "name": "Safari Crest Messenger Bag - Black",
+      "department": "bags",
+      "category": "Crossbody Bags"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "name": "Safari Expand 18 Rucksacks - Olive",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "name": "Safari Noble Messenger Bag - Black",
+      "department": "bags",
+      "category": "Crossbody Bags"
+    },
+    {
+      "file": "safaribags-com-2026-10-12.csv",
+      "folder": "weekends bakgs",
+      "name": "Safari Sterling Messenger Bag - Navy Blue",
+      "department": "bags",
+      "category": "Crossbody Bags"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "weekends bakgs",
+      "name": "Wildcraft Wiki Squad 4 School Bag - Blue",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "weekends bakgs",
+      "name": "Wildcraft WIKI CHAMP 1 Ocean 11L School Bag - Red",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "weekends bakgs",
+      "name": "Wildcraft WIKI CHAMP 1 Robot 11L School Bag - Yellow",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "weekends bakgs",
+      "name": "Wildcraft Nash Large Trolley Duffle Bag - Black",
+      "department": "bags",
+      "category": "Duffel Bags"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "weekends bakgs",
+      "name": "Wildcraft WIKI Champ 1 Plus Whale School Bag - Blue",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "weekends bakgs",
+      "name": "Wildcraft WIKI Champ 1 Plus Frog School Bag - Green",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "weekends bakgs",
+      "name": "Wildcraft Evo Edge 35 L Laptop Backpack - Black",
+      "department": "bags",
+      "category": "Backpacks"
+    },
+    {
+      "file": "wildcraft-com-2026-10-12-2.csv",
+      "folder": "weekends bakgs",
+      "name": "Wildcraft Dapper 35 L Laptop Backpack - Blue",
+      "department": "bags",
+      "category": "Backpacks"
+    }
+  ],
+  "priceConflicts": [],
+  "categoryCounts": {
+    "Backpacks": 65,
+    "Tote Bags": 11,
+    "Crossbody Bags": 43,
+    "Shoulder Bags": 52,
+    "Duffel Bags": 54,
+    "Briefcases": 0,
+    "Weekend Bags": 15,
+    "Travel Bags": 66
+  },
+  "luggage": 38,
+  "created": 0,
+  "updated": 209,
+  "imageFailures": [],
+  "skippedMissingImages": [],
+  "backup": "data\\import-backups\\vendor-bags-before-1791824201200.json"
+}
