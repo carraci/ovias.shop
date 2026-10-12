@@ -212,31 +212,38 @@ export function StoriesCarousel({ initialStories }: StoriesCarouselProps) {
             onPointerLeave={handlePointerUpOrLeave}
             onPointerCancel={handlePointerUpOrLeave}
           >
-            {stories.map((story, idx) => (
-              <article key={story.id || story.slug} className="stories-card">
-                <Link
-                  href={`/journal/${story.slug}`}
-                  className="stories-card-link"
-                  aria-label={`${story.title} - READ`}
-                >
-                  <div className="stories-image-wrap">
-                    <Image
-                      src={story.thumbnail || story.heroImage}
-                      alt={story.title}
-                      fill
-                      sizes="(max-width: 640px) 62vw, (max-width: 1024px) 30vw, 20vw"
-                      className="stories-card-img"
-                      priority={idx < 3}
-                    />
-                  </div>
+            {stories.map((story, idx) => {
+              const imageSrc =
+                (typeof story.thumbnail === "string" && story.thumbnail.trim()) ||
+                (typeof story.heroImage === "string" && story.heroImage.trim()) ||
+                "/media/case-flowers.jpg";
 
-                  <div className="stories-card-content">
-                    <h3 className="stories-card-title">{story.title}</h3>
-                    <span className="stories-read-link">READ</span>
-                  </div>
-                </Link>
-              </article>
-            ))}
+              return (
+                <article key={story.id || story.slug} className="stories-card">
+                  <Link
+                    href={`/journal/${story.slug}`}
+                    className="stories-card-link"
+                    aria-label={`${story.title} - READ`}
+                  >
+                    <div className="stories-image-wrap">
+                      <Image
+                        src={imageSrc}
+                        alt={story.title || "OVIA Story"}
+                        fill
+                        sizes="(max-width: 640px) 62vw, (max-width: 1024px) 30vw, 20vw"
+                        className="stories-card-img"
+                        priority={idx < 3}
+                      />
+                    </div>
+
+                    <div className="stories-card-content">
+                      <h3 className="stories-card-title">{story.title}</h3>
+                      <span className="stories-read-link">READ</span>
+                    </div>
+                  </Link>
+                </article>
+              );
+            })}
           </div>
 
           {/* Next Arrow Button */}

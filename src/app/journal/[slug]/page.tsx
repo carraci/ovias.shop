@@ -113,8 +113,8 @@ export default async function StoryDetailPage({
       {/* 1. Full-Width Cinematic Hero Image */}
       <header className="story-cinematic-hero">
         <div className="story-hero-media-wrap">
-          {story.heroImage && <Image
-            src={story.heroImage}
+          {((story.heroImage && story.heroImage.trim()) || (story.thumbnail && story.thumbnail.trim())) && <Image
+            src={(story.heroImage && story.heroImage.trim()) || (story.thumbnail && story.thumbnail.trim()) || "/media/case-flowers.jpg"}
             alt={story.title}
             fill
             priority
@@ -306,7 +306,7 @@ export default async function StoryDetailPage({
                 <article key={relStory.id} className="story-more-card">
                   <Link href={`/journal/${relStory.slug}`} className="story-more-img-wrap">
                     <Image
-                      src={relStory.thumbnail || relStory.heroImage}
+                      src={(typeof relStory.thumbnail === "string" && relStory.thumbnail.trim()) || (typeof relStory.heroImage === "string" && relStory.heroImage.trim()) || "/media/case-flowers.jpg"}
                       alt={relStory.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
