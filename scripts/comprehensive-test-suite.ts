@@ -1,7 +1,8 @@
+﻿// @ts-nocheck
 import { MongoClient } from "mongodb";
-import { catalog } from "../src/server/db.ts";
-import { getAdminProducts } from "../src/server/admin-service.ts";
-import { verifyRazorpayWebhookSignature } from "../src/server/razorpay-webhook-signature.ts";
+import { catalog } from "../src/server/db";
+import { getAdminProducts } from "../src/server/admin-service";
+import { verifyRazorpayWebhookSignature } from "../src/server/razorpay-webhook-signature";
 
 export type TestResult = {
   id: string;
@@ -426,3 +427,4 @@ async function runAll() {
 }
 
 runAll().catch(console.error);
+
