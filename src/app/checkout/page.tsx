@@ -652,7 +652,12 @@ export default function Checkout() {
 
   async function submit(event: FormEvent) {
     event.preventDefault();
-    if (operation.current || recovering || !activeQuote) return;
+    if (operation.current || recovering) return;
+    if (!lines.length) {
+      setError("Your bag is empty. Please add items to your bag before proceeding to checkout.");
+      return;
+    }
+    if (!activeQuote) return;
 
     // Step 0: Contact and Shipping address
     // Step 1: Delivery
@@ -795,6 +800,43 @@ export default function Checkout() {
       <div className={styles.mainLayout}>
         <section className={styles.formCol} aria-label="Checkout details">
           {recovering && <p role="status">Recovering your checkout…</p>}
+          {hydrated && !lines.length && (
+            <div
+              className={styles.notice}
+              role="status"
+              style={{
+                background: "#fef3c7",
+                borderColor: "#f59e0b",
+                color: "#92400e",
+                marginBottom: 20,
+                padding: "14px 18px",
+                borderRadius: "8px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "12px",
+                flexWrap: "wrap",
+              }}
+            >
+              <span>
+                <strong>Your bag is empty.</strong> Please add a product to your bag before proceeding to checkout.
+              </span>
+              <Link
+                href="/collections/cabin"
+                style={{
+                  padding: "6px 14px",
+                  background: "#92400e",
+                  color: "#fff",
+                  borderRadius: "6px",
+                  fontSize: "13px",
+                  fontWeight: "600",
+                  textDecoration: "none",
+                }}
+              >
+                Browse Luggage
+              </Link>
+            </div>
+          )}
           {error && (
             <div className={styles.error} role="alert">
               {error}
@@ -915,18 +957,37 @@ export default function Checkout() {
                     <button
                       type="button"
                       className={styles.primaryBlueBtn}
-                      onClick={() => {
+                      disabled={busy}
+                      onClick={async () => {
                         if (!draft.email || !draft.email.includes("@")) {
+                          setError("Please enter a valid email address.");
                           const input = document.getElementById(
                             "emailAddress",
                           ) as HTMLInputElement;
                           input?.focus();
                           return;
                         }
+                        if (passwordDraft.trim() && !user) {
+                          try {
+                            setBusy(true);
+                            setError("");
+                            await request("auth/login", "POST", {
+                              email: draft.email.trim(),
+                              password: passwordDraft,
+                            });
+                            await refresh();
+                          } catch {
+                            setNotice(
+                              "Continuing as guest with " + draft.email.trim(),
+                            );
+                          } finally {
+                            setBusy(false);
+                          }
+                        }
                         setEmailConfirmed(true);
                       }}
                     >
-                      Next Step
+                      {busy ? "Signing in…" : "Next Step"}
                     </button>
                   </div>
                 )}
@@ -1481,29 +1542,58 @@ export default function Checkout() {
 
           <div id="checkout-summary" className={styles.orderCardBox}>
             <div className={styles.summaryItemsList}>
-              {lines.map((line) => (
-                <div className={styles.orderItemRow} key={line.sku}>
-                  <div className={styles.itemThumb}>
-                    <ProductPhoto
-                      src={line.image}
-                      alt={line.name}
-                      fill
-                      sizes="80px"
-                      style={{ objectFit: "contain" }}
-                    />
-                  </div>
-                  <div className={styles.itemMeta}>
-                    <p className={styles.itemEyebrow}>CLASSIC</p>
-                    <h4 className={styles.itemName}>{line.name}</h4>
-                    <p className={styles.itemColor}>{line.color || "Silver"}</p>
-                    <p className={styles.itemStockBadge}>LIMITED STOCK</p>
-                    <p className={styles.itemQty}>Qty: {line.quantity}</p>
-                  </div>
-                  <div className={styles.itemPriceCol}>
-                    {money(line.price * line.quantity)}
-                  </div>
+              {lines.length === 0 ? (
+                <div
+                  style={{
+                    padding: "24px 12px",
+                    textAlign: "center",
+                    color: "#6b7280",
+                  }}
+                >
+                  <p style={{ margin: "0 0 12px 0", fontSize: "14px" }}>
+                    Your shopping bag is empty.
+                  </p>
+                  <Link
+                    href="/collections/cabin"
+                    style={{
+                      display: "inline-block",
+                      padding: "8px 18px",
+                      background: "#0052cc",
+                      color: "#fff",
+                      borderRadius: "6px",
+                      fontSize: "13px",
+                      fontWeight: "600",
+                      textDecoration: "none",
+                    }}
+                  >
+                    Browse Collections
+                  </Link>
                 </div>
-              ))}
+              ) : (
+                lines.map((line) => (
+                  <div className={styles.orderItemRow} key={line.sku}>
+                    <div className={styles.itemThumb}>
+                      <ProductPhoto
+                        src={line.image}
+                        alt={line.name}
+                        fill
+                        sizes="80px"
+                        style={{ objectFit: "contain" }}
+                      />
+                    </div>
+                    <div className={styles.itemMeta}>
+                      <p className={styles.itemEyebrow}>CLASSIC</p>
+                      <h4 className={styles.itemName}>{line.name}</h4>
+                      <p className={styles.itemColor}>{line.color || "Silver"}</p>
+                      <p className={styles.itemStockBadge}>LIMITED STOCK</p>
+                      <p className={styles.itemQty}>Qty: {line.quantity}</p>
+                    </div>
+                    <div className={styles.itemPriceCol}>
+                      {money(line.price * line.quantity)}
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
 
             {/* PROMOTIONAL COUPON SECTION */}
