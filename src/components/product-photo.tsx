@@ -29,9 +29,22 @@ export function ProductPhoto({ src, fallbackSources = [], alt, ...props }: Props
   const current = candidates[currentIndex];
   if (!current) return null;
 
+  let unoptimized = props.unoptimized;
+  if (!unoptimized && current.startsWith("http")) {
+    try {
+      const u = new URL(current);
+      if (!["res.cloudinary.com", "www.rimowa.com"].includes(u.hostname)) {
+        unoptimized = true;
+      }
+    } catch {
+      unoptimized = true;
+    }
+  }
+
   return (
     <Image
       {...props}
+      unoptimized={unoptimized}
       alt={alt || "Product photo"}
       src={current}
       onError={() => {

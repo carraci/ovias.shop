@@ -12,10 +12,10 @@ export type WishlistItem = {
 
 export function wishlistImage(source: string | undefined): string {
   if (!source) return "";
-  if (source.startsWith("/media/") && !source.includes("\\") && !/(?:^|\/)\.\.(?:\/|$)/.test(source)) return source;
+  if (source.startsWith("/") && !source.includes("\\") && !/(?:^|\/)\.\.(?:\/|$)/.test(source)) return source;
   try {
     const url = new URL(source);
-    if (url.protocol === "https:" && !url.username && !url.password && ["res.cloudinary.com", "www.rimowa.com"].includes(url.hostname)) return url.href;
+    if (url.protocol === "https:" && !url.username && !url.password) return url.href;
   } catch { /* A missing image is displayed honestly. */ }
   return "";
 }

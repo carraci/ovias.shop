@@ -20,6 +20,7 @@ import {
 import { AddressBook } from "./address-book";
 import { AccountOrdersReturns } from "./account-orders-returns";
 import { AccountOrdersPortal } from "./account-orders-portal";
+import { ProductPhoto } from "./product-photo";
 import { request, useStore } from "./store-provider";
 import { money } from "@/lib/catalog-helpers";
 import type { Order } from "@/lib/types";
@@ -248,7 +249,18 @@ function Wishlist() {
               <Trash2 size={16} color="#ef4444" strokeWidth={1.8} />
             </button>
             <Link href={`/products/${item.slug}`} className={styles.wishlistImage}>
-              <></>
+              <ProductPhoto
+                src={item.image}
+                alt={item.name}
+                fallbackSources={[
+                  item.image,
+                  "/media/account/order-meridian.png",
+                  "/media/account/ovia-tote-editorial.png",
+                ]}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                style={{ objectFit: "contain" }}
+              />
             </Link>
             <Link href={`/products/${item.slug}`} className={styles.wishlistName}>
               <strong>{item.name}</strong>
