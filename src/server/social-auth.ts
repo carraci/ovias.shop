@@ -30,32 +30,78 @@ export class SocialError extends Error {
     super(code);
   }
 }
-export function appOrigin() {
-  return new URL(process.env.APP_ORIGIN || "http://localhost:3000").origin;
+export function googleClientId(): string {
+  return process.env.GOOGLE_CLIENT_ID?.trim() || "";
 }
+
+export function googleClientSecret(): string {
+  return process.env.GOOGLE_CLIENT_SECRET?.trim() || "";
+}
+
+export function appOrigin(req?: {
+  headers?: Headers | { get(key: string): string | null };
+}): string {
+  if (req?.headers) {
+    const host = req.headers.get("x-forwarded-host") || req.headers.get("host");
+    if (host) {
+      const proto =
+        req.headers.get("x-forwarded-proto") ||
+        (host.includes("localhost") || host.includes("127.0.0.1")
+          ? "http"
+          : "https");
+      return `${proto}://${host}`;
+    }
+  }
+
+  const envOrigin = process.env.APP_ORIGIN?.trim();
+  if (envOrigin) {
+    try {
+      const parsed = new URL(envOrigin);
+      if (process.env.NODE_ENV === "production" || process.env.VERCEL) {
+        if (!["localhost", "127.0.0.1"].includes(parsed.hostname)) {
+          return parsed.origin;
+        }
+      } else {
+        return parsed.origin;
+      }
+    } catch {}
+  }
+
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  }
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+  if (process.env.NODE_ENV === "production" || process.env.VERCEL) {
+    return "https://www.ovias.shop";
+  }
+  return "http://localhost:3000";
+}
+
 export function availableProviders() {
   const url = new URL(appOrigin());
   const secure = url.protocol === "https:";
   const local = ["localhost", "127.0.0.1"].includes(url.hostname);
   const productionReady =
     process.env.NODE_ENV !== "production" ||
-    (secure &&
-      !!process.env.MONGODB_URI &&
-      (process.env.JWT_SECRET?.length || 0) >= 32);
+    (secure && (!!process.env.MONGODB_URI || !!process.env.VERCEL));
+  const hasGoogle = !!googleClientId() && !!googleClientSecret();
+
   return {
-    google:
+    google: Boolean(
+      hasGoogle &&
+        (productionReady || local || secure),
+    ),
+    apple: Boolean(
       productionReady &&
-      (secure || local) &&
-      !!process.env.GOOGLE_CLIENT_ID &&
-      !!process.env.GOOGLE_CLIENT_SECRET,
-    apple:
-      productionReady &&
-      secure &&
-      !local &&
-      !!process.env.APPLE_CLIENT_ID &&
-      !!process.env.APPLE_TEAM_ID &&
-      !!process.env.APPLE_KEY_ID &&
-      !!process.env.APPLE_PRIVATE_KEY,
+        secure &&
+        !local &&
+        !!process.env.APPLE_CLIENT_ID &&
+        !!process.env.APPLE_TEAM_ID &&
+        !!process.env.APPLE_KEY_ID &&
+        !!process.env.APPLE_PRIVATE_KEY,
+    ),
   };
 }
 export const callbackUrl = (provider: Provider) =>
@@ -112,9 +158,9 @@ export async function prepareFlow(
   );
   url.search = new URLSearchParams({
     client_id:
-      process.env[
-        provider === "google" ? "GOOGLE_CLIENT_ID" : "APPLE_CLIENT_ID"
-      ]!,
+      provider === "google"
+        ? googleClientId()
+        : process.env.APPLE_CLIENT_ID!,
     redirect_uri: callbackUrl(provider),
     response_type: "code",
     scope: provider === "google" ? "openid email profile" : "name email",
@@ -199,9 +245,9 @@ export async function exchangeCode(flow: Flow, code: string) {
   const form = new URLSearchParams({
     grant_type: "authorization_code",
     code,
-    client_id: process.env[google ? "GOOGLE_CLIENT_ID" : "APPLE_CLIENT_ID"]!,
+    client_id: google ? googleClientId() : process.env.APPLE_CLIENT_ID!,
     client_secret: google
-      ? process.env.GOOGLE_CLIENT_SECRET!
+      ? googleClientSecret()
       : await appleClientSecret(),
     redirect_uri: callbackUrl(flow.provider),
   });
@@ -246,6 +292,7 @@ export async function verifyIdentity(
   keys?: JWTVerifyGetKey,
 ) {
   const google = flow.provider === "google";
+  const clientId = google ? googleClientId() : process.env.APPLE_CLIENT_ID;
   const { payload } = await jwtVerify(
     token,
     keys || (google ? googleKeys : appleKeys),
@@ -254,7 +301,7 @@ export async function verifyIdentity(
       issuer: google
         ? ["https://accounts.google.com", "accounts.google.com"]
         : "https://appleid.apple.com",
-      audience: process.env[google ? "GOOGLE_CLIENT_ID" : "APPLE_CLIENT_ID"],
+      audience: clientId,
       requiredClaims: ["exp", "iat", "sub", "nonce"],
       maxTokenAge: "10m",
       // Provider/server clocks can differ slightly; retain bounded age and expiry checks.
@@ -263,7 +310,7 @@ export async function verifyIdentity(
   );
   if (
     payload.azp !== undefined &&
-    payload.azp !== process.env[google ? "GOOGLE_CLIENT_ID" : "APPLE_CLIENT_ID"]
+    payload.azp !== clientId
   )
     throw new SocialError("failed");
   if (payload.nonce !== flow.nonce || !payload.sub || payload.sub.length > 255)

@@ -12,7 +12,10 @@ export function SocialSignInButtons({
   const [providers, setProviders] = useState<{
     google: boolean;
     apple: boolean;
-  } | null>(null);
+  }>({
+    google: true,
+    apple: false,
+  });
   const [busy, setBusy] = useState<string | null>(null);
   const [error, setError] = useState("");
   useEffect(() => {
