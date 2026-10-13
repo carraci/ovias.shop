@@ -8,35 +8,6 @@ import type {
 import { request, useStore } from "./store-provider";
 import { AddressBook } from "./address-book";
 import styles from "./customer-profile.module.css";
-import {
-  Instagram,
-  Facebook,
-  Linkedin,
-  Youtube,
-  ArrowRight,
-} from "lucide-react";
-const socialLinks = [
-  {
-    label: "Instagram",
-    icon: Instagram,
-    url: process.env.NEXT_PUBLIC_OVIA_INSTAGRAM_URL,
-  },
-  {
-    label: "Facebook",
-    icon: Facebook,
-    url: process.env.NEXT_PUBLIC_OVIA_FACEBOOK_URL,
-  },
-  {
-    label: "LinkedIn",
-    icon: Linkedin,
-    url: process.env.NEXT_PUBLIC_OVIA_LINKEDIN_URL,
-  },
-  {
-    label: "YouTube",
-    icon: Youtube,
-    url: process.env.NEXT_PUBLIC_OVIA_YOUTUBE_URL,
-  },
-];
 export function CustomerProfile() {
   const { user, refresh } = useStore();
   const [profile, setProfile] = useState<AccountProfile | null>(null),
@@ -211,37 +182,6 @@ export function CustomerProfile() {
           <section className={styles.panel}>
             <h2>Address</h2>
             <AddressBook embedded />
-          </section>
-          <section className={styles.newsletter}>
-            <p className={styles.blockLabel}>FOLLOW</p>
-            <nav
-              className={styles.socialIcons}
-              aria-label="OVIA social profiles"
-            >
-              {socialLinks.map(({ label, icon: Icon, url }) =>
-                url?.startsWith("https://") ? (
-                  <a
-                    key={label}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                  >
-                    <Icon size={16} strokeWidth={1.2} />
-                  </a>
-                ) : (
-                  <button
-                    key={label}
-                    type="button"
-                    aria-label={`${label} link not configured`}
-                    title={`${label} link not configured`}
-                    disabled
-                  >
-                    <Icon size={16} strokeWidth={1.2} />
-                  </button>
-                ),
-              )}
-            </nav>
           </section>
           <div className={styles.row}>
             <section className={styles.panel}>
