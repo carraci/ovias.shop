@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import {
   openRazorpay,
+  loadCheckout,
   PaymentDismissed,
   type RazorpaySession,
 } from "@/lib/razorpay-browser";
@@ -346,6 +347,7 @@ export default function Checkout() {
     }
     idempotency.current ||= crypto.randomUUID();
     setHydrated(true);
+    void loadCheckout();
     let cancelled = false;
 
     async function recover() {
@@ -723,10 +725,6 @@ export default function Checkout() {
       return;
     }
 
-    if (step === 2) {
-      go(3);
-      return;
-    }
     await executeOrder();
   }
 
@@ -1308,19 +1306,82 @@ export default function Checkout() {
                         </label>
                       ))}
                     </div>
-                    <p className={styles.stepSubtitle}>
-                      Payment details are entered securely with Razorpay after
-                      you review your order. Available methods depend on your
-                      Razorpay checkout.
-                    </p>
-                    <button
-                      type="button"
-                      className={styles.paySecurelyBtn}
-                      disabled={busy}
-                      onClick={() => go(3)}
+                    <div
+                      style={{
+                        margin: "16px 0",
+                        padding: "14px 16px",
+                        background: "#f9fafb",
+                        border: "1px solid #e5e7eb",
+                        borderRadius: "8px",
+                        fontSize: "14px",
+                      }}
                     >
-                      Continue to Review <ArrowRight size={16} />
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          marginBottom: "6px",
+                        }}
+                      >
+                        <span style={{ color: "#6b7280" }}>Deliver to:</span>
+                        <strong>
+                          {draft.firstName} {draft.lastName} ({draft.postalCode})
+                        </strong>
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          marginBottom: "6px",
+                        }}
+                      >
+                        <span style={{ color: "#6b7280" }}>Delivery:</span>
+                        <span>
+                          {activeQuote?.shippingLabel || "Standard Delivery"} ·{" "}
+                          {activeQuote?.estimate || "3-5 business days"}
+                        </span>
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          fontWeight: "600",
+                          borderTop: "1px solid #e5e7eb",
+                          paddingTop: "8px",
+                          marginTop: "8px",
+                        }}
+                      >
+                        <span>Total Payable:</span>
+                        <span style={{ color: "#111827", fontSize: "16px" }}>
+                          {activeQuote ? money(activeQuote.total) : "Calculating…"}
+                        </span>
+                      </div>
+                    </div>
+                    <button
+                      type="submit"
+                      className={styles.paySecurelyBtn}
+                      disabled={
+                        disabled ||
+                        (!providerReady && (activeQuote?.total ?? 1) > 0) ||
+                        (!!session &&
+                          (session.provider !== "razorpay" ||
+                            session.status !== "pending"))
+                      }
+                    >
+                      <Lock size={16} />
+                      {busy
+                        ? "Opening Razorpay…"
+                        : activeQuote?.total === 0
+                          ? "Place Free Order"
+                          : `Pay ${activeQuote ? money(activeQuote.total) : ""} with Razorpay`}
                     </button>
+                    <p
+                      className={styles.stepSubtitle}
+                      style={{ textAlign: "center", marginTop: "10px" }}
+                    >
+                      Clicking above opens the secure Razorpay payment gateway
+                      instantly.
+                    </p>
                   </div>
                 )}
                 {step === 3 && (

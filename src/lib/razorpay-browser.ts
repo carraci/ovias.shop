@@ -43,8 +43,8 @@ declare global {
     Razorpay?: new (options: Options) => Checkout;
   }
 }
-let scriptPromise: Promise<void> | undefined;
-function loadCheckout() {
+export let scriptPromise: Promise<void> | undefined;
+export function loadCheckout() {
   if (window.Razorpay) return Promise.resolve();
   if (scriptPromise) return scriptPromise;
   scriptPromise = new Promise<void>((resolve, reject) => {
