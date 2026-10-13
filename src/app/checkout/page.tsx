@@ -1314,9 +1314,10 @@ export default function Checkout() {
                       Razorpay checkout.
                     </p>
                     <button
-                      type="submit"
+                      type="button"
                       className={styles.paySecurelyBtn}
                       disabled={busy}
+                      onClick={() => go(3)}
                     >
                       Continue to Review <ArrowRight size={16} />
                     </button>
