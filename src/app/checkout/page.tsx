@@ -1316,7 +1316,7 @@ export default function Checkout() {
                     <button
                       type="submit"
                       className={styles.paySecurelyBtn}
-                      disabled={disabled || !providerReady}
+                      disabled={busy}
                     >
                       Continue to Review <ArrowRight size={16} />
                     </button>
