@@ -92,7 +92,7 @@ export function Footer() {
             <div className="ovia-social-icons">
               {/* Instagram */}
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/oviafashion/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ovia-social-btn"
@@ -107,7 +107,7 @@ export function Footer() {
 
               {/* YouTube */}
               <a
-                href="https://youtube.com"
+                href="https://www.youtube.com/results?search_query=OVIA+Fashion"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ovia-social-btn"
@@ -121,7 +121,7 @@ export function Footer() {
 
               {/* Facebook */}
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/search/top?q=ovia%20fashion"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ovia-social-btn"

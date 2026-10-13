@@ -8,6 +8,7 @@ import type {
 import { request, useStore } from "./store-provider";
 import { AddressBook } from "./address-book";
 import styles from "./customer-profile.module.css";
+import { Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
 export function CustomerProfile() {
   const { user, refresh } = useStore();
   const [profile, setProfile] = useState<AccountProfile | null>(null),
@@ -182,6 +183,45 @@ export function CustomerProfile() {
           <section className={styles.panel}>
             <h2>Address</h2>
             <AddressBook embedded />
+          </section>
+          <section className={styles.newsletter}>
+            <nav
+              className={styles.socialIcons}
+              aria-label="OVIA social profiles"
+            >
+              <a
+                href="https://www.instagram.com/oviafashion/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <Instagram size={18} strokeWidth={1.4} />
+              </a>
+              <a
+                href="https://www.facebook.com/search/top?q=ovia%20fashion"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <Facebook size={18} strokeWidth={1.4} />
+              </a>
+              <a
+                href="https://www.linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={18} strokeWidth={1.4} />
+              </a>
+              <a
+                href="https://www.youtube.com/results?search_query=OVIA+Fashion"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+              >
+                <Youtube size={18} strokeWidth={1.4} />
+              </a>
+            </nav>
           </section>
           <div className={styles.row}>
             <section className={styles.panel}>
