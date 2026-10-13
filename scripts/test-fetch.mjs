@@ -12,7 +12,7 @@ async function test() {
   console.log('Status:', res.status);
   const html = await res.text();
   console.log('Length:', html.length);
-  fs.writeFileSync('scripts/sample-page.html', html);
+  fs.writeFileSync('scripts/fixtures/sample-page.html', html);
   
   // Find product links
   const links = new Set();

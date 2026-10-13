@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-const html = fs.readFileSync('scripts/cabin.html', 'utf8');
+const html = fs.readFileSync('scripts/fixtures/cabin.html', 'utf8');
 
 const prodBlocks = html.match(/<div[^>]*class="[^"]*product-tile[^"]*"[^>]*>[\s\S]*?<\/div>\s*<\/div>/gi) || [];
 console.log('prodBlocks:', prodBlocks.length);

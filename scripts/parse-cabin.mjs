@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-const html = fs.readFileSync('scripts/cabin.html', 'utf8');
+const html = fs.readFileSync('scripts/fixtures/cabin.html', 'utf8');
 
 // 1. JSON-LD scripts
 const jsonLdRegex = /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi;

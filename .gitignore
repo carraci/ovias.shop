@@ -8,6 +8,8 @@ node_modules/
 *.tsbuildinfo
 test-results/
 playwright-report/
+artifacts/
+ovia-test-results/
 .vercel/
 *.log
 

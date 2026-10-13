@@ -1,73 +1,117 @@
-# OVIA
+# OVIA Luxury Travelware & E-Commerce
 
-An original luxury travel concept store built with **Next.js, React, TypeScript, CSS, MongoDB, JWT, GSAP and Framer Motion**. Includes 76 fictional products, responsive navigation, searchable/filterable listings, product variants, accounts, cart persistence, demo checkout, Stripe/Razorpay sandbox adapters and local/Cloudinary image delivery.
+[![Next.js](https://img.shields.io/badge/Next.js-16.3-black?logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.2-61dafb?logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47a248?logo=mongodb)](https://www.mongodb.com/)
+[![CI Validation](https://github.com/carraci/ovias-shop/actions/workflows/ci.yml/badge.svg)](https://github.com/carraci/ovias-shop/actions)
 
-## Run locally
+An enterprise-grade luxury e-commerce platform built with **Next.js App Router, React 19, TypeScript, Vanilla CSS, MongoDB, JWT authentication, Delhivery logistics, Razorpay/PayPal express payments, and real-time Socket.IO customer support**.
 
-Requires Node.js 22 or newer.
+---
 
-```sh
+## 🏛️ Repository Architecture
+
+```
+ovias-shop/
+├── .github/workflows/          # GitHub Actions CI/CD workflows
+├── docs/                       # Structured technical & engineering documentation
+│   ├── architecture/           # System design, PRD, CX, and PDP specifications
+│   ├── features/               # Real-time support, mailbox & customer care
+│   ├── integrations/           # Logistics (Delhivery), Payments (Razorpay), Resend
+│   ├── security/               # JWT authentication, social login & security audit
+│   ├── testing/                # Verification runbooks & Playwright guides
+│   └── development/            # Coding standards, memory & task backlog
+├── data/                       # Product catalog CSVs, source extractions & reports
+├── public/                     # Static media, custom typography & assets
+├── scripts/                    # Database seeds, imports, dev server & tools
+│   └── fixtures/               # Test fixtures and scraped HTML schemas
+├── src/
+│   ├── app/                    # Next.js App Router (Storefront, Admin & API routes)
+│   ├── components/             # Reusable UI components & CSS modules
+│   ├── lib/                    # Shared domain helpers, models & shipping logic
+│   └── server/                 # Node.js backend services, MongoDB, Auth & Payments
+├── tests/                      # Automated unit, integration & browser tests
+│   └── browser/                # Playwright E2E browser test suites
+├── AGENTS.md                   # Agent system rules & conventions
+├── package.json                # Project dependencies & npm scripts
+└── tsconfig.json               # TypeScript compiler configuration
+```
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js `22.0.0` or newer
+- npm `10.0.0` or newer
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/carraci/ovias-shop.git
+cd ovias-shop
+
+# Install dependencies deterministically
 npm ci
+
+# Configure environment variables
+cp .env.example .env.local
+```
+
+### Development Server
+
+```bash
 npm run dev
 ```
 
-Open http://localhost:3000 . Without MongoDB configuration, local development uses an ignored `.data/store.json` file. This is a single-process demo adapter, not a production database. Product illustrations are clearly labeled design studies. The editorial photo has attribution in `assets/provenance/README.md`.
+Launches the storefront at [http://localhost:3000](http://localhost:3000) along with the background real-time support worker.
 
-## MongoDB Atlas
+---
 
-Copy `.env.example` to `.env.local`, set `MONGODB_URI`, `MONGODB_DB`, `APP_ORIGIN`, and a strong `JWT_SECRET` of at least 32 characters. Use a replica set/Atlas cluster because mutations use transactions. Seed once:
+## 📜 Available Scripts
 
-```sh
-node --env-file=.env.local --import tsx scripts/seed.ts
-```
+| Command | Description |
+| :--- | :--- |
+| `npm run dev` | Starts Next.js development server with real-time support worker |
+| `npm run build` | Builds optimized production bundle |
+| `npm run start` | Starts production server |
+| `npm run typecheck` | Validates TypeScript types across the entire project |
+| `npm test` | Runs the automated Node.js test suite |
+| `npm run test:e2e` | Runs Playwright end-to-end browser tests |
+| `npm run seed` | Seeds MongoDB with catalog taxonomy, products & initial inventory |
+| `npm run db:check` | Verifies database connectivity and credential sanitization |
+| `npm run import-products` | Executes catalog ingestion pipeline |
+| `npm run algolia:sync` | Synchronizes catalog index with Algolia Search |
+| `npm run support:realtime` | Runs standalone Socket.IO customer support server |
 
-Seeding creates indexes and inserts only missing products/inventory. It does not overwrite live records. The application uses products, users, sessions, carts, orders, inventory, rate-limit and webhook-event collections. JWTs live in HttpOnly cookies and reference revocable server sessions. Local development generates an ephemeral signing key unless configured; restarting can invalidate those sessions.
+---
 
-## Payments
+## 🔒 Security & Payments
 
-Default local checkout creates a **demo order** without charging a card or consuming real inventory. For Stripe, select `PAYMENT_PROVIDER=stripe`, supply a test secret and signing secret, and configure the endpoint `/api/webhooks/stripe`. For Razorpay, select `PAYMENT_PROVIDER=razorpay`, supply test credentials and a webhook signing secret, and subscribe `/api/webhooks/razorpay` to `order.paid`.
+- **Session Security:** Cryptographically signed JWT tokens stored in `HttpOnly`, `SameSite=Lax`, `Secure` cookies with revocable server sessions.
+- **Payment Providers:**
+  - **Razorpay:** Multi-currency checkout, webhook HMAC SHA256 signature verification, and automated refund reconciliation.
+  - **PayPal Express:** Capture workflow, currency settlement, and idempotent execution locks.
+- **Logistics Integration:** Delhivery Surface & Air Express dispatch with real-time shipment milestone polling.
 
-Only test credentials are accepted. A redirect cannot mark an order paid; signed provider webhooks confirm payment. Quotes use server catalog prices. MongoDB transactions reserve inventory; actual Atlas concurrency validation remains pending. Stripe requests use idempotency keys. Razorpay setup uses a claim to prevent duplicate remote creation; uncertain provider responses require merchant reconciliation before retry. Configure a scheduler to call `/api/cron/expire` with `Authorization: Bearer <CRON_SECRET>` to release expired reservations. Late payments move to `refund_required` for merchant review. Do not enable live commerce until shipping/tax rules, fulfillment, policies, monitoring, reconciliation and real-provider tests are completed. `COMMERCE_ENABLED` is reserved for a future reviewed live-commerce release; it does not bypass the current sandbox restrictions.
+---
 
-## Vercel
+## 📚 Technical Documentation
 
-Import this directory as a Next.js project. Set the environment variables in Vercel and set `APP_ORIGIN` to the exact deployment origin; configure matching payment webhooks. Use MongoDB Atlas for all writes. Do not enable the local demo file adapter on Vercel: serverless filesystems are not durable. This task supplies deployment-ready project structure, not a published deployment or verified infrastructure.
+Complete documentation is organized in the [`docs/`](docs/) directory:
 
-## Approved imagery
+- [Documentation Hub](docs/README.md)
+- [System Architecture](docs/architecture/overview.md)
+- [Design System & Tokens](docs/architecture/design-system.md)
+- [Product Requirements](docs/architecture/product-requirements.md)
+- [Authentication & Security](docs/security/auth-integration.md)
+- [Testing & Verification Guide](docs/testing/verification-guide.md)
 
-Supply your owned/permission-cleared product images and update catalog records with a local image URL or an approved Cloudinary URL (`imageKind: "photograph"`). `src/lib/media.ts` builds Cloudinary delivery URLs. The importer accepts only approved manifest entries from explicitly allowed HTTPS image hosts:
+---
 
-```sh
-npm run assets:import -- assets/provenance/example-manifest.json --dry-run
-```
+## 📄 License & Attribution
 
-No retailer scraping or AI image generation is included. The importer validates URLs, types, signatures and size; production ingestion still needs full image decoding/dimension limits and derivative generation.
-
-## Checks
-
-```sh
-npm run typecheck
-npm test
-npm run build
-npx playwright install chromium
-npm run test:e2e
-```
-
-Tests cover catalog/quote validation, password hashing, browser shopping/checkout, accounts, viewport overflow, and API denial cases. See `VERIFICATION.md` for actual results, not just intended coverage.
-
-## Remaining production work
-
-Verification/reset tokens and address-book CRUD are implemented. Configure EMAIL_API_KEY (Resend), EMAIL_FROM and an authenticated scheduler for `/api/cron/mail` to deliver queued account mail. Development outbox records remain in `.data/store.json`; they are never exposed by public APIs. Actual mail delivery remains unverified. Contact messages are stored but not emailed.
-
-Remaining work includes privileged catalog tooling, exact business shipping/tax policies, provider reconciliation, production observability, backup/restore drills, full accessibility/cross-browser audits, decoded-image ingestion limits and approved product photographs. The site is noindex until a reviewed launch. The demo catalog is fictional; this code does not make it a real merchant catalog.
-
-
-## Customer service and privacy additions
-See [CUSTOMER-EXPERIENCE.md](CUSTOMER-EXPERIENCE.md) for route/API coverage, market behavior, security changes and launch configuration. Run `npm run seed` after configuring Atlas to create support/privacy indexes. Staff roles are assigned only by a trusted database administrator; signup never accepts a role grant.
-
-## Local Atlas setup
-The local `.env.local` is ignored and contains the configured Atlas URI and database name. Never paste its contents into logs or documentation.
-
-- `npm run db:check` loads the local environment and performs a sanitized connection check.
-- `npm run seed` creates indexes and inserts missing catalog/inventory records, preserving existing records.
-- A failed TLS handshake occurs before database credential verification. Check Cluster0 availability, the Network Access entry in the same project and outbound/TLS network restrictions. Certificate validation stays enabled.
+Private repository. All rights reserved by **OVIA Luxury Travelware**.
+Editorial photography and brand asset provenance documented in [`assets/provenance/README.md`](assets/provenance/README.md).

@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-const html = fs.readFileSync('scripts/cabin.html', 'utf8');
+const html = fs.readFileSync('scripts/fixtures/cabin.html', 'utf8');
 
 // Match all data-itemid
 const itemIds = [...html.matchAll(/data-itemid="([^"]+)"/g)].map(m => m[1]);

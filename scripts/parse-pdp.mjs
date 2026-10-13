@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-const html = fs.readFileSync('scripts/pdp.html', 'utf8');
+const html = fs.readFileSync('scripts/fixtures/pdp.html', 'utf8');
 
 // 1. JSON-LD in PDP
 const jsonLdRegex = /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi;
