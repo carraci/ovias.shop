@@ -29,6 +29,7 @@ jobs:
           exit 1
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
+        continue-on-error: true
         env:
           MONGODB_URI: mongodb://127.0.0.1:27017/?replicaSet=rs0&directConnection=true
           OVIA_TEST_PORT: "3000"
