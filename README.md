@@ -15,14 +15,8 @@ An enterprise-grade luxury e-commerce platform built with **Next.js App Router, 
 ```
 ovias-shop/
 ├── .github/workflows/          # GitHub Actions CI/CD workflows
-├── docs/                       # Structured technical & engineering documentation
-│   ├── architecture/           # System design, PRD, CX, and PDP specifications
-│   ├── features/               # Real-time support, mailbox & customer care
-│   ├── integrations/           # Logistics (Delhivery), Payments (Razorpay), Resend
-│   ├── security/               # JWT authentication, social login & security audit
-│   ├── testing/                # Verification runbooks & Playwright guides
-│   └── development/            # Coding standards, memory & task backlog
-├── data/                       # Product catalog CSVs, source extractions & reports
+├── assets/                     # Editorial provenance and license evidence
+├── data/                       # Product catalog CSVs & ingestion source extractions
 ├── public/                     # Static media, custom typography & assets
 ├── scripts/                    # Database seeds, imports, dev server & tools
 │   └── fixtures/               # Test fixtures and scraped HTML schemas
@@ -95,19 +89,6 @@ Launches the storefront at [http://localhost:3000](http://localhost:3000) along 
   - **Razorpay:** Multi-currency checkout, webhook HMAC SHA256 signature verification, and automated refund reconciliation.
   - **PayPal Express:** Capture workflow, currency settlement, and idempotent execution locks.
 - **Logistics Integration:** Delhivery Surface & Air Express dispatch with real-time shipment milestone polling.
-
----
-
-## 📚 Technical Documentation
-
-Complete documentation is organized in the [`docs/`](docs/) directory:
-
-- [Documentation Hub](docs/README.md)
-- [System Architecture](docs/architecture/overview.md)
-- [Design System & Tokens](docs/architecture/design-system.md)
-- [Product Requirements](docs/architecture/product-requirements.md)
-- [Authentication & Security](docs/security/auth-integration.md)
-- [Testing & Verification Guide](docs/testing/verification-guide.md)
 
 ---
 
