@@ -13,9 +13,25 @@ export class ApiError extends Error {
 export const hash = (value: string) =>
   createHash("sha256").update(value).digest("hex");
 export function originCheck(req: NextRequest) {
+  const origin = req.headers.get("origin");
+  if (!origin) return;
+
   const expected = process.env.APP_ORIGIN || "http://localhost:3000";
-  if (req.headers.get("origin") !== new URL(expected).origin)
-    throw new ApiError(403, "This request origin is not permitted.");
+  try {
+    if (origin === new URL(expected).origin) return;
+  } catch {}
+
+  if (origin === req.nextUrl.origin) return;
+
+  try {
+    const originUrl = new URL(origin);
+    const host = req.headers.get("x-forwarded-host") || req.headers.get("host");
+    if (host && (originUrl.host === host || originUrl.hostname === host.split(":")[0])) return;
+    if (originUrl.hostname === "ovias.shop" || originUrl.hostname.endsWith(".ovias.shop") || originUrl.hostname.endsWith(".vercel.app")) return;
+    if (originUrl.hostname === "localhost" || originUrl.hostname === "127.0.0.1") return;
+  } catch {}
+
+  throw new ApiError(403, "This request origin is not permitted.");
 }
 export async function body(req: NextRequest) {
   if (Number(req.headers.get("content-length") || 0) > 16_384)
