@@ -652,9 +652,12 @@ export function AuthExperience({
             <div className="ovia-auth-view">
               <h1 className="ovia-auth-heading">Enter verification code</h1>
               <p className="ovia-auth-subtext">
-                We&apos;ve sent a 6-digit code to
+                Check your email for a 6-digit code at
                 <br />
                 <strong className="ovia-auth-bold-email">{email}</strong>
+              </p>
+              <p className="ovia-auth-subtext">
+                Check Spam and Promotions if it isn&apos;t in your inbox. The code expires in 10 minutes.
               </p>
 
               {error && (

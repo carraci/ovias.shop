@@ -1,4 +1,4 @@
-import {test,expect} from "@playwright/test";
+import {test,expect} from "./helpers/mocked-ui";
 import {renderOrderDocument} from "../../src/lib/order-document";
 import type {Order} from "../../src/lib/types";
 for(const scenario of ["active","cancelled","refunded","unpaid","multi-item"]) {

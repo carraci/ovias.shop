@@ -17,9 +17,14 @@ export function catalogFacets(products: Product[], base: Filters, filters: Filte
   };
   const categoryScope = base.tag ? filterProducts(products,{...base,category:undefined,subcategory:undefined,limit:String(products.length || 1),page:'1'}).items : products;
   const departmentProducts = categoryScope.filter(p => !base.department || p.department === base.department);
-  const categories = (department:string) => department === 'bags' ? bagCategoryNames.map(label=>({label,value:slugify(label)}))
-    : department === 'luggage' ? luggageCategoryNames.map(label=>({label,value:slugify(label)}))
-    : unique(departmentProducts.filter(p=>p.department===department).flatMap(p=>p.catalogCategories || [p.category])).map(label=>({label,value:slugify(label)}));
+  const categories = (department:string) => {
+    const labels = department === 'bags' ? bagCategoryNames
+      : department === 'luggage' ? luggageCategoryNames
+      : unique(departmentProducts.filter(p=>p.department===department).flatMap(p=>p.catalogCategories || [p.category]));
+    return labels.map(label=>({label,value:slugify(label)})).filter(option=>
+      filterProducts(departmentProducts,{department,category:option.value,limit:'1'}).total>0
+    );
+  };
   const knownCategoryNames = base.department === 'bags' ? bagCategoryNames : base.department === 'luggage' ? luggageCategoryNames : [];
   const subCategoryValues = unique(scoped.flatMap(p=>p.catalogCategories || [p.subcategory || p.category]));
   const subCategories = knownCategoryNames.length ? knownCategoryNames.filter(label=>subCategoryValues.some(value=>canonicalCategory(value)===canonicalCategory(label))).map(label=>({label,value:slugify(label)})) : subCategoryValues.map(label=>({label,value:slugify(label)}));

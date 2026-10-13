@@ -1,0 +1,183 @@
+[Resend delivery] Resend configuration missing: EMAIL_API_KEY, EMAIL_FROM.
+[Resend delivery] Resend (422): validation_error: Recipient rejected
+[Resend delivery] Fixture provider disconnected
+✔ account email delivery uses the configured sender, recipient and idempotency identity (27.5417ms)
+✔ unconfigured email delivery fails before any provider request (5.4957ms)
+✔ email provider rejection is reported as failure rather than delivery (9.2011ms)
+✔ email transport failures cannot be mistaken for a sent email (4.472ms)
+[Resend delivery] Resend (422): Fixture email rejected
+[notification-service] Delivery failed for OTP_AUTHORIZATION to registration-retry@example.test: Resend (422): Fixture email rejected
+[auth backend] Resend (422): Fixture email rejected
+[auth backend] Unable to create this account. Try signing in or resetting your password.
+[notification-service] Successfully dispatched OTP_AUTHORIZATION to registration-retry@example.test via Resend.
+[auth backend] Unable to create this account. Try signing in or resetting your password.
+▶ registration can recover from rejected email without replacing an existing account
+  ✔ failed email reports failure and retains one unverified account (2436.1824ms)
+  ✔ another password cannot overwrite or verify the pending account (1541.5958ms)
+  ✔ the original password resumes verification after the resend cooldown (1850.8365ms)
+  ✔ verified accounts still require sign-in or recovery (417.5333ms)
+✔ registration can recover from rejected email without replacing an existing account (6251.8073ms)
+✔ new password boundaries and every allowed special character (3.9216ms)
+[notification-service] Successfully dispatched OTP_AUTHORIZATION to register-policy@example.test via Resend.
+[auth backend] [
+  {
+    "code": "custom",
+    "message": "Password must not contain spaces or whitespace.",
+    "path": [
+      "password"
+    ]
+  }
+]
+[auth backend] [
+  {
+    "code": "custom",
+    "message": "Password must include at least one uppercase letter.",
+    "path": [
+      "password"
+    ]
+  }
+]
+[auth backend] [
+  {
+    "code": "custom",
+    "message": "Password must include at least one digit.",
+    "path": [
+      "password"
+    ]
+  }
+]
+[auth backend] [
+  {
+    "code": "custom",
+    "message": "Password must include at least one special character from !@#$%^&*?+-/,.",
+    "path": [
+      "password"
+    ]
+  }
+]
+[auth backend] [
+  {
+    "code": "custom",
+    "message": "Password must include at least one special character from !@#$%^&*?+-/,.",
+    "path": [
+      "password"
+    ]
+  }
+]
+[auth backend] [
+  {
+    "code": "custom",
+    "message": "Password must not contain spaces or whitespace.",
+    "path": [
+      "password"
+    ]
+  }
+]
+[auth backend] [
+  {
+    "code": "custom",
+    "message": "Password must include at least one special character from !@#$%^&*?+-/,.",
+    "path": [
+      "newPassword"
+    ]
+  }
+]
+[auth backend] [
+  {
+    "code": "custom",
+    "message": "Password must not contain spaces or whitespace.",
+    "path": [
+      "newPassword"
+    ]
+  }
+]
+[auth backend] This link is invalid or expired. Request a new one.
+[notification-service] Successfully dispatched OTP_AUTHORIZATION to legacy-policy-0@example.test via Resend.
+[notification-service] Successfully dispatched OTP_AUTHORIZATION to legacy-policy-1@example.test via Resend.
+[auth backend] Email or password is incorrect.
+▶ registration and reset enforce the policy while existing logins remain compatible
+  ✔ eight-character registration succeeds and invalid values create no accounts (2657.9616ms)
+  ✔ both reset password aliases reject invalid values without consuming authorization (201.2371ms)
+  ✔ a valid eight-character reset consumes authorization and revokes sessions (2556.6825ms)
+  ✔ legacy passwords can still sign in without meeting the new creation policy (3217.5361ms)
+✔ registration and reset enforce the policy while existing logins remain compatible (9451.05ms)
+[notification-service] Successfully dispatched OTP_AUTHORIZATION to test-1@example.test via Resend.
+[notification-service] Successfully dispatched OTP_AUTHORIZATION to test-2@example.test via Resend.
+[notification-service] Successfully dispatched OTP_AUTHORIZATION to test-3@example.test via Resend.
+[notification-service] Successfully dispatched OTP_AUTHORIZATION to test-4@example.test via Resend.
+▶ OTP recovery uses owned storage, limits attempts, and revokes sessions
+  ✔ known and unknown email have identical responses and cooldown (2387.6138ms)
+  ✔ fifth wrong attempt deletes code and committed attempts persist (4536.492ms)
+  ✔ expired code fails even before TTL cleanup (911.057ms)
+[notification-service] Successfully dispatched OTP_AUTHORIZATION to test-5@example.test via Resend.
+  ✔ valid OTP and reset authorization are each single-use; password changes revoke sessions (3602.7437ms)
+[notification-service] Successfully dispatched OTP_AUTHORIZATION to test-6@example.test via Resend.
+  ✔ concurrent verification consumes code only once (1500.2274ms)
+[notification-service] Successfully dispatched OTP_AUTHORIZATION to test-6@example.test via Resend.
+[notification-service] Successfully dispatched OTP_AUTHORIZATION to test-7@example.test via Resend.
+[notification-service] Successfully dispatched OTP_AUTHORIZATION to test-7@example.test via Resend.
+  ✔ resend replaces previous code and invalidates previous reset authorization (2056.1649ms)
+[notification-service] Successfully dispatched OTP_AUTHORIZATION to test-8@example.test via Resend.
+[notification-service] Successfully dispatched OTP_AUTHORIZATION to test-8@example.test via Resend.
+  ✔ resending a code invalidates the previously emailed code (1614.728ms)
+[notification-service] Successfully dispatched OTP_AUTHORIZATION to test-9@example.test via Resend.
+  ✔ email verification and password recovery codes cannot authorize another purpose (1706.7459ms)
+[auth backend] [
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "email"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  }
+]
+[auth backend] [
+  {
+    "origin": "string",
+    "code": "invalid_format",
+    "format": "email",
+    "pattern": "/^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$/",
+    "path": [
+      "email"
+    ],
+    "message": "Invalid email address"
+  }
+]
+[auth backend] [
+  {
+    "origin": "string",
+    "code": "invalid_format",
+    "format": "regex",
+    "pattern": "/^\\d{6}$/",
+    "path": [
+      "otp"
+    ],
+    "message": "Enter the 6-digit code."
+  }
+]
+[auth backend] [
+  {
+    "code": "custom",
+    "message": "Password must contain at least 8 characters.",
+    "path": [
+      "password"
+    ]
+  }
+]
+[auth backend] This request origin is not permitted.
+[auth backend] Too many attempts. Please wait a minute.
+[auth backend] Too many attempts. Please wait a minute.
+  ✔ tampered, expired and wrong-purpose JWTs are rejected (1089.2439ms)
+  ✔ provider failure is displayed and logged, secrets are redacted, and code is removed (751.2069ms)
+  ✔ missing email configuration fails for all accounts (1.5453ms)
+  ✔ API validates fields, enforces origin and rate limits (1294.2223ms)
+✔ OTP recovery uses owned storage, limits attempts, and revokes sessions (21471.9527ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 24566.4791

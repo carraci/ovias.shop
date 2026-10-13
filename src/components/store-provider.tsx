@@ -120,12 +120,10 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const refresh = useCallback(async () => {
-    const [account, nextCart] = await Promise.allSettled([
-      request<{ user: UserView | null }>("account"),
-      request<CartView>("cart"),
+    await Promise.allSettled([
+      request<{ user: UserView | null }>("account").then(account => setUser(account.user)),
+      request<CartView>("cart").then(acceptCart),
     ]);
-    if (account.status === "fulfilled") setUser(account.value.user);
-    if (nextCart.status === "fulfilled") acceptCart(nextCart.value);
   }, [acceptCart]);
 
   useEffect(() => {

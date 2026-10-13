@@ -1,11 +1,17 @@
-import { test } from 'node:test';
+import { test, before } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { products, filterProducts, slugify } from '../src/lib/catalog';
+import { filterProducts, slugify } from '../src/lib/catalog';
+import { csvImportFixture } from './helpers/csv-import-fixture';
+let products: import('../src/lib/catalog').Product[];
+let initialProducts: import('../src/lib/catalog').Product[];
+before(async()=>{
+  products=await csvImportFixture('luggage');
+  initialProducts=products.filter(p=>p.importSources?.some(s=>source.some((input: {file:string})=>input.file===s.file)));
+});
 import { catalogFacets } from '../src/lib/catalog-facets';
 
 const source = JSON.parse(fs.readFileSync('data/luggage-csv-sources.json','utf8').replace(/^\uFEFF/,''));
-const initialProducts = products.filter(p=>p.importSources?.some(s=>source.some((input: {file:string})=>input.file===s.file)));
 const categories = ['Trunk','Check-In','Cabin','Luggage','Cabin Bags'];
 
 test('every CSV row is represented in exactly its assigned category membership', () => {

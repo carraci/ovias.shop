@@ -117,3 +117,5 @@ lighthouse-*.json
 /*-mobile.png
 performance-audit.md
 
+.vercel
+.env*

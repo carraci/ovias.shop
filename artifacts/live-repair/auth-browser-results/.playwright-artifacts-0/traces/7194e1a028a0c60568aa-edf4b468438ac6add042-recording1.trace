@@ -1,0 +1,1 @@
+{"version":9,"type":"context-options","origin":"library","browserName":"","playwrightVersion":"1.63.0","options":{},"platform":"win32","wallTime":1791845804285,"monotonicTime":3461.805,"sdkLanguage":"javascript","title":"auth-current-flow.spec.ts:26 › sign-in updates account state before a delayed cart and then opens the requested account page"}

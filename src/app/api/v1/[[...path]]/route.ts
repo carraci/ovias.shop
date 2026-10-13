@@ -245,11 +245,17 @@ export async function POST(req: NextRequest, ctx: Context) {
         if (input.terms !== "on") throw new ApiError(400, "Accept the terms to create an account.");
         const password = passwordHash(input.password);
         user = await transaction(async (repo) => {
-          if ((await repo.find<User>("users", { email: input.email })).length)
+          const existing = (await repo.find<User>("users", { email: input.email }))[0];
+          if (existing) {
+            // An email failure leaves a pending account. Its owner can retry
+            // verification using the original password without replacing it.
+            if (!existing.verifiedAt && checkPassword(input.password, existing.passwordHash))
+              return existing;
             throw new ApiError(
               409,
               "Unable to create this account. Try signing in or resetting your password.",
             );
+          }
           const u = {
             id: randomUUID(),
             name: input.name!,

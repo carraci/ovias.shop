@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { build } from "esbuild";
 let bundle = "";
+let css = "";
 test.beforeAll(async () => {
   const result = await build({
     stdin: {
@@ -11,11 +12,13 @@ test.beforeAll(async () => {
     },
     bundle: true,
     write: false,
+    outdir: "artifacts/customer-support-fixture",
     platform: "browser",
     jsx: "automatic",
     define: { "process.env.NODE_ENV": '"production"' },
   });
-  bundle = result.outputFiles![0].text;
+  bundle = result.outputFiles!.find(file => file.path.endsWith(".js"))!.text;
+  css = result.outputFiles!.find(file => file.path.endsWith(".css"))?.text || "";
 });
 async function mount(page: any) {
   const customer = {
@@ -135,6 +138,7 @@ async function mount(page: any) {
     }),
   );
   await page.goto("/customer-support-fixture");
+  await page.addStyleTag({ content: css });
   await expect(
     page.getByRole("heading", { name: /How can we/ }),
     browserErrors.join("; "),
@@ -162,6 +166,7 @@ test("Your Requests opens the complete conversation and website replies keep the
   page,
 }) => {
   const controls = await mount(page);
+  await page.getByRole("button", { name: /View requests/ }).click();
   await page.getByRole("button", { name: /Existing payment request/ }).click();
   await expect(
     page.getByText("We are reviewing your payment.", { exact: true }),
@@ -185,12 +190,10 @@ test("customer form uploads an attachment and creates one real request with its 
 }) => {
   const controls = await mount(page);
   await page
-    .getByLabel("Subject", { exact: true })
-    .fill("Payment proof for review");
-  await page
-    .getByLabel("Message", { exact: true })
+    .getByLabel("Your message", { exact: true })
     .fill("Please review the attached payment proof.");
   await page.getByLabel("Category", { exact: true }).selectOption("Payment");
+  await page.getByText("Related order and attachments (optional)", { exact: true }).click();
   await page.getByLabel("Related order", { exact: true }).selectOption("order");
   await page.getByLabel("Add attachments", { exact: true }).setInputFiles({
     name: "proof.txt",
@@ -201,11 +204,11 @@ test("customer form uploads an attachment and creates one real request with its 
     page.getByRole("link", { name: "proof.txt", exact: true }),
   ).toBeVisible();
   await page
-    .getByRole("button", { name: "Create support request", exact: true })
+    .getByRole("button", { name: /Send request/ })
     .click();
   await expect(
     page.getByRole("heading", {
-      name: "Payment proof for review",
+      name: "Payment",
       exact: true,
     }),
   ).toBeVisible();
@@ -213,4 +216,5 @@ test("customer form uploads an attachment and creates one real request with its 
     "cea0b11e-bc70-44b1-a094-4094f68357f1",
   ]);
   expect(controls.created().orderId).toBe("order");
+  expect(controls.created().subject).toBe("Payment");
 });

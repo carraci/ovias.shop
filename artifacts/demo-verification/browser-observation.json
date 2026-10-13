@@ -1,0 +1,14 @@
+{
+  "url": "http://localhost:3128/account/notifications",
+  "account": {
+    "user": {
+      "id": "370894fa-0516-4f78-8d65-3379de52e98a",
+      "name": "Demo Customer",
+      "email": "customer@example.test",
+      "verifiedAt": "2026-10-12T18:25:48.100Z",
+      "role": "CUSTOMER"
+    }
+  },
+  "text": "Skip to content\nOVIA\nTRAVEL GOODS\nNew\nLuggage\nBags\nServices\nDiscover\nCall Us\n0\nMy OVIA\nYour personal travel companion\nPayment methods\nReturns & exchanges\nRefunds\nAccount activity\nWishlist\nSaved addresses\nHelp & support\nReviews\nProfile\nAccount security\nSign out\nDemo Customer\ncustomer@example.test\n\nMY OVIA / ACCOUNT ACTIVITY\n\nAccount activity.\n\nUpdates about your orders and account.\n\n0 unread\nMark all as read\nAll\nOrders\nReturns & refunds\nSupport\nSecurity\n\nLoading activity…\n\nOVIA\nTRAVEL GOODS\n\nSIGN UP FOR OUR NEWSLETTER\n\nBe the first to know about new collections, exclusive events and the world of OVIA.\n\nSIGN UP\nSHOP\nNew Arrivals\nBags\nLuggage\nAccessories\nCollections\nTHE WORLD OF OVIA\nAbout OVIA\nEvents\nLatest News\nCLIENT SERVICES\nClient Service\nFAQ\nStore Locator\nCorporate & Bulk Gifting\nSUPPORT\nContact Us\nMy Account\nLEGAL\nPrivacy Policy\nTerms & Conditions\nData Protection & Security\nIN\n|\nEnglish\nहिन्दी\nFrançais\nDeutsch\nالعربية\n日本語\n简体中文\n繁體中文\n한국어\nBahasa Melayu\nไทย\nCatalà\nHrvatski\nΕλληνικά\nČeština\nDansk\nEesti\nSuomi\nMagyar\nItaliano\nLatviešu\nLietuvių\nNederlands\nNorsk\nPolski\nPortuguês\nRomână\nSlovenčina\nSlovenščina\nEspañol\nSvenska\nTürkçe\nFOLLOW US ON:\n© 2026 OVIA — ALL RIGHTS RESERVED\n\nFictional products and illustrative design studies. This preview does not fulfill purchases.",
+  "errors": []
+}

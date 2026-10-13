@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./helpers/mocked-ui";
 import { build } from "esbuild";
 test("customer tabs display recorded prices and never assume a cancelled order was paid", async ({
   page,

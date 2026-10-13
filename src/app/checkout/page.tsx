@@ -210,9 +210,10 @@ export default function Checkout() {
     const timer = setTimeout(async () => {
       try {
         const res = await fetch(`/api/v1/shipping/serviceability?pincode=${encodeURIComponent(pin)}`);
-        const data = await res.json();
+        const payload = await res.json();
+        const data = payload.data ?? payload;
         if (active) {
-          if (data && data.serviceable) {
+          if (res.ok && data && data.serviceable) {
             setServiceability({
               checked: true,
               serviceable: true,
@@ -235,7 +236,7 @@ export default function Checkout() {
         if (active) {
           setServiceability({
             checked: true,
-            serviceable: true,
+            serviceable: false,
           });
         }
       } finally {

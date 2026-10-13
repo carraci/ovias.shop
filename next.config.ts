@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 const config: NextConfig = {
-  allowedDevOrigins: ["127.0.0.1"],
+  allowedDevOrigins: ["localhost", "127.0.0.1"],
   distDir: process.env.OVIA_BUILD_DIR || ".next",
   serverExternalPackages: ["pdf-parse", "mammoth"],
   turbopack: { root: process.cwd() },

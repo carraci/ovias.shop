@@ -6,6 +6,8 @@ import { authSigningKey } from "../src/server/auth";
 import { transaction } from "../src/server/db";
 import { hash } from "../src/server/http";
 import type { User, Session } from "../src/lib/types";
+import { products } from "../src/lib/catalog";
+import { installMongoFixture } from "./helpers/mongo-fixture";
 import { 
   canTransitionOrder, 
   transitionOrderStatus, 
@@ -58,7 +60,7 @@ test("Order State Machine - validates allowed and rejects illegal status transit
   assert.equal(canTransitionOrder("Refunded", "Processing"), false);
 });
 
-test("Order State Machine - transitionOrderStatus throws on illegal status", async () => {
+test("Order State Machine - manual courier changes require the confirmed shipping flow", async () => {
   await assert.rejects(
     async () => {
       // Attempting to revert a Delivered order back to Processing
@@ -69,39 +71,54 @@ test("Order State Machine - transitionOrderStatus throws on illegal status", asy
       });
     },
     (err: any) => {
-      assert.match(err.message, /Invalid state transition/);
+      assert.match(err.message, /Manual courier and cancellation status changes are disabled/);
       return true;
     }
   );
 });
 
 test("Inventory Adjustments - records auditable movement reason", async () => {
+  const product = structuredClone(products[0]);
+  const sku = product.variants[0].sku;
+  const originalStock = product.variants[0].stock;
+  const database = installMongoFixture([product]);
+  try {
   const result = await adjustInventoryStock({
-    sku: "CB-001",
+    sku,
     adjustment: 20,
     reason: "RESTOCK",
     notes: "Batch PO-992 from workshop",
-    actor: "adarshshukla4639@gmail.com",
+    actor: "owner@example.test",
   });
 
   assert.equal(result.success, true);
-  assert.equal(result.sku, "CB-001");
+  assert.equal(result.sku, sku);
   assert.equal(result.adjustedBy, 20);
   assert.equal(result.reason, "RESTOCK");
+  const snapshot = database.snapshot();
+  assert.equal(snapshot.inventory[0].available, originalStock + 20);
+  assert.equal(snapshot.products[0].variants[0].stock, originalStock + 20);
+  assert.equal(snapshot.inventoryMovements[0].notes, "Batch PO-992 from workshop");
+  assert.equal(snapshot.inventoryMovements[0].actor, "owner@example.test");
+  } finally { database.restore(); }
 });
 
-test("AI Admin Copilot - answers queries without exposing credentials or secrets", async () => {
-  const inventoryQuery = await queryAiCopilot("Which products are low on stock?");
-  assert.ok(inventoryQuery.answer.includes("Executive Check-in"));
-  assert.ok(!inventoryQuery.answer.includes("secret"));
-  assert.ok(!inventoryQuery.answer.includes("password"));
-
-  const revenueQuery = await queryAiCopilot("Why did revenue increase this week?");
-  assert.ok(revenueQuery.answer.includes("32,48,990"));
-  assert.ok(revenueQuery.answer.includes("OVIA Pro Cabin"));
-
-  const shippingQuery = await queryAiCopilot("Show delayed shipments");
-  assert.ok(shippingQuery.answer.includes("Delhivery"));
+test("AI Admin Copilot - unconfigured providers do not invent stock, revenue or shipping answers", async () => {
+  const keys = ["OVIA_AI_API_KEY", "OVIA_AI_BASE_URL", "OVIA_AI_MODEL"] as const;
+  const previous = keys.map(key => process.env[key]);
+  const originalFetch = globalThis.fetch;
+  let requests = 0;
+  globalThis.fetch = async () => { requests++; throw new Error("Unexpected network request"); };
+  keys.forEach(key => delete process.env[key]);
+  try {
+    for (const question of ["Which products are low on stock?", "Why did revenue increase this week?", "Show delayed shipments"]) {
+      await assert.rejects(queryAiCopilot(question), (error: any) => error.status === 503 && /Configure the AI provider/.test(error.message));
+    }
+    assert.equal(requests, 0);
+  } finally {
+    globalThis.fetch = originalFetch;
+    keys.forEach((key, index) => { if (previous[index] === undefined) delete process.env[key]; else process.env[key] = previous[index]; });
+  }
 });
 
 test("API Security - authorizeAdminApi rejects unauthenticated requests with 401", async () => {
@@ -117,6 +134,8 @@ test("API Security - authorizeAdminApi rejects unauthenticated requests with 401
 });
 
 test("API Security - authorizeAdminApi rejects CUSTOMER with 403 Forbidden and zero order data", async () => {
+  const database = installMongoFixture();
+  try {
   const customerId = "test-customer-uuid-999";
   const sessionJti = "cust-session-jti-888";
 
@@ -164,9 +183,12 @@ test("API Security - authorizeAdminApi rejects CUSTOMER with 403 Forbidden and z
     assert.match(body.error, /Forbidden/);
     assert.equal((body as any).orders, undefined);
   }
+  } finally { database.restore(); }
 });
 
 test("API Security - authorizeAdminApi allows authenticated OWNER", async () => {
+  const database = installMongoFixture();
+  try {
   const ownerId = "test-owner-uuid-111";
   const sessionJti = "owner-session-jti-222";
 
@@ -211,4 +233,5 @@ test("API Security - authorizeAdminApi allows authenticated OWNER", async () => 
     assert.equal(auth.user.role, "OWNER");
     assert.equal(auth.user.email, "owner.test.111@ovia.luxury");
   }
+  } finally { database.restore(); }
 });

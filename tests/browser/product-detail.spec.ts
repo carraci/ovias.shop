@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./helpers/mocked-ui";
 import type { Product } from "../../src/lib/catalog";
 import { productMedia } from "../../src/lib/product-media";
 

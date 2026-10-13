@@ -1,10 +1,13 @@
-import { test } from 'node:test';
+import { test, before } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { products, filterProducts, slugify } from '../src/lib/catalog';
+import { filterProducts, slugify } from '../src/lib/catalog';
+import { csvImportFixture } from './helpers/csv-import-fixture';
 import { catalogFacets } from '../src/lib/catalog-facets';
 const sources=JSON.parse(fs.readFileSync('data/bags-csv-sources.json','utf8'));
-const bags=products.filter(p=>p.department==='bags');
+let products: import('../src/lib/catalog').Product[];
+let bags: import('../src/lib/catalog').Product[];
+before(async()=>{ products=await csvImportFixture('bags'); bags=products.filter(p=>p.department==='bags'); });
 
 test('bag imports preserve all rows, prices and distinct image variations',()=>{
   assert.equal(bags.filter(p=>p.importSources?.some(s=>sources.some((input: {file:string})=>input.file===s.file))).length,195);

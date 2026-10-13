@@ -1,4 +1,4 @@
-import {test,expect} from "@playwright/test";
+import {test,expect} from "./helpers/mocked-ui";
 import {build} from "esbuild";
 test("preview and edit open inside the selected post",async({page})=>{
  const bundle=await build({stdin:{contents:`import React from 'react';import {createRoot} from 'react-dom/client';import {BlogManager} from './src/components/admin/blog-manager';createRoot(document.getElementById('root')).render(<BlogManager/>);`,resolveDir:process.cwd(),loader:"tsx"},bundle:true,write:false,platform:"browser",jsx:"automatic",define:{"process.env.NODE_ENV":'"production"'}});

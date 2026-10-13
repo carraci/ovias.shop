@@ -1,7 +1,10 @@
-import {test} from 'node:test';
+import {test,before} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {products,filterProducts,slugify} from '../src/lib/catalog';
+import {filterProducts,slugify} from '../src/lib/catalog';
+import {csvImportFixture} from './helpers/csv-import-fixture';
+let products: import('../src/lib/catalog').Product[];
+before(async()=>{ products=await csvImportFixture('bags-more'); });
 const sources=JSON.parse(fs.readFileSync('data/bags-more-csv-sources.json','utf8'));
 test('additional bag imports retain previous products and every source row',()=>{
  const text=fs.readFileSync('data/import-backups/imported-products-before-more-bags.txt','utf8');

@@ -53,6 +53,7 @@ export default function Confirmation({
     };
   }, [id, retry]);
   const paid = order?.status === "paid";
+  const demo = order?.status === "demo";
   const pending =
     !!order && ["pending", "payment_pending"].includes(order.status);
   return (
@@ -75,21 +76,27 @@ export default function Confirmation({
             <p className={styles.label}>
               {paid
                 ? "ORDER CONFIRMED"
-                : order.status.replaceAll("_", " ").toUpperCase()}
+                : demo
+                  ? "DEMO ORDER SAVED"
+                  : order.status.replaceAll("_", " ").toUpperCase()}
             </p>
             <h1>
-              {paid || order.status === "demo"
+              {paid
                 ? "Thank you for choosing OVIA."
-                : pending
+                : demo
+                  ? "Demo order saved."
+                  : pending
                   ? "Confirming your payment."
                   : order.status === "refund_required"
                     ? "Your payment needs attention."
                     : "This payment attempt is closed."}
             </h1>
             <p>
-              {paid || order.status === "demo"
+              {paid
                 ? `${order.provider === "paypal" ? "Your PayPal payment" : order.provider === "razorpay" ? "Your Razorpay payment" : "Your payment"} is verified. Order updates will be sent to ${order.address.email}.`
-                : pending
+                : demo
+                  ? "This sample order was saved. No payment was taken."
+                  : pending
                   ? "We’re waiting for verified payment status. You can safely return to this page. Please do not pay again."
                   : order.status === "refund_required"
                     ? "Payment requires merchant review. Contact support with the order reference below; do not pay again."

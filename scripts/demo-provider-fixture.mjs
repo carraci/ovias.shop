@@ -2,7 +2,7 @@
 // The actual application still validates signatures, ownership and persisted totals.
 import { createServer } from "node:http";
 import { randomUUID } from "node:crypto";
-export function startDemoProviders() {
+export function startDemoProviders(options = {}) {
   const orders = new Map(), payments = new Map(), refunds = new Map(), emails = [];
   const requests = [];
   const server = createServer(async (req, res) => {
@@ -11,6 +11,7 @@ export function startDemoProviders() {
     const url = new URL(req.url, "http://fixture.invalid");
     requests.push({ method: req.method, path: url.pathname });
     const send = (data, status = 200) => { res.writeHead(status, { "Content-Type": "application/json" }); res.end(JSON.stringify(data)); };
+    if (url.pathname === "/control/reset-limits" && req.method === "POST" && options.resetLimits) { await options.resetLimits(); return send({ ok: true }); }
     if (url.pathname === "/emails" && req.method === "POST") { emails.push(input); return send({ id: `mail_${randomUUID()}` }); }
     if (url.pathname === "/control/capture" && req.method === "POST") {
       const order = orders.get(input.orderId); if (!order) return send({ error: "fixture order missing" }, 404);

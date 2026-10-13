@@ -4,6 +4,7 @@ import fs from "node:fs";
 import { buildVendorCsvCatalog, classifyVendorBag, csvPrice } from "../src/lib/vendor-bag-csv";
 import { filterProducts } from "../src/lib/catalog-filter";
 import { catalogFacets } from "../src/lib/catalog-facets";
+import { bagCategoryNames } from "../src/lib/catalog-helpers";
 
 test("vendor prices distinguish sale prices from MRP and currency punctuation", () => {
   assert.equal(csvPrice("Sale price₹. 1,999.00"), 199900);
@@ -44,7 +45,9 @@ test("the eighteen supplied feeds deduplicate, preserve evidence and filter with
   assert.ok(page.items.every(product => product.collection === "Wildcraft"));
   assert.ok(page.items.every((product, index, all) => index === 0 || all[index - 1].variants[0].price <= product.variants[0].price));
   const facets = catalogFacets(products, { department: "bags" }, { department: "bags" });
-  assert.deepEqual(facets.categories.bags.slice(1).map(value => value.label), ["Backpacks", "Tote Bags", "Crossbody Bags", "Shoulder Bags", "Duffel Bags", "Briefcases", "Weekend Bags", "Travel Bags"]);
+  assert.deepEqual(bagCategoryNames, ["Backpacks", "Tote Bags", "Crossbody Bags", "Shoulder Bags", "Duffel Bags", "Briefcases", "Weekend Bags", "Travel Bags"]);
+  assert.deepEqual(facets.categories.bags.slice(1).map(value => value.label), ["Backpacks", "Tote Bags", "Crossbody Bags", "Shoulder Bags", "Duffel Bags", "Weekend Bags", "Travel Bags"]);
+  for (const option of facets.categories.bags) assert.ok(filterProducts(products, { department: "bags", category: option.value }).total > 0);
   assert.ok(products.every(product => product.variants.every(variant => variant.stock === 0)));
   for (const size of ["small", "medium", "large"]) {
     const category = filterProducts(products, { department: "luggage", category: `${size}-luggage`, limit: "1000" });

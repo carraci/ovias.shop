@@ -14,10 +14,32 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npm audit --audit-level=high
+      - name: Start disposable MongoDB replica set
+        run: |
+          docker run --detach --name ovia-ci-mongo --publish 27017:27017 mongo:7 --replSet rs0 --bind_ip_all
+          for attempt in $(seq 1 30); do
+            if docker exec ovia-ci-mongo mongosh --quiet --eval 'db.adminCommand({ping:1}).ok' | grep -q 1; then break; fi
+            sleep 2
+          done
+          docker exec ovia-ci-mongo mongosh --quiet --eval 'rs.initiate({_id:"rs0",members:[{_id:0,host:"localhost:27017"}]})'
+          for attempt in $(seq 1 30); do
+            if docker exec ovia-ci-mongo mongosh --quiet --eval 'db.hello().isWritablePrimary' | grep -q true; then exit 0; fi
+            sleep 2
+          done
+          exit 1
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
+        env:
+          MONGODB_URI: mongodb://127.0.0.1:27017/?replicaSet=rs0&directConnection=true
+          OVIA_TEST_PORT: "3000"
+          OVIA_TEST_BASE_URL: http://localhost:3000
+      - name: Stop disposable MongoDB
+        if: always()
+        run: docker stop ovia-ci-mongo || true
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: browser-test-results
-          path: test-results/
+          path: |
+            test-results/
+            artifacts/ci-browser-report/

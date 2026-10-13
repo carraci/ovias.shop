@@ -1,0 +1,1143 @@
+diff --git a/next.config.ts b/next.config.ts
+index 6457d68..e149d92 100644
+--- a/next.config.ts
++++ b/next.config.ts
+@@ -1,6 +1,6 @@
+ import type { NextConfig } from "next";
+ const config: NextConfig = {
+-  allowedDevOrigins: ["127.0.0.1"],
++  allowedDevOrigins: ["localhost", "127.0.0.1"],
+   distDir: process.env.OVIA_BUILD_DIR || ".next",
+   serverExternalPackages: ["pdf-parse", "mammoth"],
+   turbopack: { root: process.cwd() },
+diff --git a/package-lock.json b/package-lock.json
+index 91484eb..b2f5238 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -18,7 +18,7 @@
+         "lucide-react": "^0.468.0",
+         "mammoth": "^1.13.0",
+         "mongodb": "^6.20.0",
+-        "next": "16.3.5",
++        "next": "16.3.8",
+         "pdf-parse": "^2.4.5",
+         "qrcode": "^1.5.4",
+         "razorpay": "^2.9.6",
+@@ -698,9 +698,9 @@
+       }
+     },
+     "node_modules/@img/sharp-darwin-arm64": {
+-      "version": "0.35.4",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-darwin-arm64/-/sharp-darwin-arm64-0.35.4.tgz",
+-      "integrity": "sha512-Uhfl4V4lhP2nbUVF9+hyH1+luj86f1gUFeo8ALYxFoULoU+G87D43BfeMP8XHsk9boxAnCY/bf2EHwhA7MuGsA==",
++      "version": "0.35.5",
++      "resolved": "https://registry.npmjs.org/@img/sharp-darwin-arm64/-/sharp-darwin-arm64-0.35.5.tgz",
++      "integrity": "sha512-QRUlFQ0WxvdWyqqG/WtI3iupfD5rBzmCHXSdPsY91sAtVtTo7Q4cb6zOccZ3gqEqkr0f1As1ehLqmEpDsRf+lg==",
+       "cpu": [
+         "arm64"
+       ],
+@@ -716,13 +716,13 @@
+         "url": "https://opencollective.com/libvips"
+       },
+       "optionalDependencies": {
+-        "@img/sharp-libvips-darwin-arm64": "1.3.3"
++        "@img/sharp-libvips-darwin-arm64": "1.3.4"
+       }
+     },
+     "node_modules/@img/sharp-darwin-x64": {
+-      "version": "0.35.4",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-darwin-x64/-/sharp-darwin-x64-0.35.4.tgz",
+-      "integrity": "sha512-hWniXY3bG5qKpkKrAwPe4y+VTPmf086YQAnkxWh7uA1YrlRouWGa0M0Mxj3ZjnXFkv7/TD1bTy9lGUK26vRvWw==",
++      "version": "0.35.5",
++      "resolved": "https://registry.npmjs.org/@img/sharp-darwin-x64/-/sharp-darwin-x64-0.35.5.tgz",
++      "integrity": "sha512-+BR255RhDlpygUpOc/Jdt1nT6DQ3XG/ERo5wbcdOf5Q320dKtPCKPLR1LJs9VGXRaMa8l1uUa0tkCNOXiAxZUw==",
+       "cpu": [
+         "x64"
+       ],
+@@ -738,20 +738,20 @@
+         "url": "https://opencollective.com/libvips"
+       },
+       "optionalDependencies": {
+-        "@img/sharp-libvips-darwin-x64": "1.3.3"
++        "@img/sharp-libvips-darwin-x64": "1.3.4"
+       }
+     },
+     "node_modules/@img/sharp-freebsd-wasm32": {
+-      "version": "0.35.4",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-freebsd-wasm32/-/sharp-freebsd-wasm32-0.35.4.tgz",
+-      "integrity": "sha512-lIsKw/BU+kjB4eZjxrYrZmwOJYi3Ajrv66iAlBmUPyKc3HpnloevB1g3wxGD9P/5BbQ1brBGl65VRRrCvQDEqA==",
++      "version": "0.35.5",
++      "resolved": "https://registry.npmjs.org/@img/sharp-freebsd-wasm32/-/sharp-freebsd-wasm32-0.35.5.tgz",
++      "integrity": "sha512-Y/z91nEZ4uIBX5X3nfTovjU9lHNKFYbL2lpHCLVNmXQK03VIZvXBBt0KxbPGp2SdGSF+2mQU4e+hQaWOt86iAw==",
+       "license": "Apache-2.0",
+       "optional": true,
+       "os": [
+         "freebsd"
+       ],
+       "dependencies": {
+-        "@img/sharp-wasm32": "0.35.4"
++        "@img/sharp-wasm32": "0.35.5"
+       },
+       "engines": {
+         "node": ">=20.9.0"
+@@ -761,9 +761,9 @@
+       }
+     },
+     "node_modules/@img/sharp-libvips-darwin-arm64": {
+-      "version": "1.3.3",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-darwin-arm64/-/sharp-libvips-darwin-arm64-1.3.3.tgz",
+-      "integrity": "sha512-suTBPTDGrI9WodccaDdwZItTSaBYASlBk1NSfElSHrUfzu3szG6lvIF58+WiFvnfzuK8ZBFS5zE00PxqxnRiPg==",
++      "version": "1.3.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-darwin-arm64/-/sharp-libvips-darwin-arm64-1.3.4.tgz",
++      "integrity": "sha512-5R89nBYiRdUlSWJxPhO+GVtaXzXSxKnRu/xqMn3KTA3L9EB9Oy/P+Nn2f2vlhPuUdy/Zusb2DarbyTpGCfEDuw==",
+       "cpu": [
+         "arm64"
+       ],
+@@ -777,9 +777,9 @@
+       }
+     },
+     "node_modules/@img/sharp-libvips-darwin-x64": {
+-      "version": "1.3.3",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-darwin-x64/-/sharp-libvips-darwin-x64-1.3.3.tgz",
+-      "integrity": "sha512-FVJZ5mITMobmXIz/hPDTw0EintTW5H3WfrxwLqEqjiIihlu+hVRyGrFQ60xl0Lxn7Bt3zdpevPaQi0HEzqz9fw==",
++      "version": "1.3.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-darwin-x64/-/sharp-libvips-darwin-x64-1.3.4.tgz",
++      "integrity": "sha512-iR2OKH80yi0U+dUplyh3/xdpFvps6YkCwsXenIJxqxR1v9o+xtKTGbS9H7cps+2Vxjc8B1j96p75NmTGjIhtpQ==",
+       "cpu": [
+         "x64"
+       ],
+@@ -793,9 +793,9 @@
+       }
+     },
+     "node_modules/@img/sharp-libvips-linux-arm": {
+-      "version": "1.3.3",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-arm/-/sharp-libvips-linux-arm-1.3.3.tgz",
+-      "integrity": "sha512-3rbU4vqXXc3hY/OiXdl52xZvT0F1yEngWfvqudtPJg/KkyiaQw2DRsFrNzpmLvfavbwOq3qXn36GP8obHRULQA==",
++      "version": "1.3.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-arm/-/sharp-libvips-linux-arm-1.3.4.tgz",
++      "integrity": "sha512-LmRtTsOHuvM2+wlO2Db37dx5MiZhB0FvSunciw48YjdOkZz9KAiRbm8ujeMOA1INqmei5NapFxYEK1D1ZSidmw==",
+       "cpu": [
+         "arm"
+       ],
+@@ -809,9 +809,9 @@
+       }
+     },
+     "node_modules/@img/sharp-libvips-linux-arm64": {
+-      "version": "1.3.3",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-arm64/-/sharp-libvips-linux-arm64-1.3.3.tgz",
+-      "integrity": "sha512-0DaL0A6Xu6sQSQFwe4iVCrKWU2cCTItnRsYsCdxAMm9NF6twAA9BKnoqy4hqz4+azQ0JHuA26qiUKsf1XJ/v5A==",
++      "version": "1.3.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-arm64/-/sharp-libvips-linux-arm64-1.3.4.tgz",
++      "integrity": "sha512-Y3dgX/6lE2QhQb+Gxy0WZxfg9MEm/JBjamZpS2IklP7xIQoKN4hzAm7KcMVGtaVDt3neE9OKBC7vAfonA/Lr1A==",
+       "cpu": [
+         "arm64"
+       ],
+@@ -825,9 +825,9 @@
+       }
+     },
+     "node_modules/@img/sharp-libvips-linux-ppc64": {
+-      "version": "1.3.3",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-ppc64/-/sharp-libvips-linux-ppc64-1.3.3.tgz",
+-      "integrity": "sha512-cdn1OvUBwsXhbC0zSzJnNzf5MZ/mTrobawDvNXBTxe8VtqKAm0sRuEY2Evzovb/w9JMk4TvRxqt1mekSuJz64w==",
++      "version": "1.3.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-ppc64/-/sharp-libvips-linux-ppc64-1.3.4.tgz",
++      "integrity": "sha512-Le6boB8Tai0Nis+gIxIpKx68UDVVIqdR8Tin5Yf1z2LJJQLDJvCDRqRu+jC2qCoD+eIomonmOwB4smBRxfVpYQ==",
+       "cpu": [
+         "ppc64"
+       ],
+@@ -841,9 +841,9 @@
+       }
+     },
+     "node_modules/@img/sharp-libvips-linux-riscv64": {
+-      "version": "1.3.3",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-riscv64/-/sharp-libvips-linux-riscv64-1.3.3.tgz",
+-      "integrity": "sha512-HjPVx7yKz+0lqdhDlTw1tt90wamBoxhiXpvl1XZpJLiHH4RCJ5yDTqH+VlYPv2fwFs89JFw4c1IexYOcQUi4IQ==",
++      "version": "1.3.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-riscv64/-/sharp-libvips-linux-riscv64-1.3.4.tgz",
++      "integrity": "sha512-aHkkIEHPRdQEegJN20MLmGtxYD9R2wQr3Cwpddnu5+YKMt6Uzax7S9h5gpZTo8wyrGuZSlfQ63OevL5mTyOC7Q==",
+       "cpu": [
+         "riscv64"
+       ],
+@@ -857,9 +857,9 @@
+       }
+     },
+     "node_modules/@img/sharp-libvips-linux-s390x": {
+-      "version": "1.3.3",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-s390x/-/sharp-libvips-linux-s390x-1.3.3.tgz",
+-      "integrity": "sha512-neWLh+3yCNThxnfy3c4BbVBeGgt9aftno+XbT56iK28RgeDs3UOFWviLWlUu0bArYVYJaFDK+RRohbicUNCm8Q==",
++      "version": "1.3.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-s390x/-/sharp-libvips-linux-s390x-1.3.4.tgz",
++      "integrity": "sha512-ra/mB6MikESDUO7Yg+Mi95bFBb9GsObURuhnOv3OqknjGe9sZrG8tCe9q0xSIGrtLgvgw0gKnFWcK4blSgQOuQ==",
+       "cpu": [
+         "s390x"
+       ],
+@@ -873,9 +873,9 @@
+       }
+     },
+     "node_modules/@img/sharp-libvips-linux-x64": {
+-      "version": "1.3.3",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-x64/-/sharp-libvips-linux-x64-1.3.3.tgz",
+-      "integrity": "sha512-4vKmvAst9nrowcqquKFAyZJUDolUaIp8uRiN0mWFguJ1IplC9/pitXtlnnlU4aa/eJw3J7i67V+pwUL+wZGdsA==",
++      "version": "1.3.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linux-x64/-/sharp-libvips-linux-x64-1.3.4.tgz",
++      "integrity": "sha512-GJ//SSXbnwSDes02umB3nDJLFcQzw8a18V8fyhqr6tV515tOEMdImjjxj1AoafMRz56F3PHgftnj1QEKSU1zkw==",
+       "cpu": [
+         "x64"
+       ],
+@@ -889,9 +889,9 @@
+       }
+     },
+     "node_modules/@img/sharp-libvips-linuxmusl-arm64": {
+-      "version": "1.3.3",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linuxmusl-arm64/-/sharp-libvips-linuxmusl-arm64-1.3.3.tgz",
+-      "integrity": "sha512-Y9kQaLMuNoB0bPYOOdcZMaseNrFpPodIWWMrx+CZyydf2xn68j9WYc6sWWRrDwNkzCQjKYfc68L7jKjGlHMibw==",
++      "version": "1.3.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linuxmusl-arm64/-/sharp-libvips-linuxmusl-arm64-1.3.4.tgz",
++      "integrity": "sha512-hvulFwtjUcagsis6BBxHwGFwWoNZjgYmULGVrZcyfNbjA8hKILbRxGg15/7w5HDyXHXUos/j6baAWqnCyQ2DWA==",
+       "cpu": [
+         "arm64"
+       ],
+@@ -905,9 +905,9 @@
+       }
+     },
+     "node_modules/@img/sharp-libvips-linuxmusl-x64": {
+-      "version": "1.3.3",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linuxmusl-x64/-/sharp-libvips-linuxmusl-x64-1.3.3.tgz",
+-      "integrity": "sha512-fj8Mv0HHfD1Rr+4I68+3agJynxDWtBFgicTbSOb9Bke6pIwzGcJ+RX/yHjmiEGFMCavY/dxvem7MyNaJF+wDiw==",
++      "version": "1.3.4",
++      "resolved": "https://registry.npmjs.org/@img/sharp-libvips-linuxmusl-x64/-/sharp-libvips-linuxmusl-x64-1.3.4.tgz",
++      "integrity": "sha512-6zXKeE/p39I1AmA3cJG35eyBGNqNddLnUXjhwBnsGjFPWqf5VKkDBEqaEkPDoTEtkxwi2vv8Tcr2mDyP4So7Fg==",
+       "cpu": [
+         "x64"
+       ],
+@@ -921,9 +921,9 @@
+       }
+     },
+     "node_modules/@img/sharp-linux-arm": {
+-      "version": "0.35.4",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-linux-arm/-/sharp-linux-arm-0.35.4.tgz",
+-      "integrity": "sha512-7OAS8gI0EReKGVN2HssHlM6umJgxF5VI3xN0p9FA91p/YO+ou5hiNghLdZ5BEHztwaaK5+bLKRf8x/o2L2nk9A==",
++      "version": "0.35.5",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linux-arm/-/sharp-linux-arm-0.35.5.tgz",
++      "integrity": "sha512-LEaXK2WdXVK5ykcw0buWyPMsmLLL2vpHLD6yrNSW+JGEL3BZPA4tpKN6iaMc4AxTTAoaX/sU1rOL51lcIz48ZQ==",
+       "cpu": [
+         "arm"
+       ],
+@@ -939,13 +939,13 @@
+         "url": "https://opencollective.com/libvips"
+       },
+       "optionalDependencies": {
+-        "@img/sharp-libvips-linux-arm": "1.3.3"
++        "@img/sharp-libvips-linux-arm": "1.3.4"
+       }
+     },
+     "node_modules/@img/sharp-linux-arm64": {
+-      "version": "0.35.4",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-linux-arm64/-/sharp-linux-arm64-0.35.4.tgz",
+-      "integrity": "sha512-De4jpEnAU8Hd5oT0j1G3uL4ZvTuipVMn7YC6vPaJhy6/7EwEae0SVAoBrUMYQbkLGDm85taVWwuPc1a44LTzCQ==",
++      "version": "0.35.5",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linux-arm64/-/sharp-linux-arm64-0.35.5.tgz",
++      "integrity": "sha512-LYVx5JTsOM2CBzmxreh+nl64/3H6Xb09iSLknqH47z2T2DFFxDeFLP5y4dJwe6H7uGQlHPyEEtIqyo3DYsRwdQ==",
+       "cpu": [
+         "arm64"
+       ],
+@@ -961,13 +961,13 @@
+         "url": "https://opencollective.com/libvips"
+       },
+       "optionalDependencies": {
+-        "@img/sharp-libvips-linux-arm64": "1.3.3"
++        "@img/sharp-libvips-linux-arm64": "1.3.4"
+       }
+     },
+     "node_modules/@img/sharp-linux-ppc64": {
+-      "version": "0.35.4",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-linux-ppc64/-/sharp-linux-ppc64-0.35.4.tgz",
+-      "integrity": "sha512-2oYZJeIl4kCcMGk4ouZVjnkCtFrpQFlNEtJ6GbxzhHQchwH0NH/qEb9ykmOl29dqwMq+JhFdZn+1ak2FKhI9fQ==",
++      "version": "0.35.5",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linux-ppc64/-/sharp-linux-ppc64-0.35.5.tgz",
++      "integrity": "sha512-QVxAAq8evVRI9ia2vqgwrmWucn5Dfv+JdWzj75pD8omHLPSP7f8p20O8jxzjCcuCEQEOtYOZUmX1hkiZ0kdevA==",
+       "cpu": [
+         "ppc64"
+       ],
+@@ -983,13 +983,13 @@
+         "url": "https://opencollective.com/libvips"
+       },
+       "optionalDependencies": {
+-        "@img/sharp-libvips-linux-ppc64": "1.3.3"
++        "@img/sharp-libvips-linux-ppc64": "1.3.4"
+       }
+     },
+     "node_modules/@img/sharp-linux-riscv64": {
+-      "version": "0.35.4",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-linux-riscv64/-/sharp-linux-riscv64-0.35.4.tgz",
+-      "integrity": "sha512-cPbNChoRURAWdebDIHSenxRpgEdy7JkPydSnUxRm9VvKD7m0/xVaR/8Fzlu81pk5nHEvHH87UZUA7cTtwnbJSA==",
++      "version": "0.35.5",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linux-riscv64/-/sharp-linux-riscv64-0.35.5.tgz",
++      "integrity": "sha512-LtdreXguaavKODPIfzJ4kffx7UNt1omwtK0rch4EBbbSTXPnxWmYSayXdLJw0fJzQ97kHt1gL/yh4tvU+nCyRQ==",
+       "cpu": [
+         "riscv64"
+       ],
+@@ -1005,13 +1005,13 @@
+         "url": "https://opencollective.com/libvips"
+       },
+       "optionalDependencies": {
+-        "@img/sharp-libvips-linux-riscv64": "1.3.3"
++        "@img/sharp-libvips-linux-riscv64": "1.3.4"
+       }
+     },
+     "node_modules/@img/sharp-linux-s390x": {
+-      "version": "0.35.4",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-linux-s390x/-/sharp-linux-s390x-0.35.4.tgz",
+-      "integrity": "sha512-RY0JFY8Fd6RonCBtHz+DvadaPkXDSI1AUn6yWL9TipqkZ1vY8w8evqdgyDFnkm4/K1ve1TvZiaePP5oSd4+WVQ==",
++      "version": "0.35.5",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linux-s390x/-/sharp-linux-s390x-0.35.5.tgz",
++      "integrity": "sha512-UZasTOFiYzotTsGOCu42BfUzP6Tu6Do/947iRm1RsLKvlllxwGcn4RN27LibGWceix4Y+Pmw3jsnTcCQIgWjqA==",
+       "cpu": [
+         "s390x"
+       ],
+@@ -1027,13 +1027,13 @@
+         "url": "https://opencollective.com/libvips"
+       },
+       "optionalDependencies": {
+-        "@img/sharp-libvips-linux-s390x": "1.3.3"
++        "@img/sharp-libvips-linux-s390x": "1.3.4"
+       }
+     },
+     "node_modules/@img/sharp-linux-x64": {
+-      "version": "0.35.4",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-linux-x64/-/sharp-linux-x64-0.35.4.tgz",
+-      "integrity": "sha512-9qvvEAuk8k89TfWUoX2htWjbAMX8p+NxCppjpcg5k6xMsjhBQPTsoIh36h9Qde4WRuGpJeYnOjdosDn/cnv+OA==",
++      "version": "0.35.5",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linux-x64/-/sharp-linux-x64-0.35.5.tgz",
++      "integrity": "sha512-SxFtLTeJInhAA9Q836kux2vZNeOBQEx658qvbboZScr0wIARym3IcGmW7KpVD5sbVg0Ojy+udFQdayYIZyoNog==",
+       "cpu": [
+         "x64"
+       ],
+@@ -1049,13 +1049,13 @@
+         "url": "https://opencollective.com/libvips"
+       },
+       "optionalDependencies": {
+-        "@img/sharp-libvips-linux-x64": "1.3.3"
++        "@img/sharp-libvips-linux-x64": "1.3.4"
+       }
+     },
+     "node_modules/@img/sharp-linuxmusl-arm64": {
+-      "version": "0.35.4",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-linuxmusl-arm64/-/sharp-linuxmusl-arm64-0.35.4.tgz",
+-      "integrity": "sha512-KB5jxpfWQTr0nc3xdHtWChdbifHrBGsd2SM62Eyxrl8afikm+f5qGBU75SJIZBT/S1MC8XyacdlXBMSWq6OURA==",
++      "version": "0.35.5",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linuxmusl-arm64/-/sharp-linuxmusl-arm64-0.35.5.tgz",
++      "integrity": "sha512-9HbMclmI1zlNkFRs3z9/eBtDjfD0sGlrX1z6b1qwmiFY5ElDLh4BC0LPBdVp7z1DXFiKlIcznf+ZlsuZzLxQqg==",
+       "cpu": [
+         "arm64"
+       ],
+@@ -1071,13 +1071,13 @@
+         "url": "https://opencollective.com/libvips"
+       },
+       "optionalDependencies": {
+-        "@img/sharp-libvips-linuxmusl-arm64": "1.3.3"
++        "@img/sharp-libvips-linuxmusl-arm64": "1.3.4"
+       }
+     },
+     "node_modules/@img/sharp-linuxmusl-x64": {
+-      "version": "0.35.4",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-linuxmusl-x64/-/sharp-linuxmusl-x64-0.35.4.tgz",
+-      "integrity": "sha512-f+eZJZIQNEEd26RPSW+76chwOf1XtA2Y/O+5ocVyLliHkeih3e+jhLVBdNTd2rS3IbNXK8+ug93Vf5ZXtF5Lxg==",
++      "version": "0.35.5",
++      "resolved": "https://registry.npmjs.org/@img/sharp-linuxmusl-x64/-/sharp-linuxmusl-x64-0.35.5.tgz",
++      "integrity": "sha512-4KOphqB035HrVdqLZfCgMzzERrQkkzOwRhl4OAkRO1YCldbaFjySXMaK534Mo0V+LndnlJk+sbUyLeU0ULyD1A==",
+       "cpu": [
+         "x64"
+       ],
+@@ -1093,13 +1093,13 @@
+         "url": "https://opencollective.com/libvips"
+       },
+       "optionalDependencies": {
+-        "@img/sharp-libvips-linuxmusl-x64": "1.3.3"
++        "@img/sharp-libvips-linuxmusl-x64": "1.3.4"
+       }
+     },
+     "node_modules/@img/sharp-wasm32": {
+-      "version": "0.35.4",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-wasm32/-/sharp-wasm32-0.35.4.tgz",
+-      "integrity": "sha512-zQnl4Kwp7Q6NHsENtU2T/00Zi+w3AQNwz3+UaTyVBy2FpXrzXzGjndpK61onhZjRtRpQXxCTeqw19bVyXOh7jA==",
++      "version": "0.35.5",
++      "resolved": "https://registry.npmjs.org/@img/sharp-wasm32/-/sharp-wasm32-0.35.5.tgz",
++      "integrity": "sha512-Ptsga1su4tQx+LLF1ECS9U6nz5kmrXKo6XVbtR48Ke3ZRxxgaWBu7IDtEe1quo8hiupwm6WFqxVlXaSf7IINGQ==",
+       "license": "Apache-2.0 AND LGPL-3.0-or-later AND MIT",
+       "optional": true,
+       "dependencies": {
+@@ -1113,16 +1113,16 @@
+       }
+     },
+     "node_modules/@img/sharp-webcontainers-wasm32": {
+-      "version": "0.35.4",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-webcontainers-wasm32/-/sharp-webcontainers-wasm32-0.35.4.tgz",
+-      "integrity": "sha512-ESfNkywmCfPNyaZjxooddJQiQ+l/nTpGEOGthxiLnIHXC/CmcBixnfwUleX9mCz9ovrUUvKMap/pm8RYbzfwaA==",
++      "version": "0.35.5",
++      "resolved": "https://registry.npmjs.org/@img/sharp-webcontainers-wasm32/-/sharp-webcontainers-wasm32-0.35.5.tgz",
++      "integrity": "sha512-hfhF/FmoQyTUkA0bIKFOtw536BQSeBMe6BF6QyWlrPxT754+TFLaZ7sKKTfvvM0yJgKgaYTwnFCIZ/GuDw5SUA==",
+       "cpu": [
+         "wasm32"
+       ],
+       "license": "Apache-2.0",
+       "optional": true,
+       "dependencies": {
+-        "@img/sharp-wasm32": "0.35.4"
++        "@img/sharp-wasm32": "0.35.5"
+       },
+       "engines": {
+         "node": ">=20.9.0"
+@@ -1132,9 +1132,9 @@
+       }
+     },
+     "node_modules/@img/sharp-win32-arm64": {
+-      "version": "0.35.4",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-win32-arm64/-/sharp-win32-arm64-0.35.4.tgz",
+-      "integrity": "sha512-iNdlBX9gLVvqe2I3uIJSIKTq6wckP/DYxZtcqxm09x5Gi24DnFBmPAWZmr60ZyYMG0xlzo6goG3670ar+RXvRw==",
++      "version": "0.35.5",
++      "resolved": "https://registry.npmjs.org/@img/sharp-win32-arm64/-/sharp-win32-arm64-0.35.5.tgz",
++      "integrity": "sha512-X4t7g+7ZA5DKblCBEXGjUqqemj4vczING/5viFwAL8h4N3qYeyjwdCvRLHi4EdOUI+2Z7UFlp1VM+p/AuEtm6Q==",
+       "cpu": [
+         "arm64"
+       ],
+@@ -1151,9 +1151,9 @@
+       }
+     },
+     "node_modules/@img/sharp-win32-ia32": {
+-      "version": "0.35.4",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-win32-ia32/-/sharp-win32-ia32-0.35.4.tgz",
+-      "integrity": "sha512-kqRsbaa5CS6KHlpxnN7WhE6vAAugXyZButpRdvDWetlv6Qv4N9WTcrWzF7tXfB9T7MsoadqdI8hmwLq6UlLvtw==",
++      "version": "0.35.5",
++      "resolved": "https://registry.npmjs.org/@img/sharp-win32-ia32/-/sharp-win32-ia32-0.35.5.tgz",
++      "integrity": "sha512-5Zm82LoBc43nhwNybZlG7Y1KO//Zhsn306fQl29ZOuStHLGTo3BWL83q3cznX0poxSAMuYL1On/BHBxkBeKr6A==",
+       "cpu": [
+         "ia32"
+       ],
+@@ -1170,9 +1170,9 @@
+       }
+     },
+     "node_modules/@img/sharp-win32-x64": {
+-      "version": "0.35.4",
+-      "resolved": "https://registry.npmjs.org/@img/sharp-win32-x64/-/sharp-win32-x64-0.35.4.tgz",
+-      "integrity": "sha512-XtmnYhBcrORsJ4XJngyzr/EWP0hRZLAZRFaApdKuviyqF78+ylxh2y06ZmtULAMOnObJ3ucpN0AcwSWnMowTRg==",
++      "version": "0.35.5",
++      "resolved": "https://registry.npmjs.org/@img/sharp-win32-x64/-/sharp-win32-x64-0.35.5.tgz",
++      "integrity": "sha512-x76eH0vEiHlcMQu8Y8IenntaACtddpT6W0wmXtWrnKcnKI7ME5DdgqhAD6SEWOEl1v2zDvkZDhFA9KnURwpfqg==",
+       "cpu": [
+         "x64"
+       ],
+@@ -1382,15 +1382,15 @@
+       }
+     },
+     "node_modules/@next/env": {
+-      "version": "16.3.5",
+-      "resolved": "https://registry.npmjs.org/@next/env/-/env-16.3.5.tgz",
+-      "integrity": "sha512-NWEXVDMqoEo0ktmU6u0sE2Vg0LOcsD7NnOTJNo3/fEaTfsg+F1bMIxuDmQbda4e3yTIQwVdUREF2yIuMOusKtg==",
++      "version": "16.3.8",
++      "resolved": "https://registry.npmjs.org/@next/env/-/env-16.3.8.tgz",
++      "integrity": "sha512-Al9zqHVV7TJv0eFuOU4U7Lvv74PTih4Ch63sk2xCIpSTkE3udFnaOcnzP2lQVymiL7yS9Cj2iClUXlR3EQ5sEw==",
+       "license": "MIT"
+     },
+     "node_modules/@next/swc-darwin-arm64": {
+-      "version": "16.3.5",
+-      "resolved": "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-16.3.5.tgz",
+-      "integrity": "sha512-pMmGgETfKvElucLHtVaeiMRbp2zUbvKx7b1yGko0liBz3cw1mKSggWN/Rp/wPz8z+E1O82u3r4L1Co+ZS5hokQ==",
++      "version": "16.3.8",
++      "resolved": "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-16.3.8.tgz",
++      "integrity": "sha512-2JPRMh2nmQG5CiL7cXGL9AGwnPWJQ//cTtAUCT+w511QHk79SYz3LGv/pc5X643B/WEO0rvu3Yww0hqwt3kgeA==",
+       "cpu": [
+         "arm64"
+       ],
+@@ -1404,9 +1404,9 @@
+       }
+     },
+     "node_modules/@next/swc-darwin-x64": {
+-      "version": "16.3.5",
+-      "resolved": "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-16.3.5.tgz",
+-      "integrity": "sha512-76VaGYvf6HPa5/w12yLkE3dXTn9AfdEviI79oEL3aZoAmRLc9rWitjWqyjViVysK/ht/y9YKzFkBrUdi/wGkow==",
++      "version": "16.3.8",
++      "resolved": "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-16.3.8.tgz",
++      "integrity": "sha512-GZtCCOBKJ4leVIT/Th0llWKhD1ca92lzbQiS5R5ON9QkoiFnilFsebDae1JU2a3HWoKMEmEZWGs1AGLavVM72Q==",
+       "cpu": [
+         "x64"
+       ],
+@@ -1420,9 +1420,9 @@
+       }
+     },
+     "node_modules/@next/swc-linux-arm64-gnu": {
+-      "version": "16.3.5",
+-      "resolved": "https://registry.npmjs.org/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-16.3.5.tgz",
+-      "integrity": "sha512-zKDELJ5jSQMHeO/hmXUQsAzagX4bQD4OiMi3pQ5FbUj+yK506oLVHnKA2YXMlbg1EHHqJYtyePOgByIDXD1lqw==",
++      "version": "16.3.8",
++      "resolved": "https://registry.npmjs.org/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-16.3.8.tgz",
++      "integrity": "sha512-O659ygeQYqneJ1fBKMpFxIFqYkYswu8IAS1OCKK/4f3ZgJJm1dRz4fVJZRi/kLLWjnBKnebOePA4WNv+sV1pVA==",
+       "cpu": [
+         "arm64"
+       ],
+@@ -1436,9 +1436,9 @@
+       }
+     },
+     "node_modules/@next/swc-linux-arm64-musl": {
+-      "version": "16.3.5",
+-      "resolved": "https://registry.npmjs.org/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-16.3.5.tgz",
+-      "integrity": "sha512-7Vql0pgzCoHagv6+FNOZoqmJqA52c6zeVbhtS/47qFozO1MSx4ms7x7GHiciY8R5CDsSMKMQjJEryoJLcsBIbA==",
++      "version": "16.3.8",
++      "resolved": "https://registry.npmjs.org/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-16.3.8.tgz",
++      "integrity": "sha512-dSjKSyWpzxoO1d3DIZZcP4XJcNaKeLmxQMFOiYl5vuBRMmweIqnAhty8tAmRsvTss779cK1FtYnDMj40e4TQlg==",
+       "cpu": [
+         "arm64"
+       ],
+@@ -1452,9 +1452,9 @@
+       }
+     },
+     "node_modules/@next/swc-linux-x64-gnu": {
+-      "version": "16.3.5",
+-      "resolved": "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-16.3.5.tgz",
+-      "integrity": "sha512-NH/xzehyHEFWE2nlcZon7TB/0+H4shfWCi7S1zka815XCOhJDYZhoeJtOYy0dh0WVRWACVXSyGNFFytoMxUhRg==",
++      "version": "16.3.8",
++      "resolved": "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-16.3.8.tgz",
++      "integrity": "sha512-lbqOuz3RPRcv+o9msNsJw5x4+Y1ZwPTs6vmL6DCf7i0fZfvng/F59wyeDwqHIvV0mK//RBy/jJkZ+nCKsSMXjQ==",
+       "cpu": [
+         "x64"
+       ],
+@@ -1468,9 +1468,9 @@
+       }
+     },
+     "node_modules/@next/swc-linux-x64-musl": {
+-      "version": "16.3.5",
+-      "resolved": "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-16.3.5.tgz",
+-      "integrity": "sha512-lV4+EhWMfS8jcC+EH2nn/Cm5cn6XsgbE07bU9tMH8fCo0tNAqhyzi1b5wQ/Tn6NGFTvKDY65w3ZH95EjwBRAnQ==",
++      "version": "16.3.8",
++      "resolved": "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-16.3.8.tgz",
++      "integrity": "sha512-+316WswI8ScVgZeUd+1KGaXkHhaYQzCjvH/05TZSpJ8zBizb1a4G7DtO7F12jcBIqMOtsz9ji1t48fmKtzqsGA==",
+       "cpu": [
+         "x64"
+       ],
+@@ -1484,9 +1484,9 @@
+       }
+     },
+     "node_modules/@next/swc-win32-arm64-msvc": {
+-      "version": "16.3.5",
+-      "resolved": "https://registry.npmjs.org/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-16.3.5.tgz",
+-      "integrity": "sha512-/wKzAREX2RF++MhicjDbg8tGn2AiBIM0+EFeTFKoUEUbW5D6amCJehd5Z5G1H5/gxNdgnwoXMcHz24H/c2tGkQ==",
++      "version": "16.3.8",
++      "resolved": "https://registry.npmjs.org/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-16.3.8.tgz",
++      "integrity": "sha512-ji0gd4kMYUxO+1fJBIbiBVRCjzG/lloiyCccnlebvb1ZJ5qXCPZqYg4Jl1DrrixnWNMKylzgpmMWx0yNDYXlzw==",
+       "cpu": [
+         "arm64"
+       ],
+@@ -1500,9 +1500,9 @@
+       }
+     },
+     "node_modules/@next/swc-win32-x64-msvc": {
+-      "version": "16.3.5",
+-      "resolved": "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-16.3.5.tgz",
+-      "integrity": "sha512-LNdCHzgLFc+UeqMS84LzXPaeBRKyqDN9OMyFAr1OrB0XrNw78IRrEVtZvvA7245W/HsaoeVOQX9jPjPk8jojwA==",
++      "version": "16.3.8",
++      "resolved": "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-16.3.8.tgz",
++      "integrity": "sha512-WcTlaKt/TWkh5kUjdJcUmB1XgZ+1c6fz4Y9fDHL73YNSdGaUWjceeWrrlwF0nv19iABYWC4iAq1oX1w4Bn0vfg==",
+       "cpu": [
+         "x64"
+       ],
+@@ -2649,12 +2649,12 @@
+       }
+     },
+     "node_modules/next": {
+-      "version": "16.3.5",
+-      "resolved": "https://registry.npmjs.org/next/-/next-16.3.5.tgz",
+-      "integrity": "sha512-MdtsTgzyfCPRLC6uJ1mN8ao7lyJ4BB0U6Inhnx3gta1UcCIdHK3yxLG0E8OWQteWD8/Q0qb8A5o7wJaL8M9y2w==",
++      "version": "16.3.8",
++      "resolved": "https://registry.npmjs.org/next/-/next-16.3.8.tgz",
++      "integrity": "sha512-U7QEZaTini6wKrb8A8hqLLqYQyCetegKjCpJOyxk642vWoMoU1x5PyZCJFvgYgiptA8xc5j/9xYlZFO7w9Sjmw==",
+       "license": "MIT",
+       "dependencies": {
+-        "@next/env": "16.3.5",
++        "@next/env": "16.3.8",
+         "@swc/helpers": "0.5.23",
+         "baseline-browser-mapping": "^2.9.19",
+         "caniuse-lite": "^1.0.30001579",
+@@ -2668,14 +2668,14 @@
+         "node": ">=20.9.0"
+       },
+       "optionalDependencies": {
+-        "@next/swc-darwin-arm64": "16.3.5",
+-        "@next/swc-darwin-x64": "16.3.5",
+-        "@next/swc-linux-arm64-gnu": "16.3.5",
+-        "@next/swc-linux-arm64-musl": "16.3.5",
+-        "@next/swc-linux-x64-gnu": "16.3.5",
+-        "@next/swc-linux-x64-musl": "16.3.5",
+-        "@next/swc-win32-arm64-msvc": "16.3.5",
+-        "@next/swc-win32-x64-msvc": "16.3.5",
++        "@next/swc-darwin-arm64": "16.3.8",
++        "@next/swc-darwin-x64": "16.3.8",
++        "@next/swc-linux-arm64-gnu": "16.3.8",
++        "@next/swc-linux-arm64-musl": "16.3.8",
++        "@next/swc-linux-x64-gnu": "16.3.8",
++        "@next/swc-linux-x64-musl": "16.3.8",
++        "@next/swc-win32-arm64-msvc": "16.3.8",
++        "@next/swc-win32-x64-msvc": "16.3.8",
+         "sharp": "^0.35.4"
+       },
+       "peerDependencies": {
+@@ -3054,9 +3054,9 @@
+       "license": "MIT"
+     },
+     "node_modules/sharp": {
+-      "version": "0.35.4",
+-      "resolved": "https://registry.npmjs.org/sharp/-/sharp-0.35.4.tgz",
+-      "integrity": "sha512-n++8XWcj+jCOr2IOl7h8LbKnGBDY4aPbmprMONBNFdn0ImXqpGVv5zliDs0V9HbmbCQLpbuo2ej9rAoOQTvMDA==",
++      "version": "0.35.5",
++      "resolved": "https://registry.npmjs.org/sharp/-/sharp-0.35.5.tgz",
++      "integrity": "sha512-Ywn4OnzGukp7CDMrp08RQ50YKmuwG47brZgIVPTvBaaAfQlRlygrRqSrxdCiL9M+LlzLBiJ68IR1QqvzHyjC7g==",
+       "license": "Apache-2.0",
+       "optional": true,
+       "dependencies": {
+@@ -3071,31 +3071,31 @@
+         "url": "https://opencollective.com/libvips"
+       },
+       "optionalDependencies": {
+-        "@img/sharp-darwin-arm64": "0.35.4",
+-        "@img/sharp-darwin-x64": "0.35.4",
+-        "@img/sharp-freebsd-wasm32": "0.35.4",
+-        "@img/sharp-libvips-darwin-arm64": "1.3.3",
+-        "@img/sharp-libvips-darwin-x64": "1.3.3",
+-        "@img/sharp-libvips-linux-arm": "1.3.3",
+-        "@img/sharp-libvips-linux-arm64": "1.3.3",
+-        "@img/sharp-libvips-linux-ppc64": "1.3.3",
+-        "@img/sharp-libvips-linux-riscv64": "1.3.3",
+-        "@img/sharp-libvips-linux-s390x": "1.3.3",
+-        "@img/sharp-libvips-linux-x64": "1.3.3",
+-        "@img/sharp-libvips-linuxmusl-arm64": "1.3.3",
+-        "@img/sharp-libvips-linuxmusl-x64": "1.3.3",
+-        "@img/sharp-linux-arm": "0.35.4",
+-        "@img/sharp-linux-arm64": "0.35.4",
+-        "@img/sharp-linux-ppc64": "0.35.4",
+-        "@img/sharp-linux-riscv64": "0.35.4",
+-        "@img/sharp-linux-s390x": "0.35.4",
+-        "@img/sharp-linux-x64": "0.35.4",
+-        "@img/sharp-linuxmusl-arm64": "0.35.4",
+-        "@img/sharp-linuxmusl-x64": "0.35.4",
+-        "@img/sharp-webcontainers-wasm32": "0.35.4",
+-        "@img/sharp-win32-arm64": "0.35.4",
+-        "@img/sharp-win32-ia32": "0.35.4",
+-        "@img/sharp-win32-x64": "0.35.4"
++        "@img/sharp-darwin-arm64": "0.35.5",
++        "@img/sharp-darwin-x64": "0.35.5",
++        "@img/sharp-freebsd-wasm32": "0.35.5",
++        "@img/sharp-libvips-darwin-arm64": "1.3.4",
++        "@img/sharp-libvips-darwin-x64": "1.3.4",
++        "@img/sharp-libvips-linux-arm": "1.3.4",
++        "@img/sharp-libvips-linux-arm64": "1.3.4",
++        "@img/sharp-libvips-linux-ppc64": "1.3.4",
++        "@img/sharp-libvips-linux-riscv64": "1.3.4",
++        "@img/sharp-libvips-linux-s390x": "1.3.4",
++        "@img/sharp-libvips-linux-x64": "1.3.4",
++        "@img/sharp-libvips-linuxmusl-arm64": "1.3.4",
++        "@img/sharp-libvips-linuxmusl-x64": "1.3.4",
++        "@img/sharp-linux-arm": "0.35.5",
++        "@img/sharp-linux-arm64": "0.35.5",
++        "@img/sharp-linux-ppc64": "0.35.5",
++        "@img/sharp-linux-riscv64": "0.35.5",
++        "@img/sharp-linux-s390x": "0.35.5",
++        "@img/sharp-linux-x64": "0.35.5",
++        "@img/sharp-linuxmusl-arm64": "0.35.5",
++        "@img/sharp-linuxmusl-x64": "0.35.5",
++        "@img/sharp-webcontainers-wasm32": "0.35.5",
++        "@img/sharp-win32-arm64": "0.35.5",
++        "@img/sharp-win32-ia32": "0.35.5",
++        "@img/sharp-win32-x64": "0.35.5"
+       },
+       "peerDependenciesMeta": {
+         "@types/node": {
+@@ -3231,9 +3231,9 @@
+       }
+     },
+     "node_modules/source-map-js": {
+-      "version": "1.2.1",
+-      "resolved": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz",
+-      "integrity": "sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==",
++      "version": "1.2.2",
++      "resolved": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.2.tgz",
++      "integrity": "sha512-KGj/8Y43x35aZVDtt+J4mK1hoLGHULMYfSkODJNQjNDC3oW1PqPoxMwo0pLUsWM/UEGzON/NxeHywEfNXNP3Vw==",
+       "license": "BSD-3-Clause",
+       "engines": {
+         "node": ">=0.10.0"
+diff --git a/package.json b/package.json
+index aee6f15..9c8deb4 100644
+--- a/package.json
++++ b/package.json
+@@ -30,7 +30,7 @@
+     "lucide-react": "^0.468.0",
+     "mammoth": "^1.13.0",
+     "mongodb": "^6.20.0",
+-    "next": "16.3.5",
++    "next": "16.3.8",
+     "pdf-parse": "^2.4.5",
+     "qrcode": "^1.5.4",
+     "razorpay": "^2.9.6",
+diff --git a/src/app/api/v1/[[...path]]/route.ts b/src/app/api/v1/[[...path]]/route.ts
+index 1ef1187..e512286 100644
+--- a/src/app/api/v1/[[...path]]/route.ts
++++ b/src/app/api/v1/[[...path]]/route.ts
+@@ -245,11 +245,17 @@ export async function POST(req: NextRequest, ctx: Context) {
+         if (input.terms !== "on") throw new ApiError(400, "Accept the terms to create an account.");
+         const password = passwordHash(input.password);
+         user = await transaction(async (repo) => {
+-          if ((await repo.find<User>("users", { email: input.email })).length)
++          const existing = (await repo.find<User>("users", { email: input.email }))[0];
++          if (existing) {
++            // An email failure leaves a pending account. Its owner can retry
++            // verification using the original password without replacing it.
++            if (!existing.verifiedAt && checkPassword(input.password, existing.passwordHash))
++              return existing;
+             throw new ApiError(
+               409,
+               "Unable to create this account. Try signing in or resetting your password.",
+             );
++          }
+           const u = {
+             id: randomUUID(),
+             name: input.name!,
+diff --git a/src/app/checkout/page.tsx b/src/app/checkout/page.tsx
+index a78d660..462f081 100644
+--- a/src/app/checkout/page.tsx
++++ b/src/app/checkout/page.tsx
+@@ -210,9 +210,10 @@ export default function Checkout() {
+     const timer = setTimeout(async () => {
+       try {
+         const res = await fetch(`/api/v1/shipping/serviceability?pincode=${encodeURIComponent(pin)}`);
+-        const data = await res.json();
++        const payload = await res.json();
++        const data = payload.data ?? payload;
+         if (active) {
+-          if (data && data.serviceable) {
++          if (res.ok && data && data.serviceable) {
+             setServiceability({
+               checked: true,
+               serviceable: true,
+@@ -235,7 +236,7 @@ export default function Checkout() {
+         if (active) {
+           setServiceability({
+             checked: true,
+-            serviceable: true,
++            serviceable: false,
+           });
+         }
+       } finally {
+diff --git a/src/components/auth-experience.tsx b/src/components/auth-experience.tsx
+index 6c681f7..edc11ae 100644
+--- a/src/components/auth-experience.tsx
++++ b/src/components/auth-experience.tsx
+@@ -652,10 +652,13 @@ export function AuthExperience({
+             <div className="ovia-auth-view">
+               <h1 className="ovia-auth-heading">Enter verification code</h1>
+               <p className="ovia-auth-subtext">
+-                We&apos;ve sent a 6-digit code to
++                Check your email for a 6-digit code at
+                 <br />
+                 <strong className="ovia-auth-bold-email">{email}</strong>
+               </p>
++              <p className="ovia-auth-subtext">
++                Check Spam and Promotions if it isn&apos;t in your inbox. The code expires in 10 minutes.
++              </p>
+ 
+               {error && (
+                 <div className="ovia-auth-error" role="alert">
+diff --git a/src/components/store-provider.tsx b/src/components/store-provider.tsx
+index e0e2d35..982cb90 100644
+--- a/src/components/store-provider.tsx
++++ b/src/components/store-provider.tsx
+@@ -120,12 +120,10 @@ export function StoreProvider({ children }: { children: ReactNode }) {
+   }, []);
+ 
+   const refresh = useCallback(async () => {
+-    const [account, nextCart] = await Promise.allSettled([
+-      request<{ user: UserView | null }>("account"),
+-      request<CartView>("cart"),
++    await Promise.allSettled([
++      request<{ user: UserView | null }>("account").then(account => setUser(account.user)),
++      request<CartView>("cart").then(acceptCart),
+     ]);
+-    if (account.status === "fulfilled") setUser(account.value.user);
+-    if (nextCart.status === "fulfilled") acceptCart(nextCart.value);
+   }, [acceptCart]);
+ 
+   useEffect(() => {
+diff --git a/src/lib/catalog-facets.ts b/src/lib/catalog-facets.ts
+index 8a90439..86b55e2 100644
+--- a/src/lib/catalog-facets.ts
++++ b/src/lib/catalog-facets.ts
+@@ -17,9 +17,14 @@ export function catalogFacets(products: Product[], base: Filters, filters: Filte
+   };
+   const categoryScope = base.tag ? filterProducts(products,{...base,category:undefined,subcategory:undefined,limit:String(products.length || 1),page:'1'}).items : products;
+   const departmentProducts = categoryScope.filter(p => !base.department || p.department === base.department);
+-  const categories = (department:string) => department === 'bags' ? bagCategoryNames.map(label=>({label,value:slugify(label)}))
+-    : department === 'luggage' ? luggageCategoryNames.map(label=>({label,value:slugify(label)}))
+-    : unique(departmentProducts.filter(p=>p.department===department).flatMap(p=>p.catalogCategories || [p.category])).map(label=>({label,value:slugify(label)}));
++  const categories = (department:string) => {
++    const labels = department === 'bags' ? bagCategoryNames
++      : department === 'luggage' ? luggageCategoryNames
++      : unique(departmentProducts.filter(p=>p.department===department).flatMap(p=>p.catalogCategories || [p.category]));
++    return labels.map(label=>({label,value:slugify(label)})).filter(option=>
++      filterProducts(departmentProducts,{department,category:option.value,limit:'1'}).total>0
++    );
++  };
+   const knownCategoryNames = base.department === 'bags' ? bagCategoryNames : base.department === 'luggage' ? luggageCategoryNames : [];
+   const subCategoryValues = unique(scoped.flatMap(p=>p.catalogCategories || [p.subcategory || p.category]));
+   const subCategories = knownCategoryNames.length ? knownCategoryNames.filter(label=>subCategoryValues.some(value=>canonicalCategory(value)===canonicalCategory(label))).map(label=>({label,value:slugify(label)})) : subCategoryValues.map(label=>({label,value:slugify(label)}));
+diff --git a/tests/admin-security.test.ts b/tests/admin-security.test.ts
+index 8b4ebcc..f61ab87 100644
+--- a/tests/admin-security.test.ts
++++ b/tests/admin-security.test.ts
+@@ -6,6 +6,8 @@ import { authSigningKey } from "../src/server/auth";
+ import { transaction } from "../src/server/db";
+ import { hash } from "../src/server/http";
+ import type { User, Session } from "../src/lib/types";
++import { products } from "../src/lib/catalog";
++import { installMongoFixture } from "./helpers/mongo-fixture";
+ import { 
+   canTransitionOrder, 
+   transitionOrderStatus, 
+@@ -58,7 +60,7 @@ test("Order State Machine - validates allowed and rejects illegal status transit
+   assert.equal(canTransitionOrder("Refunded", "Processing"), false);
+ });
+ 
+-test("Order State Machine - transitionOrderStatus throws on illegal status", async () => {
++test("Order State Machine - manual courier changes require the confirmed shipping flow", async () => {
+   await assert.rejects(
+     async () => {
+       // Attempting to revert a Delivered order back to Processing
+@@ -69,39 +71,54 @@ test("Order State Machine - transitionOrderStatus throws on illegal status", asy
+       });
+     },
+     (err: any) => {
+-      assert.match(err.message, /Invalid state transition/);
++      assert.match(err.message, /Manual courier and cancellation status changes are disabled/);
+       return true;
+     }
+   );
+ });
+ 
+ test("Inventory Adjustments - records auditable movement reason", async () => {
++  const product = structuredClone(products[0]);
++  const sku = product.variants[0].sku;
++  const originalStock = product.variants[0].stock;
++  const database = installMongoFixture([product]);
++  try {
+   const result = await adjustInventoryStock({
+-    sku: "CB-001",
++    sku,
+     adjustment: 20,
+     reason: "RESTOCK",
+     notes: "Batch PO-992 from workshop",
+-    actor: "adarshshukla4639@gmail.com",
++    actor: "owner@example.test",
+   });
+ 
+   assert.equal(result.success, true);
+-  assert.equal(result.sku, "CB-001");
++  assert.equal(result.sku, sku);
+   assert.equal(result.adjustedBy, 20);
+   assert.equal(result.reason, "RESTOCK");
++  const snapshot = database.snapshot();
++  assert.equal(snapshot.inventory[0].available, originalStock + 20);
++  assert.equal(snapshot.products[0].variants[0].stock, originalStock + 20);
++  assert.equal(snapshot.inventoryMovements[0].notes, "Batch PO-992 from workshop");
++  assert.equal(snapshot.inventoryMovements[0].actor, "owner@example.test");
++  } finally { database.restore(); }
+ });
+ 
+-test("AI Admin Copilot - answers queries without exposing credentials or secrets", async () => {
+-  const inventoryQuery = await queryAiCopilot("Which products are low on stock?");
+-  assert.ok(inventoryQuery.answer.includes("Executive Check-in"));
+-  assert.ok(!inventoryQuery.answer.includes("secret"));
+-  assert.ok(!inventoryQuery.answer.includes("password"));
+-
+-  const revenueQuery = await queryAiCopilot("Why did revenue increase this week?");
+-  assert.ok(revenueQuery.answer.includes("32,48,990"));
+-  assert.ok(revenueQuery.answer.includes("OVIA Pro Cabin"));
+-
+-  const shippingQuery = await queryAiCopilot("Show delayed shipments");
+-  assert.ok(shippingQuery.answer.includes("Delhivery"));
++test("AI Admin Copilot - unconfigured providers do not invent stock, revenue or shipping answers", async () => {
++  const keys = ["OVIA_AI_API_KEY", "OVIA_AI_BASE_URL", "OVIA_AI_MODEL"] as const;
++  const previous = keys.map(key => process.env[key]);
++  const originalFetch = globalThis.fetch;
++  let requests = 0;
++  globalThis.fetch = async () => { requests++; throw new Error("Unexpected network request"); };
++  keys.forEach(key => delete process.env[key]);
++  try {
++    for (const question of ["Which products are low on stock?", "Why did revenue increase this week?", "Show delayed shipments"]) {
++      await assert.rejects(queryAiCopilot(question), (error: any) => error.status === 503 && /Configure the AI provider/.test(error.message));
++    }
++    assert.equal(requests, 0);
++  } finally {
++    globalThis.fetch = originalFetch;
++    keys.forEach((key, index) => { if (previous[index] === undefined) delete process.env[key]; else process.env[key] = previous[index]; });
++  }
+ });
+ 
+ test("API Security - authorizeAdminApi rejects unauthenticated requests with 401", async () => {
+@@ -117,6 +134,8 @@ test("API Security - authorizeAdminApi rejects unauthenticated requests with 401
+ });
+ 
+ test("API Security - authorizeAdminApi rejects CUSTOMER with 403 Forbidden and zero order data", async () => {
++  const database = installMongoFixture();
++  try {
+   const customerId = "test-customer-uuid-999";
+   const sessionJti = "cust-session-jti-888";
+ 
+@@ -164,9 +183,12 @@ test("API Security - authorizeAdminApi rejects CUSTOMER with 403 Forbidden and z
+     assert.match(body.error, /Forbidden/);
+     assert.equal((body as any).orders, undefined);
+   }
++  } finally { database.restore(); }
+ });
+ 
+ test("API Security - authorizeAdminApi allows authenticated OWNER", async () => {
++  const database = installMongoFixture();
++  try {
+   const ownerId = "test-owner-uuid-111";
+   const sessionJti = "owner-session-jti-222";
+ 
+@@ -211,4 +233,5 @@ test("API Security - authorizeAdminApi allows authenticated OWNER", async () =>
+     assert.equal(auth.user.role, "OWNER");
+     assert.equal(auth.user.email, "owner.test.111@ovia.luxury");
+   }
++  } finally { database.restore(); }
+ });
+diff --git a/tests/bags-csv-catalog.test.ts b/tests/bags-csv-catalog.test.ts
+index 74e4eb5..374d8f3 100644
+--- a/tests/bags-csv-catalog.test.ts
++++ b/tests/bags-csv-catalog.test.ts
+@@ -1,10 +1,13 @@
+-import { test } from 'node:test';
++import { test, before } from 'node:test';
+ import assert from 'node:assert/strict';
+ import fs from 'node:fs';
+-import { products, filterProducts, slugify } from '../src/lib/catalog';
++import { filterProducts, slugify } from '../src/lib/catalog';
++import { csvImportFixture } from './helpers/csv-import-fixture';
+ import { catalogFacets } from '../src/lib/catalog-facets';
+ const sources=JSON.parse(fs.readFileSync('data/bags-csv-sources.json','utf8'));
+-const bags=products.filter(p=>p.department==='bags');
++let products: import('../src/lib/catalog').Product[];
++let bags: import('../src/lib/catalog').Product[];
++before(async()=>{ products=await csvImportFixture('bags'); bags=products.filter(p=>p.department==='bags'); });
+ 
+ test('bag imports preserve all rows, prices and distinct image variations',()=>{
+   assert.equal(bags.filter(p=>p.importSources?.some(s=>sources.some((input: {file:string})=>input.file===s.file))).length,195);
+diff --git a/tests/bags-highlights-csv-catalog.test.ts b/tests/bags-highlights-csv-catalog.test.ts
+index b5b5239..b01a181 100644
+--- a/tests/bags-highlights-csv-catalog.test.ts
++++ b/tests/bags-highlights-csv-catalog.test.ts
+@@ -1,7 +1,10 @@
+-import {test} from 'node:test';
++import {test,before} from 'node:test';
+ import assert from 'node:assert/strict';
+ import fs from 'node:fs';
+-import {products,filterProducts} from '../src/lib/catalog';
++import {filterProducts} from '../src/lib/catalog';
++import {csvImportFixture} from './helpers/csv-import-fixture';
++let products: import('../src/lib/catalog').Product[];
++before(async()=>{ products=await csvImportFixture('bags-highlights'); });
+ import {catalogFacets} from '../src/lib/catalog-facets';
+ const sources=JSON.parse(fs.readFileSync('data/bags-highlights-csv-sources.json','utf8'));
+ test('highlight imports retain source rows and exact curated collection memberships',()=>{
+diff --git a/tests/bags-more-csv-catalog.test.ts b/tests/bags-more-csv-catalog.test.ts
+index bdad9f6..230c72f 100644
+--- a/tests/bags-more-csv-catalog.test.ts
++++ b/tests/bags-more-csv-catalog.test.ts
+@@ -1,7 +1,10 @@
+-import {test} from 'node:test';
++import {test,before} from 'node:test';
+ import assert from 'node:assert/strict';
+ import fs from 'node:fs';
+-import {products,filterProducts,slugify} from '../src/lib/catalog';
++import {filterProducts,slugify} from '../src/lib/catalog';
++import {csvImportFixture} from './helpers/csv-import-fixture';
++let products: import('../src/lib/catalog').Product[];
++before(async()=>{ products=await csvImportFixture('bags-more'); });
+ const sources=JSON.parse(fs.readFileSync('data/bags-more-csv-sources.json','utf8'));
+ test('additional bag imports retain previous products and every source row',()=>{
+  const text=fs.readFileSync('data/import-backups/imported-products-before-more-bags.txt','utf8');
+diff --git a/tests/browser/full-support-customer.spec.ts b/tests/browser/full-support-customer.spec.ts
+index bc80218..ce14716 100644
+--- a/tests/browser/full-support-customer.spec.ts
++++ b/tests/browser/full-support-customer.spec.ts
+@@ -1,6 +1,7 @@
+ import { test, expect } from "@playwright/test";
+ import { build } from "esbuild";
+ let bundle = "";
++let css = "";
+ test.beforeAll(async () => {
+   const result = await build({
+     stdin: {
+@@ -11,11 +12,13 @@ test.beforeAll(async () => {
+     },
+     bundle: true,
+     write: false,
++    outdir: "artifacts/customer-support-fixture",
+     platform: "browser",
+     jsx: "automatic",
+     define: { "process.env.NODE_ENV": '"production"' },
+   });
+-  bundle = result.outputFiles![0].text;
++  bundle = result.outputFiles!.find(file => file.path.endsWith(".js"))!.text;
++  css = result.outputFiles!.find(file => file.path.endsWith(".css"))?.text || "";
+ });
+ async function mount(page: any) {
+   const customer = {
+@@ -135,6 +138,7 @@ async function mount(page: any) {
+     }),
+   );
+   await page.goto("/customer-support-fixture");
++  await page.addStyleTag({ content: css });
+   await expect(
+     page.getByRole("heading", { name: /How can we/ }),
+     browserErrors.join("; "),
+@@ -162,6 +166,7 @@ test("Your Requests opens the complete conversation and website replies keep the
+   page,
+ }) => {
+   const controls = await mount(page);
++  await page.getByRole("button", { name: /View requests/ }).click();
+   await page.getByRole("button", { name: /Existing payment request/ }).click();
+   await expect(
+     page.getByText("We are reviewing your payment.", { exact: true }),
+@@ -185,12 +190,10 @@ test("customer form uploads an attachment and creates one real request with its
+ }) => {
+   const controls = await mount(page);
+   await page
+-    .getByLabel("Subject", { exact: true })
+-    .fill("Payment proof for review");
+-  await page
+-    .getByLabel("Message", { exact: true })
++    .getByLabel("Your message", { exact: true })
+     .fill("Please review the attached payment proof.");
+   await page.getByLabel("Category", { exact: true }).selectOption("Payment");
++  await page.getByText("Related order and attachments (optional)", { exact: true }).click();
+   await page.getByLabel("Related order", { exact: true }).selectOption("order");
+   await page.getByLabel("Add attachments", { exact: true }).setInputFiles({
+     name: "proof.txt",
+@@ -201,11 +204,11 @@ test("customer form uploads an attachment and creates one real request with its
+     page.getByRole("link", { name: "proof.txt", exact: true }),
+   ).toBeVisible();
+   await page
+-    .getByRole("button", { name: "Create support request", exact: true })
++    .getByRole("button", { name: /Send request/ })
+     .click();
+   await expect(
+     page.getByRole("heading", {
+-      name: "Payment proof for review",
++      name: "Payment",
+       exact: true,
+     }),
+   ).toBeVisible();
+@@ -213,4 +216,5 @@ test("customer form uploads an attachment and creates one real request with its
+     "cea0b11e-bc70-44b1-a094-4094f68357f1",
+   ]);
+   expect(controls.created().orderId).toBe("order");
++  expect(controls.created().subject).toBe("Payment");
+ });
+diff --git a/tests/browser/razorpay-checkout.spec.ts b/tests/browser/razorpay-checkout.spec.ts
+index ca1c047..a022e0b 100644
+--- a/tests/browser/razorpay-checkout.spec.ts
++++ b/tests/browser/razorpay-checkout.spec.ts
+@@ -125,6 +125,12 @@ async function fixtures(page: Page, overrides: Partial<FixtureState> = {}) {
+       route.fulfill({ status: 503, json: { error: { message } } });
+     if (path === "/api/v1/account" && method === "GET")
+       return respond({ user: null });
++    if (path === "/api/v1/account/wishlist" && method === "GET")
++      return respond([]);
++    if (path === "/api/v1/analytics/heartbeat" && method === "POST")
++      return respond({ success: true });
++    if (path === "/api/v1/shipping/serviceability" && method === "GET")
++      return respond({ serviceable: true, prepaid: true, cod: false });
+     if (path === "/api/v1/cart" && method === "GET")
+       return respond({ lines: [line], total: line.price, version: 1 });
+     if (path === "/api/v1/checkout/quote" && method === "POST")
+diff --git a/tests/cart-unconfirmed-stock.test.ts b/tests/cart-unconfirmed-stock.test.ts
+index 77ad6ec..9daa82b 100644
+--- a/tests/cart-unconfirmed-stock.test.ts
++++ b/tests/cart-unconfirmed-stock.test.ts
+@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
+ import {quote} from '../src/server/commerce';
+ import {products} from '../src/lib/catalog';
+ test('unconfirmed stock can be saved in cart but cannot be quoted for checkout',()=>{
+- const product=products.find(p=>p.availability==='Stock not confirmed')!;
++ const product={...products[0],availability:'Stock not confirmed',variants:[{...products[0].variants[0],stock:0}]};
+  const lines=[{sku:product.variants[0].sku,quantity:1}];
+  assert.equal(quote(lines,[product],true)[0].quantity,1);
+  assert.throws(()=>quote(lines,[product]),/unavailable/);
+diff --git a/tests/google-callback.test.ts b/tests/google-callback.test.ts
+index f665470..f1d53ed 100644
+--- a/tests/google-callback.test.ts
++++ b/tests/google-callback.test.ts
+@@ -14,6 +14,7 @@ import { currentUser, signIn, signOut, passwordHash } from "../src/server/auth";
+ import { transaction } from "../src/server/db";
+ import { hash } from "../src/server/http";
+ import type { User, Cart, Session } from "../src/lib/types";
++import { installMongoFixture } from "./helpers/mongo-fixture";
+ 
+ test("Google callback creates real OVIA sessions and preserves accounts/carts", async (t) => {
+   const originalEnv = { ...process.env };
+@@ -43,7 +44,7 @@ test("Google callback creates real OVIA sessions and preserves accounts/carts",
+   };
+   nextHeaders.cookies = async () => jar;
+   process.chdir(directory);
+-  delete process.env.MONGODB_URI;
++  const database = installMongoFixture();
+   delete process.env.VERCEL;
+   Object.assign(process.env, {
+     NODE_ENV: "test",
+@@ -271,6 +272,7 @@ test("Google callback creates real OVIA sessions and preserves accounts/carts",
+       },
+     );
+   } finally {
++    database.restore();
+     nextHeaders.cookies = originalCookies;
+     globalThis.fetch = originalFetch;
+     process.chdir(originalCwd);
+diff --git a/tests/luggage-csv-catalog.test.ts b/tests/luggage-csv-catalog.test.ts
+index 207a223..eb949e6 100644
+--- a/tests/luggage-csv-catalog.test.ts
++++ b/tests/luggage-csv-catalog.test.ts
+@@ -1,11 +1,17 @@
+-import { test } from 'node:test';
++import { test, before } from 'node:test';
+ import assert from 'node:assert/strict';
+ import fs from 'node:fs';
+-import { products, filterProducts, slugify } from '../src/lib/catalog';
++import { filterProducts, slugify } from '../src/lib/catalog';
++import { csvImportFixture } from './helpers/csv-import-fixture';
++let products: import('../src/lib/catalog').Product[];
++let initialProducts: import('../src/lib/catalog').Product[];
++before(async()=>{
++  products=await csvImportFixture('luggage');
++  initialProducts=products.filter(p=>p.importSources?.some(s=>source.some((input: {file:string})=>input.file===s.file)));
++});
+ import { catalogFacets } from '../src/lib/catalog-facets';
+ 
+ const source = JSON.parse(fs.readFileSync('data/luggage-csv-sources.json','utf8').replace(/^\uFEFF/,''));
+-const initialProducts = products.filter(p=>p.importSources?.some(s=>source.some((input: {file:string})=>input.file===s.file)));
+ const categories = ['Trunk','Check-In','Cabin','Luggage','Cabin Bags'];
+ 
+ test('every CSV row is represented in exactly its assigned category membership', () => {
+diff --git a/tests/luggage-travel-catalog.test.ts b/tests/luggage-travel-catalog.test.ts
+index c0f7793..90d8dbd 100644
+--- a/tests/luggage-travel-catalog.test.ts
++++ b/tests/luggage-travel-catalog.test.ts
+@@ -1,7 +1,10 @@
+-import { test } from 'node:test';
++import { test, before } from 'node:test';
+ import assert from 'node:assert/strict';
+ import fs from 'node:fs';
+-import { products, filterProducts } from '../src/lib/catalog';
++import { filterProducts } from '../src/lib/catalog';
++import { csvImportFixture } from './helpers/csv-import-fixture';
++let products: import('../src/lib/catalog').Product[];
++before(async()=>{ products=await csvImportFixture('luggage-travel'); });
+ import { catalogFacets } from '../src/lib/catalog-facets';
+ const sources=JSON.parse(fs.readFileSync('data/luggage-travel-csv-sources.json','utf8'));
+ 

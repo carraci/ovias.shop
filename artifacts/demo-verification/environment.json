@@ -6,5 +6,6 @@
   "customerEmail": "customer@example.test",
   "customerId": "370894fa-0516-4f78-8d65-3379de52e98a",
   "ownerEmail": "owner@example.test",
-  "ownerId": "03f4ff6b-18cb-41fb-9811-36780387ef06"
+  "ownerId": "03f4ff6b-18cb-41fb-9811-36780387ef06",
+  "cleanedUpAt": "2026-10-12T22:29:04.308Z"
 }

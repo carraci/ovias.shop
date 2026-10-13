@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./helpers/mocked-ui";
 import { build } from "esbuild";
 test("account centers show recorded refunds and requests without claiming bank credit", async ({
   page,

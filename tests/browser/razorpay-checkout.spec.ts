@@ -125,6 +125,12 @@ async function fixtures(page: Page, overrides: Partial<FixtureState> = {}) {
       route.fulfill({ status: 503, json: { error: { message } } });
     if (path === "/api/v1/account" && method === "GET")
       return respond({ user: null });
+    if (path === "/api/v1/account/wishlist" && method === "GET")
+      return respond([]);
+    if (path === "/api/v1/analytics/heartbeat" && method === "POST")
+      return respond({ success: true });
+    if (path === "/api/v1/shipping/serviceability" && method === "GET")
+      return respond({ serviceable: true, prepaid: true, cod: false });
     if (path === "/api/v1/cart" && method === "GET")
       return respond({ lines: [line], total: line.price, version: 1 });
     if (path === "/api/v1/checkout/quote" && method === "POST")

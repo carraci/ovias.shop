@@ -14,6 +14,7 @@ import { currentUser, signIn, signOut, passwordHash } from "../src/server/auth";
 import { transaction } from "../src/server/db";
 import { hash } from "../src/server/http";
 import type { User, Cart, Session } from "../src/lib/types";
+import { installMongoFixture } from "./helpers/mongo-fixture";
 
 test("Google callback creates real OVIA sessions and preserves accounts/carts", async (t) => {
   const originalEnv = { ...process.env };
@@ -43,7 +44,7 @@ test("Google callback creates real OVIA sessions and preserves accounts/carts", 
   };
   nextHeaders.cookies = async () => jar;
   process.chdir(directory);
-  delete process.env.MONGODB_URI;
+  const database = installMongoFixture();
   delete process.env.VERCEL;
   Object.assign(process.env, {
     NODE_ENV: "test",
@@ -271,6 +272,7 @@ test("Google callback creates real OVIA sessions and preserves accounts/carts", 
       },
     );
   } finally {
+    database.restore();
     nextHeaders.cookies = originalCookies;
     globalThis.fetch = originalFetch;
     process.chdir(originalCwd);

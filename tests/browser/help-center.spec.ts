@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./helpers/mocked-ui";
 
 test("FAQ topics, search, accordion and both entry points", async ({ page }) => {
   await page.goto("/services/faq");

@@ -1,7 +1,10 @@
-import {test} from 'node:test';
+import {test,before} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {products,filterProducts} from '../src/lib/catalog';
+import {filterProducts} from '../src/lib/catalog';
+import {csvImportFixture} from './helpers/csv-import-fixture';
+let products: import('../src/lib/catalog').Product[];
+before(async()=>{ products=await csvImportFixture('bags-highlights'); });
 import {catalogFacets} from '../src/lib/catalog-facets';
 const sources=JSON.parse(fs.readFileSync('data/bags-highlights-csv-sources.json','utf8'));
 test('highlight imports retain source rows and exact curated collection memberships',()=>{

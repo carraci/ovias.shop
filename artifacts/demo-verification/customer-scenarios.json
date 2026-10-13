@@ -4,258 +4,260 @@
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Persisted fixture appears through public product API with confirmed stock100",
-    "durationMs": 41196
+    "durationMs": 16180
   },
   {
     "name": "Category filtering excludes unrelated categories",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 320
+    "durationMs": 166
   },
   {
     "name": "Guest cart add persists after a fresh HTTP read",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 1690
+    "durationMs": 566
   },
   {
     "name": "Cart quantity changes use the current version",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 460
+    "durationMs": 224
   },
   {
     "name": "Concurrent stale cart updates are rejected",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 719
+    "durationMs": 373
   },
   {
     "name": "Invalid cart quantities are rejected without mutation",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 288
+    "durationMs": 164
   },
   {
     "name": "An out-of-stock variant cannot be added",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 713
+    "durationMs": 300
   },
   {
     "name": "Untrusted origins cannot mutate the cart",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 270
+    "durationMs": 28
   },
   {
     "name": "An incorrect password creates no customer session",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 1224
+    "durationMs": 765
   },
   {
     "name": "Verified customer login and session persist",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 2724
+    "durationMs": 1210
   },
   {
     "name": "Wishlist save is persisted and idempotent",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 6544
+    "durationMs": 3230
   },
   {
     "name": "Wishlist removal persists",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 1454
+    "durationMs": 831
   },
   {
     "name": "Create a saved address with validated delivery details",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 14370
+    "durationMs": 2868
   },
   {
     "name": "Edit a saved address without losing ownership",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 514
+    "durationMs": 232
   },
   {
     "name": "Another account cannot edit the saved address",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 4245
+    "durationMs": 2689
   },
   {
     "name": "Delete a saved address and verify the database removal",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 622
+    "durationMs": 306
   },
   {
     "name": "Profile changes save and reload with consent preferences",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 1789
+    "durationMs": 1106
   },
   {
     "name": "Customer roles cannot access admin payments",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 1818
+    "durationMs": 516
   },
   {
     "name": "Authenticated owner access loads real isolated order data",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 3056
+    "durationMs": 873
   },
   {
     "name": "Checkout quote is computed from server prices and shipping",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 5660
+    "durationMs": 2894
   },
   {
     "name": "Payment session starts pending and reserves stock exactly once",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 5494
+    "durationMs": 4414
   },
   {
     "name": "Retry payment creation reuses the original provider order",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 993
+    "durationMs": 1020
   },
   {
     "name": "An invalid gateway signature cannot mark an order paid",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 796
+    "durationMs": 481
   },
   {
     "name": "Verified captured payment completes order and clears cart",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Real route validated a signed callback against the simulated gateway; Mongo order is paid and cart empty",
-    "durationMs": 5343
+    "durationMs": 2090
   },
   {
     "name": "Repeated payment callback does not duplicate confirmation email",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 1352
+    "durationMs": 744
   },
   {
     "name": "Paid order confirmation mail reaches the demo email sink",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
-    "evidence": "Provider payload accepted by isolated mail sink; real inbox delivery remains unverified",
-    "durationMs": 3
+    "evidence": "Retest matched the current order number and customer recipient in the local provider sink; real inbox delivery is not claimed.",
+    "durationMs": 20,
+    "previousEvidence": "The expression evaluated to a falsy value:\n\n  assert(JSON.stringify(customerMail).includes(session.orderNumber))\n"
   },
   {
     "name": "Customer order detail opens the exact owned record",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 1282
+    "durationMs": 779
   },
   {
     "name": "An unrelated guest cannot read the customer's order",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 223
+    "durationMs": 130
   },
   {
     "name": "Cancellation request is saved against the paid order",
-    "status": "FAIL",
+    "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
-    "evidence": "POST /api/v1/care/tickets: {\"data\":{\"id\":\"8b7f9848-b706-4f10-8a27-a4edeb6d3739\",\"userId\":\"370894fa-0516-4f78-8d65-3379de52e98a\",\"name\":\"Demo Customer\",\"email\":\"customer@example.test\",\"category\":\"Order issue\",\"subject\":\"Please cancel my demo order\",\"orderId\":\"a4acb81e-84ab-4c24-9f14-554cda0632a5\",\"orderAction\":{\"type\":\"cancellation\"},\"status\":\"New\",\"messages\":[{\"id\":\"4b443898-fb57-4537-8a76-171cb676e4f2\",\"author\":\"customer\",\"text\":\"Please cancel this test order before dispatch.\",\"createdAt\":\"2026-10-12T18:37:50.662Z\",\"attachments\":[]}],\"createdAt\":\"2026-10-12T18:37:50.662Z\",\"updatedAt\":\"2026-10-12T18:37:50.662Z\",\"ticketNumber\":\"OV-SUP-18E4D8102838826DDD607E1712A0A0E0\"}}\n\n200 !== 201\n",
-    "durationMs": 8490
+    "evidence": "Assertions passed",
+    "durationMs": 3357
   },
   {
     "name": "Manual return status cannot falsely disburse a refund",
-    "status": "FAIL",
+    "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
-    "evidence": "Cannot read properties of undefined (reading 'id')",
-    "durationMs": 1
+    "evidence": "Assertions passed",
+    "durationMs": 1578
   },
   {
     "name": "A confirmed owner refund reconciles with provider status",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Provider fixture processed refund; actual admin route saved the reconciled refund, without moving real money",
-    "durationMs": 2164
+    "durationMs": 2153
   },
   {
     "name": "Repeating a refund reuses its identity without extra money movement",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 624
+    "durationMs": 326
   },
   {
     "name": "Support conversation and customer response persist",
-    "status": "FAIL",
+    "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
-    "evidence": "POST /api/v1/care/tickets: {\"data\":{\"id\":\"7ecafd5b-9db2-409b-915f-a815388a7946\",\"userId\":\"370894fa-0516-4f78-8d65-3379de52e98a\",\"name\":\"Demo Customer\",\"email\":\"customer@example.test\",\"category\":\"Product question\",\"subject\":\"Demo product question\",\"status\":\"New\",\"messages\":[{\"id\":\"60555c49-e42e-4561-b76b-5f8c34f0c231\",\"author\":\"customer\",\"text\":\"Please tell me how to clean the demo backpack.\",\"createdAt\":\"2026-10-12T18:37:57.101Z\",\"attachments\":[]}],\"createdAt\":\"2026-10-12T18:37:57.101Z\",\"updatedAt\":\"2026-10-12T18:37:57.101Z\",\"ticketNumber\":\"OV-SUP-D2C8BFB84DA9858A4A90223132E326CE\"}}\n\n200 !== 201\n",
-    "durationMs": 2159
+    "evidence": "Assertions passed",
+    "durationMs": 3078
   },
   {
     "name": "Account activity uses authorized exact links and chronological events",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 2772
+    "durationMs": 937
   },
   {
     "name": "Marking activity read persists across reload",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 3085
+    "durationMs": 1497
   },
   {
     "name": "Customer profile and activity render from real isolated account APIs",
-    "status": "FAIL",
+    "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
-    "evidence": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('heading', { name: /Account activity/ }) to be visible\u001b[22m\n",
-    "durationMs": 42839
+    "evidence": "Retest rendered the signed-in customer and Account activity heading with zero browser runtime errors after independently applying the account response.",
+    "durationMs": 51335,
+    "previousEvidence": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('heading', { name: /Account activity/ }) to be visible\u001b[22m\n"
   },
   {
     "name": "Logout invalidates the actual saved session",
     "status": "PASS",
     "layer": "Actual application + isolated MongoDB",
     "evidence": "Assertions passed",
-    "durationMs": 4445
+    "durationMs": 684
   }
 ]

@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./helpers/mocked-ui";
 test("new menu links open original OVIA edits", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: "New", exact: true }).click();
