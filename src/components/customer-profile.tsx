@@ -38,10 +38,6 @@ const socialLinks = [
   },
 ];
 export function CustomerProfile() {
-  const [newsletterEmail, setNewsletterEmail] = useState("");
-  const [newsletterBusy, setNewsletterBusy] = useState(false);
-  const [newsletterNotice, setNewsletterNotice] = useState("");
-  const [newsletterError, setNewsletterError] = useState("");
   const { user, refresh } = useStore();
   const [profile, setProfile] = useState<AccountProfile | null>(null),
     [error, setError] = useState(""),
@@ -217,64 +213,7 @@ export function CustomerProfile() {
             <AddressBook embedded />
           </section>
           <section className={styles.newsletter}>
-            <p className={styles.blockLabel}>
-              <span>11</span> NEWSLETTER
-            </p>
-            <div className={styles.newsletterRow}>
-              <h2>New arrivals, first.</h2>
-              <form
-                className={styles.emailForm}
-                onSubmit={async (event) => {
-                  event.preventDefault();
-                  if (newsletterBusy) return;
-                  setNewsletterBusy(true);
-                  setNewsletterError("");
-                  setNewsletterNotice("");
-                  try {
-                    await request("account/newsletter", "POST", {
-                      email: newsletterEmail,
-                    });
-                    setNewsletterNotice(
-                      "Your newsletter email has been saved.",
-                    );
-                    setNewsletterEmail("");
-                  } catch (cause) {
-                    setNewsletterError(
-                      cause instanceof Error
-                        ? cause.message
-                        : "Unable to save your email.",
-                    );
-                  } finally {
-                    setNewsletterBusy(false);
-                  }
-                }}
-              >
-                <input
-                  aria-label="Newsletter email"
-                  autoComplete="off"
-                  type="email"
-                  required
-                  maxLength={254}
-                  placeholder="Your email"
-                  value={newsletterEmail}
-                  onChange={(event) => setNewsletterEmail(event.target.value)}
-                />
-                <button
-                  type="submit"
-                  aria-label="Sign up for newsletter"
-                  disabled={newsletterBusy}
-                >
-                  <ArrowRight size={16} />
-                </button>
-              </form>
-            </div>
-            {newsletterNotice && <p role="status">{newsletterNotice}</p>}
-            {newsletterError && <p role="alert">{newsletterError}</p>}
-          </section>
-          <section className={styles.newsletter}>
-            <p className={styles.blockLabel}>
-              <span>13</span> FOLLOW
-            </p>
+            <p className={styles.blockLabel}>FOLLOW</p>
             <nav
               className={styles.socialIcons}
               aria-label="OVIA social profiles"
