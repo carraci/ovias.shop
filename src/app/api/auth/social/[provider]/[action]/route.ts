@@ -173,11 +173,13 @@ export async function POST(req: NextRequest, ctx: Context) {
       });
       binding = { userId: user.id, sessionId: hash(payload.jti!) };
     }
+    const reqOrigin = req.headers.get("origin") || req.nextUrl.origin;
     const result = await prepareFlow(
       provider as Provider,
       data.intent,
       binding,
       await cartOwner(),
+      reqOrigin,
     );
     (await cookies()).set(
       cookieName(provider as Provider),

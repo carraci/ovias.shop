@@ -21,6 +21,7 @@ export type Flow = {
   userId?: string;
   sessionId?: string;
   guestCartId?: string;
+  redirectUri?: string;
 };
 export class SocialError extends Error {
   constructor(
@@ -104,8 +105,8 @@ export function availableProviders() {
     ),
   };
 }
-export const callbackUrl = (provider: Provider) =>
-  `${appOrigin()}/api/auth/social/${provider}/callback`;
+export const callbackUrl = (provider: Provider, origin?: string) =>
+  `${origin || appOrigin()}/api/auth/social/${provider}/callback`;
 export const cookieName = (provider: Provider) => `ovia_social_${provider}`;
 export const cookieOptions = (provider: Provider) => ({
   httpOnly: true,
@@ -119,6 +120,7 @@ export async function prepareFlow(
   intent: Flow["intent"],
   binding?: { userId: string; sessionId: string },
   guestCartId?: string,
+  requestOrigin?: string,
 ) {
   if (!availableProviders()[provider])
     throw new ApiError(
@@ -127,12 +129,14 @@ export async function prepareFlow(
     );
   if (intent === "link" && !binding)
     throw new ApiError(401, "Sign in before connecting an account.");
+  const redirect_uri = callbackUrl(provider, requestOrigin);
   const flow: Flow = {
     provider,
     intent,
     state: randomBytes(32).toString("hex"),
     nonce: randomBytes(32).toString("hex"),
     verifier: randomBytes(32).toString("base64url"),
+    redirectUri: redirect_uri,
     ...binding,
     guestCartId,
   };
@@ -161,7 +165,7 @@ export async function prepareFlow(
       provider === "google"
         ? googleClientId()
         : process.env.APPLE_CLIENT_ID!,
-    redirect_uri: callbackUrl(provider),
+    redirect_uri,
     response_type: "code",
     scope: provider === "google" ? "openid email profile" : "name email",
     state: flow.state,
@@ -249,7 +253,7 @@ export async function exchangeCode(flow: Flow, code: string) {
     client_secret: google
       ? googleClientSecret()
       : await appleClientSecret(),
-    redirect_uri: callbackUrl(flow.provider),
+    redirect_uri: flow.redirectUri || callbackUrl(flow.provider),
   });
   if (google) form.set("code_verifier", flow.verifier);
   const response = await fetch(
