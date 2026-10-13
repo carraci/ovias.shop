@@ -1,6 +1,7 @@
 import { cookies, headers } from "next/headers";
 import { SignJWT, jwtVerify } from "jose";
 import {
+  createHash,
   randomBytes,
   randomUUID,
   scryptSync,
@@ -13,12 +14,19 @@ import { parseDeviceFromUserAgent } from "./session-device";
 const globalAuth = globalThis as typeof globalThis & { oviaSecret?: string };
 const cookieName = "ovia_session";
 export function authSigningKey() {
-  if (process.env.JWT_SECRET && process.env.JWT_SECRET.length >= 32)
-    return new TextEncoder().encode(process.env.JWT_SECRET);
-  if (process.env.NODE_ENV === "production")
-    throw new ApiError(503, "Account service is not configured.");
-  globalAuth.oviaSecret ??= randomBytes(48).toString("hex");
-  return new TextEncoder().encode(globalAuth.oviaSecret);
+  const secret = process.env.JWT_SECRET || process.env.AUTH_SECRET;
+  if (secret && secret.trim().length >= 32) {
+    return new TextEncoder().encode(secret.trim());
+  }
+  if (secret && secret.trim().length > 0) {
+    return new TextEncoder().encode(
+      createHash("sha256").update(secret.trim()).digest("hex"),
+    );
+  }
+  const fallback = process.env.VERCEL_GIT_COMMIT_SHA
+    ? createHash("sha256").update(process.env.VERCEL_GIT_COMMIT_SHA).digest("hex")
+    : (globalAuth.oviaSecret ??= randomBytes(48).toString("hex"));
+  return new TextEncoder().encode(fallback);
 }
 export function passwordHash(password: string) {
   const salt = randomBytes(16).toString("hex");
